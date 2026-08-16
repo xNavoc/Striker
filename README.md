@@ -13,3 +13,5 @@ mkdir -p mlb_hr_engine/src/models
 mkdir -p mlb_hr_engine/src/postprocessing
 
 cd mlb_hr_engine
+
+touch src/__init__.py src/ingestion/__init__.py src/features/__init__.py src/models/__init__.py src/postprocessing/__init__.py
