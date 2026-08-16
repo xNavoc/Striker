@@ -14,8 +14,6 @@ mkdir -p mlb_hr_engine/src/postprocessing
 
 cd mlb_hr_engine
 
-touch src/__init__.py src/ingestion/__init__.py src/features/__init__.py src/models/__init__.py src/postprocessing/__init__.py
-
 pandas>=2.0.0
 numpy>=1.24.0
 scipy>=1.10.0
