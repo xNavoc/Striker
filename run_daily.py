@@ -8,6 +8,8 @@ import requests
 import statsapi
 import matplotlib.pyplot as plt
 
+CURRENT_SEASON = datetime.now().year
+
 BALLPARK_HR_FACTORS = {
     'Great American Ball Park': 128, 'Coors Field': 122, 'Yankee Stadium': 118,
     'Fenway Park': 112, 'Citizens Bank Park': 115, 'Guaranteed Rate Field': 111,
@@ -16,28 +18,10 @@ BALLPARK_HR_FACTORS = {
     'Kauffman Stadium': 92, 'Oracle Park': 84, 'T-Mobile Park': 88, 'default': 100
 }
 
-# Known Handedness Cache for Instant Guaranteed Accuracy
-KNOWN_BATTER_HANDS = {
-    'Matt Olson': 'L', 'Shohei Ohtani': 'L', 'Kyle Schwarber': 'L', 'Freddie Freeman': 'L',
-    'Michael Harris II': 'L', 'Michael Harris': 'L', 'Mike Yastrzemski': 'L', 'Drake Baldwin': 'L',
-    'Ozzie Albies': 'S', 'Elly De La Cruz': 'S', 'Francisco Lindor': 'S', 'Ketel Marte': 'S',
-    'Bryce Harper': 'L', 'Gunnar Henderson': 'L', 'Corey Seager': 'L', 'Yordan Alvarez': 'L',
-    'Juan Soto': 'L', 'Rafael Devers': 'L', 'Adley Rutschman': 'S', 'Josh Naylor': 'L',
-    'Bryan Reynolds': 'S', 'Ian Happ': 'S', 'Cedric Mullins': 'L', 'Anthony Santander': 'S',
-    'Alec Burleson': 'L', 'JJ Bleday': 'L', 'Wilyer Abreu': 'L', 'Griffin Conine': 'L',
-    'Ronald Acuña Jr.': 'R', 'Ronald Acuna Jr.': 'R', 'Austin Riley': 'R', 'Aaron Judge': 'R',
-    'Pete Alonso': 'R', 'Eugenio Suárez': 'R', 'Eugenio Suarez': 'R', 'Mauricio Dubón': 'R',
-    'Jordan Walker': 'R', 'Junior Caminero': 'R', 'Esteury Ruiz': 'R', 'Dillon Dingler': 'R'
-}
-
-KNOWN_PITCHER_HANDS = {
-    'Shane McClanahan': 'L', 'Framber Valdez': 'L', 'Cristopher Sánchez': 'L', 'Cristopher Sanchez': 'L',
-    'Blake Snell': 'L', 'Kyle Freeland': 'L', 'Mitch Bratt': 'L', 'Tarik Skubal': 'L', 'Cole Ragans': 'L',
-    'Max Fried': 'L', 'Chris Sale': 'L', 'Ranger Suárez': 'L', 'Ranger Suarez': 'L', 'Shota Imanaga': 'L',
-    'Rhett Lowder': 'R', 'Andre Pallante': 'R', 'Tomoyuki Sugano': 'R', 'Brayan Bello': 'R',
-    'Miles Mikolas': 'R', 'Trevor Williams': 'R', 'Janson Junk': 'R', 'Carmen Mlodzinski': 'R',
-    'Brandon Young': 'R', 'Corbin Burnes': 'R', 'Zack Wheeler': 'R', 'Paul Skenes': 'R'
-}
+# In-Memory Master League Registries
+LEAGUE_ID_REGISTRY = {}
+LEAGUE_NAME_REGISTRY = {}
+PITCHER_PROFILE_CACHE = {}
 
 SIGNATURE_ARSENALS = {
     'Shane McClanahan': ({'FF': 0.45, 'CH': 0.25, 'SL': 0.20, 'CU': 0.10}, 0.72, 1.05, '🟢 Elite Lockdown Starter'),
@@ -45,92 +29,121 @@ SIGNATURE_ARSENALS = {
     'Cristopher Sánchez': ({'SI': 0.52, 'CH': 0.32, 'SL': 0.16}, 0.75, 1.14, '🟢 Elite Groundball Profile'),
     'Cristopher Sanchez': ({'SI': 0.52, 'CH': 0.32, 'SL': 0.16}, 0.75, 1.14, '🟢 Elite Groundball Profile'),
     'Blake Snell': ({'FF': 0.48, 'SL': 0.24, 'CH': 0.18, 'CU': 0.10}, 0.85, 1.18, '🟢 Elite Lockdown Starter'),
-    'Rhett Lowder': ({'SI': 0.44, 'CH': 0.30, 'SL': 0.20, 'FF': 0.06}, 1.10, 1.24, '🟡 Neutral Arsenal Mix'),
+    'Tarik Skubal': ({'FF': 0.44, 'CH': 0.28, 'SL': 0.20, 'CU': 0.08}, 0.68, 0.95, '🟢 Elite Lockdown Starter'),
+    'Cole Ragans': ({'FF': 0.46, 'CH': 0.26, 'SL': 0.18, 'CU': 0.10}, 0.78, 1.10, '🟢 Elite Lockdown Starter'),
+    'Rhett Lowder': ({'SI': 0.44, 'CH': 0.30, 'SL': 0.20, 'FF': 0.06}, 1.08, 1.24, '🟡 Neutral Arsenal Mix'),
     'Andre Pallante': ({'SI': 0.62, 'SL': 0.24, 'CU': 0.14}, 0.88, 1.25, '🟡 Groundball / Heavy Sinker'),
     'Tomoyuki Sugano': ({'FF': 0.38, 'SL': 0.32, 'FS': 0.18, 'CU': 0.12}, 1.20, 1.26, '🔴 Hanging Breaker Risk'),
     'Kyle Freeland': ({'FF': 0.40, 'SL': 0.32, 'CH': 0.18, 'CU': 0.10}, 1.45, 1.42, '🔴 High FB/SL Bleed'),
     'Brayan Bello': ({'SI': 0.45, 'CH': 0.33, 'SL': 0.22}, 1.15, 1.28, '🟡 Groundball Heavy Mix'),
     'Miles Mikolas': ({'FF': 0.36, 'SL': 0.28, 'CU': 0.20, 'SI': 0.16}, 1.38, 1.32, '🔴 High FB/SL Bleed'),
     'Trevor Williams': ({'FF': 0.42, 'CH': 0.24, 'SL': 0.20, 'CU': 0.14}, 1.35, 1.34, '🔴 High FB/SL Bleed'),
-    'Janson Junk': ({'FF': 0.46, 'SL': 0.30, 'CH': 0.14, 'CU': 0.10}, 1.42, 1.38, '🔴 High FB/SL Bleed')
+    'Janson Junk': ({'FF': 0.46, 'SL': 0.30, 'CH': 0.14, 'CU': 0.10}, 1.42, 1.38, '🔴 High FB/SL Bleed'),
+    'Brandon Young': ({'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, 1.28, 1.30, '🔴 Hanging Breaker Risk'),
+    'Mitch Bratt': ({'FF': 0.44, 'CH': 0.26, 'SL': 0.20, 'CU': 0.10}, 1.25, 1.28, '🟡 Neutral Arsenal Mix'),
+    'Carmen Mlodzinski': ({'FF': 0.48, 'SL': 0.32, 'CH': 0.12, 'CU': 0.08}, 1.15, 1.25, '🟡 Neutral Arsenal Mix')
 }
 
-PLAYER_META_CACHE = {}
-PITCHER_PROFILE_CACHE = {}
+def clean_name_str(name: str) -> str:
+    """Normalizes player names for collision-free dictionary lookups."""
+    if not name:
+        return ""
+    return re.sub(r'[^a-zA-Z0-9]', '', name).lower()
+
+def initialize_league_registry():
+    """
+    Downloads and caches the entire active MLB player registry at pipeline startup.
+    Eliminates all missing handedness, position, and ID errors.
+    """
+    global LEAGUE_ID_REGISTRY, LEAGUE_NAME_REGISTRY
+    print(f"[i] Pre-loading MLB master player registry for {CURRENT_SEASON}...")
+    try:
+        url = f"https://statsapi.mlb.com/api/v1/sports/1/players?season={CURRENT_SEASON}"
+        res = requests.get(url, timeout=12).json()
+        people = res.get('people', [])
+        for p in people:
+            pid = p.get('id')
+            full_name = p.get('fullName', '')
+            b_side = p.get('batSide', {}).get('code', 'R').upper()
+            p_hand = p.get('pitchHand', {}).get('code', 'R').upper()
+            pos = p.get('primaryPosition', {}).get('abbreviation', 'DH')
+
+            meta = {
+                'id': pid,
+                'name': full_name,
+                'b_hand': b_side,
+                'p_hand': p_hand,
+                'pos': pos
+            }
+            if pid:
+                LEAGUE_ID_REGISTRY[pid] = meta
+            if full_name:
+                LEAGUE_NAME_REGISTRY[clean_name_str(full_name)] = meta
+        print(f"[✓] Successfully indexed {len(LEAGUE_ID_REGISTRY)} active players in registry.")
+    except Exception as e:
+        print(f"[!] Registry pre-fetch warning: {e}. Fallback lookups will remain active.")
 
 def get_player_metadata(person_id: int, player_name: str = ""):
-    """Accurately fetches batting handedness (R/L/S), pitching hand (R/L), and position."""
-    clean_name = player_name.strip()
-    cache_key = f"{person_id}_{clean_name}"
-    if cache_key in PLAYER_META_CACHE:
-        return PLAYER_META_CACHE[cache_key]
+    """Instantly resolves true player profile from memory."""
+    if person_id and person_id in LEAGUE_ID_REGISTRY:
+        p = LEAGUE_ID_REGISTRY[person_id]
+        return p['b_hand'], p['p_hand'], p['pos']
+
+    cleaned = clean_name_str(player_name)
+    if cleaned and cleaned in LEAGUE_NAME_REGISTRY:
+        p = LEAGUE_NAME_REGISTRY[cleaned]
+        return p['b_hand'], p['p_hand'], p['pos']
 
     b_hand, p_hand, pos = 'R', 'R', 'DH'
-
-    for k_name, k_hand in KNOWN_BATTER_HANDS.items():
-        if k_name.lower() in clean_name.lower():
-            b_hand = k_hand
-            break
-
-    target_id = person_id
-    if not target_id and clean_name:
+    if person_id or player_name:
         try:
-            search_url = f"https://statsapi.mlb.com/api/v1/people/search?names={clean_name}"
-            s_res = requests.get(search_url, timeout=4).json()
-            people = s_res.get('people', [])
-            if people:
-                target_id = people[0].get('id', 0)
+            target_id = person_id
+            if not target_id and player_name:
+                search_url = f"https://statsapi.mlb.com/api/v1/people/search?names={player_name}"
+                s_res = requests.get(search_url, timeout=4).json()
+                people = s_res.get('people', [])
+                if people:
+                    target_id = people[0].get('id', 0)
+
+            if target_id:
+                url = f"https://statsapi.mlb.com/api/v1/people/{target_id}"
+                res = requests.get(url, timeout=4).json()
+                people = res.get('people', [])
+                if people:
+                    p = people[0]
+                    b_hand = p.get('batSide', {}).get('code', 'R').upper()
+                    p_hand = p.get('pitchHand', {}).get('code', 'R').upper()
+                    pos = p.get('primaryPosition', {}).get('abbreviation', 'DH')
         except Exception:
             pass
 
-    if target_id:
-        try:
-            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}"
-            res = requests.get(url, timeout=4).json()
-            people = res.get('people', [])
-            if people:
-                p = people[0]
-                b_code = p.get('batSide', {}).get('code', '')
-                p_code = p.get('pitchHand', {}).get('code', '')
-                pos_code = p.get('primaryPosition', {}).get('abbreviation', 'DH')
-                if b_code: b_hand = b_code.upper()
-                if p_code: p_hand = p_code.upper()
-                if pos_code: pos = pos_code
-        except Exception:
-            pass
-
-    PLAYER_META_CACHE[cache_key] = (b_hand, p_hand, pos)
     return b_hand, p_hand, pos
 
 def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
     """Pulls true pitcher throwing hand, HR/9, WHIP, and accurate risk badges."""
-    clean_name = pitcher_name.strip()
-    cache_key = f"{pitcher_id}_{clean_name}"
-    if cache_key in PITCHER_PROFILE_CACHE:
-        return PITCHER_PROFILE_CACHE[cache_key]
+    clean_key = clean_name_str(pitcher_name)
+    if clean_key in PITCHER_PROFILE_CACHE:
+        return PITCHER_PROFILE_CACHE[clean_key]
 
-    p_hand = 'R'
-    for k_pname, k_phand in KNOWN_PITCHER_HANDS.items():
-        if k_pname.lower() in clean_name.lower():
-            p_hand = k_phand
-            break
+    _, p_hand, _ = get_player_metadata(pitcher_id, pitcher_name)
 
-    # 1. Check Signature Profile Table
+    # 1. Match signature profiles
     for name_key, (ars, hr9_val, whip_val, badge_text) in SIGNATURE_ARSENALS.items():
-        if name_key.lower() in clean_name.lower():
+        if clean_name_str(name_key) in clean_key or clean_key in clean_name_str(name_key):
             is_vuln = "🔴" in badge_text
             profile = {
                 'hr9': hr9_val, 'whip': whip_val, 'badge': badge_text,
                 'is_vuln': is_vuln, 'p_hand': p_hand
             }
-            PITCHER_PROFILE_CACHE[cache_key] = (ars, profile)
+            PITCHER_PROFILE_CACHE[clean_key] = (ars, profile)
             return ars, profile
 
-    # 2. Query Live MLB API
+    # 2. Live Statcast Metrics Lookup
+    hr9, whip, era = 1.15, 1.24, 4.10
     target_id = pitcher_id
-    if not target_id and clean_name and 'TBD' not in clean_name:
+    if not target_id and pitcher_name and 'TBD' not in pitcher_name:
         try:
-            search_url = f"https://statsapi.mlb.com/api/v1/people/search?names={clean_name}"
+            search_url = f"https://statsapi.mlb.com/api/v1/people/search?names={pitcher_name}"
             s_res = requests.get(search_url, timeout=4).json()
             people = s_res.get('people', [])
             if people:
@@ -138,7 +151,6 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
         except Exception:
             pass
 
-    hr9, whip, era = 1.18, 1.24, 4.10
     if target_id:
         try:
             url = f"https://statsapi.mlb.com/api/v1/people/{target_id}?hydrate=stats(group=[pitching],type=[season])"
@@ -146,8 +158,7 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
             people = res.get('people', [])
             if people:
                 p_hand = people[0].get('pitchHand', {}).get('code', p_hand).upper()
-                stats_list = people[0].get('stats', [])
-                for st in stats_list:
+                for st in people[0].get('stats', []):
                     splits = st.get('splits', [])
                     if splits:
                         s = splits[0].get('stat', {})
@@ -161,11 +172,10 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
         except Exception:
             pass
 
-    # Generic Handedness-Based Pitch Distribution
     if p_hand == 'L':
         matched_arsenal = {'FF': 0.42, 'CH': 0.28, 'SL': 0.20, 'CU': 0.10}
     else:
-        seed_mod = (target_id or hash(clean_name)) % 3
+        seed_mod = (target_id or hash(pitcher_name)) % 3
         if seed_mod == 0:
             matched_arsenal = {'FF': 0.46, 'SL': 0.32, 'CH': 0.14, 'CU': 0.08}
         elif seed_mod == 1:
@@ -176,7 +186,7 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
     if hr9 >= 1.38 or era >= 4.75 or whip >= 1.38:
         badge = "🔴 High FB/SL Bleed"
         is_vuln = True
-    elif hr9 >= 1.20 or era >= 4.25:
+    elif hr9 >= 1.22 or era >= 4.30:
         badge = "🔴 Hanging Breaker Risk"
         is_vuln = True
     elif hr9 <= 0.85 and whip <= 1.15:
@@ -190,20 +200,13 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
         'hr9': min(2.5, max(0.4, hr9)), 'whip': whip, 'badge': badge,
         'is_vuln': is_vuln, 'p_hand': p_hand
     }
-    PITCHER_PROFILE_CACHE[cache_key] = (matched_arsenal, profile)
+    PITCHER_PROFILE_CACHE[clean_key] = (matched_arsenal, profile)
     return matched_arsenal, profile
 
 def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p_hand: str, pitcher_arsenal: dict):
     """Evaluates ISO, Barrel %, HR/PA, and assigns Advantage badges."""
-    iso, hr_total = 0.185, 12
-    clean_name = b_name.strip()
-    
+    iso, hr_total = 0.180, 10
     target_id = person_id
-    if not target_id and clean_name:
-        for k_name in KNOWN_BATTER_HANDS:
-            if k_name.lower() in clean_name.lower():
-                iso, hr_total = 0.235, 18
-                break
 
     if target_id:
         try:
@@ -214,17 +217,17 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
                 splits = people[0]['stats'][0].get('splits', [])
                 if splits:
                     s = splits[0].get('stat', {})
-                    slg = float(s.get('slg', '.440'))
+                    slg = float(s.get('slg', '.430'))
                     avg = float(s.get('avg', '.250'))
                     iso = max(0.060, round(slg - avg, 3))
-                    hr_total = int(s.get('homeRuns', 12))
+                    hr_total = int(s.get('homeRuns', 10))
         except Exception:
             pass
 
     # Platoon Logic
     same_hand = (b_hand == p_hand and b_hand != 'S')
     if same_hand:
-        if iso >= 0.220 or any(star in clean_name for star in ['Judge', 'Freeman', 'Ohtani', 'Alonso', 'Suárez', 'Gunnar', 'Ozuna', 'Olson']):
+        if iso >= 0.220:
             split_desc = "⚡ Batter Adv (Reverse Split)"
             split_mult = 1.16
             split_score_adj = 3.0
@@ -250,16 +253,16 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     sec_name_map = {'SL': 'Slider', 'CH': 'Changeup', 'CU': 'Curveball', 'FS': 'Splitter', 'ST': 'Sweeper'}
     sec_label = sec_name_map.get(top_sec, 'Breaking Ball')
 
-    is_power_bat = iso >= 0.205 or hr_total >= 15
+    is_power_bat = iso >= 0.200 or hr_total >= 14
     is_elite_bat = iso >= 0.250 or hr_total >= 22
 
     if is_elite_bat:
         badge = f"⚡ All-Arsenal ({sec_label}+FB)"
-        bonus = 4.5
+        bonus = 5.0
     elif is_power_bat and fb_pct >= 0.44:
         badge = f"💥 Fastball Crusher ({int(fb_pct*100)}% FB)"
         bonus = 3.5
-    elif is_power_bat and top_sec_pct >= 0.22:
+    elif is_power_bat and top_sec_pct >= 0.20:
         badge = f"🔥 {sec_label} Hunter ({int(top_sec_pct*100)}%)"
         bonus = 3.5
     elif iso >= 0.165:
@@ -281,7 +284,7 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     }
 
 def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
-    """Calculates granular power score without artificial hard-clipping at 98.5."""
+    """Calculates granular power score with authentic open distribution."""
     s_mech = (b_stats['barrel'] / 0.15) * 14.0 + (b_stats['iso'] / 0.250) * 13.0 + b_stats['bonus_score']
     vuln_boost = 4.5 if p_stats['is_vuln'] else (-3.5 if 'Elite' in p_stats['badge'] else 0.0)
     s_pitch = (p_stats['hr9'] / 1.25) * 12.0 + (p_stats['whip'] / 1.25) * 7.0 + vuln_boost
@@ -328,6 +331,7 @@ def fetch_projected_lineup_rotowire(team_name: str):
     return []
 
 def fetch_slate_evaluations():
+    initialize_league_registry()
     today_str = datetime.now().strftime('%Y-%m-%d')
     print(f"[i] Loading upcoming MLB games and evaluating live matchups for {today_str}...")
 
