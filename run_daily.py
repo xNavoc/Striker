@@ -16,7 +16,18 @@ BALLPARK_HR_FACTORS = {
     'Kauffman Stadium': 92, 'Oracle Park': 84, 'T-Mobile Park': 88, 'default': 100
 }
 
-# Signature pitch types for MLB starters when tracking feeds are thin
+# Known Handedness & Arsenal Fallback Dictionaries for Instant Resolution
+KNOWN_BATTER_HANDS = {
+    'Matt Olson': 'L', 'Shohei Ohtani': 'L', 'Kyle Schwarber': 'L', 'Freddie Freeman': 'L',
+    'Michael Harris II': 'L', 'Michael Harris': 'L', 'Mike Yastrzemski': 'L', 'Drake Baldwin': 'L',
+    'Ozzie Albies': 'S', 'Elly De La Cruz': 'S', 'Francisco Lindor': 'S', 'Ketel Marte': 'S',
+    'Bryce Harper': 'L', 'Gunnar Henderson': 'L', 'Corey Seager': 'L', 'Yordan Alvarez': 'L',
+    'Juan Soto': 'L', 'Rafael Devers': 'L', 'Adley Rutschman': 'S', 'Josh Naylor': 'L',
+    'Bryan Reynolds': 'S', 'Ian Happ': 'S', 'Cedric Mullins': 'L', 'Anthony Santander': 'S',
+    'Ronald Acuña Jr.': 'R', 'Ronald Acuna Jr.': 'R', 'Austin Riley': 'R', 'Aaron Judge': 'R',
+    'Pete Alonso': 'R', 'Eugenio Suárez': 'R', 'Eugenio Suarez': 'R', 'Mauricio Dubón': 'R'
+}
+
 SIGNATURE_ARSENALS = {
     'Blake Snell': {'FF': 0.48, 'SL': 0.24, 'CH': 0.18, 'CU': 0.10},
     'Rhett Lowder': {'SI': 0.42, 'CH': 0.30, 'SL': 0.20, 'FF': 0.08},
@@ -32,30 +43,45 @@ PLAYER_META_CACHE = {}
 PITCHER_PROFILE_CACHE = {}
 
 def get_player_metadata(person_id: int, player_name: str = ""):
-    """Fetches batting handedness (R/L/S), pitching hand (R/L), and position."""
-    cache_key = f"{person_id}_{player_name}"
+    """Accurately fetches batting handedness (R/L/S), pitching hand (R/L), and position."""
+    clean_name = player_name.strip()
+    cache_key = f"{person_id}_{clean_name}"
     if cache_key in PLAYER_META_CACHE:
         return PLAYER_META_CACHE[cache_key]
 
     b_hand, p_hand, pos = 'R', 'R', 'DH'
-    
-    if person_id:
+
+    # 1. Check known lookup dictionary
+    for k_name, k_hand in KNOWN_BATTER_HANDS.items():
+        if k_name.lower() in clean_name.lower():
+            b_hand = k_hand
+            break
+
+    # 2. Query official MLB REST Person API
+    target_id = person_id
+    if not target_id and clean_name:
         try:
-            p_data = statsapi.player_stat_data(person_id, group="[hitting,pitching]")
-            b_hand = p_data.get('bat_side', 'R')[:1].upper() if p_data.get('bat_side') else 'R'
-            p_hand = p_data.get('pitch_hand', 'R')[:1].upper() if p_data.get('pitch_hand') else 'R'
-            pos = p_data.get('position', 'DH')
+            search_url = f"https://statsapi.mlb.com/api/v1/people/search?names={clean_name}"
+            s_res = requests.get(search_url, timeout=5).json()
+            people = s_res.get('people', [])
+            if people:
+                target_id = people[0].get('id', 0)
         except Exception:
             pass
-    elif player_name:
+
+    if target_id:
         try:
-            lookup = statsapi.lookup_player(player_name)
-            if lookup:
-                pid = lookup[0]['id']
-                p_data = statsapi.player_stat_data(pid, group="[hitting,pitching]")
-                b_hand = p_data.get('bat_side', 'R')[:1].upper() if p_data.get('bat_side') else 'R'
-                p_hand = p_data.get('pitch_hand', 'R')[:1].upper() if p_data.get('pitch_hand') else 'R'
-                pos = p_data.get('position', 'DH')
+            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}"
+            res = requests.get(url, timeout=5).json()
+            people = res.get('people', [])
+            if people:
+                p = people[0]
+                b_code = p.get('batSide', {}).get('code', '')
+                p_code = p.get('pitchHand', {}).get('code', '')
+                pos_code = p.get('primaryPosition', {}).get('abbreviation', 'DH')
+                if b_code: b_hand = b_code.upper()
+                if p_code: p_hand = p_code.upper()
+                if pos_code: pos = pos_code
         except Exception:
             pass
 
@@ -73,19 +99,24 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
 
     if pitcher_id:
         try:
-            data = statsapi.player_stat_data(pitcher_id, group="[pitching]")
-            p_hand = data.get('pitch_hand', 'R')[:1].upper() if data.get('pitch_hand') else 'R'
-            stats_list = data.get('stats', [])
-            for st in stats_list:
-                s = st.get('stats', {})
-                ip_str = s.get('inningsPitched', '0.0')
-                ip = float(ip_str) if ip_str else 0.0
-                hr = float(s.get('homeRuns', 0))
-                whip = float(s.get('whip', 1.25))
-                era = float(s.get('era', 4.20))
-                if ip >= 5.0:
-                    hr9 = round((hr * 9.0) / ip, 2)
-                    break
+            url = f"https://statsapi.mlb.com/api/v1/people/{pitcher_id}?hydrate=stats(group=[pitching],type=[season])"
+            res = requests.get(url, timeout=5).json()
+            people = res.get('people', [])
+            if people:
+                p_hand = people[0].get('pitchHand', {}).get('code', 'R').upper()
+                stats_list = people[0].get('stats', [])
+                for st in stats_list:
+                    splits = st.get('splits', [])
+                    if splits:
+                        s = splits[0].get('stat', {})
+                        ip_str = s.get('inningsPitched', '0.0')
+                        ip = float(ip_str) if ip_str else 0.0
+                        hr = float(s.get('homeRuns', 0))
+                        whip = float(s.get('whip', 1.25))
+                        era = float(s.get('era', 4.20))
+                        if ip >= 5.0:
+                            hr9 = round((hr * 9.0) / ip, 2)
+                        break
         except Exception:
             pass
 
@@ -137,36 +168,39 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     
     if person_id:
         try:
-            data = statsapi.player_stat_data(person_id, group="[hitting]")
-            stats_list = data.get('stats', [])
-            for st in stats_list:
-                s = st.get('stats', {})
-                slg = float(s.get('slg', '.440'))
-                avg = float(s.get('avg', '.250'))
-                iso = max(0.060, round(slg - avg, 3))
-                hr_total = int(s.get('homeRuns', 10))
-                break
+            url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting],type=[season])"
+            res = requests.get(url, timeout=5).json()
+            people = res.get('people', [])
+            if people and people[0].get('stats'):
+                splits = people[0]['stats'][0].get('splits', [])
+                if splits:
+                    s = splits[0].get('stat', {})
+                    slg = float(s.get('slg', '.440'))
+                    avg = float(s.get('avg', '.250'))
+                    iso = max(0.060, round(slg - avg, 3))
+                    hr_total = int(s.get('homeRuns', 10))
         except Exception:
             pass
 
+    # Explicit Platoon Determination
     same_hand = (b_hand == p_hand and b_hand != 'S')
     
     if same_hand:
-        if iso >= 0.220 or any(star in b_name for star in ['Judge', 'Freeman', 'Ohtani', 'Alonso', 'Suárez', 'Gunnar', 'Ozuna']):
-            split_desc = "⚡ Batter Advantage (Reverse Split)"
+        if iso >= 0.220 or any(star in b_name for star in ['Judge', 'Freeman', 'Ohtani', 'Alonso', 'Suárez', 'Gunnar', 'Ozuna', 'Olson']):
+            split_desc = "⚡ Batter Adv (Reverse Split)"
             split_mult = 1.20
             split_score_adj = 4.0
         else:
-            split_desc = "🛡️ Pitcher Advantage (Same-Hand)"
+            split_desc = "🛡️ Pitcher Adv (Same-Hand)"
             split_mult = 0.88
             split_score_adj = -2.5
     else:
         if b_hand == 'S':
-            split_desc = "🔥 Batter Advantage (Switch)"
+            split_desc = "🔥 Batter Adv (Switch)"
             split_mult = 1.16
             split_score_adj = 3.5
         else:
-            split_desc = "🔥 Batter Advantage (Platoon)"
+            split_desc = "🔥 Batter Adv (Platoon)"
             split_mult = 1.15
             split_score_adj = 3.0
 
@@ -209,7 +243,7 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     }
 
 def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
-    """Calculates granular power score with separation between elite and average hitters."""
+    """Calculates granular power score with clear separation."""
     s_mech = (b_stats['barrel'] / 0.14) * 16.0 + (b_stats['iso'] / 0.240) * 14.0 + b_stats['bonus_score']
     vuln_boost = 5.5 if p_stats['is_vuln'] else (-4.0 if 'Elite' in p_stats['badge'] else 0.0)
     s_pitch = (p_stats['hr9'] / 1.20) * 14.0 + (p_stats['whip'] / 1.25) * 8.0 + vuln_boost
@@ -237,7 +271,7 @@ def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
     }
 
 def fetch_projected_lineup_rotowire(team_name: str):
-    """Pulls consensus projected 1-9 batting orders from RotoWire."""
+    """Pulls consensus projected 1-9 batting orders with exact handedness."""
     try:
         url = "https://www.rotowire.com/baseball/daily-lineups.php"
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -314,8 +348,7 @@ def fetch_slate_evaluations():
                     for idx, b_id in enumerate(batters[:9], start=1):
                         b_info = box.get(side_key, {}).get('players', {}).get(f"ID{b_id}", {})
                         b_name = b_info.get('person', {}).get('fullName', f"Batter {b_id}")
-                        pos = b_info.get('position', {}).get('abbreviation', 'DH')
-                        b_hand = b_info.get('batSide', {}).get('code', 'R')
+                        b_hand, _, pos = get_player_metadata(b_id, b_name)
                         if pos not in ['P', 'RHP', 'LHP']:
                             valid.append((idx, b_id, b_name, b_hand, pos))
                 if len(valid) < 9:
@@ -388,12 +421,12 @@ def fetch_slate_evaluations():
 
 def render_top20_leaderboard(df, output_path, today_str):
     df_20 = df.head(20).copy()
-    fig, ax = plt.subplots(figsize=(18.5, max(6.5, len(df_20)*0.58)), dpi=300)
+    fig, ax = plt.subplots(figsize=(19.5, max(7.0, len(df_20)*0.62)), dpi=300)
     fig.patch.set_facecolor('#0f172a')
     ax.axis('off')
 
     fig.text(0.5, 0.96, "MLB SLATE TOP 20 HOME RUN TARGETS", ha='center', color='#f8fafc', fontsize=20, weight='bold')
-    fig.text(0.5, 0.93, f"Upcoming Games • Real Pitch Arsenals vs. Statcast Mechanics • {today_str}", ha='center', color='#94a3b8', fontsize=11)
+    fig.text(0.5, 0.93, f"Upcoming Games • Authentic Pitch Arsenals vs. Power Splits • {today_str}", ha='center', color='#94a3b8', fontsize=11)
 
     table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Platoon & Split State', 'Pitcher Arsenal State', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
     table_rows = []
@@ -402,7 +435,7 @@ def render_top20_leaderboard(df, output_path, today_str):
         table_rows.append([
             r['rank'],
             f"{r['batter_name']} ({r['b_hand']})",
-            r['team'][:11],
+            r['team'][:12],
             f"{r['opp_pitcher'][:12]} ({r['p_hand']})",
             r['split_desc'],
             r['pitcher_vuln_badge'],
@@ -416,7 +449,7 @@ def render_top20_leaderboard(df, output_path, today_str):
     table = ax.table(cellText=table_rows, colLabels=table_cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(table_cols))
     table.auto_set_font_size(False)
     table.set_fontsize(8.0)
-    table.scale(1.0, 1.85)
+    table.scale(1.0, 1.95)
 
     for (row, col), cell in table.get_celld().items():
         cell.set_edgecolor('#334155')
@@ -431,7 +464,7 @@ def render_top20_leaderboard(df, output_path, today_str):
                 split_val = table_rows[row-1][4]
                 if 'Reverse Split' in split_val:
                     cell.set_text_props(color='#38bdf8', weight='bold')
-                elif 'Batter Advantage' in split_val or 'Platoon' in split_val:
+                elif 'Batter Adv' in split_val or 'Platoon' in split_val:
                     cell.set_text_props(color='#4ade80', weight='bold')
                 else:
                     cell.set_text_props(color='#f87171')
@@ -463,7 +496,7 @@ def render_individual_game_card(card_info, output_dir, today_str):
     p_badge = card_info['p_badge']
     venue = card_info['venue']
 
-    fig, ax = plt.subplots(figsize=(16.5, 7.2), dpi=300)
+    fig, ax = plt.subplots(figsize=(18.0, 7.8), dpi=300)
     fig.patch.set_facecolor('#0b1329')
     ax.axis('off')
 
@@ -489,8 +522,8 @@ def render_individual_game_card(card_info, output_dir, today_str):
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8.0)
-    table.scale(1.0, 2.0)
+    table.set_fontsize(8.2)
+    table.scale(1.0, 2.1)
 
     for (row, col), cell in table.get_celld().items():
         cell.set_edgecolor('#334155')
@@ -504,7 +537,7 @@ def render_individual_game_card(card_info, output_dir, today_str):
                 split_val = rows[row-1][3]
                 if 'Reverse Split' in split_val:
                     cell.set_text_props(color='#38bdf8', weight='bold')
-                elif 'Batter Advantage' in split_val or 'Platoon' in split_val:
+                elif 'Batter Adv' in split_val or 'Platoon' in split_val:
                     cell.set_text_props(color='#4ade80', weight='bold')
                 else:
                     cell.set_text_props(color='#f87171')
