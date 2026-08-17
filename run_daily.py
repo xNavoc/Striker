@@ -8,7 +8,6 @@ import requests
 import statsapi
 import matplotlib.pyplot as plt
 
-# 2026 Venue 3-Year Rolling HR Factors (100 = Neutral)
 BALLPARK_HR_FACTORS = {
     'Great American Ball Park': 128, 'Coors Field': 122, 'Yankee Stadium': 118,
     'Fenway Park': 112, 'Citizens Bank Park': 115, 'Guaranteed Rate Field': 111,
@@ -18,19 +17,12 @@ BALLPARK_HR_FACTORS = {
 }
 
 def fetch_pitcher_arsenal_and_vulnerabilities(pitcher_id: int):
-    """
-    Pulls starter arsenal distribution, calculates HR/9 and WHIP vulnerabilities,
-    and assigns an arsenal vulnerability badge.
-    """
     if not pitcher_id:
-        arsenal = {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}
-        return arsenal, {'hr9': 1.15, 'whip': 1.25, 'badge': '🟡 Neutral Mix', 'is_vuln': False}
-    
+        return {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, {'hr9': 1.15, 'whip': 1.25, 'badge': '🟡 Neutral Mix', 'is_vuln': False}
     try:
         url = f"https://statsapi.mlb.com/api/v1/people?personIds={pitcher_id}&hydrate=stats(group=[pitching],type=[statSplits],sitCodes=[vr,vl])"
         res = requests.get(url, timeout=10).json()
         people = res.get('people', [])
-        
         hr9, whip = 1.15, 1.25
         if people and people[0].get('stats'):
             splits = people[0]['stats'][0].get('splits', [])
@@ -42,8 +34,6 @@ def fetch_pitcher_arsenal_and_vulnerabilities(pitcher_id: int):
                 hr9 = round((hr * 9.0) / ip, 2) if ip >= 10.0 else 1.15
 
         arsenal = {'FF': 0.42, 'SL': 0.28, 'CH': 0.18, 'CU': 0.12}
-        
-        # Pitcher Vulnerability Classification
         if hr9 >= 1.40 or whip >= 1.38:
             badge = "🔴 High FB/SL Bleed"
             is_vuln = True
@@ -62,12 +52,10 @@ def fetch_pitcher_arsenal_and_vulnerabilities(pitcher_id: int):
         return {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, {'hr9': 1.15, 'whip': 1.25, 'badge': '🟡 Neutral Mix', 'is_vuln': False}
 
 def evaluate_multi_pitch_badges(player_id: int, pitcher_arsenal: dict):
-    """Evaluates batter power against fastballs vs offspeed."""
     try:
         url = f"https://statsapi.mlb.com/api/v1/people?personIds={player_id}&hydrate=stats(group=[hitting],type=[statSplits],sitCodes=[h,a])"
         res = requests.get(url, timeout=10).json()
         people = res.get('people', [])
-        
         base_iso, hr_total = 0.165, 5
         if people and people[0].get('stats'):
             splits = people[0]['stats'][0].get('splits', [])
@@ -114,29 +102,15 @@ def evaluate_multi_pitch_badges(player_id: int, pitcher_arsenal: dict):
             'bonus_score': bonus_score
         }
     except Exception:
-        pass
-
-    return {
-        'iso': 0.160, 'barrel': 0.075, 'hr_pa': 0.030,
-        'batter_badge': '🎯 Balanced Matchup', 'bonus_score': 0.0
-    }
+        return {'iso': 0.160, 'barrel': 0.075, 'hr_pa': 0.030, 'batter_badge': '🎯 Balanced Matchup', 'bonus_score': 0.0}
 
 def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
-    # 1. Mechanics & Batter Arsenal ISO (Max 30)
     s_mech = np.clip((b_stats['barrel'] / 0.18) * 14.0 + (b_stats['iso'] / 0.280) * 13.0 + b_stats['bonus_score'], 3.0, 30.0)
-    
-    # 2. Pitcher Vulnerability & Arsenal Bleed (Max 25)
     vuln_boost = 2.5 if p_stats['is_vuln'] else (-2.0 if 'Elite' in p_stats['badge'] else 0.0)
     s_pitch = np.clip((p_stats['hr9'] / 1.5) * 14.0 + (p_stats['whip'] / 1.35) * 9.0 + vuln_boost, 3.0, 25.0)
-    
-    # 3. Ballpark (Max 20)
     s_park = np.clip(((park_factor - 80.0) / 45.0) * 20.0, 4.0, 20.0)
-    
-    # 4. Lineup Order (Max 15)
     order_map = {1: 15.0, 2: 14.7, 3: 14.3, 4: 13.8, 5: 12.5, 6: 11.5, 7: 10.0, 8: 8.5, 9: 7.0}
     s_opp = order_map.get(order, 8.0)
-    
-    # 5. Composite Edge (Max 10)
     s_edge = np.clip(((s_mech + s_pitch) / 55.0) * 10.0, 2.0, 10.0)
     
     total_score = round(s_mech + s_pitch + s_park + s_opp + s_edge, 1)
@@ -149,31 +123,28 @@ def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
     ev_pct = round(((p_game_hr * (int(mkt_odds.replace('+','')) / 100.0 + 1.0)) - 1.0) * 100, 1)
 
     return {
-        's_mech': round(s_mech, 1),
-        's_pitch': round(s_pitch, 1),
-        's_park': round(s_park, 1),
-        's_opp': round(s_opp, 1),
-        'hr_score': total_score,
-        'p_game_hr': p_game_hr,
-        'best_odds': mkt_odds,
-        'ev_pct': ev_pct
+        's_mech': round(s_mech, 1), 's_pitch': round(s_pitch, 1),
+        's_park': round(s_park, 1), 's_opp': round(s_opp, 1),
+        'hr_score': total_score, 'p_game_hr': p_game_hr,
+        'best_odds': mkt_odds, 'ev_pct': ev_pct
     }
 
 def fetch_slate_evaluations():
     today_str = datetime.now().strftime('%Y-%m-%d')
-    print(f"[i] Processing pitcher vulnerability badges and slate for {today_str}...")
+    print(f"[i] Loading MLB schedule and building matchups for {today_str}...")
     
     try:
         schedule = statsapi.schedule(date=today_str)
     except Exception as e:
         print(f"[!] Schedule error: {e}")
-        return pd.DataFrame(), {}
+        return pd.DataFrame(), []
 
     if not schedule:
-        return pd.DataFrame(), {}
+        print("[!] No games found for today.")
+        return pd.DataFrame(), []
 
     all_players = []
-    game_lineup_cards = {}
+    game_card_list = []
 
     for game in schedule:
         game_id = game['game_id']
@@ -190,97 +161,111 @@ def fetch_slate_evaluations():
         away_p_hand = 'R'
         home_p_hand = 'R'
         if away_p_id:
-            try: 
-                away_p_hand = statsapi.player_stat_data(away_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
-            except: 
-                pass
+            try: away_p_hand = statsapi.player_stat_data(away_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
+            except: pass
         if home_p_id:
-            try: 
-                home_p_hand = statsapi.player_stat_data(home_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
-            except: 
-                pass
+            try: home_p_hand = statsapi.player_stat_data(home_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
+            except: pass
 
         away_arsenal, away_p_stats = fetch_pitcher_arsenal_and_vulnerabilities(away_p_id)
         home_arsenal, home_p_stats = fetch_pitcher_arsenal_and_vulnerabilities(home_p_id)
 
         try:
             box = statsapi.boxscore_data(game_id)
-            
-            def evaluate_side(side_key, team_name, opp_p_name, opp_p_hand, opp_arsenal, opp_p_stats):
-                batters = box.get(side_key, {}).get('batters', [])
-                valid_lineup = []
-                
-                if len(batters) >= 9:
-                    for idx, b_id in enumerate(batters[:9], start=1):
-                        b_info = box.get(side_key, {}).get('players', {}).get(f"ID{b_id}", {})
-                        b_name = b_info.get('person', {}).get('fullName', f"Batter {b_id}")
-                        pos = b_info.get('position', {}).get('abbreviation', 'DH')
-                        b_hand = b_info.get('batSide', {}).get('code', 'R')
-                        if pos not in ['P', 'RHP', 'LHP']:
-                            valid_lineup.append((idx, b_id, b_name, b_hand, pos))
-                else:
-                    roster_str = statsapi.roster(game.get(f'{side_key}_id', 0))
+        except Exception:
+            box = {}
+
+        def get_team_players(side_key, team_id):
+            batters = box.get(side_key, {}).get('batters', [])
+            valid = []
+            if len(batters) >= 9:
+                for idx, b_id in enumerate(batters[:9], start=1):
+                    b_info = box.get(side_key, {}).get('players', {}).get(f"ID{b_id}", {})
+                    b_name = b_info.get('person', {}).get('fullName', f"Batter {b_id}")
+                    pos = b_info.get('position', {}).get('abbreviation', 'DH')
+                    b_hand = b_info.get('batSide', {}).get('code', 'R')
+                    if pos not in ['P', 'RHP', 'LHP']:
+                        valid.append((idx, b_id, b_name, b_hand, pos))
+            if len(valid) < 9:
+                try:
+                    roster_str = statsapi.roster(team_id)
                     for line in roster_str.strip().split('\n'):
                         parts = line.split()
                         if len(parts) >= 3:
                             pos = parts[1]
                             p_id = int(parts[0]) if parts[0].isdigit() else 0
                             p_name = " ".join(parts[2:])
-                            if pos not in ['P', 'RHP', 'LHP'] and p_name not in [v[2] for v in valid_lineup]:
-                                valid_lineup.append((len(valid_lineup) + 1, p_id, p_name, 'R', pos))
-                                if len(valid_lineup) >= 9:
+                            if pos not in ['P', 'RHP', 'LHP'] and p_name not in [v[2] for v in valid]:
+                                valid.append((len(valid) + 1, p_id, p_name, 'R', pos))
+                                if len(valid) == 9:
                                     break
+                except Exception:
+                    pass
+            return valid
 
-                team_rows = []
-                for order_num, b_id, b_name, b_hand, pos in valid_lineup:
-                    b_stats = evaluate_multi_pitch_badges(b_id, opp_arsenal)
-                    evals = evaluate_arsenal_hr_score(b_stats, opp_p_stats, park_factor, order_num)
-                    
-                    split_desc = "🔥 Platoon Adv" if b_hand != opp_p_hand else "Neutral"
-                    row = {
-                        'order': order_num,
-                        'batter_name': b_name,
-                        'b_hand': b_hand,
-                        'pos': pos,
-                        'team': team_name,
-                        'opp_pitcher': opp_p_name,
-                        'p_hand': opp_p_hand,
-                        'pitcher_vuln_badge': opp_p_stats['badge'],
-                        'split_desc': split_desc,
-                        'batter_badge': b_stats['batter_badge'],
-                        's_mech': evals['s_mech'],
-                        's_pitch': evals['s_pitch'],
-                        's_park': evals['s_park'],
-                        's_opp': evals['s_opp'],
-                        'hr_score': evals['hr_score'],
-                        'p_game_hr': evals['p_game_hr'],
-                        'best_book': np.random.choice(['DraftKings', 'FanDuel', 'bet365', 'Caesars']),
-                        'best_odds': evals['best_odds'],
-                        'ev_pct': evals['ev_pct'],
-                        'venue': venue
-                    }
-                    all_players.append(row)
-                    team_rows.append(row)
-                
-                return team_rows
+        away_players = get_team_players('away', game.get('away_id', 0))
+        home_players = get_team_players('home', game.get('home_id', 0))
 
-            away_rows = evaluate_side('away', away_team, home_p_name, home_p_hand, home_arsenal, home_p_stats)
-            home_rows = evaluate_side('home', home_team, away_p_name, away_p_hand, away_arsenal, away_p_stats)
+        def process_lineup(players, team_name, opp_p_name, opp_p_hand, opp_arsenal, opp_p_stats):
+            t_rows = []
+            for order_num, b_id, b_name, b_hand, pos in players:
+                b_stats = evaluate_multi_pitch_badges(b_id, opp_arsenal)
+                evals = evaluate_arsenal_hr_score(b_stats, opp_p_stats, park_factor, order_num)
+                split_desc = "🔥 Platoon Adv" if b_hand != opp_p_hand else "Neutral"
+                row = {
+                    'order': order_num,
+                    'batter_name': b_name,
+                    'b_hand': b_hand,
+                    'pos': pos,
+                    'team': team_name,
+                    'opp_pitcher': opp_p_name,
+                    'p_hand': opp_p_hand,
+                    'pitcher_vuln_badge': opp_p_stats['badge'],
+                    'split_desc': split_desc,
+                    'batter_badge': b_stats['batter_badge'],
+                    's_mech': evals['s_mech'],
+                    's_pitch': evals['s_pitch'],
+                    's_park': evals['s_park'],
+                    's_opp': evals['s_opp'],
+                    'hr_score': evals['hr_score'],
+                    'p_game_hr': evals['p_game_hr'],
+                    'best_book': np.random.choice(['DraftKings', 'FanDuel', 'bet365', 'Caesars']),
+                    'best_odds': evals['best_odds'],
+                    'ev_pct': evals['ev_pct'],
+                    'venue': venue
+                }
+                all_players.append(row)
+                t_rows.append(row)
+            return t_rows
 
-            game_key = f"{away_team} @ {home_team}"
-            game_lineup_cards[f"{game_key} - {away_team}"] = {'df': pd.DataFrame(away_rows), 'opp_p': f"{home_p_name} ({home_p_hand})", 'p_badge': home_p_stats['badge'], 'venue': venue}
-            game_lineup_cards[f"{game_key} - {home_team}"] = {'df': pd.DataFrame(home_rows), 'opp_p': f"{away_p_name} ({away_p_hand})", 'p_badge': away_p_stats['badge'], 'venue': venue}
+        away_rows = process_lineup(away_players, away_team, home_p_name, home_p_hand, home_arsenal, home_p_stats)
+        home_rows = process_lineup(home_players, home_team, away_p_name, away_p_hand, away_arsenal, away_p_stats)
 
-        except Exception as e:
-            print(f"[!] Warning on game {game_id}: {e}")
-            continue
+        if away_rows:
+            game_card_list.append({
+                'title': f"{away_team} vs {home_p_name}",
+                'team_name': away_team,
+                'df': pd.DataFrame(away_rows),
+                'opp_p': f"{home_p_name} ({home_p_hand})",
+                'p_badge': home_p_stats['badge'],
+                'venue': venue
+            })
+        if home_rows:
+            game_card_list.append({
+                'title': f"{home_team} vs {away_p_name}",
+                'team_name': home_team,
+                'df': pd.DataFrame(home_rows),
+                'opp_p': f"{away_p_name} ({away_p_hand})",
+                'p_badge': away_p_stats['badge'],
+                'venue': venue
+            })
 
     df_all = pd.DataFrame(all_players)
     if not df_all.empty:
         df_all = df_all.sort_values(by='hr_score', ascending=False).reset_index(drop=True)
         df_all['rank'] = df_all.index + 1
 
-    return df_all, game_lineup_cards
+    return df_all, game_card_list
 
 def render_top20_leaderboard(df, output_path, today_str):
     df_20 = df.head(20).copy()
@@ -319,17 +304,12 @@ def render_top20_leaderboard(df, output_path, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#1e293b')
         else:
-            if col == 6:  # Total Score
+            if col == 6:
                 cell.set_text_props(color='#38bdf8', weight='bold')
-            elif col == 4:  # Pitcher Vulnerability Badge
+            elif col == 4:
                 p_text = table_rows[row-1][4]
-                if '🔴' in p_text:
-                    cell.set_text_props(color='#f87171', weight='bold')
-                elif '🟢' in p_text:
-                    cell.set_text_props(color='#4ade80', weight='bold')
-                else:
-                    cell.set_text_props(color='#facc15')
-            elif col == 5:  # Batter Badge
+                cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
+            elif col == 5:
                 b_text = table_rows[row-1][5]
                 if 'All-Arsenal' in b_text:
                     cell.set_text_props(color='#c084fc', weight='bold')
@@ -347,17 +327,18 @@ def render_top20_leaderboard(df, output_path, today_str):
     plt.savefig(output_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close()
 
-def render_game_card(team_key, data_dict, output_dir, today_str):
-    df = data_dict['df']
-    opp_p = data_dict['opp_p']
-    p_badge = data_dict['p_badge']
-    venue = data_dict['venue']
+def render_individual_game_card(card_info, output_dir, today_str):
+    df = card_info['df']
+    team_name = card_info['team_name']
+    opp_p = card_info['opp_p']
+    p_badge = card_info['p_badge']
+    venue = card_info['venue']
     
     fig, ax = plt.subplots(figsize=(16, 7.2), dpi=300)
     fig.patch.set_facecolor('#0b1329')
     ax.axis('off')
 
-    fig.text(0.5, 0.95, f"{team_key.upper()} — 9-MAN MATCHUP CARD", ha='center', color='#f8fafc', fontsize=17, weight='bold')
+    fig.text(0.5, 0.95, f"{team_name.upper()} — 9-MAN MATCHUP CARD", ha='center', color='#f8fafc', fontsize=17, weight='bold')
     fig.text(0.5, 0.90, f"Opp Starter: {opp_p} [{p_badge}]  •  Venue: {venue}  •  {today_str}", ha='center', color='#38bdf8', fontsize=10, weight='semibold')
 
     cols = ['#', 'Batter (Hand)', 'Pos', 'Pitcher Arsenal State', 'Batter Matchup Badge', 'Split Edge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
@@ -388,12 +369,12 @@ def render_game_card(team_key, data_dict, output_dir, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#1e293b')
         else:
-            if col == 6:  # Score
+            if col == 6:
                 cell.set_text_props(color='#38bdf8', weight='bold')
-            elif col == 3:  # Pitcher Vuln
+            elif col == 3:
                 p_text = rows[row-1][3]
                 cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
-            elif col == 4:  # Batter Badge
+            elif col == 4:
                 b_text = rows[row-1][4]
                 if 'All-Arsenal' in b_text:
                     cell.set_text_props(color='#c084fc', weight='bold')
@@ -403,13 +384,13 @@ def render_game_card(team_key, data_dict, output_dir, today_str):
                     cell.set_text_props(color='#facc15', weight='bold')
                 else:
                     cell.set_text_props(color='#94a3b8')
-            elif col == 5:  # Split
+            elif col == 5:
                 cell.set_text_props(color='#4ade80' if 'Platoon' in rows[row-1][5] else '#94a3b8')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0b1329')
 
-    clean_name = team_key.replace(" ", "_").replace("@", "at")
+    clean_name = "".join(c for c in team_name if c.isalnum() or c in (' ', '_')).rstrip().replace(' ', '_')
     out_path = f"{output_dir}/card_{clean_name}_{today_str}.png"
     plt.tight_layout()
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
@@ -417,11 +398,12 @@ def render_game_card(team_key, data_dict, output_dir, today_str):
     return out_path
 
 def send_discord_push(df, image_path, today_str):
-    """Dispatches the multi-part payload with image attachment to Discord."""
-    webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+    webhook_url = os.getenv("DISCORD_WEBHOOK_URL", "").strip()
     if not webhook_url:
-        print("[!] DISCORD_WEBHOOK_URL environment variable is not set. Skipping push.")
+        print("[!] DISCORD_WEBHOOK_URL environment variable is empty. Check your GitHub Secrets configuration.")
         return
+
+    print(f"[i] Sending Discord push using webhook URL: {webhook_url[:35]}...")
 
     embed_fields = []
     for _, r in df.head(5).iterrows():
@@ -439,7 +421,7 @@ def send_discord_push(df, image_path, today_str):
     payload = {
         "content": f"🚨 **MLB Daily Home Run Targets & Pitcher Vulnerability Board** ({today_str})",
         "embeds": [{
-            "title": "⚾ Slate Top 20 Projections & High-Value Spots",
+            "title": "⚾ Slate Top 20 Projections & Matchup Matrix",
             "color": 3717112,
             "fields": embed_fields,
             "image": {"url": "attachment://top20_board.png"},
@@ -448,28 +430,31 @@ def send_discord_push(df, image_path, today_str):
     }
 
     try:
-        with open(image_path, "rb") as f:
-            files = {
-                "payload_json": (None, json.dumps(payload), "application/json"),
-                "files[0]": ("top20_board.png", f, "image/png")
-            }
-            res = requests.post(webhook_url, files=files, timeout=20)
+        if os.path.exists(image_path):
+            with open(image_path, "rb") as f:
+                files = {
+                    "payload_json": (None, json.dumps(payload), "application/json"),
+                    "files[0]": ("top20_board.png", f, "image/png")
+                }
+                res = requests.post(webhook_url, files=files, timeout=25)
+        else:
+            res = requests.post(webhook_url, json=payload, timeout=15)
 
         if res.status_code in [200, 204]:
-            print(f"[✓] Discord message sent successfully (Status {res.status_code}).")
+            print(f"[✓] Discord webhook delivered successfully (Status {res.status_code}).")
         else:
-            print(f"[!] Discord API returned error {res.status_code}: {res.text}")
+            print(f"[!] Discord rejected webhook (Status {res.status_code}): {res.text}")
     except Exception as e:
-        print(f"[!] Exception while sending Discord webhook: {e}")
+        print(f"[!] Network exception while pushing to Discord: {e}")
 
 def run_predictions():
-    print(f"[{datetime.now()}] Starting pipeline with pitcher vulnerability badges...")
+    print(f"[{datetime.now()}] Starting live slate run...")
     os.makedirs("exports/game_cards", exist_ok=True)
     today_str = datetime.now().strftime('%Y-%m-%d')
     
     df, game_cards = fetch_slate_evaluations()
     if df.empty:
-        print("[i] Slate empty. Exiting.")
+        print("[!] No player data generated. Exiting.")
         return
         
     csv_path = f"exports/hr_top20_{today_str}.csv"
@@ -478,11 +463,16 @@ def run_predictions():
     df.head(20).to_csv(csv_path, index=False)
     render_top20_leaderboard(df, png_path, today_str)
     
-    for team_key, data in game_cards.items():
-        render_game_card(team_key, data, "exports/game_cards", today_str)
+    rendered_count = 0
+    for card_info in game_cards:
+        try:
+            render_individual_game_card(card_info, "exports/game_cards", today_str)
+            rendered_count += 1
+        except Exception as e:
+            print(f"[!] Could not render card for {card_info.get('title')}: {e}")
 
+    print(f"[✓] Generated Top-20 Leaderboard and {rendered_count} individual 9-man game cards.")
     send_discord_push(df, png_path, today_str)
-    print(f"[✓] Finished Top-20 Leaderboard and {len(game_cards)} game cards.")
 
 def run_settlement():
     print(f"[{datetime.now()}] Running settlement...")
