@@ -2,12 +2,14 @@ import argparse
 from datetime import datetime, timedelta
 import os
 import json
+import re
 import pandas as pd
 import numpy as np
 import requests
 import statsapi
 import matplotlib.pyplot as plt
 
+# 2026 Venue 3-Year Rolling HR Factors (100 = Neutral)
 BALLPARK_HR_FACTORS = {
     'Great American Ball Park': 128, 'Coors Field': 122, 'Yankee Stadium': 118,
     'Fenway Park': 112, 'Citizens Bank Park': 115, 'Guaranteed Rate Field': 111,
@@ -15,6 +17,25 @@ BALLPARK_HR_FACTORS = {
     'Wrigley Field': 104, 'Citi Field': 96, 'Target Field': 95, 'PNC Park': 90,
     'Kauffman Stadium': 92, 'Oracle Park': 84, 'T-Mobile Park': 88, 'default': 100
 }
+
+def fetch_projected_lineup_rotowire(team_name: str):
+    """
+    Pulls consensus projected 1-9 batting orders from RotoWire's daily feed
+    when official cards are pending.
+    """
+    try:
+        url = "https://www.rotowire.com/baseball/daily-lineups.php"
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        response = requests.get(url, headers=headers, timeout=10)
+        
+        matches = re.findall(rf'{team_name}.*?lineup__list">(.*?)</ul>', response.text, re.DOTALL)
+        if matches:
+            player_names = re.findall(r'title="([^"]+)"', matches[0])
+            if player_names:
+                return [(idx, 0, name, 'R', 'DH') for idx, name in enumerate(player_names[:9], start=1)]
+    except Exception as e:
+        print(f"[!] Projected lineup fallback notice for {team_name}: {e}")
+    return []
 
 def fetch_pitcher_arsenal_and_vulnerabilities(pitcher_id: int):
     if not pitcher_id:
@@ -175,9 +196,11 @@ def fetch_slate_evaluations():
         except Exception:
             box = {}
 
-        def get_team_players(side_key, team_id):
+        def get_team_players(side_key, team_name, team_id):
             batters = box.get(side_key, {}).get('batters', [])
             valid = []
+            
+            # 1. Confirmed official box score lineup
             if len(batters) >= 9:
                 for idx, b_id in enumerate(batters[:9], start=1):
                     b_info = box.get(side_key, {}).get('players', {}).get(f"ID{b_id}", {})
@@ -186,6 +209,14 @@ def fetch_slate_evaluations():
                     b_hand = b_info.get('batSide', {}).get('code', 'R')
                     if pos not in ['P', 'RHP', 'LHP']:
                         valid.append((idx, b_id, b_name, b_hand, pos))
+            
+            # 2. Consensus projected lineup fallback
+            if len(valid) < 9:
+                proj = fetch_projected_lineup_rotowire(team_name)
+                if len(proj) >= 9:
+                    valid = proj
+            
+            # 3. Active 40-man roster fallback
             if len(valid) < 9:
                 try:
                     roster_str = statsapi.roster(team_id)
@@ -203,8 +234,8 @@ def fetch_slate_evaluations():
                     pass
             return valid
 
-        away_players = get_team_players('away', game.get('away_id', 0))
-        home_players = get_team_players('home', game.get('home_id', 0))
+        away_players = get_team_players('away', away_team, game.get('away_id', 0))
+        home_players = get_team_players('home', home_team, game.get('home_id', 0))
 
         def process_lineup(players, team_name, opp_p_name, opp_p_hand, opp_arsenal, opp_p_stats):
             t_rows = []
