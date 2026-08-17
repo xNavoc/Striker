@@ -17,7 +17,57 @@ BALLPARK_HR_FACTORS = {
     'Kauffman Stadium': 92, 'Oracle Park': 84, 'T-Mobile Park': 88, 'default': 100
 }
 
+# Player Metadata Cache to prevent duplicate API hits
+PLAYER_META_CACHE = {}
+
+def get_player_metadata(person_id: int, player_name: str = ""):
+    """
+    Fetches true batting handedness (R/L/S) and throwing hand (R/L) from MLB API.
+    """
+    if person_id in PLAYER_META_CACHE:
+        return PLAYER_META_CACHE[person_id]
+
+    if not person_id and player_name:
+        try:
+            lookup = statsapi.lookup_player(player_name)
+            if lookup:
+                person_id = lookup[0]['id']
+        except Exception:
+            pass
+
+    if person_id:
+        try:
+            url = f"https://statsapi.mlb.com/api/v1/people/{person_id}"
+            res = requests.get(url, timeout=5).json()
+            people = res.get('people', [])
+            if people:
+                b_hand = people[0].get('batSide', {}).get('code', 'R')
+                p_hand = people[0].get('pitchHand', {}).get('code', 'R')
+                pos = people[0].get('primaryPosition', {}).get('abbreviation', 'DH')
+                PLAYER_META_CACHE[person_id] = (b_hand, p_hand, pos)
+                return b_hand, p_hand, pos
+        except Exception:
+            pass
+
+    PLAYER_META_CACHE[person_id] = ('R', 'R', 'DH')
+    return 'R', 'R', 'DH'
+
+def calculate_platoon_edge(b_hand: str, p_hand: str) -> str:
+    """
+    Evaluates authentic platoon split edge including Switch-hitters.
+    """
+    if b_hand == 'S':
+        return "🔥 Platoon Adv (Switch)"
+    elif (b_hand == 'L' and p_hand == 'R') or (b_hand == 'R' and p_hand == 'L'):
+        return "🔥 Platoon Adv"
+    elif b_hand == p_hand:
+        return "Neutral (Same Hand)"
+    return "Neutral"
+
 def fetch_projected_lineup_rotowire(team_name: str):
+    """
+    Pulls consensus projected 1-9 batting orders from RotoWire's daily feed.
+    """
     try:
         url = "https://www.rotowire.com/baseball/daily-lineups.php"
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -26,27 +76,38 @@ def fetch_projected_lineup_rotowire(team_name: str):
         if matches:
             player_names = re.findall(r'title="([^"]+)"', matches[0])
             if player_names:
-                return [(idx, 0, name, 'R', 'DH') for idx, name in enumerate(player_names[:9], start=1)]
+                result = []
+                for idx, name in enumerate(player_names[:9], start=1):
+                    b_hand, _, pos = get_player_metadata(0, name)
+                    result.append((idx, 0, name, b_hand, pos))
+                return result
     except Exception as e:
         print(f"[!] RotoWire notice for {team_name}: {e}")
     return []
 
 def fetch_pitcher_arsenal_and_vulnerabilities(pitcher_id: int):
+    """
+    Pulls starter arsenal and true pitching hand vulnerability.
+    """
     if not pitcher_id:
-        return {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, {'hr9': 1.15, 'whip': 1.25, 'badge': '🟡 Neutral Mix', 'is_vuln': False}
+        return {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, {'hr9': 1.15, 'whip': 1.25, 'badge': '🟡 Neutral Mix', 'is_vuln': False, 'p_hand': 'R'}
     try:
-        url = f"https://statsapi.mlb.com/api/v1/people?personIds={pitcher_id}&hydrate=stats(group=[pitching],type=[statSplits],sitCodes=[vr,vl])"
+        url = f"https://statsapi.mlb.com/api/v1/people/{pitcher_id}?hydrate=stats(group=[pitching],type=[statSplits],sitCodes=[vr,vl])"
         res = requests.get(url, timeout=10).json()
         people = res.get('people', [])
+        
         hr9, whip = 1.15, 1.25
-        if people and people[0].get('stats'):
-            splits = people[0]['stats'][0].get('splits', [])
-            if splits:
-                s = splits[0].get('stat', {})
-                ip = float(s.get('inningsPitched', 1.0))
-                hr = s.get('homeRuns', 0)
-                whip = float(s.get('whip', '1.25'))
-                hr9 = round((hr * 9.0) / ip, 2) if ip >= 10.0 else 1.15
+        p_hand = 'R'
+        if people:
+            p_hand = people[0].get('pitchHand', {}).get('code', 'R')
+            if people[0].get('stats'):
+                splits = people[0]['stats'][0].get('splits', [])
+                if splits:
+                    s = splits[0].get('stat', {})
+                    ip = float(s.get('inningsPitched', 1.0))
+                    hr = s.get('homeRuns', 0)
+                    whip = float(s.get('whip', '1.25'))
+                    hr9 = round((hr * 9.0) / ip, 2) if ip >= 10.0 else 1.15
 
         arsenal = {'FF': 0.42, 'SL': 0.28, 'CH': 0.18, 'CU': 0.12}
         if hr9 >= 1.40 or whip >= 1.38:
@@ -62,9 +123,9 @@ def fetch_pitcher_arsenal_and_vulnerabilities(pitcher_id: int):
             badge = "🟡 Neutral Mix"
             is_vuln = False
 
-        return arsenal, {'hr9': min(2.5, max(0.4, hr9)), 'whip': whip, 'badge': badge, 'is_vuln': is_vuln}
+        return arsenal, {'hr9': min(2.5, max(0.4, hr9)), 'whip': whip, 'badge': badge, 'is_vuln': is_vuln, 'p_hand': p_hand}
     except Exception:
-        return {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, {'hr9': 1.15, 'whip': 1.25, 'badge': '🟡 Neutral Mix', 'is_vuln': False}
+        return {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, {'hr9': 1.15, 'whip': 1.25, 'badge': '🟡 Neutral Mix', 'is_vuln': False, 'p_hand': 'R'}
 
 def evaluate_multi_pitch_badges(player_id: int, pitcher_arsenal: dict):
     try:
@@ -119,18 +180,22 @@ def evaluate_multi_pitch_badges(player_id: int, pitcher_arsenal: dict):
     except Exception:
         return {'iso': 0.160, 'barrel': 0.075, 'hr_pa': 0.030, 'batter_badge': '🎯 Balanced Matchup', 'bonus_score': 0.0}
 
-def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
+def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order, split_desc):
     s_mech = np.clip((b_stats['barrel'] / 0.18) * 14.0 + (b_stats['iso'] / 0.280) * 13.0 + b_stats['bonus_score'], 3.0, 30.0)
     vuln_boost = 2.5 if p_stats['is_vuln'] else (-2.0 if 'Elite' in p_stats['badge'] else 0.0)
     s_pitch = np.clip((p_stats['hr9'] / 1.5) * 14.0 + (p_stats['whip'] / 1.35) * 9.0 + vuln_boost, 3.0, 25.0)
     s_park = np.clip(((park_factor - 80.0) / 45.0) * 20.0, 4.0, 20.0)
     order_map = {1: 15.0, 2: 14.7, 3: 14.3, 4: 13.8, 5: 12.5, 6: 11.5, 7: 10.0, 8: 8.5, 9: 7.0}
     s_opp = order_map.get(order, 8.0)
-    s_edge = np.clip(((s_mech + s_pitch) / 55.0) * 10.0, 2.0, 10.0)
+    
+    # Platoon split boost to edge score
+    split_boost = 2.0 if "Platoon Adv" in split_desc else 0.0
+    s_edge = np.clip(((s_mech + s_pitch) / 55.0) * 8.0 + split_boost, 2.0, 10.0)
     
     total_score = round(s_mech + s_pitch + s_park + s_opp + s_edge, 1)
     pa_exp = 4.80 - (order * 0.14)
-    p_pa_hr = (b_stats['hr_pa'] * (p_stats['hr9'] / 1.15) * (park_factor / 100.0))
+    platoon_hr_mult = 1.12 if "Platoon Adv" in split_desc else 0.95
+    p_pa_hr = (b_stats['hr_pa'] * (p_stats['hr9'] / 1.15) * (park_factor / 100.0) * platoon_hr_mult)
     p_game_hr = round(1.0 - ((1.0 - min(0.12, p_pa_hr)) ** pa_exp), 3)
     
     fair_odds = int((1.0 / p_game_hr - 1) * 100)
@@ -173,17 +238,10 @@ def fetch_slate_evaluations():
             away_p_name = game.get('away_probable_pitcher') or 'TBD Starter'
             home_p_name = game.get('home_probable_pitcher') or 'TBD Starter'
 
-            away_p_hand = 'R'
-            home_p_hand = 'R'
-            if away_p_id:
-                try: away_p_hand = statsapi.player_stat_data(away_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
-                except: pass
-            if home_p_id:
-                try: home_p_hand = statsapi.player_stat_data(home_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
-                except: pass
-
             away_arsenal, away_p_stats = fetch_pitcher_arsenal_and_vulnerabilities(away_p_id)
             home_arsenal, home_p_stats = fetch_pitcher_arsenal_and_vulnerabilities(home_p_id)
+            away_p_hand = away_p_stats['p_hand']
+            home_p_hand = home_p_stats['p_hand']
 
             try:
                 box = statsapi.boxscore_data(game_id)
@@ -215,7 +273,8 @@ def fetch_slate_evaluations():
                                 p_id = int(parts[0]) if parts[0].isdigit() else 0
                                 p_name = " ".join(parts[2:])
                                 if pos not in ['P', 'RHP', 'LHP'] and p_name not in [v[2] for v in valid]:
-                                    valid.append((len(valid) + 1, p_id, p_name, 'R', pos))
+                                    b_hand, _, _ = get_player_metadata(p_id, p_name)
+                                    valid.append((len(valid) + 1, p_id, p_name, b_hand, pos))
                                     if len(valid) == 9:
                                         break
                     except Exception:
@@ -228,9 +287,10 @@ def fetch_slate_evaluations():
             def process_lineup(players, team_name, opp_p_name, opp_p_hand, opp_arsenal, opp_p_stats):
                 t_rows = []
                 for order_num, b_id, b_name, b_hand, pos in players:
+                    split_desc = calculate_platoon_edge(b_hand, opp_p_hand)
                     b_stats = evaluate_multi_pitch_badges(b_id, opp_arsenal)
-                    evals = evaluate_arsenal_hr_score(b_stats, opp_p_stats, park_factor, order_num)
-                    split_desc = "🔥 Platoon Adv" if b_hand != opp_p_hand else "Neutral"
+                    evals = evaluate_arsenal_hr_score(b_stats, opp_p_stats, park_factor, order_num, split_desc)
+                    
                     row = {
                         'order': order_num, 'batter_name': b_name, 'b_hand': b_hand, 'pos': pos,
                         'team': team_name, 'opp_pitcher': opp_p_name, 'p_hand': opp_p_hand,
@@ -261,15 +321,14 @@ def fetch_slate_evaluations():
                     'opp_p': f"{away_p_name} ({away_p_hand})", 'p_badge': away_p_stats['badge'], 'venue': venue
                 })
 
-    # Robust Fallback in off-hours to guarantee full artifacts & discord payloads
     if not all_players:
         print("[!] No active games detected on slate. Generating fallback baseline.")
         mock_lineup = [
-            ("Aaron Judge", "NYY", "R", "DH", "Brayan Bello", "R", "🔴 High FB/SL Bleed", "⚡ All-Arsenal (SL+FB)", "🔥 Platoon Adv", 29.4, 23.8, 97.2, 0.315, "+285", 14.5),
-            ("Shohei Ohtani", "LAD", "L", "DH", "Kyle Freeland", "L", "🔴 High FB/SL Bleed", "💥 Fastball Crusher", "Neutral", 28.5, 23.1, 94.8, 0.285, "+310", 11.2),
+            ("Aaron Judge", "NYY", "R", "DH", "Brayan Bello", "R", "🔴 High FB/SL Bleed", "⚡ All-Arsenal (SL+FB)", "Neutral (Same Hand)", 29.4, 23.8, 97.2, 0.315, "+285", 14.5),
+            ("Shohei Ohtani", "LAD", "L", "DH", "Kyle Freeland", "L", "🔴 High FB/SL Bleed", "💥 Fastball Crusher", "Neutral (Same Hand)", 28.5, 23.1, 94.8, 0.285, "+310", 11.2),
             ("Kyle Schwarber", "PHI", "L", "DH", "Trevor Williams", "R", "🔴 Hanging Breaker Risk", "🔥 Slider Hunter (32%)", "🔥 Platoon Adv", 27.8, 22.5, 92.4, 0.272, "+330", 9.8),
             ("Gunnar Henderson", "BAL", "L", "SS", "Kutter Crawford", "R", "🟡 Neutral Mix", "💥 Fastball Crusher", "🔥 Platoon Adv", 26.9, 21.8, 89.6, 0.254, "+380", 8.4),
-            ("Pete Alonso", "NYM", "R", "1B", "Miles Mikolas", "R", "🔴 High FB/SL Bleed", "⚡ All-Arsenal (SL+FB)", "Neutral", 26.2, 21.0, 88.1, 0.241, "+420", 7.6)
+            ("Pete Alonso", "NYM", "R", "1B", "Miles Mikolas", "R", "🔴 High FB/SL Bleed", "⚡ All-Arsenal (SL+FB)", "Neutral (Same Hand)", 26.2, 21.0, 88.1, 0.241, "+420", 7.6)
         ]
         for idx, (bname, team, bhand, pos, opp_p, phand, pbadge, bbadge, split, mech, pitch, score, phr, odds, ev) in enumerate(mock_lineup, start=1):
             row = {
@@ -300,14 +359,14 @@ def fetch_slate_evaluations():
 
 def render_top20_leaderboard(df, output_path, today_str):
     df_20 = df.head(20).copy()
-    fig, ax = plt.subplots(figsize=(17.5, max(6, len(df_20)*0.55)), dpi=300)
+    fig, ax = plt.subplots(figsize=(18, max(6, len(df_20)*0.55)), dpi=300)
     fig.patch.set_facecolor('#0f172a')
     ax.axis('off')
     
     fig.text(0.5, 0.96, "MLB SLATE TOP 20 HOME RUN TARGETS", ha='center', color='#f8fafc', fontsize=20, weight='bold')
     fig.text(0.5, 0.93, f"Batter Power vs. Pitcher Vulnerability Matrix • {today_str}", ha='center', color='#94a3b8', fontsize=11)
     
-    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Pitcher Arsenal Vulnerability', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
+    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Platoon Split', 'Pitcher Arsenal Vulnerability', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
     table_rows = []
     
     for _, r in df_20.iterrows():
@@ -316,6 +375,7 @@ def render_top20_leaderboard(df, output_path, today_str):
             f"{r['batter_name']} ({r['b_hand']})",
             r['team'][:11],
             f"{r['opp_pitcher'][:12]} ({r['p_hand']})",
+            r['split_desc'],
             r['pitcher_vuln_badge'],
             r['batter_badge'],
             f"{r['hr_score']:.1f}",
@@ -335,13 +395,16 @@ def render_top20_leaderboard(df, output_path, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#1e293b')
         else:
-            if col == 6:
+            if col == 7:
                 cell.set_text_props(color='#38bdf8', weight='bold')
             elif col == 4:
-                p_text = table_rows[row-1][4]
-                cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
+                split_val = table_rows[row-1][4]
+                cell.set_text_props(color='#4ade80' if 'Platoon Adv' in split_val else '#94a3b8', weight='bold')
             elif col == 5:
-                b_text = table_rows[row-1][5]
+                p_text = table_rows[row-1][5]
+                cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
+            elif col == 6:
+                b_text = table_rows[row-1][6]
                 if 'All-Arsenal' in b_text:
                     cell.set_text_props(color='#c084fc', weight='bold')
                 elif 'Fastball' in b_text:
@@ -372,7 +435,7 @@ def render_individual_game_card(card_info, output_dir, today_str):
     fig.text(0.5, 0.95, f"{team_name.upper()} — 9-MAN MATCHUP CARD", ha='center', color='#f8fafc', fontsize=17, weight='bold')
     fig.text(0.5, 0.90, f"Opp Starter: {opp_p} [{p_badge}]  •  Venue: {venue}  •  {today_str}", ha='center', color='#38bdf8', fontsize=10, weight='semibold')
 
-    cols = ['#', 'Batter (Hand)', 'Pos', 'Pitcher Arsenal State', 'Batter Matchup Badge', 'Split Edge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
+    cols = ['#', 'Batter (Hand)', 'Pos', 'Platoon Split', 'Pitcher Arsenal State', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
     rows = []
 
     for _, r in df.head(9).iterrows():
@@ -380,9 +443,9 @@ def render_individual_game_card(card_info, output_dir, today_str):
             r['order'],
             f"{r['batter_name']} ({r['b_hand']})",
             r.get('pos', 'DH'),
+            r['split_desc'],
             r['pitcher_vuln_badge'],
             r['batter_badge'],
-            r['split_desc'],
             f"{r['hr_score']:.1f}",
             f"{r['p_game_hr']*100:.1f}%",
             f"{r['best_book']} {r['best_odds']}",
@@ -403,10 +466,12 @@ def render_individual_game_card(card_info, output_dir, today_str):
             if col == 6:
                 cell.set_text_props(color='#38bdf8', weight='bold')
             elif col == 3:
-                p_text = rows[row-1][3]
-                cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
+                cell.set_text_props(color='#4ade80' if 'Platoon Adv' in rows[row-1][3] else '#94a3b8', weight='bold')
             elif col == 4:
-                b_text = rows[row-1][4]
+                p_text = rows[row-1][4]
+                cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
+            elif col == 5:
+                b_text = rows[row-1][5]
                 if 'All-Arsenal' in b_text:
                     cell.set_text_props(color='#c084fc', weight='bold')
                 elif 'Fastball' in b_text:
@@ -415,8 +480,6 @@ def render_individual_game_card(card_info, output_dir, today_str):
                     cell.set_text_props(color='#facc15', weight='bold')
                 else:
                     cell.set_text_props(color='#94a3b8')
-            elif col == 5:
-                cell.set_text_props(color='#4ade80' if 'Platoon' in rows[row-1][5] else '#94a3b8')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0b1329')
@@ -440,9 +503,10 @@ def send_discord_push(df, image_path, today_str):
         embed_fields.append({
             "name": f"#{r['rank']} {r['batter_name']} ({r['b_hand']}) — Score: {r['hr_score']}",
             "value": (
+                f"**Platoon Edge:** `{r['split_desc']}`\n"
                 f"**Pitcher Vulnerability:** `{r['pitcher_vuln_badge']}`\n"
                 f"**Batter Matchup:** `{r['batter_badge']}`\n"
-                f"**Matchup:** vs {r['opp_pitcher']} ({r['p_hand']}) | `{r['split_desc']}`\n"
+                f"**Matchup:** vs {r['opp_pitcher']} ({r['p_hand']})\n"
                 f"**HR Prob:** `{r['p_game_hr']*100:.1f}%` | **Best Line:** `{r['best_book']} {r['best_odds']}` | **EV:** `{r['ev_pct']:+.1f}%`"
             ),
             "inline": False
