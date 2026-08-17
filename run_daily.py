@@ -17,10 +17,14 @@ BALLPARK_HR_FACTORS = {
     'Kauffman Stadium': 92, 'Oracle Park': 84, 'T-Mobile Park': 88, 'default': 100
 }
 
-def fetch_pitcher_arsenal_breakdown(pitcher_id: int):
-    """Pulls starter arsenal and baseline HR vulnerability."""
+def fetch_pitcher_arsenal_and_vulnerabilities(pitcher_id: int):
+    """
+    Pulls starter arsenal distribution, calculates HR/9 and WHIP vulnerabilities,
+    and assigns an arsenal vulnerability badge.
+    """
     if not pitcher_id:
-        return {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, {'hr9': 1.15, 'whip': 1.25}
+        arsenal = {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}
+        return arsenal, {'hr9': 1.15, 'whip': 1.25, 'badge': '🟡 Neutral Mix', 'is_vuln': False}
     
     try:
         url = f"https://statsapi.mlb.com/api/v1/people?personIds={pitcher_id}&hydrate=stats(group=[pitching],type=[statSplits],sitCodes=[vr,vl])"
@@ -38,15 +42,27 @@ def fetch_pitcher_arsenal_breakdown(pitcher_id: int):
                 hr9 = round((hr * 9.0) / ip, 2) if ip >= 10.0 else 1.15
 
         arsenal = {'FF': 0.42, 'SL': 0.28, 'CH': 0.18, 'CU': 0.12}
-        return arsenal, {'hr9': min(2.5, max(0.4, hr9)), 'whip': whip}
+        
+        # Pitcher Vulnerability Classification
+        if hr9 >= 1.40 or whip >= 1.38:
+            badge = "🔴 High FB/SL Bleed"
+            is_vuln = True
+        elif hr9 <= 0.75 and whip <= 1.10:
+            badge = "🟢 Elite Lockdown FB"
+            is_vuln = False
+        elif hr9 >= 1.20:
+            badge = "🔴 Hanging Breaker Risk"
+            is_vuln = True
+        else:
+            badge = "🟡 Neutral Mix"
+            is_vuln = False
+
+        return arsenal, {'hr9': min(2.5, max(0.4, hr9)), 'whip': whip, 'badge': badge, 'is_vuln': is_vuln}
     except Exception:
-        return {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, {'hr9': 1.15, 'whip': 1.25}
+        return {'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, {'hr9': 1.15, 'whip': 1.25, 'badge': '🟡 Neutral Mix', 'is_vuln': False}
 
 def evaluate_multi_pitch_badges(player_id: int, pitcher_arsenal: dict):
-    """
-    Evaluates batter performance across fastballs and secondaries,
-    assigning single-pitch or multi-arsenal badges.
-    """
+    """Evaluates batter power against fastballs vs offspeed."""
     try:
         url = f"https://statsapi.mlb.com/api/v1/people?personIds={player_id}&hydrate=stats(group=[hitting],type=[statSplits],sitCodes=[h,a])"
         res = requests.get(url, timeout=10).json()
@@ -62,34 +78,31 @@ def evaluate_multi_pitch_badges(player_id: int, pitcher_arsenal: dict):
                 base_iso = max(0.060, round(slg - avg, 3))
                 hr_total = s.get('homeRuns', 5)
 
-        # Fastball Power Metric
         fb_usage = pitcher_arsenal.get('FF', 0.0) + pitcher_arsenal.get('SI', 0.0) + pitcher_arsenal.get('FC', 0.0)
         fb_power_iso = round(base_iso * (1.18 if base_iso > 0.210 else 1.00), 3)
 
-        # Secondary / Offspeed Power Metric
         non_fastballs = {k: v for k, v in pitcher_arsenal.items() if k not in ['FF', 'SI', 'FC']}
         top_secondary = max(non_fastballs, key=non_fastballs.get) if non_fastballs else 'SL'
         top_sec_usage = non_fastballs.get(top_secondary, 0.25)
         sec_power_iso = round(base_iso * (1.22 if base_iso > 0.200 else 1.05), 3)
 
-        # Multi-Pitch / Single-Pitch Badge Determination
         is_fb_crusher = (fb_usage >= 0.40 and fb_power_iso >= 0.230)
         is_sec_crusher = (top_sec_usage >= 0.25 and sec_power_iso >= 0.220)
 
         if is_fb_crusher and is_sec_crusher:
-            badge = f"⚡ All-Arsenal Crusher (FB+{top_secondary})"
+            badge = f"⚡ All-Arsenal ({top_secondary}+FB)"
             iso_final = round((fb_power_iso + sec_power_iso) / 2.0 + 0.025, 3)
             bonus_score = 4.0
         elif is_fb_crusher:
-            badge = f"💥 Fastball Crusher ({int(fb_usage*100)}% Fast)"
+            badge = "💥 Fastball Crusher"
             iso_final = fb_power_iso
             bonus_score = 2.5
         elif is_sec_crusher:
-            badge = f"🔥 {top_secondary} Hunter ({int(top_sec_usage*100)}% Usage)"
+            badge = f"🔥 {top_secondary} Hunter ({int(top_sec_usage*100)}%)"
             iso_final = sec_power_iso
             bonus_score = 2.5
         else:
-            badge = f"🎯 Balanced vs {top_secondary}/{int(fb_usage*100)}% FB"
+            badge = f"🎯 Balanced vs {top_secondary}"
             iso_final = base_iso
             bonus_score = 0.0
 
@@ -97,7 +110,7 @@ def evaluate_multi_pitch_badges(player_id: int, pitcher_arsenal: dict):
             'iso': iso_final,
             'barrel': min(0.24, max(0.05, base_iso * 0.72)),
             'hr_pa': min(0.085, max(0.020, hr_total / 200.0)),
-            'pitch_badge': badge,
+            'batter_badge': badge,
             'bonus_score': bonus_score
         }
     except Exception:
@@ -105,15 +118,16 @@ def evaluate_multi_pitch_badges(player_id: int, pitcher_arsenal: dict):
 
     return {
         'iso': 0.160, 'barrel': 0.075, 'hr_pa': 0.030,
-        'pitch_badge': '🎯 Balanced Matchup', 'bonus_score': 0.0
+        'batter_badge': '🎯 Balanced Matchup', 'bonus_score': 0.0
     }
 
 def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
-    # 1. Mechanics & Arsenal ISO (Max 30)
+    # 1. Mechanics & Batter Arsenal ISO (Max 30)
     s_mech = np.clip((b_stats['barrel'] / 0.18) * 14.0 + (b_stats['iso'] / 0.280) * 13.0 + b_stats['bonus_score'], 3.0, 30.0)
     
-    # 2. Pitcher Vulnerability (Max 25)
-    s_pitch = np.clip((p_stats['hr9'] / 1.5) * 15.0 + (p_stats['whip'] / 1.35) * 10.0, 3.0, 25.0)
+    # 2. Pitcher Vulnerability & Arsenal Bleed (Max 25)
+    vuln_boost = 2.5 if p_stats['is_vuln'] else (-2.0 if 'Elite' in p_stats['badge'] else 0.0)
+    s_pitch = np.clip((p_stats['hr9'] / 1.5) * 14.0 + (p_stats['whip'] / 1.35) * 9.0 + vuln_boost, 3.0, 25.0)
     
     # 3. Ballpark (Max 20)
     s_park = np.clip(((park_factor - 80.0) / 45.0) * 20.0, 4.0, 20.0)
@@ -147,7 +161,7 @@ def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
 
 def fetch_slate_evaluations():
     today_str = datetime.now().strftime('%Y-%m-%d')
-    print(f"[i] Processing pitch badges and slate data for {today_str}...")
+    print(f"[i] Processing pitcher vulnerability badges and slate for {today_str}...")
     
     try:
         schedule = statsapi.schedule(date=today_str)
@@ -176,14 +190,18 @@ def fetch_slate_evaluations():
         away_p_hand = 'R'
         home_p_hand = 'R'
         if away_p_id:
-            try: away_p_hand = statsapi.player_stat_data(away_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
-            except: pass
+            try: 
+                away_p_hand = statsapi.player_stat_data(away_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
+            except: 
+                pass
         if home_p_id:
-            try: home_p_hand = statsapi.player_stat_data(home_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
-            except: pass
+            try: 
+                home_p_hand = statsapi.player_stat_data(home_p_id, group="[pitching]").get('pitch_hand', 'R')[:1]
+            except: 
+                pass
 
-        away_arsenal, away_p_stats = fetch_pitcher_arsenal_breakdown(away_p_id)
-        home_arsenal, home_p_stats = fetch_pitcher_arsenal_breakdown(home_p_id)
+        away_arsenal, away_p_stats = fetch_pitcher_arsenal_and_vulnerabilities(away_p_id)
+        home_arsenal, home_p_stats = fetch_pitcher_arsenal_and_vulnerabilities(home_p_id)
 
         try:
             box = statsapi.boxscore_data(game_id)
@@ -227,8 +245,9 @@ def fetch_slate_evaluations():
                         'team': team_name,
                         'opp_pitcher': opp_p_name,
                         'p_hand': opp_p_hand,
+                        'pitcher_vuln_badge': opp_p_stats['badge'],
                         'split_desc': split_desc,
-                        'pitch_badge': b_stats['pitch_badge'],
+                        'batter_badge': b_stats['batter_badge'],
                         's_mech': evals['s_mech'],
                         's_pitch': evals['s_pitch'],
                         's_park': evals['s_park'],
@@ -249,8 +268,8 @@ def fetch_slate_evaluations():
             home_rows = evaluate_side('home', home_team, away_p_name, away_p_hand, away_arsenal, away_p_stats)
 
             game_key = f"{away_team} @ {home_team}"
-            game_lineup_cards[f"{game_key} - {away_team}"] = {'df': pd.DataFrame(away_rows), 'opp_p': f"{home_p_name} ({home_p_hand})", 'venue': venue}
-            game_lineup_cards[f"{game_key} - {home_team}"] = {'df': pd.DataFrame(home_rows), 'opp_p': f"{away_p_name} ({away_p_hand})", 'venue': venue}
+            game_lineup_cards[f"{game_key} - {away_team}"] = {'df': pd.DataFrame(away_rows), 'opp_p': f"{home_p_name} ({home_p_hand})", 'p_badge': home_p_stats['badge'], 'venue': venue}
+            game_lineup_cards[f"{game_key} - {home_team}"] = {'df': pd.DataFrame(home_rows), 'opp_p': f"{away_p_name} ({away_p_hand})", 'p_badge': away_p_stats['badge'], 'venue': venue}
 
         except Exception as e:
             print(f"[!] Warning on game {game_id}: {e}")
@@ -265,14 +284,14 @@ def fetch_slate_evaluations():
 
 def render_top20_leaderboard(df, output_path, today_str):
     df_20 = df.head(20).copy()
-    fig, ax = plt.subplots(figsize=(16.5, 12), dpi=300)
+    fig, ax = plt.subplots(figsize=(17.5, 12), dpi=300)
     fig.patch.set_facecolor('#0f172a')
     ax.axis('off')
     
     fig.text(0.5, 0.96, "MLB SLATE TOP 20 HOME RUN TARGETS", ha='center', color='#f8fafc', fontsize=20, weight='bold')
-    fig.text(0.5, 0.93, f"Multi-Arsenal Badges, Statcast Mechanics & +EV Projections • {today_str}", ha='center', color='#94a3b8', fontsize=11)
+    fig.text(0.5, 0.93, f"Batter Power vs. Pitcher Vulnerability Matrix • {today_str}", ha='center', color='#94a3b8', fontsize=11)
     
-    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Pitch Matchup Badge', 'Mech\n(30)', 'Pitch\n(25)', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
+    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Pitcher Arsenal Vulnerability', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
     table_rows = []
     
     for _, r in df_20.iterrows():
@@ -281,9 +300,8 @@ def render_top20_leaderboard(df, output_path, today_str):
             f"{r['batter_name']} ({r['b_hand']})",
             r['team'][:11],
             f"{r['opp_pitcher'][:12]} ({r['p_hand']})",
-            r['pitch_badge'],
-            f"{r['s_mech']:.1f}",
-            f"{r['s_pitch']:.1f}",
+            r['pitcher_vuln_badge'],
+            r['batter_badge'],
             f"{r['hr_score']:.1f}",
             f"{r['p_game_hr']*100:.1f}%",
             f"{r['best_book']} {r['best_odds']}",
@@ -292,7 +310,7 @@ def render_top20_leaderboard(df, output_path, today_str):
         
     table = ax.table(cellText=table_rows, colLabels=table_cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(table_cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8.2)
+    table.set_fontsize(8.0)
     table.scale(1.0, 1.85)
     
     for (row, col), cell in table.get_celld().items():
@@ -301,16 +319,24 @@ def render_top20_leaderboard(df, output_path, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#1e293b')
         else:
-            if col == 7:  # Total Score
+            if col == 6:  # Total Score
                 cell.set_text_props(color='#38bdf8', weight='bold')
-            elif col == 4:  # Pitch Matchup Badge
-                badge_text = table_rows[row-1][4]
-                if 'All-Arsenal' in badge_text:
-                    cell.set_text_props(color='#c084fc', weight='bold')  # Purple for All-Arsenal
-                elif 'Fastball' in badge_text:
-                    cell.set_text_props(color='#fb923c', weight='bold')  # Orange for Fastball
-                elif 'Hunter' in badge_text:
-                    cell.set_text_props(color='#facc15', weight='bold')  # Yellow for Secondary
+            elif col == 4:  # Pitcher Vulnerability Badge
+                p_text = table_rows[row-1][4]
+                if '🔴' in p_text:
+                    cell.set_text_props(color='#f87171', weight='bold')
+                elif '🟢' in p_text:
+                    cell.set_text_props(color='#4ade80', weight='bold')
+                else:
+                    cell.set_text_props(color='#facc15')
+            elif col == 5:  # Batter Badge
+                b_text = table_rows[row-1][5]
+                if 'All-Arsenal' in b_text:
+                    cell.set_text_props(color='#c084fc', weight='bold')
+                elif 'Fastball' in b_text:
+                    cell.set_text_props(color='#fb923c', weight='bold')
+                elif 'Hunter' in b_text:
+                    cell.set_text_props(color='#facc15', weight='bold')
                 else:
                     cell.set_text_props(color='#94a3b8')
             else:
@@ -324,16 +350,17 @@ def render_top20_leaderboard(df, output_path, today_str):
 def render_game_card(team_key, data_dict, output_dir, today_str):
     df = data_dict['df']
     opp_p = data_dict['opp_p']
+    p_badge = data_dict['p_badge']
     venue = data_dict['venue']
     
-    fig, ax = plt.subplots(figsize=(15.5, 7.2), dpi=300)
+    fig, ax = plt.subplots(figsize=(16, 7.2), dpi=300)
     fig.patch.set_facecolor('#0b1329')
     ax.axis('off')
 
     fig.text(0.5, 0.95, f"{team_key.upper()} — 9-MAN MATCHUP CARD", ha='center', color='#f8fafc', fontsize=17, weight='bold')
-    fig.text(0.5, 0.90, f"Opposing Starter: {opp_p}  •  Venue: {venue}  •  {today_str}", ha='center', color='#38bdf8', fontsize=10, weight='semibold')
+    fig.text(0.5, 0.90, f"Opp Starter: {opp_p} [{p_badge}]  •  Venue: {venue}  •  {today_str}", ha='center', color='#38bdf8', fontsize=10, weight='semibold')
 
-    cols = ['#', 'Batter (Hand)', 'Pos', 'Pitch Matchup Badge', 'Split Edge', 'Mech\n(30)', 'Pitch\n(25)', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
+    cols = ['#', 'Batter (Hand)', 'Pos', 'Pitcher Arsenal State', 'Batter Matchup Badge', 'Split Edge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
     rows = []
 
     for _, r in df.head(9).iterrows():
@@ -341,10 +368,9 @@ def render_game_card(team_key, data_dict, output_dir, today_str):
             r['order'],
             f"{r['batter_name']} ({r['b_hand']})",
             r.get('pos', 'DH'),
-            r['pitch_badge'],
+            r['pitcher_vuln_badge'],
+            r['batter_badge'],
             r['split_desc'],
-            f"{r['s_mech']:.1f}",
-            f"{r['s_pitch']:.1f}",
             f"{r['hr_score']:.1f}",
             f"{r['p_game_hr']*100:.1f}%",
             f"{r['best_book']} {r['best_odds']}",
@@ -353,7 +379,7 @@ def render_game_card(team_key, data_dict, output_dir, today_str):
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8.2)
+    table.set_fontsize(8.0)
     table.scale(1.0, 2.0)
 
     for (row, col), cell in table.get_celld().items():
@@ -362,20 +388,23 @@ def render_game_card(team_key, data_dict, output_dir, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#1e293b')
         else:
-            if col == 7:
+            if col == 6:  # Score
                 cell.set_text_props(color='#38bdf8', weight='bold')
-            elif col == 3:
-                badge_text = rows[row-1][3]
-                if 'All-Arsenal' in badge_text:
+            elif col == 3:  # Pitcher Vuln
+                p_text = rows[row-1][3]
+                cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
+            elif col == 4:  # Batter Badge
+                b_text = rows[row-1][4]
+                if 'All-Arsenal' in b_text:
                     cell.set_text_props(color='#c084fc', weight='bold')
-                elif 'Fastball' in badge_text:
+                elif 'Fastball' in b_text:
                     cell.set_text_props(color='#fb923c', weight='bold')
-                elif 'Hunter' in badge_text:
+                elif 'Hunter' in b_text:
                     cell.set_text_props(color='#facc15', weight='bold')
                 else:
                     cell.set_text_props(color='#94a3b8')
-            elif col == 4:
-                cell.set_text_props(color='#4ade80' if 'Platoon' in rows[row-1][4] else '#94a3b8')
+            elif col == 5:  # Split
+                cell.set_text_props(color='#4ade80' if 'Platoon' in rows[row-1][5] else '#94a3b8')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0b1329')
@@ -388,40 +417,53 @@ def render_game_card(team_key, data_dict, output_dir, today_str):
     return out_path
 
 def send_discord_push(df, image_path, today_str):
+    """Dispatches the multi-part payload with image attachment to Discord."""
     webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
     if not webhook_url:
+        print("[!] DISCORD_WEBHOOK_URL environment variable is not set. Skipping push.")
         return
-    
+
     embed_fields = []
     for _, r in df.head(5).iterrows():
         embed_fields.append({
             "name": f"#{r['rank']} {r['batter_name']} ({r['b_hand']}) — Score: {r['hr_score']}",
             "value": (
-                f"**Matchup Badge:** `{r['pitch_badge']}`\n"
-                f"**Matchup:** vs {r['opp_pitcher']} ({r['p_hand']})\n"
+                f"**Pitcher Vulnerability:** `{r['pitcher_vuln_badge']}`\n"
+                f"**Batter Matchup:** `{r['batter_badge']}`\n"
+                f"**Matchup:** vs {r['opp_pitcher']} ({r['p_hand']}) | `{r['split_desc']}`\n"
                 f"**HR Prob:** `{r['p_game_hr']*100:.1f}%` | **Best Line:** `{r['best_book']} {r['best_odds']}` | **EV:** `{r['ev_pct']:+.1f}%`"
             ),
             "inline": False
         })
-        
-    embed_payload = {
-        "title": f"⚾ MLB Slate Top 20 HR Board ({today_str})",
-        "description": "Multi-pitch badges, Statcast mechanics & +EV projections.",
-        "color": 3717112,
-        "fields": embed_fields,
-        "image": {"url": "attachment://top20_leaderboard.png"},
-        "footer": {"text": "MLB Predictive Engine • Multi-Pitch Arsenal Sync"}
+
+    payload = {
+        "content": f"🚨 **MLB Daily Home Run Targets & Pitcher Vulnerability Board** ({today_str})",
+        "embeds": [{
+            "title": "⚾ Slate Top 20 Projections & High-Value Spots",
+            "color": 3717112,
+            "fields": embed_fields,
+            "image": {"url": "attachment://top20_board.png"},
+            "footer": {"text": "MLB Predictive Engine • Automated Real-Time Pipeline"}
+        }]
     }
-    
-    with open(image_path, "rb") as img:
-        files = {
-            "payload_json": (None, json.dumps({"embeds": [embed_payload]}), "application/json"),
-            "file": ("top20_leaderboard.png", img, "image/png")
-        }
-        requests.post(webhook_url, files=files, timeout=15)
+
+    try:
+        with open(image_path, "rb") as f:
+            files = {
+                "payload_json": (None, json.dumps(payload), "application/json"),
+                "files[0]": ("top20_board.png", f, "image/png")
+            }
+            res = requests.post(webhook_url, files=files, timeout=20)
+
+        if res.status_code in [200, 204]:
+            print(f"[✓] Discord message sent successfully (Status {res.status_code}).")
+        else:
+            print(f"[!] Discord API returned error {res.status_code}: {res.text}")
+    except Exception as e:
+        print(f"[!] Exception while sending Discord webhook: {e}")
 
 def run_predictions():
-    print(f"[{datetime.now()}] Starting predictions pipeline...")
+    print(f"[{datetime.now()}] Starting pipeline with pitcher vulnerability badges...")
     os.makedirs("exports/game_cards", exist_ok=True)
     today_str = datetime.now().strftime('%Y-%m-%d')
     
@@ -440,7 +482,7 @@ def run_predictions():
         render_game_card(team_key, data, "exports/game_cards", today_str)
 
     send_discord_push(df, png_path, today_str)
-    print(f"[✓] Completed Top-20 Leaderboard and {len(game_cards)} individual 9-man cards.")
+    print(f"[✓] Finished Top-20 Leaderboard and {len(game_cards)} game cards.")
 
 def run_settlement():
     print(f"[{datetime.now()}] Running settlement...")
