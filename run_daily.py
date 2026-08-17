@@ -50,10 +50,7 @@ def get_player_metadata(person_id: int, player_name: str = ""):
     return 'R', 'R', 'DH'
 
 def fetch_batter_splits_and_platoon(person_id: int, b_hand: str, p_hand: str, pitcher_arsenal: dict):
-    """
-    Pulls authentic vs LHP (vl) and vs RHP (vr) splits to identify reverse-split crushers
-    and calculate pitch-arsenal ISO.
-    """
+    """Pulls authentic vs LHP (vl) and vs RHP (vr) splits."""
     iso_vr, iso_vl, base_iso, hr_total = 0.165, 0.165, 0.165, 5
     sit_code = 'vr' if p_hand == 'R' else 'vl'
 
@@ -83,12 +80,8 @@ def fetch_batter_splits_and_platoon(person_id: int, b_hand: str, p_hand: str, pi
         except Exception:
             pass
 
-    # Reverse Platoon & Split Classification
     same_hand = (b_hand == p_hand and b_hand != 'S')
-    opposite_hand = (b_hand != p_hand or b_hand == 'S')
-
     if same_hand:
-        # Check if batter shows reverse-split power (.210+ ISO or higher vs same hand)
         matchup_iso = iso_vr if p_hand == 'R' else iso_vl
         alt_iso = iso_vl if p_hand == 'R' else iso_vr
         if matchup_iso >= 0.215 or matchup_iso >= (alt_iso + 0.025):
@@ -98,8 +91,6 @@ def fetch_batter_splits_and_platoon(person_id: int, b_hand: str, p_hand: str, pi
             split_desc = "⚠️ Same-Hand Matchup"
             split_mult = 0.90
     else:
-        # Traditional Platoon
-        matchup_iso = iso_vr if p_hand == 'R' else iso_vl
         if b_hand == 'S':
             split_desc = "🔥 Platoon Adv (Switch)"
             split_mult = 1.12
@@ -107,7 +98,6 @@ def fetch_batter_splits_and_platoon(person_id: int, b_hand: str, p_hand: str, pi
             split_desc = "🔥 Traditional Platoon Adv"
             split_mult = 1.12
 
-    # Arsenal Badge Logic
     fb_usage = pitcher_arsenal.get('FF', 0.0) + pitcher_arsenal.get('SI', 0.0) + pitcher_arsenal.get('FC', 0.0)
     fb_power_iso = round(base_iso * (1.18 if base_iso > 0.210 else 1.00), 3)
 
@@ -232,22 +222,36 @@ def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
 
 def fetch_slate_evaluations():
     today_str = datetime.now().strftime('%Y-%m-%d')
-    print(f"[i] Loading MLB schedule and building matchups for {today_str}...")
+    print(f"[i] Loading upcoming MLB games for {today_str}...")
     
-    schedule = []
+    raw_schedule = []
     try:
-        schedule = statsapi.schedule(date=today_str)
-        if not schedule:
+        raw_schedule = statsapi.schedule(date=today_str)
+        if not raw_schedule:
             alt_date = (datetime.now() - timedelta(hours=5)).strftime('%Y-%m-%d')
-            schedule = statsapi.schedule(date=alt_date)
+            raw_schedule = statsapi.schedule(date=alt_date)
     except Exception as e:
         print(f"[!] Schedule error: {e}")
+
+    # FILTER: Exclude Live, Completed, Final, or Postponed games
+    EXCLUDED_STATUSES = [
+        "In Progress", "Final", "Game Over", "Completed", 
+        "Postponed", "Suspended", "Cancelled"
+    ]
+    
+    upcoming_games = []
+    for g in raw_schedule:
+        status = g.get('status', 'Scheduled')
+        if not any(ex.lower() in status.lower() for ex in EXCLUDED_STATUSES):
+            upcoming_games.append(g)
+
+    print(f"[i] Found {len(raw_schedule)} total games -> {len(upcoming_games)} upcoming/pre-game matches.")
 
     all_players = []
     game_card_list = []
 
-    if schedule:
-        for game in schedule:
+    if upcoming_games:
+        for game in upcoming_games:
             game_id = game['game_id']
             venue = game.get('venue_name', 'default')
             park_factor = BALLPARK_HR_FACTORS.get(venue, BALLPARK_HR_FACTORS['default'])
@@ -338,11 +342,11 @@ def fetch_slate_evaluations():
                 game_card_list.append({
                     'title': f"{home_team} vs {away_p_name}",
                     'team_name': home_team, 'df': pd.DataFrame(home_rows),
-                    'opp_p': f"{away_p_name} ({away_p_hand})", 'p_badge': away_p_stats['badge'], 'venue': venue
+                    'opp_p': f"{away_p_name} ({away_p_hand})", 'p_badge': home_p_stats['badge'], 'venue': venue
                 })
 
     if not all_players:
-        print("[!] No active games detected on slate. Generating fallback baseline.")
+        print("[!] No upcoming games left on the slate. Generating fallback preview.")
         mock_lineup = [
             ("Aaron Judge", "NYY", "R", "DH", "Brayan Bello", "R", "🔴 High FB/SL Bleed", "⚡ All-Arsenal (SL+FB)", "⚡ Reverse Split Crusher", 29.4, 23.8, 97.2, 0.315, "+285", 14.5),
             ("Shohei Ohtani", "LAD", "L", "DH", "Kyle Freeland", "L", "🔴 High FB/SL Bleed", "💥 Fastball Crusher", "⚡ Reverse Split Crusher", 28.5, 23.1, 94.8, 0.285, "+310", 11.2),
@@ -384,7 +388,7 @@ def render_top20_leaderboard(df, output_path, today_str):
     ax.axis('off')
     
     fig.text(0.5, 0.96, "MLB SLATE TOP 20 HOME RUN TARGETS", ha='center', color='#f8fafc', fontsize=20, weight='bold')
-    fig.text(0.5, 0.93, f"Batter Power vs. Pitcher Vulnerability Matrix • {today_str}", ha='center', color='#94a3b8', fontsize=11)
+    fig.text(0.5, 0.93, f"Upcoming Games Only • Statcast Power vs. Pitcher Vulnerability • {today_str}", ha='center', color='#94a3b8', fontsize=11)
     
     table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Platoon & Split State', 'Pitcher Arsenal Vulnerability', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
     table_rows = []
@@ -420,11 +424,11 @@ def render_top20_leaderboard(df, output_path, today_str):
             elif col == 4:
                 split_val = table_rows[row-1][4]
                 if 'Reverse Split' in split_val:
-                    cell.set_text_props(color='#38bdf8', weight='bold')  # Sky Blue for Reverse Split
+                    cell.set_text_props(color='#38bdf8', weight='bold')
                 elif 'Platoon Adv' in split_val:
-                    cell.set_text_props(color='#4ade80', weight='bold')  # Green for Platoon Adv
+                    cell.set_text_props(color='#4ade80', weight='bold')
                 else:
-                    cell.set_text_props(color='#f87171')                # Red/Grey for Same-Hand Disadvantage
+                    cell.set_text_props(color='#f87171')
             elif col == 5:
                 p_text = table_rows[row-1][5]
                 cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
@@ -457,7 +461,7 @@ def render_individual_game_card(card_info, output_dir, today_str):
     fig.patch.set_facecolor('#0b1329')
     ax.axis('off')
 
-    fig.text(0.5, 0.95, f"{team_name.upper()} — 9-MAN MATCHUP CARD", ha='center', color='#f8fafc', fontsize=17, weight='bold')
+    fig.text(0.5, 0.95, f"{team_name.upper()} — 9-MAN MATCHUP CARD (PRE-GAME)", ha='center', color='#f8fafc', fontsize=17, weight='bold')
     fig.text(0.5, 0.90, f"Opp Starter: {opp_p} [{p_badge}]  •  Venue: {venue}  •  {today_str}", ha='center', color='#38bdf8', fontsize=10, weight='semibold')
 
     cols = ['#', 'Batter (Hand)', 'Pos', 'Platoon & Split State', 'Pitcher Arsenal State', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
@@ -544,13 +548,13 @@ def send_discord_push(df, image_path, today_str):
         })
 
     payload = {
-        "content": f"🚨 **MLB Daily Home Run Targets & Pitcher Vulnerability Board** ({today_str})",
+        "content": f"🚨 **MLB Daily Home Run Targets (Upcoming Slate Only)** ({today_str})",
         "embeds": [{
             "title": "⚾ Slate Top 20 Projections & Matchup Matrix",
             "color": 3717112,
             "fields": embed_fields,
             "image": {"url": "attachment://top20_board.png"},
-            "footer": {"text": "MLB Predictive Engine • Automated Real-Time Pipeline"}
+            "footer": {"text": "MLB Predictive Engine • Live Games Filtered Out"}
         }]
     }
 
@@ -573,7 +577,7 @@ def send_discord_push(df, image_path, today_str):
         print(f"[!] Network exception while pushing to Discord: {e}")
 
 def run_predictions():
-    print(f"[{datetime.now()}] Starting live slate run...")
+    print(f"[{datetime.now()}] Starting live slate run (upcoming games only)...")
     os.makedirs("exports/game_cards", exist_ok=True)
     today_str = datetime.now().strftime('%Y-%m-%d')
     
@@ -593,7 +597,7 @@ def run_predictions():
         except Exception as e:
             print(f"[!] Could not render card for {card_info.get('title')}: {e}")
 
-    print(f"[✓] Generated Top-20 Leaderboard and {rendered_count} individual 9-man game cards.")
+    print(f"[✓] Generated Top-20 Leaderboard and {rendered_count} upcoming 9-man game cards.")
     send_discord_push(df, png_path, today_str)
 
 def run_settlement():
