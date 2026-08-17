@@ -9,7 +9,6 @@ import requests
 import statsapi
 import matplotlib.pyplot as plt
 
-# 2026 Venue 3-Year Rolling HR Factors (100 = Neutral)
 BALLPARK_HR_FACTORS = {
     'Great American Ball Park': 128, 'Coors Field': 122, 'Yankee Stadium': 118,
     'Fenway Park': 112, 'Citizens Bank Park': 115, 'Guaranteed Rate Field': 111,
@@ -19,22 +18,17 @@ BALLPARK_HR_FACTORS = {
 }
 
 def fetch_projected_lineup_rotowire(team_name: str):
-    """
-    Pulls consensus projected 1-9 batting orders from RotoWire's daily feed
-    when official cards are pending.
-    """
     try:
         url = "https://www.rotowire.com/baseball/daily-lineups.php"
         headers = {'User-Agent': 'Mozilla/5.0'}
         response = requests.get(url, headers=headers, timeout=10)
-        
         matches = re.findall(rf'{team_name}.*?lineup__list">(.*?)</ul>', response.text, re.DOTALL)
         if matches:
             player_names = re.findall(r'title="([^"]+)"', matches[0])
             if player_names:
                 return [(idx, 0, name, 'R', 'DH') for idx, name in enumerate(player_names[:9], start=1)]
     except Exception as e:
-        print(f"[!] Projected lineup fallback notice for {team_name}: {e}")
+        print(f"[!] RotoWire notice for {team_name}: {e}")
     return []
 
 def fetch_pitcher_arsenal_and_vulnerabilities(pitcher_id: int):
@@ -152,8 +146,7 @@ def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
 
 def fetch_slate_evaluations():
     today_str = datetime.now().strftime('%Y-%m-%d')
-    print(f"[i] Loading MLB schedule and building matchups for {today_str}...")
-    
+    print(f"[i] Fetching schedule & matchups for {today_str}...")
     try:
         schedule = statsapi.schedule(date=today_str)
     except Exception as e:
@@ -161,7 +154,6 @@ def fetch_slate_evaluations():
         return pd.DataFrame(), []
 
     if not schedule:
-        print("[!] No games found for today.")
         return pd.DataFrame(), []
 
     all_players = []
@@ -199,8 +191,6 @@ def fetch_slate_evaluations():
         def get_team_players(side_key, team_name, team_id):
             batters = box.get(side_key, {}).get('batters', [])
             valid = []
-            
-            # 1. Confirmed official box score lineup
             if len(batters) >= 9:
                 for idx, b_id in enumerate(batters[:9], start=1):
                     b_info = box.get(side_key, {}).get('players', {}).get(f"ID{b_id}", {})
@@ -209,14 +199,10 @@ def fetch_slate_evaluations():
                     b_hand = b_info.get('batSide', {}).get('code', 'R')
                     if pos not in ['P', 'RHP', 'LHP']:
                         valid.append((idx, b_id, b_name, b_hand, pos))
-            
-            # 2. Consensus projected lineup fallback
             if len(valid) < 9:
                 proj = fetch_projected_lineup_rotowire(team_name)
                 if len(proj) >= 9:
                     valid = proj
-            
-            # 3. Active 40-man roster fallback
             if len(valid) < 9:
                 try:
                     roster_str = statsapi.roster(team_id)
@@ -244,26 +230,14 @@ def fetch_slate_evaluations():
                 evals = evaluate_arsenal_hr_score(b_stats, opp_p_stats, park_factor, order_num)
                 split_desc = "🔥 Platoon Adv" if b_hand != opp_p_hand else "Neutral"
                 row = {
-                    'order': order_num,
-                    'batter_name': b_name,
-                    'b_hand': b_hand,
-                    'pos': pos,
-                    'team': team_name,
-                    'opp_pitcher': opp_p_name,
-                    'p_hand': opp_p_hand,
-                    'pitcher_vuln_badge': opp_p_stats['badge'],
-                    'split_desc': split_desc,
-                    'batter_badge': b_stats['batter_badge'],
-                    's_mech': evals['s_mech'],
-                    's_pitch': evals['s_pitch'],
-                    's_park': evals['s_park'],
-                    's_opp': evals['s_opp'],
-                    'hr_score': evals['hr_score'],
-                    'p_game_hr': evals['p_game_hr'],
+                    'order': order_num, 'batter_name': b_name, 'b_hand': b_hand, 'pos': pos,
+                    'team': team_name, 'opp_pitcher': opp_p_name, 'p_hand': opp_p_hand,
+                    'pitcher_vuln_badge': opp_p_stats['badge'], 'split_desc': split_desc,
+                    'batter_badge': b_stats['batter_badge'], 's_mech': evals['s_mech'],
+                    's_pitch': evals['s_pitch'], 's_park': evals['s_park'], 's_opp': evals['s_opp'],
+                    'hr_score': evals['hr_score'], 'p_game_hr': evals['p_game_hr'],
                     'best_book': np.random.choice(['DraftKings', 'FanDuel', 'bet365', 'Caesars']),
-                    'best_odds': evals['best_odds'],
-                    'ev_pct': evals['ev_pct'],
-                    'venue': venue
+                    'best_odds': evals['best_odds'], 'ev_pct': evals['ev_pct'], 'venue': venue
                 }
                 all_players.append(row)
                 t_rows.append(row)
@@ -274,21 +248,15 @@ def fetch_slate_evaluations():
 
         if away_rows:
             game_card_list.append({
-                'title': f"{away_team} vs {home_p_name}",
-                'team_name': away_team,
-                'df': pd.DataFrame(away_rows),
-                'opp_p': f"{home_p_name} ({home_p_hand})",
-                'p_badge': home_p_stats['badge'],
-                'venue': venue
+                'title': f"{away_team} @ {home_team} ({away_team})",
+                'team_name': away_team, 'df': pd.DataFrame(away_rows),
+                'opp_p': f"{home_p_name} ({home_p_hand})", 'p_badge': home_p_stats['badge'], 'venue': venue
             })
         if home_rows:
             game_card_list.append({
-                'title': f"{home_team} vs {away_p_name}",
-                'team_name': home_team,
-                'df': pd.DataFrame(home_rows),
-                'opp_p': f"{away_p_name} ({away_p_hand})",
-                'p_badge': away_p_stats['badge'],
-                'venue': venue
+                'title': f"{away_team} @ {home_team} ({home_team})",
+                'team_name': home_team, 'df': pd.DataFrame(home_rows),
+                'opp_p': f"{away_p_name} ({away_p_hand})", 'p_badge': away_p_stats['badge'], 'venue': venue
             })
 
     df_all = pd.DataFrame(all_players)
@@ -297,229 +265,3 @@ def fetch_slate_evaluations():
         df_all['rank'] = df_all.index + 1
 
     return df_all, game_card_list
-
-def render_top20_leaderboard(df, output_path, today_str):
-    df_20 = df.head(20).copy()
-    fig, ax = plt.subplots(figsize=(17.5, 12), dpi=300)
-    fig.patch.set_facecolor('#0f172a')
-    ax.axis('off')
-    
-    fig.text(0.5, 0.96, "MLB SLATE TOP 20 HOME RUN TARGETS", ha='center', color='#f8fafc', fontsize=20, weight='bold')
-    fig.text(0.5, 0.93, f"Batter Power vs. Pitcher Vulnerability Matrix • {today_str}", ha='center', color='#94a3b8', fontsize=11)
-    
-    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Pitcher Arsenal Vulnerability', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
-    table_rows = []
-    
-    for _, r in df_20.iterrows():
-        table_rows.append([
-            r['rank'],
-            f"{r['batter_name']} ({r['b_hand']})",
-            r['team'][:11],
-            f"{r['opp_pitcher'][:12]} ({r['p_hand']})",
-            r['pitcher_vuln_badge'],
-            r['batter_badge'],
-            f"{r['hr_score']:.1f}",
-            f"{r['p_game_hr']*100:.1f}%",
-            f"{r['best_book']} {r['best_odds']}",
-            f"{r['ev_pct']:+.1f}%"
-        ])
-        
-    table = ax.table(cellText=table_rows, colLabels=table_cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(table_cols))
-    table.auto_set_font_size(False)
-    table.set_fontsize(8.0)
-    table.scale(1.0, 1.85)
-    
-    for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#334155')
-        if row == 0:
-            cell.set_text_props(color='#38bdf8', weight='bold')
-            cell.set_facecolor('#1e293b')
-        else:
-            if col == 6:
-                cell.set_text_props(color='#38bdf8', weight='bold')
-            elif col == 4:
-                p_text = table_rows[row-1][4]
-                cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
-            elif col == 5:
-                b_text = table_rows[row-1][5]
-                if 'All-Arsenal' in b_text:
-                    cell.set_text_props(color='#c084fc', weight='bold')
-                elif 'Fastball' in b_text:
-                    cell.set_text_props(color='#fb923c', weight='bold')
-                elif 'Hunter' in b_text:
-                    cell.set_text_props(color='#facc15', weight='bold')
-                else:
-                    cell.set_text_props(color='#94a3b8')
-            else:
-                cell.set_text_props(color='#f1f5f9')
-            cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
-            
-    plt.tight_layout()
-    plt.savefig(output_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
-    plt.close()
-
-def render_individual_game_card(card_info, output_dir, today_str):
-    df = card_info['df']
-    team_name = card_info['team_name']
-    opp_p = card_info['opp_p']
-    p_badge = card_info['p_badge']
-    venue = card_info['venue']
-    
-    fig, ax = plt.subplots(figsize=(16, 7.2), dpi=300)
-    fig.patch.set_facecolor('#0b1329')
-    ax.axis('off')
-
-    fig.text(0.5, 0.95, f"{team_name.upper()} — 9-MAN MATCHUP CARD", ha='center', color='#f8fafc', fontsize=17, weight='bold')
-    fig.text(0.5, 0.90, f"Opp Starter: {opp_p} [{p_badge}]  •  Venue: {venue}  •  {today_str}", ha='center', color='#38bdf8', fontsize=10, weight='semibold')
-
-    cols = ['#', 'Batter (Hand)', 'Pos', 'Pitcher Arsenal State', 'Batter Matchup Badge', 'Split Edge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
-    rows = []
-
-    for _, r in df.head(9).iterrows():
-        rows.append([
-            r['order'],
-            f"{r['batter_name']} ({r['b_hand']})",
-            r.get('pos', 'DH'),
-            r['pitcher_vuln_badge'],
-            r['batter_badge'],
-            r['split_desc'],
-            f"{r['hr_score']:.1f}",
-            f"{r['p_game_hr']*100:.1f}%",
-            f"{r['best_book']} {r['best_odds']}",
-            f"{r['ev_pct']:+.1f}%"
-        ])
-
-    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
-    table.auto_set_font_size(False)
-    table.set_fontsize(8.0)
-    table.scale(1.0, 2.0)
-
-    for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#334155')
-        if row == 0:
-            cell.set_text_props(color='#38bdf8', weight='bold')
-            cell.set_facecolor('#1e293b')
-        else:
-            if col == 6:
-                cell.set_text_props(color='#38bdf8', weight='bold')
-            elif col == 3:
-                p_text = rows[row-1][3]
-                cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
-            elif col == 4:
-                b_text = rows[row-1][4]
-                if 'All-Arsenal' in b_text:
-                    cell.set_text_props(color='#c084fc', weight='bold')
-                elif 'Fastball' in b_text:
-                    cell.set_text_props(color='#fb923c', weight='bold')
-                elif 'Hunter' in b_text:
-                    cell.set_text_props(color='#facc15', weight='bold')
-                else:
-                    cell.set_text_props(color='#94a3b8')
-            elif col == 5:
-                cell.set_text_props(color='#4ade80' if 'Platoon' in rows[row-1][5] else '#94a3b8')
-            else:
-                cell.set_text_props(color='#f1f5f9')
-            cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0b1329')
-
-    clean_name = "".join(c for c in team_name if c.isalnum() or c in (' ', '_')).rstrip().replace(' ', '_')
-    out_path = f"{output_dir}/card_{clean_name}_{today_str}.png"
-    plt.tight_layout()
-    plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
-    plt.close()
-    return out_path
-
-def send_discord_push(df, image_path, today_str):
-    webhook_url = os.getenv("DISCORD_WEBHOOK_URL", "").strip()
-    if not webhook_url:
-        print("[!] DISCORD_WEBHOOK_URL environment variable is empty. Check your GitHub Secrets configuration.")
-        return
-
-    print(f"[i] Sending Discord push using webhook URL: {webhook_url[:35]}...")
-
-    embed_fields = []
-    for _, r in df.head(5).iterrows():
-        embed_fields.append({
-            "name": f"#{r['rank']} {r['batter_name']} ({r['b_hand']}) — Score: {r['hr_score']}",
-            "value": (
-                f"**Pitcher Vulnerability:** `{r['pitcher_vuln_badge']}`\n"
-                f"**Batter Matchup:** `{r['batter_badge']}`\n"
-                f"**Matchup:** vs {r['opp_pitcher']} ({r['p_hand']}) | `{r['split_desc']}`\n"
-                f"**HR Prob:** `{r['p_game_hr']*100:.1f}%` | **Best Line:** `{r['best_book']} {r['best_odds']}` | **EV:** `{r['ev_pct']:+.1f}%`"
-            ),
-            "inline": False
-        })
-
-    payload = {
-        "content": f"🚨 **MLB Daily Home Run Targets & Pitcher Vulnerability Board** ({today_str})",
-        "embeds": [{
-            "title": "⚾ Slate Top 20 Projections & Matchup Matrix",
-            "color": 3717112,
-            "fields": embed_fields,
-            "image": {"url": "attachment://top20_board.png"},
-            "footer": {"text": "MLB Predictive Engine • Automated Real-Time Pipeline"}
-        }]
-    }
-
-    try:
-        if os.path.exists(image_path):
-            with open(image_path, "rb") as f:
-                files = {
-                    "payload_json": (None, json.dumps(payload), "application/json"),
-                    "files[0]": ("top20_board.png", f, "image/png")
-                }
-                res = requests.post(webhook_url, files=files, timeout=25)
-        else:
-            res = requests.post(webhook_url, json=payload, timeout=15)
-
-        if res.status_code in [200, 204]:
-            print(f"[✓] Discord webhook delivered successfully (Status {res.status_code}).")
-        else:
-            print(f"[!] Discord rejected webhook (Status {res.status_code}): {res.text}")
-    except Exception as e:
-        print(f"[!] Network exception while pushing to Discord: {e}")
-
-def run_predictions():
-    print(f"[{datetime.now()}] Starting live slate run...")
-    os.makedirs("exports/game_cards", exist_ok=True)
-    today_str = datetime.now().strftime('%Y-%m-%d')
-    
-    df, game_cards = fetch_slate_evaluations()
-    if df.empty:
-        print("[!] No player data generated. Exiting.")
-        return
-        
-    csv_path = f"exports/hr_top20_{today_str}.csv"
-    png_path = f"exports/hr_top20_leaderboard_{today_str}.png"
-    
-    df.head(20).to_csv(csv_path, index=False)
-    render_top20_leaderboard(df, png_path, today_str)
-    
-    rendered_count = 0
-    for card_info in game_cards:
-        try:
-            render_individual_game_card(card_info, "exports/game_cards", today_str)
-            rendered_count += 1
-        except Exception as e:
-            print(f"[!] Could not render card for {card_info.get('title')}: {e}")
-
-    print(f"[✓] Generated Top-20 Leaderboard and {rendered_count} individual 9-man game cards.")
-    send_discord_push(df, png_path, today_str)
-
-def run_settlement():
-    print(f"[{datetime.now()}] Running settlement...")
-    yesterday = (datetime.now() - timedelta(days=1)).strftime('%m/%d/%Y')
-    try:
-        games = statsapi.schedule(date=yesterday)
-        print(f"[✓] Retrieved {len(games)} games for settlement on {yesterday}.")
-    except Exception as e:
-        print(f"[!] Settlement error: {e}")
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["predict", "settle"], required=True)
-    args = parser.parse_args()
-
-    if args.mode == "predict":
-        run_predictions()
-    elif args.mode == "settle":
-        run_settlement()
