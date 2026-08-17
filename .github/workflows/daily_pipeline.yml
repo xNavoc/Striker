@@ -40,7 +40,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Execute HR Pipeline
-        if: github.event.schedule != '0 7 * * *' && (github.event_name == 'schedule' || github.event.inputs.mode == 'predict')
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'predict' || github.event_name == 'schedule' && github.event.schedule != '0 7 * * *'
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -49,7 +49,7 @@ jobs:
           python run_daily.py --mode predict
 
       - name: Execute Settlement
-        if: github.event.schedule == '0 7 * * *' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'settle')
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'settle' || github.event_name == 'schedule' && github.event.schedule == '0 7 * * *'
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
@@ -64,4 +64,5 @@ jobs:
           path: |
             exports/*.csv
             exports/*.png
+            exports/game_cards/*.png
           retention-days: 7
