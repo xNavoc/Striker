@@ -6,7 +6,6 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
-from email.mime.application import MIMEApplication
 import pandas as pd
 import numpy as np
 import requests
@@ -55,6 +54,8 @@ def clean_name_str(name: str) -> str:
 
 def initialize_league_registry():
     global LEAGUE_ID_REGISTRY, LEAGUE_NAME_REGISTRY
+    if LEAGUE_ID_REGISTRY:
+        return
     print(f"[i] Pre-loading MLB master player registry for {CURRENT_SEASON}...")
     try:
         url = f"https://statsapi.mlb.com/api/v1/sports/1/players?season={CURRENT_SEASON}"
@@ -78,9 +79,9 @@ def initialize_league_registry():
                 LEAGUE_ID_REGISTRY[pid] = meta
             if full_name:
                 LEAGUE_NAME_REGISTRY[clean_name_str(full_name)] = meta
-        print(f"[✓] Successfully indexed {len(LEAGUE_ID_REGISTRY)} active players in registry.")
+        print(f"[✓] Indexed {len(LEAGUE_ID_REGISTRY)} active players in registry.")
     except Exception as e:
-        print(f"[!] Registry pre-fetch warning: {e}. Fallback lookups will remain active.")
+        print(f"[!] Registry pre-fetch notice: {e}")
 
 def get_player_metadata(person_id: int, player_name: str = ""):
     if person_id and person_id in LEAGUE_ID_REGISTRY:
@@ -321,32 +322,27 @@ def fetch_projected_lineup_rotowire(team_name: str):
         print(f"[!] RotoWire notice for {team_name}: {e}")
     return []
 
-def fetch_slate_evaluations():
+def fetch_slate_evaluations(target_date_str=None):
     initialize_league_registry()
-    today_str = datetime.now().strftime('%Y-%m-%d')
-    print(f"[i] Loading upcoming MLB games and evaluating live matchups for {today_str}...")
+    today_str = target_date_str or datetime.now().strftime('%Y-%m-%d')
+    print(f"[i] Loading MLB games and evaluating live matchups for {today_str}...")
 
     raw_schedule = []
     try:
         raw_schedule = statsapi.schedule(date=today_str)
-        if not raw_schedule:
+        if not raw_schedule and not target_date_str:
             alt_date = (datetime.now() - timedelta(hours=5)).strftime('%Y-%m-%d')
             raw_schedule = statsapi.schedule(date=alt_date)
     except Exception as e:
         print(f"[!] Schedule error: {e}")
 
-    EXCLUDED_STATUSES = [
-        "In Progress", "Final", "Game Over", "Completed", 
-        "Postponed", "Suspended", "Cancelled"
-    ]
+    if target_date_str:
+        upcoming_games = raw_schedule
+    else:
+        EXCLUDED_STATUSES = ["In Progress", "Final", "Game Over", "Completed", "Postponed", "Suspended", "Cancelled"]
+        upcoming_games = [g for g in raw_schedule if not any(ex.lower() in g.get('status', 'Scheduled').lower() for ex in EXCLUDED_STATUSES)]
 
-    upcoming_games = []
-    for g in raw_schedule:
-        status = g.get('status', 'Scheduled')
-        if not any(ex.lower() in status.lower() for ex in EXCLUDED_STATUSES):
-            upcoming_games.append(g)
-
-    print(f"[i] Found {len(raw_schedule)} total games -> {len(upcoming_games)} upcoming matches.")
+    print(f"[i] Processing {len(upcoming_games)} games for {today_str}.")
 
     all_players = []
     game_card_list = []
@@ -619,60 +615,55 @@ def render_individual_game_card(card_info, output_dir, today_str):
     plt.close()
     return out_path
 
-def send_email_digest(df: pd.DataFrame, image_path: str, csv_path: str, today_str: str):
+def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
     email_user = os.getenv("EMAIL_USER", "").strip()
     email_pass = os.getenv("EMAIL_PASS", "").strip()
     recipient = os.getenv("RECIPIENT_EMAIL", "").strip()
 
     if not email_user or not email_pass or not recipient:
-        print("[!] Email credentials (EMAIL_USER, EMAIL_PASS, RECIPIENT_EMAIL) not fully set. Skipping email delivery.")
+        print("[!] Email credentials not set. Skipping email.")
         return
 
     print(f"[i] Compiling email digest for {recipient}...")
-
     msg = MIMEMultipart('related')
     msg['Subject'] = f"⚾ MLB HR Slate Top 50 Board • {today_str}"
     msg['From'] = email_user
     msg['To'] = recipient
 
-    top_5_rows = ""
-    for _, r in df.head(5).iterrows():
-        top_5_rows += f"""
+    top_rows = ""
+    for _, r in df.head(25).iterrows():
+        top_rows += f"""
         <tr style="border-bottom: 1px solid #334155;">
-            <td style="padding: 8px; font-weight: bold; color: #38bdf8;">#{r['rank']} {r['batter_name']} ({r['b_hand']})</td>
-            <td style="padding: 8px;">{r['team']} vs {r['opp_pitcher']} ({r['p_hand']})</td>
-            <td style="padding: 8px; color: #4ade80;">{r['split_desc']}</td>
-            <td style="padding: 8px; font-weight: bold; color: #38bdf8;">{r['hr_score']:.1f}</td>
-            <td style="padding: 8px;">{r['best_book']} {r['best_odds']} ({r['ev_pct']:+.1f}%)</td>
+            <td style="padding: 6px; font-weight: bold; color: #38bdf8;">#{r['rank']} {r['batter_name']} ({r['b_hand']})</td>
+            <td style="padding: 6px;">{r['team']} vs {r['opp_pitcher']} ({r['p_hand']})</td>
+            <td style="padding: 6px; color: #4ade80;">{r['split_desc']}</td>
+            <td style="padding: 6px; font-weight: bold; color: #38bdf8;">{r['hr_score']:.1f}</td>
+            <td style="padding: 6px;">{r['best_book']} {r['best_odds']} ({r['ev_pct']:+.1f}%)</td>
         </tr>
         """
 
     html_content = f"""
     <html>
-        <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 20px;">
+        <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
             <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Daily Home Run Targets & Value Board</h2>
-            <p style="color: #94a3b8; font-size: 14px; margin-top: 0;">Automated Model Projections • {today_str}</p>
+            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Automated Model Projections • {today_str}</p>
             
-            <h3 style="color: #f8fafc; margin-top: 20px;">🔥 Top 5 Slate Targets</h3>
-            <table style="width: 100%; max-width: 700px; border-collapse: collapse; background-color: #1e293b; border-radius: 8px; overflow: hidden; font-size: 13px;">
+            <h3 style="color: #f8fafc; margin-top: 15px;">🔥 Top Slate Targets (Ranks 1–25)</h3>
+            <table style="width: 100%; max-width: 750px; border-collapse: collapse; background-color: #1e293b; font-size: 12px;">
                 <thead>
                     <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
-                        <th style="padding: 8px;">Batter</th>
-                        <th style="padding: 8px;">Matchup</th>
-                        <th style="padding: 8px;">Split Edge</th>
-                        <th style="padding: 8px;">Score</th>
-                        <th style="padding: 8px;">Best Line</th>
+                        <th style="padding: 6px;">Batter</th>
+                        <th style="padding: 6px;">Matchup</th>
+                        <th style="padding: 6px;">Split Edge</th>
+                        <th style="padding: 6px;">Score</th>
+                        <th style="padding: 6px;">Best Line</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {top_5_rows}
-                </tbody>
+                <tbody>{top_rows}</tbody>
             </table>
 
-            <h3 style="color: #f8fafc; margin-top: 25px;">📊 Full Top 50 Dual-Column Leaderboard</h3>
+            <h3 style="color: #f8fafc; margin-top: 20px;">📊 Full Top 50 Dual-Column Leaderboard</h3>
             <img src="cid:top50_image" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155;" alt="Top 50 Board"/>
-
-            <p style="color: #64748b; font-size: 12px; margin-top: 25px;">MLB Predictive Engine • Automated Real-Time Pipeline</p>
         </body>
     </html>
     """
@@ -687,12 +678,6 @@ def send_email_digest(df: pd.DataFrame, image_path: str, csv_path: str, today_st
             img_part.add_header('Content-ID', '<top50_image>')
             img_part.add_header('Content-Disposition', 'inline', filename='top50_board.png')
             msg.attach(img_part)
-
-    if os.path.exists(csv_path):
-        with open(csv_path, 'rb') as f:
-            csv_part = MIMEApplication(f.read(), Name=os.path.basename(csv_path))
-            csv_part['Content-Disposition'] = f'attachment; filename="{os.path.basename(csv_path)}"'
-            msg.attach(csv_part)
 
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
@@ -726,8 +711,8 @@ def run_predictions():
         except Exception as e:
             print(f"[!] Could not render card for {card_info.get('title')}: {e}")
 
-    print(f"[✓] Saved Top-50 Dual-Column Board (PNG/CSV) and {rendered_count} 9-man game cards to exports/.")
-    send_email_digest(df, png_path, csv_path, today_str)
+    print(f"[✓] Saved Top-50 Dual-Column Board and {rendered_count} 9-man game cards to exports/.")
+    send_email_digest(df, png_path, today_str)
 
 def run_settlement():
     print(f"[{datetime.now()}] Running automated settlement and grading...")
@@ -736,17 +721,19 @@ def run_settlement():
     yesterday_str = yesterday_date.strftime('%Y-%m-%d')
     yesterday_api_str = yesterday_date.strftime('%m/%d/%Y')
 
-    # Look for yesterday's projection file
     target_csv = f"exports/hr_top50_{yesterday_str}.csv"
     if not os.path.exists(target_csv):
         alt_csv = f"exports/hr_top20_{yesterday_str}.csv"
         target_csv = alt_csv if os.path.exists(alt_csv) else None
 
-    if not target_csv:
-        print(f"[!] No projection file found for {yesterday_str} in exports/. Checking schedule directly.")
-        projections_df = pd.DataFrame()
-    else:
+    if target_csv and os.path.exists(target_csv):
+        print(f"[i] Loading stored projections from {target_csv}...")
         projections_df = pd.read_csv(target_csv)
+    else:
+        print(f"[i] Reconstructing yesterday's slate rankings directly from MLB schedule for {yesterday_str}...")
+        projections_df, _ = fetch_slate_evaluations(target_date_str=yesterday_str)
+        if not projections_df.empty:
+            projections_df = projections_df.head(50)
 
     print(f"[i] Fetching official completed box scores for {yesterday_api_str}...")
     actual_hr_hitters = {}
@@ -817,7 +804,6 @@ def run_settlement():
     roi = (total_units_won / total_picks * 100) if total_picks > 0 else 0.0
     print(f"📊 Summary for {yesterday_str}: {total_hits}/{total_picks} Hit ({hit_rate:.1f}%) | Net Units: {total_units_won:+.2f}u (ROI: {roi:+.1f}%)")
 
-    # Send Settlement Digest to Email
     email_user = os.getenv("EMAIL_USER", "").strip()
     email_pass = os.getenv("EMAIL_PASS", "").strip()
     recipient = os.getenv("RECIPIENT_EMAIL", "").strip()
@@ -829,7 +815,7 @@ def run_settlement():
             msg['To'] = recipient
 
             table_rows = ""
-            for _, r in settle_df.head(20).iterrows():
+            for _, r in settle_df.iterrows():
                 is_win = "WIN" in r['result']
                 row_color = "#4ade80" if is_win else "#94a3b8"
                 table_rows += f"""
@@ -844,10 +830,10 @@ def run_settlement():
 
             html = f"""
             <html>
-                <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 20px;">
+                <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
                     <h2 style="color: #38bdf8;">📊 MLB Home Run Settlement Report • {yesterday_str}</h2>
                     <p style="font-size: 15px;"><strong>Results:</strong> {total_hits}/{total_picks} Hit ({hit_rate:.1f}%) | <strong>Profit:</strong> <span style="color: {'#4ade80' if total_units_won >= 0 else '#f87171'};">{total_units_won:+.2f} Units (ROI: {roi:+.1f}%)</span></p>
-                    <table style="width: 100%; max-width: 650px; border-collapse: collapse; background-color: #1e293b; font-size: 13px; margin-top: 15px;">
+                    <table style="width: 100%; max-width: 650px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; margin-top: 15px;">
                         <thead>
                             <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
                                 <th style="padding: 6px;">Batter</th>
@@ -863,15 +849,11 @@ def run_settlement():
             </html>
             """
             msg.attach(MIMEText(html, 'html'))
-            with open(settle_csv_path, 'rb') as f:
-                part = MIMEApplication(f.read(), Name=os.path.basename(settle_csv_path))
-                part['Content-Disposition'] = f'attachment; filename="{os.path.basename(settle_csv_path)}"'
-                msg.attach(part)
 
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
                 server.login(email_user, email_pass)
                 server.sendmail(email_user, recipient, msg.as_string())
-            print(f"[✓] Successfully emailed settlement report to {recipient}.")
+            print(f"[✓] Successfully emailed full settlement report table to {recipient}.")
         except Exception as e:
             print(f"[!] Failed to send settlement email: {e}")
 
