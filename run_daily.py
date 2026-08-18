@@ -26,6 +26,34 @@ LEAGUE_ID_REGISTRY = {}
 LEAGUE_NAME_REGISTRY = {}
 PITCHER_PROFILE_CACHE = {}
 
+# Accurate baseline ISO and Barrel profiles for MLB Power Hitters
+KNOWN_POWER_BATTERS = {
+    'Aaron Judge': (0.340, 0.26, 45),
+    'Shohei Ohtani': (0.330, 0.24, 44),
+    'Kyle Schwarber': (0.270, 0.18, 38),
+    'Pete Alonso': (0.255, 0.16, 36),
+    'Matt Olson': (0.260, 0.17, 35),
+    'Bryce Harper': (0.250, 0.16, 30),
+    'Yordan Alvarez': (0.290, 0.20, 35),
+    'Juan Soto': (0.275, 0.19, 36),
+    'Gunnar Henderson': (0.265, 0.16, 34),
+    'Eugenio Suárez': (0.240, 0.14, 30),
+    'Eugenio Suarez': (0.240, 0.14, 30),
+    'Junior Caminero': (0.245, 0.15, 26),
+    'Elly De La Cruz': (0.230, 0.14, 25),
+    'Bobby Witt Jr.': (0.260, 0.16, 30),
+    'Austin Riley': (0.240, 0.15, 28),
+    'Ronald Acuña Jr.': (0.250, 0.16, 30),
+    'Ronald Acuna Jr.': (0.250, 0.16, 30),
+    'Freddie Freeman': (0.220, 0.12, 22),
+    'Max Muncy': (0.240, 0.15, 25),
+    'Marcell Ozuna': (0.280, 0.18, 38),
+    'Corey Seager': (0.260, 0.16, 30),
+    'Rafael Devers': (0.260, 0.16, 30),
+    'Brent Rooker': (0.270, 0.18, 35),
+    'Giancarlo Stanton': (0.260, 0.19, 28)
+}
+
 SIGNATURE_ARSENALS = {
     'Shane McClanahan': ({'FF': 0.45, 'CH': 0.25, 'SL': 0.20, 'CU': 0.10}, 0.72, 1.05, '🟢 Elite Lockdown Starter'),
     'Framber Valdez': ({'SI': 0.55, 'CH': 0.25, 'CU': 0.20}, 0.65, 1.12, '🟢 Elite Groundball Profile'),
@@ -197,44 +225,56 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
     return matched_arsenal, profile
 
 def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p_hand: str, pitcher_arsenal: dict):
-    iso, hr_total = 0.180, 10
-    target_id = person_id
+    """Accurately scores true talent power (ISO, Barrel%) without artificial line bias."""
+    iso, barrel, hr_total = 0.140, 0.07, 6
 
-    if target_id:
+    # 1. Check known power sluggers
+    for k_name, (k_iso, k_brl, k_hr) in KNOWN_POWER_BATTERS.items():
+        if k_name.lower() in b_name.lower():
+            iso, barrel, hr_total = k_iso, k_brl, k_hr
+            break
+
+    # 2. Live API hitting splits
+    if person_id:
         try:
-            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}?hydrate=stats(group=[hitting],type=[season])"
+            url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting],type=[season])"
             res = requests.get(url, timeout=4).json()
             people = res.get('people', [])
             if people and people[0].get('stats'):
                 splits = people[0]['stats'][0].get('splits', [])
                 if splits:
                     s = splits[0].get('stat', {})
-                    slg = float(s.get('slg', '.430'))
-                    avg = float(s.get('avg', '.250'))
-                    iso = max(0.060, round(slg - avg, 3))
-                    hr_total = int(s.get('homeRuns', 10))
+                    slg = float(s.get('slg', '.400'))
+                    avg = float(s.get('avg', '.240'))
+                    calc_iso = max(0.050, round(slg - avg, 3))
+                    calc_hr = int(s.get('homeRuns', 6))
+                    if calc_hr >= 10 or calc_iso >= 0.180:
+                        iso = max(iso, calc_iso)
+                        hr_total = max(hr_total, calc_hr)
+                        barrel = min(0.24, max(0.06, iso * 0.75))
         except Exception:
             pass
 
+    # Platoon Logic
     same_hand = (b_hand == p_hand and b_hand != 'S')
     if same_hand:
-        if iso >= 0.220:
+        if iso >= 0.240:
             split_desc = "⚡ Batter Adv (Reverse Split)"
-            split_mult = 1.16
-            split_score_adj = 3.0
-        else:
-            split_desc = "🛡️ Pitcher Adv (Same-Hand)"
-            split_mult = 0.88
-            split_score_adj = -3.0
-    else:
-        if b_hand == 'S':
-            split_desc = "🔥 Batter Adv (Switch)"
             split_mult = 1.15
             split_score_adj = 2.5
         else:
+            split_desc = "🛡️ Pitcher Adv (Same-Hand)"
+            split_mult = 0.85
+            split_score_adj = -3.5
+    else:
+        if b_hand == 'S':
+            split_desc = "🔥 Batter Adv (Switch)"
+            split_mult = 1.12
+            split_score_adj = 2.0
+        else:
             split_desc = "🔥 Batter Adv (Platoon)"
-            split_mult = 1.14
-            split_score_adj = 2.5
+            split_mult = 1.12
+            split_score_adj = 2.0
 
     fb_pct = pitcher_arsenal.get('FF', 0.0) + pitcher_arsenal.get('SI', 0.0) + pitcher_arsenal.get('FC', 0.0)
     secondaries = {k: v for k, v in pitcher_arsenal.items() if k not in ['FF', 'SI', 'FC']}
@@ -244,29 +284,30 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     sec_name_map = {'SL': 'Slider', 'CH': 'Changeup', 'CU': 'Curveball', 'FS': 'Splitter', 'ST': 'Sweeper'}
     sec_label = sec_name_map.get(top_sec, 'Breaking Ball')
 
-    is_power_bat = iso >= 0.200 or hr_total >= 14
-    is_elite_bat = iso >= 0.250 or hr_total >= 22
+    is_power_bat = iso >= 0.200 or hr_total >= 15
+    is_elite_bat = iso >= 0.260 or hr_total >= 25
 
     if is_elite_bat:
-        badge = f"⚡ All-Arsenal ({sec_label}+FB)"
-        bonus = 5.0
+        badge = f"⚡ Elite Slugger ({sec_label}+FB)"
+        bonus = 6.0
     elif is_power_bat and fb_pct >= 0.44:
         badge = f"💥 Fastball Crusher ({int(fb_pct*100)}% FB)"
-        bonus = 3.5
+        bonus = 4.0
     elif is_power_bat and top_sec_pct >= 0.20:
         badge = f"🔥 {sec_label} Hunter ({int(top_sec_pct*100)}%)"
-        bonus = 3.5
+        bonus = 4.0
     elif iso >= 0.165:
         badge = f"🎯 Solid Match vs {sec_label}"
-        bonus = 1.5
+        bonus = 1.0
     else:
-        badge = f"⚾ Contact Profile vs {sec_label}"
-        bonus = 0.0
+        badge = f"⚾ Contact Profile ({sec_label})"
+        bonus = -2.0
 
     return {
         'iso': iso,
-        'barrel': min(0.24, max(0.06, iso * 0.76)),
-        'hr_pa': min(0.092, max(0.025, hr_total / 185.0)),
+        'barrel': barrel,
+        'hr_total': hr_total,
+        'hr_pa': min(0.095, max(0.020, hr_total / 185.0)),
         'batter_badge': badge,
         'split_desc': split_desc,
         'split_mult': split_mult,
@@ -275,38 +316,38 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     }
 
 def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
-    s_mech = (b_stats['barrel'] / 0.15) * 14.0 + (b_stats['iso'] / 0.250) * 13.0 + b_stats['bonus_score']
-    vuln_boost = 4.5 if p_stats['is_vuln'] else (-3.5 if 'Elite' in p_stats['badge'] else 0.0)
-    s_pitch = (p_stats['hr9'] / 1.25) * 12.0 + (p_stats['whip'] / 1.25) * 7.0 + vuln_boost
-    s_park = ((park_factor - 80.0) / 45.0) * 15.0
+    """
+    Pure Matchup Scoring Engine:
+    Weights true batter power talent (50%), pitcher vulnerability (25%), 
+    ballpark (15%), and lineup order (10%).
+    """
+    # 1. Batter Power Core (Scale ~0 to 45 pts)
+    s_power = (b_stats['barrel'] / 0.18) * 22.0 + (b_stats['iso'] / 0.260) * 18.0 + b_stats['bonus_score']
     
-    order_map = {1: 13.5, 2: 13.2, 3: 13.0, 4: 12.5, 5: 11.0, 6: 9.5, 7: 7.5, 8: 6.0, 9: 4.5}
-    s_opp = order_map.get(order, 5.0)
-    s_edge = ((s_mech + s_pitch) / 55.0) * 7.0 + b_stats['split_score_adj']
+    # 2. Pitcher Vulnerability (Scale ~0 to 25 pts)
+    vuln_boost = 4.0 if p_stats['is_vuln'] else (-4.0 if 'Elite' in p_stats['badge'] else 0.0)
+    s_pitcher = (p_stats['hr9'] / 1.20) * 15.0 + (p_stats['whip'] / 1.25) * 6.0 + vuln_boost
 
-    total_score = round(float(np.clip(s_mech + s_pitch + s_park + s_opp + s_edge, 45.0, 96.8)), 1)
-    
+    # 3. Ballpark Impact (Scale ~0 to 15 pts)
+    s_park = ((park_factor - 80.0) / 48.0) * 14.0
+
+    # 4. Lineup Order & Plate Appearances (Scale ~0 to 15 pts)
+    order_map = {1: 14.0, 2: 13.8, 3: 13.5, 4: 13.0, 5: 11.0, 6: 9.0, 7: 6.5, 8: 4.5, 9: 3.0}
+    s_order = order_map.get(order, 5.0)
+
+    # 5. Platoon Edge
+    s_edge = b_stats['split_score_adj']
+
+    total_matchup_score = round(float(np.clip(s_power + s_pitcher + s_park + s_order + s_edge, 40.0, 98.5)), 1)
+
+    # Pure HR Probability %
     pa_exp = 4.80 - (order * 0.14)
     p_pa_hr = (b_stats['hr_pa'] * (p_stats['hr9'] / 1.15) * (park_factor / 100.0) * b_stats['split_mult'])
-    p_game_hr = round(float(1.0 - ((1.0 - min(0.135, p_pa_hr)) ** pa_exp)), 3)
-
-    # Realistic Sportsbook HR Line Modeling with Longshot Guardrails
-    fair_odds = int((1.0 / max(0.01, p_game_hr) - 1) * 100)
-    capped_fair_odds = min(650, fair_odds)
-    mkt_odds_val = int(round(capped_fair_odds * np.random.uniform(0.96, 1.12) / 10) * 10)
-    mkt_odds_val = max(180, min(700, mkt_odds_val))  # Bound between +180 and +700
-    mkt_odds = f"+{mkt_odds_val}"
-    
-    ev_pct = round(((p_game_hr * (mkt_odds_val / 100.0 + 1.0)) - 1.0) * 100, 1)
-
-    # Fractional Stake Sizing (0.50u to 1.35u)
-    rec_stake = round(float(np.clip(0.75 + (ev_pct / 20.0), 0.50, 1.35)), 2)
+    p_game_hr = round(float(1.0 - ((1.0 - min(0.14, p_pa_hr)) ** pa_exp)), 3)
 
     return {
-        's_mech': round(s_mech, 1), 's_pitch': round(s_pitch, 1),
-        's_park': round(s_park, 1), 's_opp': round(s_opp, 1),
-        'hr_score': total_score, 'p_game_hr': p_game_hr,
-        'best_odds': mkt_odds, 'ev_pct': ev_pct, 'rec_stake': rec_stake
+        'matchup_score': total_matchup_score,
+        'p_game_hr': p_game_hr
     }
 
 def fetch_projected_lineup_rotowire(team_name: str):
@@ -330,7 +371,7 @@ def fetch_projected_lineup_rotowire(team_name: str):
 def fetch_slate_evaluations(target_date_str=None):
     initialize_league_registry()
     today_str = target_date_str or datetime.now().strftime('%Y-%m-%d')
-    print(f"[i] Loading MLB games and evaluating live HR matchups for {today_str}...")
+    print(f"[i] Loading MLB games and evaluating pure HR matchups for {today_str}...")
 
     raw_schedule = []
     try:
@@ -420,12 +461,9 @@ def fetch_slate_evaluations(target_date_str=None):
                         'order': order_num, 'batter_name': b_name, 'b_hand': b_hand, 'pos': pos,
                         'team': team_name, 'opp_pitcher': opp_p_name, 'p_hand': opp_p_hand,
                         'pitcher_vuln_badge': opp_p_stats['badge'], 'split_desc': b_stats['split_desc'],
-                        'batter_badge': b_stats['batter_badge'], 's_mech': evals['s_mech'],
-                        's_pitch': evals['s_pitch'], 's_park': evals['s_park'], 's_opp': evals['s_opp'],
-                        'hr_score': evals['hr_score'], 'p_game_hr': evals['p_game_hr'],
-                        'best_book': np.random.choice(['DraftKings', 'FanDuel', 'bet365', 'Caesars']),
-                        'best_odds': evals['best_odds'], 'ev_pct': evals['ev_pct'],
-                        'rec_stake': evals['rec_stake'], 'venue': venue
+                        'batter_badge': b_stats['batter_badge'], 'iso': b_stats['iso'],
+                        'matchup_score': evals['matchup_score'], 'p_game_hr': evals['p_game_hr'],
+                        'venue': venue
                     }
                     all_players.append(row)
                     t_rows.append(row)
@@ -449,8 +487,8 @@ def fetch_slate_evaluations(target_date_str=None):
 
     df_all = pd.DataFrame(all_players)
     if not df_all.empty:
-        # Prioritize true HR score & positive expected value
-        df_all = df_all.sort_values(by=['hr_score', 'ev_pct'], ascending=[False, False]).reset_index(drop=True)
+        # Sort strictly by Pure Matchup Score & HR Probability
+        df_all = df_all.sort_values(by=['matchup_score', 'p_game_hr'], ascending=[False, False]).reset_index(drop=True)
         df_all['rank'] = df_all.index + 1
 
     return df_all, game_card_list
@@ -466,10 +504,10 @@ def render_top50_leaderboard(df, output_path, today_str):
     fig = plt.figure(figsize=(26, 14.5), dpi=300)
     fig.patch.set_facecolor('#0b1329')
 
-    fig.text(0.5, 0.965, "MLB SLATE TOP 50 HOME RUN VALUE TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.942, f"Statcast Batter Power vs. Pitcher Vulnerability Matrix • Upcoming Games • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
+    fig.text(0.5, 0.965, "MLB SLATE TOP 50 HOME RUN MATCHUP TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
+    fig.text(0.5, 0.942, f"Pure Power Talent vs. Pitcher Vulnerability Matrix • Upcoming Games • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
 
-    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Split Edge', 'Pitcher State', 'Score', 'HR %', 'Best Odds', 'EV %']
+    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Split Edge', 'Pitcher State', 'Power Profile', 'Score\n(100)', 'HR Prob']
 
     def create_table_rows(sub_df):
         rows = []
@@ -481,10 +519,9 @@ def render_top50_leaderboard(df, output_path, today_str):
                 f"{r['opp_pitcher'][:11]} ({r['p_hand']})",
                 "⚡ Rev Adv" if "Reverse Split" in r['split_desc'] else ("🔥 Platoon" if "Adv" in r['split_desc'] else "🛡️ Same-Hand"),
                 r['pitcher_vuln_badge'],
-                f"{r['hr_score']:.1f}",
-                f"{r['p_game_hr']*100:.1f}%",
-                f"{r['best_book'][:2]} {r['best_odds']}",
-                f"{r['ev_pct']:+.1f}%"
+                r['batter_badge'],
+                f"{r['matchup_score']:.1f}",
+                f"{r['p_game_hr']*100:.1f}%"
             ])
         return rows
 
@@ -507,9 +544,9 @@ def render_top50_leaderboard(df, output_path, today_str):
                 cell.set_text_props(color='#38bdf8', weight='bold')
                 cell.set_facecolor('#1e293b')
             else:
-                if col == 6:
-                    score_val = float(rows_data[row-1][6])
-                    cell.set_text_props(color='#38bdf8' if score_val >= 85.0 else '#f1f5f9', weight='bold')
+                if col == 7:
+                    score_val = float(rows_data[row-1][7])
+                    cell.set_text_props(color='#38bdf8' if score_val >= 88.0 else '#f1f5f9', weight='bold')
                 elif col == 4:
                     s_text = rows_data[row-1][4]
                     if 'Rev Adv' in s_text:
@@ -521,8 +558,14 @@ def render_top50_leaderboard(df, output_path, today_str):
                 elif col == 5:
                     p_text = rows_data[row-1][5]
                     cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
-                elif col == 9:
-                    cell.set_text_props(color='#4ade80' if '+' in rows_data[row-1][9] else '#f87171', weight='semibold')
+                elif col == 6:
+                    b_text = rows_data[row-1][6]
+                    if 'Elite' in b_text:
+                        cell.set_text_props(color='#c084fc', weight='bold')
+                    elif 'Crusher' in b_text or 'Hunter' in b_text:
+                        cell.set_text_props(color='#facc15', weight='bold')
+                    else:
+                        cell.set_text_props(color='#94a3b8')
                 else:
                     cell.set_text_props(color='#f1f5f9')
                 cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
@@ -560,7 +603,7 @@ def render_individual_game_card(card_info, output_dir, today_str):
     fig.text(0.5, 0.95, f"{team_name.upper()} — 9-MAN MATCHUP CARD (PRE-GAME)", ha='center', color='#f8fafc', fontsize=17, weight='bold')
     fig.text(0.5, 0.90, f"Opp Starter: {opp_p} [{p_badge}]  •  Venue: {venue}  •  {today_str}", ha='center', color='#38bdf8', fontsize=10, weight='semibold')
 
-    cols = ['#', 'Batter (Hand)', 'Pos', 'Platoon & Split State', 'Pitcher Arsenal State', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
+    cols = ['#', 'Batter (Hand)', 'Pos', 'Platoon & Split State', 'Pitcher Arsenal State', 'Power Profile', 'Score\n(100)', 'HR Prob']
     rows = []
 
     for _, r in df.head(9).iterrows():
@@ -571,10 +614,8 @@ def render_individual_game_card(card_info, output_dir, today_str):
             r['split_desc'],
             r['pitcher_vuln_badge'],
             r['batter_badge'],
-            f"{r['hr_score']:.1f}",
-            f"{r['p_game_hr']*100:.1f}%",
-            f"{r['best_book']} {r['best_odds']}",
-            f"{r['ev_pct']:+.1f}%"
+            f"{r['matchup_score']:.1f}",
+            f"{r['p_game_hr']*100:.1f}%"
         ])
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
@@ -603,11 +644,9 @@ def render_individual_game_card(card_info, output_dir, today_str):
                 cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
             elif col == 5:
                 b_text = rows[row-1][5]
-                if 'All-Arsenal' in b_text:
+                if 'Elite' in b_text:
                     cell.set_text_props(color='#c084fc', weight='bold')
-                elif 'Fastball' in b_text:
-                    cell.set_text_props(color='#fb923c', weight='bold')
-                elif 'Hunter' in b_text:
+                elif 'Crusher' in b_text or 'Hunter' in b_text:
                     cell.set_text_props(color='#facc15', weight='bold')
                 else:
                     cell.set_text_props(color='#94a3b8')
@@ -631,13 +670,12 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
         print("[!] Email credentials not set. Skipping email.")
         return
 
-    print(f"[i] Compiling Top 15 Home Run Portfolio email for {recipient}...")
+    print(f"[i] Compiling Top 15 Home Run Matchup email for {recipient}...")
     msg = MIMEMultipart('related')
-    msg['Subject'] = f"⚾ MLB HR Official Top 15 Portfolio • {today_str}"
+    msg['Subject'] = f"⚾ MLB HR Official Top 15 Matchups • {today_str}"
     msg['From'] = email_user
     msg['To'] = recipient
 
-    # Build Top 15 Portfolio Rows
     top_15_df = df.head(15).copy()
     portfolio_rows = ""
     for _, r in top_15_df.iterrows():
@@ -646,30 +684,28 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
             <td style="padding: 7px; font-weight: bold; color: #38bdf8;">#{r['rank']} {r['batter_name']} ({r['b_hand']})</td>
             <td style="padding: 7px;">{r['team']} vs {r['opp_pitcher']} ({r['p_hand']})</td>
             <td style="padding: 7px; color: #4ade80;">{r['split_desc']}</td>
-            <td style="padding: 7px; font-weight: bold; color: #38bdf8;">{r['hr_score']:.1f}</td>
-            <td style="padding: 7px;">{r['best_book']} {r['best_odds']}</td>
-            <td style="padding: 7px; font-weight: bold; color: {'#4ade80' if r['ev_pct'] >= 0 else '#f87171'};">{r['ev_pct']:+.1f}%</td>
-            <td style="padding: 7px; font-weight: bold; color: #facc15;">{r['rec_stake']:.2f}u</td>
+            <td style="padding: 7px;">{r['batter_badge']}</td>
+            <td style="padding: 7px; font-weight: bold; color: #38bdf8;">{r['matchup_score']:.1f}</td>
+            <td style="padding: 7px; font-weight: bold; color: #facc15;">{r['p_game_hr']*100:.1f}%</td>
         </tr>
         """
 
     html_content = f"""
     <html>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
-            <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Official Top 15 Home Run Portfolio</h2>
-            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">High +EV Statcast Selections • {today_str}</p>
+            <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Top 15 Home Run Matchups</h2>
+            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Ranked by Pure Power & Pitcher Vulnerability • {today_str}</p>
             
-            <h3 style="color: #f8fafc; margin-top: 15px;">🎯 Official Top 15 HR Targets & Stake Allocation</h3>
-            <table style="width: 100%; max-width: 780px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
+            <h3 style="color: #f8fafc; margin-top: 15px;">🎯 Official Top 15 HR Targets</h3>
+            <table style="width: 100%; max-width: 800px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
                 <thead>
                     <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
                         <th style="padding: 7px;">Batter</th>
                         <th style="padding: 7px;">Matchup</th>
                         <th style="padding: 7px;">Split Edge</th>
+                        <th style="padding: 7px;">Power Profile</th>
                         <th style="padding: 7px;">Score</th>
-                        <th style="padding: 7px;">Line</th>
-                        <th style="padding: 7px;">EV %</th>
-                        <th style="padding: 7px;">Stake</th>
+                        <th style="padding: 7px;">HR Prob</th>
                     </tr>
                 </thead>
                 <tbody>{portfolio_rows}</tbody>
@@ -696,12 +732,12 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
             server.login(email_user, email_pass)
             server.sendmail(email_user, recipient, msg.as_string())
-        print(f"[✓] Successfully delivered Top 15 HR Portfolio email to {recipient}.")
+        print(f"[✓] Successfully delivered Top 15 HR Matchup email to {recipient}.")
     except Exception as e:
         print(f"[!] SMTP Error delivering email: {e}")
 
 def run_predictions():
-    print(f"[{datetime.now()}] Starting slate model execution (Top 15 HR Portfolio Generation)...")
+    print(f"[{datetime.now()}] Starting slate model execution (Top 15 HR Pure Matchup Generation)...")
     os.makedirs("exports/game_cards", exist_ok=True)
     today_str = datetime.now().strftime('%Y-%m-%d')
 
@@ -728,7 +764,7 @@ def run_predictions():
     send_email_digest(df, png_path, today_str)
 
 def run_settlement():
-    print(f"[{datetime.now()}] Running automated settlement on Top 15 HR Portfolio...")
+    print(f"[{datetime.now()}] Running automated settlement on Top 15 HR Matchups...")
     os.makedirs("exports", exist_ok=True)
     yesterday_date = datetime.now() - timedelta(days=1)
     yesterday_str = yesterday_date.strftime('%Y-%m-%d')
@@ -746,7 +782,6 @@ def run_settlement():
         print(f"[i] Reconstructing yesterday's slate rankings directly from MLB schedule for {yesterday_str}...")
         projections_df, _ = fetch_slate_evaluations(target_date_str=yesterday_str)
 
-    # Restrict official settlement strictly to the Top 15 HR Portfolio
     if not projections_df.empty:
         projections_df = projections_df.head(15).copy()
 
@@ -773,8 +808,6 @@ def run_settlement():
         print(f"[!] Error pulling box scores: {e}")
 
     settlement_rows = []
-    total_units_won = 0.0
-    total_units_staked = 0.0
     total_picks = 0
     total_hits = 0
 
@@ -785,34 +818,21 @@ def run_settlement():
             clean_bname = clean_name_str(b_name)
             hit_hr = clean_bname in actual_hr_hitters
             hr_total = actual_hr_hitters.get(clean_bname, 0)
-            
-            stake = float(r.get('rec_stake', 1.0))
-            total_units_staked += stake
-
-            odds_str = str(r.get('best_odds', '+300')).replace('+', '')
-            odds_val = float(odds_str) if odds_str.isdigit() else 300.0
 
             if hit_hr:
                 total_hits += 1
-                profit = round(stake * (odds_val / 100.0), 2)
                 result_str = f"WIN ({hr_total} HR)"
-                total_units_won += profit
             else:
-                profit = -round(stake, 2)
-                result_str = "LOSS (0 HR)"
-                total_units_won -= stake
+                result_str = "NO HR"
 
             settlement_rows.append({
                 'rank': r.get('rank', total_picks),
                 'batter_name': b_name,
                 'team': r.get('team', ''),
                 'opp_pitcher': r.get('opp_pitcher', ''),
-                'hr_score': r.get('hr_score', 0.0),
-                'odds': r.get('best_odds', '+300'),
-                'stake': f"{stake:.2f}u",
-                'result': result_str,
-                'actual_hrs': hr_total,
-                'unit_profit': profit
+                'score': r.get('matchup_score', 0.0),
+                'hr_prob': f"{float(r.get('p_game_hr', 0.0))*100:.1f}%",
+                'result': result_str
             })
 
     settle_df = pd.DataFrame(settlement_rows)
@@ -820,8 +840,7 @@ def run_settlement():
     settle_df.to_csv(settle_csv_path, index=False)
 
     hit_rate = (total_hits / total_picks * 100) if total_picks > 0 else 0.0
-    roi = (total_units_won / total_units_staked * 100) if total_units_staked > 0 else 0.0
-    print(f"📊 Top 15 Summary for {yesterday_str}: {total_hits}/{total_picks} Hit ({hit_rate:.1f}%) | Staked: {total_units_staked:.2f}u | Net: {total_units_won:+.2f}u (ROI: {roi:+.1f}%)")
+    print(f"📊 Top 15 HR Matchup Performance for {yesterday_str}: {total_hits}/{total_picks} Hit HR ({hit_rate:.1f}%)")
 
     email_user = os.getenv("EMAIL_USER", "").strip()
     email_pass = os.getenv("EMAIL_PASS", "").strip()
@@ -829,7 +848,7 @@ def run_settlement():
     if email_user and email_pass and recipient:
         try:
             msg = MIMEMultipart()
-            msg['Subject'] = f"📊 MLB HR Top 15 Settlement Report • {yesterday_str} ({total_units_won:+.2f}u)"
+            msg['Subject'] = f"📊 MLB HR Top 15 Recap • {yesterday_str} ({total_hits}/{total_picks} Hit HR)"
             msg['From'] = email_user
             msg['To'] = recipient
 
@@ -841,31 +860,29 @@ def run_settlement():
                 <tr style="border-bottom: 1px solid #334155;">
                     <td style="padding: 6px;">#{r['rank']} {r['batter_name']}</td>
                     <td style="padding: 6px;">{r['team']}</td>
-                    <td style="padding: 6px;">{r['odds']}</td>
-                    <td style="padding: 6px; color: #facc15;">{r['stake']}</td>
+                    <td style="padding: 6px;">{r['opp_pitcher']}</td>
+                    <td style="padding: 6px; font-weight: bold; color: #38bdf8;">{r['score']}</td>
+                    <td style="padding: 6px;">{r['hr_prob']}</td>
                     <td style="padding: 6px; font-weight: bold; color: {row_color};">{r['result']}</td>
-                    <td style="padding: 6px; font-weight: bold; color: {row_color};">{r['unit_profit']:+.2f}u</td>
                 </tr>
                 """
 
             html = f"""
             <html>
                 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
-                    <h2 style="color: #38bdf8;">📊 MLB Home Run Top 15 Settlement Report • {yesterday_str}</h2>
+                    <h2 style="color: #38bdf8;">📊 MLB Home Run Top 15 Recap • {yesterday_str}</h2>
                     <p style="font-size: 15px;">
-                        <strong>Portfolio Hits:</strong> {total_hits}/{total_picks} ({hit_rate:.1f}%) | 
-                        <strong>Total Staked:</strong> {total_units_staked:.2f}u | 
-                        <strong>Net P&L:</strong> <span style="color: {'#4ade80' if total_units_won >= 0 else '#f87171'};">{total_units_won:+.2f} Units (ROI: {roi:+.1f}%)</span>
+                        <strong>Home Run Hits:</strong> <span style="color: #4ade80; font-weight: bold;">{total_hits} / {total_picks} ({hit_rate:.1f}%)</span>
                     </p>
                     <table style="width: 100%; max-width: 680px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; margin-top: 15px; border-radius: 6px; overflow: hidden;">
                         <thead>
                             <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
                                 <th style="padding: 6px;">Batter</th>
                                 <th style="padding: 6px;">Team</th>
-                                <th style="padding: 6px;">Odds</th>
-                                <th style="padding: 6px;">Stake</th>
+                                <th style="padding: 6px;">Opp Pitcher</th>
+                                <th style="padding: 6px;">Score</th>
+                                <th style="padding: 6px;">HR Prob</th>
                                 <th style="padding: 6px;">Result</th>
-                                <th style="padding: 6px;">P&L</th>
                             </tr>
                         </thead>
                         <tbody>{table_rows}</tbody>
@@ -878,7 +895,7 @@ def run_settlement():
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
                 server.login(email_user, email_pass)
                 server.sendmail(email_user, recipient, msg.as_string())
-            print(f"[✓] Successfully emailed Top 15 HR settlement report to {recipient}.")
+            print(f"[✓] Successfully emailed Top 15 HR settlement recap to {recipient}.")
         except Exception as e:
             print(f"[!] Failed to send settlement email: {e}")
 
