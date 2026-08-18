@@ -2,6 +2,11 @@ import argparse
 from datetime import datetime, timedelta
 import os
 import re
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.application import MIMEApplication
 import pandas as pd
 import numpy as np
 import requests
@@ -18,7 +23,6 @@ BALLPARK_HR_FACTORS = {
     'Kauffman Stadium': 92, 'Oracle Park': 84, 'T-Mobile Park': 88, 'default': 100
 }
 
-# In-Memory Master League Registries
 LEAGUE_ID_REGISTRY = {}
 LEAGUE_NAME_REGISTRY = {}
 PITCHER_PROFILE_CACHE = {}
@@ -45,16 +49,11 @@ SIGNATURE_ARSENALS = {
 }
 
 def clean_name_str(name: str) -> str:
-    """Normalizes player names for collision-free dictionary lookups."""
     if not name:
         return ""
     return re.sub(r'[^a-zA-Z0-9]', '', name).lower()
 
 def initialize_league_registry():
-    """
-    Downloads and caches the entire active MLB player registry at pipeline startup.
-    Eliminates all missing handedness, position, and ID errors.
-    """
     global LEAGUE_ID_REGISTRY, LEAGUE_NAME_REGISTRY
     print(f"[i] Pre-loading MLB master player registry for {CURRENT_SEASON}...")
     try:
@@ -84,7 +83,6 @@ def initialize_league_registry():
         print(f"[!] Registry pre-fetch warning: {e}. Fallback lookups will remain active.")
 
 def get_player_metadata(person_id: int, player_name: str = ""):
-    """Instantly resolves true player profile from memory."""
     if person_id and person_id in LEAGUE_ID_REGISTRY:
         p = LEAGUE_ID_REGISTRY[person_id]
         return p['b_hand'], p['p_hand'], p['pos']
@@ -120,14 +118,12 @@ def get_player_metadata(person_id: int, player_name: str = ""):
     return b_hand, p_hand, pos
 
 def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
-    """Pulls true pitcher throwing hand, HR/9, WHIP, and accurate risk badges."""
     clean_key = clean_name_str(pitcher_name)
     if clean_key in PITCHER_PROFILE_CACHE:
         return PITCHER_PROFILE_CACHE[clean_key]
 
     _, p_hand, _ = get_player_metadata(pitcher_id, pitcher_name)
 
-    # 1. Match signature profiles
     for name_key, (ars, hr9_val, whip_val, badge_text) in SIGNATURE_ARSENALS.items():
         if clean_name_str(name_key) in clean_key or clean_key in clean_name_str(name_key):
             is_vuln = "🔴" in badge_text
@@ -138,7 +134,6 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
             PITCHER_PROFILE_CACHE[clean_key] = (ars, profile)
             return ars, profile
 
-    # 2. Live Statcast Metrics Lookup
     hr9, whip, era = 1.15, 1.24, 4.10
     target_id = pitcher_id
     if not target_id and pitcher_name and 'TBD' not in pitcher_name:
@@ -204,7 +199,6 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
     return matched_arsenal, profile
 
 def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p_hand: str, pitcher_arsenal: dict):
-    """Evaluates ISO, Barrel %, HR/PA, and assigns Advantage badges."""
     iso, hr_total = 0.180, 10
     target_id = person_id
 
@@ -224,7 +218,6 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
         except Exception:
             pass
 
-    # Platoon Logic
     same_hand = (b_hand == p_hand and b_hand != 'S')
     if same_hand:
         if iso >= 0.220:
@@ -284,7 +277,6 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     }
 
 def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
-    """Calculates granular power score with authentic open distribution."""
     s_mech = (b_stats['barrel'] / 0.15) * 14.0 + (b_stats['iso'] / 0.250) * 13.0 + b_stats['bonus_score']
     vuln_boost = 4.5 if p_stats['is_vuln'] else (-3.5 if 'Elite' in p_stats['badge'] else 0.0)
     s_pitch = (p_stats['hr9'] / 1.25) * 12.0 + (p_stats['whip'] / 1.25) * 7.0 + vuln_boost
@@ -312,7 +304,6 @@ def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
     }
 
 def fetch_projected_lineup_rotowire(team_name: str):
-    """Pulls consensus projected 1-9 batting orders with exact handedness."""
     try:
         url = "https://www.rotowire.com/baseball/daily-lineups.php"
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -461,73 +452,94 @@ def fetch_slate_evaluations():
 
     return df_all, game_card_list
 
-def render_top20_leaderboard(df, output_path, today_str):
-    df_20 = df.head(20).copy()
-    fig, ax = plt.subplots(figsize=(19.5, max(7.0, len(df_20)*0.62)), dpi=300)
-    fig.patch.set_facecolor('#0f172a')
-    ax.axis('off')
+def render_top50_leaderboard(df, output_path, today_str):
+    df_50 = df.head(50).copy()
+    num_batters = len(df_50)
 
-    fig.text(0.5, 0.96, "MLB SLATE TOP 20 HOME RUN TARGETS", ha='center', color='#f8fafc', fontsize=20, weight='bold')
-    fig.text(0.5, 0.93, f"Upcoming Games • Authentic Pitch Arsenals vs. Power Splits • {today_str}", ha='center', color='#94a3b8', fontsize=11)
+    midpoint = min(25, (num_batters + 1) // 2) if num_batters > 25 else num_batters
+    df_left = df_50.iloc[:midpoint].copy()
+    df_right = df_50.iloc[midpoint:].copy() if num_batters > 25 else pd.DataFrame()
 
-    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Platoon & Split State', 'Pitcher Arsenal State', 'Batter Matchup Badge', 'Score\n(100)', 'HR Prob', 'Best Line', 'EV %']
-    table_rows = []
+    fig = plt.figure(figsize=(26, 14.5), dpi=300)
+    fig.patch.set_facecolor('#0b1329')
 
-    for _, r in df_20.iterrows():
-        table_rows.append([
-            r['rank'],
-            f"{r['batter_name']} ({r['b_hand']})",
-            r['team'][:12],
-            f"{r['opp_pitcher'][:12]} ({r['p_hand']})",
-            r['split_desc'],
-            r['pitcher_vuln_badge'],
-            r['batter_badge'],
-            f"{r['hr_score']:.1f}",
-            f"{r['p_game_hr']*100:.1f}%",
-            f"{r['best_book']} {r['best_odds']}",
-            f"{r['ev_pct']:+.1f}%"
-        ])
+    fig.text(0.5, 0.965, "MLB SLATE TOP 50 HOME RUN VALUE TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
+    fig.text(0.5, 0.942, f"Statcast Batter Power vs. Pitcher Vulnerability Matrix • Upcoming Games • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
 
-    table = ax.table(cellText=table_rows, colLabels=table_cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(table_cols))
-    table.auto_set_font_size(False)
-    table.set_fontsize(8.0)
-    table.scale(1.0, 1.95)
+    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Split Edge', 'Pitcher State', 'Score', 'HR %', 'Best Odds', 'EV %']
 
-    for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#334155')
-        if row == 0:
-            cell.set_text_props(color='#38bdf8', weight='bold')
-            cell.set_facecolor('#1e293b')
-        else:
-            if col == 7:
-                score_val = float(table_rows[row-1][7])
-                cell.set_text_props(color='#38bdf8' if score_val >= 85.0 else '#f1f5f9', weight='bold')
-            elif col == 4:
-                split_val = table_rows[row-1][4]
-                if 'Reverse Split' in split_val:
-                    cell.set_text_props(color='#38bdf8', weight='bold')
-                elif 'Batter Adv' in split_val or 'Platoon' in split_val:
-                    cell.set_text_props(color='#4ade80', weight='bold')
-                else:
-                    cell.set_text_props(color='#f87171')
-            elif col == 5:
-                p_text = table_rows[row-1][5]
-                cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
-            elif col == 6:
-                b_text = table_rows[row-1][6]
-                if 'All-Arsenal' in b_text:
-                    cell.set_text_props(color='#c084fc', weight='bold')
-                elif 'Fastball' in b_text:
-                    cell.set_text_props(color='#fb923c', weight='bold')
-                elif 'Hunter' in b_text:
-                    cell.set_text_props(color='#facc15', weight='bold')
-                else:
-                    cell.set_text_props(color='#94a3b8')
+    def create_table_rows(sub_df):
+        rows = []
+        for _, r in sub_df.iterrows():
+            rows.append([
+                r['rank'],
+                f"{r['batter_name']} ({r['b_hand']})",
+                r['team'][:11],
+                f"{r['opp_pitcher'][:11]} ({r['p_hand']})",
+                "⚡ Rev Adv" if "Reverse Split" in r['split_desc'] else ("🔥 Platoon" if "Adv" in r['split_desc'] else "🛡️ Same-Hand"),
+                r['pitcher_vuln_badge'],
+                f"{r['hr_score']:.1f}",
+                f"{r['p_game_hr']*100:.1f}%",
+                f"{r['best_book'][:2]} {r['best_odds']}",
+                f"{r['ev_pct']:+.1f}%"
+            ])
+        return rows
+
+    ax_left = fig.add_axes([0.02, 0.04, 0.47, 0.88])
+    ax_left.axis('off')
+    rows_left = create_table_rows(df_left)
+
+    table_l = ax_left.table(
+        cellText=rows_left, colLabels=table_cols, loc='center', cellLoc='center',
+        colColours=['#1e293b'] * len(table_cols)
+    )
+    table_l.auto_set_font_size(False)
+    table_l.set_fontsize(7.8)
+    table_l.scale(1.0, 1.85)
+
+    def style_table(table_obj, rows_data):
+        for (row, col), cell in table_obj.get_celld().items():
+            cell.set_edgecolor('#1e293b')
+            if row == 0:
+                cell.set_text_props(color='#38bdf8', weight='bold')
+                cell.set_facecolor('#1e293b')
             else:
-                cell.set_text_props(color='#f1f5f9')
-            cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
+                if col == 6:
+                    score_val = float(rows_data[row-1][6])
+                    cell.set_text_props(color='#38bdf8' if score_val >= 85.0 else '#f1f5f9', weight='bold')
+                elif col == 4:
+                    s_text = rows_data[row-1][4]
+                    if 'Rev Adv' in s_text:
+                        cell.set_text_props(color='#38bdf8', weight='bold')
+                    elif 'Platoon' in s_text:
+                        cell.set_text_props(color='#4ade80', weight='bold')
+                    else:
+                        cell.set_text_props(color='#f87171')
+                elif col == 5:
+                    p_text = rows_data[row-1][5]
+                    cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
+                elif col == 9:
+                    cell.set_text_props(color='#4ade80' if '+' in rows_data[row-1][9] else '#f87171', weight='semibold')
+                else:
+                    cell.set_text_props(color='#f1f5f9')
+                cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
 
-    plt.tight_layout()
+    style_table(table_l, rows_left)
+
+    if not df_right.empty:
+        ax_right = fig.add_axes([0.51, 0.04, 0.47, 0.88])
+        ax_right.axis('off')
+        rows_right = create_table_rows(df_right)
+
+        table_r = ax_right.table(
+            cellText=rows_right, colLabels=table_cols, loc='center', cellLoc='center',
+            colColours=['#1e293b'] * len(table_cols)
+        )
+        table_r.auto_set_font_size(False)
+        table_r.set_fontsize(7.8)
+        table_r.scale(1.0, 1.85)
+        style_table(table_r, rows_right)
+
     plt.savefig(output_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close()
 
@@ -607,8 +619,91 @@ def render_individual_game_card(card_info, output_dir, today_str):
     plt.close()
     return out_path
 
+def send_email_digest(df: pd.DataFrame, image_path: str, csv_path: str, today_str: str):
+    email_user = os.getenv("EMAIL_USER", "").strip()
+    email_pass = os.getenv("EMAIL_PASS", "").strip()
+    recipient = os.getenv("RECIPIENT_EMAIL", "").strip()
+
+    if not email_user or not email_pass or not recipient:
+        print("[!] Email credentials (EMAIL_USER, EMAIL_PASS, RECIPIENT_EMAIL) not fully set. Skipping email delivery.")
+        return
+
+    print(f"[i] Compiling email digest for {recipient}...")
+
+    msg = MIMEMultipart('related')
+    msg['Subject'] = f"⚾ MLB HR Slate Top 50 Board • {today_str}"
+    msg['From'] = email_user
+    msg['To'] = recipient
+
+    top_5_rows = ""
+    for _, r in df.head(5).iterrows():
+        top_5_rows += f"""
+        <tr style="border-bottom: 1px solid #334155;">
+            <td style="padding: 8px; font-weight: bold; color: #38bdf8;">#{r['rank']} {r['batter_name']} ({r['b_hand']})</td>
+            <td style="padding: 8px;">{r['team']} vs {r['opp_pitcher']} ({r['p_hand']})</td>
+            <td style="padding: 8px; color: #4ade80;">{r['split_desc']}</td>
+            <td style="padding: 8px; font-weight: bold; color: #38bdf8;">{r['hr_score']:.1f}</td>
+            <td style="padding: 8px;">{r['best_book']} {r['best_odds']} ({r['ev_pct']:+.1f}%)</td>
+        </tr>
+        """
+
+    html_content = f"""
+    <html>
+        <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 20px;">
+            <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Daily Home Run Targets & Value Board</h2>
+            <p style="color: #94a3b8; font-size: 14px; margin-top: 0;">Automated Model Projections • {today_str}</p>
+            
+            <h3 style="color: #f8fafc; margin-top: 20px;">🔥 Top 5 Slate Targets</h3>
+            <table style="width: 100%; max-width: 700px; border-collapse: collapse; background-color: #1e293b; border-radius: 8px; overflow: hidden; font-size: 13px;">
+                <thead>
+                    <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
+                        <th style="padding: 8px;">Batter</th>
+                        <th style="padding: 8px;">Matchup</th>
+                        <th style="padding: 8px;">Split Edge</th>
+                        <th style="padding: 8px;">Score</th>
+                        <th style="padding: 8px;">Best Line</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {top_5_rows}
+                </tbody>
+            </table>
+
+            <h3 style="color: #f8fafc; margin-top: 25px;">📊 Full Top 50 Dual-Column Leaderboard</h3>
+            <img src="cid:top50_image" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155;" alt="Top 50 Board"/>
+
+            <p style="color: #64748b; font-size: 12px; margin-top: 25px;">MLB Predictive Engine • Automated Real-Time Pipeline</p>
+        </body>
+    </html>
+    """
+
+    msg_alt = MIMEMultipart('alternative')
+    msg.attach(msg_alt)
+    msg_alt.attach(MIMEText(html_content, 'html'))
+
+    if os.path.exists(image_path):
+        with open(image_path, 'rb') as f:
+            img_part = MIMEImage(f.read())
+            img_part.add_header('Content-ID', '<top50_image>')
+            img_part.add_header('Content-Disposition', 'inline', filename='top50_board.png')
+            msg.attach(img_part)
+
+    if os.path.exists(csv_path):
+        with open(csv_path, 'rb') as f:
+            csv_part = MIMEApplication(f.read(), Name=os.path.basename(csv_path))
+            csv_part['Content-Disposition'] = f'attachment; filename="{os.path.basename(csv_path)}"'
+            msg.attach(csv_part)
+
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+            server.login(email_user, email_pass)
+            server.sendmail(email_user, recipient, msg.as_string())
+        print(f"[✓] Successfully delivered Top 50 email digest to {recipient}.")
+    except Exception as e:
+        print(f"[!] SMTP Error delivering email: {e}")
+
 def run_predictions():
-    print(f"[{datetime.now()}] Starting slate model execution (upcoming games only)...")
+    print(f"[{datetime.now()}] Starting slate model execution (Top 50 Board Generation)...")
     os.makedirs("exports/game_cards", exist_ok=True)
     today_str = datetime.now().strftime('%Y-%m-%d')
 
@@ -617,11 +712,11 @@ def run_predictions():
         print("[i] No upcoming games left on today's slate.")
         return
 
-    csv_path = f"exports/hr_top20_{today_str}.csv"
-    png_path = f"exports/hr_top20_leaderboard_{today_str}.png"
+    csv_path = f"exports/hr_top50_{today_str}.csv"
+    png_path = f"exports/hr_top50_leaderboard_{today_str}.png"
 
-    df.head(20).to_csv(csv_path, index=False)
-    render_top20_leaderboard(df, png_path, today_str)
+    df.head(50).to_csv(csv_path, index=False)
+    render_top50_leaderboard(df, png_path, today_str)
 
     rendered_count = 0
     for card_info in game_cards:
@@ -631,16 +726,154 @@ def run_predictions():
         except Exception as e:
             print(f"[!] Could not render card for {card_info.get('title')}: {e}")
 
-    print(f"[✓] Saved Top-20 Leaderboard PNG/CSV and {rendered_count} 9-man game cards to exports/.")
+    print(f"[✓] Saved Top-50 Dual-Column Board (PNG/CSV) and {rendered_count} 9-man game cards to exports/.")
+    send_email_digest(df, png_path, csv_path, today_str)
 
 def run_settlement():
-    print(f"[{datetime.now()}] Running settlement...")
-    yesterday = (datetime.now() - timedelta(days=1)).strftime('%m/%d/%Y')
+    print(f"[{datetime.now()}] Running automated settlement and grading...")
+    os.makedirs("exports", exist_ok=True)
+    yesterday_date = datetime.now() - timedelta(days=1)
+    yesterday_str = yesterday_date.strftime('%Y-%m-%d')
+    yesterday_api_str = yesterday_date.strftime('%m/%d/%Y')
+
+    # Look for yesterday's projection file
+    target_csv = f"exports/hr_top50_{yesterday_str}.csv"
+    if not os.path.exists(target_csv):
+        alt_csv = f"exports/hr_top20_{yesterday_str}.csv"
+        target_csv = alt_csv if os.path.exists(alt_csv) else None
+
+    if not target_csv:
+        print(f"[!] No projection file found for {yesterday_str} in exports/. Checking schedule directly.")
+        projections_df = pd.DataFrame()
+    else:
+        projections_df = pd.read_csv(target_csv)
+
+    print(f"[i] Fetching official completed box scores for {yesterday_api_str}...")
+    actual_hr_hitters = {}
     try:
-        games = statsapi.schedule(date=yesterday)
-        print(f"[✓] Retrieved {len(games)} games for settlement on {yesterday}.")
+        games = statsapi.schedule(date=yesterday_api_str)
+        for g in games:
+            gid = g.get('game_id')
+            if not gid: continue
+            try:
+                box = statsapi.boxscore_data(gid)
+                for side in ['away', 'home']:
+                    players = box.get(side, {}).get('players', {})
+                    for p_key, p_val in players.items():
+                        p_name = p_val.get('person', {}).get('fullName', '')
+                        hr_count = p_val.get('stats', {}).get('batting', {}).get('homeRuns', 0)
+                        if p_name and hr_count > 0:
+                            actual_hr_hitters[clean_name_str(p_name)] = hr_count
+            except Exception:
+                pass
+        print(f"[✓] Found {len(actual_hr_hitters)} distinct players who hit a home run on {yesterday_str}.")
     except Exception as e:
-        print(f"[!] Settlement error: {e}")
+        print(f"[!] Error pulling box scores: {e}")
+
+    settlement_rows = []
+    total_units_won = 0.0
+    total_picks = 0
+    total_hits = 0
+
+    if not projections_df.empty:
+        for _, r in projections_df.iterrows():
+            total_picks += 1
+            b_name = str(r.get('batter_name', ''))
+            clean_bname = clean_name_str(b_name)
+            hit_hr = clean_bname in actual_hr_hitters
+            hr_total = actual_hr_hitters.get(clean_bname, 0)
+            
+            odds_str = str(r.get('best_odds', '+300')).replace('+', '')
+            odds_val = float(odds_str) if odds_str.isdigit() else 300.0
+
+            if hit_hr:
+                total_hits += 1
+                profit = round(odds_val / 100.0, 2)
+                result_str = f"WIN ({hr_total} HR)"
+                total_units_won += profit
+            else:
+                profit = -1.00
+                result_str = "LOSS (0 HR)"
+                total_units_won -= 1.00
+
+            settlement_rows.append({
+                'rank': r.get('rank', total_picks),
+                'batter_name': b_name,
+                'team': r.get('team', ''),
+                'opp_pitcher': r.get('opp_pitcher', ''),
+                'hr_score': r.get('hr_score', 0.0),
+                'odds': r.get('best_odds', '+300'),
+                'result': result_str,
+                'actual_hrs': hr_total,
+                'unit_profit': profit
+            })
+
+    settle_df = pd.DataFrame(settlement_rows)
+    settle_csv_path = f"exports/settlement_{yesterday_str}.csv"
+    settle_df.to_csv(settle_csv_path, index=False)
+    print(f"[✓] Saved official settlement report to {settle_csv_path}.")
+
+    hit_rate = (total_hits / total_picks * 100) if total_picks > 0 else 0.0
+    roi = (total_units_won / total_picks * 100) if total_picks > 0 else 0.0
+    print(f"📊 Summary for {yesterday_str}: {total_hits}/{total_picks} Hit ({hit_rate:.1f}%) | Net Units: {total_units_won:+.2f}u (ROI: {roi:+.1f}%)")
+
+    # Send Settlement Digest to Email
+    email_user = os.getenv("EMAIL_USER", "").strip()
+    email_pass = os.getenv("EMAIL_PASS", "").strip()
+    recipient = os.getenv("RECIPIENT_EMAIL", "").strip()
+    if email_user and email_pass and recipient:
+        try:
+            msg = MIMEMultipart()
+            msg['Subject'] = f"📊 MLB Settlement Report • {yesterday_str} ({total_units_won:+.2f}u)"
+            msg['From'] = email_user
+            msg['To'] = recipient
+
+            table_rows = ""
+            for _, r in settle_df.head(20).iterrows():
+                is_win = "WIN" in r['result']
+                row_color = "#4ade80" if is_win else "#94a3b8"
+                table_rows += f"""
+                <tr style="border-bottom: 1px solid #334155;">
+                    <td style="padding: 6px;">#{r['rank']} {r['batter_name']}</td>
+                    <td style="padding: 6px;">{r['team']}</td>
+                    <td style="padding: 6px;">{r['odds']}</td>
+                    <td style="padding: 6px; font-weight: bold; color: {row_color};">{r['result']}</td>
+                    <td style="padding: 6px; font-weight: bold; color: {row_color};">{r['unit_profit']:+.2f}u</td>
+                </tr>
+                """
+
+            html = f"""
+            <html>
+                <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 20px;">
+                    <h2 style="color: #38bdf8;">📊 MLB Home Run Settlement Report • {yesterday_str}</h2>
+                    <p style="font-size: 15px;"><strong>Results:</strong> {total_hits}/{total_picks} Hit ({hit_rate:.1f}%) | <strong>Profit:</strong> <span style="color: {'#4ade80' if total_units_won >= 0 else '#f87171'};">{total_units_won:+.2f} Units (ROI: {roi:+.1f}%)</span></p>
+                    <table style="width: 100%; max-width: 650px; border-collapse: collapse; background-color: #1e293b; font-size: 13px; margin-top: 15px;">
+                        <thead>
+                            <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
+                                <th style="padding: 6px;">Batter</th>
+                                <th style="padding: 6px;">Team</th>
+                                <th style="padding: 6px;">Odds</th>
+                                <th style="padding: 6px;">Result</th>
+                                <th style="padding: 6px;">P&L</th>
+                            </tr>
+                        </thead>
+                        <tbody>{table_rows}</tbody>
+                    </table>
+                </body>
+            </html>
+            """
+            msg.attach(MIMEText(html, 'html'))
+            with open(settle_csv_path, 'rb') as f:
+                part = MIMEApplication(f.read(), Name=os.path.basename(settle_csv_path))
+                part['Content-Disposition'] = f'attachment; filename="{os.path.basename(settle_csv_path)}"'
+                msg.attach(part)
+
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+                server.login(email_user, email_pass)
+                server.sendmail(email_user, recipient, msg.as_string())
+            print(f"[✓] Successfully emailed settlement report to {recipient}.")
+        except Exception as e:
+            print(f"[!] Failed to send settlement email: {e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
