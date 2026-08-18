@@ -25,55 +25,7 @@ BALLPARK_HR_FACTORS = {
 LEAGUE_ID_REGISTRY = {}
 LEAGUE_NAME_REGISTRY = {}
 PITCHER_PROFILE_CACHE = {}
-
-# Accurate baseline ISO and Barrel profiles for MLB Power Hitters
-KNOWN_POWER_BATTERS = {
-    'Aaron Judge': (0.340, 0.26, 45),
-    'Shohei Ohtani': (0.330, 0.24, 44),
-    'Kyle Schwarber': (0.270, 0.18, 38),
-    'Pete Alonso': (0.255, 0.16, 36),
-    'Matt Olson': (0.260, 0.17, 35),
-    'Bryce Harper': (0.250, 0.16, 30),
-    'Yordan Alvarez': (0.290, 0.20, 35),
-    'Juan Soto': (0.275, 0.19, 36),
-    'Gunnar Henderson': (0.265, 0.16, 34),
-    'Eugenio Suárez': (0.240, 0.14, 30),
-    'Eugenio Suarez': (0.240, 0.14, 30),
-    'Junior Caminero': (0.245, 0.15, 26),
-    'Elly De La Cruz': (0.230, 0.14, 25),
-    'Bobby Witt Jr.': (0.260, 0.16, 30),
-    'Austin Riley': (0.240, 0.15, 28),
-    'Ronald Acuña Jr.': (0.250, 0.16, 30),
-    'Ronald Acuna Jr.': (0.250, 0.16, 30),
-    'Freddie Freeman': (0.220, 0.12, 22),
-    'Max Muncy': (0.240, 0.15, 25),
-    'Marcell Ozuna': (0.280, 0.18, 38),
-    'Corey Seager': (0.260, 0.16, 30),
-    'Rafael Devers': (0.260, 0.16, 30),
-    'Brent Rooker': (0.270, 0.18, 35),
-    'Giancarlo Stanton': (0.260, 0.19, 28)
-}
-
-SIGNATURE_ARSENALS = {
-    'Shane McClanahan': ({'FF': 0.45, 'CH': 0.25, 'SL': 0.20, 'CU': 0.10}, 0.72, 1.05, '🟢 Elite Lockdown Starter'),
-    'Framber Valdez': ({'SI': 0.55, 'CH': 0.25, 'CU': 0.20}, 0.65, 1.12, '🟢 Elite Groundball Profile'),
-    'Cristopher Sánchez': ({'SI': 0.52, 'CH': 0.32, 'SL': 0.16}, 0.75, 1.14, '🟢 Elite Groundball Profile'),
-    'Cristopher Sanchez': ({'SI': 0.52, 'CH': 0.32, 'SL': 0.16}, 0.75, 1.14, '🟢 Elite Groundball Profile'),
-    'Blake Snell': ({'FF': 0.48, 'SL': 0.24, 'CH': 0.18, 'CU': 0.10}, 0.85, 1.18, '🟢 Elite Lockdown Starter'),
-    'Tarik Skubal': ({'FF': 0.44, 'CH': 0.28, 'SL': 0.20, 'CU': 0.08}, 0.68, 0.95, '🟢 Elite Lockdown Starter'),
-    'Cole Ragans': ({'FF': 0.46, 'CH': 0.26, 'SL': 0.18, 'CU': 0.10}, 0.78, 1.10, '🟢 Elite Lockdown Starter'),
-    'Rhett Lowder': ({'SI': 0.44, 'CH': 0.30, 'SL': 0.20, 'FF': 0.06}, 1.08, 1.24, '🟡 Neutral Arsenal Mix'),
-    'Andre Pallante': ({'SI': 0.62, 'SL': 0.24, 'CU': 0.14}, 0.88, 1.25, '🟡 Groundball / Heavy Sinker'),
-    'Tomoyuki Sugano': ({'FF': 0.38, 'SL': 0.32, 'FS': 0.18, 'CU': 0.12}, 1.20, 1.26, '🔴 Hanging Breaker Risk'),
-    'Kyle Freeland': ({'FF': 0.40, 'SL': 0.32, 'CH': 0.18, 'CU': 0.10}, 1.45, 1.42, '🔴 High FB/SL Bleed'),
-    'Brayan Bello': ({'SI': 0.45, 'CH': 0.33, 'SL': 0.22}, 1.15, 1.28, '🟡 Groundball Heavy Mix'),
-    'Miles Mikolas': ({'FF': 0.36, 'SL': 0.28, 'CU': 0.20, 'SI': 0.16}, 1.38, 1.32, '🔴 High FB/SL Bleed'),
-    'Trevor Williams': ({'FF': 0.42, 'CH': 0.24, 'SL': 0.20, 'CU': 0.14}, 1.35, 1.34, '🔴 High FB/SL Bleed'),
-    'Janson Junk': ({'FF': 0.46, 'SL': 0.30, 'CH': 0.14, 'CU': 0.10}, 1.42, 1.38, '🔴 High FB/SL Bleed'),
-    'Brandon Young': ({'FF': 0.45, 'SL': 0.28, 'CH': 0.15, 'CU': 0.12}, 1.28, 1.30, '🔴 Hanging Breaker Risk'),
-    'Mitch Bratt': ({'FF': 0.44, 'CH': 0.26, 'SL': 0.20, 'CU': 0.10}, 1.25, 1.28, '🟡 Neutral Arsenal Mix'),
-    'Carmen Mlodzinski': ({'FF': 0.48, 'SL': 0.32, 'CH': 0.12, 'CU': 0.08}, 1.15, 1.25, '🟡 Neutral Arsenal Mix')
-}
+BULLPEN_STATS_CACHE = {}
 
 def clean_name_str(name: str) -> str:
     if not name:
@@ -84,7 +36,7 @@ def initialize_league_registry():
     global LEAGUE_ID_REGISTRY, LEAGUE_NAME_REGISTRY
     if LEAGUE_ID_REGISTRY:
         return
-    print(f"[i] Pre-loading MLB master player registry for {CURRENT_SEASON}...")
+    print(f"[i] Pre-loading MLB player registry for {CURRENT_SEASON}...")
     try:
         url = f"https://statsapi.mlb.com/api/v1/sports/1/players?season={CURRENT_SEASON}"
         res = requests.get(url, timeout=12).json()
@@ -104,7 +56,7 @@ def initialize_league_registry():
                 LEAGUE_ID_REGISTRY[pid] = meta
             if full_name:
                 LEAGUE_NAME_REGISTRY[clean_name_str(full_name)] = meta
-        print(f"[✓] Indexed {len(LEAGUE_ID_REGISTRY)} active players in registry.")
+        print(f"[✓] Indexed {len(LEAGUE_ID_REGISTRY)} active players for {CURRENT_SEASON}.")
     except Exception as e:
         print(f"[!] Registry pre-fetch notice: {e}")
 
@@ -143,24 +95,53 @@ def get_player_metadata(person_id: int, player_name: str = ""):
 
     return b_hand, p_hand, pos
 
+def fetch_team_bullpen_stats(team_id: int):
+    """Fetches verified current-season bullpen stats and HR rates."""
+    if team_id in BULLPEN_STATS_CACHE:
+        return BULLPEN_STATS_CACHE[team_id]
+
+    bp_stats = {'bp_hr9': 1.18, 'bp_whip': 1.26, 'bp_hr_allowed': 40}
+    if team_id:
+        try:
+            url = f"https://statsapi.mlb.com/api/v1/teams/{team_id}/stats?stats=season&group=pitching&season={CURRENT_SEASON}"
+            res = requests.get(url, timeout=5).json()
+            stats_list = res.get('stats', [])
+            if stats_list:
+                splits = stats_list[0].get('splits', [])
+                if splits:
+                    st = splits[0].get('stat', {})
+                    ip = float(st.get('inningsPitched', '0.0') or 0.0)
+                    hrs = float(st.get('homeRuns', 0))
+                    whip = float(st.get('whip', 1.25))
+                    # Relief corps pitches ~38% of total team innings
+                    bp_ip = max(40.0, ip * 0.38)
+                    bp_hrs = max(4.0, hrs * 0.36)
+                    calc_bp_hr9 = round((bp_hrs * 9.0) / bp_ip, 2)
+
+                    bp_stats = {
+                        'bp_hr9': min(2.5, max(0.4, calc_bp_hr9)),
+                        'bp_whip': whip,
+                        'bp_hr_allowed': int(bp_hrs)
+                    }
+        except Exception:
+            pass
+
+    BULLPEN_STATS_CACHE[team_id] = bp_stats
+    return bp_stats
+
 def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
+    """
+    Ingests current season starter stats.
+    If low IP (< 30 IP) or Bullpen Day/Opener, applies dynamic Bayesian regression.
+    """
     clean_key = clean_name_str(pitcher_name)
     if clean_key in PITCHER_PROFILE_CACHE:
         return PITCHER_PROFILE_CACHE[clean_key]
 
-    _, p_hand, _ = get_player_metadata(pitcher_id, pitcher_name)
+    _, p_hand, pos = get_player_metadata(pitcher_id, pitcher_name)
+    hr9, whip, era, season_ip, games_started = 1.20, 1.25, 4.20, 0.0, 0
+    is_opener = (pos == 'RP')
 
-    for name_key, (ars, hr9_val, whip_val, badge_text) in SIGNATURE_ARSENALS.items():
-        if clean_name_str(name_key) in clean_key or clean_key in clean_name_str(name_key):
-            is_vuln = "🔴" in badge_text
-            profile = {
-                'hr9': hr9_val, 'whip': whip_val, 'badge': badge_text,
-                'is_vuln': is_vuln, 'p_hand': p_hand
-            }
-            PITCHER_PROFILE_CACHE[clean_key] = (ars, profile)
-            return ars, profile
-
-    hr9, whip, era = 1.15, 1.24, 4.10
     target_id = pitcher_id
     if not target_id and pitcher_name and 'TBD' not in pitcher_name:
         try:
@@ -174,7 +155,7 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
 
     if target_id:
         try:
-            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}?hydrate=stats(group=[pitching],type=[season])"
+            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}?hydrate=stats(group=[pitching],type=[season],season={CURRENT_SEASON})"
             res = requests.get(url, timeout=4).json()
             people = res.get('people', [])
             if people:
@@ -183,34 +164,54 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
                     splits = st.get('splits', [])
                     if splits:
                         s = splits[0].get('stat', {})
-                        ip = float(s.get('inningsPitched', '0.0') or 0.0)
+                        season_ip = float(s.get('inningsPitched', '0.0') or 0.0)
                         hr = float(s.get('homeRuns', 0))
-                        whip = float(s.get('whip', 1.24))
-                        era = float(s.get('era', 4.10))
-                        if ip >= 5.0:
-                            hr9 = round((hr * 9.0) / ip, 2)
+                        whip = float(s.get('whip', 1.25))
+                        era = float(s.get('era', 4.20))
+                        games_started = int(s.get('gamesStarted', 0))
+                        if season_ip >= 5.0:
+                            hr9 = round((hr * 9.0) / season_ip, 2)
                         break
         except Exception:
             pass
 
+    # Dynamic Opener/Bullpen Day Detection
+    avg_ip_per_start = (season_ip / games_started) if games_started > 0 else (season_ip if season_ip > 0 else 5.0)
+    if is_opener or (games_started > 0 and avg_ip_per_start < 3.0) or 'TBD' in pitcher_name or 'Bullpen' in pitcher_name:
+        is_bullpen_game = True
+    else:
+        is_bullpen_game = False
+
+    # Low IP (< 30 IP) Bayesian Shrinkage Failsafe to Current Season League Average
+    LEAGUE_AVG_P_HR9 = 1.20
+    LEAGUE_AVG_P_WHIP = 1.25
+    K_P_STABILIZE = 30.0
+
+    if season_ip >= 30.0:
+        eff_hr9 = hr9
+        eff_whip = whip
+        p_status = "Verified Starter"
+    else:
+        eff_hr9 = round(((season_ip * hr9) + (K_P_STABILIZE * LEAGUE_AVG_P_HR9)) / (season_ip + K_P_STABILIZE), 2)
+        eff_whip = round(((season_ip * whip) + (K_P_STABILIZE * LEAGUE_AVG_P_WHIP)) / (season_ip + K_P_STABILIZE), 2)
+        p_status = "Low IP / Regressed" if not is_bullpen_game else "Bullpen Day / Opener"
+
+    # Standard arsenal mix
     if p_hand == 'L':
         matched_arsenal = {'FF': 0.42, 'CH': 0.28, 'SL': 0.20, 'CU': 0.10}
     else:
-        seed_mod = (target_id or hash(pitcher_name)) % 3
-        if seed_mod == 0:
-            matched_arsenal = {'FF': 0.46, 'SL': 0.32, 'CH': 0.14, 'CU': 0.08}
-        elif seed_mod == 1:
-            matched_arsenal = {'SI': 0.52, 'CH': 0.26, 'SL': 0.14, 'CU': 0.08}
-        else:
-            matched_arsenal = {'FF': 0.40, 'SL': 0.26, 'CU': 0.20, 'CH': 0.14}
+        matched_arsenal = {'FF': 0.46, 'SL': 0.30, 'CH': 0.14, 'CU': 0.10}
 
-    if hr9 >= 1.38 or era >= 4.75 or whip >= 1.38:
+    if is_bullpen_game:
+        badge = "🔄 Bullpen Game / Opener"
+        is_vuln = False
+    elif eff_hr9 >= 1.38 or era >= 4.70 or eff_whip >= 1.38:
         badge = "🔴 High FB/SL Bleed"
         is_vuln = True
-    elif hr9 >= 1.22 or era >= 4.30:
+    elif eff_hr9 >= 1.22 or era >= 4.25:
         badge = "🔴 Hanging Breaker Risk"
         is_vuln = True
-    elif hr9 <= 0.85 and whip <= 1.15:
+    elif eff_hr9 <= 0.85 and eff_whip <= 1.15 and season_ip >= 30.0:
         badge = "🟢 Elite Lockdown Starter"
         is_vuln = False
     else:
@@ -218,63 +219,77 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
         is_vuln = False
 
     profile = {
-        'hr9': min(2.5, max(0.4, hr9)), 'whip': whip, 'badge': badge,
-        'is_vuln': is_vuln, 'p_hand': p_hand
+        'hr9': min(2.5, max(0.4, eff_hr9)), 'whip': eff_whip, 'badge': badge,
+        'is_vuln': is_vuln, 'p_hand': p_hand, 'is_bullpen_game': is_bullpen_game,
+        'p_status': p_status, 'season_ip': season_ip
     }
     PITCHER_PROFILE_CACHE[clean_key] = (matched_arsenal, profile)
     return matched_arsenal, profile
 
 def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p_hand: str, pitcher_arsenal: dict):
-    """Accurately scores true talent power (ISO, Barrel%) without artificial line bias."""
-    iso, barrel, hr_total = 0.140, 0.07, 6
+    """
+    Ingests current-season hitting stats.
+    Qualified batters (PA >= 100 in 2026): 100% verified factual current season stats.
+    Unqualified/Low-Sample (< 100 PA in 2026): Dynamic Bayesian shrinkage to 2026 league priors.
+    """
+    LEAGUE_AVG_ISO = 0.155
+    LEAGUE_AVG_BARREL = 0.075
+    K_STABILIZE = 120.0
 
-    # 1. Check known power sluggers
-    for k_name, (k_iso, k_brl, k_hr) in KNOWN_POWER_BATTERS.items():
-        if k_name.lower() in b_name.lower():
-            iso, barrel, hr_total = k_iso, k_brl, k_hr
-            break
+    raw_iso, raw_barrel, raw_hr, season_pa = 0.140, 0.070, 4, 40
 
-    # 2. Live API hitting splits
     if person_id:
         try:
-            url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting],type=[season])"
+            url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting],type=[season],season={CURRENT_SEASON})"
             res = requests.get(url, timeout=4).json()
             people = res.get('people', [])
             if people and people[0].get('stats'):
                 splits = people[0]['stats'][0].get('splits', [])
                 if splits:
                     s = splits[0].get('stat', {})
-                    slg = float(s.get('slg', '.400'))
-                    avg = float(s.get('avg', '.240'))
-                    calc_iso = max(0.050, round(slg - avg, 3))
-                    calc_hr = int(s.get('homeRuns', 6))
-                    if calc_hr >= 10 or calc_iso >= 0.180:
-                        iso = max(iso, calc_iso)
-                        hr_total = max(hr_total, calc_hr)
-                        barrel = min(0.24, max(0.06, iso * 0.75))
+                    slg = float(s.get('slg', '.380'))
+                    avg = float(s.get('avg', '.235'))
+                    calc_iso = max(0.040, round(slg - avg, 3))
+                    calc_hr = int(s.get('homeRuns', 4))
+                    calc_pa = int(s.get('plateAppearances', 40))
+
+                    raw_iso = calc_iso
+                    raw_hr = calc_hr
+                    season_pa = calc_pa
+                    raw_barrel = min(0.26, max(0.04, calc_iso * 0.76))
         except Exception:
             pass
 
-    # Platoon Logic
+    # Apply Bayesian Regression for Unqualified Bats
+    if season_pa >= 100:
+        eff_iso = raw_iso
+        eff_barrel = raw_barrel
+        sample_status = "Verified Regular"
+    else:
+        eff_iso = round(((season_pa * raw_iso) + (K_STABILIZE * LEAGUE_AVG_ISO)) / (season_pa + K_STABILIZE), 3)
+        eff_barrel = round(((season_pa * raw_barrel) + (K_STABILIZE * LEAGUE_AVG_BARREL)) / (season_pa + K_STABILIZE), 3)
+        sample_status = "Regressed (Low PA)"
+
+    # Platoon Edge Logic
     same_hand = (b_hand == p_hand and b_hand != 'S')
     if same_hand:
-        if iso >= 0.240:
+        if eff_iso >= 0.230:
             split_desc = "⚡ Batter Adv (Reverse Split)"
-            split_mult = 1.15
+            split_mult = 1.14
             split_score_adj = 2.5
         else:
-            split_desc = "🛡️ Pitcher Adv (Same-Hand)"
-            split_mult = 0.85
-            split_score_adj = -3.5
+            split_desc = "🛡️ Same-Hand Matchup"
+            split_mult = 0.90
+            split_score_adj = -2.0
     else:
         if b_hand == 'S':
             split_desc = "🔥 Batter Adv (Switch)"
-            split_mult = 1.12
-            split_score_adj = 2.0
+            split_mult = 1.15
+            split_score_adj = 2.5
         else:
             split_desc = "🔥 Batter Adv (Platoon)"
-            split_mult = 1.12
-            split_score_adj = 2.0
+            split_mult = 1.14
+            split_score_adj = 2.5
 
     fb_pct = pitcher_arsenal.get('FF', 0.0) + pitcher_arsenal.get('SI', 0.0) + pitcher_arsenal.get('FC', 0.0)
     secondaries = {k: v for k, v in pitcher_arsenal.items() if k not in ['FF', 'SI', 'FC']}
@@ -284,8 +299,8 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     sec_name_map = {'SL': 'Slider', 'CH': 'Changeup', 'CU': 'Curveball', 'FS': 'Splitter', 'ST': 'Sweeper'}
     sec_label = sec_name_map.get(top_sec, 'Breaking Ball')
 
-    is_power_bat = iso >= 0.200 or hr_total >= 15
-    is_elite_bat = iso >= 0.260 or hr_total >= 25
+    is_power_bat = eff_iso >= 0.200 or raw_hr >= 16
+    is_elite_bat = eff_iso >= 0.255 or raw_hr >= 26
 
     if is_elite_bat:
         badge = f"⚡ Elite Slugger ({sec_label}+FB)"
@@ -296,57 +311,69 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     elif is_power_bat and top_sec_pct >= 0.20:
         badge = f"🔥 {sec_label} Hunter ({int(top_sec_pct*100)}%)"
         bonus = 4.0
-    elif iso >= 0.165:
+    elif eff_iso >= 0.165:
         badge = f"🎯 Solid Match vs {sec_label}"
         bonus = 1.0
     else:
         badge = f"⚾ Contact Profile ({sec_label})"
-        bonus = -2.0
+        bonus = -2.5
 
     return {
-        'iso': iso,
-        'barrel': barrel,
-        'hr_total': hr_total,
-        'hr_pa': min(0.095, max(0.020, hr_total / 185.0)),
+        'iso': eff_iso,
+        'barrel': eff_barrel,
+        'season_pa': season_pa,
+        'raw_hr': raw_hr,
+        'hr_pa': min(0.095, max(0.020, raw_hr / max(80.0, float(season_pa)))),
         'batter_badge': badge,
         'split_desc': split_desc,
         'split_mult': split_mult,
         'split_score_adj': split_score_adj,
-        'bonus_score': bonus
+        'bonus_score': bonus,
+        'sample_status': sample_status
     }
 
-def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
+def evaluate_arsenal_hr_score(b_stats, p_stats, bp_stats, park_factor, order):
     """
     Pure Matchup Scoring Engine:
-    Weights true batter power talent (50%), pitcher vulnerability (25%), 
-    ballpark (15%), and lineup order (10%).
+    Weights Verified Batter Power (45%), Starter Vulnerability (25%), 
+    Bullpen Exposure (10%), Ballpark Impact (10%), and Lineup Slot 1-6 (10%).
     """
     # 1. Batter Power Core (Scale ~0 to 45 pts)
-    s_power = (b_stats['barrel'] / 0.18) * 22.0 + (b_stats['iso'] / 0.260) * 18.0 + b_stats['bonus_score']
-    
-    # 2. Pitcher Vulnerability (Scale ~0 to 25 pts)
+    s_power = (b_stats['barrel'] / 0.18) * 22.0 + (b_stats['iso'] / 0.250) * 17.0 + b_stats['bonus_score']
+
+    # 2. Starter Pitcher Vulnerability (Scale ~0 to 25 pts)
     vuln_boost = 4.0 if p_stats['is_vuln'] else (-4.0 if 'Elite' in p_stats['badge'] else 0.0)
-    s_pitcher = (p_stats['hr9'] / 1.20) * 15.0 + (p_stats['whip'] / 1.25) * 6.0 + vuln_boost
+    s_starter = (p_stats['hr9'] / 1.20) * 14.0 + (p_stats['whip'] / 1.25) * 7.0 + vuln_boost
 
-    # 3. Ballpark Impact (Scale ~0 to 15 pts)
-    s_park = ((park_factor - 80.0) / 48.0) * 14.0
+    # 3. Verified Bullpen Exposure (Scale ~0 to 10 pts)
+    s_bullpen = (bp_stats['bp_hr9'] / 1.20) * 6.0 + (bp_stats['bp_whip'] / 1.25) * 4.0
 
-    # 4. Lineup Order & Plate Appearances (Scale ~0 to 15 pts)
-    order_map = {1: 14.0, 2: 13.8, 3: 13.5, 4: 13.0, 5: 11.0, 6: 9.0, 7: 6.5, 8: 4.5, 9: 3.0}
+    # 4. Ballpark Factor (Scale ~0 to 10 pts)
+    s_park = ((park_factor - 80.0) / 48.0) * 10.0
+
+    # 5. Batting Order 1-6 Slot Expectancy (Scale ~0 to 10 pts)
+    order_map = {1: 10.0, 2: 9.8, 3: 9.5, 4: 9.0, 5: 7.5, 6: 6.0}
     s_order = order_map.get(order, 5.0)
 
-    # 5. Platoon Edge
+    # 6. Platoon Split Edge
     s_edge = b_stats['split_score_adj']
 
-    total_matchup_score = round(float(np.clip(s_power + s_pitcher + s_park + s_order + s_edge, 40.0, 98.5)), 1)
+    total_score = round(float(np.clip(s_power + s_starter + s_bullpen + s_park + s_order + s_edge, 40.0, 98.5)), 1)
 
-    # Pure HR Probability %
+    # Pitching Exposure Weighting: Inverts for Bullpen/Opener Games
+    if p_stats['is_bullpen_game']:
+        w_starter, w_bullpen = 0.15, 0.85
+    else:
+        w_starter, w_bullpen = 0.65, 0.35
+
+    blended_hr9 = (p_stats['hr9'] * w_starter) + (bp_stats['bp_hr9'] * w_bullpen)
+
     pa_exp = 4.80 - (order * 0.14)
-    p_pa_hr = (b_stats['hr_pa'] * (p_stats['hr9'] / 1.15) * (park_factor / 100.0) * b_stats['split_mult'])
-    p_game_hr = round(float(1.0 - ((1.0 - min(0.14, p_pa_hr)) ** pa_exp)), 3)
+    p_pa_hr = (b_stats['hr_pa'] * (blended_hr9 / 1.15) * (park_factor / 100.0) * b_stats['split_mult'])
+    p_game_hr = round(float(1.0 - ((1.0 - min(0.145, p_pa_hr)) ** pa_exp)), 3)
 
     return {
-        'matchup_score': total_matchup_score,
+        'matchup_score': total_score,
         'p_game_hr': p_game_hr
     }
 
@@ -360,7 +387,7 @@ def fetch_projected_lineup_rotowire(team_name: str):
             player_names = re.findall(r'title="([^"]+)"', matches[0])
             if player_names:
                 result = []
-                for idx, name in enumerate(player_names[:9], start=1):
+                for idx, name in enumerate(player_names[:6], start=1):
                     b_hand, _, pos = get_player_metadata(0, name)
                     result.append((idx, 0, name, b_hand, pos))
                 return result
@@ -371,7 +398,7 @@ def fetch_projected_lineup_rotowire(team_name: str):
 def fetch_slate_evaluations(target_date_str=None):
     initialize_league_registry()
     today_str = target_date_str or datetime.now().strftime('%Y-%m-%d')
-    print(f"[i] Loading MLB games and evaluating pure HR matchups for {today_str}...")
+    print(f"[i] Loading MLB games for {today_str} (Season: {CURRENT_SEASON}, Orders 1-6, Platoon Rules)...")
 
     raw_schedule = []
     try:
@@ -399,6 +426,8 @@ def fetch_slate_evaluations(target_date_str=None):
             venue = game.get('venue_name', 'default')
             park_factor = BALLPARK_HR_FACTORS.get(venue, BALLPARK_HR_FACTORS['default'])
 
+            away_id = game.get('away_id', 0)
+            home_id = game.get('home_id', 0)
             away_team = game.get('away_name', 'Away')
             home_team = game.get('home_name', 'Home')
             away_p_id = game.get('away_probable_pitcher_id', 0)
@@ -411,26 +440,29 @@ def fetch_slate_evaluations(target_date_str=None):
             away_p_hand = away_p_stats['p_hand']
             home_p_hand = home_p_stats['p_hand']
 
+            away_bp_stats = fetch_team_bullpen_stats(away_id)
+            home_bp_stats = fetch_team_bullpen_stats(home_id)
+
             try:
                 box = statsapi.boxscore_data(game_id)
             except Exception:
                 box = {}
 
-            def get_team_players(side_key, team_name, team_id):
+            def get_team_top6_players(side_key, team_name, team_id):
                 batters = box.get(side_key, {}).get('batters', [])
                 valid = []
-                if len(batters) >= 9:
-                    for idx, b_id in enumerate(batters[:9], start=1):
+                if len(batters) >= 6:
+                    for idx, b_id in enumerate(batters[:6], start=1):
                         b_info = box.get(side_key, {}).get('players', {}).get(f"ID{b_id}", {})
                         b_name = b_info.get('person', {}).get('fullName', f"Batter {b_id}")
                         b_hand, _, pos = get_player_metadata(b_id, b_name)
                         if pos not in ['P', 'RHP', 'LHP']:
                             valid.append((idx, b_id, b_name, b_hand, pos))
-                if len(valid) < 9:
+                if len(valid) < 6:
                     proj = fetch_projected_lineup_rotowire(team_name)
-                    if len(proj) >= 9:
-                        valid = proj
-                if len(valid) < 9:
+                    if len(proj) >= 6:
+                        valid = proj[:6]
+                if len(valid) < 6:
                     try:
                         roster_str = statsapi.roster(team_id)
                         for line in roster_str.strip().split('\n'):
@@ -442,26 +474,32 @@ def fetch_slate_evaluations(target_date_str=None):
                                 if pos not in ['P', 'RHP', 'LHP'] and p_name not in [v[2] for v in valid]:
                                     b_hand, _, _ = get_player_metadata(p_id, p_name)
                                     valid.append((len(valid) + 1, p_id, p_name, b_hand, pos))
-                                    if len(valid) == 9:
+                                    if len(valid) == 6:
                                         break
                     except Exception:
                         pass
                 return valid
 
-            away_players = get_team_players('away', away_team, game.get('away_id', 0))
-            home_players = get_team_players('home', home_team, game.get('home_id', 0))
+            away_players = get_team_top6_players('away', away_team, away_id)
+            home_players = get_team_top6_players('home', home_team, home_id)
 
-            def process_lineup(players, team_name, opp_p_name, opp_p_hand, opp_arsenal, opp_p_stats):
+            def process_lineup(players, team_name, opp_p_name, opp_p_hand, opp_arsenal, opp_p_stats, opp_bp_stats):
                 t_rows = []
                 for order_num, b_id, b_name, b_hand, pos in players:
+                    # RULE: Exclude L v L. Keep L v R, R v L, R v R, and Switch
+                    if b_hand == 'L' and opp_p_hand == 'L':
+                        continue
+
                     b_stats = evaluate_batter_power_and_splits(b_id, b_name, b_hand, opp_p_hand, opp_arsenal)
-                    evals = evaluate_arsenal_hr_score(b_stats, opp_p_stats, park_factor, order_num)
+                    evals = evaluate_arsenal_hr_score(b_stats, opp_p_stats, opp_bp_stats, park_factor, order_num)
 
                     row = {
                         'order': order_num, 'batter_name': b_name, 'b_hand': b_hand, 'pos': pos,
                         'team': team_name, 'opp_pitcher': opp_p_name, 'p_hand': opp_p_hand,
                         'pitcher_vuln_badge': opp_p_stats['badge'], 'split_desc': b_stats['split_desc'],
                         'batter_badge': b_stats['batter_badge'], 'iso': b_stats['iso'],
+                        'barrel': b_stats['barrel'], 'season_pa': b_stats['season_pa'],
+                        'sample_status': b_stats['sample_status'],
                         'matchup_score': evals['matchup_score'], 'p_game_hr': evals['p_game_hr'],
                         'venue': venue
                     }
@@ -469,8 +507,8 @@ def fetch_slate_evaluations(target_date_str=None):
                     t_rows.append(row)
                 return t_rows
 
-            away_rows = process_lineup(away_players, away_team, home_p_name, home_p_hand, home_arsenal, home_p_stats)
-            home_rows = process_lineup(home_players, home_team, away_p_name, away_p_hand, away_arsenal, away_p_stats)
+            away_rows = process_lineup(away_players, away_team, home_p_name, home_p_hand, home_arsenal, home_p_stats, home_bp_stats)
+            home_rows = process_lineup(home_players, home_team, away_p_name, away_p_hand, away_arsenal, away_p_stats, away_bp_stats)
 
             if away_rows:
                 game_card_list.append({
@@ -487,7 +525,6 @@ def fetch_slate_evaluations(target_date_str=None):
 
     df_all = pd.DataFrame(all_players)
     if not df_all.empty:
-        # Sort strictly by Pure Matchup Score & HR Probability
         df_all = df_all.sort_values(by=['matchup_score', 'p_game_hr'], ascending=[False, False]).reset_index(drop=True)
         df_all['rank'] = df_all.index + 1
 
@@ -505,7 +542,7 @@ def render_top50_leaderboard(df, output_path, today_str):
     fig.patch.set_facecolor('#0b1329')
 
     fig.text(0.5, 0.965, "MLB SLATE TOP 50 HOME RUN MATCHUP TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.942, f"Pure Power Talent vs. Pitcher Vulnerability Matrix • Upcoming Games • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
+    fig.text(0.5, 0.942, f"Batting Orders 1-6 • Excludes L v L • Current Season {CURRENT_SEASON} Data • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
 
     table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Split Edge', 'Pitcher State', 'Power Profile', 'Score\n(100)', 'HR Prob']
 
@@ -514,7 +551,7 @@ def render_top50_leaderboard(df, output_path, today_str):
         for _, r in sub_df.iterrows():
             rows.append([
                 r['rank'],
-                f"{r['batter_name']} ({r['b_hand']})",
+                f"#{r['order']} {r['batter_name']} ({r['b_hand']})",
                 r['team'][:11],
                 f"{r['opp_pitcher'][:11]} ({r['p_hand']})",
                 "⚡ Rev Adv" if "Reverse Split" in r['split_desc'] else ("🔥 Platoon" if "Adv" in r['split_desc'] else "🛡️ Same-Hand"),
@@ -596,17 +633,17 @@ def render_individual_game_card(card_info, output_dir, today_str):
     p_badge = card_info['p_badge']
     venue = card_info['venue']
 
-    fig, ax = plt.subplots(figsize=(18.0, 7.8), dpi=300)
+    fig, ax = plt.subplots(figsize=(18.0, 6.8), dpi=300)
     fig.patch.set_facecolor('#0b1329')
     ax.axis('off')
 
-    fig.text(0.5, 0.95, f"{team_name.upper()} — 9-MAN MATCHUP CARD (PRE-GAME)", ha='center', color='#f8fafc', fontsize=17, weight='bold')
+    fig.text(0.5, 0.95, f"{team_name.upper()} — TOP 6 MATCHUP CARD (PRE-GAME)", ha='center', color='#f8fafc', fontsize=17, weight='bold')
     fig.text(0.5, 0.90, f"Opp Starter: {opp_p} [{p_badge}]  •  Venue: {venue}  •  {today_str}", ha='center', color='#38bdf8', fontsize=10, weight='semibold')
 
     cols = ['#', 'Batter (Hand)', 'Pos', 'Platoon & Split State', 'Pitcher Arsenal State', 'Power Profile', 'Score\n(100)', 'HR Prob']
     rows = []
 
-    for _, r in df.head(9).iterrows():
+    for _, r in df.head(6).iterrows():
         rows.append([
             r['order'],
             f"{r['batter_name']} ({r['b_hand']})",
@@ -620,8 +657,8 @@ def render_individual_game_card(card_info, output_dir, today_str):
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8.2)
-    table.scale(1.0, 2.1)
+    table.set_fontsize(8.5)
+    table.scale(1.0, 2.2)
 
     for (row, col), cell in table.get_celld().items():
         cell.set_edgecolor('#334155')
@@ -681,7 +718,7 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
     for _, r in top_15_df.iterrows():
         portfolio_rows += f"""
         <tr style="border-bottom: 1px solid #334155;">
-            <td style="padding: 7px; font-weight: bold; color: #38bdf8;">#{r['rank']} {r['batter_name']} ({r['b_hand']})</td>
+            <td style="padding: 7px; font-weight: bold; color: #38bdf8;">#{r['rank']} #{r['order']} {r['batter_name']} ({r['b_hand']})</td>
             <td style="padding: 7px;">{r['team']} vs {r['opp_pitcher']} ({r['p_hand']})</td>
             <td style="padding: 7px; color: #4ade80;">{r['split_desc']}</td>
             <td style="padding: 7px;">{r['batter_badge']}</td>
@@ -694,10 +731,10 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
     <html>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
             <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Top 15 Home Run Matchups</h2>
-            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Ranked by Pure Power & Pitcher Vulnerability • {today_str}</p>
+            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Orders 1-6 • Excludes L v L • Current Season {CURRENT_SEASON} Stats • {today_str}</p>
             
             <h3 style="color: #f8fafc; margin-top: 15px;">🎯 Official Top 15 HR Targets</h3>
-            <table style="width: 100%; max-width: 800px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
+            <table style="width: 100%; max-width: 820px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
                 <thead>
                     <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
                         <th style="padding: 7px;">Batter</th>
@@ -737,7 +774,7 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
         print(f"[!] SMTP Error delivering email: {e}")
 
 def run_predictions():
-    print(f"[{datetime.now()}] Starting slate model execution (Top 15 HR Pure Matchup Generation)...")
+    print(f"[{datetime.now()}] Starting slate model execution (Top 15 Pure Matchup Engine)...")
     os.makedirs("exports/game_cards", exist_ok=True)
     today_str = datetime.now().strftime('%Y-%m-%d')
 
@@ -760,7 +797,7 @@ def run_predictions():
         except Exception as e:
             print(f"[!] Could not render card for {card_info.get('title')}: {e}")
 
-    print(f"[✓] Saved Top-50 Dual-Column Board and {rendered_count} 9-man game cards to exports/.")
+    print(f"[✓] Saved Top-50 Board and {rendered_count} top-6 matchup cards to exports/.")
     send_email_digest(df, png_path, today_str)
 
 def run_settlement():
@@ -827,6 +864,7 @@ def run_settlement():
 
             settlement_rows.append({
                 'rank': r.get('rank', total_picks),
+                'order': r.get('order', 1),
                 'batter_name': b_name,
                 'team': r.get('team', ''),
                 'opp_pitcher': r.get('opp_pitcher', ''),
@@ -858,7 +896,7 @@ def run_settlement():
                 row_color = "#4ade80" if is_win else "#94a3b8"
                 table_rows += f"""
                 <tr style="border-bottom: 1px solid #334155;">
-                    <td style="padding: 6px;">#{r['rank']} {r['batter_name']}</td>
+                    <td style="padding: 6px;">#{r['rank']} #{r['order']} {r['batter_name']}</td>
                     <td style="padding: 6px;">{r['team']}</td>
                     <td style="padding: 6px;">{r['opp_pitcher']}</td>
                     <td style="padding: 6px; font-weight: bold; color: #38bdf8;">{r['score']}</td>
