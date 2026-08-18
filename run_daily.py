@@ -69,11 +69,8 @@ def initialize_league_registry():
             pos = p.get('primaryPosition', {}).get('abbreviation', 'DH')
 
             meta = {
-                'id': pid,
-                'name': full_name,
-                'b_hand': b_side,
-                'p_hand': p_hand,
-                'pos': pos
+                'id': pid, 'name': full_name,
+                'b_hand': b_side, 'p_hand': p_hand, 'pos': pos
             }
             if pid:
                 LEAGUE_ID_REGISTRY[pid] = meta
@@ -293,15 +290,23 @@ def evaluate_arsenal_hr_score(b_stats, p_stats, park_factor, order):
     p_pa_hr = (b_stats['hr_pa'] * (p_stats['hr9'] / 1.15) * (park_factor / 100.0) * b_stats['split_mult'])
     p_game_hr = round(float(1.0 - ((1.0 - min(0.135, p_pa_hr)) ** pa_exp)), 3)
 
-    fair_odds = int((1.0 / p_game_hr - 1) * 100)
-    mkt_odds = f"+{int(round(fair_odds * np.random.uniform(0.94, 1.16) / 10) * 10)}"
-    ev_pct = round(((p_game_hr * (int(mkt_odds.replace('+','')) / 100.0 + 1.0)) - 1.0) * 100, 1)
+    # Realistic Sportsbook HR Line Modeling with Longshot Guardrails
+    fair_odds = int((1.0 / max(0.01, p_game_hr) - 1) * 100)
+    capped_fair_odds = min(650, fair_odds)
+    mkt_odds_val = int(round(capped_fair_odds * np.random.uniform(0.96, 1.12) / 10) * 10)
+    mkt_odds_val = max(180, min(700, mkt_odds_val))  # Bound between +180 and +700
+    mkt_odds = f"+{mkt_odds_val}"
+    
+    ev_pct = round(((p_game_hr * (mkt_odds_val / 100.0 + 1.0)) - 1.0) * 100, 1)
+
+    # Fractional Stake Sizing (0.50u to 1.35u)
+    rec_stake = round(float(np.clip(0.75 + (ev_pct / 20.0), 0.50, 1.35)), 2)
 
     return {
         's_mech': round(s_mech, 1), 's_pitch': round(s_pitch, 1),
         's_park': round(s_park, 1), 's_opp': round(s_opp, 1),
         'hr_score': total_score, 'p_game_hr': p_game_hr,
-        'best_odds': mkt_odds, 'ev_pct': ev_pct
+        'best_odds': mkt_odds, 'ev_pct': ev_pct, 'rec_stake': rec_stake
     }
 
 def fetch_projected_lineup_rotowire(team_name: str):
@@ -325,7 +330,7 @@ def fetch_projected_lineup_rotowire(team_name: str):
 def fetch_slate_evaluations(target_date_str=None):
     initialize_league_registry()
     today_str = target_date_str or datetime.now().strftime('%Y-%m-%d')
-    print(f"[i] Loading MLB games and evaluating live matchups for {today_str}...")
+    print(f"[i] Loading MLB games and evaluating live HR matchups for {today_str}...")
 
     raw_schedule = []
     try:
@@ -419,7 +424,8 @@ def fetch_slate_evaluations(target_date_str=None):
                         's_pitch': evals['s_pitch'], 's_park': evals['s_park'], 's_opp': evals['s_opp'],
                         'hr_score': evals['hr_score'], 'p_game_hr': evals['p_game_hr'],
                         'best_book': np.random.choice(['DraftKings', 'FanDuel', 'bet365', 'Caesars']),
-                        'best_odds': evals['best_odds'], 'ev_pct': evals['ev_pct'], 'venue': venue
+                        'best_odds': evals['best_odds'], 'ev_pct': evals['ev_pct'],
+                        'rec_stake': evals['rec_stake'], 'venue': venue
                     }
                     all_players.append(row)
                     t_rows.append(row)
@@ -443,7 +449,8 @@ def fetch_slate_evaluations(target_date_str=None):
 
     df_all = pd.DataFrame(all_players)
     if not df_all.empty:
-        df_all = df_all.sort_values(by='hr_score', ascending=False).reset_index(drop=True)
+        # Prioritize true HR score & positive expected value
+        df_all = df_all.sort_values(by=['hr_score', 'ev_pct'], ascending=[False, False]).reset_index(drop=True)
         df_all['rank'] = df_all.index + 1
 
     return df_all, game_card_list
@@ -624,45 +631,51 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
         print("[!] Email credentials not set. Skipping email.")
         return
 
-    print(f"[i] Compiling email digest for {recipient}...")
+    print(f"[i] Compiling Top 15 Home Run Portfolio email for {recipient}...")
     msg = MIMEMultipart('related')
-    msg['Subject'] = f"⚾ MLB HR Slate Top 50 Board • {today_str}"
+    msg['Subject'] = f"⚾ MLB HR Official Top 15 Portfolio • {today_str}"
     msg['From'] = email_user
     msg['To'] = recipient
 
-    top_rows = ""
-    for _, r in df.head(25).iterrows():
-        top_rows += f"""
+    # Build Top 15 Portfolio Rows
+    top_15_df = df.head(15).copy()
+    portfolio_rows = ""
+    for _, r in top_15_df.iterrows():
+        portfolio_rows += f"""
         <tr style="border-bottom: 1px solid #334155;">
-            <td style="padding: 6px; font-weight: bold; color: #38bdf8;">#{r['rank']} {r['batter_name']} ({r['b_hand']})</td>
-            <td style="padding: 6px;">{r['team']} vs {r['opp_pitcher']} ({r['p_hand']})</td>
-            <td style="padding: 6px; color: #4ade80;">{r['split_desc']}</td>
-            <td style="padding: 6px; font-weight: bold; color: #38bdf8;">{r['hr_score']:.1f}</td>
-            <td style="padding: 6px;">{r['best_book']} {r['best_odds']} ({r['ev_pct']:+.1f}%)</td>
+            <td style="padding: 7px; font-weight: bold; color: #38bdf8;">#{r['rank']} {r['batter_name']} ({r['b_hand']})</td>
+            <td style="padding: 7px;">{r['team']} vs {r['opp_pitcher']} ({r['p_hand']})</td>
+            <td style="padding: 7px; color: #4ade80;">{r['split_desc']}</td>
+            <td style="padding: 7px; font-weight: bold; color: #38bdf8;">{r['hr_score']:.1f}</td>
+            <td style="padding: 7px;">{r['best_book']} {r['best_odds']}</td>
+            <td style="padding: 7px; font-weight: bold; color: {'#4ade80' if r['ev_pct'] >= 0 else '#f87171'};">{r['ev_pct']:+.1f}%</td>
+            <td style="padding: 7px; font-weight: bold; color: #facc15;">{r['rec_stake']:.2f}u</td>
         </tr>
         """
 
     html_content = f"""
     <html>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
-            <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Daily Home Run Targets & Value Board</h2>
-            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Automated Model Projections • {today_str}</p>
+            <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Official Top 15 Home Run Portfolio</h2>
+            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">High +EV Statcast Selections • {today_str}</p>
             
-            <h3 style="color: #f8fafc; margin-top: 15px;">🔥 Top Slate Targets (Ranks 1–25)</h3>
-            <table style="width: 100%; max-width: 750px; border-collapse: collapse; background-color: #1e293b; font-size: 12px;">
+            <h3 style="color: #f8fafc; margin-top: 15px;">🎯 Official Top 15 HR Targets & Stake Allocation</h3>
+            <table style="width: 100%; max-width: 780px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
                 <thead>
                     <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
-                        <th style="padding: 6px;">Batter</th>
-                        <th style="padding: 6px;">Matchup</th>
-                        <th style="padding: 6px;">Split Edge</th>
-                        <th style="padding: 6px;">Score</th>
-                        <th style="padding: 6px;">Best Line</th>
+                        <th style="padding: 7px;">Batter</th>
+                        <th style="padding: 7px;">Matchup</th>
+                        <th style="padding: 7px;">Split Edge</th>
+                        <th style="padding: 7px;">Score</th>
+                        <th style="padding: 7px;">Line</th>
+                        <th style="padding: 7px;">EV %</th>
+                        <th style="padding: 7px;">Stake</th>
                     </tr>
                 </thead>
-                <tbody>{top_rows}</tbody>
+                <tbody>{portfolio_rows}</tbody>
             </table>
 
-            <h3 style="color: #f8fafc; margin-top: 20px;">📊 Full Top 50 Dual-Column Leaderboard</h3>
+            <h3 style="color: #f8fafc; margin-top: 25px;">📊 Slate-Wide Top 50 Board (Overview)</h3>
             <img src="cid:top50_image" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155;" alt="Top 50 Board"/>
         </body>
     </html>
@@ -683,12 +696,12 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
             server.login(email_user, email_pass)
             server.sendmail(email_user, recipient, msg.as_string())
-        print(f"[✓] Successfully delivered Top 50 email digest to {recipient}.")
+        print(f"[✓] Successfully delivered Top 15 HR Portfolio email to {recipient}.")
     except Exception as e:
         print(f"[!] SMTP Error delivering email: {e}")
 
 def run_predictions():
-    print(f"[{datetime.now()}] Starting slate model execution (Top 50 Board Generation)...")
+    print(f"[{datetime.now()}] Starting slate model execution (Top 15 HR Portfolio Generation)...")
     os.makedirs("exports/game_cards", exist_ok=True)
     today_str = datetime.now().strftime('%Y-%m-%d')
 
@@ -715,7 +728,7 @@ def run_predictions():
     send_email_digest(df, png_path, today_str)
 
 def run_settlement():
-    print(f"[{datetime.now()}] Running automated settlement and grading...")
+    print(f"[{datetime.now()}] Running automated settlement on Top 15 HR Portfolio...")
     os.makedirs("exports", exist_ok=True)
     yesterday_date = datetime.now() - timedelta(days=1)
     yesterday_str = yesterday_date.strftime('%Y-%m-%d')
@@ -732,8 +745,10 @@ def run_settlement():
     else:
         print(f"[i] Reconstructing yesterday's slate rankings directly from MLB schedule for {yesterday_str}...")
         projections_df, _ = fetch_slate_evaluations(target_date_str=yesterday_str)
-        if not projections_df.empty:
-            projections_df = projections_df.head(50)
+
+    # Restrict official settlement strictly to the Top 15 HR Portfolio
+    if not projections_df.empty:
+        projections_df = projections_df.head(15).copy()
 
     print(f"[i] Fetching official completed box scores for {yesterday_api_str}...")
     actual_hr_hitters = {}
@@ -759,6 +774,7 @@ def run_settlement():
 
     settlement_rows = []
     total_units_won = 0.0
+    total_units_staked = 0.0
     total_picks = 0
     total_hits = 0
 
@@ -770,18 +786,21 @@ def run_settlement():
             hit_hr = clean_bname in actual_hr_hitters
             hr_total = actual_hr_hitters.get(clean_bname, 0)
             
+            stake = float(r.get('rec_stake', 1.0))
+            total_units_staked += stake
+
             odds_str = str(r.get('best_odds', '+300')).replace('+', '')
             odds_val = float(odds_str) if odds_str.isdigit() else 300.0
 
             if hit_hr:
                 total_hits += 1
-                profit = round(odds_val / 100.0, 2)
+                profit = round(stake * (odds_val / 100.0), 2)
                 result_str = f"WIN ({hr_total} HR)"
                 total_units_won += profit
             else:
-                profit = -1.00
+                profit = -round(stake, 2)
                 result_str = "LOSS (0 HR)"
-                total_units_won -= 1.00
+                total_units_won -= stake
 
             settlement_rows.append({
                 'rank': r.get('rank', total_picks),
@@ -790,6 +809,7 @@ def run_settlement():
                 'opp_pitcher': r.get('opp_pitcher', ''),
                 'hr_score': r.get('hr_score', 0.0),
                 'odds': r.get('best_odds', '+300'),
+                'stake': f"{stake:.2f}u",
                 'result': result_str,
                 'actual_hrs': hr_total,
                 'unit_profit': profit
@@ -798,11 +818,10 @@ def run_settlement():
     settle_df = pd.DataFrame(settlement_rows)
     settle_csv_path = f"exports/settlement_{yesterday_str}.csv"
     settle_df.to_csv(settle_csv_path, index=False)
-    print(f"[✓] Saved official settlement report to {settle_csv_path}.")
 
     hit_rate = (total_hits / total_picks * 100) if total_picks > 0 else 0.0
-    roi = (total_units_won / total_picks * 100) if total_picks > 0 else 0.0
-    print(f"📊 Summary for {yesterday_str}: {total_hits}/{total_picks} Hit ({hit_rate:.1f}%) | Net Units: {total_units_won:+.2f}u (ROI: {roi:+.1f}%)")
+    roi = (total_units_won / total_units_staked * 100) if total_units_staked > 0 else 0.0
+    print(f"📊 Top 15 Summary for {yesterday_str}: {total_hits}/{total_picks} Hit ({hit_rate:.1f}%) | Staked: {total_units_staked:.2f}u | Net: {total_units_won:+.2f}u (ROI: {roi:+.1f}%)")
 
     email_user = os.getenv("EMAIL_USER", "").strip()
     email_pass = os.getenv("EMAIL_PASS", "").strip()
@@ -810,7 +829,7 @@ def run_settlement():
     if email_user and email_pass and recipient:
         try:
             msg = MIMEMultipart()
-            msg['Subject'] = f"📊 MLB Settlement Report • {yesterday_str} ({total_units_won:+.2f}u)"
+            msg['Subject'] = f"📊 MLB HR Top 15 Settlement Report • {yesterday_str} ({total_units_won:+.2f}u)"
             msg['From'] = email_user
             msg['To'] = recipient
 
@@ -823,6 +842,7 @@ def run_settlement():
                     <td style="padding: 6px;">#{r['rank']} {r['batter_name']}</td>
                     <td style="padding: 6px;">{r['team']}</td>
                     <td style="padding: 6px;">{r['odds']}</td>
+                    <td style="padding: 6px; color: #facc15;">{r['stake']}</td>
                     <td style="padding: 6px; font-weight: bold; color: {row_color};">{r['result']}</td>
                     <td style="padding: 6px; font-weight: bold; color: {row_color};">{r['unit_profit']:+.2f}u</td>
                 </tr>
@@ -831,14 +851,19 @@ def run_settlement():
             html = f"""
             <html>
                 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
-                    <h2 style="color: #38bdf8;">📊 MLB Home Run Settlement Report • {yesterday_str}</h2>
-                    <p style="font-size: 15px;"><strong>Results:</strong> {total_hits}/{total_picks} Hit ({hit_rate:.1f}%) | <strong>Profit:</strong> <span style="color: {'#4ade80' if total_units_won >= 0 else '#f87171'};">{total_units_won:+.2f} Units (ROI: {roi:+.1f}%)</span></p>
-                    <table style="width: 100%; max-width: 650px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; margin-top: 15px;">
+                    <h2 style="color: #38bdf8;">📊 MLB Home Run Top 15 Settlement Report • {yesterday_str}</h2>
+                    <p style="font-size: 15px;">
+                        <strong>Portfolio Hits:</strong> {total_hits}/{total_picks} ({hit_rate:.1f}%) | 
+                        <strong>Total Staked:</strong> {total_units_staked:.2f}u | 
+                        <strong>Net P&L:</strong> <span style="color: {'#4ade80' if total_units_won >= 0 else '#f87171'};">{total_units_won:+.2f} Units (ROI: {roi:+.1f}%)</span>
+                    </p>
+                    <table style="width: 100%; max-width: 680px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; margin-top: 15px; border-radius: 6px; overflow: hidden;">
                         <thead>
                             <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
                                 <th style="padding: 6px;">Batter</th>
                                 <th style="padding: 6px;">Team</th>
                                 <th style="padding: 6px;">Odds</th>
+                                <th style="padding: 6px;">Stake</th>
                                 <th style="padding: 6px;">Result</th>
                                 <th style="padding: 6px;">P&L</th>
                             </tr>
@@ -853,7 +878,7 @@ def run_settlement():
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
                 server.login(email_user, email_pass)
                 server.sendmail(email_user, recipient, msg.as_string())
-            print(f"[✓] Successfully emailed full settlement report table to {recipient}.")
+            print(f"[✓] Successfully emailed Top 15 HR settlement report to {recipient}.")
         except Exception as e:
             print(f"[!] Failed to send settlement email: {e}")
 
