@@ -344,18 +344,11 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     return profile
 
 def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, b_hand):
-    """
-    Pure Matchup Intensity Engine:
-    Evaluates True HR/PA with standardized starter exposure (PA = 4.20)
-    to completely eliminate lineup slot order bias.
-    """
     raw_iso = b_stats['iso']
     raw_hr_pa = b_stats['hr_pa']
 
-    # 1. Base Intensity per PA
     lambda_base = max(0.001, raw_hr_pa)
 
-    # 2. Select Handedness-Specific Pitcher HR/9
     if b_hand in ['L', 'S']:
         sp_hr9 = p_stats.get('hr9_vs_lhb', p_stats['hr9'])
     else:
@@ -364,22 +357,17 @@ def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, b_han
     w_sp, w_bp = (0.15, 0.85) if p_stats['is_bullpen_game'] else (0.65, 0.35)
     blended_hr9 = (sp_hr9 * w_sp) + (bp_stats['bp_hr9'] * w_bp)
 
-    # 3. Direct Multipliers
-    pitcher_factor = blended_hr9 / 1.20
+    pitcher_factor = (blended_hr9 / 1.20) ** 0.85
     park_factor_adj = park_factor / 100.0
 
-    # 4. Final Calibrated Intensity
     lambda_pa = lambda_base * pitcher_factor * park_factor_adj
 
-    # 5. Standardized Flat Plate Appearance Exposure (PA = 4.20)
     PA_STANDARD = 4.20
     p_game_hr = round(float(1.0 - np.exp(-lambda_pa * PA_STANDARD)), 4)
 
-    # 6. Smooth Sigmoid Score (Distributed across 35 - 96 range)
     score_raw = 100.0 / (1.0 + np.exp(-26.0 * (p_game_hr - 0.155)))
     matchup_score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
-    # 7. Surge Multiplier
     p_baseline = 1.0 - ((1.0 - lambda_base) ** PA_STANDARD)
     surge_ratio = p_game_hr / p_baseline if p_baseline > 0 else 1.0
     pct_diff = int((surge_ratio - 1.0) * 100)
@@ -393,7 +381,8 @@ def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, b_han
     return {
         'matchup_score': matchup_score,
         'p_game_hr': p_game_hr,
-        'surge_badge': surge_badge
+        'surge_badge': surge_badge,
+        'sp_split_hr9': sp_hr9
     }
 
 def fetch_projected_lineup_rotowire(team_name: str):
@@ -449,6 +438,7 @@ def fetch_slate_evaluations(target_date_str=None):
             game_id = game['game_id']
             venue = game.get('venue_name', 'default')
             park_factor = BALLPARK_HR_FACTORS.get(venue, BALLPARK_HR_FACTORS['default'])
+            weather_desc = game.get('weather', {}).get('condition', 'Dome / Standard')
 
             away_id = game.get('away_id', 0)
             home_id = game.get('home_id', 0)
@@ -519,11 +509,13 @@ def fetch_slate_evaluations(target_date_str=None):
                     row = {
                         'order': order_num, 'batter_name': b_name, 'b_hand': b_hand, 'pos': pos,
                         'team': team_name, 'opp_pitcher': opp_p_name, 'p_hand': opp_p_hand,
-                        'pitcher_vuln_badge': opp_p_stats['badge'], 'split_desc': b_stats['split_desc'],
-                        'batter_badge': b_stats['batter_badge'], 'iso': b_stats['iso'],
-                        'season_pa': b_stats['season_pa'], 'sample_status': b_stats['sample_status'],
+                        'pitcher_vuln_badge': opp_p_stats['badge'], 'sp_split_hr9': evals['sp_split_hr9'],
+                        'split_desc': b_stats['split_desc'], 'batter_badge': b_stats['batter_badge'],
+                        'iso': b_stats['iso'], 'season_pa': b_stats['season_pa'],
+                        'sample_status': b_stats['sample_status'],
                         'matchup_score': evals['matchup_score'], 'p_game_hr': evals['p_game_hr'],
-                        'surge_badge': evals['surge_badge'], 'venue': venue
+                        'surge_badge': evals['surge_badge'], 'venue': venue, 'park_factor': park_factor,
+                        'weather_summary': weather_desc
                     }
                     all_players.append(row)
                     t_rows.append(row)
@@ -652,6 +644,173 @@ def render_top50_leaderboard(df, output_path, today_str):
 
     plt.savefig(output_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close()
+
+def render_interactive_html_leaderboard(df: pd.DataFrame, output_path: str, today_str: str):
+    """
+    Renders an interactive, sortable, filterable HTML table for ALL qualified batters on the slate
+    including opposing pitcher badges/metrics and ballpark environmental factors.
+    """
+    table_rows_html = ""
+    for _, r in df.iterrows():
+        score_val = float(r['matchup_score'])
+        score_color = "#38bdf8" if score_val >= 85.0 else ("#4ade80" if score_val >= 70.0 else "#94a3b8")
+        
+        # Pitcher risk badge styling
+        p_badge = str(r.get('pitcher_vuln_badge', ''))
+        if '🔴' in p_badge:
+            p_badge_html = f'<span class="badge badge-red">{p_badge}</span>'
+        elif '🟢' in p_badge:
+            p_badge_html = f'<span class="badge badge-green">{p_badge}</span>'
+        else:
+            p_badge_html = f'<span class="badge badge-amber">{p_badge}</span>'
+
+        # Split Edge Badge
+        split_desc = str(r.get('split_desc', ''))
+        if 'Reverse Split' in split_desc:
+            split_badge = '<span class="badge badge-cyan">⚡ Rev Adv</span>'
+        elif 'Platoon' in split_desc or 'Switch' in split_desc:
+            split_badge = '<span class="badge badge-green">🔥 Platoon</span>'
+        else:
+            split_badge = '<span class="badge badge-slate">🛡️ Same-Hand</span>'
+
+        # Surge Badge
+        surge_text = str(r.get('surge_badge', ''))
+        if '🚀' in surge_text:
+            surge_badge = f'<span class="badge badge-cyan">{surge_text}</span>'
+        elif '📈' in surge_text:
+            surge_badge = f'<span class="badge badge-green">{surge_text}</span>'
+        elif '🛡️' in surge_text:
+            surge_badge = f'<span class="badge badge-slate">{surge_text}</span>'
+        else:
+            surge_badge = '<span class="text-slate-500">—</span>'
+
+        weather_desc = str(r.get('weather_summary', 'Dome / Standard'))
+        sp_split_hr9 = float(r.get('sp_split_hr9', 1.20))
+
+        table_rows_html += f"""
+        <tr>
+            <td class="font-bold text-slate-300 text-center">{r['rank']}</td>
+            <td class="font-semibold text-sky-400">#{r['order']} {r['batter_name']} <span class="text-xs text-slate-400">({r['b_hand']})</span></td>
+            <td class="text-slate-300">{r['team']}</td>
+            <td class="text-slate-300">{r['opp_pitcher']} <span class="text-xs text-slate-400">({r['p_hand']})</span></td>
+            <td>
+                <div class="text-xs font-semibold text-slate-200">{sp_split_hr9:.2f} HR/9 vs {r['b_hand']}HB</div>
+                <div>{p_badge_html}</div>
+            </td>
+            <td>
+                <div class="text-xs font-semibold text-slate-200">{r.get('venue', 'Ballpark')} ({r.get('park_factor', 100)})</div>
+                <div class="text-xs text-slate-400">{weather_desc}</div>
+            </td>
+            <td>{split_badge}</td>
+            <td>
+                <div class="text-xs text-slate-300">{r['batter_badge']}</div>
+                <div class="text-xs text-slate-400">ISO: {float(r['iso']):.3f}</div>
+            </td>
+            <td class="font-bold text-center" style="color: {score_color};">{score_val:.1f}</td>
+            <td class="font-bold text-amber-400 text-center">{(float(r['p_game_hr'])*100):.1f}%</td>
+            <td class="text-center">{surge_badge}</td>
+        </tr>
+        """
+
+    html_page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLB HR Slate Intelligence Board • {today_str}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        body {{ background-color: #0b1329; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }}
+        .badge {{ display: inline-block; padding: 2px 8px; border-radius: 9999px; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }}
+        .badge-cyan {{ background-color: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }}
+        .badge-green {{ background-color: rgba(74, 222, 128, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }}
+        .badge-red {{ background-color: rgba(248, 113, 113, 0.15); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.3); }}
+        .badge-amber {{ background-color: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }}
+        .badge-slate {{ background-color: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.3); }}
+        
+        table.dataTable {{ background-color: #1e293b; border-radius: 8px; border: 1px solid #334155 !important; }}
+        table.dataTable thead th {{ background-color: #0f172a; color: #38bdf8; border-bottom: 1px solid #334155 !important; padding: 10px 12px; font-size: 0.8rem; }}
+        table.dataTable tbody tr {{ background-color: #1e293b; border-bottom: 1px solid #334155; }}
+        table.dataTable tbody tr:hover {{ background-color: #293548 !important; }}
+        table.dataTable tbody td {{ padding: 8px 12px; }}
+        
+        .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, 
+        .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate {{
+            color: #94a3b8 !important; margin: 12px 0; font-size: 0.85rem;
+        }}
+        .dataTables_wrapper .dataTables_length select,
+        .dataTables_wrapper .dataTables_filter input {{
+            background-color: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 4px 8px; color: #f8fafc;
+        }}
+        .dataTables_wrapper .dataTables_paginate .paginate_button {{
+            color: #f8fafc !important; border-radius: 4px; border: 1px solid transparent;
+        }}
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {{
+            background: #38bdf8 !important; color: #0b1329 !important; font-weight: bold; border-color: #38bdf8 !important;
+        }}
+    </style>
+</head>
+<body class="p-6">
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-6 border-b border-slate-800 pb-4 flex flex-wrap justify-between items-end gap-4">
+            <div>
+                <h1 class="text-2xl font-bold text-slate-100 flex items-center gap-2">
+                    ⚾ MLB Slate Home Run Intelligence Board ({len(df)} Batters)
+                </h1>
+                <p class="text-sm text-sky-400 mt-1">
+                    Matchup Intensity Engine • Pitcher Splits & Badges • Park Environmental Context • {today_str}
+                </p>
+            </div>
+            <div class="text-xs text-slate-400 bg-slate-800/60 border border-slate-700 px-3 py-1.5 rounded-md">
+                Standardized PA Baseline: <span class="text-sky-400 font-semibold">4.20</span>
+            </div>
+        </header>
+
+        <div class="overflow-x-auto">
+            <table id="allPlayersTable" class="display w-full text-sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Batter</th>
+                        <th>Team</th>
+                        <th>Opp Pitcher</th>
+                        <th>Pitcher State</th>
+                        <th>Park & Weather</th>
+                        <th>Split Edge</th>
+                        <th>Power Profile</th>
+                        <th>Score</th>
+                        <th>HR Prob</th>
+                        <th>Surge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {table_rows_html}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {{
+            $('#allPlayersTable').DataTable({{
+                "pageLength": 25,
+                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+                "order": [[ 8, "desc" ]],
+                "columnDefs": [
+                    {{ "type": "num", "targets": [0, 8] }}
+                ]
+            }});
+        }});
+    </script>
+</body>
+</html>
+"""
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(html_page)
+    print(f"[✓] Saved Comprehensive Interactive Board ({len(df)} players) to {output_path}")
 
 def render_settlement_leaderboard(df_settle, output_path, yesterday_str):
     df_50 = df_settle.head(50).copy()
@@ -910,9 +1069,14 @@ def run_predictions():
 
     csv_path = f"exports/hr_top50_{today_str}.csv"
     png_path = f"exports/hr_top50_leaderboard_{today_str}.png"
+    html_all_path = f"exports/hr_all_players_interactive_{today_str}.html"
 
+    # 1. Save Top 50 CSV and PNG
     df.head(50).to_csv(csv_path, index=False)
     render_top50_leaderboard(df, png_path, today_str)
+    
+    # 2. Save Comprehensive Interactive HTML Player Pool (All qualified batters on slate)
+    render_interactive_html_leaderboard(df, html_all_path, today_str)
 
     rendered_count = 0
     for card_info in game_cards:
@@ -922,7 +1086,7 @@ def run_predictions():
         except Exception as e:
             print(f"[!] Could not render card for {card_info.get('title')}: {e}")
 
-    print(f"[✓] Saved Top-50 Board and {rendered_count} top-6 matchup cards to exports/.")
+    print(f"[✓] Saved Top-50 PNG/CSV and Full Interactive Pool HTML to exports/.")
     send_email_digest(df, png_path, today_str)
 
 def run_settlement():
