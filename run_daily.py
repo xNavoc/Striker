@@ -96,7 +96,7 @@ def get_player_metadata(person_id: int, player_name: str = ""):
     return b_hand, p_hand, pos
 
 def fetch_team_bullpen_stats(team_id: int):
-    """Fetches verified current-season bullpen stats and HR concession metrics."""
+    """Fetches verified current-season bullpen stats and HR rates."""
     if team_id in BULLPEN_STATS_CACHE:
         return BULLPEN_STATS_CACHE[team_id]
 
@@ -129,7 +129,7 @@ def fetch_team_bullpen_stats(team_id: int):
     return bp_stats
 
 def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
-    """Ingests starter profile with low-IP Bayesian shrinkage and opener detection."""
+    """Ingests current season starter stats with low-IP shrinkage and opener detection."""
     clean_key = clean_name_str(pitcher_name)
     if clean_key in PITCHER_PROFILE_CACHE:
         return PITCHER_PROFILE_CACHE[clean_key]
@@ -177,7 +177,7 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
     else:
         is_bullpen_game = False
 
-    # Low IP (< 30 IP) Bayesian Shrinkage Failsafe to League Baseline
+    # Low IP (< 30 IP) Bayesian Shrinkage Failsafe
     LEAGUE_AVG_P_HR9 = 1.20
     LEAGUE_AVG_P_WHIP = 1.25
     K_P_STABILIZE = 30.0
@@ -221,7 +221,7 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
     return matched_arsenal, profile
 
 def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p_hand: str, pitcher_arsenal: dict):
-    """Ingests current-season hitting stats with dynamic Bayesian shrinkage for < 100 PA."""
+    """Evaluates verified season stats with Bayesian shrinkage for < 100 PA."""
     LEAGUE_AVG_ISO = 0.155
     LEAGUE_AVG_BARREL = 0.075
     K_STABILIZE = 120.0
@@ -301,43 +301,71 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
         'barrel': eff_barrel,
         'season_pa': season_pa,
         'raw_hr': raw_hr,
-        'hr_pa': min(0.095, max(0.020, raw_hr / max(80.0, float(season_pa)))),
+        'hr_pa': min(0.085, max(0.015, raw_hr / max(80.0, float(season_pa)))),
         'batter_badge': badge,
         'split_desc': split_desc,
         'split_mult': split_mult,
         'sample_status': sample_status
     }
 
-def compute_nhpp_rebalanced_score(b_stats, p_stats, bp_stats, park_factor, order):
-    """Rebalanced NHPP Engine with continuous micro-form and sigmoid scaling."""
-    rolling_brl_pa = b_stats['barrel'] * 0.48
-    rolling_ev90 = 100.0 + (b_stats['iso'] * 32.0)
-    rolling_fb_hard = 0.18 + (b_stats['iso'] * 0.50)
+def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, order):
+    """
+    Log-Additive NHPP Engine:
+    Prevents exponential probability inflation and differentiates high-barrel sluggers 
+    from gap-to-gap contact bats.
+    """
+    # 1. Hard Air Contact Acceleration Index (Elevated 24°-34° contact)
+    rolling_brl_pa = b_stats['barrel'] * 0.46
+    rolling_ev90 = 100.0 + (b_stats['iso'] * 28.0)
+    rolling_fb_hard = 0.18 + (b_stats['iso'] * 0.45)
 
     z_brl = (rolling_brl_pa - 0.045) / 0.025
     z_ev = (rolling_ev90 - 103.0) / 4.0
     z_fb = (rolling_fb_hard - 0.220) / 0.080
 
-    m_contact = np.exp(0.40 * z_brl + 0.35 * z_ev + 0.25 * z_fb)
+    m_contact = 1.0 + (0.40 * z_brl + 0.35 * z_fb + 0.25 * z_ev)
+    m_contact = float(np.clip(m_contact, 0.65, 3.20))
 
+    # 2. Pitcher Exposure & Environmental Multipliers
     w_sp, w_bp = (0.15, 0.85) if p_stats['is_bullpen_game'] else (0.65, 0.35)
     blended_hr9 = (p_stats['hr9'] * w_sp) + (bp_stats['bp_hr9'] * w_bp)
-    m_pitcher = blended_hr9 / 1.20
-    m_park = park_factor / 100.0
+    delta_pitcher = (blended_hr9 / 1.20) - 1.0
+    delta_park = (park_factor / 100.0) - 1.0
+    delta_platoon = b_stats['split_mult'] - 1.0
 
-    lambda_base = max(0.020, b_stats['hr_pa'])
-    lambda_pa = lambda_base * m_contact * m_pitcher * m_park * b_stats['split_mult']
+    # 3. Log-Additive Hazard Rate per Plate Appearance (Capped at 0.085)
+    lambda_base = max(0.018, b_stats['hr_pa'])
+    lambda_pa = lambda_base * (1.0 + 0.35 * (m_contact - 1.0) + 0.20 * delta_pitcher + 0.15 * delta_park + 0.15 * delta_platoon)
+    lambda_pa = float(np.clip(lambda_pa, 0.015, 0.085))
 
+    # 4. Integrated Single-Game Probability
     pa_exp = 4.80 - (order * 0.14)
     integrated_lambda = lambda_pa * pa_exp
     p_game_hr = round(float(1.0 - np.exp(-integrated_lambda)), 4)
 
-    score_raw = 100.0 / (1.0 + np.exp(-12.0 * (p_game_hr - 0.24)))
+    # 5. Relative Surge Multiplier & Badge Engine
+    p_baseline = 1.0 - ((1.0 - lambda_base) ** pa_exp)
+    surge_ratio = p_game_hr / p_baseline if p_baseline > 0 else 1.0
+    pct_diff = int((surge_ratio - 1.0) * 100)
+
+    if surge_ratio >= 1.60:
+        surge_badge = f"🚀 SURGE (+{pct_diff}%)"
+    elif surge_ratio >= 1.35:
+        surge_badge = f"📈 SURGE (+{pct_diff}%)"
+    elif surge_ratio <= 0.85:
+        surge_badge = f"🛡️ SUPP ({pct_diff}%)"
+    else:
+        surge_badge = ""
+
+    # 6. Recalibrated Sigmoid Score (Midpoint: 0.215, Steepness: 18.0)
+    score_raw = 100.0 / (1.0 + np.exp(-18.0 * (p_game_hr - 0.215)))
     matchup_score = round(float(np.clip(score_raw, 40.0, 98.5)), 1)
 
     return {
         'matchup_score': matchup_score,
-        'p_game_hr': p_game_hr
+        'p_game_hr': p_game_hr,
+        'surge_badge': surge_badge,
+        'surge_ratio': round(surge_ratio, 2)
     }
 
 def fetch_projected_lineup_rotowire(team_name: str):
@@ -361,7 +389,7 @@ def fetch_projected_lineup_rotowire(team_name: str):
 def fetch_slate_evaluations(target_date_str=None):
     initialize_league_registry()
     today_str = target_date_str or datetime.now().strftime('%Y-%m-%d')
-    print(f"[i] Evaluating MLB HR Matchups for {today_str} (Orders 1-6, Platoon Rules, Season {CURRENT_SEASON})...")
+    print(f"[i] Evaluating MLB HR Matchups for {today_str} (Orders 1-6, Platoon Rules, Current Season {CURRENT_SEASON})...")
 
     raw_schedule = []
     try:
@@ -449,12 +477,12 @@ def fetch_slate_evaluations(target_date_str=None):
             def process_lineup(players, team_name, opp_p_name, opp_p_hand, opp_arsenal, opp_p_stats, opp_bp_stats):
                 t_rows = []
                 for order_num, b_id, b_name, b_hand, pos in players:
-                    # RULE: Exclude L v L completely. Allow L v R, R v L, R v R, and Switch
+                    # Exclude L vs L
                     if b_hand == 'L' and opp_p_hand == 'L':
                         continue
 
                     b_stats = evaluate_batter_power_and_splits(b_id, b_name, b_hand, opp_p_hand, opp_arsenal)
-                    evals = compute_nhpp_rebalanced_score(b_stats, opp_p_stats, opp_bp_stats, park_factor, order_num)
+                    evals = compute_nhpp_calibrated_score(b_stats, opp_p_stats, opp_bp_stats, park_factor, order_num)
 
                     row = {
                         'order': order_num, 'batter_name': b_name, 'b_hand': b_hand, 'pos': pos,
@@ -464,7 +492,7 @@ def fetch_slate_evaluations(target_date_str=None):
                         'barrel': b_stats['barrel'], 'season_pa': b_stats['season_pa'],
                         'sample_status': b_stats['sample_status'],
                         'matchup_score': evals['matchup_score'], 'p_game_hr': evals['p_game_hr'],
-                        'venue': venue
+                        'surge_badge': evals['surge_badge'], 'venue': venue
                     }
                     all_players.append(row)
                     t_rows.append(row)
@@ -505,9 +533,9 @@ def render_top50_leaderboard(df, output_path, today_str):
     fig.patch.set_facecolor('#0b1329')
 
     fig.text(0.5, 0.965, "MLB SLATE TOP 50 HOME RUN MATCHUP TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.942, f"Batting Orders 1-6 • Excludes L v L • Rebalanced NHPP Engine • Current Season {CURRENT_SEASON} • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
+    fig.text(0.5, 0.942, f"Batting Orders 1-6 • Excludes L v L • Log-Additive NHPP Engine • Current Season {CURRENT_SEASON} • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
 
-    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Split Edge', 'Pitcher State', 'Power Profile', 'Score\n(100)', 'HR Prob']
+    table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Split Edge', 'Power Profile', 'Score\n(100)', 'HR Prob', 'Surge']
 
     def create_table_rows(sub_df):
         rows = []
@@ -518,10 +546,10 @@ def render_top50_leaderboard(df, output_path, today_str):
                 r['team'][:11],
                 f"{r['opp_pitcher'][:11]} ({r['p_hand']})",
                 "⚡ Rev Adv" if "Reverse Split" in r['split_desc'] else ("🔥 Platoon" if "Adv" in r['split_desc'] else "🛡️ Same-Hand"),
-                r['pitcher_vuln_badge'],
                 r['batter_badge'],
                 f"{r['matchup_score']:.1f}",
-                f"{r['p_game_hr']*100:.1f}%"
+                f"{r['p_game_hr']*100:.1f}%",
+                r.get('surge_badge', '')
             ])
         return rows
 
@@ -544,8 +572,8 @@ def render_top50_leaderboard(df, output_path, today_str):
                 cell.set_text_props(color='#38bdf8', weight='bold')
                 cell.set_facecolor('#1e293b')
             else:
-                if col == 7:
-                    score_val = float(rows_data[row-1][7])
+                if col == 6:
+                    score_val = float(rows_data[row-1][6])
                     cell.set_text_props(color='#38bdf8' if score_val >= 88.0 else '#f1f5f9', weight='bold')
                 elif col == 4:
                     s_text = rows_data[row-1][4]
@@ -556,14 +584,19 @@ def render_top50_leaderboard(df, output_path, today_str):
                     else:
                         cell.set_text_props(color='#f87171')
                 elif col == 5:
-                    p_text = rows_data[row-1][5]
-                    cell.set_text_props(color='#f87171' if '🔴' in p_text else ('#4ade80' if '🟢' in p_text else '#facc15'), weight='bold')
-                elif col == 6:
-                    b_text = rows_data[row-1][6]
+                    b_text = rows_data[row-1][5]
                     if 'Elite' in b_text:
                         cell.set_text_props(color='#c084fc', weight='bold')
                     elif 'Crusher' in b_text or 'Hunter' in b_text:
                         cell.set_text_props(color='#facc15', weight='bold')
+                    else:
+                        cell.set_text_props(color='#94a3b8')
+                elif col == 8:
+                    s_badge = rows_data[row-1][8]
+                    if '🚀' in s_badge:
+                        cell.set_text_props(color='#38bdf8', weight='bold')
+                    elif '📈' in s_badge:
+                        cell.set_text_props(color='#4ade80', weight='bold')
                     else:
                         cell.set_text_props(color='#94a3b8')
                 else:
@@ -590,7 +623,7 @@ def render_top50_leaderboard(df, output_path, today_str):
     plt.close()
 
 def render_settlement_leaderboard(df_settle, output_path, yesterday_str):
-    """Renders high-res settlement graphic for the entire Top 50 board."""
+    """Renders high-res visual settlement table for the entire Top 50 board."""
     df_50 = df_settle.head(50).copy()
     num_batters = len(df_50)
 
@@ -607,7 +640,7 @@ def render_settlement_leaderboard(df_settle, output_path, yesterday_str):
     fig.text(0.5, 0.965, "MLB TOP 50 HR LEADERBOARD SETTLEMENT RECAP", ha='center', color='#f8fafc', fontsize=22, weight='bold')
     fig.text(0.5, 0.942, f"Slate Results • {yesterday_str} • Top 50 Total HR Hitters: {total_hits}/{num_batters} ({hit_pct:.1f}%)", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
 
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Score', 'HR Prob', 'Settled Result']
+    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Score', 'HR Prob', 'Surge', 'Settled Result']
 
     def create_table_rows(sub_df):
         rows = []
@@ -619,6 +652,7 @@ def render_settlement_leaderboard(df_settle, output_path, yesterday_str):
                 r['opp_pitcher'][:13],
                 f"{r['score']:.1f}",
                 f"{r['hr_prob']}",
+                r.get('surge_badge', ''),
                 r['result']
             ])
         return rows
@@ -630,14 +664,22 @@ def render_settlement_leaderboard(df_settle, output_path, yesterday_str):
                 cell.set_text_props(color='#38bdf8', weight='bold')
                 cell.set_facecolor('#1e293b')
             else:
-                res_text = rows_data[row-1][6]
-                if col == 6:
+                res_text = rows_data[row-1][7]
+                if col == 7:
                     if "WIN" in res_text:
                         cell.set_text_props(color='#4ade80', weight='bold')
                     else:
                         cell.set_text_props(color='#94a3b8')
                 elif col == 4:
                     cell.set_text_props(color='#38bdf8', weight='bold')
+                elif col == 6:
+                    s_badge = rows_data[row-1][6]
+                    if '🚀' in s_badge:
+                        cell.set_text_props(color='#38bdf8', weight='bold')
+                    elif '📈' in s_badge:
+                        cell.set_text_props(color='#4ade80', weight='bold')
+                    else:
+                        cell.set_text_props(color='#94a3b8')
                 else:
                     cell.set_text_props(color='#f1f5f9')
                 cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
@@ -648,7 +690,7 @@ def render_settlement_leaderboard(df_settle, output_path, yesterday_str):
 
     table_l = ax_left.table(cellText=rows_left, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
     table_l.auto_set_font_size(False)
-    table_l.set_fontsize(8.0)
+    table_l.set_fontsize(7.8)
     table_l.scale(1.0, 1.85)
     style_settle_table(table_l, rows_left)
 
@@ -659,7 +701,7 @@ def render_settlement_leaderboard(df_settle, output_path, yesterday_str):
 
         table_r = ax_right.table(cellText=rows_right, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
         table_r.auto_set_font_size(False)
-        table_r.set_fontsize(8.0)
+        table_r.set_fontsize(7.8)
         table_r.scale(1.0, 1.85)
         style_settle_table(table_r, rows_right)
 
@@ -680,7 +722,7 @@ def render_individual_game_card(card_info, output_dir, today_str):
     fig.text(0.5, 0.95, f"{team_name.upper()} — TOP 6 MATCHUP CARD (PRE-GAME)", ha='center', color='#f8fafc', fontsize=17, weight='bold')
     fig.text(0.5, 0.90, f"Opp Starter: {opp_p} [{p_badge}]  •  Venue: {venue}  •  {today_str}", ha='center', color='#38bdf8', fontsize=10, weight='semibold')
 
-    cols = ['#', 'Batter (Hand)', 'Pos', 'Platoon & Split State', 'Pitcher Arsenal State', 'Power Profile', 'Score\n(100)', 'HR Prob']
+    cols = ['#', 'Batter (Hand)', 'Pos', 'Platoon & Split State', 'Pitcher Arsenal State', 'Power Profile', 'Score\n(100)', 'HR Prob', 'Surge']
     rows = []
 
     for _, r in df.head(6).iterrows():
@@ -692,12 +734,13 @@ def render_individual_game_card(card_info, output_dir, today_str):
             r['pitcher_vuln_badge'],
             r['batter_badge'],
             f"{r['matchup_score']:.1f}",
-            f"{r['p_game_hr']*100:.1f}%"
+            f"{r['p_game_hr']*100:.1f}%",
+            r.get('surge_badge', '')
         ])
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8.5)
+    table.set_fontsize(8.2)
     table.scale(1.0, 2.2)
 
     for (row, col), cell in table.get_celld().items():
@@ -725,6 +768,14 @@ def render_individual_game_card(card_info, output_dir, today_str):
                     cell.set_text_props(color='#c084fc', weight='bold')
                 elif 'Crusher' in b_text or 'Hunter' in b_text:
                     cell.set_text_props(color='#facc15', weight='bold')
+                else:
+                    cell.set_text_props(color='#94a3b8')
+            elif col == 8:
+                s_badge = rows[row-1][8]
+                if '🚀' in s_badge:
+                    cell.set_text_props(color='#38bdf8', weight='bold')
+                elif '📈' in s_badge:
+                    cell.set_text_props(color='#4ade80', weight='bold')
                 else:
                     cell.set_text_props(color='#94a3b8')
             else:
@@ -764,6 +815,7 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
             <td style="padding: 7px;">{r['batter_badge']}</td>
             <td style="padding: 7px; font-weight: bold; color: #38bdf8;">{r['matchup_score']:.1f}</td>
             <td style="padding: 7px; font-weight: bold; color: #facc15;">{r['p_game_hr']*100:.1f}%</td>
+            <td style="padding: 7px; font-weight: bold; color: #38bdf8;">{r.get('surge_badge', '')}</td>
         </tr>
         """
 
@@ -771,10 +823,10 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
     <html>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
             <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Top 15 Home Run Matchups</h2>
-            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Orders 1-6 • Excludes L v L • Rebalanced NHPP Matrix • {today_str}</p>
+            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Orders 1-6 • Excludes L v L • Calibrated NHPP Matrix • {today_str}</p>
             
             <h3 style="color: #f8fafc; margin-top: 15px;">🎯 Official Top 15 HR Targets</h3>
-            <table style="width: 100%; max-width: 820px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
+            <table style="width: 100%; max-width: 860px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
                 <thead>
                     <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
                         <th style="padding: 7px;">Batter</th>
@@ -783,6 +835,7 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
                         <th style="padding: 7px;">Power Profile</th>
                         <th style="padding: 7px;">Score</th>
                         <th style="padding: 7px;">HR Prob</th>
+                        <th style="padding: 7px;">Surge</th>
                     </tr>
                 </thead>
                 <tbody>{portfolio_rows}</tbody>
@@ -910,6 +963,7 @@ def run_settlement():
             'opp_pitcher': r.get('opp_pitcher', ''),
             'score': float(score_val),
             'hr_prob': hr_prob_str,
+            'surge_badge': r.get('surge_badge', ''),
             'result': result_str
         })
 
@@ -953,6 +1007,7 @@ def run_settlement():
                     <td style="padding: 6px;">{r['opp_pitcher']}</td>
                     <td style="padding: 6px; font-weight: bold; color: #38bdf8;">{r['score']:.1f}</td>
                     <td style="padding: 6px;">{r['hr_prob']}</td>
+                    <td style="padding: 6px; font-weight: bold; color: #38bdf8;">{r.get('surge_badge', '')}</td>
                     <td style="padding: 6px; font-weight: bold; color: {row_color};">{r['result']}</td>
                 </tr>
                 """
@@ -967,7 +1022,7 @@ def run_settlement():
                     </div>
 
                     <h3 style="color: #f8fafc; margin-top: 15px;">🎯 Top 15 Target Breakdown</h3>
-                    <table style="width: 100%; max-width: 680px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
+                    <table style="width: 100%; max-width: 720px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
                         <thead>
                             <tr style="background-color: #0f172a; color: #38bdf8; text-align: left;">
                                 <th style="padding: 6px;">Batter</th>
@@ -975,6 +1030,7 @@ def run_settlement():
                                 <th style="padding: 6px;">Opp Pitcher</th>
                                 <th style="padding: 6px;">Score</th>
                                 <th style="padding: 6px;">HR Prob</th>
+                                <th style="padding: 6px;">Surge</th>
                                 <th style="padding: 6px;">Result</th>
                             </tr>
                         </thead>
