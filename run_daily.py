@@ -13,7 +13,6 @@ import statsapi
 import matplotlib.pyplot as plt
 from zoneinfo import ZoneInfo
 
-# Strict Current-Season Enforcement
 CURRENT_SEASON = datetime.now().year
 
 BALLPARK_HR_FACTORS = {
@@ -28,6 +27,7 @@ LEAGUE_ID_REGISTRY = {}
 LEAGUE_NAME_REGISTRY = {}
 PITCHER_PROFILE_CACHE = {}
 BULLPEN_STATS_CACHE = {}
+BATTER_PROFILE_CACHE = {}
 
 def clean_name_str(name: str) -> str:
     if not name:
@@ -39,7 +39,6 @@ def get_current_slate_date():
     try:
         eastern_now = datetime.now(ZoneInfo("America/New_York"))
     except Exception:
-        # Fallback if tzdata missing
         eastern_now = datetime.utcnow() - timedelta(hours=4)
     return eastern_now
 
@@ -139,15 +138,21 @@ def fetch_team_bullpen_stats(team_id: int):
     BULLPEN_STATS_CACHE[team_id] = bp_stats
     return bp_stats
 
-def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
-    """Ingests starter profile with low-IP Bayesian shrinkage and opener detection."""
+def fetch_pitcher_profile_and_splits(pitcher_id: int, pitcher_name: str):
+    """
+    Ingests starter season stats and splits vs LHB (vl) and vs RHB (vr)
+    with Bayesian shrinkage.
+    """
     clean_key = clean_name_str(pitcher_name)
     if clean_key in PITCHER_PROFILE_CACHE:
         return PITCHER_PROFILE_CACHE[clean_key]
 
     _, p_hand, pos = get_player_metadata(pitcher_id, pitcher_name)
-    hr9, whip, era, season_ip, games_started = 1.20, 1.25, 4.20, 0.0, 0
+    hr9_overall, whip_overall, era_overall, season_ip, games_started = 1.20, 1.25, 4.20, 0.0, 0
     is_opener = (pos == 'RP')
+
+    hr9_vs_lhb, ip_vs_lhb = 1.20, 0.0
+    hr9_vs_rhb, ip_vs_rhb = 1.20, 0.0
 
     target_id = pitcher_id
     if not target_id and pitcher_name and 'TBD' not in pitcher_name:
@@ -162,23 +167,39 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
 
     if target_id:
         try:
-            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}?hydrate=stats(group=[pitching],type=[season],season={CURRENT_SEASON})"
-            res = requests.get(url, timeout=4).json()
+            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}?hydrate=stats(group=[pitching],type=[season,statSplits],sitCodes=[vl,vr],season={CURRENT_SEASON})"
+            res = requests.get(url, timeout=5).json()
             people = res.get('people', [])
             if people:
                 p_hand = people[0].get('pitchHand', {}).get('code', p_hand).upper()
                 for st in people[0].get('stats', []):
+                    stat_type = st.get('type', {}).get('displayName', '')
                     splits = st.get('splits', [])
-                    if splits:
+
+                    if stat_type == 'season' and splits:
                         s = splits[0].get('stat', {})
                         season_ip = float(s.get('inningsPitched', '0.0') or 0.0)
                         hr = float(s.get('homeRuns', 0))
-                        whip = float(s.get('whip', 1.25))
-                        era = float(s.get('era', 4.20))
+                        whip_overall = float(s.get('whip', 1.25))
+                        era_overall = float(s.get('era', 4.20))
                         games_started = int(s.get('gamesStarted', 0))
                         if season_ip >= 5.0:
-                            hr9 = round((hr * 9.0) / season_ip, 2)
-                        break
+                            hr9_overall = round((hr * 9.0) / season_ip, 2)
+
+                    elif stat_type == 'statSplits':
+                        for split in splits:
+                            sit_code = split.get('split', {}).get('sitCode', '')
+                            desc = split.get('split', {}).get('description', '').lower()
+                            s_data = split.get('stat', {})
+                            s_ip = float(s_data.get('inningsPitched', '0.0') or 0.0)
+                            s_hr = float(s_data.get('homeRuns', 0))
+
+                            if sit_code == 'vl' or 'vs left' in desc:
+                                ip_vs_lhb = s_ip
+                                hr9_vs_lhb = round((s_hr * 9.0) / max(1.0, s_ip), 2)
+                            elif sit_code == 'vr' or 'vs right' in desc:
+                                ip_vs_rhb = s_ip
+                                hr9_vs_rhb = round((s_hr * 9.0) / max(1.0, s_ip), 2)
         except Exception:
             pass
 
@@ -193,13 +214,17 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
     K_P_STABILIZE = 30.0
 
     if season_ip >= 30.0:
-        eff_hr9 = hr9
-        eff_whip = whip
+        eff_hr9 = hr9_overall
+        eff_whip = whip_overall
         p_status = "Verified Starter"
     else:
-        eff_hr9 = round(((season_ip * hr9) + (K_P_STABILIZE * LEAGUE_AVG_P_HR9)) / (season_ip + K_P_STABILIZE), 2)
-        eff_whip = round(((season_ip * whip) + (K_P_STABILIZE * LEAGUE_AVG_P_WHIP)) / (season_ip + K_P_STABILIZE), 2)
+        eff_hr9 = round(((season_ip * hr9_overall) + (K_P_STABILIZE * LEAGUE_AVG_P_HR9)) / (season_ip + K_P_STABILIZE), 2)
+        eff_whip = round(((season_ip * whip_overall) + (K_P_STABILIZE * LEAGUE_AVG_P_WHIP)) / (season_ip + K_P_STABILIZE), 2)
         p_status = "Low IP / Regressed" if not is_bullpen_game else "Bullpen Day / Opener"
+
+    K_SPLIT = 15.0
+    eff_hr9_lhb = round(((ip_vs_lhb * hr9_vs_lhb) + (K_SPLIT * eff_hr9)) / (ip_vs_lhb + K_SPLIT), 2)
+    eff_hr9_rhb = round(((ip_vs_rhb * hr9_vs_rhb) + (K_SPLIT * eff_hr9)) / (ip_vs_rhb + K_SPLIT), 2)
 
     if p_hand == 'L':
         matched_arsenal = {'FF': 0.42, 'CH': 0.28, 'SL': 0.20, 'CU': 0.10}
@@ -209,10 +234,10 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
     if is_bullpen_game:
         badge = "🔄 Bullpen Game / Opener"
         is_vuln = False
-    elif eff_hr9 >= 1.38 or era >= 4.70 or eff_whip >= 1.38:
+    elif eff_hr9 >= 1.38 or era_overall >= 4.70 or eff_whip >= 1.38:
         badge = "🔴 High FB/SL Bleed"
         is_vuln = True
-    elif eff_hr9 >= 1.22 or era >= 4.25:
+    elif eff_hr9 >= 1.22 or era_overall >= 4.25:
         badge = "🔴 Hanging Breaker Risk"
         is_vuln = True
     elif eff_hr9 <= 0.85 and eff_whip <= 1.15 and season_ip >= 30.0:
@@ -223,7 +248,10 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
         is_vuln = False
 
     profile = {
-        'hr9': min(2.5, max(0.4, eff_hr9)), 'whip': eff_whip, 'badge': badge,
+        'hr9': min(2.5, max(0.4, eff_hr9)),
+        'hr9_vs_lhb': min(2.5, max(0.3, eff_hr9_lhb)),
+        'hr9_vs_rhb': min(2.5, max(0.3, eff_hr9_rhb)),
+        'whip': eff_whip, 'badge': badge,
         'is_vuln': is_vuln, 'p_hand': p_hand, 'is_bullpen_game': is_bullpen_game,
         'p_status': p_status, 'season_ip': season_ip
     }
@@ -231,35 +259,60 @@ def fetch_pitcher_profile_and_arsenal(pitcher_id: int, pitcher_name: str):
     return matched_arsenal, profile
 
 def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p_hand: str, pitcher_arsenal: dict):
-    """Ingests current-season hitting stats with dynamic Bayesian shrinkage for < 100 PA."""
+    """
+    Ingests current-season hitting stats AND batter platoon splits vs LHP (vl) and vs RHP (vr).
+    Anchors true baseline HR hazard directly to the empirical split.
+    """
+    cache_key = f"{clean_name_str(b_name)}_{p_hand}"
+    if cache_key in BATTER_PROFILE_CACHE:
+        return BATTER_PROFILE_CACHE[cache_key]
+
     LEAGUE_AVG_ISO = 0.155
     LEAGUE_AVG_BARREL = 0.075
     K_STABILIZE = 120.0
+    K_BATTER_SPLIT = 40.0
 
     raw_iso, raw_barrel, raw_hr, season_pa = 0.140, 0.070, 4, 40
+    split_pa, split_hr, split_iso = 0, 0, 0.140
+
+    target_sit_code = 'vl' if p_hand == 'L' else 'vr'
 
     if person_id:
         try:
-            url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting],type=[season],season={CURRENT_SEASON})"
-            res = requests.get(url, timeout=4).json()
+            url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting],type=[season,statSplits],sitCodes=[vl,vr],season={CURRENT_SEASON})"
+            res = requests.get(url, timeout=5).json()
             people = res.get('people', [])
             if people and people[0].get('stats'):
-                splits = people[0]['stats'][0].get('splits', [])
-                if splits:
-                    s = splits[0].get('stat', {})
-                    slg = float(s.get('slg', '.380'))
-                    avg = float(s.get('avg', '.235'))
-                    calc_iso = max(0.000, round(slg - avg, 3))
-                    calc_hr = int(s.get('homeRuns', 0))
-                    calc_pa = int(s.get('plateAppearances', 40))
+                for st in people[0]['stats']:
+                    stat_type = st.get('type', {}).get('displayName', '')
+                    splits = st.get('splits', [])
 
-                    raw_iso = calc_iso
-                    raw_hr = calc_hr
-                    season_pa = calc_pa
-                    raw_barrel = min(0.26, max(0.00, calc_iso * 0.76))
+                    if stat_type == 'season' and splits:
+                        s = splits[0].get('stat', {})
+                        slg = float(s.get('slg', '.380'))
+                        avg = float(s.get('avg', '.235'))
+                        raw_iso = max(0.000, round(slg - avg, 3))
+                        raw_hr = int(s.get('homeRuns', 0))
+                        season_pa = int(s.get('plateAppearances', 40))
+                        raw_barrel = min(0.26, max(0.00, raw_iso * 0.76))
+
+                    elif stat_type == 'statSplits':
+                        for split in splits:
+                            sit_code = split.get('split', {}).get('sitCode', '')
+                            desc = split.get('split', {}).get('description', '').lower()
+                            s_data = split.get('stat', {})
+
+                            is_match = (sit_code == target_sit_code) or (p_hand == 'L' and 'vs left' in desc) or (p_hand == 'R' and 'vs right' in desc)
+                            if is_match:
+                                split_pa = int(s_data.get('plateAppearances', 0))
+                                split_hr = int(s_data.get('homeRuns', 0))
+                                s_slg = float(s_data.get('slg', '.380'))
+                                s_avg = float(s_data.get('avg', '.235'))
+                                split_iso = max(0.000, round(s_slg - s_avg, 3))
         except Exception:
             pass
 
+    # Overall Bayesian Shrinkage
     if season_pa >= 100:
         eff_iso = raw_iso
         eff_barrel = raw_barrel
@@ -269,21 +322,25 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
         eff_barrel = round(((season_pa * raw_barrel) + (K_STABILIZE * LEAGUE_AVG_BARREL)) / (season_pa + K_STABILIZE), 3)
         sample_status = "Regressed (Low PA)"
 
+    # Batter Platoon Split Shrinkage
+    raw_split_hr_pa = (split_hr / max(1.0, float(split_pa))) if split_pa > 0 else (raw_hr / max(80.0, float(season_pa)))
+    eff_overall_hr_pa = raw_hr / max(80.0, float(season_pa))
+
+    eff_split_hr_pa = round(((split_pa * raw_split_hr_pa) + (K_BATTER_SPLIT * eff_overall_hr_pa)) / (split_pa + K_BATTER_SPLIT), 4)
+    eff_split_iso = round(((split_pa * split_iso) + (K_BATTER_SPLIT * eff_iso)) / (split_pa + K_BATTER_SPLIT), 3)
+
+    # Dynamic Platoon Edge Evaluation
     same_hand = (b_hand == p_hand and b_hand != 'S')
     if same_hand:
-        if eff_iso >= 0.230:
+        if eff_split_iso >= 0.220:
             split_desc = "⚡ Batter Adv (Reverse Split)"
-            split_mult = 1.14
         else:
             split_desc = "🛡️ Same-Hand Matchup"
-            split_mult = 0.90
     else:
         if b_hand == 'S':
             split_desc = "🔥 Batter Adv (Switch)"
-            split_mult = 1.15
         else:
             split_desc = "🔥 Batter Adv (Platoon)"
-            split_mult = 1.14
 
     fb_pct = pitcher_arsenal.get('FF', 0.0) + pitcher_arsenal.get('SI', 0.0) + pitcher_arsenal.get('FC', 0.0)
     secondaries = {k: v for k, v in pitcher_arsenal.items() if k not in ['FF', 'SI', 'FC']}
@@ -292,8 +349,8 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     sec_name_map = {'SL': 'Slider', 'CH': 'Changeup', 'CU': 'Curveball', 'FS': 'Splitter', 'ST': 'Sweeper'}
     sec_label = sec_name_map.get(top_sec, 'Breaking Ball')
 
-    is_power_bat = eff_iso >= 0.200 or raw_hr >= 16
-    is_elite_bat = eff_iso >= 0.255 or raw_hr >= 26
+    is_power_bat = eff_split_iso >= 0.200 or raw_hr >= 16
+    is_elite_bat = eff_split_iso >= 0.255 or raw_hr >= 26
 
     if is_elite_bat:
         badge = f"⚡ Elite Slugger ({sec_label}+FB)"
@@ -301,31 +358,28 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
         badge = f"💥 Fastball Crusher ({int(fb_pct*100)}% FB)"
     elif is_power_bat and top_sec_pct >= 0.20:
         badge = f"🔥 {sec_label} Hunter ({int(top_sec_pct*100)}%)"
-    elif eff_iso >= 0.165:
+    elif eff_split_iso >= 0.165:
         badge = f"🎯 Solid Match vs {sec_label}"
     else:
         badge = f"⚾ Contact Profile ({sec_label})"
 
-    # Uncapped lower HR/PA rate (e.g. 0 HR over 300 PA = 0.000)
-    hr_pa_actual = raw_hr / max(80.0, float(season_pa))
-
-    return {
-        'iso': eff_iso,
+    profile = {
+        'iso': eff_split_iso,
         'barrel': eff_barrel,
         'season_pa': season_pa,
         'raw_hr': raw_hr,
-        'hr_pa': hr_pa_actual,
+        'hr_pa': eff_split_hr_pa,
         'batter_badge': badge,
         'split_desc': split_desc,
-        'split_mult': split_mult,
         'sample_status': sample_status
     }
+    BATTER_PROFILE_CACHE[cache_key] = profile
+    return profile
 
-def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, order):
+def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, order, b_hand):
     """
-    True Power-Calibrated NHPP Engine:
-    Zero-power slap hitters (Chandler Simpson, Luis Arraez) drop to 1-4% HR prob,
-    allowing only true power sluggers and elevated surge bats to reach the Top 15.
+    True Power & Pitcher-Platoon Calibrated NHPP Engine:
+    Evaluates both Batter Platoon Split HR/PA and Pitcher Platoon Split HR/9.
     """
     raw_iso = b_stats['iso']
     raw_brl = b_stats['barrel']
@@ -349,16 +403,20 @@ def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, order
     m_contact = np.exp(0.40 * z_brl + 0.35 * z_fb + 0.25 * z_ev) * power_gate_mult
     m_contact = float(np.clip(m_contact, 0.05, 3.20))
 
-    # Pitcher Exposure & Environmental Multipliers
-    w_sp, w_bp = (0.15, 0.85) if p_stats['is_bullpen_game'] else (0.65, 0.35)
-    blended_hr9 = (p_stats['hr9'] * w_sp) + (bp_stats['bp_hr9'] * w_bp)
-    delta_pitcher = (blended_hr9 / 1.20) - 1.0
-    delta_park = (park_factor / 100.0) - 1.0
-    delta_platoon = b_stats['split_mult'] - 1.0
+    # Select Pitcher Split vs LHB or vs RHB
+    if b_hand in ['L', 'S']:
+        sp_hr9_split = p_stats.get('hr9_vs_lhb', p_stats['hr9'])
+    else:
+        sp_hr9_split = p_stats.get('hr9_vs_rhb', p_stats['hr9'])
 
-    # True Baseline Hazard Rate (No artificial floors)
+    w_sp, w_bp = (0.15, 0.85) if p_stats['is_bullpen_game'] else (0.65, 0.35)
+    blended_hr9 = (sp_hr9_split * w_sp) + (bp_stats['bp_hr9'] * w_bp)
+    delta_park = (park_factor / 100.0) - 1.0
+
+    # True Baseline Hazard Rate with Empirical Split HR/PA & Pitcher Suppression
     lambda_base = max(0.002, b_stats['hr_pa'])
-    lambda_pa = lambda_base * m_contact * (1.0 + 0.20 * delta_pitcher + 0.15 * delta_park + 0.15 * delta_platoon)
+    pitcher_factor = (blended_hr9 / 1.20) ** 0.65
+    lambda_pa = lambda_base * m_contact * pitcher_factor * (1.0 + 0.15 * delta_park)
     lambda_pa = float(np.clip(lambda_pa, 0.001, 0.085))
 
     # Integrated Single-Game Probability
@@ -412,7 +470,6 @@ def fetch_projected_lineup_rotowire(team_name: str):
 def fetch_slate_evaluations(target_date_str=None):
     initialize_league_registry()
     
-    # Always anchor to US Eastern Time
     eastern_dt = get_current_slate_date()
     today_str = target_date_str or eastern_dt.strftime('%Y-%m-%d')
     today_slash_str = eastern_dt.strftime('%m/%d/%Y')
@@ -421,7 +478,6 @@ def fetch_slate_evaluations(target_date_str=None):
 
     raw_schedule = []
     try:
-        # Multi-format query attempt
         raw_schedule = statsapi.schedule(date=today_str)
         if not raw_schedule:
             raw_schedule = statsapi.schedule(date=today_slash_str)
@@ -433,7 +489,6 @@ def fetch_slate_evaluations(target_date_str=None):
     if target_date_str:
         upcoming_games = raw_schedule
     else:
-        # Exclude completed/postponed games but KEEP active/scheduled games
         EXCLUDED_STATUSES = ["Final", "Game Over", "Completed", "Postponed", "Suspended", "Cancelled"]
         upcoming_games = [g for g in raw_schedule if not any(ex.lower() in g.get('status', 'Scheduled').lower() for ex in EXCLUDED_STATUSES)]
 
@@ -457,8 +512,8 @@ def fetch_slate_evaluations(target_date_str=None):
             away_p_name = game.get('away_probable_pitcher') or 'TBD Starter'
             home_p_name = game.get('home_probable_pitcher') or 'TBD Starter'
 
-            away_arsenal, away_p_stats = fetch_pitcher_profile_and_arsenal(away_p_id, away_p_name)
-            home_arsenal, home_p_stats = fetch_pitcher_profile_and_arsenal(home_p_id, home_p_name)
+            away_arsenal, away_p_stats = fetch_pitcher_profile_and_splits(away_p_id, away_p_name)
+            home_arsenal, home_p_stats = fetch_pitcher_profile_and_splits(home_p_id, home_p_name)
             away_p_hand = away_p_stats['p_hand']
             home_p_hand = home_p_stats['p_hand']
 
@@ -513,7 +568,7 @@ def fetch_slate_evaluations(target_date_str=None):
                         continue
 
                     b_stats = evaluate_batter_power_and_splits(b_id, b_name, b_hand, opp_p_hand, opp_arsenal)
-                    evals = compute_nhpp_calibrated_score(b_stats, opp_p_stats, opp_bp_stats, park_factor, order_num)
+                    evals = compute_nhpp_calibrated_score(b_stats, opp_p_stats, opp_bp_stats, park_factor, order_num, b_hand)
 
                     row = {
                         'order': order_num, 'batter_name': b_name, 'b_hand': b_hand, 'pos': pos,
@@ -530,7 +585,7 @@ def fetch_slate_evaluations(target_date_str=None):
                 return t_rows
 
             away_rows = process_lineup(away_players, away_team, home_p_name, home_p_hand, home_arsenal, home_p_stats, home_bp_stats)
-            home_rows = process_lineup(home_players, home_team, away_p_name, away_p_hand, away_arsenal, away_p_stats, away_bp_stats)
+            home_rows = process_lineup(home_players, home_team, away_p_name, away_p_hand, away_arsenal, home_p_stats, home_bp_stats)
 
             if away_rows:
                 game_card_list.append({
@@ -564,7 +619,7 @@ def render_top50_leaderboard(df, output_path, today_str):
     fig.patch.set_facecolor('#0b1329')
 
     fig.text(0.5, 0.965, "MLB SLATE TOP 50 HOME RUN MATCHUP TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.942, f"Batting Orders 1-6 • Excludes L v L • Power-Calibrated NHPP Engine • Season {CURRENT_SEASON} • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
+    fig.text(0.5, 0.942, f"Batting Orders 1-6 • Excludes L v L • Full Dual-Platoon NHPP Engine • Season {CURRENT_SEASON} • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
 
     table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Split Edge', 'Power Profile', 'Score\n(100)', 'HR Prob', 'Surge']
 
@@ -854,7 +909,7 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
     <html>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
             <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Top 15 Home Run Matchups</h2>
-            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Orders 1-6 • Excludes L v L • Calibrated NHPP Matrix • {today_str}</p>
+            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Orders 1-6 • Excludes L v L • Dual-Platoon Calibrated NHPP Matrix • {today_str}</p>
             
             <h3 style="color: #f8fafc; margin-top: 15px;">🎯 Official Top 15 HR Targets</h3>
             <table style="width: 100%; max-width: 860px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
