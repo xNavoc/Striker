@@ -57,10 +57,7 @@ def initialize_league_registry():
             p_hand = p.get('pitchHand', {}).get('code', 'R').upper()
             pos = p.get('primaryPosition', {}).get('abbreviation', 'DH')
 
-            meta = {
-                'id': pid, 'name': full_name,
-                'b_hand': b_side, 'p_hand': p_hand, 'pos': pos
-            }
+            meta = {'id': pid, 'name': full_name, 'b_hand': b_side, 'p_hand': p_hand, 'pos': pos}
             if pid:
                 LEAGUE_ID_REGISTRY[pid] = meta
             if full_name:
@@ -150,50 +147,52 @@ def fetch_pitcher_profile_and_splits(pitcher_id: int, pitcher_name: str):
 
     target_id = pitcher_id
     if not target_id and pitcher_name and 'TBD' not in pitcher_name:
-        try:
-            search_url = f"https://statsapi.mlb.com/api/v1/people/search?names={pitcher_name}"
-            s_res = requests.get(search_url, timeout=4).json()
-            people = s_res.get('people', [])
-            if people:
-                target_id = people[0].get('id', 0)
-        except Exception:
-            pass
+        cleaned = clean_name_str(pitcher_name)
+        if cleaned in LEAGUE_NAME_REGISTRY:
+            target_id = LEAGUE_NAME_REGISTRY[cleaned]['id']
+        else:
+            try:
+                search_url = f"https://statsapi.mlb.com/api/v1/people/search?names={pitcher_name}"
+                s_res = requests.get(search_url, timeout=4).json()
+                people = s_res.get('people', [])
+                if people:
+                    target_id = people[0].get('id', 0)
+            except Exception:
+                pass
 
     if target_id:
         try:
-            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}?hydrate=stats(group=[pitching],type=[season,statSplits],sitCodes=[vl,vr],season={CURRENT_SEASON})"
+            # Direct reliable stats endpoint
+            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}/stats?stats=season,statSplits&group=pitching&sitCodes=vl,vr&season={CURRENT_SEASON}"
             res = requests.get(url, timeout=5).json()
-            people = res.get('people', [])
-            if people:
-                p_hand = people[0].get('pitchHand', {}).get('code', p_hand).upper()
-                for st in people[0].get('stats', []):
-                    stat_type = st.get('type', {}).get('displayName', '')
-                    splits = st.get('splits', [])
+            for st in res.get('stats', []):
+                stat_type = st.get('type', {}).get('displayName', '').lower()
+                splits = st.get('splits', [])
 
-                    if stat_type == 'season' and splits:
-                        s = splits[0].get('stat', {})
-                        season_ip = float(s.get('inningsPitched', '0.0') or 0.0)
-                        hr = float(s.get('homeRuns', 0))
-                        whip_overall = float(s.get('whip', 1.25))
-                        era_overall = float(s.get('era', 4.20))
-                        games_started = int(s.get('gamesStarted', 0))
-                        if season_ip >= 5.0:
-                            hr9_overall = round((hr * 9.0) / season_ip, 2)
+                if 'season' in stat_type and splits:
+                    s = splits[0].get('stat', {})
+                    season_ip = float(s.get('inningsPitched', '0.0') or 0.0)
+                    hr = float(s.get('homeRuns', 0))
+                    whip_overall = float(s.get('whip', 1.25))
+                    era_overall = float(s.get('era', 4.20))
+                    games_started = int(s.get('gamesStarted', 0))
+                    if season_ip >= 5.0:
+                        hr9_overall = round((hr * 9.0) / season_ip, 2)
 
-                    elif stat_type == 'statSplits':
-                        for split in splits:
-                            sit_code = split.get('split', {}).get('sitCode', '')
-                            desc = split.get('split', {}).get('description', '').lower()
-                            s_data = split.get('stat', {})
-                            s_ip = float(s_data.get('inningsPitched', '0.0') or 0.0)
-                            s_hr = float(s_data.get('homeRuns', 0))
+                elif 'split' in stat_type or 'statSplits' in stat_type:
+                    for split in splits:
+                        sit_code = split.get('split', {}).get('sitCode', '')
+                        desc = split.get('split', {}).get('description', '').lower()
+                        s_data = split.get('stat', {})
+                        s_ip = float(s_data.get('inningsPitched', '0.0') or 0.0)
+                        s_hr = float(s_data.get('homeRuns', 0))
 
-                            if (sit_code == 'vl' or 'vs left' in desc) and s_ip >= 5.0:
-                                ip_vs_lhb = s_ip
-                                hr9_vs_lhb = round((s_hr * 9.0) / s_ip, 2)
-                            elif (sit_code == 'vr' or 'vs right' in desc) and s_ip >= 5.0:
-                                ip_vs_rhb = s_ip
-                                hr9_vs_rhb = round((s_hr * 9.0) / s_ip, 2)
+                        if (sit_code == 'vl' or 'vs left' in desc) and s_ip >= 5.0:
+                            ip_vs_lhb = s_ip
+                            hr9_vs_lhb = round((s_hr * 9.0) / s_ip, 2)
+                        elif (sit_code == 'vr' or 'vs right' in desc) and s_ip >= 5.0:
+                            ip_vs_rhb = s_ip
+                            hr9_vs_rhb = round((s_hr * 9.0) / s_ip, 2)
         except Exception:
             pass
 
@@ -225,7 +224,7 @@ def fetch_pitcher_profile_and_splits(pitcher_id: int, pitcher_name: str):
     elif eff_hr9 >= 1.22 or era_overall >= 4.25:
         badge = "🔴 Hanging Breaker Risk"
         is_vuln = True
-    elif eff_hr9 <= 0.85 and eff_whip <= 1.15 and season_ip >= 30.0:
+    elif eff_hr9 <= 0.85 and eff_whip <= 1.15 and season_ip >= 25.0:
         badge = "🟢 Elite Lockdown Starter"
         is_vuln = False
     else:
@@ -248,65 +247,64 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     if cache_key in BATTER_PROFILE_CACHE:
         return BATTER_PROFILE_CACHE[cache_key]
 
-    raw_iso, raw_barrel, raw_hr, season_pa = 0.080, 0.030, 0, 0
+    raw_iso, raw_hr, season_pa = 0.080, 0, 0
     split_pa, split_hr, split_iso = 0, 0, None
     target_sit_code = 'vl' if p_hand == 'L' else 'vr'
 
-    if person_id:
+    target_id = person_id
+    if not target_id and b_name:
+        cleaned = clean_name_str(b_name)
+        if cleaned in LEAGUE_NAME_REGISTRY:
+            target_id = LEAGUE_NAME_REGISTRY[cleaned]['id']
+
+    if target_id:
         try:
-            url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting],type=[season,statSplits],sitCodes=[vl,vr],season={CURRENT_SEASON})"
+            url = f"https://statsapi.mlb.com/api/v1/people/{target_id}/stats?stats=season,statSplits&group=hitting&sitCodes=vl,vr&season={CURRENT_SEASON}"
             res = requests.get(url, timeout=5).json()
-            people = res.get('people', [])
-            if people and people[0].get('stats'):
-                for st in people[0]['stats']:
-                    stat_type = st.get('type', {}).get('displayName', '')
-                    splits = st.get('splits', [])
+            for st in res.get('stats', []):
+                stat_type = st.get('type', {}).get('displayName', '').lower()
+                splits = st.get('splits', [])
 
-                    if stat_type == 'season' and splits:
-                        s = splits[0].get('stat', {})
-                        slg = float(s.get('slg', '.320'))
-                        avg = float(s.get('avg', '.220'))
-                        raw_iso = max(0.000, round(slg - avg, 3))
-                        raw_hr = int(s.get('homeRuns', 0))
-                        season_pa = int(s.get('plateAppearances', 0))
-                        raw_barrel = min(0.26, max(0.00, raw_iso * 0.76))
+                if 'season' in stat_type and splits:
+                    s = splits[0].get('stat', {})
+                    slg = float(s.get('slg', '.300'))
+                    avg = float(s.get('avg', '.210'))
+                    raw_iso = max(0.000, round(slg - avg, 3))
+                    raw_hr = int(s.get('homeRuns', 0))
+                    season_pa = int(s.get('plateAppearances', 0))
 
-                    elif stat_type == 'statSplits':
-                        for split in splits:
-                            sit_code = split.get('split', {}).get('sitCode', '')
-                            desc = split.get('split', {}).get('description', '').lower()
-                            s_data = split.get('stat', {})
-                            is_match = (sit_code == target_sit_code) or (p_hand == 'L' and 'vs left' in desc) or (p_hand == 'R' and 'vs right' in desc)
-                            if is_match:
-                                split_pa = int(s_data.get('plateAppearances', 0))
-                                split_hr = int(s_data.get('homeRuns', 0))
-                                s_slg = float(s_data.get('slg', '.320'))
-                                s_avg = float(s_data.get('avg', '.220'))
-                                split_iso = max(0.000, round(s_slg - s_avg, 3))
+                elif 'split' in stat_type or 'statSplits' in stat_type:
+                    for split in splits:
+                        sit_code = split.get('split', {}).get('sitCode', '')
+                        desc = split.get('split', {}).get('description', '').lower()
+                        s_data = split.get('stat', {})
+                        is_match = (sit_code == target_sit_code) or (p_hand == 'L' and 'vs left' in desc) or (p_hand == 'R' and 'vs right' in desc)
+                        if is_match:
+                            split_pa = int(s_data.get('plateAppearances', 0))
+                            split_hr = int(s_data.get('homeRuns', 0))
+                            s_slg = float(s_data.get('slg', '.300'))
+                            s_avg = float(s_data.get('avg', '.210'))
+                            split_iso = max(0.000, round(s_slg - s_avg, 3))
         except Exception:
             pass
 
     LEAGUE_AVG_ISO = 0.155
-    LEAGUE_AVG_BARREL = 0.075
     K_STABILIZE = 100.0
 
-    if season_pa >= 100:
+    if season_pa >= 80:
         eff_iso = raw_iso
-        eff_barrel = raw_barrel
         eff_hr_pa = raw_hr / max(1.0, float(season_pa))
         sample_status = "Verified Regular"
     elif season_pa >= 20:
         eff_iso = round(((season_pa * raw_iso) + (K_STABILIZE * LEAGUE_AVG_ISO)) / (season_pa + K_STABILIZE), 3)
-        eff_barrel = round(((season_pa * raw_barrel) + (K_STABILIZE * LEAGUE_AVG_BARREL)) / (season_pa + K_STABILIZE), 3)
         eff_hr_pa = raw_hr / max(1.0, float(season_pa))
         sample_status = "Regressed (Low PA)"
     else:
         eff_iso = 0.080
-        eff_barrel = 0.020
         eff_hr_pa = 0.005
         sample_status = "Unproven / Minimal PA"
 
-    if split_iso is not None and split_pa >= 30:
+    if split_iso is not None and split_pa >= 35:
         final_iso = split_iso
         final_hr_pa = split_hr / float(split_pa)
     else:
@@ -336,7 +334,6 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
 
     profile = {
         'iso': final_iso,
-        'barrel': eff_barrel,
         'season_pa': season_pa,
         'raw_hr': raw_hr,
         'hr_pa': final_hr_pa,
@@ -351,15 +348,11 @@ def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, order
     raw_iso = b_stats['iso']
     raw_hr_pa = b_stats['hr_pa']
 
-    z_iso = (raw_iso - 0.155) / 0.070
-    m_contact = 1.0 + (0.35 * z_iso)
+    # 1. Base Intensity per PA (Calibrated directly from true HR/PA without double-multiplying power)
+    # Elite 40-HR Slugger ~ 0.065, 20-HR Bat ~ 0.040, Contact Bat ~ 0.015, Slap Bat ~ 0.003
+    lambda_base = max(0.001, raw_hr_pa)
 
-    if raw_iso < 0.090:
-        m_contact *= 0.25
-    elif raw_iso < 0.130:
-        m_contact *= 0.60
-    m_contact = float(np.clip(m_contact, 0.10, 1.45))
-
+    # 2. Select Handedness-Specific Pitcher HR/9
     if b_hand in ['L', 'S']:
         sp_hr9 = p_stats.get('hr9_vs_lhb', p_stats['hr9'])
     else:
@@ -368,26 +361,32 @@ def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, order
     w_sp, w_bp = (0.15, 0.85) if p_stats['is_bullpen_game'] else (0.65, 0.35)
     blended_hr9 = (sp_hr9 * w_sp) + (bp_stats['bp_hr9'] * w_bp)
 
-    pitcher_factor = (blended_hr9 / 1.20) ** 0.85
+    # 3. Direct Multipliers (Pitcher Suppression + Park Dimensions)
+    # Clay Holmes (0.55 HR/9) -> 0.46x multiplier (Active 54% reduction)
+    # Paul Skenes (0.65 HR/9) -> 0.54x multiplier
+    pitcher_factor = blended_hr9 / 1.20
     park_factor_adj = park_factor / 100.0
 
-    lambda_base = max(0.001, raw_hr_pa)
-    lambda_pa = lambda_base * m_contact * pitcher_factor * park_factor_adj
+    # 4. Final Calibrated Intensity
+    lambda_pa = lambda_base * pitcher_factor * park_factor_adj
 
+    # 5. Integrated Single-Game Probability
     pa_exp = 4.60 - (order * 0.12)
     p_game_hr = round(float(1.0 - np.exp(-lambda_pa * pa_exp)), 4)
 
-    score_raw = 100.0 / (1.0 + np.exp(-24.0 * (p_game_hr - 0.160)))
-    matchup_score = round(float(np.clip(score_raw, 25.0, 98.5)), 1)
+    # 6. Smooth Sigmoid Score (Distributed across 35 - 96 range, no 98.5 ceiling logjam)
+    score_raw = 100.0 / (1.0 + np.exp(-26.0 * (p_game_hr - 0.155)))
+    matchup_score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
+    # 7. Surge Multiplier
     p_baseline = 1.0 - ((1.0 - lambda_base) ** pa_exp)
     surge_ratio = p_game_hr / p_baseline if p_baseline > 0 else 1.0
     pct_diff = int((surge_ratio - 1.0) * 100)
 
     surge_badge = ""
-    if surge_ratio >= 1.30 and raw_iso >= 0.140:
+    if surge_ratio >= 1.25 and raw_iso >= 0.140:
         surge_badge = f"🚀 SURGE (+{pct_diff}%)"
-    elif surge_ratio <= 0.80:
+    elif surge_ratio <= 0.75:
         surge_badge = f"🛡️ SUPP ({pct_diff}%)"
 
     return {
@@ -521,8 +520,7 @@ def fetch_slate_evaluations(target_date_str=None):
                         'team': team_name, 'opp_pitcher': opp_p_name, 'p_hand': opp_p_hand,
                         'pitcher_vuln_badge': opp_p_stats['badge'], 'split_desc': b_stats['split_desc'],
                         'batter_badge': b_stats['batter_badge'], 'iso': b_stats['iso'],
-                        'barrel': b_stats['barrel'], 'season_pa': b_stats['season_pa'],
-                        'sample_status': b_stats['sample_status'],
+                        'season_pa': b_stats['season_pa'], 'sample_status': b_stats['sample_status'],
                         'matchup_score': evals['matchup_score'], 'p_game_hr': evals['p_game_hr'],
                         'surge_badge': evals['surge_badge'], 'venue': venue
                     }
@@ -565,7 +563,7 @@ def render_top50_leaderboard(df, output_path, today_str):
     fig.patch.set_facecolor('#0b1329')
 
     fig.text(0.5, 0.965, "MLB SLATE TOP 50 HOME RUN MATCHUP TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.942, f"Batting Orders 1-6 • Excludes L v L • Calibrated NHPP Multiplier Engine • Season {CURRENT_SEASON} • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
+    fig.text(0.5, 0.942, f"Batting Orders 1-6 • Excludes L v L • Calibrated Multiplier Engine • Season {CURRENT_SEASON} • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
 
     table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Split Edge', 'Power Profile', 'Score\n(100)', 'HR Prob', 'Surge']
 
@@ -606,7 +604,7 @@ def render_top50_leaderboard(df, output_path, today_str):
             else:
                 if col == 6:
                     score_val = float(rows_data[row-1][6])
-                    cell.set_text_props(color='#38bdf8' if score_val >= 88.0 else '#f1f5f9', weight='bold')
+                    cell.set_text_props(color='#38bdf8' if score_val >= 85.0 else '#f1f5f9', weight='bold')
                 elif col == 4:
                     s_text = rows_data[row-1][4]
                     if 'Rev Adv' in s_text:
