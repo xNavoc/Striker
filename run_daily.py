@@ -162,7 +162,6 @@ def fetch_pitcher_profile_and_splits(pitcher_id: int, pitcher_name: str):
 
     if target_id:
         try:
-            # Direct reliable stats endpoint
             url = f"https://statsapi.mlb.com/api/v1/people/{target_id}/stats?stats=season,statSplits&group=pitching&sitCodes=vl,vr&season={CURRENT_SEASON}"
             res = requests.get(url, timeout=5).json()
             for st in res.get('stats', []):
@@ -344,12 +343,16 @@ def evaluate_batter_power_and_splits(person_id: int, b_name: str, b_hand: str, p
     BATTER_PROFILE_CACHE[cache_key] = profile
     return profile
 
-def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, order, b_hand):
+def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, b_hand):
+    """
+    Pure Matchup Intensity Engine:
+    Evaluates True HR/PA with standardized starter exposure (PA = 4.20)
+    to completely eliminate lineup slot order bias.
+    """
     raw_iso = b_stats['iso']
     raw_hr_pa = b_stats['hr_pa']
 
-    # 1. Base Intensity per PA (Calibrated directly from true HR/PA without double-multiplying power)
-    # Elite 40-HR Slugger ~ 0.065, 20-HR Bat ~ 0.040, Contact Bat ~ 0.015, Slap Bat ~ 0.003
+    # 1. Base Intensity per PA
     lambda_base = max(0.001, raw_hr_pa)
 
     # 2. Select Handedness-Specific Pitcher HR/9
@@ -361,25 +364,23 @@ def compute_nhpp_calibrated_score(b_stats, p_stats, bp_stats, park_factor, order
     w_sp, w_bp = (0.15, 0.85) if p_stats['is_bullpen_game'] else (0.65, 0.35)
     blended_hr9 = (sp_hr9 * w_sp) + (bp_stats['bp_hr9'] * w_bp)
 
-    # 3. Direct Multipliers (Pitcher Suppression + Park Dimensions)
-    # Clay Holmes (0.55 HR/9) -> 0.46x multiplier (Active 54% reduction)
-    # Paul Skenes (0.65 HR/9) -> 0.54x multiplier
+    # 3. Direct Multipliers
     pitcher_factor = blended_hr9 / 1.20
     park_factor_adj = park_factor / 100.0
 
     # 4. Final Calibrated Intensity
     lambda_pa = lambda_base * pitcher_factor * park_factor_adj
 
-    # 5. Integrated Single-Game Probability
-    pa_exp = 4.60 - (order * 0.12)
-    p_game_hr = round(float(1.0 - np.exp(-lambda_pa * pa_exp)), 4)
+    # 5. Standardized Flat Plate Appearance Exposure (PA = 4.20)
+    PA_STANDARD = 4.20
+    p_game_hr = round(float(1.0 - np.exp(-lambda_pa * PA_STANDARD)), 4)
 
-    # 6. Smooth Sigmoid Score (Distributed across 35 - 96 range, no 98.5 ceiling logjam)
+    # 6. Smooth Sigmoid Score (Distributed across 35 - 96 range)
     score_raw = 100.0 / (1.0 + np.exp(-26.0 * (p_game_hr - 0.155)))
     matchup_score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
     # 7. Surge Multiplier
-    p_baseline = 1.0 - ((1.0 - lambda_base) ** pa_exp)
+    p_baseline = 1.0 - ((1.0 - lambda_base) ** PA_STANDARD)
     surge_ratio = p_game_hr / p_baseline if p_baseline > 0 else 1.0
     pct_diff = int((surge_ratio - 1.0) * 100)
 
@@ -513,7 +514,7 @@ def fetch_slate_evaluations(target_date_str=None):
                         continue
 
                     b_stats = evaluate_batter_power_and_splits(b_id, b_name, b_hand, opp_p_hand)
-                    evals = compute_nhpp_calibrated_score(b_stats, opp_p_stats, opp_bp_stats, park_factor, order_num, b_hand)
+                    evals = compute_nhpp_calibrated_score(b_stats, opp_p_stats, opp_bp_stats, park_factor, b_hand)
 
                     row = {
                         'order': order_num, 'batter_name': b_name, 'b_hand': b_hand, 'pos': pos,
@@ -563,7 +564,7 @@ def render_top50_leaderboard(df, output_path, today_str):
     fig.patch.set_facecolor('#0b1329')
 
     fig.text(0.5, 0.965, "MLB SLATE TOP 50 HOME RUN MATCHUP TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.942, f"Batting Orders 1-6 • Excludes L v L • Calibrated Multiplier Engine • Season {CURRENT_SEASON} • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
+    fig.text(0.5, 0.942, f"Batting Orders 1-6 • Excludes L v L • Pure Matchup Intensity Engine • Season {CURRENT_SEASON} • {today_str}", ha='center', color='#38bdf8', fontsize=12, weight='semibold')
 
     table_cols = ['#', 'Batter (Hand)', 'Team', 'Opp Pitcher (Hand)', 'Split Edge', 'Power Profile', 'Score\n(100)', 'HR Prob', 'Surge']
 
@@ -852,7 +853,7 @@ def send_email_digest(df: pd.DataFrame, image_path: str, today_str: str):
     <html>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0b1329; color: #f8fafc; padding: 15px;">
             <h2 style="color: #38bdf8; margin-bottom: 4px;">⚾ MLB Top 15 Home Run Matchups</h2>
-            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Orders 1-6 • Excludes L v L • Calibrated NHPP Engine • {today_str}</p>
+            <p style="color: #94a3b8; font-size: 13px; margin-top: 0;">Orders 1-6 • Excludes L v L • Pure Matchup Intensity Engine • {today_str}</p>
             
             <h3 style="color: #f8fafc; margin-top: 15px;">🎯 Official Top 15 HR Targets</h3>
             <table style="width: 100%; max-width: 860px; border-collapse: collapse; background-color: #1e293b; font-size: 12px; border-radius: 6px; overflow: hidden;">
