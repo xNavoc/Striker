@@ -4,7 +4,7 @@ import requests
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from core.data_loader import clean_name_str, load_daily_slate
+from core.data_loader import clean_name_str, load_daily_slate, CURRENT_SEASON
 from core.settlement_engine import settle_projections
 
 BATTER_WEIBULL_CACHE = {}
@@ -14,15 +14,13 @@ def fit_weibull_hazard(durations, events, current_drought):
     Robust MLE / Method-of-Moments Weibull estimator that never raises unhandled errors.
     """
     try:
-        # Fallback if no home runs hit
         if sum(events) < 1 or len(durations) < 2:
-            return 8.0, 1.0, 0.10, "🎲 Stochastic (ρ=1.00)"
+            return 8.0, 1.0, 0.10, "[STOCHASTIC (rho=1.00)]"
 
         dur_arr = np.array(durations, dtype=float)
         mean_d = float(np.mean(dur_arr))
         std_d = float(np.std(dur_arr))
 
-        # Shape parameter (rho) estimation via Coefficient of Variation
         if std_d > 0.1 and mean_d > 0.1:
             cv = std_d / mean_d
             rho = float(np.clip(cv ** (-1.086), 0.40, 2.50))
@@ -38,15 +36,15 @@ def fit_weibull_hazard(durations, events, current_drought):
         cond_prob = round(float(np.clip(1.0 - (s_t_plus_1 / max(1e-5, s_t)), 0.02, 0.45)), 4)
 
         if rho >= 1.12:
-            aging = f"⏳ Coiled Spring (ρ={rho:.2f})"
+            aging = f"[COILED SPRING (rho={rho:.2f})]"
         elif rho <= 0.88:
-            aging = f"❄️ Slump Trapped (ρ={rho:.2f})"
+            aging = f"[SLUMP TRAPPED (rho={rho:.2f})]"
         else:
-            aging = f"🎲 Stochastic (ρ={rho:.2f})"
+            aging = f"[STOCHASTIC (rho={rho:.2f})]"
 
         return round(lambda_val, 2), round(rho, 2), cond_prob, aging
     except Exception:
-        return 8.0, 1.0, 0.10, "🎲 Stochastic (ρ=1.00)"
+        return 8.0, 1.0, 0.10, "[STOCHASTIC (rho=1.00)]"
 
 def fetch_weibull_stats(person_id: int, player_name: str):
     cache_key = clean_name_str(player_name)
@@ -59,10 +57,10 @@ def fetch_weibull_stats(person_id: int, player_name: str):
         'games_played': 0,
         'lambda_scale': 8.0,
         'rho_shape': 1.0,
-        'prob': 0.10,
-        'score': 45.0,
-        'aging_type': '🎲 Stochastic (ρ=1.00)',
-        'target_call': '⚾ Fade / Low Hazard'
+        'prob': 0.12,
+        'score': 48.0,
+        'aging_type': '[STOCHASTIC (rho=1.00)]',
+        'target_call': 'Fade / Low Hazard'
     }
 
     if not person_id:
@@ -72,16 +70,26 @@ def fetch_weibull_stats(person_id: int, player_name: str):
     current_drought, total_hr, games_played = 0, 0, 0
 
     try:
-        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}/stats?stats=gameLog&group=hitting"
+        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}/stats?stats=gameLog&group=hitting&season={CURRENT_SEASON}"
         res = requests.get(url, timeout=5).json()
         stats_list = res.get('stats', [])
         splits = stats_list[0].get('splits', []) if stats_list else []
-        splits = list(reversed(splits))  # Chronological order
-        games_played = len(splits)
+        
+        # Filter strictly for played games with at least 1 PA and sort chronologically by date
+        valid_games = []
+        for sp in splits:
+            stat_dict = sp.get('stat', {})
+            pa = int(stat_dict.get('plateAppearances', 0) or stat_dict.get('atBats', 0))
+            game_date = sp.get('date', '')
+            if pa > 0 and game_date:
+                valid_games.append((game_date, int(stat_dict.get('homeRuns', 0))))
+
+        # Ensure correct historical order (oldest to most recent game played)
+        valid_games.sort(key=lambda x: x[0])
+        games_played = len(valid_games)
 
         spell = 0
-        for sp in splits:
-            hr_count = int(sp.get('stat', {}).get('homeRuns', 0))
+        for _, hr_count in valid_games:
             total_hr += hr_count
             if hr_count > 0:
                 durations.append(max(1, spell + 1))
@@ -99,15 +107,15 @@ def fetch_weibull_stats(person_id: int, player_name: str):
 
     lambda_val, rho_val, cond_prob, aging = fit_weibull_hazard(durations, events, current_drought)
 
-    score_raw = 100.0 / (1.0 + np.exp(-24.0 * (cond_prob - 0.165)))
+    score_raw = 100.0 / (1.0 + np.exp(-24.0 * (cond_prob - 0.160)))
     score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
-    if cond_prob >= 0.20 and current_drought >= 4 and rho_val >= 0.95:
-        call = "⏳ TARGET: Drought Breaker"
-    elif cond_prob >= 0.16:
-        call = "🎲 Target: Stochastic Hit"
+    if cond_prob >= 0.20 and current_drought >= 3 and rho_val >= 0.95:
+        call = ">> TARGET: DROUGHT BREAKER <<"
+    elif cond_prob >= 0.15:
+        call = "Target: Stochastic Hit"
     else:
-        call = "⚾ Fade / Low Hazard"
+        call = "Fade / Low Hazard"
 
     res = {
         'current_drought': current_drought,
@@ -172,7 +180,7 @@ def render_weibull_card(df, out_path, today_str):
     fig.text(0.5, 0.96, "MLB DAILY WEIBULL SURVIVAL & DROUGHT TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
     fig.text(0.5, 0.93, f"Right-Censored Hazard Model • Conditional Next-Game P(T+1 | T) • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Active Drought', 'Aging Type (ρ)', 'Season Record', 'Score', 'Cond. HR Prob', 'ACTIONABLE TARGET']
+    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Active Drought', 'Aging Type (rho)', 'Season Record', 'Score', 'Cond. HR Prob', 'ACTIONABLE TARGET']
     rows = []
     for _, r in df.iterrows():
         opp_str = str(r.get('opp_pitcher', 'TBD'))[:12]
@@ -188,16 +196,16 @@ def render_weibull_card(df, out_path, today_str):
             str(r.get('team', 'Team'))[:11],
             opp_str,
             f"{drought_val} Games",
-            str(r.get('aging_type', '🎲 Stochastic')),
+            str(r.get('aging_type', '[STOCHASTIC]')),
             f"{total_hr_val} HR / {gp_val} G",
             f"{score_val:.1f}",
             f"{prob_val * 100:.1f}%",
-            str(r.get('target_call', '⚾ Fade'))
+            str(r.get('target_call', 'Fade / Low Hazard'))
         ])
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b'] * len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8)
+    table.set_fontsize(8.5)
     table.scale(1.0, 1.9)
     
     for (row, col), cell in table.get_celld().items():
@@ -208,9 +216,12 @@ def render_weibull_card(df, out_path, today_str):
         else:
             if col == 9:
                 txt = rows[row-1][9]
-                cell.set_text_props(color='#38bdf8' if 'Drought Breaker' in txt else ('#4ade80' if 'Stochastic' in txt else '#94a3b8'), weight='bold')
+                cell.set_text_props(color='#38bdf8' if 'DROUGHT BREAKER' in txt else ('#4ade80' if 'Stochastic' in txt else '#94a3b8'), weight='bold')
             elif col == 8:
                 cell.set_text_props(color='#facc15', weight='bold')
+            elif col == 5:
+                a_txt = rows[row-1][5]
+                cell.set_text_props(color='#c084fc' if 'COILED' in a_txt else ('#38bdf8' if 'STOCHASTIC' in a_txt else '#f87171'), weight='bold')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
