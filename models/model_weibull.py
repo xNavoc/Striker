@@ -10,9 +10,6 @@ from core.settlement_engine import settle_projections
 BATTER_WEIBULL_CACHE = {}
 
 def fit_weibull_hazard(durations, events, current_drought):
-    """
-    Robust MLE / Method-of-Moments Weibull estimator that never raises unhandled errors.
-    """
     try:
         if sum(events) < 1 or len(durations) < 2:
             return 8.0, 1.0, 0.10, "[STOCHASTIC (rho=1.00)]"
@@ -70,28 +67,36 @@ def fetch_weibull_stats(person_id: int, player_name: str):
     current_drought, total_hr, games_played = 0, 0, 0
 
     try:
-        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}/stats?stats=gameLog&group=hitting&season={CURRENT_SEASON}"
-        res = requests.get(url, timeout=5).json()
+        # Strictly query MLB level regular season game logs (sportId=1)
+        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}/stats?stats=gameLog&group=hitting&gameType=R&season={CURRENT_SEASON}&sportId=1"
+        res = requests.get(url, timeout=6).json()
         stats_list = res.get('stats', [])
         splits = stats_list[0].get('splits', []) if stats_list else []
         
-        # Filter strictly for played games with at least 1 PA and sort chronologically by date
-        valid_games = []
+        parsed_games = []
         for sp in splits:
+            # Enforce MLB only (AL: 103, NL: 104) and filter out MiLB rehab games
+            league_id = sp.get('league', {}).get('id', 0)
+            if league_id not in [103, 104, 0]:
+                continue
+
             stat_dict = sp.get('stat', {})
             pa = int(stat_dict.get('plateAppearances', 0) or stat_dict.get('atBats', 0))
-            game_date = sp.get('date', '')
-            if pa > 0 and game_date:
-                valid_games.append((game_date, int(stat_dict.get('homeRuns', 0))))
+            date_str = sp.get('date', '')
+            game_pk = int(sp.get('game', {}).get('gamePk', 0))
+            hr_count = int(stat_dict.get('homeRuns', 0))
 
-        # Ensure correct historical order (oldest to most recent game played)
-        valid_games.sort(key=lambda x: x[0])
-        games_played = len(valid_games)
+            if pa > 0 and date_str:
+                parsed_games.append((date_str, game_pk, hr_count))
+
+        # Sort chronologically (oldest to newest)
+        parsed_games.sort(key=lambda x: (x[0], x[1]))
+        games_played = len(parsed_games)
 
         spell = 0
-        for _, hr_count in valid_games:
-            total_hr += hr_count
-            if hr_count > 0:
+        for _, _, hr in parsed_games:
+            total_hr += hr
+            if hr > 0:
                 durations.append(max(1, spell + 1))
                 events.append(1)
                 spell = 0
@@ -102,8 +107,9 @@ def fetch_weibull_stats(person_id: int, player_name: str):
         if current_drought > 0:
             durations.append(max(1, current_drought))
             events.append(0)
-    except Exception:
-        pass
+
+    except Exception as e:
+        print(f"[!] Log parsing warning for {player_name}: {e}")
 
     lambda_val, rho_val, cond_prob, aging = fit_weibull_hazard(durations, events, current_drought)
 
