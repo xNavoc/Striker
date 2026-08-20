@@ -1,66 +1,38 @@
-name: MLB HR Model - Multi-Stage Daily Pipeline
+name: Daily MLB Target Intelligence Pipeline
 
 on:
   schedule:
-    # 1. Early Slate Sweep: 11:30 AM EDT (15:30 UTC)
-    - cron: '30 15 * * *'
-    # 2. Main Slate Sweep: 4:30 PM EDT (20:30 UTC)
-    - cron: '30 20 * * *'
-    # 3. Lock Sweep: 6:15 PM EDT (22:15 UTC)
-    - cron: '15 22 * * *'
-    # 4. Overnight Automated Settlement: 3:00 AM EDT (07:00 UTC)
-    - cron: '0 7 * * *'
+    - cron: '0 14 * * *'  # 10:00 AM EDT Daily
   workflow_dispatch:
-    inputs:
-      mode:
-        description: 'Execution Mode'
-        required: true
-        default: 'predict'
-        type: choice
-        options:
-          - predict
-          - settle
 
 jobs:
-  run-mlb-engine:
+  run-mlb-suite:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Execute HR Pipeline
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'predict' || github.event_name == 'schedule' && github.event.schedule != '0 7 * * *'
-        env:
-          EMAIL_USER: ${{ secrets.EMAIL_USER }}
-          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+      - name: Run Settle Mode (Yesterday's Board)
         run: |
-          python run_daily.py --mode predict
+          python run_models.py --target all --mode settle
 
-      - name: Execute Settlement
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'settle' || github.event_name == 'schedule' && github.event.schedule == '0 7 * * *'
-        env:
-          EMAIL_USER: ${{ secrets.EMAIL_USER }}
-          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+      - name: Run Predict Mode (Today's Targets)
         run: |
-          python run_daily.py --mode settle
+          python run_models.py --target all --mode predict
 
-      - name: Upload Daily Artifacts
-        if: always()
+      - name: Upload Generated Target Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: mlb-hr-output-${{ github.run_id }}
+          name: daily-target-cards
           path: exports/
-          retention-days: 7
