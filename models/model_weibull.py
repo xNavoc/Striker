@@ -4,12 +4,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from lifelines import WeibullFitter
-from core.data_loader import clean_name_str, load_daily_slate
+from core.data_loader import clean_name_str, load_daily_slate, CURRENT_SEASON
 from core.settlement_engine import settle_projections
 
 BATTER_WEIBULL_CACHE = {}
 
-def fetch_weibull_stats(person_id: int, player_name: str, season: int = 2026):
+def fetch_weibull_stats(person_id: int, player_name: str):
     cache_key = clean_name_str(player_name)
     if cache_key in BATTER_WEIBULL_CACHE:
         return BATTER_WEIBULL_CACHE[cache_key]
@@ -20,16 +20,18 @@ def fetch_weibull_stats(person_id: int, player_name: str, season: int = 2026):
         'aging_type': '🎲 Stochastic (ρ=1.00)', 'target_call': '⚾ Fade / Low Hazard'
     }
 
-    if not person_id: return fallback
+    if not person_id:
+        return fallback
 
     durations, events = [], []
     current_drought, total_hr, games_played = 0, 0, 0
 
     try:
-        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}/stats?stats=gameLog&group=hitting&season={season}"
+        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}/stats?stats=gameLog&group=hitting&season={CURRENT_SEASON}"
         res = requests.get(url, timeout=5).json()
-        splits = res.get('stats', [{}])[0].get('splits', [])
-        splits = list(reversed(splits)) # Chronological order from April to August
+        stats_data = res.get('stats', [])
+        splits = stats_data[0].get('splits', []) if stats_data else []
+        splits = list(reversed(splits))  # Enforce chronological order
         games_played = len(splits)
 
         spell = 0
@@ -37,32 +39,37 @@ def fetch_weibull_stats(person_id: int, player_name: str, season: int = 2026):
             hr_count = int(sp.get('stat', {}).get('homeRuns', 0))
             total_hr += hr_count
             if hr_count > 0:
-                durations.append(spell + 1)
-                events.append(1) # Completed spell
+                durations.append(max(1, spell + 1))
+                events.append(1)  # Completed drought spell
                 spell = 0
             else:
                 spell += 1
 
         current_drought = spell
         if current_drought > 0:
-            durations.append(current_drought)
-            events.append(0) # Right-censored active drought
+            durations.append(max(1, current_drought))
+            events.append(0)  # Right-censored active drought
     except Exception:
         pass
 
-    if total_hr < 2 or len(durations) < 3:
+    # Safe fallback if insufficient sample for Weibull MLE
+    if total_hr < 2 or len(durations) < 3 or sum(events) < 2:
         fallback.update({
-            'current_drought': current_drought, 'total_hr': total_hr, 'games_played': games_played,
+            'current_drought': current_drought,
+            'total_hr': total_hr,
+            'games_played': games_played,
             'prob': max(0.01, round(total_hr / max(20.0, float(games_played)), 3))
         })
+        BATTER_WEIBULL_CACHE[cache_key] = fallback
         return fallback
 
     try:
         wf = WeibullFitter()
         wf.fit(durations=durations, event_observed=events)
-        lambda_val, rho_val = float(wf.lambda_), float(wf.rho_)
+        lambda_val = max(1.0, float(wf.lambda_))
+        rho_val = max(0.2, min(3.0, float(wf.rho_)))
 
-        t = float(current_drought)
+        t = float(max(0, current_drought))
         s_t = np.exp(-((t / lambda_val) ** rho_val)) if t > 0 else 1.0
         s_t_plus_1 = np.exp(-(((t + 1.0) / lambda_val) ** rho_val))
         cond_prob = round(float(np.clip(1.0 - (s_t_plus_1 / max(1e-6, s_t)), 0.01, 0.45)), 4)
@@ -73,18 +80,25 @@ def fetch_weibull_stats(person_id: int, player_name: str, season: int = 2026):
 
         score_raw = 100.0 / (1.0 + np.exp(-24.0 * (cond_prob - 0.165)))
         score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
-        call = "⏳ TARGET: Drought Breaker" if (cond_prob >= 0.22 and current_drought >= 5 and rho_val >= 0.95) else (
-            "🎲 Target: Stochastic Hit" if cond_prob >= 0.18 else "⚾ Fade / Low Hazard"
+        call = "⏳ TARGET: Drought Breaker" if (cond_prob >= 0.20 and current_drought >= 4 and rho_val >= 0.95) else (
+            "🎲 Target: Stochastic Hit" if cond_prob >= 0.16 else "⚾ Fade / Low Hazard"
         )
 
         res = {
-            'current_drought': current_drought, 'total_hr': total_hr, 'games_played': games_played,
-            'lambda_scale': round(lambda_val, 2), 'rho_shape': round(rho_val, 2),
-            'prob': cond_prob, 'score': score, 'aging_type': aging, 'target_call': call
+            'current_drought': current_drought,
+            'total_hr': total_hr,
+            'games_played': games_played,
+            'lambda_scale': round(lambda_val, 2),
+            'rho_shape': round(rho_val, 2),
+            'prob': cond_prob,
+            'score': score,
+            'aging_type': aging,
+            'target_call': call
         }
         BATTER_WEIBULL_CACHE[cache_key] = res
         return res
     except Exception:
+        BATTER_WEIBULL_CACHE[cache_key] = fallback
         return fallback
 
 def run_weibull_model(mode="predict"):
@@ -103,11 +117,14 @@ def run_weibull_model(mode="predict"):
             ('home', g['home_team'], g['away_pitcher']['pitcher_name'], g['home_batters'])
         ]:
             for order, b_id, b_name, _ in batters:
-                st = fetch_weibull_stats(b_id, b_name)
-                rows.append({
-                    'player_id': b_id, 'player_name': b_name, 'order': order,
-                    'team': team_name, 'opp_pitcher': opp_p, 'venue': g['venue'], **st
-                })
+                try:
+                    st = fetch_weibull_stats(b_id, b_name)
+                    rows.append({
+                        'player_id': b_id, 'player_name': b_name, 'order': order,
+                        'team': team_name, 'opp_pitcher': opp_p, 'venue': g['venue'], **st
+                    })
+                except Exception as e:
+                    print(f"[!] Error processing {b_name}: {e}")
 
     df = pd.DataFrame(rows)
     if not df.empty:
@@ -117,6 +134,8 @@ def run_weibull_model(mode="predict"):
         render_weibull_card(df.head(35), f"exports/weibull/weibull_top50_card_{today_str}.png", today_str)
 
 def render_weibull_card(df, out_path, today_str):
+    if df.empty:
+        return
     fig, ax = plt.subplots(figsize=(24, 14), dpi=300)
     fig.patch.set_facecolor('#0b1329')
     ax.axis('off')
