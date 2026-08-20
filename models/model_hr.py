@@ -11,14 +11,14 @@ def run_hr_model(mode="predict"):
     os.makedirs("exports/hr", exist_ok=True)
 
     if mode == "settle":
-        settle_projections("hr", today_str, lambda r, st: (st['hr'] >= 1, f"WIN ({st['hr']} HR)" if st['hr'] >= 1 else "NO HR"))
+        settle_projections("hr", today_str, lambda r, st: (st.get('hr', 0) >= 1, f"WIN ({st.get('hr', 0)} HR)" if st.get('hr', 0) >= 1 else "NO HR"))
         return
 
     print(f"[{datetime.now()}] Running Dedicated HOME RUN Model with Weather Context for {today_str}...")
     targets = []
     for g in games:
         park_adj = g['park_factors']['hr'] / 100.0
-        weather = g.get('weather_info', {'hr_mod': 1.00, 'badge': '🏟️ Dome / Neutral', 'fade': False})
+        weather = g.get('weather_info', {'hr_mod': 1.00, 'badge': '[NEUTRAL 72°]', 'fade': False})
         w_mod = weather['hr_mod']
         w_badge = weather['badge']
         is_weather_fade = weather['fade']
@@ -34,7 +34,7 @@ def run_hr_model(mode="predict"):
 
                 pitcher_factor = (blended_hr9 / 1.20) ** 0.85
                 
-                # Scaled by park environment AND active weather vector
+                # Scaled by park factor and real-time atmospheric drag
                 lambda_pa = max(0.001, b_prof['hr_pa']) * pitcher_factor * park_adj * w_mod
 
                 p_hr = round(float(1.0 - np.exp(-lambda_pa * 4.20)), 4)
@@ -42,11 +42,11 @@ def run_hr_model(mode="predict"):
                 score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
                 if is_weather_fade and p_hr < 0.25:
-                    target_call = "💨🛑 FADE: Wind / Cold"
+                    target_call = "[FADE: INWARD WIND]"
                 elif p_hr >= 0.20 and b_prof['iso'] >= 0.175:
-                    target_call = "💥 TARGET: Home Run"
+                    target_call = ">> TARGET: HOME RUN <<"
                 else:
-                    target_call = "⚾ Fade HR"
+                    target_call = "Fade HR"
 
                 targets.append({
                     'player_id': b_id, 'player_name': b_name, 'order': order,
@@ -67,7 +67,7 @@ def render_hr_card(df, out_path, today_str):
     fig.patch.set_facecolor('#0b1329')
     ax.axis('off')
     fig.text(0.5, 0.96, "MLB DAILY HOME RUN TARGETS & ENVIRONMENTAL HAZARD MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.93, f"Weather Physics • Ballpark Altitude • Pitcher Suppression Matrix • {today_str}", ha='center', color='#38bdf8', fontsize=12)
+    fig.text(0.5, 0.93, f"Atmospheric Wind Vectors • Ballpark Factors • True Handedness Splits • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
     cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'SP HR/9', 'ISO', 'Weather Context', 'HR Prob', 'Score', 'ACTIONABLE TARGET']
     rows = []
@@ -79,7 +79,7 @@ def render_hr_card(df, out_path, today_str):
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8)
+    table.set_fontsize(8.5)
     table.scale(1.0, 1.9)
     for (row, col), cell in table.get_celld().items():
         cell.set_edgecolor('#334155')
@@ -89,12 +89,12 @@ def render_hr_card(df, out_path, today_str):
         else:
             if col == 9:
                 txt = rows[row-1][9]
-                cell.set_text_props(color='#38bdf8' if 'TARGET' in txt else ('#f87171' if 'FADE: Wind' in txt else '#94a3b8'), weight='bold')
+                cell.set_text_props(color='#38bdf8' if 'TARGET' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8'), weight='bold')
             elif col == 7:
                 cell.set_text_props(color='#facc15', weight='bold')
             elif col == 6:
                 w_txt = rows[row-1][6]
-                cell.set_text_props(color='#4ade80' if 'Wind Out' in w_txt or 'Heat' in w_txt else ('#f87171' if 'Wind In' in w_txt or 'Cold' in w_txt else '#cbd5e1'), weight='semibold')
+                cell.set_text_props(color='#4ade80' if 'WIND OUT' in w_txt or 'HEAT' in w_txt else ('#f87171' if 'WIND IN' in w_txt or 'COLD' in w_txt else '#cbd5e1'), weight='bold')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
