@@ -27,7 +27,11 @@ jobs:
         run: |
           python run_models.py --target all --mode settle
 
-      - name: Run Predict Mode (Today's Targets)
+      - name: Run Predict Mode & Dispatch Email
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
         run: |
           python run_models.py --target all --mode predict
 
