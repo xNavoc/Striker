@@ -10,57 +10,44 @@ import statsapi
 CURRENT_SEASON = datetime.now().year
 
 BALLPARK_FACTORS = {
-    # AL East
-    'Yankee Stadium':              {'hr': 110, 'hits': 94,  'tb': 102, 'overall': 100, 'k': 102},
-    'Fenway Park':                 {'hr': 84,  'hits': 108, 'tb': 118, 'overall': 111, 'k': 97},
-    'Oriole Park at Camden Yards': {'hr': 127, 'hits': 104, 'tb': 110, 'overall': 105, 'k': 101},
-    'Camden Yards':                {'hr': 127, 'hits': 104, 'tb': 110, 'overall': 105, 'k': 101},
-    'Rogers Centre':               {'hr': 104, 'hits': 94,  'tb': 98,  'overall': 99,  'k': 100},
-    'Tropicana Field':             {'hr': 94,  'hits': 96,  'tb': 95,  'overall': 94,  'k': 103},
-    'George M. Steinbrenner Field':{'hr': 120, 'hits': 98,  'tb': 105, 'overall': 102, 'k': 100},
-
-    # AL Central
-    'Guaranteed Rate Field':       {'hr': 111, 'hits': 101, 'tb': 104, 'overall': 106, 'k': 100},
-    'Rate Field':                  {'hr': 95,  'hits': 109, 'tb': 101, 'overall': 97,  'k': 100},
-    'Progressive Field':           {'hr': 101, 'hits': 93,  'tb': 98,  'overall': 104, 'k': 99},
-    'Comerica Park':               {'hr': 103, 'hits': 99,  'tb': 102, 'overall': 106, 'k': 98},
-    'Kauffman Stadium':            {'hr': 95,  'hits': 102, 'tb': 106, 'overall': 106, 'k': 95},
-    'Target Field':                {'hr': 98,  'hits': 103, 'tb': 105, 'overall': 108, 'k': 101},
-
-    # AL West
-    'Minute Maid Park':            {'hr': 106, 'hits': 99,  'tb': 101, 'overall': 102, 'k': 100},
-    'Daikin Park':                 {'hr': 98,  'hits': 107, 'tb': 103, 'overall': 105, 'k': 100},
-    'Globe Life Field':            {'hr': 104, 'hits': 101, 'tb': 102, 'overall': 102, 'k': 99},
-    'Angel Stadium':               {'hr': 106, 'hits': 105, 'tb': 103, 'overall': 105, 'k': 101},
-    'Sutter Health Park':          {'hr': 130, 'hits': 111, 'tb': 120, 'overall': 130, 'k': 92},
-    'Oakland Coliseum':            {'hr': 87,  'hits': 94,  'tb': 91,  'overall': 90,  'k': 104},
-    'T-Mobile Park':               {'hr': 88,  'hits': 94,  'tb': 92,  'overall': 91,  'k': 106},
-
-    # NL East
-    'Truist Park':                 {'hr': 90,  'hits': 102, 'tb': 98,  'overall': 100, 'k': 99},
-    'Citizens Bank Park':          {'hr': 134, 'hits': 105, 'tb': 108, 'overall': 112, 'k': 101},
-    'Citi Field':                  {'hr': 96,  'hits': 96,  'tb': 95,  'overall': 96,  'k': 104},
-    'Nationals Park':              {'hr': 98,  'hits': 108, 'tb': 101, 'overall': 105, 'k': 99},
-    'loanDepot park':              {'hr': 110, 'hits': 109, 'tb': 108, 'overall': 108, 'k': 105},
-    'LoanDepot Park':              {'hr': 110, 'hits': 109, 'tb': 108, 'overall': 108, 'k': 105},
-
-    # NL Central
-    'Great American Ball Park':    {'hr': 126, 'hits': 103, 'tb': 110, 'overall': 108, 'k': 96},
-    'Wrigley Field':               {'hr': 104, 'hits': 102, 'tb': 103, 'overall': 103, 'k': 99},
-    'American Family Field':       {'hr': 115, 'hits': 90,  'tb': 98,  'overall': 101, 'k': 101},
-    'PNC Park':                    {'hr': 83,  'hits': 105, 'tb': 99,  'overall': 102, 'k': 102},
-    'Busch Stadium':               {'hr': 84,  'hits': 109, 'tb': 102, 'overall': 98,  'k': 103},
-
-    # NL West
-    'Coors Field':                 {'hr': 113, 'hits': 127, 'tb': 128, 'overall': 137, 'k': 88},
-    'Dodger Stadium':              {'hr': 112, 'hits': 99,  'tb': 101, 'overall': 100, 'k': 103},
-    'UNIQLO Field at Dodger Stadium': {'hr': 112, 'hits': 99, 'tb': 101, 'overall': 100, 'k': 103},
-    'Chase Field':                 {'hr': 85,  'hits': 105, 'tb': 103, 'overall': 103, 'k': 97},
-    'Petco Park':                  {'hr': 95,  'hits': 96,  'tb': 95,  'overall': 95,  'k': 104},
-    'Oracle Park':                 {'hr': 84,  'hits': 95,  'tb': 90,  'overall': 90,  'k': 105},
-
-    # Neutral Fallback
-    'default':                     {'hr': 100, 'hits': 100, 'tb': 100, 'overall': 100, 'k': 100}
+    'Yankee Stadium':              {'hr': 110, 'hits': 94,  'tb': 102, 'overall': 100, 'k': 102, 'dome': False},
+    'Fenway Park':                 {'hr': 84,  'hits': 108, 'tb': 118, 'overall': 111, 'k': 97,  'dome': False},
+    'Oriole Park at Camden Yards': {'hr': 127, 'hits': 104, 'tb': 110, 'overall': 105, 'k': 101, 'dome': False},
+    'Camden Yards':                {'hr': 127, 'hits': 104, 'tb': 110, 'overall': 105, 'k': 101, 'dome': False},
+    'Rogers Centre':               {'hr': 104, 'hits': 94,  'tb': 98,  'overall': 99,  'k': 100, 'dome': True},
+    'Tropicana Field':             {'hr': 94,  'hits': 96,  'tb': 95,  'overall': 94,  'k': 103, 'dome': True},
+    'George M. Steinbrenner Field':{'hr': 120, 'hits': 98,  'tb': 105, 'overall': 102, 'k': 100, 'dome': False},
+    'Guaranteed Rate Field':       {'hr': 111, 'hits': 101, 'tb': 104, 'overall': 106, 'k': 100, 'dome': False},
+    'Rate Field':                  {'hr': 95,  'hits': 109, 'tb': 101, 'overall': 97,  'k': 100, 'dome': False},
+    'Progressive Field':           {'hr': 101, 'hits': 93,  'tb': 98,  'overall': 104, 'k': 99,  'dome': False},
+    'Comerica Park':               {'hr': 103, 'hits': 99,  'tb': 102, 'overall': 106, 'k': 98,  'dome': False},
+    'Kauffman Stadium':            {'hr': 95,  'hits': 102, 'tb': 106, 'overall': 106, 'k': 95,  'dome': False},
+    'Target Field':                {'hr': 98,  'hits': 103, 'tb': 105, 'overall': 108, 'k': 101, 'dome': False},
+    'Minute Maid Park':            {'hr': 106, 'hits': 99,  'tb': 101, 'overall': 102, 'k': 100, 'dome': True},
+    'Daikin Park':                 {'hr': 98,  'hits': 107, 'tb': 103, 'overall': 105, 'k': 100, 'dome': True},
+    'Globe Life Field':            {'hr': 104, 'hits': 101, 'tb': 102, 'overall': 102, 'k': 99,  'dome': True},
+    'Angel Stadium':               {'hr': 106, 'hits': 105, 'tb': 103, 'overall': 105, 'k': 101, 'dome': False},
+    'Sutter Health Park':          {'hr': 130, 'hits': 111, 'tb': 120, 'overall': 130, 'k': 92,  'dome': False},
+    'Oakland Coliseum':            {'hr': 87,  'hits': 94,  'tb': 91,  'overall': 90,  'k': 104, 'dome': False},
+    'T-Mobile Park':               {'hr': 88,  'hits': 94,  'tb': 92,  'overall': 91,  'k': 106, 'dome': True},
+    'Truist Park':                 {'hr': 90,  'hits': 102, 'tb': 98,  'overall': 100, 'k': 99,  'dome': False},
+    'Citizens Bank Park':          {'hr': 134, 'hits': 105, 'tb': 108, 'overall': 112, 'k': 101, 'dome': False},
+    'Citi Field':                  {'hr': 96,  'hits': 96,  'tb': 95,  'overall': 96,  'k': 104, 'dome': False},
+    'Nationals Park':              {'hr': 98,  'hits': 108, 'tb': 101, 'overall': 105, 'k': 99,  'dome': False},
+    'loanDepot park':              {'hr': 110, 'hits': 109, 'tb': 108, 'overall': 108, 'k': 105, 'dome': True},
+    'LoanDepot Park':              {'hr': 110, 'hits': 109, 'tb': 108, 'overall': 108, 'k': 105, 'dome': True},
+    'Great American Ball Park':    {'hr': 126, 'hits': 103, 'tb': 110, 'overall': 108, 'k': 96,  'dome': False},
+    'Wrigley Field':               {'hr': 104, 'hits': 102, 'tb': 103, 'overall': 103, 'k': 99,  'dome': False},
+    'American Family Field':       {'hr': 115, 'hits': 90,  'tb': 98,  'overall': 101, 'k': 101, 'dome': True},
+    'PNC Park':                    {'hr': 83,  'hits': 105, 'tb': 99,  'overall': 102, 'k': 102, 'dome': False},
+    'Busch Stadium':               {'hr': 84,  'hits': 109, 'tb': 102, 'overall': 98,  'k': 103, 'dome': False},
+    'Coors Field':                 {'hr': 113, 'hits': 127, 'tb': 128, 'overall': 137, 'k': 88,  'dome': False},
+    'Dodger Stadium':              {'hr': 112, 'hits': 99,  'tb': 101, 'overall': 100, 'k': 103, 'dome': False},
+    'UNIQLO Field at Dodger Stadium': {'hr': 112, 'hits': 99, 'tb': 101, 'overall': 100, 'k': 103, 'dome': False},
+    'Chase Field':                 {'hr': 85,  'hits': 105, 'tb': 103, 'overall': 103, 'k': 97,  'dome': True},
+    'Petco Park':                  {'hr': 95,  'hits': 96,  'tb': 95,  'overall': 95,  'k': 104, 'dome': False},
+    'Oracle Park':                 {'hr': 84,  'hits': 95,  'tb': 90,  'overall': 90,  'k': 105, 'dome': False},
+    'default':                     {'hr': 100, 'hits': 100, 'tb': 100, 'overall': 100, 'k': 100, 'dome': False}
 }
 
 _LEAGUE_REGISTRY = {}
@@ -78,74 +65,68 @@ def get_slate_date():
     except Exception:
         return (datetime.utcnow() - timedelta(hours=4)).strftime('%Y-%m-%d')
 
-def parse_weather_context(weather_dict, venue_name):
+def parse_weather_context(box_info_list, venue_name, park_dict):
     """
-    Evaluates temperature, wind vector, and conditions from the MLB feed.
+    Extracts live weather from MLB box info or applies high-heat/climate logic.
     """
-    enclosed_venues = [
-        'Tropicana Field', 'Rogers Centre', 'Globe Life Field', 
-        'Minute Maid Park', 'Daikin Park', 'American Family Field', 
-        'loanDepot park', 'LoanDepot Park', 'Chase Field', 'T-Mobile Park'
-    ]
-    
-    cond = str(weather_dict.get('condition', 'Standard')).lower()
-    temp_str = str(weather_dict.get('temp', '72'))
-    wind_str = str(weather_dict.get('wind', '0 mph None')).lower()
-    
-    try:
-        temp = float(re.findall(r'\d+', temp_str)[0])
-    except Exception:
-        temp = 72.0
+    is_dome = park_dict.get('dome', False)
+    weather_str = ""
+    wind_str = ""
 
-    try:
-        wind_speed = float(re.findall(r'\d+', wind_str)[0])
-    except Exception:
-        wind_speed = 0.0
+    if box_info_list:
+        for item in box_info_list:
+            lbl = item.get('label', '')
+            val = item.get('value', '')
+            if lbl == 'Weather':
+                weather_str = val
+            elif lbl == 'Wind':
+                wind_str = val
 
+    full_w = f"{weather_str} {wind_str}".lower()
+    
     w_hr_mod = 1.00
     w_hits_mod = 1.00
-    weather_badge = "🏟️ Dome / Neutral"
-    is_severe_fade = False
+    badge = "[DOME / NEUTRAL]" if is_dome else "[NEUTRAL 72°]"
+    fade = False
 
-    if any(dome.lower() in venue_name.lower() for dome in enclosed_venues) and ('roof closed' in cond or 'dome' in cond):
-        return {'hr_mod': 1.00, 'hits_mod': 1.00, 'badge': '🏟️ Climate Controlled', 'fade': False}
+    if is_dome:
+        return {'hr_mod': 1.00, 'hits_mod': 1.00, 'badge': '[CLIMATE CONTROLLED]', 'fade': False}
 
-    # 1. Wind Analysis
-    if ('in from' in wind_str or 'in to' in wind_str or 'inflow' in wind_str) and wind_speed >= 9:
-        w_hr_mod *= max(0.78, 1.0 - (wind_speed * 0.018))
-        w_hits_mod *= 0.94
-        weather_badge = f"💨🛑 Wind In ({int(wind_speed)}mph)"
-        if wind_speed >= 12:
-            is_severe_fade = True
+    temp_match = re.findall(r'(\d+)\s*degrees', full_w)
+    temp = float(temp_match[0]) if temp_match else 75.0
 
-    elif ('out to' in wind_str or 'out from' in wind_str or 'outflow' in wind_str) and wind_speed >= 9:
-        w_hr_mod *= min(1.22, 1.0 + (wind_speed * 0.015))
-        w_hits_mod *= 1.04
-        weather_badge = f"🚀🔥 Wind Out ({int(wind_speed)}mph)"
+    wind_match = re.findall(r'(\d+)\s*mph', full_w)
+    wind_spd = float(wind_match[0]) if wind_match else 0.0
 
-    # 2. Temperature Analysis
+    if 'out to' in full_w or 'out from' in full_w or 'to rf' in full_w or 'to lf' in full_w or 'to cf' in full_w:
+        if wind_spd >= 8:
+            w_hr_mod *= min(1.22, 1.0 + (wind_spd * 0.015))
+            w_hits_mod *= 1.04
+            badge = f"[WIND OUT {int(wind_spd)}mph]"
+    elif 'in from' in full_w or 'in to' in full_w or 'from cf' in full_w or 'from lf' in full_w:
+        if wind_spd >= 8:
+            w_hr_mod *= max(0.78, 1.0 - (wind_spd * 0.018))
+            w_hits_mod *= 0.94
+            badge = f"[WIND IN {int(wind_spd)}mph]"
+            if wind_spd >= 12:
+                fade = True
+
     if temp >= 86:
         w_hr_mod *= 1.06
-        w_hits_mod *= 1.02
-        if "Wind" not in weather_badge:
-            weather_badge = f"☀️🔥 High Heat ({int(temp)}°)"
-    elif temp <= 50:
+        if "WIND" not in badge:
+            badge = f"[HEAT {int(temp)}°]"
+    elif temp <= 52:
         w_hr_mod *= 0.88
-        w_hits_mod *= 0.95
-        if "Wind" not in weather_badge:
-            weather_badge = f"❄️📉 Cold Drag ({int(temp)}°)"
+        if "WIND" not in badge:
+            badge = f"[COLD {int(temp)}°]"
             if temp <= 45:
-                is_severe_fade = True
-
-    # 3. Rain Hazard
-    if 'rain' in cond or 'drizzle' in cond or 'shower' in cond:
-        weather_badge = "🌧️⚠️ Rain Threat"
+                fade = True
 
     return {
         'hr_mod': round(w_hr_mod, 3),
         'hits_mod': round(w_hits_mod, 3),
-        'badge': weather_badge,
-        'fade': is_severe_fade
+        'badge': badge,
+        'fade': fade
     }
 
 def initialize_league_registry():
@@ -257,15 +238,15 @@ def fetch_pitcher_profile(pitcher_id: int, pitcher_name: str):
         eff_slg = round(((season_ip * slg_overall) + (30.0 * 0.405)) / (season_ip + 30.0), 3)
 
     if is_bg:
-        badge = "🔄 Bullpen Day / Opener"
+        badge = "[BULLPEN DAY]"
     elif eff_hr9 >= 1.38 or era_overall >= 4.70:
-        badge = "🔴 High Flyball / Bleed Risk"
+        badge = "[HIGH FLYBALL BLEED]"
     elif eff_hr9 <= 0.85 and eff_whip <= 1.15 and season_ip >= 25.0:
-        badge = "🟢 Elite Lockdown Starter"
+        badge = "[ELITE LOCKDOWN]"
     elif eff_k9 >= 10.5:
-        badge = "⚡ High-Whiff Strikeout Arm"
+        badge = "[HIGH WHIFF ARM]"
     else:
-        badge = "🟡 Neutral Arsenal Mix"
+        badge = "[NEUTRAL ARSENAL]"
 
     prof = {
         'pitcher_id': pid, 'pitcher_name': pitcher_name, 'p_hand': p_hand,
@@ -334,16 +315,16 @@ def fetch_batter_profile(person_id: int, b_name: str, p_hand: str):
     final_hr_pa = (sp_hr / float(sp_pa)) if (sp_hr is not None and sp_pa >= 35) else eff_hr_pa
 
     same_hand = (b_hand == p_hand and b_hand != 'S')
-    split_desc = "⚡ Rev Adv" if (same_hand and (final_iso >= 0.220 or final_ba >= 0.280)) else ("🛡️ Same-Hand" if same_hand else "🔥 Platoon")
+    split_desc = "REV ADV" if (same_hand and (final_iso >= 0.220 or final_ba >= 0.280)) else ("SAME-HAND" if same_hand else "PLATOON ADV")
 
     if final_iso >= 0.250 or raw_hr >= 22:
-        badge = "⚡ Elite Slugger"
+        badge = "ELITE SLUGGER"
     elif final_ba >= 0.290:
-        badge = "🎯 Elite Contact"
+        badge = "ELITE CONTACT"
     elif final_iso >= 0.180 or raw_hr >= 14:
-        badge = "💥 Fastball Crusher"
+        badge = "POWER CRUSHER"
     else:
-        badge = "⚾ Contact Profile"
+        badge = "CONTACT PROFILE"
 
     prof = {
         'batter_id': pid, 'batter_name': b_name, 'b_hand': b_hand, 'pos': pos,
@@ -354,26 +335,7 @@ def fetch_batter_profile(person_id: int, b_name: str, p_hand: str):
     _BATTER_CACHE[cache_key] = prof
     return prof
 
-def fetch_projected_lineup_rotowire(team_name: str):
-    try:
-        url = "https://www.rotowire.com/baseball/daily-lineups.php"
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        response = requests.get(url, headers=headers, timeout=6)
-        matches = re.findall(rf'{team_name}.*?lineup__list">(.*?)</ul>', response.text, re.DOTALL)
-        if matches:
-            player_names = re.findall(r'title="([^"]+)"', matches[0])
-            if player_names:
-                valid = []
-                for idx, name in enumerate(player_names[:6], start=1):
-                    pid, _, _, _ = get_player_meta(0, name)
-                    valid.append((idx, pid, name))
-                return valid
-    except Exception:
-        pass
-    return []
-
 def get_team_top6(side_key, team_name, team_id, box):
-    # Tier 1: Official Boxscore Order
     batters = box.get(side_key, {}).get('batters', [])
     valid = []
     if len(batters) >= 6:
@@ -383,12 +345,6 @@ def get_team_top6(side_key, team_name, team_id, box):
             valid.append((idx, b_id, name))
         return valid
 
-    # Tier 2: Live Daily Projected Lineups (RotoWire)
-    proj = fetch_projected_lineup_rotowire(team_name)
-    if len(proj) >= 6:
-        return proj[:6]
-
-    # Tier 3: Everyday Regulars by Season PA
     try:
         roster_str = statsapi.roster(team_id)
         candidates = []
@@ -424,8 +380,14 @@ def load_daily_slate(target_date_str=None):
         gid = g['game_id']
         venue = g.get('venue_name', 'default')
         park = BALLPARK_FACTORS.get(venue, BALLPARK_FACTORS['default'])
-        raw_weather = g.get('weather', {})
-        weather_info = parse_weather_context(raw_weather, venue)
+
+        try:
+            box = statsapi.boxscore_data(gid)
+            box_info = box.get('gameBoxInfo', [])
+        except Exception:
+            box, box_info = {}, []
+
+        weather_info = parse_weather_context(box_info, venue, park)
 
         away_id, home_id = g.get('away_id', 0), g.get('home_id', 0)
         away_team, home_team = g.get('away_name', 'Away'), g.get('home_name', 'Home')
@@ -436,11 +398,6 @@ def load_daily_slate(target_date_str=None):
         home_p_prof = fetch_pitcher_profile(g.get('home_probable_pitcher_id', 0), home_p_name)
         away_bp = fetch_team_bullpen(away_id)
         home_bp = fetch_team_bullpen(home_id)
-
-        try:
-            box = statsapi.boxscore_data(gid)
-        except Exception:
-            box = {}
 
         away_batters = [(order, b_id, name, fetch_batter_profile(b_id, name, home_p_prof['p_hand'])) for order, b_id, name in get_team_top6('away', away_team, away_id, box)]
         home_batters = [(order, b_id, name, fetch_batter_profile(b_id, name, away_p_prof['p_hand'])) for order, b_id, name in get_team_top6('home', home_team, home_id, box)]
