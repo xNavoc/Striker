@@ -66,12 +66,8 @@ def get_slate_date():
         return (datetime.utcnow() - timedelta(hours=4)).strftime('%Y-%m-%d')
 
 def parse_weather_context(box_info_list, venue_name, park_dict):
-    """
-    Extracts live weather from MLB box info or applies high-heat/climate logic.
-    """
     is_dome = park_dict.get('dome', False)
-    weather_str = ""
-    wind_str = ""
+    weather_str, wind_str = "", ""
 
     if box_info_list:
         for item in box_info_list:
@@ -83,7 +79,6 @@ def parse_weather_context(box_info_list, venue_name, park_dict):
                 wind_str = val
 
     full_w = f"{weather_str} {wind_str}".lower()
-    
     w_hr_mod = 1.00
     w_hits_mod = 1.00
     badge = "[DOME / NEUTRAL]" if is_dome else "[NEUTRAL 72°]"
@@ -98,12 +93,12 @@ def parse_weather_context(box_info_list, venue_name, park_dict):
     wind_match = re.findall(r'(\d+)\s*mph', full_w)
     wind_spd = float(wind_match[0]) if wind_match else 0.0
 
-    if 'out to' in full_w or 'out from' in full_w or 'to rf' in full_w or 'to lf' in full_w or 'to cf' in full_w:
+    if any(k in full_w for k in ['out to', 'out from', 'to rf', 'to lf', 'to cf']):
         if wind_spd >= 8:
             w_hr_mod *= min(1.22, 1.0 + (wind_spd * 0.015))
             w_hits_mod *= 1.04
             badge = f"[WIND OUT {int(wind_spd)}mph]"
-    elif 'in from' in full_w or 'in to' in full_w or 'from cf' in full_w or 'from lf' in full_w:
+    elif any(k in full_w for k in ['in from', 'in to', 'from cf', 'from lf']):
         if wind_spd >= 8:
             w_hr_mod *= max(0.78, 1.0 - (wind_spd * 0.018))
             w_hits_mod *= 0.94
@@ -372,12 +367,34 @@ def load_daily_slate(target_date_str=None):
         return _SLATE_CACHE[today_str]
 
     print(f"[i] Loading Unified Slate Data for {today_str} (Season {CURRENT_SEASON})...")
-    schedule = statsapi.schedule(date=today_str)
-    upcoming = schedule if target_date_str else [g for g in schedule if not any(x in g.get('status', 'Scheduled') for x in ['Final', 'Postponed', 'Cancelled'])]
+    
+    try:
+        schedule = statsapi.schedule(date=today_str)
+    except Exception:
+        schedule = []
+
+    if not schedule:
+        try:
+            dt_obj = datetime.strptime(today_str, "%Y-%m-%d")
+            schedule = statsapi.schedule(date=dt_obj.strftime("%m/%d/%Y"))
+        except Exception:
+            schedule = []
+
+    upcoming = []
+    for g in schedule:
+        status = str(g.get('status', 'Scheduled'))
+        detailed = str(g.get('detailed_state', status))
+        if not any(ex.lower() in detailed.lower() or ex.lower() in status.lower() for ex in ['final', 'game over', 'postponed', 'cancelled', 'suspended']):
+            upcoming.append(g)
+
+    if not upcoming and schedule:
+        upcoming = schedule
 
     games_data = []
     for g in upcoming:
-        gid = g['game_id']
+        gid = g.get('game_id')
+        if not gid: continue
+
         venue = g.get('venue_name', 'default')
         park = BALLPARK_FACTORS.get(venue, BALLPARK_FACTORS['default'])
 
