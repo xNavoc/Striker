@@ -14,10 +14,15 @@ def run_hr_model(mode="predict"):
         settle_projections("hr", today_str, lambda r, st: (st['hr'] >= 1, f"WIN ({st['hr']} HR)" if st['hr'] >= 1 else "NO HR"))
         return
 
-    print(f"[{datetime.now()}] Running Dedicated HOME RUN Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Dedicated HOME RUN Model with Weather Context for {today_str}...")
     targets = []
     for g in games:
         park_adj = g['park_factors']['hr'] / 100.0
+        weather = g.get('weather_info', {'hr_mod': 1.00, 'badge': '🏟️ Dome / Neutral', 'fade': False})
+        w_mod = weather['hr_mod']
+        w_badge = weather['badge']
+        is_weather_fade = weather['fade']
+
         for side, team_name, opp_p, opp_bp, batters in [
             ('away', g['away_team'], g['home_pitcher'], g['home_bp'], g['away_batters']),
             ('home', g['home_team'], g['away_pitcher'], g['away_bp'], g['home_batters'])
@@ -28,17 +33,26 @@ def run_hr_model(mode="predict"):
                 blended_hr9 = (sp_hr9 * w_sp) + (opp_bp['bp_hr9'] * w_bp)
 
                 pitcher_factor = (blended_hr9 / 1.20) ** 0.85
-                lambda_pa = max(0.001, b_prof['hr_pa']) * pitcher_factor * park_adj
+                
+                # Scaled by park environment AND active weather vector
+                lambda_pa = max(0.001, b_prof['hr_pa']) * pitcher_factor * park_adj * w_mod
 
                 p_hr = round(float(1.0 - np.exp(-lambda_pa * 4.20)), 4)
                 score_raw = 100.0 / (1.0 + np.exp(-26.0 * (p_hr - 0.155)))
                 score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
-                target_call = "💥 TARGET: Home Run" if (p_hr >= 0.20 and b_prof['iso'] >= 0.175) else "⚾ Fade HR"
+
+                if is_weather_fade and p_hr < 0.25:
+                    target_call = "💨🛑 FADE: Wind / Cold"
+                elif p_hr >= 0.20 and b_prof['iso'] >= 0.175:
+                    target_call = "💥 TARGET: Home Run"
+                else:
+                    target_call = "⚾ Fade HR"
 
                 targets.append({
                     'player_id': b_id, 'player_name': b_name, 'order': order,
                     'team': team_name, 'opp_pitcher': opp_p['pitcher_name'], 'p_hand': opp_p['p_hand'],
-                    'sp_hr9': sp_hr9, 'iso': b_prof['iso'], 'prob': p_hr, 'score': score, 'target_call': target_call
+                    'sp_hr9': sp_hr9, 'iso': b_prof['iso'], 'prob': p_hr, 'score': score,
+                    'weather_badge': w_badge, 'target_call': target_call
                 })
 
     df = pd.DataFrame(targets)
@@ -49,18 +63,18 @@ def run_hr_model(mode="predict"):
         render_hr_card(df.head(35), f"exports/hr/hr_top50_card_{today_str}.png", today_str)
 
 def render_hr_card(df, out_path, today_str):
-    fig, ax = plt.subplots(figsize=(22, 14), dpi=300)
+    fig, ax = plt.subplots(figsize=(24, 14), dpi=300)
     fig.patch.set_facecolor('#0b1329')
     ax.axis('off')
-    fig.text(0.5, 0.96, "MLB DAILY HOME RUN TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.93, f"Pitcher Suppression & Power Multiplier Matrix • {today_str}", ha='center', color='#38bdf8', fontsize=12)
+    fig.text(0.5, 0.96, "MLB DAILY HOME RUN TARGETS & ENVIRONMENTAL HAZARD MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
+    fig.text(0.5, 0.93, f"Weather Physics • Ballpark Altitude • Pitcher Suppression Matrix • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'SP HR/9', 'ISO', 'HR Prob', 'Score', 'ACTIONABLE TARGET']
+    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'SP HR/9', 'ISO', 'Weather Context', 'HR Prob', 'Score', 'ACTIONABLE TARGET']
     rows = []
     for _, r in df.iterrows():
         rows.append([
             r['rank'], f"#{r['order']} {r['player_name']}", r['team'][:11], f"{r['opp_pitcher'][:11]} ({r['p_hand']})",
-            f"{r['sp_hr9']:.2f}", f"{r['iso']:.3f}", f"{r['prob']*100:.1f}%", f"{r['score']:.1f}", r['target_call']
+            f"{r['sp_hr9']:.2f}", f"{r['iso']:.3f}", r['weather_badge'], f"{r['prob']*100:.1f}%", f"{r['score']:.1f}", r['target_call']
         ])
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
@@ -73,10 +87,14 @@ def render_hr_card(df, out_path, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#1e293b')
         else:
-            if col == 8:
-                cell.set_text_props(color='#38bdf8' if 'TARGET' in rows[row-1][8] else '#94a3b8', weight='bold')
-            elif col == 6:
+            if col == 9:
+                txt = rows[row-1][9]
+                cell.set_text_props(color='#38bdf8' if 'TARGET' in txt else ('#f87171' if 'FADE: Wind' in txt else '#94a3b8'), weight='bold')
+            elif col == 7:
                 cell.set_text_props(color='#facc15', weight='bold')
+            elif col == 6:
+                w_txt = rows[row-1][6]
+                cell.set_text_props(color='#4ade80' if 'Wind Out' in w_txt or 'Heat' in w_txt else ('#f87171' if 'Wind In' in w_txt or 'Cold' in w_txt else '#cbd5e1'), weight='semibold')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
