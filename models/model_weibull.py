@@ -15,9 +15,15 @@ def fetch_weibull_stats(person_id: int, player_name: str):
         return BATTER_WEIBULL_CACHE[cache_key]
 
     fallback = {
-        'current_drought': 0, 'total_hr': 0, 'games_played': 0,
-        'lambda_scale': 8.0, 'rho_shape': 1.0, 'prob': 0.10, 'score': 45.0,
-        'aging_type': '🎲 Stochastic (ρ=1.00)', 'target_call': '⚾ Fade / Low Hazard'
+        'current_drought': 0,
+        'total_hr': 0,
+        'games_played': 0,
+        'lambda_scale': 8.0,
+        'rho_shape': 1.0,
+        'prob': 0.10,
+        'score': 45.0,
+        'aging_type': '🎲 Stochastic (ρ=1.00)',
+        'target_call': '⚾ Fade / Low Hazard'
     }
 
     if not person_id:
@@ -52,16 +58,18 @@ def fetch_weibull_stats(person_id: int, player_name: str):
     except Exception:
         pass
 
-    # Safe fallback if insufficient sample for Weibull MLE
+    # Fallback if sample size is insufficient for Weibull MLE
     if total_hr < 2 or len(durations) < 3 or sum(events) < 2:
-        fallback.update({
+        safe_gp = max(20.0, float(games_played))
+        fallback_copy = dict(fallback)
+        fallback_copy.update({
             'current_drought': current_drought,
             'total_hr': total_hr,
             'games_played': games_played,
-            'prob': max(0.01, round(total_hr / max(20.0, float(games_played)), 3))
+            'prob': max(0.01, round(total_hr / safe_gp, 3))
         })
-        BATTER_WEIBULL_CACHE[cache_key] = fallback
-        return fallback
+        BATTER_WEIBULL_CACHE[cache_key] = fallback_copy
+        return fallback_copy
 
     try:
         wf = WeibullFitter()
@@ -74,15 +82,22 @@ def fetch_weibull_stats(person_id: int, player_name: str):
         s_t_plus_1 = np.exp(-(((t + 1.0) / lambda_val) ** rho_val))
         cond_prob = round(float(np.clip(1.0 - (s_t_plus_1 / max(1e-6, s_t)), 0.01, 0.45)), 4)
 
-        aging = f"⏳ Coiled Spring (ρ={rho_val:.2f})" if rho_val >= 1.12 else (
-            f"❄️ Slump Trapped (ρ={rho_val:.2f})" if rho_val <= 0.88 else f"🎲 Stochastic (ρ={rho_val:.2f})"
-        )
+        if rho_val >= 1.12:
+            aging = f"⏳ Coiled Spring (ρ={rho_val:.2f})"
+        elif rho_val <= 0.88:
+            aging = f"❄️ Slump Trapped (ρ={rho_val:.2f})"
+        else:
+            aging = f"🎲 Stochastic (ρ={rho_val:.2f})"
 
         score_raw = 100.0 / (1.0 + np.exp(-24.0 * (cond_prob - 0.165)))
         score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
-        call = "⏳ TARGET: Drought Breaker" if (cond_prob >= 0.20 and current_drought >= 4 and rho_val >= 0.95) else (
-            "🎲 Target: Stochastic Hit" if cond_prob >= 0.16 else "⚾ Fade / Low Hazard"
-        )
+
+        if cond_prob >= 0.20 and current_drought >= 4 and rho_val >= 0.95:
+            call = "⏳ TARGET: Drought Breaker"
+        elif cond_prob >= 0.16:
+            call = "🎲 Target: Stochastic Hit"
+        else:
+            call = "⚾ Fade / Low Hazard"
 
         res = {
             'current_drought': current_drought,
@@ -112,16 +127,24 @@ def run_weibull_model(mode="predict"):
     print(f"[{datetime.now()}] Running Weibull Survival Predictions for {today_str}...")
     rows = []
     for g in games:
+        home_p_name = g.get('home_pitcher', {}).get('pitcher_name', 'TBD') or 'TBD'
+        away_p_name = g.get('away_pitcher', {}).get('pitcher_name', 'TBD') or 'TBD'
+        
         for side, team_name, opp_p, batters in [
-            ('away', g['away_team'], g['home_pitcher']['pitcher_name'], g['away_batters']),
-            ('home', g['home_team'], g['away_pitcher']['pitcher_name'], g['home_batters'])
+            ('away', g['away_team'], home_p_name, g['away_batters']),
+            ('home', g['home_team'], away_p_name, g['home_batters'])
         ]:
             for order, b_id, b_name, _ in batters:
                 try:
                     st = fetch_weibull_stats(b_id, b_name)
                     rows.append({
-                        'player_id': b_id, 'player_name': b_name, 'order': order,
-                        'team': team_name, 'opp_pitcher': opp_p, 'venue': g['venue'], **st
+                        'player_id': b_id,
+                        'player_name': b_name,
+                        'order': order,
+                        'team': team_name,
+                        'opp_pitcher': str(opp_p or 'TBD'),
+                        'venue': str(g.get('venue', 'Ballpark')),
+                        **st
                     })
                 except Exception as e:
                     print(f"[!] Error processing {b_name}: {e}")
@@ -145,16 +168,31 @@ def render_weibull_card(df, out_path, today_str):
     cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Active Drought', 'Aging Type (ρ)', 'Season Record', 'Score', 'Cond. HR Prob', 'ACTIONABLE TARGET']
     rows = []
     for _, r in df.iterrows():
+        opp_str = str(r.get('opp_pitcher', 'TBD'))[:12]
+        prob_val = float(r.get('prob', 0.0))
+        score_val = float(r.get('score', 0.0))
+        drought_val = int(r.get('current_drought', 0))
+        total_hr_val = int(r.get('total_hr', 0))
+        gp_val = int(r.get('games_played', 0))
+
         rows.append([
-            r['rank'], f"#{r['order']} {r['player_name']}", r['team'][:11], r['opp_pitcher'][:12],
-            f"{int(r['current_drought'])} Games", r['aging_type'], f"{r['total_hr']} HR / {r['games_played']} G",
-            f"{r['score']:.1f}", f"{r['prob']*100:.1f}%", r['target_call']
+            r.get('rank', 1),
+            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
+            str(r.get('team', 'Team'))[:11],
+            opp_str,
+            f"{drought_val} Games",
+            str(r.get('aging_type', '🎲 Stochastic')),
+            f"{total_hr_val} HR / {gp_val} G",
+            f"{score_val:.1f}",
+            f"{prob_val * 100:.1f}%",
+            str(r.get('target_call', '⚾ Fade'))
         ])
 
-    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
+    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b'] * len(cols))
     table.auto_set_font_size(False)
     table.set_fontsize(8)
     table.scale(1.0, 1.9)
+    
     for (row, col), cell in table.get_celld().items():
         cell.set_edgecolor('#334155')
         if row == 0:
@@ -162,7 +200,8 @@ def render_weibull_card(df, out_path, today_str):
             cell.set_facecolor('#1e293b')
         else:
             if col == 9:
-                cell.set_text_props(color='#38bdf8' if 'Drought Breaker' in rows[row-1][9] else ('#4ade80' if 'Stochastic' in rows[row-1][9] else '#94a3b8'), weight='bold')
+                txt = rows[row-1][9]
+                cell.set_text_props(color='#38bdf8' if 'Drought Breaker' in txt else ('#4ade80' if 'Stochastic' in txt else '#94a3b8'), weight='bold')
             elif col == 8:
                 cell.set_text_props(color='#facc15', weight='bold')
             else:
