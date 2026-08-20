@@ -12,10 +12,11 @@ from models.model_total_bases import run_tb_model
 from models.model_hr_rbi import run_hr_rbi_model
 from models.model_pitcher_ks import run_ks_model
 from models.model_weibull import run_weibull_model
+from models.model_synergy import run_synergy_model
 from core.data_loader import get_slate_date
 
 def ensure_export_directories():
-    for sub in ['hr', 'hits', 'total_bases', 'hr_rbi', 'pitcher_ks', 'weibull', 'settlement']:
+    for sub in ['hr', 'hits', 'total_bases', 'hr_rbi', 'pitcher_ks', 'weibull', 'synergy', 'settlement']:
         os.makedirs(f"exports/{sub}", exist_ok=True)
 
 def send_daily_suite_email(today_str: str):
@@ -35,12 +36,13 @@ def send_daily_suite_email(today_str: str):
     msg['To'] = recipient
 
     card_manifest = [
-        ("Home Run Targets", f"exports/hr/hr_top50_card_{today_str}.png", "cid_hr"),
-        ("1+ & 2+ Hit Targets", f"exports/hits/hits_top50_card_{today_str}.png", "cid_hits"),
-        ("Total Bases Targets", f"exports/total_bases/total_bases_top50_card_{today_str}.png", "cid_tb"),
-        ("H+R+RBI Combo Targets", f"exports/hr_rbi/hr_rbi_top50_card_{today_str}.png", "cid_combo"),
-        ("Pitcher Strikeout Targets", f"exports/pitcher_ks/pitcher_ks_top50_card_{today_str}.png", "cid_ks"),
-        ("Weibull Survival Targets", f"exports/weibull/weibull_top50_card_{today_str}.png", "cid_weibull"),
+        ("💎 HR + Weibull Dual-Model Synergy Board", f"exports/synergy/synergy_top50_card_{today_str}.png", "cid_synergy"),
+        ("💥 Home Run Targets", f"exports/hr/hr_top50_card_{today_str}.png", "cid_hr"),
+        ("🎯 1+ & 2+ Hit Targets", f"exports/hits/hits_top50_card_{today_str}.png", "cid_hits"),
+        ("🚀 Total Bases Targets", f"exports/total_bases/total_bases_top50_card_{today_str}.png", "cid_tb"),
+        ("🔥 H+R+RBI Combo Targets", f"exports/hr_rbi/hr_rbi_top50_card_{today_str}.png", "cid_combo"),
+        ("⚡ Pitcher Strikeout Targets", f"exports/pitcher_ks/pitcher_ks_top50_card_{today_str}.png", "cid_ks"),
+        ("⏳ Weibull Survival Targets", f"exports/weibull/weibull_top50_card_{today_str}.png", "cid_weibull"),
     ]
 
     cards_html = ""
@@ -63,7 +65,7 @@ def send_daily_suite_email(today_str: str):
             <div style="max-width: 900px; margin: 0 auto;">
                 <header style="border-bottom: 1px solid #1e293b; padding-bottom: 12px; margin-bottom: 20px;">
                     <h1 style="color: #f8fafc; font-size: 24px; margin: 0;">MLB Daily Target Intelligence Suite</h1>
-                    <p style="color: #38bdf8; font-size: 14px; margin: 4px 0 0 0;">Unified Multi-Model Matchup Boards • {today_str}</p>
+                    <p style="color: #38bdf8; font-size: 14px; margin: 4px 0 0 0;">Cross-Referenced Matchup & Hazard Boards • {today_str}</p>
                 </header>
                 {cards_html}
             </div>
@@ -99,7 +101,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="MLB Target Intelligence Engine")
     parser.add_argument(
         "--target",
-        choices=["hr", "hits", "total_bases", "hr_rbi", "pitcher_ks", "weibull", "all"],
+        choices=["hr", "hits", "total_bases", "hr_rbi", "pitcher_ks", "weibull", "synergy", "all"],
         default="all",
         help="Specify which dedicated target model to execute"
     )
@@ -117,7 +119,8 @@ if __name__ == "__main__":
         "total_bases": run_tb_model,
         "hr_rbi": run_hr_rbi_model,
         "pitcher_ks": run_ks_model,
-        "weibull": run_weibull_model
+        "weibull": run_weibull_model,
+        "synergy": run_synergy_model
     }
 
     if args.target == "all":
