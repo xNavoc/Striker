@@ -12,7 +12,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for Dark Mode styling to match your previous PNG aesthetics
+# Custom CSS for Dark Mode styling
 st.markdown("""
     <style>
     .stApp {
@@ -24,6 +24,25 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
+def check_password():
+    """Returns `True` if the user had the correct password."""
+    def password_entered():
+        # CORE FIX: Compares input to the secure Streamlit secret, not a hardcoded string.
+        if st.session_state["password"] == st.secrets["app_password"]:
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]
+        else:
+            st.session_state["password_correct"] = False
+
+    if "password_correct" not in st.session_state:
+        st.text_input("Enter Dashboard Password", type="password", on_change=password_entered, key="password")
+        return False
+    elif not st.session_state["password_correct"]:
+        st.text_input("Enter Dashboard Password", type="password", on_change=password_entered, key="password")
+        st.error("😕 Password incorrect")
+        return False
+    return True
 
 def get_slate_date() -> str:
     """Returns today's slate date in US/Eastern."""
@@ -55,14 +74,15 @@ def apply_color_coding(val):
     return 'color: #cbd5e1;'
 
 def main():
+    if not check_password():
+        return
+
     st.sidebar.title("⚾ MLB Intelligence")
     
-    # Date Selector
     today = get_slate_date()
     selected_date = st.sidebar.date_input("Select Slate Date", value=datetime.strptime(today, "%Y-%m-%d").date())
     date_str = selected_date.strftime("%Y-%m-%d")
 
-    # Model Navigation
     model_choice = st.sidebar.radio(
         "Select Target Matrix",
         [
@@ -80,7 +100,6 @@ def main():
     st.sidebar.markdown("---")
     st.sidebar.caption("Data refreshes daily via GitHub Actions.")
 
-    # Routing Logic
     if model_choice == "Master Consensus (Top 50)":
         st.header(f"Master Top 50 Consensus Matrix • {date_str}")
         df = load_model_data("master", "master_top50", date_str)
@@ -113,9 +132,7 @@ def main():
         st.header(f"Weibull Survival Hazards • {date_str}")
         df = load_model_data("weibull", "weibull_top50", date_str)
 
-    # Render DataFrame
     if not df.empty:
-        # Dynamically find the "call" or "target" column for color formatting
         call_col = next((col for col in df.columns if 'call' in col.lower() or 'target' in col.lower()), None)
         
         if call_col:
