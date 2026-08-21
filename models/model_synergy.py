@@ -24,15 +24,14 @@ def run_synergy_model(mode="predict"):
     df_hr = pd.read_csv(hr_path)
     df_wb = pd.read_csv(weibull_path)
 
-    # 1. Create a bulletproof unique merge key using cleaned player name
+    # Clean merge keys for robust joining
     df_hr['merge_key'] = df_hr['player_name'].apply(clean_name_str)
     df_wb['merge_key'] = df_wb['player_name'].apply(clean_name_str)
 
-    # 2. Deduplicate both boards before joining
+    # Deduplicate boards before join
     df_hr = df_hr.drop_duplicates(subset=['merge_key']).reset_index(drop=True)
     df_wb = df_wb.drop_duplicates(subset=['merge_key']).reset_index(drop=True)
 
-    # 3. Select and rename columns
     df_hr_sub = df_hr[['merge_key', 'player_name', 'team', 'opp_pitcher', 'iso', 'weather_badge', 'prob', 'score', 'rank']].rename(
         columns={'prob': 'hr_prob', 'score': 'hr_score', 'rank': 'hr_rank'}
     )
@@ -41,14 +40,12 @@ def run_synergy_model(mode="predict"):
         columns={'prob': 'wb_prob', 'score': 'wb_score', 'rank': 'wb_rank'}
     )
 
-    # 4. Perform clean 1-to-1 inner join
     merged = pd.merge(df_hr_sub, df_wb_sub, on='merge_key', how='inner')
 
     if merged.empty:
         print("[!] No overlapping targets found.")
         return
 
-    # 5. Composite Score Calculation (55% HR Matchup, 45% Weibull Hazard)
     merged['synergy_score'] = round((merged['hr_score'] * 0.55) + (merged['wb_score'] * 0.45), 1)
 
     signals = []
@@ -72,8 +69,6 @@ def run_synergy_model(mode="predict"):
     merged['synergy_tier'] = signals
     merged = merged.sort_values(by=['synergy_score', 'hr_score'], ascending=False).reset_index(drop=True)
     merged['rank'] = merged.index + 1
-
-    # Drop merge key before export
     merged = merged.drop(columns=['merge_key'])
 
     merged.to_csv(f"exports/synergy/synergy_top50_{today_str}.csv", index=False)
@@ -89,7 +84,7 @@ def render_synergy_card(df, out_path, today_str):
     fig.text(0.5, 0.965, "MLB DUAL-MODEL POWER SYNERGY MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
     fig.text(0.5, 0.938, f"Cross-Referenced Matchup Physics (55%) + Weibull Survival Hazards (45%) • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Weather Context', 'HR Rk', 'HR Prob', 'Drought', 'Aging (ρ)', 'WB Rk', 'Synergy Score', 'ACTIONABLE SIGNAL']
+    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Weather Context', 'HR Rk', 'HR Prob', 'Drought', 'Aging (rho)', 'WB Rk', 'Synergy Score', 'ACTIONABLE SIGNAL']
     rows = []
     for _, r in df.iterrows():
         rows.append([
