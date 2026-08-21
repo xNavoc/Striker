@@ -127,7 +127,7 @@ def fetch_weather_impact(venue_name: str):
         return ret
 
 def fetch_player_splits(person_id: int):
-    """Fetches full season splits for both pitchers and batters."""
+    """Fetches full season splits for both pitchers and batters, extracting vl/vr split codes."""
     if not person_id:
         return {}
     if person_id in PLAYER_CACHE:
@@ -143,7 +143,8 @@ def fetch_player_splits(person_id: int):
     }
 
     try:
-        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting,pitching],type=[statSplits,season],season={CURRENT_SEASON})"
+        # Appended sitCodes=[vr,vl] directly to the hydration string to pull handedness splits
+        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting,pitching],type=[season,statSplits],sitCodes=[vr,vl],season={CURRENT_SEASON})"
         resp = requests.get(url, headers=get_req_headers(), timeout=5)
         if resp.status_code != 200:
             PLAYER_CACHE[person_id] = res_dict
@@ -273,7 +274,6 @@ def load_daily_slate():
             away_players_raw = lineups.get('awayPlayers', [])
             home_players_raw = lineups.get('homePlayers', [])
 
-            # ROSTER FALLBACK: Fetch direct team rosters if official lineups are missing
             if not away_players_raw and away_team_id:
                 away_players_raw = fetch_active_roster(away_team_id)
 
@@ -297,7 +297,6 @@ def load_daily_slate():
                     prof = fetch_player_splits(p_id)
                     home_batters.append((idx + 1, p_id, name, prof))
 
-            # Failsafe if completely unresolvable
             if not away_batters:
                 away_batters = [(i+1, 0, f"{away_team} Hitter #{i+1}", {'ba': 0.245, 'obp': 0.315, 'slg': 0.405, 'iso': 0.160, 'b_hand': 'R'}) for i in range(9)]
             if not home_batters:
