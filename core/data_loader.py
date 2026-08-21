@@ -55,58 +55,53 @@ DOMED_VENUES = {
 }
 
 PLAYER_CACHE = {}
-
+_SLATE_CACHE = None
+_WEATHER_CACHE = {}
 
 def clean_name_str(name: str) -> str:
-    """
-    Standardizes player names across data models:
-    Strips accents, punctuation, Jr./Sr./III suffixes, and leading order numbers.
-    """
+    """Standardizes player names across data models."""
     if not name:
         return ""
-    # Strip accents
     nfkd = unicodedata.normalize('NFKD', str(name))
     cleaned = "".join([c for c in nfkd if not unicodedata.combining(c)])
-    
-    # Remove leading lineup markers like '#2 '
     cleaned = re.sub(r'^#\d+\s*', '', cleaned)
-    
-    # Remove stance tags like ' (R)' or ' (L)'
     cleaned = re.sub(r'\s*\([RLS]\)', '', cleaned, flags=re.IGNORECASE)
-    
-    # Remove suffix markers
     cleaned = re.sub(r'\b(jr\.?|sr\.?|ii|iii|iv)\b', '', cleaned, flags=re.IGNORECASE)
-    
-    # Remove non-alphanumeric chars and collapse spaces
     cleaned = re.sub(r'[^a-zA-Z0-9\s]', '', cleaned).strip().lower()
     return re.sub(r'\s+', ' ', cleaned)
-
 
 def get_slate_date() -> str:
     """Returns today's slate date in US/Eastern."""
     return datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
 
+def get_req_headers():
+    """Forces browser-mimicking headers to bypass aggressive CDN blocks on GitHub Actions runners."""
+    return {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "application/json"
+    }
 
 def fetch_weather_impact(venue_name: str):
-    """
-    Calculates temperature and wind aerodynamic flight modifications for fly balls and contact.
-    """
+    """Calculates temperature and wind aerodynamic flight modifications."""
+    if venue_name in _WEATHER_CACHE:
+        return _WEATHER_CACHE[venue_name]
+
     if venue_name in DOMED_VENUES or venue_name not in STADIUM_COORDS:
-        return {'hr_mod': 1.00, 'hits_mod': 1.00, 'badge': '[DOME / CONTROLLED]', 'fade': False}
+        res = {'hr_mod': 1.00, 'hits_mod': 1.00, 'badge': '[DOME / CONTROLLED]', 'fade': False}
+        _WEATHER_CACHE[venue_name] = res
+        return res
 
     lat, lon = STADIUM_COORDS[venue_name]
     try:
         url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m,wind_speed_10m,wind_direction_10m&temperature_unit=fahrenheit&wind_speed_unit=mph"
-        res = requests.get(url, timeout=4).json()
+        res = requests.get(url, headers=get_req_headers(), timeout=4).json()
         curr = res.get('current', {})
         temp = curr.get('temperature_2m', 72.0)
         w_speed = curr.get('wind_speed_10m', 5.0)
 
-        # Temperature flight multiplier (~1% HR distance boost per 10 deg above 72)
         temp_delta = temp - 72.0
         temp_mult = 1.0 + (temp_delta * 0.0018)
 
-        # Wind air resistance factor
         if w_speed >= 12.0:
             wind_mult = 1.06
             badge = f"[🔥 AIR SURGE {temp:.0f}° {w_speed:.0f}MPH]"
@@ -120,21 +115,21 @@ def fetch_weather_impact(venue_name: str):
             badge = f"[NEUTRAL {temp:.0f}° {w_speed:.0f}MPH]"
             fade = False
 
-        total_hr_mod = round(float(np_clip := max(0.85, min(1.20, temp_mult * wind_mult))), 3)
+        total_hr_mod = round(float(max(0.85, min(1.20, temp_mult * wind_mult))), 3)
         total_hits_mod = round(float(max(0.92, min(1.10, 1.0 + (temp_delta * 0.0008)))), 3)
 
-        return {'hr_mod': total_hr_mod, 'hits_mod': total_hits_mod, 'badge': badge, 'fade': fade}
+        ret = {'hr_mod': total_hr_mod, 'hits_mod': total_hits_mod, 'badge': badge, 'fade': fade}
+        _WEATHER_CACHE[venue_name] = ret
+        return ret
     except Exception:
-        return {'hr_mod': 1.00, 'hits_mod': 1.00, 'badge': '[NEUTRAL 72°]', 'fade': False}
-
+        ret = {'hr_mod': 1.00, 'hits_mod': 1.00, 'badge': '[NEUTRAL 72°]', 'fade': False}
+        _WEATHER_CACHE[venue_name] = ret
+        return ret
 
 def fetch_player_splits(person_id: int):
-    """
-    Fetches full season splits for both pitchers and batters (LHB/RHB splits, ISO, SLG, WHIP).
-    """
+    """Fetches full season splits for both pitchers and batters."""
     if not person_id:
         return {}
-
     if person_id in PLAYER_CACHE:
         return PLAYER_CACHE[person_id]
 
@@ -149,9 +144,15 @@ def fetch_player_splits(person_id: int):
 
     try:
         url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting,pitching],type=[statSplits,season],season={CURRENT_SEASON})"
-        resp = requests.get(url, timeout=5).json()
-        people = resp.get('people', [])
+        resp = requests.get(url, headers=get_req_headers(), timeout=5)
+        if resp.status_code != 200:
+            PLAYER_CACHE[person_id] = res_dict
+            return res_dict
+
+        data = resp.json()
+        people = data.get('people', [])
         if not people:
+            PLAYER_CACHE[person_id] = res_dict
             return res_dict
 
         p = people[0]
@@ -184,12 +185,11 @@ def fetch_player_splits(person_id: int):
                         res_dict['avg_ip'] = round(ip / max(1, games), 1)
                         res_dict['is_bg'] = bool(res_dict['avg_ip'] < 3.0)
 
-                    # Handedness Splits
-                    if split_code == 'vl':  # vs LHB
+                    if split_code == 'vl':
                         res_dict['slg_lhb'] = float(stat.get('slg', 0) or 0.405)
                         res_dict['hr9_lhb'] = float(stat.get('homeRunsPer9', 0) or 1.20)
                         res_dict['baa_lhb'] = float(stat.get('avg', 0) or 0.240)
-                    elif split_code == 'vr':  # vs RHB
+                    elif split_code == 'vr':
                         res_dict['slg_rhb'] = float(stat.get('slg', 0) or 0.405)
                         res_dict['hr9_rhb'] = float(stat.get('homeRunsPer9', 0) or 1.20)
                         res_dict['baa_rhb'] = float(stat.get('avg', 0) or 0.240)
@@ -201,21 +201,29 @@ def fetch_player_splits(person_id: int):
         PLAYER_CACHE[person_id] = res_dict
         return res_dict
 
-
 def load_daily_slate():
-    """
-    Pulls today's schedule, confirmed/probable lineups, starter splits, and bullpen proxies.
-    """
+    """Pulls schedule data utilizing an isolated global memory cache to prevent 6x duplicate model calls."""
+    global _SLATE_CACHE
+    if _SLATE_CACHE is not None:
+        return _SLATE_CACHE
+
     today_str = get_slate_date()
     url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={today_str}&hydrate=probablePitcher,lineups,venue"
     
     games = []
     try:
-        data = requests.get(url, timeout=7).json()
+        res = requests.get(url, headers=get_req_headers(), timeout=10)
+        if res.status_code != 200:
+            print(f"[!] MLB API returned status {res.status_code}. Pipeline will run empty.")
+            _SLATE_CACHE = (today_str, [])
+            return _SLATE_CACHE
+
+        data = res.json()
         dates = data.get('dates', [])
         if not dates:
             print(f"[!] No MLB games scheduled for {today_str}.")
-            return today_str, []
+            _SLATE_CACHE = (today_str, [])
+            return _SLATE_CACHE
 
         for g in dates[0].get('games', []):
             venue_name = g.get('venue', {}).get('name', 'Ballpark')
@@ -226,7 +234,6 @@ def load_daily_slate():
             home_team = teams.get('home', {}).get('team', {}).get('name', 'Home')
             away_team = teams.get('away', {}).get('team', {}).get('name', 'Away')
 
-            # Probable Pitchers
             home_sp = teams.get('home', {}).get('probablePitcher', {})
             away_sp = teams.get('away', {}).get('probablePitcher', {})
 
@@ -241,26 +248,22 @@ def load_daily_slate():
             away_p_prof['pitcher_name'] = away_sp.get('fullName', 'TBD Pitcher')
             away_p_prof['pitcher_id'] = away_p_id
 
-            # Parse Lineups
             away_batters = []
             home_batters = []
             lineups = g.get('lineups', {})
 
-            # Away Batters
             for idx, p in enumerate(lineups.get('awayPlayers', [])):
                 p_id = p.get('id', 0)
                 name = p.get('fullName', f"Batter {idx+1}")
                 prof = fetch_player_splits(p_id)
                 away_batters.append((idx + 1, p_id, name, prof))
 
-            # Home Batters
             for idx, p in enumerate(lineups.get('homePlayers', [])):
                 p_id = p.get('id', 0)
                 name = p.get('fullName', f"Batter {idx+1}")
                 prof = fetch_player_splits(p_id)
                 home_batters.append((idx + 1, p_id, name, prof))
 
-            # Fallback 1-9 roster if confirmed lineup isn't posted yet
             if not away_batters:
                 away_batters = [(i+1, 0, f"{away_team} Hitter #{i+1}", {'ba': 0.245, 'obp': 0.315, 'slg': 0.405, 'iso': 0.160, 'b_hand': 'R'}) for i in range(9)]
             if not home_batters:
@@ -281,7 +284,9 @@ def load_daily_slate():
                 'home_batters': home_batters
             })
 
-        return today_str, games
+        _SLATE_CACHE = (today_str, games)
+        return _SLATE_CACHE
     except Exception as e:
         print(f"[!] Critical error loading slate: {e}")
-        return today_str, []
+        _SLATE_CACHE = (today_str, [])
+        return _SLATE_CACHE
