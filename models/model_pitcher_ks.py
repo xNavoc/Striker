@@ -7,58 +7,120 @@ import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
+def calculate_pitcher_k_dynamics(p_prof, opp_batters, park_k_adj):
+    """
+    Calculates expected strikeouts using Workload (BF) * Matchup K%.
+    """
+    k9 = float(p_prof.get('k9', 8.50))
+    whip = float(p_prof.get('whip', 1.25))
+    avg_ip = float(p_prof.get('avg_ip', 5.2))
+    is_bg = bool(p_prof.get('is_bg', False))
+
+    # 1. Pitcher Baseline K% (Strikeouts per Batter Faced)
+    pitcher_k_pct = np.clip((k9 / 9.0) * 0.245, 0.12, 0.38)
+
+    # 2. Opponent Lineup Contact vs Whiff Rate
+    if opp_batters:
+        lineup_isos = [b[3].get('iso', 0.150) for b in opp_batters]
+        lineup_bas = [b[3].get('ba', 0.240) for b in opp_batters]
+        
+        # High BA + low ISO indicates contact wall (low whiff profile)
+        if np.mean(lineup_bas) >= 0.260 and np.mean(lineup_isos) <= 0.140:
+            lineup_contact_suppression = 0.88
+            matchup_badge = "CONTACT WALL [-12%]"
+        elif np.mean(lineup_isos) >= 0.185 or np.mean(lineup_bas) <= 0.225:
+            lineup_contact_suppression = 1.12
+            matchup_badge = "HIGH WHIFF [+12%]"
+        else:
+            lineup_contact_suppression = 1.00
+            matchup_badge = "NEUTRAL SPLIT"
+    else:
+        lineup_contact_suppression = 1.00
+        matchup_badge = "NEUTRAL SPLIT"
+
+    # 3. Workload (Projected Batters Faced)
+    if is_bg:
+        exp_bf = 9.0
+        workload_desc = "OPENER / BP"
+    elif avg_ip >= 6.0 and whip <= 1.15:
+        exp_bf = 24.5
+        workload_desc = "WORKHORSE (6+ IP)"
+    elif avg_ip >= 5.0:
+        exp_bf = 21.5
+        workload_desc = "STANDARD (5-6 IP)"
+    else:
+        exp_bf = 17.5
+        workload_desc = "SHORT LEASH (<5 IP)"
+
+    # 4. Projected Matchup K%
+    matchup_k_pct = pitcher_k_pct * lineup_contact_suppression * park_k_adj
+
+    # 5. Expected Total Strikeouts (lambda_k)
+    lambda_k = float(np.clip(exp_bf * matchup_k_pct, 1.0, 11.5))
+
+    return lambda_k, round(matchup_k_pct * 100, 1), workload_desc, exp_bf, matchup_badge
+
 def run_ks_model(mode="predict"):
     today_str, games = load_daily_slate()
     os.makedirs("exports/pitcher_ks", exist_ok=True)
 
     if mode == "settle":
-        settle_projections("pitcher_ks", today_str, lambda r, st: (st.get('ks', 0) > float(r.get('k_line', 5.5)), f"{st.get('ks', 0)} Strikeouts"))
+        settle_projections("pitcher_ks", today_str, lambda r, st: (
+            st.get('strikeouts', 0) >= 6,
+            f"WIN ({st.get('strikeouts', 0)} Ks)" if st.get('strikeouts', 0) >= 6 else f"LOSS ({st.get('strikeouts', 0)} Ks)"
+        ))
         return
 
-    print(f"[{datetime.now()}] Running Dedicated PITCHER STRIKEOUTS Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Refined Pitcher Strikeout (K) Model for {today_str}...")
     targets = []
-    for g in games:
-        park_k_mod = g.get('park_factors', {}).get('k', 100) / 100.0
 
-        for pitcher_prof, opp_team in [(g['away_pitcher'], g['home_team']), (g['home_pitcher'], g['away_team'])]:
-            p_name = pitcher_prof.get('pitcher_name', 'TBD')
-            if 'TBD' in p_name or pitcher_prof.get('is_bg', False):
+    for g in games:
+        park_k_adj = g.get('park_factors', {}).get('k', 100) / 100.0
+
+        for p_prof, opp_team, opp_batters in [
+            (g['away_pitcher'], g['home_team'], g['home_batters']),
+            (g['home_pitcher'], g['away_team'], g['away_batters'])
+        ]:
+            if not p_prof or 'TBD' in p_prof['pitcher_name']:
                 continue
 
-            # Standardized starting pitcher innings expectation (3.5 to 6.8 IP)
-            proj_ip = float(np.clip(pitcher_prof.get('avg_ip', 5.1), 3.8, 6.8))
-            k9 = float(pitcher_prof.get('k9', 8.50))
-            
-            # Correct formula: Expected K = Projected IP * (K/9 / 9.0) * Park Factor
-            lambda_k = round(proj_ip * (k9 / 9.0) * park_k_mod, 2)
-            
-            # Dynamic line placement (4.5, 5.5, or 6.5 based on true expectation)
-            k_line = 6.5 if lambda_k >= 6.8 else (4.5 if lambda_k <= 4.6 else 5.5)
-            
-            # True Poisson Over Probability P(K > Line)
-            prob_over = round(float(1.0 - poisson.cdf(int(k_line), lambda_k)), 4)
+            lambda_k, match_k_pct, workload_desc, exp_bf, matchup_badge = calculate_pitcher_k_dynamics(p_prof, opp_batters, park_k_adj)
 
-            score_raw = 100.0 / (1.0 + np.exp(-12.0 * (prob_over - 0.50)))
+            # Poisson Distributions for Prop Ladder
+            prob_o45 = round(float(1.0 - poisson.cdf(4, lambda_k)), 4)
+            prob_o55 = round(float(1.0 - poisson.cdf(5, lambda_k)), 4)
+            prob_o65 = round(float(1.0 - poisson.cdf(6, lambda_k)), 4)
+            prob_o75 = round(float(1.0 - poisson.cdf(7, lambda_k)), 4)
+
+            score_raw = 100.0 / (1.0 + np.exp(-18.0 * (prob_o55 - 0.500)))
             score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
-            
-            if prob_over >= 0.58:
-                call = f"⚡ TARGET: Over {k_line} K's"
-            elif prob_over <= 0.38:
-                call = f"⚠️ FADE: Under {k_line} K's"
+
+            if prob_o65 >= 0.60 and exp_bf >= 22.0:
+                call = "💎 LOCK: Over 6.5 Ks (Apex)"
+            elif prob_o55 >= 0.65:
+                call = "🔥 TARGET: Over 5.5 Ks"
+            elif prob_o45 >= 0.78:
+                call = "🎯 FLOOR: Over 4.5 Ks (Anchor)"
+            elif prob_o55 <= 0.35 or 'SHORT' in workload_desc or 'OPENER' in workload_desc:
+                call = "🛑 FADE: Under K Trap"
             else:
-                call = f"🟡 Neutral ({k_line} Line)"
+                call = "⚾ Standard K Spot"
 
             targets.append({
-                'player_id': pitcher_prof.get('pitcher_id', 0),
-                'player_name': p_name,
-                'p_hand': pitcher_prof.get('p_hand', 'R'),
-                'team': g['away_team'] if p_name == g['away_pitcher']['pitcher_name'] else g['home_team'],
+                'pitcher_id': p_prof.get('pitcher_id', 0),
+                'pitcher_name': p_prof.get('pitcher_name', 'Pitcher'),
+                'p_hand': p_prof.get('p_hand', 'R'),
+                'k9': p_prof.get('k9', 8.50),
+                'whip': p_prof.get('whip', 1.25),
                 'opp_team': opp_team,
-                'k9': k9,
-                'proj_ip': round(proj_ip, 1),
-                'exp_ks': lambda_k,
-                'k_line': k_line,
-                'prob': prob_over,
+                'workload_desc': workload_desc,
+                'matchup_badge': matchup_badge,
+                'match_k_pct': match_k_pct,
+                'exp_ks': round(lambda_k, 2),
+                'prob_o45': prob_o45,
+                'prob_o55': prob_o55,
+                'prob_o65': prob_o65,
+                'prob_o75': prob_o75,
                 'score': score,
                 'target_call': call
             })
@@ -68,55 +130,80 @@ def run_ks_model(mode="predict"):
         df = df.sort_values(by=['score', 'exp_ks'], ascending=False).reset_index(drop=True)
         df['rank'] = df.index + 1
         df.to_csv(f"exports/pitcher_ks/pitcher_ks_top50_{today_str}.csv", index=False)
-        render_ks_card(df, f"exports/pitcher_ks/pitcher_ks_top50_card_{today_str}.png", today_str)
+        render_ks_card(df.head(30), f"exports/pitcher_ks/pitcher_ks_top50_card_{today_str}.png", today_str)
 
 def render_ks_card(df, out_path, today_str):
     if df.empty:
         return
-    fig, ax = plt.subplots(figsize=(22, 11), dpi=300)
-    fig.patch.set_facecolor('#0b1329')
+    plt.close('all')
+    
+    fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
+    fig.patch.set_facecolor('#070d1e')  # Deep navy canvas
     ax.axis('off')
-    fig.text(0.5, 0.96, "MLB DAILY PITCHER STRIKEOUT TARGETS", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.92, f"Whiff Intensity & Inning Projection Poisson Model • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Pitcher', 'Team', 'Opponent', 'K/9', 'Proj IP', 'Exp K Total', 'Over Prob', 'Score', 'ACTIONABLE TARGET']
+    # Card Title Block
+    fig.text(0.5, 0.965, "MLB DAILY PITCHER STRIKEOUT (K) LADDER & WORKLOAD MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
+    fig.text(0.5, 0.938, f"Batters Faced Workload Engine • Lineup Whiff Friction • Poisson Ladder Distribution • {today_str}", ha='center', color='#38bdf8', fontsize=12)
+
+    cols = ['#', 'Starting Pitcher', 'Opp Team', 'K/9', 'WHIP', 'Workload Leash', 'Opp Whiff Context', 'Exp Ks', 'O 4.5', 'O 5.5', 'O 6.5', 'O 7.5', 'Score', 'ACTIONABLE K PROP CALL']
     rows = []
+    
     for _, r in df.iterrows():
-        prob_val = float(r['prob'])
+        o45 = float(r.get('prob_o45', 0.0))
+        o55 = float(r.get('prob_o55', 0.0))
+        o65 = float(r.get('prob_o65', 0.0))
+        o75 = float(r.get('prob_o75', 0.0))
+        call = str(r.get('target_call', 'Standard K Spot'))
+
         rows.append([
-            r['rank'],
-            f"{r['player_name']} ({r['p_hand']})",
-            str(r['team'])[:11],
-            f"vs {str(r['opp_team'])[:11]}",
-            f"{r['k9']:.2f}",
-            f"{r['proj_ip']:.1f}",
-            f"{r['exp_ks']:.1f} K",
-            f"{prob_val*100:.1f}%",
-            f"{r['score']:.1f}",
-            r['target_call']
+            r.get('rank', 1),
+            f"{r.get('pitcher_name', 'Pitcher')} ({r.get('p_hand', 'R')})",
+            str(r.get('opp_team', 'Team'))[:12],
+            f"{float(r.get('k9', 8.5)):.2f}",
+            f"{float(r.get('whip', 1.25)):.2f}",
+            str(r.get('workload_desc', 'STANDARD')),
+            str(r.get('matchup_badge', 'NEUTRAL SPLIT')),
+            f"{float(r.get('exp_ks', 5.0)):.2f}",
+            f"{o45 * 100:.1f}%",
+            f"{o55 * 100:.1f}%",
+            f"{o65 * 100:.1f}%",
+            f"{o75 * 100:.1f}%",
+            f"{float(r.get('score', 50.0)):.1f}",
+            call
         ])
 
-    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
+    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8.5)
-    table.scale(1.0, 2.0)
+    table.set_fontsize(7.5)
+    table.scale(1.0, 1.85)
+
     for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#334155')
+        cell.set_edgecolor('#1e293b')
         if row == 0:
             cell.set_text_props(color='#38bdf8', weight='bold')
-            cell.set_facecolor('#1e293b')
+            cell.set_facecolor('#0f172a')
         else:
-            if col == 9:
-                txt = rows[row-1][9]
-                cell.set_text_props(color='#38bdf8' if 'TARGET' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8'), weight='bold')
-            elif col == 7:
+            if col == 13:
+                txt = rows[row-1][13]
+                cell.set_text_props(
+                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt or 'FLOOR' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8')),
+                    weight='bold'
+                )
+            elif col in [8, 9, 10, 11, 12]:
                 cell.set_text_props(color='#facc15', weight='bold')
+            elif col == 3:
+                val = float(rows[row-1][3])
+                cell.set_text_props(color='#4ade80' if val >= 10.0 else ('#f87171' if val <= 7.0 else '#f1f5f9'), weight='bold')
+            elif col == 5:
+                w_txt = rows[row-1][5]
+                cell.set_text_props(color='#38bdf8' if 'WORKHORSE' in w_txt else ('#f87171' if 'SHORT' in w_txt or 'OPENER' in w_txt else '#cbd5e1'), weight='semibold')
             elif col == 6:
-                cell.set_text_props(color='#38bdf8', weight='semibold')
+                m_txt = rows[row-1][6]
+                cell.set_text_props(color='#4ade80' if 'HIGH WHIFF' in m_txt else ('#f87171' if 'CONTACT WALL' in m_txt else '#cbd5e1'), weight='semibold')
             else:
                 cell.set_text_props(color='#f1f5f9')
-            cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
+            cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
 
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
-    plt.close()
-    print(f"[✓] Saved Pitcher K's Visual Card to {out_path}")
+    plt.close('all')
+    print(f"[✓] Saved Refined Pitcher K Ladder Card to {out_path}")
