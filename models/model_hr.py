@@ -12,19 +12,25 @@ def calculate_hr_clash(batter_prof, opp_p, opp_bp):
     Evaluates Launch-Angle and Batted-Ball physics clash:
     Fly-ball sluggers vs. Fly-ball pitchers = Optimal HR Surge.
     """
-    b_hand = batter_prof.get('b_hand', 'R')
-    p_hand = opp_p.get('p_hand', 'R')
+    b_hand = batter_prof.get('b_hand', 'R') if isinstance(batter_prof, dict) else 'R'
+    p_hand = opp_p.get('p_hand', 'R') if isinstance(opp_p, dict) else 'R'
     
     # Starting pitcher handedness split HR/9
-    sp_hr9 = opp_p.get('hr9_lhb' if b_hand in ['L', 'S'] else 'hr9_rhb', 1.20)
-    w_sp, w_bp = (0.15, 0.85) if opp_p.get('is_bg', False) else (0.65, 0.35)
-    blended_hr9 = (sp_hr9 * w_sp) + (opp_bp.get('bp_hr9', 1.15) * w_bp)
+    if isinstance(opp_p, dict):
+        sp_hr9 = opp_p.get('hr9_lhb' if b_hand in ['L', 'S'] else 'hr9_rhb', 1.20)
+        is_bg = opp_p.get('is_bg', False)
+    else:
+        sp_hr9 = 1.20
+        is_bg = False
+
+    bp_hr9 = opp_bp.get('bp_hr9', 1.15) if isinstance(opp_bp, dict) else 1.15
+    w_sp, w_bp = (0.15, 0.85) if is_bg else (0.65, 0.35)
+    blended_hr9 = (sp_hr9 * w_sp) + (bp_hr9 * w_bp)
 
     pitcher_hr_factor = (blended_hr9 / 1.15) ** 0.90
 
     # Batter Power & Trajectory Clash
-    iso = batter_prof.get('iso', 0.160)
-    slg = batter_prof.get('slg', 0.405)
+    iso = batter_prof.get('iso', 0.160) if isinstance(batter_prof, dict) else 0.160
     
     if iso >= 0.230 and sp_hr9 >= 1.25:
         clash_badge = "OPTIMAL [FLY-BALL SURGE]"
@@ -42,7 +48,7 @@ def calculate_hr_clash(batter_prof, opp_p, opp_bp):
     platoon_bonus = 1.05 if b_hand != p_hand else 0.96
     hr_edge = pitcher_hr_factor * power_mult * platoon_bonus
 
-    return round(float(hr_edge), 3), round(sp_hr9, 2), clash_badge
+    return round(float(hr_edge), 3), round(float(sp_hr9), 2), clash_badge
 
 def run_hr_model(mode="predict"):
     today_str, games = load_daily_slate()
@@ -61,18 +67,32 @@ def run_hr_model(mode="predict"):
     for g in games:
         park_hr = g.get('park_factors', {}).get('hr', 100) / 100.0
         weather = g.get('weather_info', {'hr_mod': 1.00, 'badge': '[NEUTRAL 72°]', 'fade': False})
-        w_mod = weather['hr_mod']
-        w_badge = weather['badge']
+        w_mod = weather.get('hr_mod', 1.00)
+        w_badge = weather.get('badge', '[NEUTRAL 72°]')
 
         for side, team_name, opp_p, opp_bp, batters in [
-            ('away', g['away_team'], g['home_pitcher'], g['home_bp'], g['away_batters']),
-            ('home', g['home_team'], g['away_pitcher'], g['away_bp'], g['home_batters'])
+            ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
+            ('home', g.get('home_team', 'Home'), g.get('away_pitcher', {}), g.get('away_bp', {}), g.get('home_batters', []))
         ]:
-            for order, b_id, b_name, b_prof in batters:
-                hr_edge, split_hr9, clash_badge = calculate_hr_clash(b_prof, opp_p, opp_bp)
+            opp_p_dict = opp_p if isinstance(opp_p, dict) else {}
+            opp_p_name = opp_p_dict.get('pitcher_name', 'TBD Pitcher')
+            opp_p_hand = opp_p_dict.get('p_hand', 'R')
+
+            for b_tuple in batters:
+                if len(b_tuple) >= 4:
+                    order, b_id, b_name, b_prof = b_tuple[0], b_tuple[1], b_tuple[2], b_tuple[3]
+                else:
+                    continue
+
+                b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
+                b_hand = b_prof_dict.get('b_hand', 'R')
+                iso = b_prof_dict.get('iso', 0.160)
+                slg = b_prof_dict.get('slg', 0.405)
+
+                hr_edge, split_hr9, clash_badge = calculate_hr_clash(b_prof_dict, opp_p_dict, opp_bp)
                 
                 exp_pa = 4.4 if order <= 3 else (4.1 if order <= 6 else 3.8)
-                base_hr_rate = (b_prof.get('iso', 0.160) * 0.22) + 0.018
+                base_hr_rate = (iso * 0.22) + 0.018
 
                 lambda_hr = exp_pa * base_hr_rate * hr_edge * park_hr * w_mod
                 lambda_hr = float(np.clip(lambda_hr, 0.02, 0.65))
@@ -95,12 +115,12 @@ def run_hr_model(mode="predict"):
                     'player_name': b_name,
                     'order': order,
                     'team': team_name,
-                    'opp_pitcher': opp_p['pitcher_name'],
-                    'p_hand': opp_p['p_hand'],
-                    'b_hand': b_prof['b_hand'],
-                    'iso': b_prof.get('iso', 0.160),
-                    'slg': b_prof.get('slg', 0.405),
-                    'sp_hr9_split': f"{split_hr9:.2f} vs {b_prof['b_hand']}",
+                    'opp_pitcher': opp_p_name,
+                    'p_hand': opp_p_hand,
+                    'b_hand': b_hand,
+                    'iso': iso,
+                    'slg': slg,
+                    'sp_hr9_split': f"{split_hr9:.2f} vs {b_hand}",
                     'clash_badge': clash_badge,
                     'prob': prob_hr,
                     'score': score,
