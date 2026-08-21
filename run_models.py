@@ -8,6 +8,7 @@ from email import encoders
 from datetime import datetime
 
 from core.data_loader import get_slate_date
+from core.settlement_engine import get_yesterday_date
 from models.model_hr import run_hr_model
 from models.model_weibull import run_weibull_model
 from models.model_hits import run_hits_model
@@ -17,12 +18,7 @@ from models.model_pitcher_ks import run_ks_model
 from models.model_synergy import run_synergy_model
 from models.model_master import run_master_leaderboard
 
-
 def send_daily_email_digest(today_str: str):
-    """
-    Compiles all generated visual model cards and CSV exports into a single daily email digest.
-    Requires GMAIL_USER and GMAIL_APP_PASSWORD configured in environment variables / GitHub Secrets.
-    """
     sender = os.environ.get("GMAIL_USER")
     password = os.environ.get("GMAIL_APP_PASSWORD")
     recipient = os.environ.get("ALERT_EMAIL_RECIPIENT", sender)
@@ -42,7 +38,7 @@ def send_daily_email_digest(today_str: str):
     <html>
       <body style="font-family: Arial, sans-serif; background-color: #050a18; color: #f8fafc; padding: 20px;">
         <h2 style="color: #38bdf8; border-bottom: 2px solid #1e293b; padding-bottom: 8px;">MLB Predictive Model Suite • {today_str}</h2>
-        <p style="color: #cbd5e1; font-size: 14px;">All models executed successfully. The attached high-resolution visual cards and data tables are ready for review:</p>
+        <p style="color: #cbd5e1; font-size: 14px;">All models executed successfully. Attached are today's visual board cards and data tables:</p>
         <ul style="color: #94a3b8; font-size: 13px; line-height: 1.6;">
           <li><b>Master Consensus:</b> Top 50 Unified Prop & Value Leaderboard</li>
           <li><b>Power Synergy Matrix:</b> Launch-Angle Matchup Physics (52%) + Weibull Hazards (48%)</li>
@@ -86,10 +82,7 @@ def send_daily_email_digest(today_str: str):
                     part = MIMEBase("application", "octet-stream")
                     part.set_payload(f.read())
                 encoders.encode_base64(part)
-                part.add_header(
-                    "Content-Disposition",
-                    f"attachment; filename={os.path.basename(file_path)}"
-                )
+                part.add_header("Content-Disposition", f"attachment; filename={os.path.basename(file_path)}")
                 msg.attach(part)
                 attached_count += 1
             except Exception as e:
@@ -105,18 +98,16 @@ def send_daily_email_digest(today_str: str):
     except Exception as e:
         print(f"[!] Failed to send email digest: {e}")
 
-
 def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "predict"
-    today_str = get_slate_date()
-    print(f"[{datetime.now()}] === STARTING MLB PREDICTIVE ENSEMBLE ({mode.upper()}) FOR {today_str} ===")
+    target_date = get_yesterday_date() if mode == "settle" else get_slate_date()
+    print(f"[{datetime.now()}] === STARTING MLB PREDICTIVE ENSEMBLE ({mode.upper()}) FOR {target_date} ===")
 
-    # 1. Ensure all export target folders exist
-    export_dirs = ['hr', 'weibull', 'synergy', 'hits', 'total_bases', 'hr_rbi', 'pitcher_ks', 'master']
-    for d in export_dirs:
+    # Ensure export directories exist
+    for d in ['hr', 'weibull', 'synergy', 'hits', 'total_bases', 'hr_rbi', 'pitcher_ks', 'master', 'settlement']:
         os.makedirs(f"exports/{d}", exist_ok=True)
 
-    # 2. Execute All 6 Core Statistical Domain Models
+    # Execute Models
     run_hr_model(mode)
     run_weibull_model(mode)
     run_hits_model(mode)
@@ -124,16 +115,12 @@ def main():
     run_hr_rbi_model(mode)
     run_ks_model(mode)
 
-    # 3. Execute Multi-Model Synthesis & Master Consensus
     if mode == "predict":
         run_synergy_model(mode)
         run_master_leaderboard(mode)
-
-        # 4. Dispatch Email Digest
-        send_daily_email_digest(today_str)
+        send_daily_email_digest(target_date)
 
     print(f"[{datetime.now()}] === ENSEMBLE EXECUTION COMPLETED SUCCESSFULLY ===")
-
 
 if __name__ == "__main__":
     main()
