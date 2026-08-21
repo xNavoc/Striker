@@ -41,66 +41,61 @@ def run_master_leaderboard(mode="predict"):
 
     # 3. Merge Weibull
     if 'wb' in dfs:
-        wb_sub = dfs['wb'][['merge_key', 'current_drought_games', 'current_drought_pa', 'saturation', 'rho_shape', 'prob', 'score', 'rank']].rename(
-            columns={'prob': 'wb_prob', 'score': 'wb_score', 'rank': 'wb_rk'}
-        )
+        wb_cols = [c for c in ['merge_key', 'current_drought_games', 'current_drought_pa', 'saturation', 'rho_shape', 'prob', 'score', 'rank'] if c in dfs['wb'].columns]
+        wb_sub = dfs['wb'][wb_cols].rename(columns={'prob': 'wb_prob', 'score': 'wb_score', 'rank': 'wb_rk'})
         base = pd.merge(base, wb_sub, on='merge_key', how='left')
 
     # 4. Merge Total Bases
     if 'tb' in dfs:
-        tb_sub = dfs['tb'][['merge_key', 'exp_tb', 'prob_o15', 'score', 'rank']].rename(
-            columns={'score': 'tb_score', 'rank': 'tb_rk'}
-        )
+        tb_cols = [c for c in ['merge_key', 'exp_tb', 'prob_o15', 'score', 'rank'] if c in dfs['tb'].columns]
+        tb_sub = dfs['tb'][tb_cols].rename(columns={'score': 'tb_score', 'rank': 'tb_rk'})
         base = pd.merge(base, tb_sub, on='merge_key', how='left')
 
     # 5. Merge Hits
     if 'hit' in dfs:
-        hit_sub = dfs['hit'][['merge_key', 'prob_1h', 'score', 'rank']].rename(
-            columns={'score': 'hit_score', 'rank': 'hit_rk'}
-        )
+        hit_cols = [c for c in ['merge_key', 'prob_1h', 'score', 'rank'] if c in dfs['hit'].columns]
+        hit_sub = dfs['hit'][hit_cols].rename(columns={'score': 'hit_score', 'rank': 'hit_rk'})
         base = pd.merge(base, hit_sub, on='merge_key', how='left')
 
     # 6. Merge Combo (H+R+RBI)
     if 'combo' in dfs:
-        combo_sub = dfs['combo'][['merge_key', 'avg_combo', 'prob_2plus', 'score', 'rank']].rename(
-            columns={'score': 'combo_score', 'rank': 'combo_rk'}
-        )
+        combo_cols = [c for c in ['merge_key', 'avg_combo', 'prob_2plus', 'score', 'rank'] if c in dfs['combo'].columns]
+        combo_sub = dfs['combo'][combo_cols].rename(columns={'score': 'combo_score', 'rank': 'combo_rk'})
         base = pd.merge(base, combo_sub, on='merge_key', how='left')
 
-    # 7. Fill missing fallback metrics
-    base['hr_score'] = base['hr_score'].fillna(45.0)
-    base['wb_score'] = base['wb_score'].fillna(45.0)
-    base['tb_score'] = base['tb_score'].fillna(45.0)
-    base['hit_score'] = base['hit_score'].fillna(45.0)
-    base['combo_score'] = base['combo_score'].fillna(45.0)
+    # 7. Safe fill medians
+    for s_col in ['hr_score', 'wb_score', 'tb_score', 'hit_score', 'combo_score']:
+        if s_col not in base.columns:
+            base[s_col] = 45.0
+        else:
+            base[s_col] = base[s_col].fillna(45.0)
 
-    # 8. Consensus Score Engine & Primary Target Routing
+    # 8. Consensus Score Engine
     consensus_scores = []
     best_props = []
 
     for _, r in base.iterrows():
-        hr_s = float(r['hr_score'])
-        wb_s = float(r['wb_score'])
-        tb_s = float(r['tb_score'])
-        hit_s = float(r['hit_score'])
-        combo_s = float(r['combo_score'])
-        sat = float(r.get('saturation', 0.0))
-        rho = float(r.get('rho_shape', 1.0))
-        p1h = float(r.get('prob_1h', 0.50))
-        po15 = float(r.get('prob_o15', 0.50))
-        phr = float(r.get('hr_prob', 0.15))
-        p2combo = float(r.get('prob_2plus', 0.50))
+        hr_s = float(r.get('hr_score', 45.0))
+        wb_s = float(r.get('wb_score', 45.0))
+        tb_s = float(r.get('tb_score', 45.0))
+        hit_s = float(r.get('hit_score', 45.0))
+        combo_s = float(r.get('combo_score', 45.0))
+        sat = float(r.get('saturation', 0.0) or 0.0)
+        rho = float(r.get('rho_shape', 1.0) or 1.0)
+        p1h = float(r.get('prob_1h', 0.50) or 0.50)
+        po15 = float(r.get('prob_o15', 0.50) or 0.50)
+        phr = float(r.get('hr_prob', 0.15) or 0.15)
+        p2combo = float(r.get('prob_2plus', 0.50) or 0.50)
 
-        # Composite weighting (28% HR, 22% WB, 22% TB, 16% Hits, 12% Combo)
+        # Weighted Consensus Equation
         c_score = (hr_s * 0.28) + (wb_s * 0.22) + (tb_s * 0.22) + (hit_s * 0.16) + (combo_s * 0.12)
         
-        # Dual-Model Apex Bonus
         if phr >= 0.22 and sat >= 1.05 and rho >= 1.04:
             c_score = min(98.8, c_score * 1.06)
 
         consensus_scores.append(round(float(c_score), 1))
 
-        # Actionable Target Allocation
+        # Best Prop Target Route
         if phr >= 0.24 and sat >= 1.0:
             best_props.append("👑 HR Prop (Apex)")
         elif po15 >= 0.65:
@@ -127,10 +122,9 @@ def render_master_card(df, out_path, today_str):
     plt.close('all')
     
     fig, ax = plt.subplots(figsize=(28, 16), dpi=300)
-    fig.patch.set_facecolor('#050a18')  # Midnight navy background
+    fig.patch.set_facecolor('#050a18')
     ax.axis('off')
 
-    # Card Title Block
     fig.text(0.5, 0.968, "MLB DAILY MASTER TOP 50 PROP & CONSENSUS MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
     fig.text(0.5, 0.942, f"Unified Ensemble: HR Physics (28%) + Weibull Hazards (22%) + Total Bases (22%) + Hits (16%) + H+R+RBI (12%) • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
@@ -138,7 +132,7 @@ def render_master_card(df, out_path, today_str):
     rows = []
     
     for _, r in df.iterrows():
-        sat_val = float(r.get('saturation', 0.0))
+        sat_val = float(r.get('saturation', 0.0) or 0.0)
         sat_str = f"{sat_val * 100:.0f}% of Mean" if sat_val > 0 else "-"
 
         rows.append([
@@ -146,12 +140,12 @@ def render_master_card(df, out_path, today_str):
             f"{r.get('player_name', 'Player')} ({r.get('b_hand', 'R')})",
             str(r.get('team', 'Team'))[:11],
             f"{str(r.get('opp_pitcher', 'TBD'))[:11]} ({r.get('p_hand', 'R')})",
-            f"{float(r.get('hr_prob', 0.0)) * 100:.1f}%",
+            f"{float(r.get('hr_prob', 0.0) or 0.0) * 100:.1f}%",
             sat_str,
-            f"{float(r.get('exp_tb', 1.0)):.2f}",
-            f"{float(r.get('prob_1h', 0.0)) * 100:.1f}%",
-            f"{float(r.get('prob_2plus', 0.0)) * 100:.1f}%",
-            f"{float(r.get('consensus_score', 50.0)):.1f}",
+            f"{float(r.get('exp_tb', 1.0) or 1.0):.2f}",
+            f"{float(r.get('prob_1h', 0.0) or 0.0) * 100:.1f}%",
+            f"{float(r.get('prob_2plus', 0.0) or 0.0) * 100:.1f}%",
+            f"{float(r.get('consensus_score', 50.0) or 50.0):.1f}",
             str(r.get('best_prop_target', 'Value'))
         ])
 
@@ -167,17 +161,17 @@ def render_master_card(df, out_path, today_str):
             cell.set_facecolor('#0f172a')
         else:
             if col == 10:
-                txt = rows[row-1][10]
+                txt = str(rows[row-1][10])
                 cell.set_text_props(
                     color='#38bdf8' if 'HR' in txt else ('#4ade80' if 'TB' in txt else ('#facc15' if 'Hit' in txt else '#c084fc')),
                     weight='bold'
                 )
             elif col == 9:
                 cell.set_text_props(color='#facc15', weight='bold')
-            elif col in [4, 7, 8]:
+            elif col in [4, 6, 7, 8]:
                 cell.set_text_props(color='#f1f5f9', weight='semibold')
             elif col == 5:
-                s_txt = rows[row-1][5]
+                s_txt = str(rows[row-1][5])
                 try:
                     s_num = float(s_txt.replace('% of Mean', '').strip())
                     cell.set_text_props(color='#f87171' if s_num >= 120 else ('#4ade80' if s_num >= 90 else '#cbd5e1'), weight='bold')
