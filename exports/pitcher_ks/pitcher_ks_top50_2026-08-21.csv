@@ -1,0 +1,19 @@
+pitcher_id,pitcher_name,p_hand,k9,whip,opp_team,workload_desc,matchup_badge,match_k_pct,exp_ks,prob_o45,prob_o55,prob_o65,prob_o75,score,target_call,rank
+672282,Reid Detmers,L,10.51,1.06,Texas Rangers,STANDARD (5-6 IP),NEUTRAL SPLIT,28.6,6.15,0.7347,0.5783,0.418,0.2771,80.4,⚾ Standard K Spot,1
+687570,Connor Prielipp,L,9.65,1.38,San Diego Padres,STANDARD (5-6 IP),NEUTRAL SPLIT,27.8,5.99,0.7132,0.5522,0.3916,0.2542,71.9,⚾ Standard K Spot,2
+669022,MacKenzie Gore,L,9.92,1.26,Los Angeles Angels,STANDARD (5-6 IP),NEUTRAL SPLIT,27.0,5.81,0.6881,0.5227,0.3626,0.2298,60.1,⚾ Standard K Spot,3
+680732,Sean Burke,R,9.9,1.11,New York Mets,STANDARD (5-6 IP),NEUTRAL SPLIT,27.0,5.79,0.6865,0.5207,0.3607,0.2282,59.2,⚾ Standard K Spot,4
+808967,Yoshinobu Yamamoto,R,8.42,0.89,Pittsburgh Pirates,WORKHORSE (6+ IP),NEUTRAL SPLIT,22.9,5.62,0.6602,0.4908,0.3322,0.205,45.9,⚾ Standard K Spot,5
+676106,Emerson Hancock,R,8.37,1.11,Chicago Cubs,STANDARD (5-6 IP),NEUTRAL SPLIT,24.6,5.29,0.609,0.4349,0.2814,0.1654,25.0,⚾ Standard K Spot,6
+702070,Noah Cameron,L,8.2,1.22,Detroit Tigers,STANDARD (5-6 IP),HIGH WHIFF [+12%],23.5,5.05,0.5687,0.3933,0.2456,0.1389,25.0,⚾ Standard K Spot,7
+640455,Sean Manaea,L,9.16,1.32,Chicago White Sox,SHORT LEASH (<5 IP),HIGH WHIFF [+12%],27.9,4.89,0.5395,0.3643,0.2215,0.1219,25.0,🛑 FADE: Under K Trap,8
+675512,Troy Melton,R,7.79,0.96,Kansas City Royals,WORKHORSE (6+ IP),NEUTRAL SPLIT,19.9,4.88,0.5389,0.3637,0.221,0.1215,25.0,⚾ Standard K Spot,9
+669372,J.T. Ginn,R,8.06,1.22,Houston Astros,STANDARD (5-6 IP),NEUTRAL SPLIT,21.9,4.72,0.5086,0.3346,0.1978,0.1056,25.0,🛑 FADE: Under K Trap,10
+696149,Bubba Chandler,R,8.01,1.37,Los Angeles Dodgers,STANDARD (5-6 IP),NEUTRAL SPLIT,21.8,4.69,0.5032,0.3295,0.1938,0.1029,25.0,🛑 FADE: Under K Trap,11
+571510,Matthew Boyd,L,7.2,1.24,Seattle Mariners,STANDARD (5-6 IP),NEUTRAL SPLIT,21.2,4.55,0.4776,0.3058,0.1756,0.0909,25.0,🛑 FADE: Under K Trap,12
+666157,Nick Lodolo,L,7.16,1.42,Arizona Diamondbacks,STANDARD (5-6 IP),NEUTRAL SPLIT,19.5,4.19,0.4083,0.2453,0.1315,0.0633,25.0,🛑 FADE: Under K Trap,13
+593958,Eduardo Rodriguez,L,6.39,1.21,Cincinnati Reds,STANDARD (5-6 IP),HIGH WHIFF [+12%],19.5,4.19,0.408,0.245,0.1312,0.0632,25.0,🛑 FADE: Under K Trap,14
+669713,Hayden Wesneski,R,7.15,1.32,Athletics,STANDARD (5-6 IP),NEUTRAL SPLIT,19.5,4.18,0.4072,0.2444,0.1308,0.0629,25.0,🛑 FADE: Under K Trap,15
+676282,Joey Cantillo,L,9.95,1.44,Colorado Rockies,SHORT LEASH (<5 IP),NEUTRAL SPLIT,22.8,3.98,0.3676,0.212,0.1088,0.05,25.0,🛑 FADE: Under K Trap,16
+685299,Tanner Gordon,R,7.82,1.44,Cleveland Guardians,SHORT LEASH (<5 IP),NEUTRAL SPLIT,17.9,3.13,0.2069,0.0975,0.0405,0.0149,25.0,🛑 FADE: Under K Trap,17
+681190,Randy Vásquez,R,5.76,1.38,Minnesota Twins,SHORT LEASH (<5 IP),NEUTRAL SPLIT,16.6,2.91,0.1696,0.075,0.0291,0.01,25.0,🛑 FADE: Under K Trap,18

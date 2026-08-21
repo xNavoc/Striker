@@ -1,0 +1,163 @@
+player_id,player_name,order,team,opp_pitcher,p_hand,b_hand,slg,iso,opp_slg_split,xbh_badge,exp_tb,prob_o15,prob_o25,score,target_call,rank
+663993,Nathaniel Lowe,5,Cleveland Guardians,Tanner Gordon,R,L,0.463,0.219,0.617,GAP [2B/3B EDGE],3.37,0.8498,0.6546,96.5,👑 LOCK: Over 1.5 TB (Anchor),1
+680664,Eduardo Valencia,5,Detroit Tigers,Noah Cameron,L,R,0.763,0.407,0.367,POWER [XBH SURGE],3.08,0.8127,0.5948,96.5,👑 LOCK: Over 1.5 TB (Anchor),2
+694197,Angel Genao,6,Cleveland Guardians,Tanner Gordon,R,S,0.444,0.111,0.617,BALANCED SLUGGER,3.05,0.8076,0.587,96.5,👑 LOCK: Over 1.5 TB (Anchor),3
+800050,Chase DeLauter,2,Cleveland Guardians,Tanner Gordon,R,L,0.442,0.157,0.617,BALANCED SLUGGER,3.03,0.8056,0.584,96.5,👑 LOCK: Over 1.5 TB (Anchor),4
+666176,Jo Adell,4,Cleveland Guardians,Tanner Gordon,R,R,0.479,0.271,0.473,POWER [XBH SURGE],2.83,0.7736,0.5371,95.8,👑 LOCK: Over 1.5 TB (Anchor),5
+666160,Mickey Moniak,7,Colorado Rockies,Joey Cantillo,L,L,0.539,0.273,0.393,POWER [XBH SURGE],2.64,0.7409,0.4924,93.5,👑 LOCK: Over 1.5 TB (Anchor),6
+608070,José Ramírez,3,Cleveland Guardians,Tanner Gordon,R,S,0.382,0.143,0.617,BALANCED SLUGGER,2.62,0.7366,0.4867,93.2,👑 LOCK: Over 1.5 TB (Anchor),7
+683953,Travis Bazzana,7,Cleveland Guardians,Tanner Gordon,R,L,0.369,0.136,0.617,BALANCED SLUGGER,2.53,0.7191,0.4642,91.4,👑 LOCK: Over 1.5 TB (Anchor),8
+804668,Rafael Flores Jr.,6,Pittsburgh Pirates,Yoshinobu Yamamoto,R,R,0.729,0.416,0.339,POWER [XBH SURGE],2.48,0.7087,0.4513,90.2,👑 LOCK: Over 1.5 TB (Anchor),9
+678246,Miguel Vargas,3,Chicago White Sox,Sean Manaea,L,R,0.487,0.247,0.484,POWER [XBH SURGE],2.37,0.6841,0.4214,86.7,👑 LOCK: Over 1.5 TB (Anchor),10
+670541,Yordan Alvarez,2,Houston Astros,J.T. Ginn,R,L,0.613,0.294,0.374,POWER [XBH SURGE],2.3,0.6695,0.4043,84.2,👑 LOCK: Over 1.5 TB (Anchor),11
+694249,Cole Carrigg,3,Colorado Rockies,Joey Cantillo,L,S,0.467,0.186,0.417,GAP [2B/3B EDGE],2.3,0.6686,0.4034,84.0,👑 LOCK: Over 1.5 TB (Anchor),12
+660271,Shohei Ohtani,1,Los Angeles Dodgers,Bubba Chandler,R,L,0.554,0.263,0.41,POWER [XBH SURGE],2.28,0.6645,0.3987,83.2,👑 LOCK: Over 1.5 TB (Anchor),13
+664983,Jake McCarthy,1,Colorado Rockies,Joey Cantillo,L,L,0.49,0.195,0.393,GAP [2B/3B EDGE],2.27,0.6627,0.3966,82.9,👑 LOCK: Over 1.5 TB (Anchor),14
+680757,Steven Kwan,1,Cleveland Guardians,Tanner Gordon,R,L,0.327,0.062,0.617,BALANCED SLUGGER,2.24,0.6558,0.3888,81.5,👑 LOCK: Over 1.5 TB (Anchor),15
+682998,Corbin Carroll,2,Arizona Diamondbacks,Nick Lodolo,L,L,0.484,0.238,0.448,POWER [XBH SURGE],2.18,0.6397,0.371,77.8,🔥 TARGET: Over 1.5 TB,16
+665019,Kody Clemens,5,Minnesota Twins,Randy Vásquez,R,L,0.465,0.229,0.506,POWER [XBH SURGE],2.13,0.627,0.3573,74.6,🔥 TARGET: Over 1.5 TB,17
+690984,Petey Halpin,9,Cleveland Guardians,Tanner Gordon,R,L,0.308,0.093,0.617,BALANCED SLUGGER,2.11,0.6237,0.3538,73.7,🔥 TARGET: Over 1.5 TB,18
+680869,Zack Gelof,3,Athletics,Hayden Wesneski,R,R,0.481,0.212,0.452,GAP [2B/3B EDGE],2.06,0.6109,0.3405,70.1,🔥 TARGET: Over 1.5 TB,19
+571970,Max Muncy,4,Los Angeles Dodgers,Bubba Chandler,R,L,0.497,0.246,0.41,POWER [XBH SURGE],2.05,0.6062,0.3357,68.7,🔥 TARGET: Over 1.5 TB,20
+808959,Munetaka Murakami,2,Chicago White Sox,Sean Manaea,L,L,0.53,0.303,0.379,POWER [XBH SURGE],2.02,0.5984,0.3278,66.3,🔥 TARGET: Over 1.5 TB,21
+695506,Jac Caglianone,3,Kansas City Royals,Troy Melton,R,L,0.495,0.216,0.385,GAP [2B/3B EDGE],1.98,0.5893,0.3187,63.4,🔥 TARGET: Over 1.5 TB,22
+693307,Dillon Dingler,4,Detroit Tigers,Noah Cameron,L,R,0.49,0.235,0.367,POWER [XBH SURGE],1.98,0.5883,0.3176,63.1,🔥 TARGET: Over 1.5 TB,23
+650489,Willi Castro,5,Colorado Rockies,Joey Cantillo,L,S,0.425,0.161,0.417,BALANCED SLUGGER,1.97,0.5859,0.3153,62.3,🔥 TARGET: Over 1.5 TB,24
+691720,Kyle Karros,2,Colorado Rockies,Joey Cantillo,L,R,0.424,0.159,0.417,BALANCED SLUGGER,1.97,0.5847,0.3141,61.9,🔥 TARGET: Over 1.5 TB,25
+571448,Nolan Arenado,5,Arizona Diamondbacks,Nick Lodolo,L,R,0.443,0.2,0.465,GAP [2B/3B EDGE],1.96,0.5817,0.3112,60.9,🔥 TARGET: Over 1.5 TB,26
+672515,Gabriel Moreno,3,Arizona Diamondbacks,Nick Lodolo,L,R,0.47,0.163,0.465,BALANCED SLUGGER,1.95,0.5816,0.311,60.9,🔥 TARGET: Over 1.5 TB,27
+681198,TJ Rumfield,4,Colorado Rockies,Joey Cantillo,L,L,0.447,0.155,0.393,BALANCED SLUGGER,1.95,0.5812,0.3106,60.7,🔥 TARGET: Over 1.5 TB,28
+801126,Brock Rodden,9,Seattle Mariners,Matthew Boyd,L,S,0.5,0.2,0.452,GAP [2B/3B EDGE],1.89,0.5627,0.2929,54.4,⚾ Baseline TB Range,29
+605137,Josh Bell,3,Minnesota Twins,Randy Vásquez,R,S,0.433,0.175,0.506,GAP [2B/3B EDGE],1.87,0.5581,0.2886,52.8,⚾ Baseline TB Range,30
+621439,Byron Buxton,2,Minnesota Twins,Randy Vásquez,R,R,0.524,0.268,0.393,POWER [XBH SURGE],1.86,0.5549,0.2856,51.7,⚾ Baseline TB Range,31
+664034,Ty France,4,San Diego Padres,Connor Prielipp,L,R,0.511,0.22,0.403,POWER [XBH SURGE],1.86,0.5549,0.2856,51.7,⚾ Baseline TB Range,32
+805808,Kevin McGonigle,3,Detroit Tigers,Noah Cameron,L,L,0.424,0.142,0.443,BALANCED SLUGGER,1.84,0.5494,0.2805,49.8,⚾ Baseline TB Range,33
+686797,Brooks Lee,8,Minnesota Twins,Randy Vásquez,R,S,0.419,0.175,0.506,GAP [2B/3B EDGE],1.81,0.5404,0.2723,46.6,⚾ Baseline TB Range,34
+691718,Pete Crow-Armstrong,1,Chicago Cubs,Emerson Hancock,R,L,0.55,0.271,0.372,POWER [XBH SURGE],1.81,0.5394,0.2714,46.3,⚾ Baseline TB Range,35
+703601,Max Clark,8,Detroit Tigers,Noah Cameron,L,L,0.414,0.143,0.443,BALANCED SLUGGER,1.8,0.5366,0.2689,45.3,⚾ Baseline TB Range,36
+642350,Jose Siri,5,Los Angeles Angels,MacKenzie Gore,L,R,0.461,0.206,0.404,GAP [2B/3B EDGE],1.77,0.5275,0.2607,42.2,⚾ Baseline TB Range,37
+701398,Sal Stewart,2,Cincinnati Reds,Eduardo Rodriguez,L,R,0.474,0.215,0.392,GAP [2B/3B EDGE],1.76,0.5262,0.2596,41.7,⚾ Baseline TB Range,38
+805367,Chase Meidroth,1,Chicago White Sox,Sean Manaea,L,R,0.406,0.133,0.484,BALANCED SLUGGER,1.76,0.5244,0.258,41.1,⚾ Baseline TB Range,39
+679822,Justin Foscue,1,Texas Rangers,Reid Detmers,L,R,0.487,0.221,0.359,POWER [XBH SURGE],1.76,0.5237,0.2574,40.9,⚾ Baseline TB Range,40
+682829,Elly De La Cruz,1,Cincinnati Reds,Eduardo Rodriguez,L,S,0.467,0.208,0.392,GAP [2B/3B EDGE],1.74,0.5183,0.2527,39.1,⚾ Baseline TB Range,41
+663616,Trevor Larnach,7,Minnesota Twins,Randy Vásquez,R,L,0.422,0.154,0.506,BALANCED SLUGGER,1.72,0.5125,0.2477,37.2,⚾ Baseline TB Range,42
+518692,Freddie Freeman,2,Los Angeles Dodgers,Bubba Chandler,R,L,0.468,0.165,0.41,BALANCED SLUGGER,1.72,0.5117,0.247,36.9,⚾ Baseline TB Range,43
+668227,Randy Arozarena,2,Seattle Mariners,Matthew Boyd,L,R,0.449,0.177,0.452,GAP [2B/3B EDGE],1.7,0.5052,0.2415,34.8,⚾ Baseline TB Range,44
+545121,Ildemaro Vargas,1,Arizona Diamondbacks,Nick Lodolo,L,S,0.407,0.143,0.465,BALANCED SLUGGER,1.69,0.5044,0.2408,34.6,⚾ Baseline TB Range,45
+676724,Jared Young,5,New York Mets,Sean Burke,R,L,0.447,0.177,0.398,GAP [2B/3B EDGE],1.69,0.5032,0.2397,34.2,⚾ Baseline TB Range,46
+686681,Michael Massey,7,Kansas City Royals,Troy Melton,R,L,0.447,0.169,0.385,BALANCED SLUGGER,1.69,0.5028,0.2394,34.1,⚾ Baseline TB Range,47
+701162,Ben Malgeri,7,Detroit Tigers,Noah Cameron,L,R,0.441,0.187,0.367,GAP [2B/3B EDGE],1.68,0.5017,0.2385,33.7,⚾ Baseline TB Range,48
+545361,Mike Trout,2,Los Angeles Angels,MacKenzie Gore,L,R,0.434,0.195,0.404,GAP [2B/3B EDGE],1.66,0.4955,0.2333,31.8,⚾ Baseline TB Range,49
+680777,Ryan Jeffers,4,Minnesota Twins,Randy Vásquez,R,R,0.493,0.21,0.393,GAP [2B/3B EDGE],1.65,0.4926,0.2309,30.9,⚾ Baseline TB Range,50
+641680,Jonah Heim,7,Athletics,Hayden Wesneski,R,S,0.41,0.179,0.419,GAP [2B/3B EDGE],1.63,0.4848,0.2245,28.6,⚾ Baseline TB Range,51
+814439,Ryan Waldschmidt,9,Arizona Diamondbacks,Nick Lodolo,L,R,0.391,0.112,0.465,BALANCED SLUGGER,1.63,0.4834,0.2234,28.2,⚾ Baseline TB Range,52
+687263,Zach Neto,1,Los Angeles Angels,MacKenzie Gore,L,R,0.422,0.191,0.404,GAP [2B/3B EDGE],1.62,0.4809,0.2213,27.5,⚾ Baseline TB Range,53
+596019,Francisco Lindor,2,New York Mets,Sean Burke,R,S,0.426,0.187,0.398,GAP [2B/3B EDGE],1.61,0.478,0.219,26.7,⚾ Baseline TB Range,54
+695600,Carter Jensen,1,Kansas City Royals,Troy Melton,R,L,0.401,0.18,0.385,GAP [2B/3B EDGE],1.61,0.4771,0.2183,26.5,⚾ Baseline TB Range,55
+694374,Tim Tawa,6,Arizona Diamondbacks,Nick Lodolo,L,R,0.385,0.15,0.465,BALANCED SLUGGER,1.6,0.4754,0.2169,26.0,⚾ Baseline TB Range,56
+701538,Jackson Merrill,5,San Diego Padres,Connor Prielipp,L,L,0.408,0.168,0.479,BALANCED SLUGGER,1.57,0.4663,0.2097,25.0,⚾ Baseline TB Range,57
+679529,Spencer Torkelson,6,Detroit Tigers,Noah Cameron,L,R,0.411,0.187,0.367,GAP [2B/3B EDGE],1.57,0.4651,0.2087,25.0,⚾ Baseline TB Range,58
+695657,Colson Montgomery,5,Chicago White Sox,Sean Manaea,L,L,0.433,0.217,0.379,GAP [2B/3B EDGE],1.56,0.4612,0.2057,25.0,⚾ Baseline TB Range,59
+694671,Wyatt Langford,3,Texas Rangers,Reid Detmers,L,R,0.454,0.203,0.359,GAP [2B/3B EDGE],1.55,0.4577,0.203,25.0,⚾ Baseline TB Range,60
+672695,Geraldo Perdomo,4,Arizona Diamondbacks,Nick Lodolo,L,S,0.371,0.127,0.465,BALANCED SLUGGER,1.54,0.4564,0.202,25.0,⚾ Baseline TB Range,61
+553993,Eugenio Suárez,4,Cincinnati Reds,Eduardo Rodriguez,L,R,0.413,0.205,0.392,GAP [2B/3B EDGE],1.54,0.4543,0.2004,25.0,⚾ Baseline TB Range,62
+701678,Hao-Yu Lee,2,Detroit Tigers,Noah Cameron,L,R,0.424,0.148,0.367,BALANCED SLUGGER,1.53,0.4507,0.1976,25.0,⚾ Baseline TB Range,63
+666126,Carlos Cortes,4,Athletics,Hayden Wesneski,R,L,0.407,0.147,0.419,BALANCED SLUGGER,1.53,0.4506,0.1975,25.0,⚾ Baseline TB Range,64
+691777,Max Muncy,9,Athletics,Hayden Wesneski,R,R,0.376,0.16,0.452,BALANCED SLUGGER,1.52,0.4488,0.1962,25.0,⚾ Baseline TB Range,65
+699912,Jose Fernandez,8,Arizona Diamondbacks,Nick Lodolo,L,R,0.364,0.103,0.465,BALANCED SLUGGER,1.51,0.4468,0.1946,25.0,⚾ Baseline TB Range,66
+678662,Ezequiel Tovar,9,Colorado Rockies,Joey Cantillo,L,R,0.326,0.121,0.417,BALANCED SLUGGER,1.51,0.446,0.194,25.0,⚾ Baseline TB Range,67
+669242,Tommy Edman,7,Los Angeles Dodgers,Bubba Chandler,R,S,0.412,0.141,0.41,BALANCED SLUGGER,1.51,0.4458,0.1938,25.0,⚾ Baseline TB Range,68
+701807,Carson Benge,4,New York Mets,Sean Burke,R,L,0.418,0.146,0.398,BALANCED SLUGGER,1.49,0.4381,0.1881,25.0,⚾ Baseline TB Range,69
+703607,Henry Bolte,1,Athletics,Hayden Wesneski,R,R,0.367,0.098,0.452,BALANCED SLUGGER,1.48,0.4367,0.187,25.0,⚾ Baseline TB Range,70
+677594,Julio Rodríguez,4,Seattle Mariners,Matthew Boyd,L,R,0.416,0.163,0.452,BALANCED SLUGGER,1.48,0.4354,0.1861,25.0,⚾ Baseline TB Range,71
+673548,Seiya Suzuki,2,Chicago Cubs,Emerson Hancock,R,R,0.483,0.215,0.365,GAP [2B/3B EDGE],1.47,0.4329,0.1843,25.0,⚾ Baseline TB Range,72
+691783,Jordan Lawlar,7,Arizona Diamondbacks,Nick Lodolo,L,R,0.354,0.104,0.465,BALANCED SLUGGER,1.47,0.4328,0.1842,25.0,⚾ Baseline TB Range,73
+668709,JJ Bleday,6,Cincinnati Reds,Eduardo Rodriguez,L,L,0.433,0.214,0.353,GAP [2B/3B EDGE],1.45,0.4255,0.1789,25.0,⚾ Baseline TB Range,74
+650402,Gleyber Torres,1,Detroit Tigers,Noah Cameron,L,R,0.401,0.13,0.367,BALANCED SLUGGER,1.44,0.4228,0.1769,25.0,⚾ Baseline TB Range,75
+686668,Brenton Doyle,6,Chicago White Sox,Sean Manaea,L,R,0.333,0.121,0.484,BALANCED SLUGGER,1.44,0.4224,0.1766,25.0,⚾ Baseline TB Range,76
+671976,Tristan Peters,9,Chicago White Sox,Sean Manaea,L,L,0.424,0.154,0.379,BALANCED SLUGGER,1.44,0.4209,0.1756,25.0,⚾ Baseline TB Range,77
+669394,Jake Burger,6,Texas Rangers,Reid Detmers,L,R,0.42,0.183,0.359,GAP [2B/3B EDGE],1.43,0.4188,0.1741,25.0,⚾ Baseline TB Range,78
+592518,Manny Machado,3,San Diego Padres,Connor Prielipp,L,R,0.413,0.198,0.403,GAP [2B/3B EDGE],1.42,0.4156,0.1718,25.0,⚾ Baseline TB Range,79
+687597,Jordan Beck,6,Colorado Rockies,Joey Cantillo,L,R,0.304,0.125,0.417,BALANCED SLUGGER,1.41,0.4114,0.1688,25.0,⚾ Baseline TB Range,80
+665487,Fernando Tatis Jr.,1,San Diego Padres,Connor Prielipp,L,R,0.434,0.154,0.403,BALANCED SLUGGER,1.41,0.4109,0.1684,25.0,⚾ Baseline TB Range,81
+668904,Royce Lewis,6,Minnesota Twins,Randy Vásquez,R,R,0.419,0.179,0.393,GAP [2B/3B EDGE],1.41,0.4104,0.1681,25.0,⚾ Baseline TB Range,82
+545341,Randal Grichuk,4,Chicago White Sox,Sean Manaea,L,R,0.323,0.129,0.484,BALANCED SLUGGER,1.4,0.4075,0.1661,25.0,⚾ Baseline TB Range,83
+677649,Ezequiel Duran,5,Texas Rangers,Reid Detmers,L,R,0.434,0.169,0.359,BALANCED SLUGGER,1.39,0.4059,0.1649,25.0,⚾ Baseline TB Range,84
+686469,Vinnie Pasquantino,5,Kansas City Royals,Troy Melton,R,L,0.367,0.123,0.385,BALANCED SLUGGER,1.39,0.4031,0.1629,25.0,⚾ Baseline TB Range,85
+624431,Jose Trevino,7,Cincinnati Reds,Eduardo Rodriguez,L,R,0.392,0.147,0.392,BALANCED SLUGGER,1.37,0.3993,0.1603,25.0,⚾ Baseline TB Range,86
+664040,Brandon Lowe,2,Pittsburgh Pirates,Yoshinobu Yamamoto,R,L,0.48,0.227,0.285,POWER [XBH SURGE],1.37,0.3989,0.1601,25.0,⚾ Baseline TB Range,87
+687093,Vaughn Grissom,4,Los Angeles Angels,MacKenzie Gore,L,R,0.377,0.128,0.404,BALANCED SLUGGER,1.36,0.395,0.1574,25.0,⚾ Baseline TB Range,88
+624424,Michael Conforto,8,Chicago Cubs,Emerson Hancock,R,L,0.438,0.216,0.372,GAP [2B/3B EDGE],1.36,0.3946,0.1571,25.0,⚾ Baseline TB Range,89
+701785,Kaelen Culpepper,9,Minnesota Twins,Randy Vásquez,R,R,0.429,0.115,0.393,BALANCED SLUGGER,1.36,0.3932,0.1562,25.0,⚾ Baseline TB Range,90
+690924,Braxton Fulford,8,Colorado Rockies,Joey Cantillo,L,R,0.292,0.107,0.417,BALANCED SLUGGER,1.35,0.3921,0.1555,25.0,⚾ Baseline TB Range,91
+663656,Kyle Tucker,6,Los Angeles Dodgers,Bubba Chandler,R,L,0.368,0.136,0.41,BALANCED SLUGGER,1.35,0.3906,0.1544,25.0,⚾ Baseline TB Range,92
+671732,Lawrence Butler,5,Athletics,Hayden Wesneski,R,L,0.358,0.14,0.419,BALANCED SLUGGER,1.34,0.3878,0.1526,25.0,⚾ Baseline TB Range,93
+643446,Jeff McNeil,2,Athletics,Hayden Wesneski,R,L,0.357,0.096,0.419,BALANCED SLUGGER,1.34,0.3865,0.1517,25.0,⚾ Baseline TB Range,94
+695720,Tommy White,6,Athletics,Hayden Wesneski,R,R,0.33,0.073,0.452,BALANCED SLUGGER,1.33,0.3852,0.1508,25.0,⚾ Baseline TB Range,95
+694203,Denzer Guzman,6,Los Angeles Angels,MacKenzie Gore,L,R,0.368,0.132,0.404,BALANCED SLUGGER,1.33,0.3836,0.1498,25.0,⚾ Baseline TB Range,96
+694208,Moisés Ballesteros,3,Los Angeles Angels,MacKenzie Gore,L,L,0.385,0.154,0.386,BALANCED SLUGGER,1.33,0.3834,0.1496,25.0,⚾ Baseline TB Range,97
+805999,A.J. Ewing,1,New York Mets,Sean Burke,R,L,0.371,0.123,0.398,BALANCED SLUGGER,1.32,0.3804,0.1476,25.0,⚾ Baseline TB Range,98
+686555,Isaac Collins,8,Kansas City Royals,Troy Melton,R,S,0.348,0.121,0.385,BALANCED SLUGGER,1.31,0.378,0.146,25.0,⚾ Baseline TB Range,99
+682626,Francisco Alvarez,9,New York Mets,Sean Burke,R,R,0.413,0.173,0.335,GAP [2B/3B EDGE],1.31,0.3778,0.1459,25.0,⚾ Baseline TB Range,100
+608369,Corey Seager,2,Texas Rangers,Reid Detmers,L,L,0.415,0.197,0.333,GAP [2B/3B EDGE],1.31,0.3773,0.1456,25.0,⚾ Baseline TB Range,101
+572233,Christian Walker,5,Houston Astros,J.T. Ginn,R,R,0.44,0.21,0.311,GAP [2B/3B EDGE],1.3,0.3727,0.1426,25.0,⚾ Baseline TB Range,102
+665833,Oneil Cruz,5,Pittsburgh Pirates,Yoshinobu Yamamoto,R,L,0.48,0.214,0.285,GAP [2B/3B EDGE],1.3,0.3726,0.1425,25.0,⚾ Baseline TB Range,103
+667472,Dane Myers,3,Cincinnati Reds,Eduardo Rodriguez,L,R,0.367,0.111,0.392,BALANCED SLUGGER,1.29,0.3684,0.1398,25.0,⚾ Baseline TB Range,104
+607043,Brandon Nimmo,4,Texas Rangers,Reid Detmers,L,L,0.429,0.161,0.333,BALANCED SLUGGER,1.28,0.3652,0.1378,25.0,⚾ Baseline TB Range,105
+672724,Oswald Peraza,9,Los Angeles Angels,MacKenzie Gore,L,R,0.352,0.124,0.404,BALANCED SLUGGER,1.27,0.3632,0.1364,25.0,⚾ Baseline TB Range,106
+666139,Josh Lowe,7,Los Angeles Angels,MacKenzie Gore,L,L,0.366,0.153,0.386,BALANCED SLUGGER,1.26,0.3602,0.1346,25.0,⚾ Baseline TB Range,107
+595879,Javier Báez,9,Detroit Tigers,Noah Cameron,L,R,0.35,0.095,0.367,BALANCED SLUGGER,1.26,0.3587,0.1336,25.0,⚾ Baseline TB Range,108
+664023,Ian Happ,5,Chicago Cubs,Emerson Hancock,R,S,0.405,0.191,0.372,GAP [2B/3B EDGE],1.26,0.3583,0.1334,25.0,⚾ Baseline TB Range,109
+672275,Patrick Bailey,8,Cleveland Guardians,Tanner Gordon,R,S,0.183,0.05,0.617,BALANCED SLUGGER,1.26,0.3573,0.1327,25.0,⚾ Baseline TB Range,110
+680574,Matt McLain,5,Cincinnati Reds,Eduardo Rodriguez,L,R,0.358,0.158,0.392,BALANCED SLUGGER,1.26,0.3572,0.1327,25.0,⚾ Baseline TB Range,111
+662139,Daulton Varsho,4,Houston Astros,J.T. Ginn,R,L,0.375,0.132,0.374,BALANCED SLUGGER,1.25,0.3569,0.1325,25.0,⚾ Baseline TB Range,112
+664728,Kyle Isbel,9,Kansas City Royals,Troy Melton,R,L,0.332,0.103,0.385,BALANCED SLUGGER,1.25,0.3565,0.1322,25.0,⚾ Baseline TB Range,113
+676439,Hunter Feduccia,9,Los Angeles Dodgers,Bubba Chandler,R,L,0.34,0.106,0.41,BALANCED SLUGGER,1.25,0.3542,0.1308,25.0,⚾ Baseline TB Range,114
+669384,Raynel Delgado,8,Houston Astros,J.T. Ginn,R,L,0.371,0.114,0.374,BALANCED SLUGGER,1.24,0.3521,0.1295,25.0,⚾ Baseline TB Range,115
+622268,Donovan Walton,8,Athletics,Hayden Wesneski,R,L,0.327,0.109,0.419,BALANCED SLUGGER,1.23,0.3465,0.1261,25.0,⚾ Baseline TB Range,116
+693304,Nick Gonzales,4,Pittsburgh Pirates,Yoshinobu Yamamoto,R,R,0.404,0.094,0.339,BALANCED SLUGGER,1.22,0.3463,0.1259,25.0,⚾ Baseline TB Range,117
+681624,Andy Pages,3,Los Angeles Dodgers,Bubba Chandler,R,R,0.459,0.187,0.281,GAP [2B/3B EDGE],1.22,0.3461,0.1258,25.0,⚾ Baseline TB Range,118
+699393,Pedro Ramírez,7,Chicago Cubs,Emerson Hancock,R,S,0.416,0.131,0.372,BALANCED SLUGGER,1.22,0.3438,0.1244,25.0,⚾ Baseline TB Range,119
+686527,Dominic Canzone,3,Seattle Mariners,Matthew Boyd,L,L,0.494,0.232,0.275,POWER [XBH SURGE],1.2,0.3374,0.1205,25.0,⚾ Baseline TB Range,120
+807712,Luke Keaschall,1,Minnesota Twins,Randy Vásquez,R,R,0.377,0.105,0.393,BALANCED SLUGGER,1.19,0.3347,0.1189,25.0,⚾ Baseline TB Range,121
+670623,Isaac Paredes,3,Houston Astros,J.T. Ginn,R,R,0.424,0.162,0.311,BALANCED SLUGGER,1.18,0.3299,0.1161,25.0,⚾ Baseline TB Range,122
+701358,Cam Smith,7,Houston Astros,J.T. Ginn,R,R,0.397,0.176,0.311,GAP [2B/3B EDGE],1.17,0.3272,0.1145,25.0,⚾ Baseline TB Range,123
+682668,Luisangel Acuña,7,Chicago White Sox,Sean Manaea,L,R,0.269,0.05,0.484,BALANCED SLUGGER,1.16,0.3245,0.1129,25.0,⚾ Baseline TB Range,124
+683146,Brett Baty,7,New York Mets,Sean Burke,R,L,0.327,0.115,0.398,BALANCED SLUGGER,1.16,0.3243,0.1128,25.0,⚾ Baseline TB Range,125
+666182,Bo Bichette,3,New York Mets,Sean Burke,R,R,0.388,0.122,0.335,BALANCED SLUGGER,1.16,0.3238,0.1125,25.0,⚾ Baseline TB Range,126
+608324,Alex Bregman,4,Chicago Cubs,Emerson Hancock,R,R,0.404,0.149,0.365,BALANCED SLUGGER,1.16,0.3231,0.1121,25.0,⚾ Baseline TB Range,127
+630105,Jake Cronenworth,9,San Diego Padres,Connor Prielipp,L,L,0.298,0.073,0.479,BALANCED SLUGGER,1.15,0.3188,0.1096,25.0,⚾ Baseline TB Range,128
+683737,Michael Busch,3,Chicago Cubs,Emerson Hancock,R,L,0.386,0.144,0.372,BALANCED SLUGGER,1.13,0.312,0.1057,25.0,⚾ Baseline TB Range,129
+553869,Elias Díaz,8,Texas Rangers,Reid Detmers,L,R,0.346,0.118,0.359,BALANCED SLUGGER,1.11,0.305,0.1018,25.0,⚾ Baseline TB Range,130
+514888,Jose Altuve,1,Houston Astros,J.T. Ginn,R,R,0.395,0.15,0.311,BALANCED SLUGGER,1.1,0.3005,0.0993,25.0,⚾ Baseline TB Range,131
+605141,Mookie Betts,5,Los Angeles Dodgers,Bubba Chandler,R,R,0.412,0.175,0.281,GAP [2B/3B EDGE],1.1,0.3005,0.0993,25.0,⚾ Baseline TB Range,132
+677951,Bobby Witt Jr.,2,Kansas City Royals,Troy Melton,R,R,0.463,0.177,0.228,GAP [2B/3B EDGE],1.1,0.3003,0.0992,25.0,⚾ Baseline TB Range,133
+673237,Yainer Diaz,6,Houston Astros,J.T. Ginn,R,R,0.394,0.14,0.311,BALANCED SLUGGER,1.1,0.2995,0.0988,25.0,⚾ Baseline TB Range,134
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Yoshinobu Yamamoto,R,S,0.427,0.166,0.285,BALANCED SLUGGER,1.09,0.2967,0.0973,25.0,⚾ Baseline TB Range,135
+673357,Luis Robert Jr.,6,New York Mets,Sean Burke,R,R,0.362,0.147,0.335,BALANCED SLUGGER,1.08,0.2953,0.0965,25.0,⚾ Baseline TB Range,136
+608348,Carson Kelly,9,Chicago Cubs,Emerson Hancock,R,R,0.372,0.112,0.365,BALANCED SLUGGER,1.07,0.2895,0.0933,25.0,⚾ Baseline TB Range,137
+593428,Xander Bogaerts,6,San Diego Padres,Connor Prielipp,L,R,0.329,0.109,0.403,BALANCED SLUGGER,1.07,0.2889,0.0931,25.0,⚾ Baseline TB Range,138
+669720,Austin Hays,7,San Diego Padres,Connor Prielipp,L,R,0.326,0.093,0.403,BALANCED SLUGGER,1.06,0.2854,0.0912,25.0,⚾ Baseline TB Range,139
+663728,Cal Raleigh,7,Seattle Mariners,Matthew Boyd,L,S,0.296,0.14,0.452,BALANCED SLUGGER,1.05,0.2837,0.0903,25.0,⚾ Baseline TB Range,140
+543760,Marcus Semien,8,New York Mets,Sean Burke,R,R,0.351,0.142,0.335,BALANCED SLUGGER,1.05,0.2832,0.09,25.0,⚾ Baseline TB Range,141
+663538,Nico Hoerner,6,Chicago Cubs,Emerson Hancock,R,R,0.362,0.098,0.365,BALANCED SLUGGER,1.04,0.2789,0.0878,25.0,⚾ Baseline TB Range,142
+687462,Spencer Horwitz,1,Pittsburgh Pirates,Yoshinobu Yamamoto,R,L,0.406,0.15,0.285,BALANCED SLUGGER,1.03,0.2771,0.0868,25.0,⚾ Baseline TB Range,143
+606192,Teoscar Hernández,8,Los Angeles Dodgers,Bubba Chandler,R,R,0.401,0.151,0.281,BALANCED SLUGGER,1.01,0.2671,0.0817,25.0,⚾ Baseline TB Range,144
+666023,Freddy Fermin,8,San Diego Padres,Connor Prielipp,L,R,0.309,0.115,0.403,BALANCED SLUGGER,1.0,0.2651,0.0807,25.0,⚾ Baseline TB Range,145
+663968,Jake Mangum,7,Pittsburgh Pirates,Yoshinobu Yamamoto,R,S,0.387,0.089,0.285,BALANCED SLUGGER,0.99,0.2592,0.0778,25.0,⚾ Baseline TB Range,146
+518595,Travis d'Arnaud,8,Los Angeles Angels,MacKenzie Gore,L,R,0.271,0.083,0.404,BALANCED SLUGGER,0.98,0.2566,0.0765,25.0,⚾ Baseline TB Range,147
+669397,Nick Allen,9,Houston Astros,J.T. Ginn,R,R,0.345,0.084,0.311,BALANCED SLUGGER,0.96,0.2494,0.073,25.0,⚾ Baseline TB Range,148
+694497,Evan Carter,9,Texas Rangers,Reid Detmers,L,L,0.319,0.125,0.333,BALANCED SLUGGER,0.95,0.2459,0.0713,25.0,⚾ Baseline TB Range,149
+669707,Jared Triolo,9,Pittsburgh Pirates,Yoshinobu Yamamoto,R,R,0.308,0.07,0.339,BALANCED SLUGGER,0.93,0.2399,0.0685,25.0,⚾ Baseline TB Range,150
+694378,Jacob Gonzalez,8,Pittsburgh Pirates,Yoshinobu Yamamoto,R,L,0.36,0.116,0.285,BALANCED SLUGGER,0.92,0.234,0.0658,25.0,⚾ Baseline TB Range,151
+663647,Ke'Bryan Hayes,9,Cincinnati Reds,Eduardo Rodriguez,L,R,0.255,0.103,0.392,BALANCED SLUGGER,0.89,0.2253,0.0619,25.0,⚾ Baseline TB Range,152
+680977,Brendan Donovan,1,Seattle Mariners,Matthew Boyd,L,L,0.409,0.136,0.275,BALANCED SLUGGER,0.89,0.2221,0.0604,25.0,⚾ Baseline TB Range,153
+702284,Cole Young,8,Seattle Mariners,Matthew Boyd,L,L,0.395,0.141,0.275,BALANCED SLUGGER,0.85,0.2111,0.0556,25.0,⚾ Baseline TB Range,154
+679845,Nick Loftin,6,Kansas City Royals,Troy Melton,R,R,0.374,0.143,0.228,BALANCED SLUGGER,0.84,0.2042,0.0527,25.0,⚾ Baseline TB Range,155
+683227,Cody Freeman,7,Texas Rangers,Reid Detmers,L,R,0.259,0.05,0.359,BALANCED SLUGGER,0.83,0.2026,0.0521,25.0,⚾ Baseline TB Range,156
+650859,Luis Rengifo,2,San Diego Padres,Connor Prielipp,L,S,0.254,0.05,0.403,BALANCED SLUGGER,0.82,0.1998,0.0509,25.0,⚾ Baseline TB Range,157
+521692,Salvador Perez,4,Kansas City Royals,Troy Melton,R,R,0.368,0.149,0.228,BALANCED SLUGGER,0.82,0.1993,0.0507,25.0,⚾ Baseline TB Range,158
+647304,Josh Naylor,5,Seattle Mariners,Matthew Boyd,L,L,0.371,0.103,0.275,BALANCED SLUGGER,0.8,0.1923,0.0478,25.0,⚾ Baseline TB Range,159
+621493,Taylor Ward,6,Seattle Mariners,Matthew Boyd,L,R,0.211,0.053,0.452,BALANCED SLUGGER,0.75,0.1736,0.0406,25.0,⚾ Baseline TB Range,160
+669911,Michael Toglia,8,Cincinnati Reds,Eduardo Rodriguez,L,S,0.192,0.077,0.392,BALANCED SLUGGER,0.67,0.1465,0.031,25.0,⚾ Baseline TB Range,161
+668670,Jake Rogers,8,Chicago White Sox,Sean Manaea,L,R,0.1,0.05,0.484,BALANCED SLUGGER,0.5,0.0902,0.0144,25.0,⚾ Baseline TB Range,162
