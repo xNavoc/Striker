@@ -8,29 +8,29 @@ from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
 def calculate_pitcher_k_dynamics(p_prof, opp_batters, park_k_adj):
-    """
-    Calculates expected strikeouts using Workload (BF) * Matchup K%.
-    """
     k9 = float(p_prof.get('k9', 8.50))
     whip = float(p_prof.get('whip', 1.25))
     avg_ip = float(p_prof.get('avg_ip', 5.2))
     is_bg = bool(p_prof.get('is_bg', False))
 
-    # 1. Pitcher Baseline K% (Strikeouts per Batter Faced)
     pitcher_k_pct = np.clip((k9 / 9.0) * 0.245, 0.12, 0.38)
 
-    # 2. Opponent Lineup Contact vs Whiff Rate
     if opp_batters:
-        lineup_isos = [b[3].get('iso', 0.150) for b in opp_batters]
-        lineup_bas = [b[3].get('ba', 0.240) for b in opp_batters]
+        lineup_isos = [b[3].get('iso', 0.150) for b in opp_batters if len(b) > 3 and isinstance(b[3], dict)]
+        lineup_bas = [b[3].get('ba', 0.240) for b in opp_batters if len(b) > 3 and isinstance(b[3], dict)]
         
-        # High BA + low ISO indicates contact wall (low whiff profile)
-        if np.mean(lineup_bas) >= 0.260 and np.mean(lineup_isos) <= 0.140:
-            lineup_contact_suppression = 0.88
-            matchup_badge = "CONTACT WALL [-12%]"
-        elif np.mean(lineup_isos) >= 0.185 or np.mean(lineup_bas) <= 0.225:
-            lineup_contact_suppression = 1.12
-            matchup_badge = "HIGH WHIFF [+12%]"
+        if lineup_bas and lineup_isos:
+            m_ba = np.mean(lineup_bas)
+            m_iso = np.mean(lineup_isos)
+            if m_ba >= 0.260 and m_iso <= 0.140:
+                lineup_contact_suppression = 0.88
+                matchup_badge = "CONTACT WALL [-12%]"
+            elif m_iso >= 0.185 or m_ba <= 0.225:
+                lineup_contact_suppression = 1.12
+                matchup_badge = "HIGH WHIFF [+12%]"
+            else:
+                lineup_contact_suppression = 1.00
+                matchup_badge = "NEUTRAL SPLIT"
         else:
             lineup_contact_suppression = 1.00
             matchup_badge = "NEUTRAL SPLIT"
@@ -38,7 +38,6 @@ def calculate_pitcher_k_dynamics(p_prof, opp_batters, park_k_adj):
         lineup_contact_suppression = 1.00
         matchup_badge = "NEUTRAL SPLIT"
 
-    # 3. Workload (Projected Batters Faced)
     if is_bg:
         exp_bf = 9.0
         workload_desc = "OPENER / BP"
@@ -52,10 +51,7 @@ def calculate_pitcher_k_dynamics(p_prof, opp_batters, park_k_adj):
         exp_bf = 17.5
         workload_desc = "SHORT LEASH (<5 IP)"
 
-    # 4. Projected Matchup K%
     matchup_k_pct = pitcher_k_pct * lineup_contact_suppression * park_k_adj
-
-    # 5. Expected Total Strikeouts (lambda_k)
     lambda_k = float(np.clip(exp_bf * matchup_k_pct, 1.0, 11.5))
 
     return lambda_k, round(matchup_k_pct * 100, 1), workload_desc, exp_bf, matchup_badge
@@ -86,7 +82,6 @@ def run_ks_model(mode="predict"):
 
             lambda_k, match_k_pct, workload_desc, exp_bf, matchup_badge = calculate_pitcher_k_dynamics(p_prof, opp_batters, park_k_adj)
 
-            # Poisson Distributions for Prop Ladder
             prob_o45 = round(float(1.0 - poisson.cdf(4, lambda_k)), 4)
             prob_o55 = round(float(1.0 - poisson.cdf(5, lambda_k)), 4)
             prob_o65 = round(float(1.0 - poisson.cdf(6, lambda_k)), 4)
@@ -138,10 +133,9 @@ def render_ks_card(df, out_path, today_str):
     plt.close('all')
     
     fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
-    fig.patch.set_facecolor('#070d1e')  # Deep navy canvas
+    fig.patch.set_facecolor('#070d1e')
     ax.axis('off')
 
-    # Card Title Block
     fig.text(0.5, 0.965, "MLB DAILY PITCHER STRIKEOUT (K) LADDER & WORKLOAD MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
     fig.text(0.5, 0.938, f"Batters Faced Workload Engine • Lineup Whiff Friction • Poisson Ladder Distribution • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
