@@ -7,47 +7,6 @@ import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
-def calculate_tb_clash(batter_prof, opp_p, opp_bp):
-    """
-    Evaluates Extra-Base Hit (XBH) and Slugging clash dynamics.
-    """
-    b_hand = batter_prof.get('b_hand', 'R') if isinstance(batter_prof, dict) else 'R'
-    p_hand = opp_p.get('p_hand', 'R') if isinstance(opp_p, dict) else 'R'
-    
-    if isinstance(opp_p, dict):
-        sp_slg = opp_p.get('slg_lhb' if b_hand in ['L', 'S'] else 'slg_rhb', 0.405)
-        is_bg = opp_p.get('is_bg', False)
-    else:
-        sp_slg = 0.405
-        is_bg = False
-
-    bp_whip = opp_bp.get('bp_whip', 1.25) if isinstance(opp_bp, dict) else 1.25
-    w_sp, w_bp = (0.15, 0.85) if is_bg else (0.65, 0.35)
-    blended_slg = (sp_slg * w_sp) + (bp_whip * 0.32)
-    
-    pitcher_tb_factor = (sp_slg / 0.405) ** 0.85
-
-    b_iso = batter_prof.get('iso', 0.150) if isinstance(batter_prof, dict) else 0.150
-    b_slg = batter_prof.get('slg', 0.400) if isinstance(batter_prof, dict) else 0.400
-    
-    if b_iso >= 0.220:
-        clash_badge = "POWER [XBH SURGE]"
-        power_mult = 1.14
-    elif b_slg >= 0.460:
-        clash_badge = "GAP [2B/3B EDGE]"
-        power_mult = 1.08
-    elif b_iso <= 0.110:
-        clash_badge = "SINGLES [LOW XBH]"
-        power_mult = 0.84
-    else:
-        clash_badge = "BALANCED SLUGGER"
-        power_mult = 1.00
-
-    platoon_bonus = 1.04 if b_hand != p_hand else 0.98
-    tb_edge = pitcher_tb_factor * power_mult * platoon_bonus
-
-    return round(float(tb_edge), 3), round(float(sp_slg), 3), clash_badge
-
 def run_tb_model(mode="predict"):
     today_str, games = load_daily_slate()
     os.makedirs("exports/total_bases", exist_ok=True)
@@ -55,18 +14,16 @@ def run_tb_model(mode="predict"):
     if mode == "settle":
         settle_projections("total_bases", today_str, lambda r, st: (
             st.get('tb', 0) >= 2,
-            f"WIN ({st.get('tb', 0)} TB)" if st.get('tb', 0) >= 2 else f"LOSS ({st.get('tb', 0)} TB)"
+            f"WIN ({st.get('tb', 0)} TB)" if st.get('tb', 0) >= 2 else "LOSS"
         ))
         return
 
-    print(f"[{datetime.now()}] Running Slugging-Refined TOTAL BASES Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Extra-Base Hit (TB) Model for {today_str}...")
     targets = []
 
     for g in games:
         park_tb_adj = g.get('park_factors', {}).get('tb', 100) / 100.0
-        weather = g.get('weather_info', {'hits_mod': 1.00, 'badge': '[NEUTRAL 72°]', 'fade': False})
-        w_mod = weather.get('hits_mod', 1.00)
-        w_badge = weather.get('badge', '[NEUTRAL 72°]')
+        weather_hits_adj = g.get('weather_info', {}).get('hits_mod', 1.00)
 
         for side, team_name, opp_p, opp_bp, batters in [
             ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
@@ -84,31 +41,42 @@ def run_tb_model(mode="predict"):
 
                 b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
                 b_hand = b_prof_dict.get('b_hand', 'R')
-                batter_slg = max(0.260, b_prof_dict.get('slg', 0.400))
-                batter_iso = b_prof_dict.get('iso', 0.150)
+                slg = float(b_prof_dict.get('slg', 0.405))
+                iso = float(b_prof_dict.get('iso', 0.160))
 
-                tb_edge, split_slg, clash_badge = calculate_tb_clash(b_prof_dict, opp_p_dict, opp_bp)
-                
-                exp_pa = 4.4 if order <= 3 else (4.1 if order <= 6 else 3.8)
-                lambda_tb = exp_pa * (batter_slg * 0.92) * tb_edge * park_tb_adj * w_mod
+                # Handedness split resolution
+                effective_b_hand = 'L' if b_hand == 'S' and opp_p_hand == 'R' else ('R' if b_hand == 'S' and opp_p_hand == 'L' else b_hand)
+                sp_slg = float(opp_p_dict.get('slg_lhb', 0.405) if effective_b_hand == 'L' else opp_p_dict.get('slg_rhb', 0.405))
+
+                # Extra base profile badge
+                if iso >= 0.220:
+                    xbh_badge = "POWER [XBH SURGE]"
+                    tb_mult = 1.10
+                elif iso >= 0.170:
+                    xbh_badge = "GAP [2B/3B EDGE]"
+                    tb_mult = 1.04
+                else:
+                    xbh_badge = "BALANCED SLUGGER"
+                    tb_mult = 0.98
+
+                # Expected Total Bases (SLG * At-Bats / PA expectation)
+                lambda_tb = (slg * (sp_slg / 0.405)) * park_tb_adj * weather_hits_adj * tb_mult * 4.2 * 0.88
                 lambda_tb = float(np.clip(lambda_tb, 0.50, 3.60))
 
                 prob_o15 = round(float(1.0 - poisson.cdf(1, lambda_tb)), 4)
                 prob_o25 = round(float(1.0 - poisson.cdf(2, lambda_tb)), 4)
 
-                score_raw = 100.0 / (1.0 + np.exp(-18.0 * (prob_o15 - 0.500)))
+                score_raw = 100.0 / (1.0 + np.exp(-14.0 * (prob_o15 - 0.550)))
                 score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
-                if prob_o15 >= 0.65 and batter_iso >= 0.190:
-                    call = "💎 LOCK: Over 1.5 TB (Anchor)"
-                elif prob_o25 >= 0.35:
-                    call = "🔥 LADDER: Over 2.5 TB (Value)"
+                if prob_o15 >= 0.65:
+                    call = "👑 LOCK: Over 1.5 TB (Anchor)"
+                elif prob_o25 >= 0.40:
+                    call = "💎 LADDER: Over 2.5 TB (Value)"
                 elif prob_o15 >= 0.58:
-                    call = "🎯 TARGET: Over 1.5 TB Spot"
-                elif prob_o15 <= 0.42 or 'LOW XBH' in clash_badge:
-                    call = "🛑 FADE: Low Slugging Floor"
+                    call = "🔥 TARGET: Over 1.5 TB"
                 else:
-                    call = "⚾ Standard Base Spot"
+                    call = "⚾ Baseline TB Range"
 
                 targets.append({
                     'player_id': b_id,
@@ -118,21 +86,20 @@ def run_tb_model(mode="predict"):
                     'opp_pitcher': opp_p_name,
                     'p_hand': opp_p_hand,
                     'b_hand': b_hand,
-                    'slg': batter_slg,
-                    'iso': batter_iso,
-                    'split_slg': split_slg,
-                    'clash_badge': clash_badge,
+                    'slg': round(slg, 3),
+                    'iso': round(iso, 3),
+                    'opp_slg_split': round(sp_slg, 3),
+                    'xbh_badge': xbh_badge,
                     'exp_tb': round(lambda_tb, 2),
                     'prob_o15': prob_o15,
                     'prob_o25': prob_o25,
                     'score': score,
-                    'weather_badge': w_badge,
                     'target_call': call
                 })
 
     df = pd.DataFrame(targets)
     if not df.empty:
-        df = df.sort_values(by=['score', 'exp_tb'], ascending=False).reset_index(drop=True)
+        df = df.sort_values(by=['score', 'prob_o15'], ascending=False).reset_index(drop=True)
         df['rank'] = df.index + 1
         df.to_csv(f"exports/total_bases/total_bases_top50_{today_str}.csv", index=False)
         render_tb_card(df.head(35), f"exports/total_bases/total_bases_top50_card_{today_str}.png", today_str)
@@ -141,7 +108,7 @@ def render_tb_card(df, out_path, today_str):
     if df.empty:
         return
     plt.close('all')
-    
+
     fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
     fig.patch.set_facecolor('#070d1e')
     ax.axis('off')
@@ -151,27 +118,27 @@ def render_tb_card(df, out_path, today_str):
 
     cols = ['#', 'Batter & Stance', 'Team', 'Opp Pitcher', 'SLG', 'ISO', 'Opp SLG (Split)', 'XBH Profile', 'Exp TB', 'O 1.5 TB', 'O 2.5 TB', 'Score', 'ACTIONABLE TB CALL']
     rows = []
-    
+
     for _, r in df.iterrows():
-        o15 = float(r.get('prob_o15', 0.0))
-        o25 = float(r.get('prob_o25', 0.0))
-        clash_txt = str(r.get('clash_badge', ''))
-        prop_call = str(r.get('target_call', 'Standard Base Spot'))
+        po15 = float(r.get('prob_o15', 0.0))
+        po25 = float(r.get('prob_o25', 0.0))
+        s_val = float(r.get('score', 0.0))
+        call = str(r.get('target_call', 'Baseline TB Range'))
 
         rows.append([
             r.get('rank', 1),
             f"#{r.get('order', 1)} {r.get('player_name', 'Batter')} ({r.get('b_hand', 'R')})",
             str(r.get('team', 'Team'))[:11],
             f"{str(r.get('opp_pitcher', 'TBD'))[:11]} ({r.get('p_hand', 'R')})",
-            f"{float(r.get('slg', 0.400)):.3f}",
-            f"{float(r.get('iso', 0.150)):.3f}",
-            f"{float(r.get('split_slg', 0.405)):.3f}",
-            clash_txt,
-            f"{float(r.get('exp_tb', 1.5)):.2f}",
-            f"{o15 * 100:.1f}%",
-            f"{o25 * 100:.1f}%",
-            f"{float(r.get('score', 50.0)):.1f}",
-            prop_call
+            f"{float(r.get('slg', 0.405)):.3f}",
+            f"{float(r.get('iso', 0.160)):.3f}",
+            f"{float(r.get('opp_slg_split', 0.405)):.3f}",
+            str(r.get('xbh_badge', 'BALANCED')),
+            f"{float(r.get('exp_tb', 1.0)):.2f}",
+            f"{po15 * 100:.1f}%",
+            f"{po25 * 100:.1f}%",
+            f"{s_val:.1f}",
+            call
         ])
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
@@ -188,26 +155,17 @@ def render_tb_card(df, out_path, today_str):
             if col == 12:
                 txt = rows[row-1][12]
                 cell.set_text_props(
-                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt or 'LADDER' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8')),
+                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else ('#facc15' if 'LADDER' in txt else '#94a3b8')),
                     weight='bold'
                 )
             elif col in [9, 10, 11]:
                 cell.set_text_props(color='#facc15', weight='bold')
             elif col == 6:
-                val = float(rows[row-1][6])
-                cell.set_text_props(color='#f87171' if val >= 0.440 else ('#4ade80' if val <= 0.370 else '#f1f5f9'), weight='bold')
-            elif col == 7:
-                c_txt = rows[row-1][7]
-                cell.set_text_props(
-                    color='#38bdf8' if 'POWER' in c_txt else ('#4ade80' if 'GAP' in c_txt else ('#f87171' if 'LOW XBH' in c_txt else '#cbd5e1')),
-                    weight='bold'
-                )
-            elif col in [4, 5]:
-                cell.set_text_props(color='#f1f5f9', weight='semibold')
+                cell.set_text_props(color='#38bdf8', weight='bold')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
 
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close('all')
-    print(f"[✓] Saved Refined Total Bases Visual Card to {out_path}")
+    print(f"[✓] Saved Total Bases Card to {out_path}")
