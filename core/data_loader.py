@@ -58,6 +58,18 @@ PLAYER_CACHE = {}
 _SLATE_CACHE = None
 _WEATHER_CACHE = {}
 
+def safe_float(val, default_val):
+    """Safely converts string numbers from MLB API, catching undefined hyphens/dashes."""
+    try:
+        if val is None:
+            return default_val
+        clean = str(val).strip().replace(',', '')
+        if clean in ['', '-', '--', '---', '.---']:
+            return default_val
+        return float(clean)
+    except Exception:
+        return default_val
+
 def clean_name_str(name: str) -> str:
     """Standardizes player names across data models."""
     if not name:
@@ -127,7 +139,7 @@ def fetch_weather_impact(venue_name: str):
         return ret
 
 def fetch_player_splits(person_id: int):
-    """Fetches full season splits for both pitchers and batters, extracting vl/vr split codes."""
+    """Fetches full season splits for both pitchers and batters, safely parsing undefined MLB API values."""
     if not person_id:
         return {}
     if person_id in PLAYER_CACHE:
@@ -165,13 +177,12 @@ def fetch_player_splits(person_id: int):
 
             for sp in st_group.get('splits', []):
                 stat = sp.get('stat', {})
-                # CORE FIX: MLB API returns "vL" and "vR". We must lowercase it here.
                 split_code = str(sp.get('split', {}).get('code', '')).lower()
 
                 if 'hitting' in group_name and 'season' in type_name:
-                    ba = float(stat.get('avg', 0) or 0.245)
-                    slg = float(stat.get('slg', 0) or 0.405)
-                    obp = float(stat.get('obp', 0) or 0.315)
+                    ba = safe_float(stat.get('avg'), 0.245)
+                    slg = safe_float(stat.get('slg'), 0.405)
+                    obp = safe_float(stat.get('obp'), 0.315)
                     res_dict['ba'] = ba
                     res_dict['slg'] = slg
                     res_dict['obp'] = obp
@@ -179,21 +190,21 @@ def fetch_player_splits(person_id: int):
 
                 if 'pitching' in group_name:
                     if 'season' in type_name:
-                        res_dict['whip'] = float(stat.get('whip', 0) or 1.25)
-                        res_dict['k9'] = float(stat.get('strikeoutsPer9Inn', 0) or 8.50)
-                        ip = float(stat.get('inningsPitched', 0) or 0.0)
-                        games = int(stat.get('gamesPitched', 0) or 1)
+                        res_dict['whip'] = safe_float(stat.get('whip'), 1.25)
+                        res_dict['k9'] = safe_float(stat.get('strikeoutsPer9Inn'), 8.50)
+                        ip = safe_float(stat.get('inningsPitched'), 0.0)
+                        games = int(safe_float(stat.get('gamesPitched'), 1.0))
                         res_dict['avg_ip'] = round(ip / max(1, games), 1)
                         res_dict['is_bg'] = bool(res_dict['avg_ip'] < 3.0)
 
                     if split_code == 'vl':
-                        res_dict['slg_lhb'] = float(stat.get('slg', 0) or 0.405)
-                        res_dict['hr9_lhb'] = float(stat.get('homeRunsPer9', 0) or 1.20)
-                        res_dict['baa_lhb'] = float(stat.get('avg', 0) or 0.240)
+                        res_dict['slg_lhb'] = safe_float(stat.get('slg'), 0.405)
+                        res_dict['hr9_lhb'] = safe_float(stat.get('homeRunsPer9'), 1.20)
+                        res_dict['baa_lhb'] = safe_float(stat.get('avg'), 0.240)
                     elif split_code == 'vr':
-                        res_dict['slg_rhb'] = float(stat.get('slg', 0) or 0.405)
-                        res_dict['hr9_rhb'] = float(stat.get('homeRunsPer9', 0) or 1.20)
-                        res_dict['baa_rhb'] = float(stat.get('avg', 0) or 0.240)
+                        res_dict['slg_rhb'] = safe_float(stat.get('slg'), 0.405)
+                        res_dict['hr9_rhb'] = safe_float(stat.get('homeRunsPer9'), 1.20)
+                        res_dict['baa_rhb'] = safe_float(stat.get('avg'), 0.240)
 
         PLAYER_CACHE[person_id] = res_dict
         return res_dict
@@ -241,6 +252,12 @@ def load_daily_slate():
             return _SLATE_CACHE
 
         for g in dates[0].get('games', []):
+            
+            # EXCLUDE LIVE OR FINISHED GAMES
+            game_state = g.get('status', {}).get('abstractGameState', '')
+            if game_state in ['Live', 'Final']:
+                continue
+
             venue_name = g.get('venue', {}).get('name', 'Ballpark')
             park_fac = PARK_FACTORS.get(venue_name, DEFAULT_PARK)
             weather_fac = fetch_weather_impact(venue_name)
