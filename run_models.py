@@ -98,16 +98,23 @@ def send_daily_email_digest(today_str: str):
     except Exception as e:
         print(f"[!] Failed to send email digest: {e}")
 
+def parse_mode():
+    args = sys.argv[1:]
+    if "settle" in args:
+        return "settle"
+    for i, arg in enumerate(args):
+        if arg in ["--mode", "-m"] and i + 1 < len(args):
+            return args[i + 1].lower()
+    return "predict"
+
 def main():
-    mode = sys.argv[1] if len(sys.argv) > 1 else "predict"
+    mode = parse_mode()
     target_date = get_yesterday_date() if mode == "settle" else get_slate_date()
     print(f"[{datetime.now()}] === STARTING MLB PREDICTIVE ENSEMBLE ({mode.upper()}) FOR {target_date} ===")
 
-    # Ensure export directories exist
     for d in ['hr', 'weibull', 'synergy', 'hits', 'total_bases', 'hr_rbi', 'pitcher_ks', 'master', 'settlement']:
         os.makedirs(f"exports/{d}", exist_ok=True)
 
-    # Execute Models
     run_hr_model(mode)
     run_weibull_model(mode)
     run_hits_model(mode)
