@@ -10,6 +10,9 @@ from core.settlement_engine import settle_projections
 BATTER_WEIBULL_CACHE = {}
 
 def fit_weibull_hazard(durations, events, current_drought):
+    """
+    Robust MLE / Method-of-Moments Weibull estimator.
+    """
     try:
         if sum(events) < 1 or len(durations) < 2:
             return 8.0, 1.0, 0.10, "[STOCHASTIC (rho=1.00)]"
@@ -67,17 +70,14 @@ def fetch_weibull_stats(person_id: int, player_name: str):
     current_drought, total_hr, games_played = 0, 0, 0
 
     try:
-        # Strictly query MLB level regular season game logs (sportId=1)
-        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}/stats?stats=gameLog&group=hitting&gameType=R&season={CURRENT_SEASON}&sportId=1"
+        url = f"https://statsapi.mlb.com/api/v1/people/{person_id}/stats?stats=gameLog&group=hitting&season={CURRENT_SEASON}"
         res = requests.get(url, timeout=6).json()
         stats_list = res.get('stats', [])
         splits = stats_list[0].get('splits', []) if stats_list else []
         
         parsed_games = []
         for sp in splits:
-            # Enforce MLB only (AL: 103, NL: 104) and filter out MiLB rehab games
-            league_id = sp.get('league', {}).get('id', 0)
-            if league_id not in [103, 104, 0]:
+            if sp.get('gameType', 'R') != 'R':
                 continue
 
             stat_dict = sp.get('stat', {})
@@ -89,7 +89,6 @@ def fetch_weibull_stats(person_id: int, player_name: str):
             if pa > 0 and date_str:
                 parsed_games.append((date_str, game_pk, hr_count))
 
-        # Sort chronologically (oldest to newest)
         parsed_games.sort(key=lambda x: (x[0], x[1]))
         games_played = len(parsed_games)
 
@@ -109,7 +108,7 @@ def fetch_weibull_stats(person_id: int, player_name: str):
             events.append(0)
 
     except Exception as e:
-        print(f"[!] Log parsing warning for {player_name}: {e}")
+        print(f"[!] Log parsing error for {player_name}: {e}")
 
     lambda_val, rho_val, cond_prob, aging = fit_weibull_hazard(durations, events, current_drought)
 
