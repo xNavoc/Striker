@@ -6,7 +6,6 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from datetime import datetime
-from zoneinfo import ZoneInfo
 
 from core.data_loader import get_slate_date
 from models.model_hr import run_hr_model
