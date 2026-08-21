@@ -6,6 +6,47 @@ import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
+def compute_hr_clash(batter_prof, pitcher_prof):
+    """
+    Evaluates Fly-Ball / Launch Angle interaction for Home Run conversion.
+    """
+    p_hr9 = pitcher_prof.get('hr9', 1.20)
+    p_k9 = pitcher_prof.get('k9', 8.50)
+    
+    if p_hr9 >= 1.30:
+        p_tendency = 'FLYBALL'
+    elif p_hr9 <= 0.85:
+        p_tendency = 'GROUNDBALL'
+    else:
+        p_tendency = 'NEUTRAL'
+
+    b_iso = batter_prof.get('iso', 0.150)
+    
+    if b_iso >= 0.200:
+        b_tendency = 'FLYBALL'
+    elif b_iso <= 0.135:
+        b_tendency = 'GROUNDBALL'
+    else:
+        b_tendency = 'NEUTRAL'
+
+    if b_tendency == 'FLYBALL' and p_tendency == 'FLYBALL':
+        clash_mult = 1.15
+        badge = "AIR vs FLY [OPTIMAL BARREL]"
+    elif b_tendency == 'FLYBALL' and p_tendency == 'GROUNDBALL':
+        clash_mult = 1.05
+        badge = "POWER vs SINK [ELEVATED DRIVE]"
+    elif b_tendency == 'GROUNDBALL' and p_tendency == 'FLYBALL':
+        clash_mult = 0.85
+        badge = "FLAT vs HIGH [FLY SUPPRESSED]"
+    elif b_tendency == 'GROUNDBALL' and p_tendency == 'GROUNDBALL':
+        clash_mult = 0.75
+        badge = "CHOP vs SINK [GROUNDOUT RISK]"
+    else:
+        clash_mult = 1.00
+        badge = "NEUTRAL TRAJECTORY"
+
+    return clash_mult, badge
+
 def run_hr_model(mode="predict"):
     today_str, games = load_daily_slate()
     os.makedirs("exports/hr", exist_ok=True)
@@ -14,7 +55,7 @@ def run_hr_model(mode="predict"):
         settle_projections("hr", today_str, lambda r, st: (st.get('hr', 0) >= 1, f"WIN ({st.get('hr', 0)} HR)" if st.get('hr', 0) >= 1 else "NO HR"))
         return
 
-    print(f"[{datetime.now()}] Running Dedicated HOME RUN Model with Weather Context for {today_str}...")
+    print(f"[{datetime.now()}] Running Clash-Refined Dedicated HOME RUN Model for {today_str}...")
     targets = []
     for g in games:
         park_adj = g['park_factors']['hr'] / 100.0
@@ -28,14 +69,21 @@ def run_hr_model(mode="predict"):
             ('home', g['home_team'], g['away_pitcher'], g['away_bp'], g['home_batters'])
         ]:
             for order, b_id, b_name, b_prof in batters:
-                sp_hr9 = opp_p['hr9_lhb'] if b_prof['b_hand'] in ['L', 'S'] else opp_p['hr9_rhb']
+                b_side = b_prof.get('b_hand', 'R')
+                # Resolve switch hitter side based on opposing pitcher hand
+                effective_side = 'L' if b_side == 'L' or (b_side == 'S' and opp_p['p_hand'] == 'R') else 'R'
+                
+                # Isolate exact split against this batter stance
+                sp_hr9 = opp_p['hr9_lhb'] if effective_side == 'L' else opp_p['hr9_rhb']
+                split_tag = f"{sp_hr9:.2f} vs {'LHB' if effective_side == 'L' else 'RHB'}"
+
                 w_sp, w_bp = (0.15, 0.85) if opp_p['is_bg'] else (0.65, 0.35)
                 blended_hr9 = (sp_hr9 * w_sp) + (opp_bp['bp_hr9'] * w_bp)
 
                 pitcher_factor = (blended_hr9 / 1.20) ** 0.85
-                
-                # Scaled by park factor and real-time atmospheric drag
-                lambda_pa = max(0.001, b_prof['hr_pa']) * pitcher_factor * park_adj * w_mod
+                clash_mult, clash_badge = compute_hr_clash(b_prof, opp_p)
+
+                lambda_pa = max(0.001, b_prof['hr_pa']) * pitcher_factor * park_adj * w_mod * clash_mult
 
                 p_hr = round(float(1.0 - np.exp(-lambda_pa * 4.20)), 4)
                 score_raw = 100.0 / (1.0 + np.exp(-26.0 * (p_hr - 0.155)))
@@ -43,16 +91,29 @@ def run_hr_model(mode="predict"):
 
                 if is_weather_fade and p_hr < 0.25:
                     target_call = "[FADE: INWARD WIND]"
-                elif p_hr >= 0.20 and b_prof['iso'] >= 0.175:
+                elif p_hr >= 0.20 and b_prof['iso'] >= 0.175 and clash_mult >= 1.00:
                     target_call = ">> TARGET: HOME RUN <<"
+                elif clash_mult <= 0.85:
+                    target_call = "FADE: Ground Profile"
                 else:
                     target_call = "Fade HR"
 
                 targets.append({
-                    'player_id': b_id, 'player_name': b_name, 'order': order,
-                    'team': team_name, 'opp_pitcher': opp_p['pitcher_name'], 'p_hand': opp_p['p_hand'],
-                    'sp_hr9': sp_hr9, 'iso': b_prof['iso'], 'prob': p_hr, 'score': score,
-                    'weather_badge': w_badge, 'target_call': target_call
+                    'player_id': b_id,
+                    'player_name': b_name,
+                    'order': order,
+                    'team': team_name,
+                    'opp_pitcher': opp_p['pitcher_name'],
+                    'p_hand': opp_p['p_hand'],
+                    'b_hand': b_prof['b_hand'],
+                    'sp_hr9_split': split_tag,
+                    'sp_hr9_val': sp_hr9,
+                    'iso': b_prof['iso'],
+                    'clash_badge': clash_badge,
+                    'weather_badge': w_badge,
+                    'prob': p_hr,
+                    'score': score,
+                    'target_call': target_call
                 })
 
     df = pd.DataFrame(targets)
@@ -63,23 +124,32 @@ def run_hr_model(mode="predict"):
         render_hr_card(df.head(35), f"exports/hr/hr_top50_card_{today_str}.png", today_str)
 
 def render_hr_card(df, out_path, today_str):
-    fig, ax = plt.subplots(figsize=(24, 14), dpi=300)
+    fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
     fig.patch.set_facecolor('#0b1329')
     ax.axis('off')
-    fig.text(0.5, 0.96, "MLB DAILY HOME RUN TARGETS & ENVIRONMENTAL HAZARD MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.93, f"Atmospheric Wind Vectors • Ballpark Factors • True Handedness Splits • {today_str}", ha='center', color='#38bdf8', fontsize=12)
+    fig.text(0.5, 0.96, "MLB DAILY HOME RUN TARGETS & TRAJECTORY CLASH MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
+    fig.text(0.5, 0.93, f"True Pitcher Splits vs Batter Hand • Launch Angle Clash • Weather Physics • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'SP HR/9', 'ISO', 'Weather Context', 'HR Prob', 'Score', 'ACTIONABLE TARGET']
+    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'SP HR/9 (Split)', 'ISO', 'Batted-Ball HR Clash', 'Weather Context', 'HR Prob', 'Score', 'ACTIONABLE TARGET']
     rows = []
     for _, r in df.iterrows():
         rows.append([
-            r['rank'], f"#{r['order']} {r['player_name']}", r['team'][:11], f"{r['opp_pitcher'][:11]} ({r['p_hand']})",
-            f"{r['sp_hr9']:.2f}", f"{r['iso']:.3f}", r['weather_badge'], f"{r['prob']*100:.1f}%", f"{r['score']:.1f}", r['target_call']
+            r['rank'],
+            f"#{r['order']} {r['player_name']} ({r['b_hand']})",
+            r['team'][:11],
+            f"{r['opp_pitcher'][:11]} ({r['p_hand']})",
+            r['sp_hr9_split'],
+            f"{r['iso']:.3f}",
+            str(r['clash_badge']),
+            str(r['weather_badge']),
+            f"{r['prob']*100:.1f}%",
+            f"{r['score']:.1f}",
+            str(r['target_call'])
         ])
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#1e293b']*len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8.5)
+    table.set_fontsize(8.0)
     table.scale(1.0, 1.9)
     for (row, col), cell in table.get_celld().items():
         cell.set_edgecolor('#334155')
@@ -87,18 +157,24 @@ def render_hr_card(df, out_path, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#1e293b')
         else:
-            if col == 9:
-                txt = rows[row-1][9]
+            if col == 10:
+                txt = rows[row-1][10]
                 cell.set_text_props(color='#38bdf8' if 'TARGET' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8'), weight='bold')
-            elif col == 7:
+            elif col == 8 or col == 9:
                 cell.set_text_props(color='#facc15', weight='bold')
+            elif col == 4:
+                val = df.iloc[row-1]['sp_hr9_val']
+                cell.set_text_props(color='#f87171' if val >= 1.35 else ('#4ade80' if val <= 0.85 else '#f1f5f9'), weight='bold')
             elif col == 6:
-                w_txt = rows[row-1][6]
-                cell.set_text_props(color='#4ade80' if 'WIND OUT' in w_txt or 'HEAT' in w_txt else ('#f87171' if 'WIND IN' in w_txt or 'COLD' in w_txt else '#cbd5e1'), weight='bold')
+                c_txt = rows[row-1][6]
+                cell.set_text_props(color='#38bdf8' if 'OPTIMAL' in c_txt else ('#4ade80' if 'ELEVATED' in c_txt else ('#f87171' if 'RISK' in c_txt or 'SUPPRESSED' in c_txt else '#cbd5e1')), weight='bold')
+            elif col == 7:
+                w_txt = rows[row-1][7]
+                cell.set_text_props(color='#4ade80' if 'WIND OUT' in w_txt or 'HEAT' in w_txt else ('#f87171' if 'WIND IN' in w_txt or 'COLD' in w_txt else '#cbd5e1'), weight='semibold')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#1e293b' if row % 2 == 0 else '#0f172a')
 
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close()
-    print(f"[✓] Saved HR Target Visual Card to {out_path}")
+    print(f"[✓] Saved Clash-Refined HR Target Visual Card to {out_path}")
