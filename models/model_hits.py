@@ -7,113 +7,105 @@ import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
-def compute_batted_ball_clash(batter_prof, pitcher_prof):
+def calculate_hits_clash(batter_prof, opp_p, opp_bp):
     """
-    Computes Tango's Opposite Tendency Advantage for base hit probability:
-    - Fly-ball hitter vs. Ground-ball pitcher -> Elevated line drives (High BABIP).
-    - Ground-ball hitter vs. Fly-ball pitcher -> Flat trajectory gap penetration.
-    - Matching tendencies -> Suppressed BABIP / routine outs.
+    Evaluates Hit & Contact dynamics: Batting Average against Opponent Split BAA.
     """
-    p_hr9 = pitcher_prof.get('hr9', 1.20)
-    p_k9 = pitcher_prof.get('k9', 8.50)
-    
-    if p_hr9 >= 1.35 or p_k9 >= 10.2:
-        p_tendency = 'FLYBALL'
-    elif p_hr9 <= 0.85:
-        p_tendency = 'GROUNDBALL'
+    b_hand = batter_prof.get('b_hand', 'R') if isinstance(batter_prof, dict) else 'R'
+    p_hand = opp_p.get('p_hand', 'R') if isinstance(opp_p, dict) else 'R'
+
+    if isinstance(opp_p, dict):
+        sp_baa = opp_p.get('baa_lhb' if b_hand in ['L', 'S'] else 'baa_rhb', 0.240)
+        is_bg = opp_p.get('is_bg', False)
     else:
-        p_tendency = 'NEUTRAL'
+        sp_baa = 0.240
+        is_bg = False
 
-    b_iso = batter_prof.get('iso', 0.150)
-    b_ba = batter_prof.get('ba', 0.240)
-    
-    if b_iso >= 0.200:
-        b_tendency = 'FLYBALL'
-    elif b_ba >= 0.275 and b_iso <= 0.135:
-        b_tendency = 'GROUNDBALL'
+    w_sp, w_bp = (0.15, 0.85) if is_bg else (0.65, 0.35)
+    blended_baa = (sp_baa * w_sp) + (0.245 * w_bp)
+
+    pitcher_hit_factor = (blended_baa / 0.240) ** 0.85
+
+    ba = batter_prof.get('ba', 0.245) if isinstance(batter_prof, dict) else 0.245
+    if ba >= 0.285 and sp_baa >= 0.255:
+        clash_badge = "CONTACT CRUSHER [HIGH BAA]"
+        contact_mult = 1.15
+    elif ba >= 0.265:
+        clash_badge = "ABOVE-AVERAGE CONTACT"
+        contact_mult = 1.08
+    elif ba <= 0.210:
+        clash_badge = "CONTACT RISKY [LOW BA]"
+        contact_mult = 0.82
     else:
-        b_tendency = 'NEUTRAL'
+        clash_badge = "STANDARD CONTACT"
+        contact_mult = 1.00
 
-    if b_tendency == 'FLYBALL' and p_tendency == 'GROUNDBALL':
-        clash_mult = 1.12
-        badge = "AIR vs SINK [LINE DRIVE EDGE]"
-    elif b_tendency == 'GROUNDBALL' and p_tendency == 'FLYBALL':
-        clash_mult = 1.08
-        badge = "FLAT vs HIGH [BABIP SURGE]"
-    elif b_tendency == 'FLYBALL' and p_tendency == 'FLYBALL':
-        clash_mult = 0.88
-        badge = "LOFT vs RISE [FLYOUT RISK]"
-    elif b_tendency == 'GROUNDBALL' and p_tendency == 'GROUNDBALL':
-        clash_mult = 0.85
-        badge = "CHOP vs SINK [GROUNDOUT RISK]"
-    else:
-        clash_mult = 1.00
-        badge = "NEUTRAL TRAJECTORY"
+    platoon_bonus = 1.03 if b_hand != p_hand else 0.98
+    hit_edge = pitcher_hit_factor * contact_mult * platoon_bonus
 
-    return clash_mult, badge
-
-def calculate_hit_tendency_edge(batter_prof, opp_p, opp_bp):
-    b_hand = batter_prof.get('b_hand', 'R')
-    p_hand = opp_p.get('p_hand', 'R')
-    
-    sp_baa = opp_p.get('baa_lhb' if b_hand in ['L', 'S'] else 'baa_rhb', 0.245)
-    w_sp, w_bp = (0.15, 0.85) if opp_p.get('is_bg', False) else (0.65, 0.35)
-    blended_baa = (sp_baa * w_sp) + (opp_bp.get('bp_baa', 0.245) * w_bp)
-    
-    pitcher_hit_factor = blended_baa / 0.245
-    
-    k9 = opp_p.get('k9', 8.5)
-    contact_edge = 1.08 if k9 <= 7.2 else (0.90 if k9 >= 10.5 else 1.00)
-    platoon_bonus = 1.04 if b_hand != p_hand else 0.98
-    
-    hit_edge = (pitcher_hit_factor * 0.55) + (contact_edge * 0.30) + (platoon_bonus * 0.15)
-    
-    return round(float(hit_edge), 3), round(blended_baa, 3)
+    return round(float(hit_edge), 3), round(float(sp_baa), 3), clash_badge
 
 def run_hits_model(mode="predict"):
     today_str, games = load_daily_slate()
     os.makedirs("exports/hits", exist_ok=True)
 
     if mode == "settle":
-        settle_projections("hits", today_str, lambda r, st: (st.get('hits', 0) >= 1, f"WIN ({st.get('hits', 0)} Hits)" if st.get('hits', 0) >= 1 else "0 HITS"))
+        settle_projections("hits", today_str, lambda r, st: (
+            st.get('hits', 0) >= 1,
+            f"WIN ({st.get('hits', 0)} Hits)" if st.get('hits', 0) >= 1 else "LOSS (0 Hits)"
+        ))
         return
 
-    print(f"[{datetime.now()}] Running Matchup & Trajectory-Refined HITS Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Contact & BABIP Refined HITS Model for {today_str}...")
     targets = []
+
     for g in games:
-        park_hits_adj = g.get('park_factors', {}).get('hits', 100) / 100.0
+        park_hits = g.get('park_factors', {}).get('overall', 100) / 100.0
         weather = g.get('weather_info', {'hits_mod': 1.00, 'badge': '[NEUTRAL 72°]', 'fade': False})
-        w_mod = weather['hits_mod']
-        w_badge = weather['badge']
+        w_mod = weather.get('hits_mod', 1.00)
+        w_badge = weather.get('badge', '[NEUTRAL 72°]')
 
         for side, team_name, opp_p, opp_bp, batters in [
-            ('away', g['away_team'], g['home_pitcher'], g['home_bp'], g['away_batters']),
-            ('home', g['home_team'], g['away_pitcher'], g['away_bp'], g['home_batters'])
+            ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
+            ('home', g.get('home_team', 'Home'), g.get('away_pitcher', {}), g.get('away_bp', {}), g.get('home_batters', []))
         ]:
-            for order, b_id, b_name, b_prof in batters:
-                hit_edge, split_baa = calculate_hit_tendency_edge(b_prof, opp_p, opp_bp)
-                clash_mult, clash_badge = compute_batted_ball_clash(b_prof, opp_p)
-                
-                exp_pa = 4.4 if order <= 3 else (4.1 if order <= 6 else 3.8)
-                batter_ba = max(0.160, b_prof.get('ba', 0.240))
-                
-                lambda_hits = exp_pa * batter_ba * hit_edge * clash_mult * park_hits_adj * w_mod
-                lambda_hits = float(np.clip(lambda_hits, 0.40, 2.20))
+            opp_p_dict = opp_p if isinstance(opp_p, dict) else {}
+            opp_p_name = opp_p_dict.get('pitcher_name', 'TBD Pitcher')
+            opp_p_hand = opp_p_dict.get('p_hand', 'R')
 
-                prob_1plus = round(float(1.0 - poisson.cdf(0, lambda_hits)), 4)
-                prob_2plus = round(float(1.0 - poisson.cdf(1, lambda_hits)), 4)
+            for b_tuple in batters:
+                if len(b_tuple) >= 4:
+                    order, b_id, b_name, b_prof = b_tuple[0], b_tuple[1], b_tuple[2], b_tuple[3]
+                else:
+                    continue
 
-                score_raw = 100.0 / (1.0 + np.exp(-22.0 * (prob_1plus - 0.520)))
+                b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
+                b_hand = b_prof_dict.get('b_hand', 'R')
+                ba = b_prof_dict.get('ba', 0.245)
+                obp = b_prof_dict.get('obp', 0.315)
+
+                hit_edge, split_baa, clash_badge = calculate_hits_clash(b_prof_dict, opp_p_dict, opp_bp)
+
+                exp_pa = 4.5 if order <= 2 else (4.2 if order <= 5 else 3.8)
+                base_hit_rate = max(0.180, ba)
+
+                lambda_hits = exp_pa * (base_hit_rate * 0.95) * hit_edge * park_hits * w_mod
+                lambda_hits = float(np.clip(lambda_hits, 0.35, 2.50))
+
+                prob_1h = round(float(1.0 - poisson.cdf(0, lambda_hits)), 4)
+                prob_2h = round(float(1.0 - poisson.cdf(1, lambda_hits)), 4)
+
+                score_raw = 100.0 / (1.0 + np.exp(-18.0 * (prob_1h - 0.650)))
                 score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
-                if prob_1plus >= 0.76 and 'RISK' not in clash_badge:
-                    call = "💎 LOCK: 1+ Hit / Ladder 2+"
-                elif prob_1plus >= 0.70 and 'RISK' not in clash_badge:
-                    call = "🎯 TARGET: 1+ Hit Anchor"
-                elif prob_2plus >= 0.36:
-                    call = "🔥 TARGET: Multi-Hit Value"
-                elif prob_1plus <= 0.48 or 'RISK' in clash_badge:
-                    call = "🛑 FADE: Whiff & Loft Trap"
+                if prob_1h >= 0.76 and ba >= 0.275:
+                    call = "💎 LOCK: 1+ Hit (Parlay Anchor)"
+                elif prob_2h >= 0.38:
+                    call = "🔥 LADDER: 2+ Multi-Hit Value"
+                elif prob_1h >= 0.68:
+                    call = "🎯 TARGET: 1+ Hit Spot"
+                elif prob_1h <= 0.52 or 'LOW BA' in clash_badge:
+                    call = "🛑 FADE: High Whiff / Low Contact"
                 else:
                     call = "⚾ Standard Contact Spot"
 
@@ -122,14 +114,16 @@ def run_hits_model(mode="predict"):
                     'player_name': b_name,
                     'order': order,
                     'team': team_name,
-                    'opp_pitcher': opp_p['pitcher_name'],
-                    'p_hand': opp_p['p_hand'],
-                    'ba': batter_ba,
+                    'opp_pitcher': opp_p_name,
+                    'p_hand': opp_p_hand,
+                    'b_hand': b_hand,
+                    'ba': ba,
+                    'obp': obp,
                     'split_baa': split_baa,
                     'clash_badge': clash_badge,
                     'exp_hits': round(lambda_hits, 2),
-                    'prob_1h': prob_1plus,
-                    'prob_2h': prob_2plus,
+                    'prob_1h': prob_1h,
+                    'prob_2h': prob_2h,
                     'score': score,
                     'weather_badge': w_badge,
                     'target_call': call
@@ -146,17 +140,17 @@ def render_hits_card(df, out_path, today_str):
     if df.empty:
         return
     plt.close('all')
-    
+
     fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
     fig.patch.set_facecolor('#070d1e')
     ax.axis('off')
 
-    fig.text(0.5, 0.965, "MLB DAILY 1+ & 2+ HIT TARGET & TRAJECTORY MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.938, f"Batted-Ball Trajectory Clash • Pitcher Split BAA • Poisson Distribution • {today_str}", ha='center', color='#38bdf8', fontsize=12)
+    fig.text(0.5, 0.965, "MLB DAILY HITS & CONTACT TARGET MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
+    fig.text(0.5, 0.938, f"Opponent Handedness BAA Splits • Poisson Distribution (1+ & Multi-Hit) • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Batter & Stance', 'Team', 'Opp Pitcher', 'BA', 'Opp BAA', 'Batted-Ball Trajectory Clash', 'Exp H', 'P(1+ H)', 'P(2+ H)', 'Score', 'ACTIONABLE PROP CALL']
+    cols = ['#', 'Batter & Stance', 'Team', 'Opp Pitcher', 'BA', 'OBP', 'Opp BAA (Split)', 'Contact & Matchup Clash', 'Exp Hits', 'P(1+ Hit)', 'P(2+ Hits)', 'Score', 'ACTIONABLE HIT CALL']
     rows = []
-    
+
     for _, r in df.iterrows():
         p1 = float(r.get('prob_1h', 0.0))
         p2 = float(r.get('prob_2h', 0.0))
@@ -165,11 +159,12 @@ def render_hits_card(df, out_path, today_str):
 
         rows.append([
             r.get('rank', 1),
-            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
+            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')} ({r.get('b_hand', 'R')})",
             str(r.get('team', 'Team'))[:11],
             f"{str(r.get('opp_pitcher', 'TBD'))[:11]} ({r.get('p_hand', 'R')})",
-            f"{float(r.get('ba', 0.240)):.3f}",
-            f"{float(r.get('split_baa', 0.245)):.3f}",
+            f"{float(r.get('ba', 0.245)):.3f}",
+            f"{float(r.get('obp', 0.315)):.3f}",
+            f"{float(r.get('split_baa', 0.240)):.3f}",
             clash_txt,
             f"{float(r.get('exp_hits', 1.0)):.2f}",
             f"{p1 * 100:.1f}%",
@@ -180,7 +175,7 @@ def render_hits_card(df, out_path, today_str):
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(8.0)
+    table.set_fontsize(7.5)
     table.scale(1.0, 1.85)
 
     for (row, col), cell in table.get_celld().items():
@@ -189,24 +184,29 @@ def render_hits_card(df, out_path, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#0f172a')
         else:
-            if col == 11:
-                txt = rows[row-1][11]
+            if col == 12:
+                txt = rows[row-1][12]
                 cell.set_text_props(
-                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8')),
+                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt or 'LADDER' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8')),
                     weight='bold'
                 )
-            elif col in [8, 9, 10]:
+            elif col in [9, 10, 11]:
                 cell.set_text_props(color='#facc15', weight='bold')
             elif col == 6:
-                c_txt = rows[row-1][6]
+                val = float(rows[row-1][6])
+                cell.set_text_props(color='#f87171' if val >= 0.260 else ('#4ade80' if val <= 0.215 else '#f1f5f9'), weight='bold')
+            elif col == 7:
+                c_txt = rows[row-1][7]
                 cell.set_text_props(
-                    color='#38bdf8' if 'LINE DRIVE' in c_txt else ('#4ade80' if 'BABIP' in c_txt else ('#f87171' if 'RISK' in c_txt else '#cbd5e1')),
+                    color='#38bdf8' if 'CRUSHER' in c_txt else ('#4ade80' if 'ABOVE' in c_txt else ('#f87171' if 'RISKY' in c_txt else '#cbd5e1')),
                     weight='bold'
                 )
+            elif col in [4, 5]:
+                cell.set_text_props(color='#f1f5f9', weight='semibold')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
 
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close('all')
-    print(f"[✓] Saved Refined Hits Prop Visual Card to {out_path}")
+    print(f"[✓] Saved Refined Hits & Contact Card to {out_path}")
