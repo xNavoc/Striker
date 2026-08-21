@@ -143,7 +143,6 @@ def fetch_player_splits(person_id: int):
     }
 
     try:
-        # Appended sitCodes=[vr,vl] directly to the hydration string to pull handedness splits
         url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting,pitching],type=[season,statSplits],sitCodes=[vr,vl],season={CURRENT_SEASON})"
         resp = requests.get(url, headers=get_req_headers(), timeout=5)
         if resp.status_code != 200:
@@ -166,7 +165,8 @@ def fetch_player_splits(person_id: int):
 
             for sp in st_group.get('splits', []):
                 stat = sp.get('stat', {})
-                split_code = sp.get('split', {}).get('code', '')
+                # CORE FIX: MLB API returns "vL" and "vR". We must lowercase it here.
+                split_code = str(sp.get('split', {}).get('code', '')).lower()
 
                 if 'hitting' in group_name and 'season' in type_name:
                     ba = float(stat.get('avg', 0) or 0.245)
