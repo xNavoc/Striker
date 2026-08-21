@@ -11,19 +11,24 @@ def calculate_tb_clash(batter_prof, opp_p, opp_bp):
     """
     Evaluates Extra-Base Hit (XBH) and Slugging clash dynamics.
     """
-    b_hand = batter_prof.get('b_hand', 'R')
-    p_hand = opp_p.get('p_hand', 'R')
+    b_hand = batter_prof.get('b_hand', 'R') if isinstance(batter_prof, dict) else 'R'
+    p_hand = opp_p.get('p_hand', 'R') if isinstance(opp_p, dict) else 'R'
     
-    # 1. Pitcher Slugging Allowed Split
-    sp_slg = opp_p.get('slg_lhb' if b_hand in ['L', 'S'] else 'slg_rhb', 0.405)
-    w_sp, w_bp = (0.15, 0.85) if opp_p.get('is_bg', False) else (0.65, 0.35)
-    blended_slg = (sp_slg * w_sp) + (opp_bp.get('bp_whip', 1.25) * 0.32)
+    if isinstance(opp_p, dict):
+        sp_slg = opp_p.get('slg_lhb' if b_hand in ['L', 'S'] else 'slg_rhb', 0.405)
+        is_bg = opp_p.get('is_bg', False)
+    else:
+        sp_slg = 0.405
+        is_bg = False
+
+    bp_whip = opp_bp.get('bp_whip', 1.25) if isinstance(opp_bp, dict) else 1.25
+    w_sp, w_bp = (0.15, 0.85) if is_bg else (0.65, 0.35)
+    blended_slg = (sp_slg * w_sp) + (bp_whip * 0.32)
     
     pitcher_tb_factor = (sp_slg / 0.405) ** 0.85
 
-    # 2. Batter Extra-Base Engine
-    b_iso = batter_prof.get('iso', 0.150)
-    b_slg = batter_prof.get('slg', 0.400)
+    b_iso = batter_prof.get('iso', 0.150) if isinstance(batter_prof, dict) else 0.150
+    b_slg = batter_prof.get('slg', 0.400) if isinstance(batter_prof, dict) else 0.400
     
     if b_iso >= 0.220:
         clash_badge = "POWER [XBH SURGE]"
@@ -41,7 +46,7 @@ def calculate_tb_clash(batter_prof, opp_p, opp_bp):
     platoon_bonus = 1.04 if b_hand != p_hand else 0.98
     tb_edge = pitcher_tb_factor * power_mult * platoon_bonus
 
-    return round(float(tb_edge), 3), round(sp_slg, 3), clash_badge
+    return round(float(tb_edge), 3), round(float(sp_slg), 3), clash_badge
 
 def run_tb_model(mode="predict"):
     today_str, games = load_daily_slate()
@@ -60,19 +65,31 @@ def run_tb_model(mode="predict"):
     for g in games:
         park_tb_adj = g.get('park_factors', {}).get('tb', 100) / 100.0
         weather = g.get('weather_info', {'hits_mod': 1.00, 'badge': '[NEUTRAL 72°]', 'fade': False})
-        w_mod = weather['hits_mod']
-        w_badge = weather['badge']
+        w_mod = weather.get('hits_mod', 1.00)
+        w_badge = weather.get('badge', '[NEUTRAL 72°]')
 
         for side, team_name, opp_p, opp_bp, batters in [
-            ('away', g['away_team'], g['home_pitcher'], g['home_bp'], g['away_batters']),
-            ('home', g['home_team'], g['away_pitcher'], g['away_bp'], g['home_batters'])
+            ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
+            ('home', g.get('home_team', 'Home'), g.get('away_pitcher', {}), g.get('away_bp', {}), g.get('home_batters', []))
         ]:
-            for order, b_id, b_name, b_prof in batters:
-                tb_edge, split_slg, clash_badge = calculate_tb_clash(b_prof, opp_p, opp_bp)
+            opp_p_dict = opp_p if isinstance(opp_p, dict) else {}
+            opp_p_name = opp_p_dict.get('pitcher_name', 'TBD Pitcher')
+            opp_p_hand = opp_p_dict.get('p_hand', 'R')
+
+            for b_tuple in batters:
+                if len(b_tuple) >= 4:
+                    order, b_id, b_name, b_prof = b_tuple[0], b_tuple[1], b_tuple[2], b_tuple[3]
+                else:
+                    continue
+
+                b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
+                b_hand = b_prof_dict.get('b_hand', 'R')
+                batter_slg = max(0.260, b_prof_dict.get('slg', 0.400))
+                batter_iso = b_prof_dict.get('iso', 0.150)
+
+                tb_edge, split_slg, clash_badge = calculate_tb_clash(b_prof_dict, opp_p_dict, opp_bp)
                 
                 exp_pa = 4.4 if order <= 3 else (4.1 if order <= 6 else 3.8)
-                batter_slg = max(0.260, b_prof.get('slg', 0.400))
-                
                 lambda_tb = exp_pa * (batter_slg * 0.92) * tb_edge * park_tb_adj * w_mod
                 lambda_tb = float(np.clip(lambda_tb, 0.50, 3.60))
 
@@ -82,7 +99,7 @@ def run_tb_model(mode="predict"):
                 score_raw = 100.0 / (1.0 + np.exp(-18.0 * (prob_o15 - 0.500)))
                 score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
-                if prob_o15 >= 0.65 and b_prof.get('iso', 0.150) >= 0.190:
+                if prob_o15 >= 0.65 and batter_iso >= 0.190:
                     call = "💎 LOCK: Over 1.5 TB (Anchor)"
                 elif prob_o25 >= 0.35:
                     call = "🔥 LADDER: Over 2.5 TB (Value)"
@@ -98,11 +115,11 @@ def run_tb_model(mode="predict"):
                     'player_name': b_name,
                     'order': order,
                     'team': team_name,
-                    'opp_pitcher': opp_p['pitcher_name'],
-                    'p_hand': opp_p['p_hand'],
-                    'b_hand': b_prof['b_hand'],
+                    'opp_pitcher': opp_p_name,
+                    'p_hand': opp_p_hand,
+                    'b_hand': b_hand,
                     'slg': batter_slg,
-                    'iso': b_prof.get('iso', 0.150),
+                    'iso': batter_iso,
                     'split_slg': split_slg,
                     'clash_badge': clash_badge,
                     'exp_tb': round(lambda_tb, 2),
@@ -126,10 +143,9 @@ def render_tb_card(df, out_path, today_str):
     plt.close('all')
     
     fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
-    fig.patch.set_facecolor('#070d1e')  # Deep navy canvas
+    fig.patch.set_facecolor('#070d1e')
     ax.axis('off')
 
-    # Card Title Block
     fig.text(0.5, 0.965, "MLB DAILY TOTAL BASES (TB) TARGET & SLUGGING MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
     fig.text(0.5, 0.938, f"Extra-Base Hit Dynamics • Opponent Split SLG • Poisson Total Base Distribution • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
