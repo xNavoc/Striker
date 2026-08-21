@@ -201,15 +201,28 @@ def fetch_player_splits(person_id: int):
         PLAYER_CACHE[person_id] = res_dict
         return res_dict
 
+def fetch_active_roster(team_id: int):
+    """Directly hits the team roster endpoint to bypass schedule hydration bugs."""
+    if not team_id:
+        return []
+    try:
+        url = f"https://statsapi.mlb.com/api/v1/teams/{team_id}/roster?rosterType=active"
+        res = requests.get(url, headers=get_req_headers(), timeout=5)
+        if res.status_code == 200:
+            roster = res.json().get('roster', [])
+            return [p.get('person', {}) for p in roster if p.get('position', {}).get('abbreviation', '') != 'P'][:9]
+    except Exception as e:
+        print(f"[!] Failed to fetch roster for team {team_id}: {e}")
+    return []
+
 def load_daily_slate():
-    """Pulls schedule data utilizing an isolated global memory cache and team roster fallbacks."""
+    """Pulls schedule data utilizing an isolated global memory cache and direct API team roster fallbacks."""
     global _SLATE_CACHE
     if _SLATE_CACHE is not None:
         return _SLATE_CACHE
 
     today_str = get_slate_date()
-    # Added roster hydration to support early-morning proxy lineups
-    url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={today_str}&hydrate=probablePitcher,lineups,venue,roster"
+    url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={today_str}&hydrate=probablePitcher,lineups,venue"
     
     games = []
     try:
@@ -232,11 +245,18 @@ def load_daily_slate():
             weather_fac = fetch_weather_impact(venue_name)
 
             teams = g.get('teams', {})
-            home_team = teams.get('home', {}).get('team', {}).get('name', 'Home')
-            away_team = teams.get('away', {}).get('team', {}).get('name', 'Away')
+            
+            away_team_node = teams.get('away', {})
+            home_team_node = teams.get('home', {})
+            
+            away_team = away_team_node.get('team', {}).get('name', 'Away')
+            home_team = home_team_node.get('team', {}).get('name', 'Home')
+            
+            away_team_id = away_team_node.get('team', {}).get('id')
+            home_team_id = home_team_node.get('team', {}).get('id')
 
-            home_sp = teams.get('home', {}).get('probablePitcher', {})
-            away_sp = teams.get('away', {}).get('probablePitcher', {})
+            home_sp = home_team_node.get('probablePitcher', {})
+            away_sp = away_team_node.get('probablePitcher', {})
 
             home_p_id = home_sp.get('id', 0)
             away_p_id = away_sp.get('id', 0)
@@ -253,15 +273,12 @@ def load_daily_slate():
             away_players_raw = lineups.get('awayPlayers', [])
             home_players_raw = lineups.get('homePlayers', [])
 
-            # ROSTER FALLBACK: If official lineups are not posted yet (early morning run), 
-            # pull top 9 active position players from the hydrated team roster.
-            if not away_players_raw:
-                roster_data = teams.get('away', {}).get('team', {}).get('roster', {}).get('roster', [])
-                away_players_raw = [p.get('person', {}) for p in roster_data if p.get('position', {}).get('abbreviation', '') != 'P'][:9]
+            # ROSTER FALLBACK: Fetch direct team rosters if official lineups are missing
+            if not away_players_raw and away_team_id:
+                away_players_raw = fetch_active_roster(away_team_id)
 
-            if not home_players_raw:
-                roster_data = teams.get('home', {}).get('team', {}).get('roster', {}).get('roster', [])
-                home_players_raw = [p.get('person', {}) for p in roster_data if p.get('position', {}).get('abbreviation', '') != 'P'][:9]
+            if not home_players_raw and home_team_id:
+                home_players_raw = fetch_active_roster(home_team_id)
 
             away_batters = []
             home_batters = []
@@ -280,7 +297,7 @@ def load_daily_slate():
                     prof = fetch_player_splits(p_id)
                     home_batters.append((idx + 1, p_id, name, prof))
 
-            # Failsafe if absolutely zero roster data exists
+            # Failsafe if completely unresolvable
             if not away_batters:
                 away_batters = [(i+1, 0, f"{away_team} Hitter #{i+1}", {'ba': 0.245, 'obp': 0.315, 'slg': 0.405, 'iso': 0.160, 'b_hand': 'R'}) for i in range(9)]
             if not home_batters:
