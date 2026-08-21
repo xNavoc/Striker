@@ -1,7 +1,17 @@
-pandas>=2.0.0
-numpy>=1.24.0
-scipy>=1.10.0
-requests>=2.31.0
-MLB-StatsAPI>=0.2.0
-matplotlib>=3.7.0
-lifelines>=0.28.0
+# Core Numerical & Data Structures
+numpy>=2.0.0
+pandas>=2.2.0
+
+# Statistical Modeling & Survival Distributions (Weibull, Poisson)
+scipy>=1.13.0
+
+# Visual Rendering & High-Resolution Card Matrix Generation
+matplotlib>=3.9.0
+pillow>=10.3.0
+
+# Network Ingestion & MLB Stats API Hydration
+requests>=2.32.0
+urllib3>=2.2.0
+
+# Timezone Support
+tzdata>=2024.1
