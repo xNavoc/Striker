@@ -7,44 +7,6 @@ import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
-def calculate_hits_clash(batter_prof, opp_p, opp_bp):
-    """
-    Evaluates Hit & Contact dynamics: Batting Average against Opponent Split BAA.
-    """
-    b_hand = batter_prof.get('b_hand', 'R') if isinstance(batter_prof, dict) else 'R'
-    p_hand = opp_p.get('p_hand', 'R') if isinstance(opp_p, dict) else 'R'
-
-    if isinstance(opp_p, dict):
-        sp_baa = opp_p.get('baa_lhb' if b_hand in ['L', 'S'] else 'baa_rhb', 0.240)
-        is_bg = opp_p.get('is_bg', False)
-    else:
-        sp_baa = 0.240
-        is_bg = False
-
-    w_sp, w_bp = (0.15, 0.85) if is_bg else (0.65, 0.35)
-    blended_baa = (sp_baa * w_sp) + (0.245 * w_bp)
-
-    pitcher_hit_factor = (blended_baa / 0.240) ** 0.85
-
-    ba = batter_prof.get('ba', 0.245) if isinstance(batter_prof, dict) else 0.245
-    if ba >= 0.285 and sp_baa >= 0.255:
-        clash_badge = "CONTACT CRUSHER [HIGH BAA]"
-        contact_mult = 1.15
-    elif ba >= 0.265:
-        clash_badge = "ABOVE-AVERAGE CONTACT"
-        contact_mult = 1.08
-    elif ba <= 0.210:
-        clash_badge = "CONTACT RISKY [LOW BA]"
-        contact_mult = 0.82
-    else:
-        clash_badge = "STANDARD CONTACT"
-        contact_mult = 1.00
-
-    platoon_bonus = 1.03 if b_hand != p_hand else 0.98
-    hit_edge = pitcher_hit_factor * contact_mult * platoon_bonus
-
-    return round(float(hit_edge), 3), round(float(sp_baa), 3), clash_badge
-
 def run_hits_model(mode="predict"):
     today_str, games = load_daily_slate()
     os.makedirs("exports/hits", exist_ok=True)
@@ -52,18 +14,16 @@ def run_hits_model(mode="predict"):
     if mode == "settle":
         settle_projections("hits", today_str, lambda r, st: (
             st.get('hits', 0) >= 1,
-            f"WIN ({st.get('hits', 0)} Hits)" if st.get('hits', 0) >= 1 else "LOSS (0 Hits)"
+            f"WIN ({st.get('hits', 0)} H)" if st.get('hits', 0) >= 1 else "LOSS"
         ))
         return
 
-    print(f"[{datetime.now()}] Running Contact & BABIP Refined HITS Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Hits & Contact Matrix Model for {today_str}...")
     targets = []
 
     for g in games:
-        park_hits = g.get('park_factors', {}).get('overall', 100) / 100.0
-        weather = g.get('weather_info', {'hits_mod': 1.00, 'badge': '[NEUTRAL 72°]', 'fade': False})
-        w_mod = weather.get('hits_mod', 1.00)
-        w_badge = weather.get('badge', '[NEUTRAL 72°]')
+        park_hits_adj = g.get('park_factors', {}).get('overall', 100) / 100.0
+        weather_hits_adj = g.get('weather_info', {}).get('hits_mod', 1.00)
 
         for side, team_name, opp_p, opp_bp, batters in [
             ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
@@ -81,33 +41,44 @@ def run_hits_model(mode="predict"):
 
                 b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
                 b_hand = b_prof_dict.get('b_hand', 'R')
-                ba = b_prof_dict.get('ba', 0.245)
-                obp = b_prof_dict.get('obp', 0.315)
+                ba = float(b_prof_dict.get('ba', 0.245))
+                obp = float(b_prof_dict.get('obp', 0.315))
 
-                hit_edge, split_baa, clash_badge = calculate_hits_clash(b_prof_dict, opp_p_dict, opp_bp)
+                # Handedness split resolution
+                effective_b_hand = 'L' if b_hand == 'S' and opp_p_hand == 'R' else ('R' if b_hand == 'S' and opp_p_hand == 'L' else b_hand)
+                sp_baa = float(opp_p_dict.get('baa_lhb', 0.240) if effective_b_hand == 'L' else opp_p_dict.get('baa_rhb', 0.240))
 
-                exp_pa = 4.5 if order <= 2 else (4.2 if order <= 5 else 3.8)
-                base_hit_rate = max(0.180, ba)
+                # Contact friction multiplier
+                if ba >= 0.280 and sp_baa >= 0.255:
+                    contact_badge = "ELITE CONTACT MATCHUP"
+                    contact_mult = 1.12
+                elif ba >= 0.260 or sp_baa >= 0.250:
+                    contact_badge = "ABOVE-AVERAGE CONTACT"
+                    contact_mult = 1.05
+                elif ba <= 0.210 and sp_baa <= 0.220:
+                    contact_badge = "HEAVY CONTACT SUPPRESSION"
+                    contact_mult = 0.88
+                else:
+                    contact_badge = "STANDARD CONTACT"
+                    contact_mult = 1.00
 
-                lambda_hits = exp_pa * (base_hit_rate * 0.95) * hit_edge * park_hits * w_mod
-                lambda_hits = float(np.clip(lambda_hits, 0.35, 2.50))
+                lambda_hits = (ba * (sp_baa / 0.240)) * park_hits_adj * weather_hits_adj * contact_mult * 4.2
+                lambda_hits = float(np.clip(lambda_hits, 0.40, 2.20))
 
                 prob_1h = round(float(1.0 - poisson.cdf(0, lambda_hits)), 4)
-                prob_2h = round(float(1.0 - poisson.cdf(1, lambda_hits)), 4)
+                prob_2plus_h = round(float(1.0 - poisson.cdf(1, lambda_hits)), 4)
 
-                score_raw = 100.0 / (1.0 + np.exp(-18.0 * (prob_1h - 0.650)))
+                score_raw = 100.0 / (1.0 + np.exp(-14.0 * (prob_1h - 0.700)))
                 score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
-                if prob_1h >= 0.76 and ba >= 0.275:
-                    call = "💎 LOCK: 1+ Hit (Parlay Anchor)"
-                elif prob_2h >= 0.38:
-                    call = "🔥 LADDER: 2+ Multi-Hit Value"
-                elif prob_1h >= 0.68:
-                    call = "🎯 TARGET: 1+ Hit Spot"
-                elif prob_1h <= 0.52 or 'LOW BA' in clash_badge:
-                    call = "🛑 FADE: High Whiff / Low Contact"
+                if prob_1h >= 0.78:
+                    call = "👑 LOCK: 1+ Hit (Parlay Anchor)"
+                elif prob_2plus_h >= 0.38:
+                    call = "💎 LADDER: 2+ Multi-Hit Value"
+                elif prob_1h >= 0.72:
+                    call = "🔥 TARGET: 1+ Hit Spot"
                 else:
-                    call = "⚾ Standard Contact Spot"
+                    call = "⚾ Standard Contact"
 
                 targets.append({
                     'player_id': b_id,
@@ -117,21 +88,20 @@ def run_hits_model(mode="predict"):
                     'opp_pitcher': opp_p_name,
                     'p_hand': opp_p_hand,
                     'b_hand': b_hand,
-                    'ba': ba,
-                    'obp': obp,
-                    'split_baa': split_baa,
-                    'clash_badge': clash_badge,
+                    'ba': round(ba, 3),
+                    'obp': round(obp, 3),
+                    'opp_baa_split': round(sp_baa, 3),
+                    'contact_badge': contact_badge,
                     'exp_hits': round(lambda_hits, 2),
                     'prob_1h': prob_1h,
-                    'prob_2h': prob_2h,
+                    'prob_2plus_h': prob_2plus_h,
                     'score': score,
-                    'weather_badge': w_badge,
                     'target_call': call
                 })
 
     df = pd.DataFrame(targets)
     if not df.empty:
-        df = df.sort_values(by=['score', 'exp_hits'], ascending=False).reset_index(drop=True)
+        df = df.sort_values(by=['score', 'prob_1h'], ascending=False).reset_index(drop=True)
         df['rank'] = df.index + 1
         df.to_csv(f"exports/hits/hits_top50_{today_str}.csv", index=False)
         render_hits_card(df.head(35), f"exports/hits/hits_top50_card_{today_str}.png", today_str)
@@ -153,9 +123,9 @@ def render_hits_card(df, out_path, today_str):
 
     for _, r in df.iterrows():
         p1 = float(r.get('prob_1h', 0.0))
-        p2 = float(r.get('prob_2h', 0.0))
-        clash_txt = str(r.get('clash_badge', ''))
-        prop_call = str(r.get('target_call', 'Standard Contact Spot'))
+        p2 = float(r.get('prob_2plus_h', 0.0))
+        s_val = float(r.get('score', 0.0))
+        call = str(r.get('target_call', 'Standard Contact'))
 
         rows.append([
             r.get('rank', 1),
@@ -164,13 +134,13 @@ def render_hits_card(df, out_path, today_str):
             f"{str(r.get('opp_pitcher', 'TBD'))[:11]} ({r.get('p_hand', 'R')})",
             f"{float(r.get('ba', 0.245)):.3f}",
             f"{float(r.get('obp', 0.315)):.3f}",
-            f"{float(r.get('split_baa', 0.240)):.3f}",
-            clash_txt,
+            f"{float(r.get('opp_baa_split', 0.240)):.3f}",
+            str(r.get('contact_badge', 'STANDARD')),
             f"{float(r.get('exp_hits', 1.0)):.2f}",
             f"{p1 * 100:.1f}%",
             f"{p2 * 100:.1f}%",
-            f"{float(r.get('score', 50.0)):.1f}",
-            prop_call
+            f"{s_val:.1f}",
+            call
         ])
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
@@ -187,26 +157,17 @@ def render_hits_card(df, out_path, today_str):
             if col == 12:
                 txt = rows[row-1][12]
                 cell.set_text_props(
-                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt or 'LADDER' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8')),
+                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else ('#facc15' if 'LADDER' in txt else '#94a3b8')),
                     weight='bold'
                 )
             elif col in [9, 10, 11]:
                 cell.set_text_props(color='#facc15', weight='bold')
             elif col == 6:
-                val = float(rows[row-1][6])
-                cell.set_text_props(color='#f87171' if val >= 0.260 else ('#4ade80' if val <= 0.215 else '#f1f5f9'), weight='bold')
-            elif col == 7:
-                c_txt = rows[row-1][7]
-                cell.set_text_props(
-                    color='#38bdf8' if 'CRUSHER' in c_txt else ('#4ade80' if 'ABOVE' in c_txt else ('#f87171' if 'RISKY' in c_txt else '#cbd5e1')),
-                    weight='bold'
-                )
-            elif col in [4, 5]:
-                cell.set_text_props(color='#f1f5f9', weight='semibold')
+                cell.set_text_props(color='#38bdf8', weight='bold')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
 
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close('all')
-    print(f"[✓] Saved Refined Hits & Contact Card to {out_path}")
+    print(f"[✓] Saved Hits Matrix Card to {out_path}")
