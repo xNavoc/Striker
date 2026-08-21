@@ -2,8 +2,14 @@ import os
 import requests
 import pandas as pd
 import numpy as np
-from datetime import datetime
-from core.data_loader import clean_name_str, CURRENT_SEASON
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+from core.data_loader import clean_name_str
+
+def get_yesterday_date() -> str:
+    """Returns yesterday's date formatted as YYYY-MM-DD in US/Eastern."""
+    yest = datetime.now(ZoneInfo("America/New_York")) - timedelta(days=1)
+    return yest.strftime("%Y-%m-%d")
 
 def fetch_actual_game_stats(date_str: str):
     """
@@ -14,10 +20,15 @@ def fetch_actual_game_stats(date_str: str):
     stats_map = {}
 
     try:
-        data = requests.get(url, timeout=8).json()
+        res = requests.get(url, timeout=10)
+        if res.status_code != 200:
+            print(f"[!] MLB API returned status {res.status_code} for date {date_str}.")
+            return stats_map
+
+        data = res.json()
         dates = data.get('dates', [])
         if not dates:
-            print(f"[!] No games found for settlement on {date_str}.")
+            print(f"[!] No games scheduled or found for settlement on {date_str}.")
             return stats_map
 
         for g in dates[0].get('games', []):
@@ -82,25 +93,28 @@ def fetch_actual_game_stats(date_str: str):
         print(f"[!] Error fetching settlement box scores for {date_str}: {e}")
         return stats_map
 
-
 def settle_projections(model_name: str, date_str: str, eval_func):
     """
-    Generic settlement engine for any daily model.
-    eval_func is a callable: eval_func(row, player_actual_stats) -> (bool_won, outcome_str)
+    Generic settlement engine. Gracefully skips missing files so GitHub Actions never fails.
     """
     pred_path = f"exports/{model_name}/{model_name}_top50_{date_str}.csv"
     if not os.path.exists(pred_path):
-        print(f"[!] Prediction CSV for {model_name} on {date_str} not found at {pred_path}.")
+        print(f"[i] Settlement Notice: No prediction CSV found for {model_name} on {date_str} ({pred_path}). Skipping settlement.")
         return
 
-    df_pred = pd.read_csv(pred_path)
+    try:
+        df_pred = pd.read_csv(pred_path)
+    except Exception as e:
+        print(f"[!] Warning reading {pred_path}: {e}")
+        return
+
     if df_pred.empty:
-        print(f"[!] Empty predictions file for {model_name} on {date_str}.")
+        print(f"[i] Prediction CSV {pred_path} is empty. Skipping settlement.")
         return
 
     actuals = fetch_actual_game_stats(date_str)
     if not actuals:
-        print(f"[!] No completed box score stats available to settle {model_name} on {date_str}.")
+        print(f"[i] No finalized games found for {date_str}. Skipping settlement.")
         return
 
     os.makedirs(f"exports/settlement/{model_name}", exist_ok=True)
@@ -115,7 +129,10 @@ def settle_projections(model_name: str, date_str: str, eval_func):
 
         if m_key in actuals:
             st = actuals[m_key]
-            is_win, outcome_txt = eval_func(row, st)
+            try:
+                is_win, outcome_txt = eval_func(row, st)
+            except Exception:
+                is_win, outcome_txt = False, "ERROR"
 
             if is_win:
                 wins += 1
@@ -140,4 +157,3 @@ def settle_projections(model_name: str, date_str: str, eval_func):
         df_settled.to_csv(out_path, index=False)
 
         print(f"[{datetime.now()}] [✓] {model_name.upper()} Settled for {date_str}: {wins}W - {losses}L ({win_rate:.1f}% Win Rate) | Unmatched/DNP: {unmatched}")
-        print(f"[✓] Saved settlement ledger to {out_path}")
