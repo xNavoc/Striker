@@ -202,13 +202,14 @@ def fetch_player_splits(person_id: int):
         return res_dict
 
 def load_daily_slate():
-    """Pulls schedule data utilizing an isolated global memory cache to prevent 6x duplicate model calls."""
+    """Pulls schedule data utilizing an isolated global memory cache and team roster fallbacks."""
     global _SLATE_CACHE
     if _SLATE_CACHE is not None:
         return _SLATE_CACHE
 
     today_str = get_slate_date()
-    url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={today_str}&hydrate=probablePitcher,lineups,venue"
+    # Added roster hydration to support early-morning proxy lineups
+    url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={today_str}&hydrate=probablePitcher,lineups,venue,roster"
     
     games = []
     try:
@@ -248,22 +249,38 @@ def load_daily_slate():
             away_p_prof['pitcher_name'] = away_sp.get('fullName', 'TBD Pitcher')
             away_p_prof['pitcher_id'] = away_p_id
 
+            lineups = g.get('lineups', {})
+            away_players_raw = lineups.get('awayPlayers', [])
+            home_players_raw = lineups.get('homePlayers', [])
+
+            # ROSTER FALLBACK: If official lineups are not posted yet (early morning run), 
+            # pull top 9 active position players from the hydrated team roster.
+            if not away_players_raw:
+                roster_data = teams.get('away', {}).get('team', {}).get('roster', {}).get('roster', [])
+                away_players_raw = [p.get('person', {}) for p in roster_data if p.get('position', {}).get('abbreviation', '') != 'P'][:9]
+
+            if not home_players_raw:
+                roster_data = teams.get('home', {}).get('team', {}).get('roster', {}).get('roster', [])
+                home_players_raw = [p.get('person', {}) for p in roster_data if p.get('position', {}).get('abbreviation', '') != 'P'][:9]
+
             away_batters = []
             home_batters = []
-            lineups = g.get('lineups', {})
 
-            for idx, p in enumerate(lineups.get('awayPlayers', [])):
+            for idx, p in enumerate(away_players_raw):
                 p_id = p.get('id', 0)
-                name = p.get('fullName', f"Batter {idx+1}")
-                prof = fetch_player_splits(p_id)
-                away_batters.append((idx + 1, p_id, name, prof))
+                name = p.get('fullName', f"{away_team} Hitter #{idx+1}")
+                if p_id:
+                    prof = fetch_player_splits(p_id)
+                    away_batters.append((idx + 1, p_id, name, prof))
 
-            for idx, p in enumerate(lineups.get('homePlayers', [])):
+            for idx, p in enumerate(home_players_raw):
                 p_id = p.get('id', 0)
-                name = p.get('fullName', f"Batter {idx+1}")
-                prof = fetch_player_splits(p_id)
-                home_batters.append((idx + 1, p_id, name, prof))
+                name = p.get('fullName', f"{home_team} Hitter #{idx+1}")
+                if p_id:
+                    prof = fetch_player_splits(p_id)
+                    home_batters.append((idx + 1, p_id, name, prof))
 
+            # Failsafe if absolutely zero roster data exists
             if not away_batters:
                 away_batters = [(i+1, 0, f"{away_team} Hitter #{i+1}", {'ba': 0.245, 'obp': 0.315, 'slg': 0.405, 'iso': 0.160, 'b_hand': 'R'}) for i in range(9)]
             if not home_batters:
