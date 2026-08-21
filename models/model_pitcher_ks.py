@@ -74,13 +74,16 @@ def run_ks_model(mode="predict"):
         park_k_adj = g.get('park_factors', {}).get('k', 100) / 100.0
 
         for p_prof, opp_team, opp_batters in [
-            (g['away_pitcher'], g['home_team'], g['home_batters']),
-            (g['home_pitcher'], g['away_team'], g['away_batters'])
+            (g.get('away_pitcher', {}), g.get('home_team', 'Home'), g.get('home_batters', [])),
+            (g.get('home_pitcher', {}), g.get('away_team', 'Away'), g.get('away_batters', []))
         ]:
-            if not p_prof or 'TBD' in p_prof['pitcher_name']:
+            p_prof_dict = p_prof if isinstance(p_prof, dict) else {}
+            pitcher_name = p_prof_dict.get('pitcher_name', 'TBD')
+
+            if not p_prof_dict or 'TBD' in pitcher_name:
                 continue
 
-            lambda_k, match_k_pct, workload_desc, exp_bf, matchup_badge = calculate_pitcher_k_dynamics(p_prof, opp_batters, park_k_adj)
+            lambda_k, match_k_pct, workload_desc, exp_bf, matchup_badge = calculate_pitcher_k_dynamics(p_prof_dict, opp_batters, park_k_adj)
 
             prob_o45 = round(float(1.0 - poisson.cdf(4, lambda_k)), 4)
             prob_o55 = round(float(1.0 - poisson.cdf(5, lambda_k)), 4)
@@ -102,11 +105,11 @@ def run_ks_model(mode="predict"):
                 call = "⚾ Standard K Spot"
 
             targets.append({
-                'pitcher_id': p_prof.get('pitcher_id', 0),
-                'pitcher_name': p_prof.get('pitcher_name', 'Pitcher'),
-                'p_hand': p_prof.get('p_hand', 'R'),
-                'k9': p_prof.get('k9', 8.50),
-                'whip': p_prof.get('whip', 1.25),
+                'pitcher_id': p_prof_dict.get('pitcher_id', 0),
+                'pitcher_name': pitcher_name,
+                'p_hand': p_prof_dict.get('p_hand', 'R'),
+                'k9': p_prof_dict.get('k9', 8.50),
+                'whip': p_prof_dict.get('whip', 1.25),
                 'opp_team': opp_team,
                 'workload_desc': workload_desc,
                 'matchup_badge': matchup_badge,
