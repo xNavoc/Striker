@@ -57,7 +57,7 @@ _BULLPEN_CACHE = {}
 _SLATE_CACHE = {}
 
 def clean_name_str(name: str) -> str:
-    return re.sub(r'[^a-zA-Z0-9]', '', name).lower() if name else ""
+    return re.sub(r'[^a-zA-Z0-9]', '', str(name)).lower() if name else ""
 
 def get_slate_date():
     try:
@@ -139,7 +139,10 @@ def initialize_league_registry():
             pos = p.get('primaryPosition', {}).get('abbreviation', 'DH')
             meta = {'id': pid, 'name': name, 'b_hand': b_side, 'p_hand': p_hand, 'pos': pos}
             if pid: _LEAGUE_REGISTRY[pid] = meta
-            if name: _LEAGUE_REGISTRY[clean_name_str(name)] = meta
+            if name: 
+                _LEAGUE_REGISTRY[clean_name_str(name)] = meta
+                # Handle variants with periods removed
+                _LEAGUE_REGISTRY[name.replace('.', '').strip().lower()] = meta
         print(f"[✓] Indexed {len(_LEAGUE_REGISTRY)} active players.")
     except Exception as e:
         print(f"[!] Registry notice: {e}")
@@ -350,7 +353,7 @@ def get_team_top6(side_key, team_name, team_id, box):
                 p_name = " ".join(parts[2:])
                 meta_pid, _, _, _ = get_player_meta(p_id, p_name)
                 b_prof = fetch_batter_profile(meta_pid, p_name, 'R')
-                candidates.append((p_id, p_name, b_prof.get('season_pa', 0)))
+                candidates.append((meta_pid or p_id, p_name, b_prof.get('season_pa', 0)))
         
         candidates.sort(key=lambda x: x[2], reverse=True)
         for idx, (p_id, p_name, _) in enumerate(candidates[:6], start=1):
