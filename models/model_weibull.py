@@ -5,7 +5,7 @@ import numpy as np
 from scipy.special import gamma
 import matplotlib.pyplot as plt
 import requests
-from core.data_loader import load_daily_slate, clean_name_str, CURRENT_SEASON
+from core.data_loader import load_daily_slate, clean_name_str, CURRENT_SEASON, get_req_headers
 from core.settlement_engine import settle_projections
 
 WEIBULL_CACHE = {}
@@ -23,8 +23,15 @@ def fetch_batter_drought_pa(batter_id: int):
 
     try:
         url = f"https://statsapi.mlb.com/api/v1/people/{batter_id}/stats?stats=gameLog&season={CURRENT_SEASON}&group=hitting"
-        resp = requests.get(url, timeout=5).json()
-        splits = resp.get('stats', [{}])[0].get('splits', [])
+        resp = requests.get(url, headers=get_req_headers(), timeout=5)
+        
+        if resp.status_code != 200:
+            res = (14, 4, 32.0, 1.04)
+            WEIBULL_CACHE[batter_id] = res
+            return res
+
+        data = resp.json()
+        splits = data.get('stats', [{}])[0].get('splits', [])
 
         if not splits:
             res = (14, 4, 32.0, 1.04)
@@ -36,7 +43,7 @@ def fetch_batter_drought_pa(batter_id: int):
         total_hr = 0
         total_pa = 0
 
-        for game in splits:  # Most recent games are listed first
+        for game in splits:
             stat = game.get('stat', {})
             hr = int(stat.get('homeRuns', 0) or 0)
             pa = int(stat.get('plateAppearances', 0) or stat.get('atBats', 0) or 0)
@@ -47,7 +54,6 @@ def fetch_batter_drought_pa(batter_id: int):
                 pa_since_hr += pa
                 games_since_hr += 1
 
-        # Bayesian shrinkage estimate for Weibull scale parameter (mean PA per HR)
         if total_hr >= 5:
             mean_hr_interval = max(14.0, float(total_pa / total_hr))
             rho_shape = 1.12 if total_hr >= 15 else 1.06
@@ -99,16 +105,13 @@ def run_weibull_model(mode="predict"):
                 drought_pa, drought_games, mean_interval, rho = fetch_batter_drought_pa(b_id)
                 saturation = round(float(drought_pa / max(10.0, mean_interval)), 2)
 
-                # Weibull scale factor lambda
                 scale_lambda = mean_interval / gamma(1.0 + (1.0 / rho))
                 t0 = float(drought_pa)
-                t1 = float(drought_pa + 4.2)  # Project next slate's plate appearances
+                t1 = float(drought_pa + 4.2) 
 
-                # Conditional failure probability: P(T <= t1 | T > t0) = 1 - exp(-((t1/λ)^ρ - (t0/λ)^ρ))
                 hazard_delta = (t1 / scale_lambda) ** rho - (t0 / scale_lambda) ** rho
                 prob_survival_hr = round(float(1.0 - np.exp(-hazard_delta)), 4)
 
-                # Score calibration
                 score_raw = 100.0 / (1.0 + np.exp(-20.0 * (prob_survival_hr - 0.165)))
                 score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
 
