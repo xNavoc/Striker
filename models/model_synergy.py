@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from core.data_loader import get_slate_date
+from core.data_loader import get_slate_date, clean_name_str
 
 def run_synergy_model(mode="predict"):
     today_str = get_slate_date()
@@ -24,23 +24,31 @@ def run_synergy_model(mode="predict"):
     df_hr = pd.read_csv(hr_path)
     df_wb = pd.read_csv(weibull_path)
 
-    # Rename model-specific columns for seamless merge
-    df_hr_sub = df_hr[['player_id', 'player_name', 'team', 'opp_pitcher', 'iso', 'weather_badge', 'prob', 'score', 'rank']].rename(
+    # 1. Create a bulletproof unique merge key using cleaned player name
+    df_hr['merge_key'] = df_hr['player_name'].apply(clean_name_str)
+    df_wb['merge_key'] = df_wb['player_name'].apply(clean_name_str)
+
+    # 2. Deduplicate both boards before joining
+    df_hr = df_hr.drop_duplicates(subset=['merge_key']).reset_index(drop=True)
+    df_wb = df_wb.drop_duplicates(subset=['merge_key']).reset_index(drop=True)
+
+    # 3. Select and rename columns
+    df_hr_sub = df_hr[['merge_key', 'player_name', 'team', 'opp_pitcher', 'iso', 'weather_badge', 'prob', 'score', 'rank']].rename(
         columns={'prob': 'hr_prob', 'score': 'hr_score', 'rank': 'hr_rank'}
     )
 
-    df_wb_sub = df_wb[['player_id', 'current_drought', 'aging_type', 'rho_shape', 'prob', 'score', 'rank']].rename(
+    df_wb_sub = df_wb[['merge_key', 'current_drought', 'aging_type', 'rho_shape', 'prob', 'score', 'rank']].rename(
         columns={'prob': 'wb_prob', 'score': 'wb_score', 'rank': 'wb_rank'}
     )
 
-    # Inner join on active players analyzed in both boards
-    merged = pd.merge(df_hr_sub, df_wb_sub, on='player_id', how='inner')
+    # 4. Perform clean 1-to-1 inner join
+    merged = pd.merge(df_hr_sub, df_wb_sub, on='merge_key', how='inner')
 
     if merged.empty:
         print("[!] No overlapping targets found.")
         return
 
-    # Calculate Synergy Composite Score & Tier Signal
+    # 5. Composite Score Calculation (55% HR Matchup, 45% Weibull Hazard)
     merged['synergy_score'] = round((merged['hr_score'] * 0.55) + (merged['wb_score'] * 0.45), 1)
 
     signals = []
@@ -62,13 +70,18 @@ def run_synergy_model(mode="predict"):
             signals.append("⚾ Secondary Pick")
 
     merged['synergy_tier'] = signals
-    merged = merged.sort_values(by='synergy_score', ascending=False).reset_index(drop=True)
+    merged = merged.sort_values(by=['synergy_score', 'hr_score'], ascending=False).reset_index(drop=True)
     merged['rank'] = merged.index + 1
+
+    # Drop merge key before export
+    merged = merged.drop(columns=['merge_key'])
 
     merged.to_csv(f"exports/synergy/synergy_top50_{today_str}.csv", index=False)
     render_synergy_card(merged.head(30), f"exports/synergy/synergy_top50_card_{today_str}.png", today_str)
 
 def render_synergy_card(df, out_path, today_str):
+    if df.empty:
+        return
     fig, ax = plt.subplots(figsize=(26, 15), dpi=300)
     fig.patch.set_facecolor('#070d1e')
     ax.axis('off')
