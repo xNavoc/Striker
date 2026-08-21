@@ -18,59 +18,54 @@ def run_master_leaderboard(mode="predict"):
     hit_p = f"exports/hits/hits_top50_{today_str}.csv"
     combo_p = f"exports/hr_rbi/hr_rbi_top50_{today_str}.csv"
 
-    # Ingest Upstream Domain Boards
     dfs = {}
     for key, path in [('hr', hr_p), ('wb', wb_p), ('tb', tb_p), ('hit', hit_p), ('combo', combo_p)]:
         if os.path.exists(path):
-            df_temp = pd.read_csv(path)
-            df_temp['merge_key'] = df_temp['player_name'].apply(clean_name_str)
-            dfs[key] = df_temp.drop_duplicates(subset=['merge_key']).reset_index(drop=True)
+            try:
+                df_temp = pd.read_csv(path)
+                if not df_temp.empty and 'player_name' in df_temp.columns:
+                    df_temp['merge_key'] = df_temp['player_name'].apply(clean_name_str)
+                    dfs[key] = df_temp.drop_duplicates(subset=['merge_key']).reset_index(drop=True)
+            except Exception as e:
+                print(f"[!] Error loading {path} for Master Board: {e}")
         else:
-            print(f"[!] Warning: Upstream file {path} missing for Master Consensus.")
+            print(f"[!] Warning: Upstream file {path} not found for Master Board.")
 
-    if 'hr' not in dfs or 'wb' not in dfs:
-        print("[!] Critical upstream boards (HR or Weibull) missing. Cannot compile master board.")
+    if 'hr' not in dfs:
+        print("[!] Critical upstream board 'hr' missing. Master Consensus aborting.")
         return
 
     print(f"[{datetime.now()}] Synthesizing MASTER TOP 50 Daily Consensus for {today_str}...")
 
-    # Base on HR board
-    base = dfs['hr'][['merge_key', 'player_name', 'team', 'opp_pitcher', 'p_hand', 'b_hand', 'sp_hr9_split', 'iso', 'clash_badge', 'prob', 'score', 'rank']].rename(
-        columns={'prob': 'hr_prob', 'score': 'hr_score', 'rank': 'hr_rk'}
-    )
+    base_cols = [c for c in ['merge_key', 'player_name', 'team', 'opp_pitcher', 'p_hand', 'b_hand', 'sp_hr9_split', 'iso', 'clash_badge', 'prob', 'score', 'rank'] if c in dfs['hr'].columns]
+    base = dfs['hr'][base_cols].rename(columns={'prob': 'hr_prob', 'score': 'hr_score', 'rank': 'hr_rk'})
 
-    # Merge Weibull
     if 'wb' in dfs:
         wb_cols = [c for c in ['merge_key', 'current_drought_games', 'current_drought_pa', 'saturation', 'rho_shape', 'prob', 'score', 'rank'] if c in dfs['wb'].columns]
         wb_sub = dfs['wb'][wb_cols].rename(columns={'prob': 'wb_prob', 'score': 'wb_score', 'rank': 'wb_rk'})
         base = pd.merge(base, wb_sub, on='merge_key', how='left')
 
-    # Merge Total Bases
     if 'tb' in dfs:
         tb_cols = [c for c in ['merge_key', 'exp_tb', 'prob_o15', 'score', 'rank'] if c in dfs['tb'].columns]
         tb_sub = dfs['tb'][tb_cols].rename(columns={'score': 'tb_score', 'rank': 'tb_rk'})
         base = pd.merge(base, tb_sub, on='merge_key', how='left')
 
-    # Merge Hits
     if 'hit' in dfs:
         hit_cols = [c for c in ['merge_key', 'prob_1h', 'score', 'rank'] if c in dfs['hit'].columns]
         hit_sub = dfs['hit'][hit_cols].rename(columns={'score': 'hit_score', 'rank': 'hit_rk'})
         base = pd.merge(base, hit_sub, on='merge_key', how='left')
 
-    # Merge Combo (H+R+RBI)
     if 'combo' in dfs:
         combo_cols = [c for c in ['merge_key', 'avg_combo', 'prob_2plus', 'score', 'rank'] if c in dfs['combo'].columns]
         combo_sub = dfs['combo'][combo_cols].rename(columns={'score': 'combo_score', 'rank': 'combo_rk'})
         base = pd.merge(base, combo_sub, on='merge_key', how='left')
 
-    # Fill missing fallback metrics
     for s_col in ['hr_score', 'wb_score', 'tb_score', 'hit_score', 'combo_score']:
         if s_col not in base.columns:
             base[s_col] = 45.0
         else:
             base[s_col] = base[s_col].fillna(45.0)
 
-    # Consensus Score Engine & Primary Target Routing
     consensus_scores = []
     best_props = []
 
@@ -87,16 +82,13 @@ def run_master_leaderboard(mode="predict"):
         phr = float(r.get('hr_prob', 0.15) or 0.15)
         p2combo = float(r.get('prob_2plus', 0.50) or 0.50)
 
-        # Composite weighting (28% HR, 22% WB, 22% TB, 16% Hits, 12% Combo)
         c_score = (hr_s * 0.28) + (wb_s * 0.22) + (tb_s * 0.22) + (hit_s * 0.16) + (combo_s * 0.12)
         
-        # Dual-Model Apex Bonus
         if phr >= 0.22 and sat >= 1.05 and rho >= 1.04:
             c_score = min(98.8, c_score * 1.06)
 
         consensus_scores.append(round(float(c_score), 1))
 
-        # Actionable Target Allocation
         if phr >= 0.24 and sat >= 1.0:
             best_props.append("👑 HR Prop (Apex)")
         elif po15 >= 0.65:
@@ -112,10 +104,16 @@ def run_master_leaderboard(mode="predict"):
     base['best_prop_target'] = best_props
     base = base.sort_values(by=['consensus_score', 'hr_score'], ascending=False).reset_index(drop=True)
     base['rank'] = base.index + 1
-    base = base.drop(columns=['merge_key'])
+    
+    if 'merge_key' in base.columns:
+        base = base.drop(columns=['merge_key'])
 
-    base.to_csv(f"exports/master/master_top50_{today_str}.csv", index=False)
-    render_master_card(base.head(40), f"exports/master/master_top50_card_{today_str}.png", today_str)
+    csv_path = f"exports/master/master_top50_{today_str}.csv"
+    card_path = f"exports/master/master_top50_card_{today_str}.png"
+
+    base.to_csv(csv_path, index=False)
+    render_master_card(base.head(40), card_path, today_str)
+    print(f"[✓] Successfully wrote Master Board CSV: {csv_path}")
 
 def render_master_card(df, out_path, today_str):
     if df.empty:
@@ -184,4 +182,4 @@ def render_master_card(df, out_path, today_str):
 
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close('all')
-    print(f"[✓] Saved MASTER Top 50 Consensus Card to {out_path}")
+    print(f"[✓] Saved Master Consensus Visual Card: {out_path}")
