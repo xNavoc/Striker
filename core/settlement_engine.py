@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-from core.data_loader import clean_name_str
+from core.data_loader import clean_name_str, get_req_headers
 
 def get_yesterday_date() -> str:
     """Returns yesterday's date formatted as YYYY-MM-DD in US/Eastern."""
@@ -20,7 +20,7 @@ def fetch_actual_game_stats(date_str: str):
     stats_map = {}
 
     try:
-        res = requests.get(url, timeout=10)
+        res = requests.get(url, headers=get_req_headers(), timeout=10)
         if res.status_code != 200:
             print(f"[!] MLB API returned status {res.status_code} for date {date_str}.")
             return stats_map
