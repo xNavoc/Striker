@@ -3,7 +3,7 @@ from datetime import datetime
 import streamlit as st
 import pandas as pd
 
-# 1. Streamlit Page Configuration
+# 1. Page Configuration
 st.set_page_config(
     page_title="MLB Predictive Command Center",
     page_icon="⚾",
@@ -11,57 +11,42 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Cyber-Sports UI Theme (Custom CSS)
+# 2. Advanced Dashboard UI Theme (Custom CSS)
 st.markdown("""
 <style>
-    /* Global App Background */
     .stApp {
         background-color: #070d1e;
         color: #f1f5f9;
     }
     
-    /* Top KPI Metric Cards */
+    /* Card Containers */
+    .dashboard-card {
+        background-color: #0f172a;
+        border: 1px solid #1e293b;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+    }
+    
+    /* KPI Metrics Styling */
     [data-testid="stMetric"] {
         background-color: #0f172a;
-        padding: 16px 20px;
-        border-radius: 12px;
+        padding: 16px;
+        border-radius: 10px;
         border: 1px solid #1e293b;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
     [data-testid="stMetricValue"] {
         color: #f8fafc;
-        font-size: 2.1rem !important;
+        font-size: 1.8rem !important;
         font-weight: 800;
     }
     [data-testid="stMetricLabel"] {
         color: #94a3b8;
-        font-size: 0.85rem !important;
+        font-size: 0.8rem !important;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-    }
-
-    /* Tabbed Navigation Bar */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 12px;
-        background-color: transparent;
-        border-bottom: 1px solid #1e293b;
-        padding-bottom: 4px;
-    }
-    .stTabs [data-baseweb="tab"] {
-        background-color: #0f172a;
-        border-radius: 8px 8px 0px 0px;
-        border: 1px solid #1e293b;
-        border-bottom: none;
-        padding: 10px 22px;
-        color: #94a3b8;
-        font-weight: 500;
-    }
-    .stTabs [aria-selected="true"] {
-        background-color: #1e293b !important;
-        color: #38bdf8 !important;
-        font-weight: 700;
-        border-bottom: 2px solid #38bdf8 !important;
     }
 
     /* DataFrame Container */
@@ -71,27 +56,26 @@ st.markdown("""
         background-color: #0b1329;
     }
     
-    /* Download Button */
+    /* Buttons */
     .stDownloadButton > button {
         background-color: #1e293b;
         color: #38bdf8;
         border: 1px solid #38bdf8;
         border-radius: 8px;
         font-weight: 600;
-        transition: all 0.2s ease-in-out;
+        width: 100%;
     }
     .stDownloadButton > button:hover {
         background-color: #38bdf8;
         color: #070d1e;
-        border-color: #38bdf8;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# 3. Sidebar Navigation & Model Selection
+# 3. Sidebar Configuration
 with st.sidebar:
     st.markdown("## ⚾ **STRIKER ENGINE**")
-    st.caption("Predictive Analytics & Props Modeling")
+    st.caption("Command Center & Terminal")
     st.markdown("---")
     
     selected_date = st.date_input("🗓️ **Slate Date**", datetime.today())
@@ -113,7 +97,7 @@ with st.sidebar:
     )
     
     st.markdown("---")
-    st.caption("System Status: **ONLINE (200 OK)** 🟢")
+    st.caption("Pipeline: **ONLINE** 🟢")
 
 # 4. File Routing Map
 model_dir_map = {
@@ -130,55 +114,58 @@ sub_dir, csv_file, card_file = model_dir_map[model_choice]
 csv_path = os.path.join("exports", sub_dir, csv_file)
 card_path = os.path.join("exports", sub_dir, card_file)
 
-# 5. Styling Helper (Pandas 2.1+ Compatible)
+# 5. Styling Helper for Table Calls
 def style_target_calls(val):
     val_str = str(val)
-    if 'LOCK' in val_str or 'APEX' in val_str:
+    if 'LOCK' in val_str or 'APEX' in val_str or 'CRITICAL' in val_str:
         return 'color: #38bdf8; font-weight: bold; background-color: rgba(56, 189, 248, 0.12);'
     elif 'TARGET' in val_str or 'LADDER' in val_str or 'ELEVATED' in val_str:
         return 'color: #4ade80; font-weight: bold; background-color: rgba(74, 222, 128, 0.10);'
     elif 'WATCH' in val_str or 'DUE' in val_str:
         return 'color: #facc15; font-weight: bold; background-color: rgba(250, 204, 21, 0.10);'
-    elif 'RESET' in val_str:
+    elif 'RESET' in val_str or 'Baseline' in val_str:
         return 'color: #94a3b8; font-style: italic;'
     return 'color: #64748b;'
 
-# 6. Main Dashboard View
-st.title(f"{model_choice} Matrix")
-st.markdown(f"**Date:** `{date_str}` | Full-slate projections, split dynamics, and environment adjustments.")
+# 6. Main Dashboard Layout
+st.title(f"⚡ {model_choice} Command Hub")
+st.markdown(f"**Active Slate Date:** `{date_str}` | Real-time predictive analytics & matchup intelligence.")
 st.markdown("<br>", unsafe_allow_html=True)
 
 if not os.path.exists(csv_path):
-    st.warning(f"⚠️ No projection data found for **{model_choice}** on `{date_str}`.")
-    st.info("Execute `python run_models.py --mode predict` to generate daily exports.")
+    st.warning(f"⚠️ No export data found for **{model_choice}** on `{date_str}`.")
+    st.info("Execute `python run_models.py --mode predict` in your terminal to generate fresh exports.")
 else:
     df = pd.read_csv(csv_path)
 
-    # Dynamic KPI ribbon
+    # --- KPI Ribbon Grid ---
     score_col = next((c for c in ['score', 'synergy_score', 'hazard_score'] if c in df.columns), None)
     top_score_val = f"{df[score_col].max():.1f}" if score_col else "N/A"
     
-    tier_1_locks = df['target_call'].astype(str).str.contains('LOCK|APEX|CRITICAL').sum() if 'target_call' in df.columns else 0
-    tier_2_targets = df['target_call'].astype(str).str.contains('TARGET|LADDER|ELEVATED|WATCH').sum() if 'target_call' in df.columns else 0
+    tier_1_locks = df['target_call'].astype(str).str.contains('LOCK|APEX|CRITICAL', case=False, na=False) if 'target_call' in df.columns else pd.Series([False]*len(df))
+    tier_2_targets = df['target_call'].astype(str).str.contains('TARGET|LADDER|ELEVATED|WATCH', case=False, na=False) if 'target_call' in df.columns else pd.Series([False]*len(df))
 
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Evaluated Slate", f"{len(df)} Targets")
-    c2.metric("Top Model Score", top_score_val)
-    c3.metric("Tier 1 Apex / Locks", tier_1_locks)
-    c4.metric("Tier 2 Active Targets", tier_2_targets)
+    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+    kpi1.metric("Total Slate Targets", f"{len(df)}")
+    kpi2.metric("Top Model Score", top_score_val)
+    kpi3.metric("Tier 1 Locks / Apex", int(tier_1_locks.sum()))
+    kpi4.metric("Tier 2 Active Targets", int(tier_2_targets.sum()))
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    tab_table, tab_card = st.tabs(["🕹️ Interactive Matrix Table", "🖼️ High-Resolution Visual Card"])
+    # --- Dashboard Control & Filter Bar (Card Container) ---
+    with st.container():
+        st.markdown("### 🎛️ Interactive Filters & Controls")
+        f_col1, f_col2, f_col3 = st.columns([2, 1, 1])
+        
+        with f_col1:
+            search_term = st.text_input("🔍 Search Player, Team, or Pitcher...", placeholder="e.g. Schwarber, St. Louis, Painter")
+        with f_col2:
+            hide_standard = st.checkbox("🎯 Actionable Only", value=False)
+        with f_col3:
+            sort_order = st.selectbox("📊 Sort By", ["Model Score (High to Low)", "Player Name (A-Z)"])
 
-    with tab_table:
-        col_search, col_filter = st.columns([2.5, 1])
-        with col_search:
-            search_term = st.text_input("🔍 Search Player, Pitcher, or Team...", placeholder="e.g. Schwarber, NYY, Cole")
-        with col_filter:
-            hide_standard = st.checkbox("🎯 Highlight Actionable Only (Hide Standard)", value=False)
-
-        # Filtering logic
+        # Filter Logic
         df_filtered = df.copy()
         if search_term:
             mask = df_filtered.apply(lambda row: row.astype(str).str.contains(search_term, case=False).any(), axis=1)
@@ -186,17 +173,46 @@ else:
 
         if hide_standard and 'target_call' in df_filtered.columns:
             df_filtered = df_filtered[~df_filtered['target_call'].astype(str).str.contains('Standard|Baseline|Rotation', na=False)]
+            
+        if sort_order == "Model Score (High to Low)" and score_col in df_filtered.columns:
+            df_filtered = df_filtered.sort_values(by=score_col, ascending=False)
+        elif sort_order == "Player Name (A-Z)" and 'player_name' in df_filtered.columns:
+            df_filtered = df_filtered.sort_values(by='player_name', ascending=True)
 
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # --- Main Dashboard Split View (Table on Left, Visual Card on Right) ---
+    col_table, col_card = st.columns([1.5, 1])
+
+    with col_table:
+        st.markdown("### 📊 Slate Matrix Terminal")
         if not df_filtered.empty:
-            # Styler using .map() to prevent AttributeError on Pandas 2.1+
-            styled = df_filtered.style.map(style_target_calls, subset=['target_call'] if 'target_call' in df_filtered.columns else [])
-            st.dataframe(styled, use_container_width=True, height=620, hide_index=True)
-        else:
-            st.warning("No players matched the active filter.")
+            # Clean floating decimals formatting dictionary
+            format_dict = {}
+            for col in df_filtered.columns:
+                col_lower = col.lower()
+                if 'iso' in col_lower or 'slg' in col_lower:
+                    format_dict[col] = "{:.3f}"
+                elif 'prob' in col_lower or 'pct' in col_lower or '%' in col_lower:
+                    format_dict[col] = "{:.1f}%"
+                elif 'score' in col_lower or 'rating' in col_lower or col_lower in ['expected_tb', 'true_ab', 'scale_lambda']:
+                    format_dict[col] = "{:.1f}"
+                elif 'game' in col_lower or 'drought' in col_lower or col_lower in ['rank', 'order']:
+                    format_dict[col] = "{:.0f}"
 
-    with tab_card:
+            styled = df_filtered.style.format(format_dict, na_rep="-")
+            if 'target_call' in df_filtered.columns:
+                styled = styled.map(style_target_calls, subset=['target_call'])
+
+            st.dataframe(styled, use_container_width=True, height=650, hide_index=True)
+        else:
+            st.warning("No players matched the active filter criteria.")
+
+    with col_card:
+        st.markdown("### 🖼️ Rendered Infographic Card")
         if os.path.exists(card_path):
             st.image(card_path, use_container_width=True)
+            st.markdown("<br>", unsafe_allow_html=True)
             with open(card_path, "rb") as file:
                 st.download_button(
                     label=f"📥 Download {model_choice} Card (PNG)",
@@ -205,4 +221,4 @@ else:
                     mime="image/png"
                 )
         else:
-            st.info("Rendered image card not found for this model date.")
+            st.info("Rendered image card not found for this model date. Run the pipeline to generate exports.")
