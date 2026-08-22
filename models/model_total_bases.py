@@ -2,12 +2,48 @@ import os
 from datetime import datetime
 import pandas as pd
 import numpy as np
-from scipy.stats import poisson
 import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
-def run_tb_model(mode="predict"):
+def calculate_l15_slg_and_bb(game_logs, fallback_slg=0.410, fallback_bb_pct=0.08):
+    """Calculates SLG and Walk Rate across the batter's last 15 games."""
+    if not isinstance(game_logs, list) or len(game_logs) == 0:
+        return fallback_slg, fallback_bb_pct
+
+    try:
+        sorted_logs = sorted(game_logs, key=lambda x: str(x.get('date', '')), reverse=True)[:15]
+    except Exception:
+        sorted_logs = game_logs[:15]
+
+    total_ab = 0
+    total_pa = 0
+    total_bb = 0
+    total_tb = 0
+
+    for g in sorted_logs:
+        ab = int(g.get('ab', 0))
+        bb = int(g.get('bb', 0))
+        h = int(g.get('h', 0))
+        d = int(g.get('2b', 0))
+        t = int(g.get('3b', 0))
+        hr = int(g.get('hr', 0))
+
+        # Calculate Total Bases: Singles (H - 2B - 3B - HR) * 1 + XBH weights
+        singles = max(0, h - d - t - hr)
+        tb = singles + (d * 2) + (t * 3) + (hr * 4)
+
+        total_ab += ab
+        total_bb += bb
+        total_pa += (ab + bb)
+        total_tb += tb
+
+    l15_slg = (total_tb / total_ab) if total_ab > 0 else fallback_slg
+    l15_bb_pct = (total_bb / total_pa) if total_pa > 0 else fallback_bb_pct
+    
+    return l15_slg, l15_bb_pct
+
+def run_total_bases_model(mode="predict"):
     today_str, games = load_daily_slate()
     os.makedirs("exports/total_bases", exist_ok=True)
 
@@ -18,12 +54,13 @@ def run_tb_model(mode="predict"):
         ))
         return
 
-    print(f"[{datetime.now()}] Running Extra-Base Hit (TB) Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Streamlined Total Bases Model for {today_str}...")
     targets = []
 
     for g in games:
-        park_tb_adj = g.get('park_factors', {}).get('tb', 100) / 100.0
-        weather_hits_adj = g.get('weather_info', {}).get('hits_mod', 1.00)
+        # Environmental: General ballpark run/XBH factor
+        park_factors = g.get('park_factors', {})
+        park_tb_adj = park_factors.get('runs', 100) / 100.0
 
         for side, team_name, opp_p, opp_bp, batters in [
             ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
@@ -31,80 +68,85 @@ def run_tb_model(mode="predict"):
         ]:
             opp_p_dict = opp_p if isinstance(opp_p, dict) else {}
             opp_p_name = opp_p_dict.get('pitcher_name', 'TBD Pitcher')
-            opp_p_hand = opp_p_dict.get('p_hand', 'R')
+            
+            # Pitcher Matchup: Slugging Allowed
+            p_slg_allowed = float(opp_p_dict.get('slg_allowed', 0.410))
+            league_avg_slg = 0.410
+            pitcher_tb_multiplier = np.clip(p_slg_allowed / league_avg_slg, 0.75, 1.35)
 
             for b_tuple in batters:
                 if len(b_tuple) >= 4:
                     order, b_id, b_name, b_prof = b_tuple[0], b_tuple[1], b_tuple[2], b_tuple[3]
                 else:
                     continue
+                
+                try:
+                    order_num = int(''.join(filter(str.isdigit, str(order))))
+                except ValueError:
+                    order_num = 9
+
+                # Expected Plate Appearances based on lineup order
+                if order_num in [1, 2, 3]:
+                    expected_pa = 4.5
+                elif order_num in [4, 5, 6]:
+                    expected_pa = 4.1
+                else:
+                    expected_pa = 3.6 # Severe volume drop for bottom of the order
 
                 b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
-                b_hand = b_prof_dict.get('b_hand', 'R')
-                slg = float(b_prof_dict.get('slg', 0.405))
-                iso = float(b_prof_dict.get('iso', 0.160))
+                
+                # Batter Baselines
+                season_slg = float(b_prof_dict.get('slg', 0.410))
+                season_bb_pct = float(b_prof_dict.get('bb_pct', 0.085))
+                
+                game_logs = b_prof_dict.get('game_logs', [])
+                l15_slg, l15_bb_pct = calculate_l15_slg_and_bb(game_logs, season_slg, season_bb_pct)
+                
+                # Blend 60/40 Season to Recency
+                blended_slg = (0.60 * season_slg) + (0.40 * l15_slg)
+                blended_bb_pct = (0.60 * season_bb_pct) + (0.40 * l15_bb_pct)
 
-                # Handedness split resolution
-                effective_b_hand = 'L' if b_hand == 'S' and opp_p_hand == 'R' else ('R' if b_hand == 'S' and opp_p_hand == 'L' else b_hand)
-                sp_slg = float(opp_p_dict.get('slg_lhb', 0.405) if effective_b_hand == 'L' else opp_p_dict.get('slg_rhb', 0.405))
+                # Pillar 2: True At-Bats (Penalize high walk rates)
+                # If a player walks 15% of the time, 15% of their PAs yield 0 total bases.
+                true_ab = expected_pa * (1.0 - blended_bb_pct)
 
-                # Extra base profile badge
-                if iso >= 0.220:
-                    xbh_badge = "POWER [XBH SURGE]"
-                    tb_mult = 1.10
-                elif iso >= 0.170:
-                    xbh_badge = "GAP [2B/3B EDGE]"
-                    tb_mult = 1.04
+                # Core Math: Calculate Expected Total Bases
+                # Expected TB = True ABs * Blended SLG * Pitcher/Park Multipliers
+                expected_tb = float(np.clip(true_ab * blended_slg * pitcher_tb_multiplier * park_tb_adj, 0.5, 3.5))
+                
+                # Map expected output to a 10-99 score (targeting 1.5+ for props)
+                score = round(float(np.clip((expected_tb / 2.0) * 100.0, 10.0, 99.0)), 1)
+
+                if score >= 80.0:
+                    call = "💎 TB LOCK: Elite SLG & AB Volume"
+                elif score >= 65.0:
+                    call = "🎯 TB TARGET: Strong XBH Spot"
                 else:
-                    xbh_badge = "BALANCED SLUGGER"
-                    tb_mult = 0.98
-
-                # Expected Total Bases (SLG * At-Bats / PA expectation)
-                lambda_tb = (slg * (sp_slg / 0.405)) * park_tb_adj * weather_hits_adj * tb_mult * 4.2 * 0.88
-                lambda_tb = float(np.clip(lambda_tb, 0.50, 3.60))
-
-                prob_o15 = round(float(1.0 - poisson.cdf(1, lambda_tb)), 4)
-                prob_o25 = round(float(1.0 - poisson.cdf(2, lambda_tb)), 4)
-
-                score_raw = 100.0 / (1.0 + np.exp(-14.0 * (prob_o15 - 0.550)))
-                score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
-
-                if prob_o15 >= 0.65:
-                    call = "👑 LOCK: Over 1.5 TB (Anchor)"
-                elif prob_o25 >= 0.40:
-                    call = "💎 LADDER: Over 2.5 TB (Value)"
-                elif prob_o15 >= 0.58:
-                    call = "🔥 TARGET: Over 1.5 TB"
-                else:
-                    call = "⚾ Baseline TB Range"
+                    call = "⚾ Standard Base Volume"
 
                 targets.append({
                     'player_id': b_id,
                     'player_name': b_name,
-                    'order': order,
+                    'order': order_num,
                     'team': team_name,
                     'opp_pitcher': opp_p_name,
-                    'p_hand': opp_p_hand,
-                    'b_hand': b_hand,
-                    'slg': round(slg, 3),
-                    'iso': round(iso, 3),
-                    'opp_slg_split': round(sp_slg, 3),
-                    'xbh_badge': xbh_badge,
-                    'exp_tb': round(lambda_tb, 2),
-                    'prob_o15': prob_o15,
-                    'prob_o25': prob_o25,
+                    'true_ab': round(true_ab, 2),
+                    'blended_slg': round(blended_slg, 3),
+                    'bb_pct': round(blended_bb_pct * 100, 1),
+                    'p_slg_allowed': round(p_slg_allowed, 3),
+                    'expected_tb': round(expected_tb, 2),
                     'score': score,
                     'target_call': call
                 })
 
     df = pd.DataFrame(targets)
     if not df.empty:
-        df = df.sort_values(by=['score', 'prob_o15'], ascending=False).reset_index(drop=True)
+        df = df.sort_values(by='score', ascending=False).reset_index(drop=True)
         df['rank'] = df.index + 1
         df.to_csv(f"exports/total_bases/total_bases_top50_{today_str}.csv", index=False)
-        render_tb_card(df.head(35), f"exports/total_bases/total_bases_top50_card_{today_str}.png", today_str)
+        render_total_bases_card(df.head(35), f"exports/total_bases/total_bases_top50_card_{today_str}.png", today_str)
 
-def render_tb_card(df, out_path, today_str):
+def render_total_bases_card(df, out_path, today_str):
     if df.empty:
         return
     plt.close('all')
@@ -113,31 +155,24 @@ def render_tb_card(df, out_path, today_str):
     fig.patch.set_facecolor('#070d1e')
     ax.axis('off')
 
-    fig.text(0.5, 0.965, "MLB DAILY TOTAL BASES (TB) TARGET & SLUGGING MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.938, f"Extra-Base Hit Dynamics • Opponent Split SLG • Poisson Total Base Distribution • {today_str}", ha='center', color='#38bdf8', fontsize=12)
+    fig.text(0.5, 0.965, "MLB TOTAL BASES MATRIX (SLG & VOLUME INDEX)", ha='center', color='#f8fafc', fontsize=22, weight='bold')
+    fig.text(0.5, 0.938, f"Blended SLG • Walk-Adjusted True ABs • Pitcher SLG Allowed • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Batter & Stance', 'Team', 'Opp Pitcher', 'SLG', 'ISO', 'Opp SLG (Split)', 'XBH Profile', 'Exp TB', 'O 1.5 TB', 'O 2.5 TB', 'Score', 'ACTIONABLE TB CALL']
+    cols = ['#', 'Batter', 'Team', 'Opp Pitcher (SLG)', 'Blended SLG', 'Walk % Penalty', 'Est True ABs', 'Proj Total Bases', 'Score', 'ACTIONABLE CALL']
     rows = []
 
     for _, r in df.iterrows():
-        po15 = float(r.get('prob_o15', 0.0))
-        po25 = float(r.get('prob_o25', 0.0))
-        s_val = float(r.get('score', 0.0))
-        call = str(r.get('target_call', 'Baseline TB Range'))
-
+        call = str(r.get('target_call', 'Standard Base Volume'))
         rows.append([
             r.get('rank', 1),
-            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')} ({r.get('b_hand', 'R')})",
+            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
             str(r.get('team', 'Team'))[:11],
-            f"{str(r.get('opp_pitcher', 'TBD'))[:11]} ({r.get('p_hand', 'R')})",
-            f"{float(r.get('slg', 0.405)):.3f}",
-            f"{float(r.get('iso', 0.160)):.3f}",
-            f"{float(r.get('opp_slg_split', 0.405)):.3f}",
-            str(r.get('xbh_badge', 'BALANCED')),
-            f"{float(r.get('exp_tb', 1.0)):.2f}",
-            f"{po15 * 100:.1f}%",
-            f"{po25 * 100:.1f}%",
-            f"{s_val:.1f}",
+            f"{str(r.get('opp_pitcher', 'TBD'))[:11]} (.{str(float(r.get('p_slg_allowed', 0.410)))[2:5].ljust(3, '0')})",
+            f".{str(float(r.get('blended_slg', 0.410)))[2:5].ljust(3, '0')}",
+            f"{r.get('bb_pct', 0.0)}%",
+            f"{float(r.get('true_ab', 0.0)):.2f}",
+            f"{float(r.get('expected_tb', 0.0)):.2f}",
+            f"{float(r.get('score', 0.0)):.1f}",
             call
         ])
 
@@ -152,20 +187,27 @@ def render_tb_card(df, out_path, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#0f172a')
         else:
-            if col == 12:
-                txt = rows[row-1][12]
+            if col == 9:
+                txt = rows[row-1][9]
                 cell.set_text_props(
-                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else ('#facc15' if 'LADDER' in txt else '#94a3b8')),
+                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else '#94a3b8'),
                     weight='bold'
                 )
-            elif col in [9, 10, 11]:
+            elif col in [7, 8]:
                 cell.set_text_props(color='#facc15', weight='bold')
-            elif col == 6:
+            elif col == 4:
                 cell.set_text_props(color='#38bdf8', weight='bold')
+            elif col == 5:
+                # Highlight high walk rates (bad for TB) in red/muted
+                bb = float(rows[row-1][5].strip('%'))
+                if bb > 12.0:
+                    cell.set_text_props(color='#f87171')
+                else:
+                    cell.set_text_props(color='#f1f5f9')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
 
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close('all')
-    print(f"[✓] Saved Total Bases Card to {out_path}")
+    print(f"[✓] Saved Streamlined Total Bases Card to {out_path}")
