@@ -12,15 +12,18 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for Dark Mode styling
+# Custom CSS for Dark Mode styling & clean table aesthetics
 st.markdown("""
     <style>
     .stApp {
         background-color: #050a18;
         color: #f8fafc;
     }
-    .css-1d391kg {
+    .metric-card {
         background-color: #0f172a;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #1e293b;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -28,7 +31,6 @@ st.markdown("""
 def check_password():
     """Returns `True` if the user had the correct password."""
     def password_entered():
-        # CORE FIX: Compares input to the secure Streamlit secret, not a hardcoded string.
         if st.session_state["password"] == st.secrets["app_password"]:
             st.session_state["password_correct"] = True
             del st.session_state["password"]
@@ -83,7 +85,8 @@ def main():
     selected_date = st.sidebar.date_input("Select Slate Date", value=datetime.strptime(today, "%Y-%m-%d").date())
     date_str = selected_date.strftime("%Y-%m-%d")
 
-    model_choice = st.sidebar.radio(
+    # Condensed category selection using selectbox
+    model_choice = st.sidebar.selectbox(
         "Select Target Matrix",
         [
             "Master Consensus (Top 50)",
@@ -100,46 +103,35 @@ def main():
     st.sidebar.markdown("---")
     st.sidebar.caption("Data refreshes daily via GitHub Actions.")
 
-    if model_choice == "Master Consensus (Top 50)":
-        st.header(f"Master Top 50 Consensus Matrix • {date_str}")
-        df = load_model_data("master", "master_top50", date_str)
-        
-    elif model_choice == "Power Synergy (HR + Weibull)":
-        st.header(f"Power Synergy Matrix • {date_str}")
-        df = load_model_data("synergy", "synergy_top50", date_str)
-        
-    elif model_choice == "Home Runs":
-        st.header(f"Home Run Clash Matrix • {date_str}")
-        df = load_model_data("hr", "hr_top50", date_str)
-        
-    elif model_choice == "Total Bases":
-        st.header(f"Total Bases Ladder Matrix • {date_str}")
-        df = load_model_data("total_bases", "total_bases_top50", date_str)
-        
-    elif model_choice == "Hits & Contact":
-        st.header(f"Hits & Contact Matrix • {date_str}")
-        df = load_model_data("hits", "hits_top50", date_str)
-        
-    elif model_choice == "H+R+RBI Combo":
-        st.header(f"H+R+RBI Traffic Matrix • {date_str}")
-        df = load_model_data("hr_rbi", "hr_rbi_top50", date_str)
-        
-    elif model_choice == "Pitcher Strikeouts":
-        st.header(f"Pitcher K Ladder Matrix • {date_str}")
-        df = load_model_data("pitcher_ks", "pitcher_ks_top50", date_str)
-        
-    elif model_choice == "Weibull Hazard Cycles":
-        st.header(f"Weibull Survival Hazards • {date_str}")
-        df = load_model_data("weibull", "weibull_top50", date_str)
+    # Model mapping dictionary for clean routing
+    routes = {
+        "Master Consensus (Top 50)": ("master", "master_top50", "Master Top 50 Consensus Matrix"),
+        "Power Synergy (HR + Weibull)": ("synergy", "synergy_top50", "Power Synergy Matrix"),
+        "Home Runs": ("hr", "hr_top50", "Home Run Clash Matrix"),
+        "Total Bases": ("total_bases", "total_bases_top50", "Total Bases Ladder Matrix"),
+        "Hits & Contact": ("hits", "hits_top50", "Hits & Contact Matrix"),
+        "H+R+RBI Combo": ("hr_rbi", "hr_rbi_top50", "H+R+RBI Traffic Matrix"),
+        "Pitcher Strikeouts": ("pitcher_ks", "pitcher_ks_top50", "Pitcher K Ladder Matrix"),
+        "Weibull Hazard Cycles": ("weibull", "weibull_top50", "Weibull Survival & Due Dates")
+    }
+
+    dir_name, prefix, title = routes.get(model_choice, ("master", "master_top50", "Master Consensus"))
+    
+    st.header(f"{title} • {date_str}")
+    df = load_model_data(dir_name, prefix, date_str)
 
     if not df.empty:
-        call_col = next((col for col in df.columns if 'call' in col.lower() or 'target' in col.lower()), None)
+        # Streamline column display: drop redundant internal IDs if present, focus on clean view
+        display_cols = [c for c in df.columns if c not in ['player_id']]
+        
+        # Highlight actionable call column
+        call_col = next((col for col in display_cols if 'call' in col.lower() or 'target' in col.lower()), None)
         
         if call_col:
-            styled_df = df.style.map(apply_color_coding, subset=[call_col])
-            st.dataframe(styled_df, use_container_width=True, hide_index=True, height=800)
+            styled_df = df[display_cols].style.map(apply_color_coding, subset=[call_col])
+            st.dataframe(styled_df, use_container_width=True, hide_index=True, height=750)
         else:
-            st.dataframe(df, use_container_width=True, hide_index=True, height=800)
+            st.dataframe(df[display_cols], use_container_width=True, hide_index=True, height=750)
     else:
         st.warning(f"No prediction artifacts found for {model_choice} on {date_str}. The slate may be empty, or the pipeline hasn't run yet.")
 
