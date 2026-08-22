@@ -2,36 +2,36 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,
 695491,Joshua Báez,5,St. Louis Cardinals,Andrew Painter,R vs RHP,☁️ 1.00x,0.428,0.428,0.428,34.7,69.4,🔥 HR TARGET: Strong Power Split,1
 691728,Zac Veen,9,Colorado Rockies,Tanner Bibee,L vs RHP,☁️ 1.00x,0.369,0.369,0.369,34.6,69.2,🔥 HR TARGET: Strong Power Split,2
 804668,Rafael Flores Jr.,5,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.385,0.385,0.385,31.8,63.5,🔥 HR TARGET: Strong Power Split,3
-700652,Kenny Piper,7,Tampa Bay Rays,Brandon Young,R vs RHP,☁️ 1.00x,0.428,0.428,0.428,30.4,60.9,🔥 HR TARGET: Strong Power Split,4
-666160,Mickey Moniak,2,Colorado Rockies,Tanner Bibee,L vs RHP,☁️ 1.00x,0.27,0.27,0.27,26.2,52.4,⚾ Standard Power Spot,5
-814430,Brett Callahan,6,Detroit Tigers,Michael Wacha,L vs RHP,☁️ 1.00x,0.384,0.384,0.384,26.1,52.2,⚾ Standard Power Spot,6
-808959,Munetaka Murakami,2,Chicago White Sox,Christian Scott,L vs RHP,☁️ 1.00x,0.301,0.301,0.301,24.5,49.0,⚾ Standard Power Spot,7
-699013,Esmerlyn Valdez,2,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.286,0.286,0.286,24.4,48.8,⚾ Standard Power Spot,8
-650559,Bryan De La Cruz,7,Philadelphia Phillies,Quinn Mathews,R vs LHP,☁️ 1.00x,0.226,0.226,0.226,22.4,44.9,⚾ Standard Power Spot,9
-656941,Kyle Schwarber,1,Philadelphia Phillies,Quinn Mathews,L vs LHP,☁️ 1.00x,0.28,0.28,0.28,22.2,44.5,⚾ Standard Power Spot,10
-666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes,R vs RHP,☁️ 1.00x,0.246,0.246,0.246,22.0,44.0,⚾ Standard Power Spot,11
-663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes,L vs RHP,☁️ 1.00x,0.222,0.222,0.222,21.9,43.8,⚾ Standard Power Spot,12
-660271,Shohei Ohtani,1,Los Angeles Dodgers,Jared Jones,L vs RHP,☁️ 1.00x,0.261,0.261,0.261,21.5,43.1,⚾ Standard Power Spot,13
-687952,Christian Encarnacion-Strand,6,Baltimore Orioles,Shane McClanahan,R vs LHP,☁️ 1.00x,0.247,0.247,0.247,21.4,42.7,⚾ Standard Power Spot,14
-571970,Max Muncy,4,Los Angeles Dodgers,Jared Jones,L vs RHP,☁️ 1.00x,0.252,0.252,0.252,20.9,41.7,⚾ Standard Power Spot,15
+666160,Mickey Moniak,2,Colorado Rockies,Tanner Bibee,L vs RHP,☁️ 1.00x,0.27,0.27,0.27,26.2,52.4,⚾ Standard Power Spot,4
+814430,Brett Callahan,6,Detroit Tigers,Michael Wacha,L vs RHP,☁️ 1.00x,0.384,0.384,0.384,26.1,52.2,⚾ Standard Power Spot,5
+808959,Munetaka Murakami,2,Chicago White Sox,Christian Scott,L vs RHP,☁️ 1.00x,0.301,0.301,0.301,24.5,49.0,⚾ Standard Power Spot,6
+699013,Esmerlyn Valdez,2,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.286,0.286,0.286,24.4,48.8,⚾ Standard Power Spot,7
+650559,Bryan De La Cruz,7,Philadelphia Phillies,Quinn Mathews,R vs LHP,☁️ 1.00x,0.226,0.226,0.226,22.4,44.9,⚾ Standard Power Spot,8
+656941,Kyle Schwarber,1,Philadelphia Phillies,Quinn Mathews,L vs LHP,☁️ 1.00x,0.28,0.28,0.28,22.2,44.5,⚾ Standard Power Spot,9
+666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes,R vs RHP,☁️ 1.00x,0.246,0.246,0.246,22.0,44.0,⚾ Standard Power Spot,10
+663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes,L vs RHP,☁️ 1.00x,0.222,0.222,0.222,21.9,43.8,⚾ Standard Power Spot,11
+660271,Shohei Ohtani,1,Los Angeles Dodgers,Jared Jones,L vs RHP,☁️ 1.00x,0.261,0.261,0.261,21.5,43.1,⚾ Standard Power Spot,12
+687952,Christian Encarnacion-Strand,6,Baltimore Orioles,Shane McClanahan,R vs LHP,☁️ 1.00x,0.247,0.247,0.247,21.4,42.7,⚾ Standard Power Spot,13
+571970,Max Muncy,4,Los Angeles Dodgers,Jared Jones,L vs RHP,☁️ 1.00x,0.252,0.252,0.252,20.9,41.7,⚾ Standard Power Spot,14
+670541,Yordan Alvarez,2,Houston Astros,Jacob Lopez,L vs LHP,☁️ 1.00x,0.297,0.297,0.297,20.6,41.1,⚾ Standard Power Spot,15
 621438,Tyrone Taylor,6,Chicago Cubs,Kade Anderson,R vs LHP,☁️ 1.00x,0.262,0.262,0.262,20.3,40.6,⚾ Standard Power Spot,16
 624413,Pete Alonso,2,Baltimore Orioles,Shane McClanahan,R vs LHP,☁️ 1.00x,0.233,0.233,0.233,20.2,40.5,⚾ Standard Power Spot,17
 592626,Joc Pederson,1,Texas Rangers,Ryan Johnson,L vs RHP,☁️ 1.00x,0.244,0.244,0.244,20.2,40.5,⚾ Standard Power Spot,18
 664954,Brett Sullivan,8,Colorado Rockies,Tanner Bibee,L vs RHP,☁️ 1.00x,0.202,0.202,0.202,20.1,40.1,⚾ Standard Power Spot,19
 682998,Corbin Carroll,2,Arizona Diamondbacks,Rhett Lowder,L vs RHP,☁️ 1.00x,0.238,0.238,0.238,19.8,39.6,⚾ Standard Power Spot,20
 691723,Coby Mayo,3,Baltimore Orioles,Shane McClanahan,R vs LHP,☁️ 1.00x,0.226,0.226,0.226,19.7,39.4,⚾ Standard Power Spot,21
-691406,Junior Caminero,6,Tampa Bay Rays,Brandon Young,R vs RHP,☁️ 1.00x,0.26,0.26,0.26,19.6,39.2,⚾ Standard Power Spot,22
+691406,Junior Caminero,4,Tampa Bay Rays,Brandon Young,R vs RHP,☁️ 1.00x,0.26,0.26,0.26,19.6,39.2,⚾ Standard Power Spot,22
 691023,Jordan Walker,4,St. Louis Cardinals,Andrew Painter,R vs RHP,☁️ 1.00x,0.222,0.222,0.222,19.3,38.6,⚾ Standard Power Spot,23
 664983,Jake McCarthy,1,Colorado Rockies,Tanner Bibee,L vs RHP,☁️ 1.00x,0.193,0.193,0.193,19.2,38.5,⚾ Standard Power Spot,24
 676475,Alec Burleson,3,St. Louis Cardinals,Andrew Painter,L vs RHP,☁️ 1.00x,0.2,0.2,0.2,19.2,38.4,⚾ Standard Power Spot,25
 678246,Miguel Vargas,3,Chicago White Sox,Christian Scott,R vs RHP,☁️ 1.00x,0.254,0.254,0.254,19.2,38.4,⚾ Standard Power Spot,26
 547180,Bryce Harper,3,Philadelphia Phillies,Quinn Mathews,L vs LHP,☁️ 1.00x,0.231,0.231,0.231,18.7,37.3,⚾ Standard Power Spot,27
 695657,Colson Montgomery,6,Chicago White Sox,Christian Scott,L vs RHP,☁️ 1.00x,0.222,0.222,0.222,18.6,37.1,⚾ Standard Power Spot,28
-572233,Christian Walker,3,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.209,0.209,0.209,18.3,36.6,⚾ Standard Power Spot,29
+572233,Christian Walker,5,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.209,0.209,0.209,18.3,36.6,⚾ Standard Power Spot,29
 575929,Willson Contreras,4,Boston Red Sox,Blade Tidwell,R vs RHP,☁️ 1.00x,0.256,0.256,0.256,17.8,35.5,⚾ Standard Power Spot,30
 668709,JJ Bleday,5,Cincinnati Reds,Michael Soroka,L vs RHP,☁️ 1.00x,0.211,0.211,0.211,17.7,35.4,⚾ Standard Power Spot,31
-642350,Jose Siri,3,Los Angeles Angels,Cody Bradford,R vs LHP,☁️ 1.00x,0.2,0.2,0.2,17.6,35.2,⚾ Standard Power Spot,32
-661531,Brian Serven,2,Athletics,Hunter Brown,R vs RHP,☁️ 1.00x,0.231,0.231,0.231,17.6,35.2,⚾ Standard Power Spot,33
+661531,Brian Serven,2,Athletics,Hunter Brown,R vs RHP,☁️ 1.00x,0.231,0.231,0.231,17.6,35.2,⚾ Standard Power Spot,32
+642350,Jose Siri,3,Los Angeles Angels,Cody Bradford,R vs LHP,☁️ 1.00x,0.2,0.2,0.2,17.6,35.2,⚾ Standard Power Spot,33
 621439,Byron Buxton,4,Minnesota Twins,Casey Mize,R vs RHP,☁️ 1.00x,0.264,0.264,0.264,17.5,35.0,⚾ Standard Power Spot,34
 691718,Pete Crow-Armstrong,1,Chicago Cubs,Kade Anderson,L vs LHP,☁️ 1.00x,0.275,0.275,0.275,17.3,34.5,⚾ Standard Power Spot,35
 694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee,S vs RHP,☁️ 1.00x,0.188,0.188,0.188,17.1,34.3,⚾ Standard Power Spot,36
@@ -40,7 +40,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,
 682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes,S vs RHP,☁️ 1.00x,0.184,0.184,0.184,16.8,33.6,⚾ Standard Power Spot,39
 673548,Seiya Suzuki,2,Chicago Cubs,Kade Anderson,R vs LHP,☁️ 1.00x,0.213,0.213,0.213,16.8,33.6,⚾ Standard Power Spot,40
 656537,Derek Hill,9,Philadelphia Phillies,Quinn Mathews,R vs LHP,☁️ 1.00x,0.162,0.162,0.162,16.4,32.9,⚾ Standard Power Spot,41
-665161,Jeremy Peña,6,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.186,0.186,0.186,16.4,32.9,⚾ Standard Power Spot,42
+665161,Jeremy Peña,1,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.186,0.186,0.186,16.4,32.9,⚾ Standard Power Spot,42
 677800,Wilyer Abreu,3,Boston Red Sox,Blade Tidwell,L vs RHP,☁️ 1.00x,0.213,0.213,0.213,16.4,32.9,⚾ Standard Power Spot,43
 608369,Corey Seager,2,Texas Rangers,Ryan Johnson,L vs RHP,☁️ 1.00x,0.194,0.194,0.194,16.4,32.8,⚾ Standard Power Spot,44
 665833,Oneil Cruz,4,Pittsburgh Pirates,Tarik Skubal,L vs LHP,☁️ 1.00x,0.224,0.224,0.224,15.9,31.8,⚾ Standard Power Spot,45
@@ -49,7 +49,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,
 553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka,R vs RHP,☁️ 1.00x,0.204,0.204,0.204,15.7,31.3,⚾ Standard Power Spot,48
 694671,Wyatt Langford,3,Texas Rangers,Ryan Johnson,R vs RHP,☁️ 1.00x,0.203,0.203,0.203,15.6,31.2,⚾ Standard Power Spot,49
 681198,TJ Rumfield,4,Colorado Rockies,Tanner Bibee,L vs RHP,☁️ 1.00x,0.154,0.154,0.154,15.6,31.1,⚾ Standard Power Spot,50
-701358,Cam Smith,1,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.175,0.175,0.175,15.5,31.0,⚾ Standard Power Spot,51
+701358,Cam Smith,8,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.175,0.175,0.175,15.5,31.0,⚾ Standard Power Spot,51
 695506,Jac Caglianone,3,Kansas City Royals,Drew Anderson,L vs RHP,☁️ 1.00x,0.214,0.214,0.214,15.4,30.9,⚾ Standard Power Spot,52
 642715,Willy Adames,3,San Francisco Giants,Patrick Sandoval,R vs LHP,☁️ 1.00x,0.19,0.19,0.19,15.4,30.8,⚾ Standard Power Spot,53
 682674,Victor Bericoto,1,San Francisco Giants,Patrick Sandoval,R vs LHP,☁️ 1.00x,0.188,0.188,0.188,15.3,30.5,⚾ Standard Power Spot,54
@@ -62,7 +62,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,
 650489,Willi Castro,6,Colorado Rockies,Tanner Bibee,S vs RHP,☁️ 1.00x,0.159,0.159,0.159,14.6,29.3,⚾ Standard Power Spot,61
 686527,Dominic Canzone,3,Seattle Mariners,David Peterson,L vs LHP,☁️ 1.00x,0.23,0.23,0.23,14.7,29.3,⚾ Standard Power Spot,62
 664761,Alec Bohm,5,Philadelphia Phillies,Quinn Mathews,R vs LHP,☁️ 1.00x,0.143,0.143,0.143,14.6,29.2,⚾ Standard Power Spot,63
-670623,Isaac Paredes,5,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.164,0.164,0.164,14.6,29.2,⚾ Standard Power Spot,64
+670623,Isaac Paredes,3,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.164,0.164,0.164,14.6,29.2,⚾ Standard Power Spot,64
 691720,Kyle Karros,5,Colorado Rockies,Tanner Bibee,R vs RHP,☁️ 1.00x,0.157,0.157,0.157,14.5,28.9,⚾ Standard Power Spot,65
 596019,Francisco Lindor,9,New York Mets,Luis Castillo,S vs RHP,☁️ 1.00x,0.184,0.184,0.184,14.2,28.5,⚾ Standard Power Spot,66
 681807,David Fry,6,Cleveland Guardians,Gabriel Hughes,R vs RHP,☁️ 1.00x,0.154,0.154,0.154,14.2,28.4,⚾ Standard Power Spot,67
@@ -77,7 +77,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,
 677950,Alek Thomas,8,Los Angeles Dodgers,Jared Jones,L vs RHP,☁️ 1.00x,0.159,0.159,0.159,13.6,27.2,⚾ Standard Power Spot,76
 695600,Carter Jensen,1,Kansas City Royals,Drew Anderson,L vs RHP,☁️ 1.00x,0.186,0.186,0.186,13.5,27.1,⚾ Standard Power Spot,77
 605141,Mookie Betts,3,Los Angeles Dodgers,Jared Jones,R vs RHP,☁️ 1.00x,0.174,0.174,0.174,13.5,27.0,⚾ Standard Power Spot,78
-514888,Jose Altuve,7,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.149,0.149,0.149,13.3,26.7,⚾ Standard Power Spot,79
+514888,Jose Altuve,4,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.149,0.149,0.149,13.3,26.7,⚾ Standard Power Spot,79
 682626,Francisco Alvarez,8,New York Mets,Luis Castillo,R vs RHP,☁️ 1.00x,0.172,0.172,0.172,13.4,26.7,⚾ Standard Power Spot,80
 678545,Osleivis Basabe,5,San Francisco Giants,Patrick Sandoval,R vs LHP,☁️ 1.00x,0.162,0.162,0.162,13.3,26.5,⚾ Standard Power Spot,81
 677649,Ezequiel Duran,5,Texas Rangers,Ryan Johnson,R vs RHP,☁️ 1.00x,0.17,0.17,0.17,13.2,26.4,⚾ Standard Power Spot,82
@@ -85,54 +85,54 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,
 608070,José Ramírez,8,Cleveland Guardians,Gabriel Hughes,S vs RHP,☁️ 1.00x,0.142,0.142,0.142,13.1,26.3,⚾ Standard Power Spot,84
 671976,Tristan Peters,8,Chicago White Sox,Christian Scott,L vs RHP,☁️ 1.00x,0.153,0.153,0.153,13.1,26.2,⚾ Standard Power Spot,85
 677594,Julio Rodríguez,4,Seattle Mariners,David Peterson,R vs LHP,☁️ 1.00x,0.162,0.162,0.162,13.0,26.0,⚾ Standard Power Spot,86
-676356,Jonny DeLuca,4,Tampa Bay Rays,Brandon Young,R vs RHP,☁️ 1.00x,0.167,0.167,0.167,13.0,26.0,⚾ Standard Power Spot,87
+676356,Jonny DeLuca,6,Tampa Bay Rays,Brandon Young,R vs RHP,☁️ 1.00x,0.167,0.167,0.167,13.0,26.0,⚾ Standard Power Spot,87
 592663,J.T. Realmuto,8,Philadelphia Phillies,Quinn Mathews,R vs LHP,☁️ 1.00x,0.126,0.126,0.126,12.9,25.9,⚾ Standard Power Spot,88
 608324,Alex Bregman,3,Chicago Cubs,Kade Anderson,R vs LHP,☁️ 1.00x,0.16,0.16,0.16,12.8,25.7,⚾ Standard Power Spot,89
-689414,Liam Hicks,8,Tampa Bay Rays,Brandon Young,L vs RHP,☁️ 1.00x,0.15,0.15,0.15,12.9,25.7,⚾ Standard Power Spot,90
-650333,Luis Arraez,4,Philadelphia Phillies,Quinn Mathews,L vs LHP,☁️ 1.00x,0.155,0.155,0.155,12.8,25.7,⚾ Standard Power Spot,91
-691011,Drew Romo,9,Chicago White Sox,Christian Scott,S vs RHP,☁️ 1.00x,0.164,0.164,0.164,12.8,25.5,⚾ Standard Power Spot,92
+650490,Yandy Díaz,1,Tampa Bay Rays,Brandon Young,R vs RHP,☁️ 1.00x,0.165,0.165,0.165,12.8,25.7,⚾ Standard Power Spot,90
+689414,Liam Hicks,5,Tampa Bay Rays,Brandon Young,L vs RHP,☁️ 1.00x,0.15,0.15,0.15,12.9,25.7,⚾ Standard Power Spot,91
+650333,Luis Arraez,4,Philadelphia Phillies,Quinn Mathews,L vs LHP,☁️ 1.00x,0.155,0.155,0.155,12.8,25.7,⚾ Standard Power Spot,92
 683002,Gunnar Henderson,5,Baltimore Orioles,Shane McClanahan,L vs LHP,☁️ 1.00x,0.177,0.177,0.177,12.8,25.5,⚾ Standard Power Spot,93
-802139,JJ Wetherholt,1,St. Louis Cardinals,Andrew Painter,L vs RHP,☁️ 1.00x,0.128,0.128,0.128,12.6,25.2,⚾ Standard Power Spot,94
+691011,Drew Romo,9,Chicago White Sox,Christian Scott,S vs RHP,☁️ 1.00x,0.164,0.164,0.164,12.8,25.5,⚾ Standard Power Spot,94
 678882,Ceddanne Rafaela,2,Boston Red Sox,Blade Tidwell,R vs RHP,☁️ 1.00x,0.177,0.177,0.177,12.6,25.2,⚾ Standard Power Spot,95
-672515,Gabriel Moreno,3,Arizona Diamondbacks,Rhett Lowder,R vs RHP,☁️ 1.00x,0.161,0.161,0.161,12.5,25.1,⚾ Standard Power Spot,96
-656775,Cedric Mullins,1,Tampa Bay Rays,Brandon Young,L vs RHP,☁️ 1.00x,0.146,0.146,0.146,12.5,25.1,⚾ Standard Power Spot,97
-701538,Jackson Merrill,5,San Diego Padres,Dean Kremer,L vs RHP,☁️ 1.00x,0.167,0.167,0.167,12.5,25.0,⚾ Standard Power Spot,98
-701807,Carson Benge,4,New York Mets,Luis Castillo,L vs RHP,☁️ 1.00x,0.145,0.145,0.145,12.4,24.9,⚾ Standard Power Spot,99
-666126,Carlos Cortes,3,Athletics,Hunter Brown,L vs RHP,☁️ 1.00x,0.145,0.145,0.145,12.4,24.9,⚾ Standard Power Spot,100
-805811,Bryce Eldridge,4,San Francisco Giants,Patrick Sandoval,L vs LHP,☁️ 1.00x,0.188,0.188,0.188,12.4,24.9,⚾ Standard Power Spot,101
+802139,JJ Wetherholt,1,St. Louis Cardinals,Andrew Painter,L vs RHP,☁️ 1.00x,0.128,0.128,0.128,12.6,25.2,⚾ Standard Power Spot,96
+656775,Cedric Mullins,8,Tampa Bay Rays,Brandon Young,L vs RHP,☁️ 1.00x,0.146,0.146,0.146,12.5,25.1,⚾ Standard Power Spot,97
+672515,Gabriel Moreno,3,Arizona Diamondbacks,Rhett Lowder,R vs RHP,☁️ 1.00x,0.161,0.161,0.161,12.5,25.1,⚾ Standard Power Spot,98
+701538,Jackson Merrill,5,San Diego Padres,Dean Kremer,L vs RHP,☁️ 1.00x,0.167,0.167,0.167,12.5,25.0,⚾ Standard Power Spot,99
+701807,Carson Benge,4,New York Mets,Luis Castillo,L vs RHP,☁️ 1.00x,0.145,0.145,0.145,12.4,24.9,⚾ Standard Power Spot,100
+666126,Carlos Cortes,3,Athletics,Hunter Brown,L vs RHP,☁️ 1.00x,0.145,0.145,0.145,12.4,24.9,⚾ Standard Power Spot,101
 686681,Michael Massey,7,Kansas City Royals,Drew Anderson,L vs RHP,☁️ 1.00x,0.17,0.17,0.17,12.4,24.9,⚾ Standard Power Spot,102
-671056,Iván Herrera,2,St. Louis Cardinals,Andrew Painter,R vs RHP,☁️ 1.00x,0.138,0.138,0.138,12.4,24.7,⚾ Standard Power Spot,103
-679529,Spencer Torkelson,7,Detroit Tigers,Michael Wacha,R vs RHP,☁️ 1.00x,0.186,0.186,0.186,12.4,24.7,⚾ Standard Power Spot,104
-680776,Jarren Duran,7,Boston Red Sox,Blade Tidwell,L vs RHP,☁️ 1.00x,0.156,0.156,0.156,12.3,24.5,⚾ Standard Power Spot,105
-680574,Matt McLain,8,Cincinnati Reds,Michael Soroka,R vs RHP,☁️ 1.00x,0.156,0.156,0.156,12.2,24.4,⚾ Standard Power Spot,106
-668904,Royce Lewis,9,Minnesota Twins,Casey Mize,R vs RHP,☁️ 1.00x,0.178,0.178,0.178,12.1,24.3,⚾ Standard Power Spot,107
-668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal,S vs LHP,☁️ 1.00x,0.167,0.167,0.167,12.1,24.2,⚾ Standard Power Spot,108
-694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford,R vs LHP,☁️ 1.00x,0.134,0.134,0.134,12.0,24.1,⚾ Standard Power Spot,109
-694374,Tim Tawa,6,Arizona Diamondbacks,Rhett Lowder,R vs RHP,☁️ 1.00x,0.152,0.152,0.152,11.9,23.8,⚾ Standard Power Spot,110
-686797,Brooks Lee,3,Minnesota Twins,Casey Mize,S vs RHP,☁️ 1.00x,0.174,0.174,0.174,11.9,23.8,⚾ Standard Power Spot,111
-701675,Nathan Church,6,St. Louis Cardinals,Andrew Painter,L vs RHP,☁️ 1.00x,0.12,0.12,0.12,11.8,23.7,⚾ Standard Power Spot,112
-671732,Lawrence Butler,9,Athletics,Hunter Brown,L vs RHP,☁️ 1.00x,0.137,0.137,0.137,11.8,23.6,⚾ Standard Power Spot,113
-666018,Jonathan Aranda,3,Tampa Bay Rays,Brandon Young,L vs RHP,☁️ 1.00x,0.137,0.137,0.137,11.8,23.6,⚾ Standard Power Spot,114
-605137,Josh Bell,5,Minnesota Twins,Casey Mize,S vs RHP,☁️ 1.00x,0.173,0.173,0.173,11.8,23.6,⚾ Standard Power Spot,115
-543877,Christian Vázquez,2,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.13,0.13,0.13,11.7,23.4,⚾ Standard Power Spot,116
-677951,Bobby Witt Jr.,2,Kansas City Royals,Drew Anderson,R vs RHP,☁️ 1.00x,0.175,0.175,0.175,11.7,23.3,⚾ Standard Power Spot,117
+805811,Bryce Eldridge,4,San Francisco Giants,Patrick Sandoval,L vs LHP,☁️ 1.00x,0.188,0.188,0.188,12.4,24.9,⚾ Standard Power Spot,103
+673237,Yainer Diaz,7,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.138,0.138,0.138,12.4,24.8,⚾ Standard Power Spot,104
+671056,Iván Herrera,2,St. Louis Cardinals,Andrew Painter,R vs RHP,☁️ 1.00x,0.138,0.138,0.138,12.4,24.7,⚾ Standard Power Spot,105
+679529,Spencer Torkelson,7,Detroit Tigers,Michael Wacha,R vs RHP,☁️ 1.00x,0.186,0.186,0.186,12.4,24.7,⚾ Standard Power Spot,106
+680776,Jarren Duran,7,Boston Red Sox,Blade Tidwell,L vs RHP,☁️ 1.00x,0.156,0.156,0.156,12.3,24.5,⚾ Standard Power Spot,107
+680574,Matt McLain,8,Cincinnati Reds,Michael Soroka,R vs RHP,☁️ 1.00x,0.156,0.156,0.156,12.2,24.4,⚾ Standard Power Spot,108
+668904,Royce Lewis,9,Minnesota Twins,Casey Mize,R vs RHP,☁️ 1.00x,0.178,0.178,0.178,12.1,24.3,⚾ Standard Power Spot,109
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal,S vs LHP,☁️ 1.00x,0.167,0.167,0.167,12.1,24.2,⚾ Standard Power Spot,110
+694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford,R vs LHP,☁️ 1.00x,0.134,0.134,0.134,12.0,24.1,⚾ Standard Power Spot,111
+694374,Tim Tawa,6,Arizona Diamondbacks,Rhett Lowder,R vs RHP,☁️ 1.00x,0.152,0.152,0.152,11.9,23.8,⚾ Standard Power Spot,112
+686797,Brooks Lee,3,Minnesota Twins,Casey Mize,S vs RHP,☁️ 1.00x,0.174,0.174,0.174,11.9,23.8,⚾ Standard Power Spot,113
+701675,Nathan Church,6,St. Louis Cardinals,Andrew Painter,L vs RHP,☁️ 1.00x,0.12,0.12,0.12,11.8,23.7,⚾ Standard Power Spot,114
+666018,Jonathan Aranda,2,Tampa Bay Rays,Brandon Young,L vs RHP,☁️ 1.00x,0.137,0.137,0.137,11.8,23.6,⚾ Standard Power Spot,115
+671732,Lawrence Butler,9,Athletics,Hunter Brown,L vs RHP,☁️ 1.00x,0.137,0.137,0.137,11.8,23.6,⚾ Standard Power Spot,116
+605137,Josh Bell,5,Minnesota Twins,Casey Mize,S vs RHP,☁️ 1.00x,0.173,0.173,0.173,11.8,23.6,⚾ Standard Power Spot,117
 606192,Teoscar Hernández,7,Los Angeles Dodgers,Jared Jones,R vs RHP,☁️ 1.00x,0.149,0.149,0.149,11.7,23.3,⚾ Standard Power Spot,118
-680779,Henry Davis,9,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.129,0.129,0.129,11.6,23.2,⚾ Standard Power Spot,119
-655316,Andruw Monasterio,8,Boston Red Sox,Blade Tidwell,R vs RHP,☁️ 1.00x,0.161,0.161,0.161,11.5,23.1,⚾ Standard Power Spot,120
-663656,Kyle Tucker,6,Los Angeles Dodgers,Jared Jones,L vs RHP,☁️ 1.00x,0.134,0.134,0.134,11.5,23.1,⚾ Standard Power Spot,121
-690993,Colt Keith,3,Detroit Tigers,Michael Wacha,L vs RHP,☁️ 1.00x,0.153,0.153,0.153,11.3,22.5,⚾ Standard Power Spot,122
-676572,Eric Wagaman,7,New York Mets,Luis Castillo,R vs RHP,☁️ 1.00x,0.143,0.143,0.143,11.2,22.4,⚾ Standard Power Spot,123
+677951,Bobby Witt Jr.,2,Kansas City Royals,Drew Anderson,R vs RHP,☁️ 1.00x,0.175,0.175,0.175,11.7,23.3,⚾ Standard Power Spot,119
+680779,Henry Davis,9,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.129,0.129,0.129,11.6,23.2,⚾ Standard Power Spot,120
+655316,Andruw Monasterio,8,Boston Red Sox,Blade Tidwell,R vs RHP,☁️ 1.00x,0.161,0.161,0.161,11.5,23.1,⚾ Standard Power Spot,121
+663656,Kyle Tucker,6,Los Angeles Dodgers,Jared Jones,L vs RHP,☁️ 1.00x,0.134,0.134,0.134,11.5,23.1,⚾ Standard Power Spot,122
+690993,Colt Keith,3,Detroit Tigers,Michael Wacha,L vs RHP,☁️ 1.00x,0.153,0.153,0.153,11.3,22.5,⚾ Standard Power Spot,123
 694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford,L vs LHP,☁️ 1.00x,0.154,0.154,0.154,11.2,22.4,⚾ Standard Power Spot,124
-694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes,S vs RHP,☁️ 1.00x,0.12,0.12,0.12,11.2,22.4,⚾ Standard Power Spot,125
+676572,Eric Wagaman,7,New York Mets,Luis Castillo,R vs RHP,☁️ 1.00x,0.143,0.143,0.143,11.2,22.4,⚾ Standard Power Spot,125
 687859,Troy Johnston,7,Colorado Rockies,Tanner Bibee,L vs RHP,☁️ 1.00x,0.109,0.109,0.109,11.2,22.4,⚾ Standard Power Spot,126
 677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes,S vs RHP,☁️ 1.00x,0.12,0.12,0.12,11.2,22.4,⚾ Standard Power Spot,127
 624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka,R vs RHP,☁️ 1.00x,0.143,0.143,0.143,11.2,22.4,⚾ Standard Power Spot,128
-672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford,R vs LHP,☁️ 1.00x,0.123,0.123,0.123,11.1,22.2,⚾ Standard Power Spot,129
-545121,Ildemaro Vargas,7,Arizona Diamondbacks,Rhett Lowder,S vs RHP,☁️ 1.00x,0.141,0.141,0.141,11.1,22.1,⚾ Standard Power Spot,130
+694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes,S vs RHP,☁️ 1.00x,0.12,0.12,0.12,11.2,22.4,⚾ Standard Power Spot,129
+672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford,R vs LHP,☁️ 1.00x,0.123,0.123,0.123,11.1,22.2,⚾ Standard Power Spot,130
 694497,Evan Carter,6,Texas Rangers,Ryan Johnson,L vs RHP,☁️ 1.00x,0.128,0.128,0.128,11.1,22.1,⚾ Standard Power Spot,131
-665804,Miguel Amaya,9,Chicago Cubs,Kade Anderson,R vs LHP,☁️ 1.00x,0.136,0.136,0.136,11.0,22.0,⚾ Standard Power Spot,132
-666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford,L vs LHP,☁️ 1.00x,0.151,0.151,0.151,11.0,22.0,⚾ Standard Power Spot,133
-622761,Jorge Mateo,5,Tampa Bay Rays,Brandon Young,R vs RHP,☁️ 1.00x,0.14,0.14,0.14,11.0,22.0,⚾ Standard Power Spot,134
+545121,Ildemaro Vargas,7,Arizona Diamondbacks,Rhett Lowder,S vs RHP,☁️ 1.00x,0.141,0.141,0.141,11.1,22.1,⚾ Standard Power Spot,132
+665804,Miguel Amaya,9,Chicago Cubs,Kade Anderson,R vs LHP,☁️ 1.00x,0.136,0.136,0.136,11.0,22.0,⚾ Standard Power Spot,133
+666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford,L vs LHP,☁️ 1.00x,0.151,0.151,0.151,11.0,22.0,⚾ Standard Power Spot,134
 691458,Blaze Jordan,9,St. Louis Cardinals,Andrew Painter,R vs RHP,☁️ 1.00x,0.121,0.121,0.121,10.9,21.8,⚾ Standard Power Spot,135
 595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes,R vs RHP,☁️ 1.00x,0.115,0.115,0.115,10.7,21.5,⚾ Standard Power Spot,136
 669242,Tommy Edman,5,Los Angeles Dodgers,Jared Jones,S vs RHP,☁️ 1.00x,0.137,0.137,0.137,10.8,21.5,⚾ Standard Power Spot,137
@@ -141,8 +141,8 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,
 702332,Caleb Durbin,6,Boston Red Sox,Blade Tidwell,R vs RHP,☁️ 1.00x,0.147,0.147,0.147,10.6,21.2,⚾ Standard Power Spot,140
 665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer,R vs RHP,☁️ 1.00x,0.154,0.154,0.154,10.6,21.2,⚾ Standard Power Spot,141
 682634,Kevin Alcántara,8,Chicago Cubs,Kade Anderson,R vs LHP,☁️ 1.00x,0.131,0.131,0.131,10.6,21.2,⚾ Standard Power Spot,142
-695731,Braden Montgomery,5,Chicago White Sox,Christian Scott,S vs RHP,☁️ 1.00x,0.134,0.134,0.134,10.5,21.1,⚾ Standard Power Spot,143
-805999,A.J. Ewing,1,New York Mets,Luis Castillo,L vs RHP,☁️ 1.00x,0.122,0.122,0.122,10.6,21.1,⚾ Standard Power Spot,144
+805999,A.J. Ewing,1,New York Mets,Luis Castillo,L vs RHP,☁️ 1.00x,0.122,0.122,0.122,10.6,21.1,⚾ Standard Power Spot,143
+695731,Braden Montgomery,5,Chicago White Sox,Christian Scott,S vs RHP,☁️ 1.00x,0.134,0.134,0.134,10.5,21.1,⚾ Standard Power Spot,144
 663457,Lars Nootbaar,1,Arizona Diamondbacks,Rhett Lowder,L vs RHP,☁️ 1.00x,0.12,0.12,0.12,10.4,20.8,⚾ Standard Power Spot,145
 805367,Chase Meidroth,7,Chicago White Sox,Christian Scott,R vs RHP,☁️ 1.00x,0.132,0.132,0.132,10.4,20.8,⚾ Standard Power Spot,146
 805808,Kevin McGonigle,1,Detroit Tigers,Michael Wacha,L vs RHP,☁️ 1.00x,0.14,0.14,0.14,10.4,20.7,⚾ Standard Power Spot,147
@@ -154,57 +154,57 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,
 521692,Salvador Perez,4,Kansas City Royals,Drew Anderson,R vs RHP,☁️ 1.00x,0.148,0.148,0.148,10.0,19.9,⚾ Standard Power Spot,153
 686469,Vinnie Pasquantino,5,Kansas City Royals,Drew Anderson,L vs RHP,☁️ 1.00x,0.134,0.134,0.134,9.9,19.9,⚾ Standard Power Spot,154
 675961,Alika Williams,1,Athletics,Hunter Brown,R vs RHP,☁️ 1.00x,0.126,0.126,0.126,9.9,19.9,⚾ Standard Power Spot,155
-701678,Hao-Yu Lee,9,Detroit Tigers,Michael Wacha,R vs RHP,☁️ 1.00x,0.146,0.146,0.146,9.8,19.7,⚾ Standard Power Spot,156
-663728,Cal Raleigh,7,Seattle Mariners,David Peterson,S vs LHP,☁️ 1.00x,0.148,0.148,0.148,9.7,19.4,⚾ Standard Power Spot,157
-702616,Jackson Holliday,1,Baltimore Orioles,Shane McClanahan,L vs LHP,☁️ 1.00x,0.132,0.132,0.132,9.7,19.3,⚾ Standard Power Spot,158
-662139,Daulton Varsho,4,Houston Astros,Jacob Lopez,L vs LHP,☁️ 1.00x,0.132,0.132,0.132,9.7,19.3,⚾ Standard Power Spot,159
-665750,Leody Taveras,8,Baltimore Orioles,Shane McClanahan,S vs LHP,☁️ 1.00x,0.132,0.132,0.132,9.7,19.3,⚾ Standard Power Spot,160
+680700,Richie Palacios,7,Tampa Bay Rays,Brandon Young,L vs RHP,☁️ 1.00x,0.115,0.115,0.115,10.0,19.9,⚾ Standard Power Spot,156
+701678,Hao-Yu Lee,9,Detroit Tigers,Michael Wacha,R vs RHP,☁️ 1.00x,0.146,0.146,0.146,9.8,19.7,⚾ Standard Power Spot,157
+663728,Cal Raleigh,7,Seattle Mariners,David Peterson,S vs LHP,☁️ 1.00x,0.148,0.148,0.148,9.7,19.4,⚾ Standard Power Spot,158
+665750,Leody Taveras,8,Baltimore Orioles,Shane McClanahan,S vs LHP,☁️ 1.00x,0.132,0.132,0.132,9.7,19.3,⚾ Standard Power Spot,159
+662139,Daulton Varsho,6,Houston Astros,Jacob Lopez,L vs LHP,☁️ 1.00x,0.132,0.132,0.132,9.7,19.3,⚾ Standard Power Spot,160
 681508,Mickey Gasper,9,Boston Red Sox,Blade Tidwell,S vs RHP,☁️ 1.00x,0.133,0.133,0.133,9.6,19.3,⚾ Standard Power Spot,161
-679845,Nick Loftin,6,Kansas City Royals,Drew Anderson,R vs RHP,☁️ 1.00x,0.142,0.142,0.142,9.6,19.2,⚾ Standard Power Spot,162
+702616,Jackson Holliday,1,Baltimore Orioles,Shane McClanahan,L vs LHP,☁️ 1.00x,0.132,0.132,0.132,9.7,19.3,⚾ Standard Power Spot,162
 683737,Michael Busch,4,Chicago Cubs,Kade Anderson,L vs LHP,☁️ 1.00x,0.146,0.146,0.146,9.6,19.2,⚾ Standard Power Spot,163
-686475,Tyler Tolbert,8,Kansas City Royals,Drew Anderson,R vs RHP,☁️ 1.00x,0.141,0.141,0.141,9.5,19.0,⚾ Standard Power Spot,164
-668939,Adley Rutschman,5,Boston Red Sox,Blade Tidwell,S vs RHP,☁️ 1.00x,0.129,0.129,0.129,9.4,18.7,⚾ Standard Power Spot,165
-808982,Jung Hoo Lee,6,San Francisco Giants,Patrick Sandoval,L vs LHP,☁️ 1.00x,0.139,0.139,0.139,9.3,18.7,⚾ Standard Power Spot,166
-687551,Drew Gilbert,8,San Francisco Giants,Patrick Sandoval,L vs LHP,☁️ 1.00x,0.137,0.137,0.137,9.2,18.4,⚾ Standard Power Spot,167
-702284,Cole Young,8,Seattle Mariners,David Peterson,L vs LHP,☁️ 1.00x,0.14,0.14,0.14,9.2,18.4,⚾ Standard Power Spot,168
-622268,Donovan Walton,5,Athletics,Hunter Brown,L vs RHP,☁️ 1.00x,0.105,0.105,0.105,9.1,18.3,⚾ Standard Power Spot,169
-814439,Ryan Waldschmidt,9,Arizona Diamondbacks,Rhett Lowder,R vs RHP,☁️ 1.00x,0.115,0.115,0.115,9.1,18.2,⚾ Standard Power Spot,170
-664728,Kyle Isbel,9,Kansas City Royals,Drew Anderson,L vs RHP,☁️ 1.00x,0.12,0.12,0.12,8.9,17.9,⚾ Standard Power Spot,171
-667472,Dane Myers,1,Cincinnati Reds,Michael Soroka,R vs RHP,☁️ 1.00x,0.11,0.11,0.11,8.7,17.5,⚾ Standard Power Spot,172
-680977,Brendan Donovan,1,Seattle Mariners,David Peterson,L vs LHP,☁️ 1.00x,0.132,0.132,0.132,8.7,17.4,⚾ Standard Power Spot,173
-650402,Gleyber Torres,2,Detroit Tigers,Michael Wacha,R vs RHP,☁️ 1.00x,0.127,0.127,0.127,8.6,17.2,⚾ Standard Power Spot,174
-624428,Adam Frazier,1,Los Angeles Angels,Cody Bradford,L vs LHP,☁️ 1.00x,0.116,0.116,0.116,8.5,17.1,⚾ Standard Power Spot,175
-693304,Nick Gonzales,1,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.093,0.093,0.093,8.5,17.0,⚾ Standard Power Spot,176
-664774,LaMonte Wade Jr.,8,Houston Astros,Jacob Lopez,L vs LHP,☁️ 1.00x,0.115,0.115,0.115,8.5,17.0,⚾ Standard Power Spot,177
-699393,Pedro Ramírez,7,Chicago Cubs,Kade Anderson,S vs LHP,☁️ 1.00x,0.127,0.127,0.127,8.4,16.8,⚾ Standard Power Spot,178
-643446,Jeff McNeil,7,Athletics,Hunter Brown,L vs RHP,☁️ 1.00x,0.095,0.095,0.095,8.3,16.6,⚾ Standard Power Spot,179
-663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka,R vs RHP,☁️ 1.00x,0.102,0.102,0.102,8.1,16.2,⚾ Standard Power Spot,180
-699912,Jose Fernandez,8,Arizona Diamondbacks,Rhett Lowder,R vs RHP,☁️ 1.00x,0.101,0.101,0.101,8.0,16.1,⚾ Standard Power Spot,181
-694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford,L vs LHP,☁️ 1.00x,0.109,0.109,0.109,8.1,16.1,⚾ Standard Power Spot,182
-663743,Nick Fortes,9,Tampa Bay Rays,Brandon Young,R vs RHP,☁️ 1.00x,0.101,0.101,0.101,8.0,16.1,⚾ Standard Power Spot,183
+679845,Nick Loftin,6,Kansas City Royals,Drew Anderson,R vs RHP,☁️ 1.00x,0.142,0.142,0.142,9.6,19.2,⚾ Standard Power Spot,164
+686475,Tyler Tolbert,8,Kansas City Royals,Drew Anderson,R vs RHP,☁️ 1.00x,0.141,0.141,0.141,9.5,19.0,⚾ Standard Power Spot,165
+668939,Adley Rutschman,5,Boston Red Sox,Blade Tidwell,S vs RHP,☁️ 1.00x,0.129,0.129,0.129,9.4,18.7,⚾ Standard Power Spot,166
+808982,Jung Hoo Lee,6,San Francisco Giants,Patrick Sandoval,L vs LHP,☁️ 1.00x,0.139,0.139,0.139,9.3,18.7,⚾ Standard Power Spot,167
+687551,Drew Gilbert,8,San Francisco Giants,Patrick Sandoval,L vs LHP,☁️ 1.00x,0.137,0.137,0.137,9.2,18.4,⚾ Standard Power Spot,168
+702284,Cole Young,8,Seattle Mariners,David Peterson,L vs LHP,☁️ 1.00x,0.14,0.14,0.14,9.2,18.4,⚾ Standard Power Spot,169
+622268,Donovan Walton,5,Athletics,Hunter Brown,L vs RHP,☁️ 1.00x,0.105,0.105,0.105,9.1,18.3,⚾ Standard Power Spot,170
+814439,Ryan Waldschmidt,9,Arizona Diamondbacks,Rhett Lowder,R vs RHP,☁️ 1.00x,0.115,0.115,0.115,9.1,18.2,⚾ Standard Power Spot,171
+664728,Kyle Isbel,9,Kansas City Royals,Drew Anderson,L vs RHP,☁️ 1.00x,0.12,0.12,0.12,8.9,17.9,⚾ Standard Power Spot,172
+667472,Dane Myers,1,Cincinnati Reds,Michael Soroka,R vs RHP,☁️ 1.00x,0.11,0.11,0.11,8.7,17.5,⚾ Standard Power Spot,173
+680977,Brendan Donovan,1,Seattle Mariners,David Peterson,L vs LHP,☁️ 1.00x,0.132,0.132,0.132,8.7,17.4,⚾ Standard Power Spot,174
+650402,Gleyber Torres,2,Detroit Tigers,Michael Wacha,R vs RHP,☁️ 1.00x,0.127,0.127,0.127,8.6,17.2,⚾ Standard Power Spot,175
+624428,Adam Frazier,1,Los Angeles Angels,Cody Bradford,L vs LHP,☁️ 1.00x,0.116,0.116,0.116,8.5,17.1,⚾ Standard Power Spot,176
+664774,LaMonte Wade Jr.,9,Houston Astros,Jacob Lopez,L vs LHP,☁️ 1.00x,0.115,0.115,0.115,8.5,17.0,⚾ Standard Power Spot,177
+693304,Nick Gonzales,1,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.093,0.093,0.093,8.5,17.0,⚾ Standard Power Spot,178
+699393,Pedro Ramírez,7,Chicago Cubs,Kade Anderson,S vs LHP,☁️ 1.00x,0.127,0.127,0.127,8.4,16.8,⚾ Standard Power Spot,179
+643446,Jeff McNeil,7,Athletics,Hunter Brown,L vs RHP,☁️ 1.00x,0.095,0.095,0.095,8.3,16.6,⚾ Standard Power Spot,180
+663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka,R vs RHP,☁️ 1.00x,0.102,0.102,0.102,8.1,16.2,⚾ Standard Power Spot,181
+699912,Jose Fernandez,8,Arizona Diamondbacks,Rhett Lowder,R vs RHP,☁️ 1.00x,0.101,0.101,0.101,8.0,16.1,⚾ Standard Power Spot,182
+694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford,L vs LHP,☁️ 1.00x,0.109,0.109,0.109,8.1,16.1,⚾ Standard Power Spot,183
 665966,Carlos Narváez,9,Baltimore Orioles,Shane McClanahan,R vs LHP,☁️ 1.00x,0.088,0.088,0.088,8.0,16.1,⚾ Standard Power Spot,184
 663538,Nico Hoerner,5,Chicago Cubs,Kade Anderson,R vs LHP,☁️ 1.00x,0.098,0.098,0.098,8.0,16.1,⚾ Standard Power Spot,185
 656716,Zach McKinstry,5,Detroit Tigers,Michael Wacha,L vs RHP,☁️ 1.00x,0.107,0.107,0.107,8.0,16.0,⚾ Standard Power Spot,186
 666023,Freddy Fermin,3,San Diego Padres,Dean Kremer,R vs RHP,☁️ 1.00x,0.113,0.113,0.113,7.9,15.8,⚾ Standard Power Spot,187
 703607,Henry Bolte,6,Athletics,Hunter Brown,R vs RHP,☁️ 1.00x,0.098,0.098,0.098,7.8,15.6,⚾ Standard Power Spot,188
-669397,Nick Allen,9,Houston Astros,Jacob Lopez,R vs LHP,☁️ 1.00x,0.084,0.084,0.084,7.7,15.4,⚾ Standard Power Spot,189
-686765,Nick Sogard,1,Boston Red Sox,Blade Tidwell,S vs RHP,☁️ 1.00x,0.104,0.104,0.104,7.6,15.2,⚾ Standard Power Spot,190
+686765,Nick Sogard,1,Boston Red Sox,Blade Tidwell,S vs RHP,☁️ 1.00x,0.104,0.104,0.104,7.6,15.2,⚾ Standard Power Spot,189
+701785,Kaelen Culpepper,6,Minnesota Twins,Casey Mize,R vs RHP,☁️ 1.00x,0.106,0.106,0.106,7.4,14.8,⚾ Standard Power Spot,190
 656577,Alex Jackson,2,Minnesota Twins,Casey Mize,R vs RHP,☁️ 1.00x,0.106,0.106,0.106,7.4,14.8,⚾ Standard Power Spot,191
-701785,Kaelen Culpepper,6,Minnesota Twins,Casey Mize,R vs RHP,☁️ 1.00x,0.106,0.106,0.106,7.4,14.8,⚾ Standard Power Spot,192
-694377,Nick Yorke,7,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.081,0.081,0.081,7.4,14.8,⚾ Standard Power Spot,193
-518595,Travis d'Arnaud,9,Los Angeles Angels,Cody Bradford,R vs LHP,☁️ 1.00x,0.08,0.08,0.08,7.3,14.7,⚾ Standard Power Spot,194
-687749,Jase Bowen,7,San Diego Padres,Dean Kremer,R vs RHP,☁️ 1.00x,0.104,0.104,0.104,7.3,14.5,⚾ Standard Power Spot,195
-807712,Luke Keaschall,8,Minnesota Twins,Casey Mize,R vs RHP,☁️ 1.00x,0.103,0.103,0.103,7.2,14.4,⚾ Standard Power Spot,196
-663968,Jake Mangum,6,Pittsburgh Pirates,Tarik Skubal,S vs LHP,☁️ 1.00x,0.092,0.092,0.092,6.8,13.7,⚾ Standard Power Spot,197
-647304,Josh Naylor,5,Seattle Mariners,David Peterson,L vs LHP,☁️ 1.00x,0.102,0.102,0.102,6.8,13.6,⚾ Standard Power Spot,198
-669720,Austin Hays,1,San Diego Padres,Dean Kremer,R vs RHP,☁️ 1.00x,0.093,0.093,0.093,6.5,13.1,⚾ Standard Power Spot,199
-669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.068,0.068,0.068,6.3,12.5,⚾ Standard Power Spot,200
+694377,Nick Yorke,7,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.081,0.081,0.081,7.4,14.8,⚾ Standard Power Spot,192
+518595,Travis d'Arnaud,9,Los Angeles Angels,Cody Bradford,R vs LHP,☁️ 1.00x,0.08,0.08,0.08,7.3,14.7,⚾ Standard Power Spot,193
+687749,Jase Bowen,7,San Diego Padres,Dean Kremer,R vs RHP,☁️ 1.00x,0.104,0.104,0.104,7.3,14.5,⚾ Standard Power Spot,194
+807712,Luke Keaschall,8,Minnesota Twins,Casey Mize,R vs RHP,☁️ 1.00x,0.103,0.103,0.103,7.2,14.4,⚾ Standard Power Spot,195
+663968,Jake Mangum,6,Pittsburgh Pirates,Tarik Skubal,S vs LHP,☁️ 1.00x,0.092,0.092,0.092,6.8,13.7,⚾ Standard Power Spot,196
+647304,Josh Naylor,5,Seattle Mariners,David Peterson,L vs LHP,☁️ 1.00x,0.102,0.102,0.102,6.8,13.6,⚾ Standard Power Spot,197
+669720,Austin Hays,1,San Diego Padres,Dean Kremer,R vs RHP,☁️ 1.00x,0.093,0.093,0.093,6.5,13.1,⚾ Standard Power Spot,198
+669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal,R vs LHP,☁️ 1.00x,0.068,0.068,0.068,6.3,12.5,⚾ Standard Power Spot,199
+670764,Taylor Walls,9,Tampa Bay Rays,Brandon Young,S vs RHP,☁️ 1.00x,0.077,0.077,0.077,6.2,12.4,⚾ Standard Power Spot,200
 669911,Michael Toglia,9,Cincinnati Reds,Michael Soroka,S vs RHP,☁️ 1.00x,0.077,0.077,0.077,6.2,12.4,⚾ Standard Power Spot,201
 630105,Jake Cronenworth,6,San Diego Padres,Dean Kremer,L vs RHP,☁️ 1.00x,0.073,0.073,0.073,5.7,11.3,⚾ Standard Power Spot,202
 665506,Cristian Pache,6,New York Mets,Luis Castillo,R vs RHP,☁️ 1.00x,0.05,0.05,0.05,4.0,10.0,⚾ Standard Power Spot,203
 666624,Christopher Morel,5,New York Mets,Luis Castillo,R vs RHP,☁️ 1.00x,0.05,0.05,0.05,4.0,10.0,⚾ Standard Power Spot,204
 681047,Christian Franklin,7,Baltimore Orioles,Shane McClanahan,R vs LHP,☁️ 1.00x,0.05,0.05,0.05,4.6,10.0,⚾ Standard Power Spot,205
-802415,Chandler Simpson,2,Tampa Bay Rays,Brandon Young,L vs RHP,☁️ 1.00x,0.056,0.056,0.056,5.0,10.0,⚾ Standard Power Spot,206
+802415,Chandler Simpson,3,Tampa Bay Rays,Brandon Young,L vs RHP,☁️ 1.00x,0.056,0.056,0.056,5.0,10.0,⚾ Standard Power Spot,206
 687231,Darell Hernaiz,4,Athletics,Hunter Brown,R vs RHP,☁️ 1.00x,0.05,0.05,0.05,4.0,10.0,⚾ Standard Power Spot,207
 683227,Cody Freeman,8,Texas Rangers,Ryan Johnson,R vs RHP,☁️ 1.00x,0.05,0.05,0.05,4.0,10.0,⚾ Standard Power Spot,208
 683766,Christian Koss,7,San Francisco Giants,Patrick Sandoval,R vs LHP,☁️ 1.00x,0.054,0.054,0.054,4.6,10.0,⚾ Standard Power Spot,209

@@ -62,15 +62,15 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 663457,Lars Nootbaar,1,Arizona Diamondbacks,Rhett Lowder,0.25,21.0,76.0,75.5,75.5,🎯 HIT LOCK: Elite Contact & Matchup,61
 672695,Geraldo Perdomo,4,Arizona Diamondbacks,Rhett Lowder,0.25,21.0,76.0,75.5,75.5,🎯 HIT LOCK: Elite Contact & Matchup,62
 571448,Nolan Arenado,5,Arizona Diamondbacks,Rhett Lowder,0.25,21.0,76.0,75.5,75.5,🎯 HIT LOCK: Elite Contact & Matchup,63
-689414,Liam Hicks,8,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,64
-663743,Nick Fortes,9,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,65
-700652,Kenny Piper,7,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,66
-622761,Jorge Mateo,5,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,67
-691406,Junior Caminero,6,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,68
-676356,Jonny DeLuca,4,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,69
-666018,Jonathan Aranda,3,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,70
-802415,Chandler Simpson,2,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,71
-656775,Cedric Mullins,1,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,72
+656775,Cedric Mullins,8,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,64
+670764,Taylor Walls,9,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,65
+680700,Richie Palacios,7,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,66
+689414,Liam Hicks,5,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,67
+676356,Jonny DeLuca,6,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,68
+691406,Junior Caminero,4,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,69
+802415,Chandler Simpson,3,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,70
+666018,Jonathan Aranda,2,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,71
+650490,Yandy Díaz,1,Tampa Bay Rays,Brandon Young,0.25,21.0,76.0,75.4,75.4,🎯 HIT LOCK: Elite Contact & Matchup,72
 695491,Joshua Báez,5,St. Louis Cardinals,Andrew Painter,0.25,21.0,76.0,74.5,74.5,🟢 CONTACT TARGET: High Floor,73
 691458,Blaze Jordan,9,St. Louis Cardinals,Andrew Painter,0.25,21.0,76.0,74.5,74.5,🟢 CONTACT TARGET: High Floor,74
 676475,Alec Burleson,3,St. Louis Cardinals,Andrew Painter,0.25,21.0,76.0,74.5,74.5,🟢 CONTACT TARGET: High Floor,75
@@ -98,24 +98,24 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 608070,José Ramírez,8,Cleveland Guardians,Gabriel Hughes,0.25,21.0,76.0,72.4,72.4,🟢 CONTACT TARGET: High Floor,97
 663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes,0.25,21.0,76.0,72.4,72.4,🟢 CONTACT TARGET: High Floor,98
 666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes,0.25,21.0,76.0,72.4,72.4,🟢 CONTACT TARGET: High Floor,99
-664774,LaMonte Wade Jr.,8,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,100
+701358,Cam Smith,8,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,100
 683002,Gunnar Henderson,5,Baltimore Orioles,Shane McClanahan,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,101
-572233,Christian Walker,3,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,102
+670623,Isaac Paredes,3,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,102
 691723,Coby Mayo,3,Baltimore Orioles,Shane McClanahan,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,103
-669397,Nick Allen,9,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,104
-701358,Cam Smith,1,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,105
+664774,LaMonte Wade Jr.,9,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,104
+665161,Jeremy Peña,1,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,105
 641933,Tyler O'Neill,4,Baltimore Orioles,Shane McClanahan,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,106
-543877,Christian Vázquez,2,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,107
+670541,Yordan Alvarez,2,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,107
 702616,Jackson Holliday,1,Baltimore Orioles,Shane McClanahan,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,108
 665966,Carlos Narváez,9,Baltimore Orioles,Shane McClanahan,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,109
 665750,Leody Taveras,8,Baltimore Orioles,Shane McClanahan,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,110
 681047,Christian Franklin,7,Baltimore Orioles,Shane McClanahan,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,111
 624413,Pete Alonso,2,Baltimore Orioles,Shane McClanahan,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,112
-665161,Jeremy Peña,6,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,113
-514888,Jose Altuve,7,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,114
+662139,Daulton Varsho,6,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,113
+673237,Yainer Diaz,7,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,114
 687952,Christian Encarnacion-Strand,6,Baltimore Orioles,Shane McClanahan,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,115
-670623,Isaac Paredes,5,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,116
-662139,Daulton Varsho,4,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,117
+572233,Christian Walker,5,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,116
+514888,Jose Altuve,4,Houston Astros,Jacob Lopez,0.25,21.0,76.0,70.4,70.4,🟢 CONTACT TARGET: High Floor,117
 702284,Cole Young,8,Seattle Mariners,David Peterson,0.25,21.0,76.0,70.1,70.1,🟢 CONTACT TARGET: High Floor,118
 680977,Brendan Donovan,1,Seattle Mariners,David Peterson,0.25,21.0,76.0,70.1,70.1,🟢 CONTACT TARGET: High Floor,119
 686527,Dominic Canzone,3,Seattle Mariners,David Peterson,0.25,21.0,76.0,70.1,70.1,🟢 CONTACT TARGET: High Floor,120
