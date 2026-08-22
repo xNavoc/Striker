@@ -114,7 +114,7 @@ sub_dir, csv_file, card_file = model_dir_map[model_choice]
 csv_path = os.path.join("exports", sub_dir, csv_file)
 card_path = os.path.join("exports", sub_dir, card_file)
 
-# 5. Styling Helper for Table Calls
+# 5. Styling Helper for Table Calls (Pandas 2.1+ compatible)
 def style_target_calls(val):
     val_str = str(val)
     if 'LOCK' in val_str or 'APEX' in val_str or 'CRITICAL' in val_str:
@@ -153,7 +153,7 @@ else:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # --- Dashboard Control & Filter Bar (Card Container) ---
+    # --- Dashboard Control & Filter Bar ---
     with st.container():
         st.markdown("### 🎛️ Interactive Filters & Controls")
         f_col1, f_col2, f_col3 = st.columns([2, 1, 1])
@@ -165,7 +165,7 @@ else:
         with f_col3:
             sort_order = st.selectbox("📊 Sort By", ["Model Score (High to Low)", "Player Name (A-Z)"])
 
-        # Filter Logic
+        # Filter & Sort Logic
         df_filtered = df.copy()
         if search_term:
             mask = df_filtered.apply(lambda row: row.astype(str).str.contains(search_term, case=False).any(), axis=1)
@@ -210,6 +210,15 @@ else:
 
     with col_card:
         st.markdown("### 🖼️ Rendered Infographic Card")
+        
+        # Intelligent Fallback: if exact date card isn't found, find the latest card in the folder
+        if not os.path.exists(card_path):
+            card_dir = os.path.join("exports", sub_dir)
+            if os.path.exists(card_dir):
+                all_cards = [os.path.join(card_dir, f) for f in os.listdir(card_dir) if f.endswith('.png')]
+                if all_cards:
+                    card_path = max(all_cards, key=os.path.getmtime)
+
         if os.path.exists(card_path):
             st.image(card_path, use_container_width=True)
             st.markdown("<br>", unsafe_allow_html=True)
@@ -217,8 +226,8 @@ else:
                 st.download_button(
                     label=f"📥 Download {model_choice} Card (PNG)",
                     data=file,
-                    file_name=card_file,
+                    file_name=os.path.basename(card_path),
                     mime="image/png"
                 )
         else:
-            st.info("Rendered image card not found for this model date. Run the pipeline to generate exports.")
+            st.info("Rendered image card not found. Run `python run_models.py --mode predict` to generate fresh exports.")
