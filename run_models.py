@@ -4,6 +4,7 @@ from datetime import datetime
 
 # Direct model runner imports
 from models.model_hr import run_hr_model
+from models.model_weibull import run_weibull_model
 from models.model_synergy import run_synergy_model
 from models.model_hits import run_hits_model
 from models.model_total_bases import run_tb_model
@@ -30,6 +31,7 @@ def main():
 
     pipeline_tasks = [
         ("Core Home Run Model", run_hr_model),
+        ("Weibull Drought Hazard Model", run_weibull_model),
         ("Power Synergy Convergence", run_synergy_model),
         ("Hits & Contact Model", run_hits_model),
         ("Total Bases Model", run_tb_model),
