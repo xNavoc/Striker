@@ -2,176 +2,163 @@ import os
 from datetime import datetime
 import pandas as pd
 import numpy as np
-from scipy.stats import poisson
 import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
-def calculate_pitcher_k_dynamics(p_prof, opp_batters, park_k_adj):
-    k9 = float(p_prof.get('k9', 8.50))
-    whip = float(p_prof.get('whip', 1.25))
-    avg_ip = float(p_prof.get('avg_ip', 5.2))
-    is_bg = bool(p_prof.get('is_bg', False))
+def calculate_l3_k_and_ip(game_logs, fallback_k9=8.5, fallback_ip=5.0):
+    """Calculates K/9 and average Innings Pitched over the pitcher's last 3 starts."""
+    if not isinstance(game_logs, list) or len(game_logs) == 0:
+        return fallback_k9, fallback_ip
 
-    pitcher_k_pct = np.clip((k9 / 9.0) * 0.245, 0.12, 0.38)
+    try:
+        sorted_logs = sorted(game_logs, key=lambda x: str(x.get('date', '')), reverse=True)[:3]
+    except Exception:
+        sorted_logs = game_logs[:3]
 
-    if opp_batters:
-        lineup_isos = [b[3].get('iso', 0.150) for b in opp_batters if len(b) > 3 and isinstance(b[3], dict)]
-        lineup_bas = [b[3].get('ba', 0.240) for b in opp_batters if len(b) > 3 and isinstance(b[3], dict)]
-        
-        if lineup_bas and lineup_isos:
-            m_ba = np.mean(lineup_bas)
-            m_iso = np.mean(lineup_isos)
-            if m_ba >= 0.260 and m_iso <= 0.140:
-                lineup_contact_suppression = 0.88
-                matchup_badge = "CONTACT WALL [-12%]"
-            elif m_iso >= 0.185 or m_ba <= 0.225:
-                lineup_contact_suppression = 1.12
-                matchup_badge = "HIGH WHIFF [+12%]"
-            else:
-                lineup_contact_suppression = 1.00
-                matchup_badge = "NEUTRAL SPLIT"
-        else:
-            lineup_contact_suppression = 1.00
-            matchup_badge = "NEUTRAL SPLIT"
-    else:
-        lineup_contact_suppression = 1.00
-        matchup_badge = "NEUTRAL SPLIT"
+    total_k = 0
+    total_outs = 0
 
-    if is_bg:
-        exp_bf = 9.0
-        workload_desc = "OPENER / BP"
-    elif avg_ip >= 6.0 and whip <= 1.15:
-        exp_bf = 24.5
-        workload_desc = "WORKHORSE (6+ IP)"
-    elif avg_ip >= 5.0:
-        exp_bf = 21.5
-        workload_desc = "STANDARD (5-6 IP)"
-    else:
-        exp_bf = 17.5
-        workload_desc = "SHORT LEASH (<5 IP)"
+    for g in sorted_logs:
+        total_k += int(g.get('k', 0))
+        # Innings pitched is often stored as a float like 5.1 (5 innings, 1 out) or total outs
+        # Assuming logs provide 'outs' or we calculate it. If 'ip' is float: (int(ip)*3) + ((ip%1)*10)
+        ip_val = float(g.get('ip', 5.0))
+        outs = int(ip_val) * 3 + int(round((ip_val % 1) * 10))
+        total_outs += outs
 
-    matchup_k_pct = pitcher_k_pct * lineup_contact_suppression * park_k_adj
-    lambda_k = float(np.clip(exp_bf * matchup_k_pct, 1.0, 11.5))
+    if total_outs > 0:
+        l3_ip = total_outs / 3.0
+        l3_k9 = (total_k / total_outs) * 27.0
+        return l3_k9, l3_ip / 3.0 # Average IP per start
+    return fallback_k9, fallback_ip
 
-    return lambda_k, round(matchup_k_pct * 100, 1), workload_desc, exp_bf, matchup_badge
-
-def run_ks_model(mode="predict"):
+def run_pitcher_ks_model(mode="predict"):
     today_str, games = load_daily_slate()
     os.makedirs("exports/pitcher_ks", exist_ok=True)
 
     if mode == "settle":
         settle_projections("pitcher_ks", today_str, lambda r, st: (
-            st.get('strikeouts', 0) >= 6,
-            f"WIN ({st.get('strikeouts', 0)} Ks)" if st.get('strikeouts', 0) >= 6 else f"LOSS ({st.get('strikeouts', 0)} Ks)"
+            st.get('k', 0) >= 5, # Example threshold
+            f"WIN ({st.get('k', 0)} K)" if st.get('k', 0) >= 5 else "LOSS"
         ))
         return
 
-    print(f"[{datetime.now()}] Running Refined Pitcher Strikeout (K) Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Streamlined Pitcher Strikeout Model for {today_str}...")
     targets = []
 
     for g in games:
-        park_k_adj = g.get('park_factors', {}).get('k', 100) / 100.0
-
-        for p_prof, opp_team, opp_batters in [
-            (g.get('away_pitcher', {}), g.get('home_team', 'Home'), g.get('home_batters', [])),
-            (g.get('home_pitcher', {}), g.get('away_team', 'Away'), g.get('away_batters', []))
+        for side, team_name, starting_pitcher, opp_batters in [
+            ('away', g.get('away_team', 'Away'), g.get('away_pitcher', {}), g.get('home_batters', [])),
+            ('home', g.get('home_team', 'Home'), g.get('home_pitcher', {}), g.get('away_batters', []))
         ]:
-            p_prof_dict = p_prof if isinstance(p_prof, dict) else {}
-            pitcher_name = p_prof_dict.get('pitcher_name', 'TBD')
-
-            if not p_prof_dict or 'TBD' in pitcher_name:
+            p_dict = starting_pitcher if isinstance(starting_pitcher, dict) else {}
+            p_id = p_dict.get('pitcher_id', '0000')
+            p_name = p_dict.get('pitcher_name', 'TBD Pitcher')
+            
+            # If no pitcher listed, skip
+            if p_name == 'TBD Pitcher':
                 continue
 
-            lambda_k, match_k_pct, workload_desc, exp_bf, matchup_badge = calculate_pitcher_k_dynamics(p_prof_dict, opp_batters, park_k_adj)
+            # Pillar 1: Pitcher Blended K/9 & Volume
+            season_k9 = float(p_dict.get('k9', 8.5))
+            season_ip_avg = float(p_dict.get('ip_avg', 5.2))
+            
+            game_logs = p_dict.get('game_logs', [])
+            l3_k9, l3_ip = calculate_l3_k_and_ip(game_logs, season_k9, season_ip_avg)
+            
+            blended_k9 = (0.60 * season_k9) + (0.40 * l3_k9)
+            blended_ip = (0.70 * season_ip_avg) + (0.30 * l3_ip)
 
-            prob_o45 = round(float(1.0 - poisson.cdf(4, lambda_k)), 4)
-            prob_o55 = round(float(1.0 - poisson.cdf(5, lambda_k)), 4)
-            prob_o65 = round(float(1.0 - poisson.cdf(6, lambda_k)), 4)
-            prob_o75 = round(float(1.0 - poisson.cdf(7, lambda_k)), 4)
-
-            score_raw = 100.0 / (1.0 + np.exp(-18.0 * (prob_o55 - 0.500)))
-            score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
-
-            if prob_o65 >= 0.60 and exp_bf >= 22.0:
-                call = "💎 LOCK: Over 6.5 Ks (Apex)"
-            elif prob_o55 >= 0.65:
-                call = "🔥 TARGET: Over 5.5 Ks"
-            elif prob_o45 >= 0.78:
-                call = "🎯 FLOOR: Over 4.5 Ks (Anchor)"
-            elif prob_o55 <= 0.35 or 'SHORT' in workload_desc or 'OPENER' in workload_desc:
-                call = "🛑 FADE: Under K Trap"
+            # Pillar 2: Opponent Lineup Strikeout Vulnerability
+            total_batter_k_pct = 0.0
+            valid_batters = 0
+            
+            for b_tuple in opp_batters:
+                if len(b_tuple) >= 4:
+                    b_prof = b_tuple[3]
+                    b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
+                    b_k_pct = float(b_prof_dict.get('k_pct', 0.225)) # Default to league avg 22.5%
+                    total_batter_k_pct += b_k_pct
+                    valid_batters += 1
+            
+            if valid_batters > 0:
+                lineup_avg_k_pct = total_batter_k_pct / valid_batters
             else:
-                call = "⚾ Standard K Spot"
+                lineup_avg_k_pct = 0.225
+
+            # League average K% is roughly 22.5%
+            lineup_k_multiplier = np.clip(lineup_avg_k_pct / 0.225, 0.70, 1.30)
+
+            # Core Math: Calculate Expected Strikeouts
+            # (Blended K/9 / 9) gives K's per inning. Multiply by expected innings and lineup vulnerability.
+            base_ks_per_inning = blended_k9 / 9.0
+            expected_ks = float(np.clip(base_ks_per_inning * blended_ip * lineup_k_multiplier, 1.0, 12.0))
+            
+            # Map expected output to a 10-99 score (targeting 6.0+ Ks as elite)
+            score = round(float(np.clip((expected_ks / 7.5) * 100.0, 10.0, 99.0)), 1)
+
+            if score >= 82.0:
+                call = "🔥 K LOCK: Elite Stuff & Matchup"
+            elif score >= 68.0:
+                call = "🎯 K LADDER: Strong Target"
+            else:
+                call = "⚾ Standard K Volume"
 
             targets.append({
-                'pitcher_id': p_prof_dict.get('pitcher_id', 0),
-                'pitcher_name': pitcher_name,
-                'p_hand': p_prof_dict.get('p_hand', 'R'),
-                'k9': p_prof_dict.get('k9', 8.50),
-                'whip': p_prof_dict.get('whip', 1.25),
-                'opp_team': opp_team,
-                'workload_desc': workload_desc,
-                'matchup_badge': matchup_badge,
-                'match_k_pct': match_k_pct,
-                'exp_ks': round(lambda_k, 2),
-                'prob_o45': prob_o45,
-                'prob_o55': prob_o55,
-                'prob_o65': prob_o65,
-                'prob_o75': prob_o75,
+                'pitcher_id': p_id,
+                'pitcher_name': p_name,
+                'team': team_name,
+                'opp_team': g.get('home_team' if side == 'away' else 'away_team', 'OPP'),
+                'blended_k9': round(blended_k9, 2),
+                'expected_ip': round(blended_ip, 1),
+                'lineup_k_pct': round(lineup_avg_k_pct * 100, 1),
+                'k_multiplier': round(lineup_k_multiplier, 2),
+                'expected_ks': round(expected_ks, 2),
                 'score': score,
                 'target_call': call
             })
 
     df = pd.DataFrame(targets)
     if not df.empty:
-        df = df.sort_values(by=['score', 'exp_ks'], ascending=False).reset_index(drop=True)
+        df = df.sort_values(by='score', ascending=False).reset_index(drop=True)
         df['rank'] = df.index + 1
         df.to_csv(f"exports/pitcher_ks/pitcher_ks_top50_{today_str}.csv", index=False)
-        render_ks_card(df.head(30), f"exports/pitcher_ks/pitcher_ks_top50_card_{today_str}.png", today_str)
+        render_pitcher_ks_card(df.head(35), f"exports/pitcher_ks/pitcher_ks_top50_card_{today_str}.png", today_str)
 
-def render_ks_card(df, out_path, today_str):
+def render_pitcher_ks_card(df, out_path, today_str):
     if df.empty:
         return
     plt.close('all')
-    
+
     fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
     fig.patch.set_facecolor('#070d1e')
     ax.axis('off')
 
-    fig.text(0.5, 0.965, "MLB DAILY PITCHER STRIKEOUT (K) LADDER & WORKLOAD MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.938, f"Batters Faced Workload Engine • Lineup Whiff Friction • Poisson Ladder Distribution • {today_str}", ha='center', color='#38bdf8', fontsize=12)
+    fig.text(0.5, 0.965, "MLB PITCHER STRIKEOUT INDEX (K-LADDER MATRIX)", ha='center', color='#f8fafc', fontsize=22, weight='bold')
+    fig.text(0.5, 0.938, f"Blended K/9 • Opponent Lineup K% • Expected Innings Volume • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Starting Pitcher', 'Opp Team', 'K/9', 'WHIP', 'Workload Leash', 'Opp Whiff Context', 'Exp Ks', 'O 4.5', 'O 5.5', 'O 6.5', 'O 7.5', 'Score', 'ACTIONABLE K PROP CALL']
+    cols = ['#', 'Pitcher', 'Team', 'Opponent', 'Blended K/9', 'Lineup K%', 'Exp Innings', 'Proj Strikeouts', 'Score', 'ACTIONABLE CALL']
     rows = []
-    
-    for _, r in df.iterrows():
-        o45 = float(r.get('prob_o45', 0.0))
-        o55 = float(r.get('prob_o55', 0.0))
-        o65 = float(r.get('prob_o65', 0.0))
-        o75 = float(r.get('prob_o75', 0.0))
-        call = str(r.get('target_call', 'Standard K Spot'))
 
+    for _, r in df.iterrows():
+        call = str(r.get('target_call', 'Standard K Volume'))
         rows.append([
             r.get('rank', 1),
-            f"{r.get('pitcher_name', 'Pitcher')} ({r.get('p_hand', 'R')})",
-            str(r.get('opp_team', 'Team'))[:12],
-            f"{float(r.get('k9', 8.5)):.2f}",
-            f"{float(r.get('whip', 1.25)):.2f}",
-            str(r.get('workload_desc', 'STANDARD')),
-            str(r.get('matchup_badge', 'NEUTRAL SPLIT')),
-            f"{float(r.get('exp_ks', 5.0)):.2f}",
-            f"{o45 * 100:.1f}%",
-            f"{o55 * 100:.1f}%",
-            f"{o65 * 100:.1f}%",
-            f"{o75 * 100:.1f}%",
-            f"{float(r.get('score', 50.0)):.1f}",
+            str(r.get('pitcher_name', 'Pitcher')),
+            str(r.get('team', 'Team'))[:11],
+            str(r.get('opp_team', 'OPP'))[:11],
+            f"{float(r.get('blended_k9', 8.5)):.2f}",
+            f"{float(r.get('lineup_k_pct', 22.5)):.1f}% ({float(r.get('k_multiplier', 1.0)):.2f}x)",
+            f"{float(r.get('expected_ip', 5.0)):.1f} IP",
+            f"{float(r.get('expected_ks', 0.0)):.2f}",
+            f"{float(r.get('score', 0.0)):.1f}",
             call
         ])
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
     table.auto_set_font_size(False)
-    table.set_fontsize(7.5)
+    table.set_fontsize(8.0)
     table.scale(1.0, 1.85)
 
     for (row, col), cell in table.get_celld().items():
@@ -180,27 +167,31 @@ def render_ks_card(df, out_path, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#0f172a')
         else:
-            if col == 13:
-                txt = rows[row-1][13]
+            if col == 9:
+                txt = rows[row-1][9]
                 cell.set_text_props(
-                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt or 'FLOOR' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8')),
+                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'LADDER' in txt else '#94a3b8'),
                     weight='bold'
                 )
-            elif col in [8, 9, 10, 11, 12]:
+            elif col in [7, 8]:
                 cell.set_text_props(color='#facc15', weight='bold')
-            elif col == 3:
-                val = float(rows[row-1][3])
-                cell.set_text_props(color='#4ade80' if val >= 10.0 else ('#f87171' if val <= 7.0 else '#f1f5f9'), weight='bold')
             elif col == 5:
-                w_txt = rows[row-1][5]
-                cell.set_text_props(color='#38bdf8' if 'WORKHORSE' in w_txt else ('#f87171' if 'SHORT' in w_txt or 'OPENER' in w_txt else '#cbd5e1'), weight='semibold')
-            elif col == 6:
-                m_txt = rows[row-1][6]
-                cell.set_text_props(color='#4ade80' if 'HIGH WHIFF' in m_txt else ('#f87171' if 'CONTACT WALL' in m_txt else '#cbd5e1'), weight='semibold')
+                # Highlight highly vulnerable lineups (high K%) in green
+                k_pct_str = str(rows[row-1][5]).split('%')[0]
+                try:
+                    k_pct = float(k_pct_str)
+                    if k_pct > 24.5:
+                        cell.set_text_props(color='#4ade80')
+                    elif k_pct < 20.0:
+                        cell.set_text_props(color='#f87171')
+                    else:
+                        cell.set_text_props(color='#f1f5f9')
+                except:
+                    cell.set_text_props(color='#f1f5f9')
             else:
                 cell.set_text_props(color='#f1f5f9')
             cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
 
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close('all')
-    print(f"[✓] Saved Refined Pitcher K Ladder Card to {out_path}")
+    print(f"[✓] Saved Streamlined Pitcher Ks Card to {out_path}")
