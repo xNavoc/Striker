@@ -1,271 +1,217 @@
-player_id,player_name,order,team,opp_pitcher,p_hand,b_hand,iso,drought_games,projected_due_date,hazard_prob,hazard_badge,score,target_call,rank
-672386,Alejandro Kirk,1,Toronto Blue Jays,Ryan Weathers,L,R,0.148,0,2026-09-03,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,1
-665926,Andrés Giménez,2,Toronto Blue Jays,Ryan Weathers,L,L,0.116,0,2026-09-07,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,2
-678218,Brandon Valenzuela,3,Toronto Blue Jays,Ryan Weathers,L,S,0.158,0,2026-09-03,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,3
-703520,Brett Bateman,4,Toronto Blue Jays,Ryan Weathers,L,L,0.094,0,2026-09-11,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,4
-807727,Charles McAdoo,5,Toronto Blue Jays,Ryan Weathers,L,R,0.141,0,2026-09-04,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,5
-676914,Davis Schneider,6,Toronto Blue Jays,Ryan Weathers,L,R,0.132,0,2026-09-05,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,6
-663662,Daz Cameron,7,Toronto Blue Jays,Ryan Weathers,L,R,0.363,0,2026-08-27,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,7
-676391,Ernie Clement,8,Toronto Blue Jays,Ryan Weathers,L,R,0.118,0,2026-09-07,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,8
-543807,George Springer,9,Toronto Blue Jays,Ryan Weathers,L,R,0.152,0,2026-09-03,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,9
-663757,Trent Grisham,1,New York Yankees,Dylan Cease,R,L,0.197,0,2026-08-31,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,10
-700250,Ben Rice,2,New York Yankees,Dylan Cease,R,L,0.281,0,2026-08-28,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,11
-671218,Heliot Ramos,3,New York Yankees,Dylan Cease,R,R,0.082,0,2026-09-14,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,12
-671277,Luis García Jr.,4,New York Yankees,Dylan Cease,R,L,0.161,0,2026-09-02,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,13
-682987,Spencer Jones,5,New York Yankees,Dylan Cease,R,L,0.196,0,2026-08-31,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,14
-806146,George Lombard Jr.,6,New York Yankees,Dylan Cease,R,R,0.135,0,2026-09-05,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,15
-665862,Jazz Chisholm Jr.,7,New York Yankees,Dylan Cease,R,L,0.172,0,2026-09-02,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,16
-669224,Austin Wells,8,New York Yankees,Dylan Cease,R,L,0.117,0,2026-09-07,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,17
-676609,José Caballero,9,New York Yankees,Dylan Cease,R,R,0.144,0,2026-09-04,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,18
-686948,Drake Baldwin,1,Atlanta Braves,Logan Henderson,R,L,0.176,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,19
-660670,Ronald Acuña Jr.,2,Atlanta Braves,Logan Henderson,R,R,0.182,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,20
-621566,Matt Olson,3,Atlanta Braves,Logan Henderson,R,L,0.278,0,2026-08-28,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,21
-671739,Michael Harris II,4,Atlanta Braves,Logan Henderson,R,L,0.194,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,22
-645277,Ozzie Albies,5,Atlanta Braves,Logan Henderson,R,S,0.169,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,23
-643289,Mauricio Dubón,6,Atlanta Braves,Logan Henderson,R,R,0.125,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,24
-573262,Mike Yastrzemski,7,Atlanta Braves,Logan Henderson,R,L,0.159,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,25
-663586,Austin Riley,8,Atlanta Braves,Logan Henderson,R,R,0.146,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,26
-805347,Jim Jarvis,9,Atlanta Braves,Logan Henderson,R,L,0.093,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,27
-694192,Jackson Chourio,1,Milwaukee Brewers,Martín Pérez,L,R,0.188,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,28
-668930,Brice Turang,2,Milwaukee Brewers,Martín Pérez,L,L,0.176,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,29
-661388,William Contreras,3,Milwaukee Brewers,Martín Pérez,L,R,0.123,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,30
-641343,Jake Bauers,4,Milwaukee Brewers,Martín Pérez,L,L,0.227,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,31
-683734,Andrew Vaughn,5,Milwaukee Brewers,Martín Pérez,L,R,0.152,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,32
-592885,Christian Yelich,6,Milwaukee Brewers,Martín Pérez,L,L,0.143,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,33
-687401,Joey Ortiz,7,Milwaukee Brewers,Martín Pérez,L,R,0.128,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,34
-800325,Luis Lara,8,Milwaukee Brewers,Martín Pérez,L,S,0.108,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,35
-806198,Cooper Pratt,9,Milwaukee Brewers,Martín Pérez,L,R,0.091,0,2026-09-12,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,36
-694673,Abimelec Ortiz,1,Washington Nationals,Eury Pérez,R,L,0.315,0,2026-08-28,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,37
-665953,Andrés Chaparro,2,Washington Nationals,Eury Pérez,R,R,0.276,0,2026-08-28,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,38
-687605,Andrew Pinckney,3,Washington Nationals,Eury Pérez,R,R,0.384,0,2026-08-27,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,39
-691781,Brady House,4,Washington Nationals,Eury Pérez,R,R,0.158,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,40
-682928,CJ Abrams,5,Washington Nationals,Eury Pérez,R,L,0.251,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,41
-695734,Daylen Lile,6,Washington Nationals,Eury Pérez,R,L,0.159,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,42
-686611,Dylan Crews,7,Washington Nationals,Eury Pérez,R,R,0.143,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,43
-695670,Harry Ford,8,Washington Nationals,Eury Pérez,R,R,0.211,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,44
-696285,Jacob Young,9,Washington Nationals,Eury Pérez,R,R,0.15,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,45
-669364,Xavier Edwards,1,Miami Marlins,Jake Irvin,R,S,0.098,0,2026-09-10,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,46
-665052,Griffin Conine,2,Miami Marlins,Jake Irvin,R,L,0.273,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,47
-683357,Owen Caissie,3,Miami Marlins,Jake Irvin,R,L,0.201,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,48
-672640,Otto Lopez,4,Miami Marlins,Jake Irvin,R,R,0.14,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,49
-805300,Jakob Marsee,5,Miami Marlins,Jake Irvin,R,L,0.11,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,50
-681715,Heriberto Hernández,6,Miami Marlins,Jake Irvin,R,R,0.217,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,51
-691788,Joe Mack,7,Miami Marlins,Jake Irvin,R,L,0.188,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,52
-691594,Javier Sanoja,8,Miami Marlins,Jake Irvin,R,R,0.145,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,53
-665923,Esteury Ruiz,9,Miami Marlins,Jake Irvin,R,R,0.2,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,54
-676475,Alec Burleson,1,St. Louis Cardinals,Andrew Painter,R,L,0.2,0,2026-08-31,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,55
-691458,Blaze Jordan,2,St. Louis Cardinals,Andrew Painter,R,R,0.121,0,2026-09-06,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,56
-663494,Bryan Torres,3,St. Louis Cardinals,Andrew Painter,R,L,0.144,0,2026-09-04,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,57
-677592,Everson Pereira,4,St. Louis Cardinals,Andrew Painter,R,R,0.213,0,2026-08-31,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,58
-671056,Iván Herrera,5,St. Louis Cardinals,Andrew Painter,R,R,0.138,0,2026-09-04,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,59
-802139,JJ Wetherholt,6,St. Louis Cardinals,Andrew Painter,R,L,0.128,0,2026-09-06,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,60
-699625,Jimmy Crooks,7,St. Louis Cardinals,Andrew Painter,R,L,0.139,0,2026-09-04,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,61
-691023,Jordan Walker,8,St. Louis Cardinals,Andrew Painter,R,R,0.222,0,2026-08-30,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,62
-665877,José Fermín,9,St. Louis Cardinals,Andrew Painter,R,R,0.119,0,2026-09-07,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,63
-664761,Alec Bohm,1,Philadelphia Phillies,TBD Pitcher,R,R,0.143,0,2026-09-04,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,64
-669016,Brandon Marsh,2,Philadelphia Phillies,TBD Pitcher,R,L,0.163,0,2026-09-02,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,65
-650559,Bryan De La Cruz,3,Philadelphia Phillies,TBD Pitcher,R,R,0.226,0,2026-08-30,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,66
-547180,Bryce Harper,4,Philadelphia Phillies,TBD Pitcher,R,L,0.231,0,2026-08-30,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,67
-681082,Bryson Stott,5,Philadelphia Phillies,TBD Pitcher,R,L,0.149,0,2026-09-03,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,68
-656537,Derek Hill,6,Philadelphia Phillies,TBD Pitcher,R,R,0.162,0,2026-09-02,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,69
-624641,Edmundo Sosa,7,Philadelphia Phillies,TBD Pitcher,R,R,0.134,0,2026-09-05,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,70
-596117,Garrett Stubbs,8,Philadelphia Phillies,TBD Pitcher,R,L,0.05,0,2026-09-15,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,71
-592663,J.T. Realmuto,9,Philadelphia Phillies,TBD Pitcher,R,R,0.126,0,2026-09-06,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,72
-656775,Cedric Mullins,1,Tampa Bay Rays,Brandon Young,R,L,0.146,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,73
-802415,Chandler Simpson,2,Tampa Bay Rays,Brandon Young,R,L,0.056,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,74
-666018,Jonathan Aranda,3,Tampa Bay Rays,Brandon Young,R,L,0.137,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,75
-676356,Jonny DeLuca,4,Tampa Bay Rays,Brandon Young,R,R,0.167,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,76
-622761,Jorge Mateo,5,Tampa Bay Rays,Brandon Young,R,R,0.14,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,77
-691406,Junior Caminero,6,Tampa Bay Rays,Brandon Young,R,R,0.26,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,78
-700652,Kenny Piper,7,Tampa Bay Rays,Brandon Young,R,R,0.428,0,2026-08-26,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,79
-689414,Liam Hicks,8,Tampa Bay Rays,Brandon Young,R,L,0.15,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,80
-663743,Nick Fortes,9,Tampa Bay Rays,Brandon Young,R,R,0.101,0,2026-09-10,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,81
-665966,Carlos Narváez,1,Baltimore Orioles,Shane McClanahan,L,R,0.088,0,2026-09-12,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,82
-687952,Christian Encarnacion-Strand,2,Baltimore Orioles,Shane McClanahan,L,R,0.247,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,83
-681047,Christian Franklin,3,Baltimore Orioles,Shane McClanahan,L,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,84
-691723,Coby Mayo,4,Baltimore Orioles,Shane McClanahan,L,R,0.226,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,85
-681297,Colton Cowser,5,Baltimore Orioles,Shane McClanahan,L,L,0.139,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,86
-687637,Dylan Beavers,6,Baltimore Orioles,Shane McClanahan,L,L,0.139,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,87
-683002,Gunnar Henderson,7,Baltimore Orioles,Shane McClanahan,L,L,0.177,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,88
-702616,Jackson Holliday,8,Baltimore Orioles,Shane McClanahan,L,L,0.132,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,89
-665750,Leody Taveras,9,Baltimore Orioles,Shane McClanahan,L,S,0.132,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,90
-624428,Adam Frazier,1,Los Angeles Angels,Cody Bradford,L,L,0.116,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,91
-694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford,L,R,0.134,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,92
-642350,Jose Siri,3,Los Angeles Angels,Cody Bradford,L,R,0.2,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,93
-666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford,L,L,0.151,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,94
-545361,Mike Trout,5,Los Angeles Angels,Cody Bradford,L,R,0.194,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,95
-694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford,L,L,0.154,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,96
-694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford,L,L,0.109,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,97
-672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford,L,R,0.123,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,98
-518595,Travis d'Arnaud,9,Los Angeles Angels,Cody Bradford,L,R,0.08,0,2026-09-14,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,99
-607043,Brandon Nimmo,1,Texas Rangers,Ryan Johnson,R,L,0.16,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,100
-683227,Cody Freeman,2,Texas Rangers,Ryan Johnson,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,101
-608369,Corey Seager,3,Texas Rangers,Ryan Johnson,R,L,0.194,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,102
-643376,Danny Jansen,4,Texas Rangers,Ryan Johnson,R,R,0.13,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,103
-553869,Elias Díaz,5,Texas Rangers,Ryan Johnson,R,R,0.115,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,104
-694497,Evan Carter,6,Texas Rangers,Ryan Johnson,R,L,0.128,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,105
-677649,Ezequiel Duran,7,Texas Rangers,Ryan Johnson,R,R,0.17,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,106
-669394,Jake Burger,8,Texas Rangers,Ryan Johnson,R,R,0.181,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,107
-672284,Jarred Kelenic,9,Texas Rangers,Ryan Johnson,R,L,0.095,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,108
-675961,Alika Williams,1,Athletics,Hunter Brown,R,R,0.126,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,109
-661531,Brian Serven,2,Athletics,Hunter Brown,R,R,0.231,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,110
-666126,Carlos Cortes,3,Athletics,Hunter Brown,R,L,0.145,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,111
-687231,Darell Hernaiz,4,Athletics,Hunter Brown,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,112
-622268,Donovan Walton,5,Athletics,Hunter Brown,R,L,0.105,0,2026-09-09,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,113
-703607,Henry Bolte,6,Athletics,Hunter Brown,R,R,0.098,0,2026-09-10,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,114
-643446,Jeff McNeil,7,Athletics,Hunter Brown,R,L,0.095,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,115
-641680,Jonah Heim,8,Athletics,Hunter Brown,R,S,0.179,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,116
-671732,Lawrence Butler,9,Athletics,Hunter Brown,R,L,0.137,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,117
-701358,Cam Smith,1,Houston Astros,Jacob Lopez,L,R,0.175,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,118
-543877,Christian Vázquez,2,Houston Astros,Jacob Lopez,L,R,0.13,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,119
-572233,Christian Walker,3,Houston Astros,Jacob Lopez,L,R,0.209,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,120
-662139,Daulton Varsho,4,Houston Astros,Jacob Lopez,L,L,0.132,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,121
-670623,Isaac Paredes,5,Houston Astros,Jacob Lopez,L,R,0.164,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,122
-665161,Jeremy Peña,6,Houston Astros,Jacob Lopez,L,R,0.186,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,123
-514888,Jose Altuve,7,Houston Astros,Jacob Lopez,L,R,0.149,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,124
-664774,LaMonte Wade Jr.,8,Houston Astros,Jacob Lopez,L,L,0.115,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,125
-669397,Nick Allen,9,Houston Astros,Jacob Lopez,L,R,0.084,0,2026-09-13,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,126
-805999,A.J. Ewing,1,New York Mets,Luis Castillo,R,L,0.122,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,127
-666182,Bo Bichette,2,New York Mets,Luis Castillo,R,R,0.127,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,128
-683146,Brett Baty,3,New York Mets,Luis Castillo,R,L,0.116,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,129
-701807,Carson Benge,4,New York Mets,Luis Castillo,R,L,0.145,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,130
-666624,Christopher Morel,5,New York Mets,Luis Castillo,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,131
-665506,Cristian Pache,6,New York Mets,Luis Castillo,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,132
-676572,Eric Wagaman,7,New York Mets,Luis Castillo,R,R,0.143,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,133
-682626,Francisco Alvarez,8,New York Mets,Luis Castillo,R,R,0.172,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,134
-596019,Francisco Lindor,9,New York Mets,Luis Castillo,R,S,0.184,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,135
-643217,Andrew Benintendi,1,Chicago White Sox,Christian Scott,R,L,0.178,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,136
-695731,Braden Montgomery,2,Chicago White Sox,Christian Scott,R,S,0.134,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,137
-686668,Brenton Doyle,3,Chicago White Sox,Christian Scott,R,R,0.112,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,138
-805367,Chase Meidroth,4,Chicago White Sox,Christian Scott,R,R,0.132,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,139
-695657,Colson Montgomery,5,Chicago White Sox,Christian Scott,R,L,0.222,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,140
-691011,Drew Romo,6,Chicago White Sox,Christian Scott,R,S,0.164,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,141
-668670,Jake Rogers,7,Chicago White Sox,Christian Scott,R,R,0.214,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,142
-682668,Luisangel Acuña,8,Chicago White Sox,Christian Scott,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,143
-678246,Miguel Vargas,9,Chicago White Sox,Christian Scott,R,R,0.254,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,144
-701162,Ben Malgeri,1,Detroit Tigers,Michael Wacha,R,R,0.183,0,2026-09-01,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,145
-814430,Brett Callahan,2,Detroit Tigers,Michael Wacha,R,L,0.384,0,2026-08-27,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,146
-690993,Colt Keith,3,Detroit Tigers,Michael Wacha,R,L,0.153,0,2026-09-03,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,147
-667452,Corey Julks,4,Detroit Tigers,Michael Wacha,R,R,0.25,0,2026-08-29,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,148
-693307,Dillon Dingler,5,Detroit Tigers,Michael Wacha,R,R,0.233,0,2026-08-30,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,149
-680664,Eduardo Valencia,6,Detroit Tigers,Michael Wacha,R,R,0.394,0,2026-08-26,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,150
-650402,Gleyber Torres,7,Detroit Tigers,Michael Wacha,R,R,0.127,0,2026-09-06,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,151
-701678,Hao-Yu Lee,8,Detroit Tigers,Michael Wacha,R,R,0.146,0,2026-09-04,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,152
-595879,Javier Báez,9,Detroit Tigers,Michael Wacha,R,R,0.1,0,2026-09-10,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,153
-677951,Bobby Witt Jr.,1,Kansas City Royals,Drew Anderson,R,R,0.175,0,2026-09-01,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,154
-695600,Carter Jensen,2,Kansas City Royals,Drew Anderson,R,L,0.186,0,2026-09-01,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,155
-686555,Isaac Collins,3,Kansas City Royals,Drew Anderson,R,S,0.121,0,2026-09-06,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,156
-695506,Jac Caglianone,4,Kansas City Royals,Drew Anderson,R,L,0.214,0,2026-08-30,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,157
-670231,John Rave,5,Kansas City Royals,Drew Anderson,R,L,0.209,0,2026-08-31,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,158
-664728,Kyle Isbel,6,Kansas City Royals,Drew Anderson,R,L,0.12,0,2026-09-07,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,159
-571912,Luke Maile,7,Kansas City Royals,Drew Anderson,R,R,0.16,0,2026-09-03,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,160
-683090,Matthew Lugo,8,Kansas City Royals,Drew Anderson,R,R,0.16,0,2026-09-03,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,161
-686681,Michael Massey,9,Kansas City Royals,Drew Anderson,R,L,0.17,0,2026-09-02,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,162
-695257,Billy Cook,1,Pittsburgh Pirates,Tarik Skubal,L,R,0.062,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,163
-664040,Brandon Lowe,2,Pittsburgh Pirates,Tarik Skubal,L,L,0.227,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,164
-668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal,L,S,0.167,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,165
-699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Tarik Skubal,L,R,0.286,0,2026-08-28,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,166
-680779,Henry Davis,5,Pittsburgh Pirates,Tarik Skubal,L,R,0.129,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,167
-694378,Jacob Gonzalez,6,Pittsburgh Pirates,Tarik Skubal,L,L,0.116,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,168
-663968,Jake Mangum,7,Pittsburgh Pirates,Tarik Skubal,L,S,0.092,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,169
-669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal,L,R,0.068,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,170
-693304,Nick Gonzales,9,Pittsburgh Pirates,Tarik Skubal,L,R,0.093,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,171
-669743,Alex Call,1,Los Angeles Dodgers,Jared Jones,R,R,0.076,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,172
-681624,Andy Pages,2,Los Angeles Dodgers,Jared Jones,R,R,0.186,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,173
-666163,Ben Rortvedt,3,Los Angeles Dodgers,Jared Jones,R,L,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,174
-571771,Enrique Hernández,4,Los Angeles Dodgers,Jared Jones,R,R,0.236,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,175
-518692,Freddie Freeman,5,Los Angeles Dodgers,Jared Jones,R,L,0.163,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,176
-676439,Hunter Feduccia,6,Los Angeles Dodgers,Jared Jones,R,L,0.106,0,2026-09-09,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,177
-663656,Kyle Tucker,7,Los Angeles Dodgers,Jared Jones,R,L,0.134,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,178
-571970,Max Muncy,8,Los Angeles Dodgers,Jared Jones,R,L,0.252,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,179
-500743,Miguel Rojas,9,Los Angeles Dodgers,Jared Jones,R,R,0.121,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,180
-608324,Alex Bregman,1,Chicago Cubs,Kade Anderson,L,R,0.16,0,2026-09-03,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,181
-608348,Carson Kelly,2,Chicago Cubs,Kade Anderson,L,R,0.11,0,2026-09-08,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,182
-672356,Gabriel Arias,3,Chicago Cubs,Kade Anderson,L,R,0.05,0,2026-09-15,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,183
-664023,Ian Happ,4,Chicago Cubs,Kade Anderson,L,S,0.198,0,2026-08-31,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,184
-682634,Kevin Alcántara,5,Chicago Cubs,Kade Anderson,L,R,0.131,0,2026-09-05,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,185
-683737,Michael Busch,6,Chicago Cubs,Kade Anderson,L,L,0.146,0,2026-09-04,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,186
-624424,Michael Conforto,7,Chicago Cubs,Kade Anderson,L,L,0.212,0,2026-08-31,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,187
-665804,Miguel Amaya,8,Chicago Cubs,Kade Anderson,L,R,0.136,0,2026-09-05,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,188
-663538,Nico Hoerner,9,Chicago Cubs,Kade Anderson,L,R,0.098,0,2026-09-10,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,189
-680977,Brendan Donovan,1,Seattle Mariners,David Peterson,L,L,0.132,0,2026-09-05,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,190
-801126,Brock Rodden,2,Seattle Mariners,David Peterson,L,S,0.167,0,2026-09-02,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,191
-663728,Cal Raleigh,3,Seattle Mariners,David Peterson,L,S,0.148,0,2026-09-03,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,192
-702284,Cole Young,4,Seattle Mariners,David Peterson,L,L,0.14,0,2026-09-04,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,193
-686527,Dominic Canzone,5,Seattle Mariners,David Peterson,L,L,0.23,0,2026-08-30,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,194
-640902,Jhonny Pereda,6,Seattle Mariners,David Peterson,L,R,0.081,0,2026-09-14,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,195
-647304,Josh Naylor,7,Seattle Mariners,David Peterson,L,L,0.102,0,2026-09-09,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,196
-677594,Julio Rodríguez,8,Seattle Mariners,David Peterson,L,R,0.162,0,2026-09-02,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,197
-660844,Leo Rivas,9,Seattle Mariners,David Peterson,L,S,0.05,0,2026-09-15,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,198
-668800,Andrew Knizner,1,San Francisco Giants,Patrick Sandoval,L,R,0.05,0,2026-09-15,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,199
-805811,Bryce Eldridge,2,San Francisco Giants,Patrick Sandoval,L,L,0.188,0,2026-09-01,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,200
-671083,Buddy Kennedy,3,San Francisco Giants,Patrick Sandoval,L,R,0.05,0,2026-09-15,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,201
-683766,Christian Koss,4,San Francisco Giants,Patrick Sandoval,L,R,0.054,0,2026-09-15,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,202
-701852,Drew Cavanaugh,5,San Francisco Giants,Patrick Sandoval,L,L,0.05,0,2026-09-15,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,203
-687551,Drew Gilbert,6,San Francisco Giants,Patrick Sandoval,L,L,0.137,0,2026-09-05,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,204
-813841,Jonah Cox,7,San Francisco Giants,Patrick Sandoval,L,R,0.186,0,2026-09-01,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,205
-808982,Jung Hoo Lee,8,San Francisco Giants,Patrick Sandoval,L,L,0.139,0,2026-09-04,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,206
-678545,Osleivis Basabe,9,San Francisco Giants,Patrick Sandoval,L,R,0.162,0,2026-09-02,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,207
-668939,Adley Rutschman,1,Boston Red Sox,Blade Tidwell,R,S,0.129,0,2026-09-05,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,208
-655316,Andruw Monasterio,2,Boston Red Sox,Blade Tidwell,R,R,0.161,0,2026-09-02,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,209
-678011,Anthony Seigler,3,Boston Red Sox,Blade Tidwell,R,S,0.151,0,2026-09-03,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,210
-702332,Caleb Durbin,4,Boston Red Sox,Blade Tidwell,R,R,0.147,0,2026-09-04,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,211
-678882,Ceddanne Rafaela,5,Boston Red Sox,Blade Tidwell,R,R,0.177,0,2026-09-01,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,212
-657136,Connor Wong,6,Boston Red Sox,Blade Tidwell,R,R,0.131,0,2026-09-05,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,213
-642201,Eli White,7,Boston Red Sox,Blade Tidwell,R,R,0.173,0,2026-09-02,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,214
-663330,Jahmai Jones,8,Boston Red Sox,Blade Tidwell,R,R,0.084,0,2026-09-13,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,215
-680776,Jarren Duran,9,Boston Red Sox,Blade Tidwell,R,L,0.156,0,2026-09-03,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,216
-667472,Dane Myers,1,Cincinnati Reds,Michael Soroka,R,R,0.11,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,217
-682829,Elly De La Cruz,2,Cincinnati Reds,Michael Soroka,R,S,0.206,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,218
-553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka,R,R,0.204,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,219
-699302,Héctor Rodríguez,4,Cincinnati Reds,Michael Soroka,R,L,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,220
-668709,JJ Bleday,5,Cincinnati Reds,Michael Soroka,R,L,0.211,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,221
-624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka,R,R,0.143,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,222
-663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka,R,R,0.102,0,2026-09-09,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,223
-680574,Matt McLain,8,Cincinnati Reds,Michael Soroka,R,R,0.156,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,224
-669911,Michael Toglia,9,Cincinnati Reds,Michael Soroka,R,S,0.077,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,225
-682998,Corbin Carroll,1,Arizona Diamondbacks,Rhett Lowder,R,L,0.238,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,226
-672515,Gabriel Moreno,2,Arizona Diamondbacks,Rhett Lowder,R,R,0.161,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,227
-672695,Geraldo Perdomo,3,Arizona Diamondbacks,Rhett Lowder,R,S,0.128,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,228
-545121,Ildemaro Vargas,4,Arizona Diamondbacks,Rhett Lowder,R,S,0.141,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,229
-543510,James McCann,5,Arizona Diamondbacks,Rhett Lowder,R,R,0.147,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,230
-691783,Jordan Lawlar,6,Arizona Diamondbacks,Rhett Lowder,R,R,0.151,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,231
-678489,Jorge Barrosa,7,Arizona Diamondbacks,Rhett Lowder,R,S,0.144,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,232
-699912,Jose Fernandez,8,Arizona Diamondbacks,Rhett Lowder,R,R,0.101,0,2026-09-10,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,233
-663457,Lars Nootbaar,9,Arizona Diamondbacks,Rhett Lowder,R,L,0.12,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,234
-694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes,R,S,0.12,0,2026-09-07,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,235
-682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes,R,S,0.184,0,2026-09-01,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,236
-595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes,R,R,0.115,0,2026-09-07,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,237
-677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes,R,S,0.12,0,2026-09-07,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,238
-800050,Chase DeLauter,5,Cleveland Guardians,Gabriel Hughes,R,L,0.155,0,2026-09-03,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,239
-681807,David Fry,6,Cleveland Guardians,Gabriel Hughes,R,R,0.154,0,2026-09-03,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,240
-666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes,R,R,0.246,0,2026-08-29,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,241
-608070,José Ramírez,8,Cleveland Guardians,Gabriel Hughes,R,S,0.142,0,2026-09-04,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,242
-663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes,R,L,0.222,0,2026-08-30,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,243
-690924,Braxton Fulford,1,Colorado Rockies,Tanner Bibee,R,R,0.103,0,2026-09-09,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,244
-664954,Brett Sullivan,2,Colorado Rockies,Tanner Bibee,R,L,0.202,0,2026-08-31,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,245
-694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee,R,S,0.188,0,2026-09-01,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,246
-681393,Connor Norby,4,Colorado Rockies,Tanner Bibee,R,R,0.12,0,2026-09-06,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,247
-678662,Ezequiel Tovar,5,Colorado Rockies,Tanner Bibee,R,R,0.122,0,2026-09-06,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,248
-664983,Jake McCarthy,6,Colorado Rockies,Tanner Bibee,R,L,0.193,0,2026-08-31,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,249
-687597,Jordan Beck,7,Colorado Rockies,Tanner Bibee,R,R,0.12,0,2026-09-07,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,250
-691720,Kyle Karros,8,Colorado Rockies,Tanner Bibee,R,R,0.157,0,2026-09-03,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,251
-666160,Mickey Moniak,9,Colorado Rockies,Tanner Bibee,R,L,0.27,0,2026-08-29,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,252
-702176,Alan Roden,1,Minnesota Twins,Casey Mize,R,L,0.05,0,2026-09-15,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,253
-656577,Alex Jackson,2,Minnesota Twins,Casey Mize,R,R,0.106,0,2026-09-09,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,254
-686797,Brooks Lee,3,Minnesota Twins,Casey Mize,R,S,0.174,0,2026-09-02,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,255
-621439,Byron Buxton,4,Minnesota Twins,Casey Mize,R,R,0.264,0,2026-08-29,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,256
-605137,Josh Bell,5,Minnesota Twins,Casey Mize,R,S,0.173,0,2026-09-02,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,257
-701785,Kaelen Culpepper,6,Minnesota Twins,Casey Mize,R,R,0.106,0,2026-09-09,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,258
-665019,Kody Clemens,7,Minnesota Twins,Casey Mize,R,L,0.232,0,2026-08-30,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,259
-807712,Luke Keaschall,8,Minnesota Twins,Casey Mize,R,R,0.103,0,2026-09-09,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,260
-668904,Royce Lewis,9,Minnesota Twins,Casey Mize,R,R,0.178,0,2026-09-01,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,261
-669720,Austin Hays,1,San Diego Padres,Dean Kremer,R,R,0.093,0,2026-09-11,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,262
-665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer,R,R,0.154,0,2026-09-03,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,263
-666023,Freddy Fermin,3,San Diego Padres,Dean Kremer,R,R,0.113,0,2026-09-07,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,264
-657757,Gavin Sheets,4,San Diego Padres,Dean Kremer,R,L,0.183,0,2026-09-01,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,265
-701538,Jackson Merrill,5,San Diego Padres,Dean Kremer,R,L,0.167,0,2026-09-02,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,266
-630105,Jake Cronenworth,6,San Diego Padres,Dean Kremer,R,L,0.073,0,2026-09-15,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,267
-687749,Jase Bowen,7,San Diego Padres,Dean Kremer,R,R,0.104,0,2026-09-09,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,268
-669134,Luis Campusano,8,San Diego Padres,Dean Kremer,R,R,0.195,0,2026-08-31,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,269
-650859,Luis Rengifo,9,San Diego Padres,Dean Kremer,R,S,0.05,0,2026-09-15,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,270
+player_id,player_name,order,team,opp_pitcher,matchup,season_iso,drought_games,scale_lambda,hazard_prob,hazard_score,target_call,rank
+802139,JJ Wetherholt,1,St. Louis Cardinals,Andrew Painter (RHP),L vs R,0.128,0,15.0,8.0,16.0,🔄 RECENT RESET: Just Homered,1
+671056,Iván Herrera,2,St. Louis Cardinals,Andrew Painter (RHP),R vs R,0.138,0,13.9,8.0,16.0,🔄 RECENT RESET: Just Homered,2
+676475,Alec Burleson,3,St. Louis Cardinals,Andrew Painter (RHP),L vs R,0.2,0,9.6,8.0,16.0,🔄 RECENT RESET: Just Homered,3
+691023,Jordan Walker,4,St. Louis Cardinals,Andrew Painter (RHP),R vs R,0.222,0,8.6,8.0,16.0,🔄 RECENT RESET: Just Homered,4
+695491,Joshua Báez,5,St. Louis Cardinals,Andrew Painter (RHP),R vs R,0.428,0,4.5,8.0,16.0,🔄 RECENT RESET: Just Homered,5
+701675,Nathan Church,6,St. Louis Cardinals,Andrew Painter (RHP),L vs R,0.12,0,16.0,8.0,16.0,🔄 RECENT RESET: Just Homered,6
+665877,José Fermín,7,St. Louis Cardinals,Andrew Painter (RHP),R vs R,0.119,0,16.1,8.0,16.0,🔄 RECENT RESET: Just Homered,7
+699625,Jimmy Crooks,8,St. Louis Cardinals,Andrew Painter (RHP),L vs R,0.139,0,13.8,8.0,16.0,🔄 RECENT RESET: Just Homered,8
+691458,Blaze Jordan,9,St. Louis Cardinals,Andrew Painter (RHP),R vs R,0.121,0,15.9,8.0,16.0,🔄 RECENT RESET: Just Homered,9
+656941,Kyle Schwarber,1,Philadelphia Phillies,Quinn Mathews (LHP),L vs L,0.28,0,6.9,8.0,16.0,🔄 RECENT RESET: Just Homered,10
+607208,Trea Turner,2,Philadelphia Phillies,Quinn Mathews (LHP),R vs L,0.147,0,13.1,8.0,16.0,🔄 RECENT RESET: Just Homered,11
+547180,Bryce Harper,3,Philadelphia Phillies,Quinn Mathews (LHP),L vs L,0.231,0,8.3,8.0,16.0,🔄 RECENT RESET: Just Homered,12
+650333,Luis Arraez,4,Philadelphia Phillies,Quinn Mathews (LHP),L vs L,0.155,0,12.4,8.0,16.0,🔄 RECENT RESET: Just Homered,13
+664761,Alec Bohm,5,Philadelphia Phillies,Quinn Mathews (LHP),R vs L,0.143,0,13.4,8.0,16.0,🔄 RECENT RESET: Just Homered,14
+624641,Edmundo Sosa,6,Philadelphia Phillies,Quinn Mathews (LHP),R vs L,0.134,0,14.3,8.0,16.0,🔄 RECENT RESET: Just Homered,15
+650559,Bryan De La Cruz,7,Philadelphia Phillies,Quinn Mathews (LHP),R vs L,0.226,0,8.5,8.0,16.0,🔄 RECENT RESET: Just Homered,16
+592663,J.T. Realmuto,8,Philadelphia Phillies,Quinn Mathews (LHP),R vs L,0.126,0,15.2,8.0,16.0,🔄 RECENT RESET: Just Homered,17
+656537,Derek Hill,9,Philadelphia Phillies,Quinn Mathews (LHP),R vs L,0.162,0,11.9,8.0,16.0,🔄 RECENT RESET: Just Homered,18
+656775,Cedric Mullins,1,Tampa Bay Rays,Brandon Young (RHP),L vs R,0.146,0,13.2,8.0,16.0,🔄 RECENT RESET: Just Homered,19
+802415,Chandler Simpson,2,Tampa Bay Rays,Brandon Young (RHP),L vs R,0.056,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,20
+666018,Jonathan Aranda,3,Tampa Bay Rays,Brandon Young (RHP),L vs R,0.137,0,14.0,8.0,16.0,🔄 RECENT RESET: Just Homered,21
+676356,Jonny DeLuca,4,Tampa Bay Rays,Brandon Young (RHP),R vs R,0.167,0,11.5,8.0,16.0,🔄 RECENT RESET: Just Homered,22
+622761,Jorge Mateo,5,Tampa Bay Rays,Brandon Young (RHP),R vs R,0.14,0,13.7,8.0,16.0,🔄 RECENT RESET: Just Homered,23
+691406,Junior Caminero,6,Tampa Bay Rays,Brandon Young (RHP),R vs R,0.26,0,7.4,8.0,16.0,🔄 RECENT RESET: Just Homered,24
+700652,Kenny Piper,7,Tampa Bay Rays,Brandon Young (RHP),R vs R,0.428,0,4.5,8.0,16.0,🔄 RECENT RESET: Just Homered,25
+689414,Liam Hicks,8,Tampa Bay Rays,Brandon Young (RHP),L vs R,0.15,0,12.8,8.0,16.0,🔄 RECENT RESET: Just Homered,26
+663743,Nick Fortes,9,Tampa Bay Rays,Brandon Young (RHP),R vs R,0.101,0,19.0,8.0,16.0,🔄 RECENT RESET: Just Homered,27
+702616,Jackson Holliday,1,Baltimore Orioles,Shane McClanahan (LHP),L vs L,0.132,0,14.5,8.0,16.0,🔄 RECENT RESET: Just Homered,28
+624413,Pete Alonso,2,Baltimore Orioles,Shane McClanahan (LHP),R vs L,0.233,0,8.2,8.0,16.0,🔄 RECENT RESET: Just Homered,29
+691723,Coby Mayo,3,Baltimore Orioles,Shane McClanahan (LHP),R vs L,0.226,0,8.5,8.0,16.0,🔄 RECENT RESET: Just Homered,30
+641933,Tyler O'Neill,4,Baltimore Orioles,Shane McClanahan (LHP),R vs L,0.167,0,11.5,8.0,16.0,🔄 RECENT RESET: Just Homered,31
+683002,Gunnar Henderson,5,Baltimore Orioles,Shane McClanahan (LHP),L vs L,0.177,0,10.8,8.0,16.0,🔄 RECENT RESET: Just Homered,32
+687952,Christian Encarnacion-Strand,6,Baltimore Orioles,Shane McClanahan (LHP),R vs L,0.247,0,7.8,8.0,16.0,🔄 RECENT RESET: Just Homered,33
+681047,Christian Franklin,7,Baltimore Orioles,Shane McClanahan (LHP),R vs L,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,34
+665750,Leody Taveras,8,Baltimore Orioles,Shane McClanahan (LHP),S vs L,0.132,0,14.5,8.0,16.0,🔄 RECENT RESET: Just Homered,35
+665966,Carlos Narváez,9,Baltimore Orioles,Shane McClanahan (LHP),R vs L,0.088,0,21.8,8.0,16.0,🔄 RECENT RESET: Just Homered,36
+624428,Adam Frazier,1,Los Angeles Angels,Cody Bradford (LHP),L vs L,0.116,0,16.6,8.0,16.0,🔄 RECENT RESET: Just Homered,37
+694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford (LHP),R vs L,0.134,0,14.3,8.0,16.0,🔄 RECENT RESET: Just Homered,38
+642350,Jose Siri,3,Los Angeles Angels,Cody Bradford (LHP),R vs L,0.2,0,9.6,8.0,16.0,🔄 RECENT RESET: Just Homered,39
+666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford (LHP),L vs L,0.151,0,12.7,8.0,16.0,🔄 RECENT RESET: Just Homered,40
+545361,Mike Trout,5,Los Angeles Angels,Cody Bradford (LHP),R vs L,0.194,0,9.9,8.0,16.0,🔄 RECENT RESET: Just Homered,41
+694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford (LHP),L vs L,0.154,0,12.5,8.0,16.0,🔄 RECENT RESET: Just Homered,42
+694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford (LHP),L vs L,0.109,0,17.6,8.0,16.0,🔄 RECENT RESET: Just Homered,43
+672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford (LHP),R vs L,0.123,0,15.6,8.0,16.0,🔄 RECENT RESET: Just Homered,44
+518595,Travis d'Arnaud,9,Los Angeles Angels,Cody Bradford (LHP),R vs L,0.08,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,45
+592626,Joc Pederson,1,Texas Rangers,Ryan Johnson (RHP),L vs R,0.244,0,7.9,8.0,16.0,🔄 RECENT RESET: Just Homered,46
+608369,Corey Seager,2,Texas Rangers,Ryan Johnson (RHP),L vs R,0.194,0,9.9,8.0,16.0,🔄 RECENT RESET: Just Homered,47
+694671,Wyatt Langford,3,Texas Rangers,Ryan Johnson (RHP),R vs R,0.203,0,9.5,8.0,16.0,🔄 RECENT RESET: Just Homered,48
+607043,Brandon Nimmo,4,Texas Rangers,Ryan Johnson (RHP),L vs R,0.16,0,12.0,8.0,16.0,🔄 RECENT RESET: Just Homered,49
+677649,Ezequiel Duran,5,Texas Rangers,Ryan Johnson (RHP),R vs R,0.17,0,11.3,8.0,16.0,🔄 RECENT RESET: Just Homered,50
+694497,Evan Carter,6,Texas Rangers,Ryan Johnson (RHP),L vs R,0.128,0,15.0,8.0,16.0,🔄 RECENT RESET: Just Homered,51
+669394,Jake Burger,7,Texas Rangers,Ryan Johnson (RHP),R vs R,0.181,0,10.6,8.0,16.0,🔄 RECENT RESET: Just Homered,52
+683227,Cody Freeman,8,Texas Rangers,Ryan Johnson (RHP),R vs R,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,53
+643376,Danny Jansen,9,Texas Rangers,Ryan Johnson (RHP),R vs R,0.13,0,14.8,8.0,16.0,🔄 RECENT RESET: Just Homered,54
+675961,Alika Williams,1,Athletics,Hunter Brown (RHP),R vs R,0.126,0,15.2,8.0,16.0,🔄 RECENT RESET: Just Homered,55
+661531,Brian Serven,2,Athletics,Hunter Brown (RHP),R vs R,0.231,0,8.3,8.0,16.0,🔄 RECENT RESET: Just Homered,56
+666126,Carlos Cortes,3,Athletics,Hunter Brown (RHP),L vs R,0.145,0,13.2,8.0,16.0,🔄 RECENT RESET: Just Homered,57
+687231,Darell Hernaiz,4,Athletics,Hunter Brown (RHP),R vs R,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,58
+622268,Donovan Walton,5,Athletics,Hunter Brown (RHP),L vs R,0.105,0,18.3,8.0,16.0,🔄 RECENT RESET: Just Homered,59
+703607,Henry Bolte,6,Athletics,Hunter Brown (RHP),R vs R,0.098,0,19.6,8.0,16.0,🔄 RECENT RESET: Just Homered,60
+643446,Jeff McNeil,7,Athletics,Hunter Brown (RHP),L vs R,0.095,0,20.2,8.0,16.0,🔄 RECENT RESET: Just Homered,61
+641680,Jonah Heim,8,Athletics,Hunter Brown (RHP),S vs R,0.179,0,10.7,8.0,16.0,🔄 RECENT RESET: Just Homered,62
+671732,Lawrence Butler,9,Athletics,Hunter Brown (RHP),L vs R,0.137,0,14.0,8.0,16.0,🔄 RECENT RESET: Just Homered,63
+701358,Cam Smith,1,Houston Astros,Jacob Lopez (LHP),R vs L,0.175,0,11.0,8.0,16.0,🔄 RECENT RESET: Just Homered,64
+543877,Christian Vázquez,2,Houston Astros,Jacob Lopez (LHP),R vs L,0.13,0,14.8,8.0,16.0,🔄 RECENT RESET: Just Homered,65
+572233,Christian Walker,3,Houston Astros,Jacob Lopez (LHP),R vs L,0.209,0,9.2,8.0,16.0,🔄 RECENT RESET: Just Homered,66
+662139,Daulton Varsho,4,Houston Astros,Jacob Lopez (LHP),L vs L,0.132,0,14.5,8.0,16.0,🔄 RECENT RESET: Just Homered,67
+670623,Isaac Paredes,5,Houston Astros,Jacob Lopez (LHP),R vs L,0.164,0,11.7,8.0,16.0,🔄 RECENT RESET: Just Homered,68
+665161,Jeremy Peña,6,Houston Astros,Jacob Lopez (LHP),R vs L,0.186,0,10.3,8.0,16.0,🔄 RECENT RESET: Just Homered,69
+514888,Jose Altuve,7,Houston Astros,Jacob Lopez (LHP),R vs L,0.149,0,12.9,8.0,16.0,🔄 RECENT RESET: Just Homered,70
+664774,LaMonte Wade Jr.,8,Houston Astros,Jacob Lopez (LHP),L vs L,0.115,0,16.7,8.0,16.0,🔄 RECENT RESET: Just Homered,71
+669397,Nick Allen,9,Houston Astros,Jacob Lopez (LHP),R vs L,0.084,0,22.9,8.0,16.0,🔄 RECENT RESET: Just Homered,72
+805999,A.J. Ewing,1,New York Mets,Luis Castillo (RHP),L vs R,0.122,0,15.7,8.0,16.0,🔄 RECENT RESET: Just Homered,73
+666182,Bo Bichette,2,New York Mets,Luis Castillo (RHP),R vs R,0.127,0,15.1,8.0,16.0,🔄 RECENT RESET: Just Homered,74
+683146,Brett Baty,3,New York Mets,Luis Castillo (RHP),L vs R,0.116,0,16.6,8.0,16.0,🔄 RECENT RESET: Just Homered,75
+701807,Carson Benge,4,New York Mets,Luis Castillo (RHP),L vs R,0.145,0,13.2,8.0,16.0,🔄 RECENT RESET: Just Homered,76
+666624,Christopher Morel,5,New York Mets,Luis Castillo (RHP),R vs R,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,77
+665506,Cristian Pache,6,New York Mets,Luis Castillo (RHP),R vs R,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,78
+676572,Eric Wagaman,7,New York Mets,Luis Castillo (RHP),R vs R,0.143,0,13.4,8.0,16.0,🔄 RECENT RESET: Just Homered,79
+682626,Francisco Alvarez,8,New York Mets,Luis Castillo (RHP),R vs R,0.172,0,11.2,8.0,16.0,🔄 RECENT RESET: Just Homered,80
+596019,Francisco Lindor,9,New York Mets,Luis Castillo (RHP),S vs R,0.184,0,10.4,8.0,16.0,🔄 RECENT RESET: Just Homered,81
+803011,Sam Antonacci,1,Chicago White Sox,Christian Scott (RHP),L vs R,0.124,0,15.5,8.0,16.0,🔄 RECENT RESET: Just Homered,82
+808959,Munetaka Murakami,2,Chicago White Sox,Christian Scott (RHP),L vs R,0.301,0,6.4,8.0,16.0,🔄 RECENT RESET: Just Homered,83
+678246,Miguel Vargas,3,Chicago White Sox,Christian Scott (RHP),R vs R,0.254,0,7.6,8.0,16.0,🔄 RECENT RESET: Just Homered,84
+643217,Andrew Benintendi,4,Chicago White Sox,Christian Scott (RHP),L vs R,0.178,0,10.8,8.0,16.0,🔄 RECENT RESET: Just Homered,85
+695731,Braden Montgomery,5,Chicago White Sox,Christian Scott (RHP),S vs R,0.134,0,14.3,8.0,16.0,🔄 RECENT RESET: Just Homered,86
+695657,Colson Montgomery,6,Chicago White Sox,Christian Scott (RHP),L vs R,0.222,0,8.6,8.0,16.0,🔄 RECENT RESET: Just Homered,87
+805367,Chase Meidroth,7,Chicago White Sox,Christian Scott (RHP),R vs R,0.132,0,14.5,8.0,16.0,🔄 RECENT RESET: Just Homered,88
+671976,Tristan Peters,8,Chicago White Sox,Christian Scott (RHP),L vs R,0.153,0,12.5,8.0,16.0,🔄 RECENT RESET: Just Homered,89
+691011,Drew Romo,9,Chicago White Sox,Christian Scott (RHP),S vs R,0.164,0,11.7,8.0,16.0,🔄 RECENT RESET: Just Homered,90
+805808,Kevin McGonigle,1,Detroit Tigers,Michael Wacha (RHP),L vs R,0.14,0,13.7,8.0,16.0,🔄 RECENT RESET: Just Homered,91
+650402,Gleyber Torres,2,Detroit Tigers,Michael Wacha (RHP),R vs R,0.127,0,15.1,8.0,16.0,🔄 RECENT RESET: Just Homered,92
+690993,Colt Keith,3,Detroit Tigers,Michael Wacha (RHP),L vs R,0.153,0,12.5,8.0,16.0,🔄 RECENT RESET: Just Homered,93
+693307,Dillon Dingler,4,Detroit Tigers,Michael Wacha (RHP),R vs R,0.233,0,8.2,8.0,16.0,🔄 RECENT RESET: Just Homered,94
+656716,Zach McKinstry,5,Detroit Tigers,Michael Wacha (RHP),L vs R,0.107,0,17.9,8.0,16.0,🔄 RECENT RESET: Just Homered,95
+814430,Brett Callahan,6,Detroit Tigers,Michael Wacha (RHP),L vs R,0.384,0,5.0,8.0,16.0,🔄 RECENT RESET: Just Homered,96
+679529,Spencer Torkelson,7,Detroit Tigers,Michael Wacha (RHP),R vs R,0.186,0,10.3,8.0,16.0,🔄 RECENT RESET: Just Homered,97
+703601,Max Clark,8,Detroit Tigers,Michael Wacha (RHP),L vs R,0.137,0,14.0,8.0,16.0,🔄 RECENT RESET: Just Homered,98
+701678,Hao-Yu Lee,9,Detroit Tigers,Michael Wacha (RHP),R vs R,0.146,0,13.2,8.0,16.0,🔄 RECENT RESET: Just Homered,99
+695600,Carter Jensen,1,Kansas City Royals,Drew Anderson (RHP),L vs R,0.186,0,10.3,8.0,16.0,🔄 RECENT RESET: Just Homered,100
+677951,Bobby Witt Jr.,2,Kansas City Royals,Drew Anderson (RHP),R vs R,0.175,0,11.0,8.0,16.0,🔄 RECENT RESET: Just Homered,101
+695506,Jac Caglianone,3,Kansas City Royals,Drew Anderson (RHP),L vs R,0.214,0,9.0,8.0,16.0,🔄 RECENT RESET: Just Homered,102
+521692,Salvador Perez,4,Kansas City Royals,Drew Anderson (RHP),R vs R,0.148,0,13.0,8.0,16.0,🔄 RECENT RESET: Just Homered,103
+686469,Vinnie Pasquantino,5,Kansas City Royals,Drew Anderson (RHP),L vs R,0.134,0,14.3,8.0,16.0,🔄 RECENT RESET: Just Homered,104
+679845,Nick Loftin,6,Kansas City Royals,Drew Anderson (RHP),R vs R,0.142,0,13.5,8.0,16.0,🔄 RECENT RESET: Just Homered,105
+686681,Michael Massey,7,Kansas City Royals,Drew Anderson (RHP),L vs R,0.17,0,11.3,8.0,16.0,🔄 RECENT RESET: Just Homered,106
+686475,Tyler Tolbert,8,Kansas City Royals,Drew Anderson (RHP),R vs R,0.141,0,13.6,8.0,16.0,🔄 RECENT RESET: Just Homered,107
+664728,Kyle Isbel,9,Kansas City Royals,Drew Anderson (RHP),L vs R,0.12,0,16.0,8.0,16.0,🔄 RECENT RESET: Just Homered,108
+693304,Nick Gonzales,1,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,0.093,0,20.6,8.0,16.0,🔄 RECENT RESET: Just Homered,109
+699013,Esmerlyn Valdez,2,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,0.286,0,6.7,8.0,16.0,🔄 RECENT RESET: Just Homered,110
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal (LHP),S vs L,0.167,0,11.5,8.0,16.0,🔄 RECENT RESET: Just Homered,111
+665833,Oneil Cruz,4,Pittsburgh Pirates,Tarik Skubal (LHP),L vs L,0.224,0,8.6,8.0,16.0,🔄 RECENT RESET: Just Homered,112
+804668,Rafael Flores Jr.,5,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,0.385,0,5.0,8.0,16.0,🔄 RECENT RESET: Just Homered,113
+663968,Jake Mangum,6,Pittsburgh Pirates,Tarik Skubal (LHP),S vs L,0.092,0,20.9,8.0,16.0,🔄 RECENT RESET: Just Homered,114
+694377,Nick Yorke,7,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,0.081,0,23.7,8.0,16.0,🔄 RECENT RESET: Just Homered,115
+669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,0.068,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,116
+680779,Henry Davis,9,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,0.129,0,14.9,8.0,16.0,🔄 RECENT RESET: Just Homered,117
+660271,Shohei Ohtani,1,Los Angeles Dodgers,Jared Jones (RHP),L vs R,0.261,0,7.4,8.0,16.0,🔄 RECENT RESET: Just Homered,118
+518692,Freddie Freeman,2,Los Angeles Dodgers,Jared Jones (RHP),L vs R,0.163,0,11.8,8.0,16.0,🔄 RECENT RESET: Just Homered,119
+605141,Mookie Betts,3,Los Angeles Dodgers,Jared Jones (RHP),R vs R,0.174,0,11.0,8.0,16.0,🔄 RECENT RESET: Just Homered,120
+571970,Max Muncy,4,Los Angeles Dodgers,Jared Jones (RHP),L vs R,0.252,0,7.6,8.0,16.0,🔄 RECENT RESET: Just Homered,121
+669242,Tommy Edman,5,Los Angeles Dodgers,Jared Jones (RHP),S vs R,0.137,0,14.0,8.0,16.0,🔄 RECENT RESET: Just Homered,122
+663656,Kyle Tucker,6,Los Angeles Dodgers,Jared Jones (RHP),L vs R,0.134,0,14.3,8.0,16.0,🔄 RECENT RESET: Just Homered,123
+606192,Teoscar Hernández,7,Los Angeles Dodgers,Jared Jones (RHP),R vs R,0.149,0,12.9,8.0,16.0,🔄 RECENT RESET: Just Homered,124
+677950,Alek Thomas,8,Los Angeles Dodgers,Jared Jones (RHP),L vs R,0.159,0,12.1,8.0,16.0,🔄 RECENT RESET: Just Homered,125
+666163,Ben Rortvedt,9,Los Angeles Dodgers,Jared Jones (RHP),L vs R,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,126
+691718,Pete Crow-Armstrong,1,Chicago Cubs,Kade Anderson (LHP),L vs L,0.275,0,7.0,8.0,16.0,🔄 RECENT RESET: Just Homered,127
+673548,Seiya Suzuki,2,Chicago Cubs,Kade Anderson (LHP),R vs L,0.213,0,9.0,8.0,16.0,🔄 RECENT RESET: Just Homered,128
+608324,Alex Bregman,3,Chicago Cubs,Kade Anderson (LHP),R vs L,0.16,0,12.0,8.0,16.0,🔄 RECENT RESET: Just Homered,129
+683737,Michael Busch,4,Chicago Cubs,Kade Anderson (LHP),L vs L,0.146,0,13.2,8.0,16.0,🔄 RECENT RESET: Just Homered,130
+663538,Nico Hoerner,5,Chicago Cubs,Kade Anderson (LHP),R vs L,0.098,0,19.6,8.0,16.0,🔄 RECENT RESET: Just Homered,131
+621438,Tyrone Taylor,6,Chicago Cubs,Kade Anderson (LHP),R vs L,0.262,0,7.3,8.0,16.0,🔄 RECENT RESET: Just Homered,132
+699393,Pedro Ramírez,7,Chicago Cubs,Kade Anderson (LHP),S vs L,0.127,0,15.1,8.0,16.0,🔄 RECENT RESET: Just Homered,133
+682634,Kevin Alcántara,8,Chicago Cubs,Kade Anderson (LHP),R vs L,0.131,0,14.7,8.0,16.0,🔄 RECENT RESET: Just Homered,134
+665804,Miguel Amaya,9,Chicago Cubs,Kade Anderson (LHP),R vs L,0.136,0,14.1,8.0,16.0,🔄 RECENT RESET: Just Homered,135
+680977,Brendan Donovan,1,Seattle Mariners,David Peterson (LHP),L vs L,0.132,0,14.5,8.0,16.0,🔄 RECENT RESET: Just Homered,136
+668227,Randy Arozarena,2,Seattle Mariners,David Peterson (LHP),R vs L,0.176,0,10.9,8.0,16.0,🔄 RECENT RESET: Just Homered,137
+686527,Dominic Canzone,3,Seattle Mariners,David Peterson (LHP),L vs L,0.23,0,8.3,8.0,16.0,🔄 RECENT RESET: Just Homered,138
+677594,Julio Rodríguez,4,Seattle Mariners,David Peterson (LHP),R vs L,0.162,0,11.9,8.0,16.0,🔄 RECENT RESET: Just Homered,139
+647304,Josh Naylor,5,Seattle Mariners,David Peterson (LHP),L vs L,0.102,0,18.8,8.0,16.0,🔄 RECENT RESET: Just Homered,140
+621493,Taylor Ward,6,Seattle Mariners,David Peterson (LHP),R vs L,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,141
+663728,Cal Raleigh,7,Seattle Mariners,David Peterson (LHP),S vs L,0.148,0,13.0,8.0,16.0,🔄 RECENT RESET: Just Homered,142
+702284,Cole Young,8,Seattle Mariners,David Peterson (LHP),L vs L,0.14,0,13.7,8.0,16.0,🔄 RECENT RESET: Just Homered,143
+660844,Leo Rivas,9,Seattle Mariners,David Peterson (LHP),S vs L,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,144
+682674,Victor Bericoto,1,San Francisco Giants,Patrick Sandoval (LHP),R vs L,0.188,0,10.2,8.0,16.0,🔄 RECENT RESET: Just Homered,145
+646240,Rafael Devers,2,San Francisco Giants,Patrick Sandoval (LHP),L vs L,0.23,0,8.3,8.0,16.0,🔄 RECENT RESET: Just Homered,146
+642715,Willy Adames,3,San Francisco Giants,Patrick Sandoval (LHP),R vs L,0.19,0,10.1,8.0,16.0,🔄 RECENT RESET: Just Homered,147
+805811,Bryce Eldridge,4,San Francisco Giants,Patrick Sandoval (LHP),L vs L,0.188,0,10.2,8.0,16.0,🔄 RECENT RESET: Just Homered,148
+678545,Osleivis Basabe,5,San Francisco Giants,Patrick Sandoval (LHP),R vs L,0.162,0,11.9,8.0,16.0,🔄 RECENT RESET: Just Homered,149
+808982,Jung Hoo Lee,6,San Francisco Giants,Patrick Sandoval (LHP),L vs L,0.139,0,13.8,8.0,16.0,🔄 RECENT RESET: Just Homered,150
+683766,Christian Koss,7,San Francisco Giants,Patrick Sandoval (LHP),R vs L,0.054,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,151
+687551,Drew Gilbert,8,San Francisco Giants,Patrick Sandoval (LHP),L vs L,0.137,0,14.0,8.0,16.0,🔄 RECENT RESET: Just Homered,152
+668800,Andrew Knizner,9,San Francisco Giants,Patrick Sandoval (LHP),R vs L,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,153
+686765,Nick Sogard,1,Boston Red Sox,Blade Tidwell (RHP),S vs R,0.104,0,18.5,8.0,16.0,🔄 RECENT RESET: Just Homered,154
+678882,Ceddanne Rafaela,2,Boston Red Sox,Blade Tidwell (RHP),R vs R,0.177,0,10.8,8.0,16.0,🔄 RECENT RESET: Just Homered,155
+677800,Wilyer Abreu,3,Boston Red Sox,Blade Tidwell (RHP),L vs R,0.213,0,9.0,8.0,16.0,🔄 RECENT RESET: Just Homered,156
+575929,Willson Contreras,4,Boston Red Sox,Blade Tidwell (RHP),R vs R,0.256,0,7.5,8.0,16.0,🔄 RECENT RESET: Just Homered,157
+668939,Adley Rutschman,5,Boston Red Sox,Blade Tidwell (RHP),S vs R,0.129,0,14.9,8.0,16.0,🔄 RECENT RESET: Just Homered,158
+702332,Caleb Durbin,6,Boston Red Sox,Blade Tidwell (RHP),R vs R,0.147,0,13.1,8.0,16.0,🔄 RECENT RESET: Just Homered,159
+680776,Jarren Duran,7,Boston Red Sox,Blade Tidwell (RHP),L vs R,0.156,0,12.3,8.0,16.0,🔄 RECENT RESET: Just Homered,160
+655316,Andruw Monasterio,8,Boston Red Sox,Blade Tidwell (RHP),R vs R,0.161,0,11.9,8.0,16.0,🔄 RECENT RESET: Just Homered,161
+681508,Mickey Gasper,9,Boston Red Sox,Blade Tidwell (RHP),S vs R,0.133,0,14.4,8.0,16.0,🔄 RECENT RESET: Just Homered,162
+667472,Dane Myers,1,Cincinnati Reds,Michael Soroka (RHP),R vs R,0.11,0,17.5,8.0,16.0,🔄 RECENT RESET: Just Homered,163
+682829,Elly De La Cruz,2,Cincinnati Reds,Michael Soroka (RHP),S vs R,0.206,0,9.3,8.0,16.0,🔄 RECENT RESET: Just Homered,164
+553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka (RHP),R vs R,0.204,0,9.4,8.0,16.0,🔄 RECENT RESET: Just Homered,165
+699302,Héctor Rodríguez,4,Cincinnati Reds,Michael Soroka (RHP),L vs R,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,166
+668709,JJ Bleday,5,Cincinnati Reds,Michael Soroka (RHP),L vs R,0.211,0,9.1,8.0,16.0,🔄 RECENT RESET: Just Homered,167
+624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka (RHP),R vs R,0.143,0,13.4,8.0,16.0,🔄 RECENT RESET: Just Homered,168
+663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka (RHP),R vs R,0.102,0,18.8,8.0,16.0,🔄 RECENT RESET: Just Homered,169
+680574,Matt McLain,8,Cincinnati Reds,Michael Soroka (RHP),R vs R,0.156,0,12.3,8.0,16.0,🔄 RECENT RESET: Just Homered,170
+669911,Michael Toglia,9,Cincinnati Reds,Michael Soroka (RHP),S vs R,0.077,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,171
+663457,Lars Nootbaar,1,Arizona Diamondbacks,Rhett Lowder (RHP),L vs R,0.12,0,16.0,8.0,16.0,🔄 RECENT RESET: Just Homered,172
+682998,Corbin Carroll,2,Arizona Diamondbacks,Rhett Lowder (RHP),L vs R,0.238,0,8.1,8.0,16.0,🔄 RECENT RESET: Just Homered,173
+672515,Gabriel Moreno,3,Arizona Diamondbacks,Rhett Lowder (RHP),R vs R,0.161,0,11.9,8.0,16.0,🔄 RECENT RESET: Just Homered,174
+672695,Geraldo Perdomo,4,Arizona Diamondbacks,Rhett Lowder (RHP),S vs R,0.128,0,15.0,8.0,16.0,🔄 RECENT RESET: Just Homered,175
+571448,Nolan Arenado,5,Arizona Diamondbacks,Rhett Lowder (RHP),R vs R,0.197,0,9.7,8.0,16.0,🔄 RECENT RESET: Just Homered,176
+694374,Tim Tawa,6,Arizona Diamondbacks,Rhett Lowder (RHP),R vs R,0.152,0,12.6,8.0,16.0,🔄 RECENT RESET: Just Homered,177
+545121,Ildemaro Vargas,7,Arizona Diamondbacks,Rhett Lowder (RHP),S vs R,0.141,0,13.6,8.0,16.0,🔄 RECENT RESET: Just Homered,178
+699912,Jose Fernandez,8,Arizona Diamondbacks,Rhett Lowder (RHP),R vs R,0.101,0,19.0,8.0,16.0,🔄 RECENT RESET: Just Homered,179
+814439,Ryan Waldschmidt,9,Arizona Diamondbacks,Rhett Lowder (RHP),R vs R,0.115,0,16.7,8.0,16.0,🔄 RECENT RESET: Just Homered,180
+694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,0.12,0,16.0,8.0,16.0,🔄 RECENT RESET: Just Homered,181
+682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,0.184,0,10.4,8.0,16.0,🔄 RECENT RESET: Just Homered,182
+595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes (RHP),R vs R,0.115,0,16.7,8.0,16.0,🔄 RECENT RESET: Just Homered,183
+677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,0.12,0,16.0,8.0,16.0,🔄 RECENT RESET: Just Homered,184
+800050,Chase DeLauter,5,Cleveland Guardians,Gabriel Hughes (RHP),L vs R,0.155,0,12.4,8.0,16.0,🔄 RECENT RESET: Just Homered,185
+681807,David Fry,6,Cleveland Guardians,Gabriel Hughes (RHP),R vs R,0.154,0,12.5,8.0,16.0,🔄 RECENT RESET: Just Homered,186
+666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes (RHP),R vs R,0.246,0,7.8,8.0,16.0,🔄 RECENT RESET: Just Homered,187
+608070,José Ramírez,8,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,0.142,0,13.5,8.0,16.0,🔄 RECENT RESET: Just Homered,188
+663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes (RHP),L vs R,0.222,0,8.6,8.0,16.0,🔄 RECENT RESET: Just Homered,189
+664983,Jake McCarthy,1,Colorado Rockies,Tanner Bibee (RHP),L vs R,0.193,0,9.9,8.0,16.0,🔄 RECENT RESET: Just Homered,190
+666160,Mickey Moniak,2,Colorado Rockies,Tanner Bibee (RHP),L vs R,0.27,0,7.1,8.0,16.0,🔄 RECENT RESET: Just Homered,191
+694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee (RHP),S vs R,0.188,0,10.2,8.0,16.0,🔄 RECENT RESET: Just Homered,192
+681198,TJ Rumfield,4,Colorado Rockies,Tanner Bibee (RHP),L vs R,0.154,0,12.5,8.0,16.0,🔄 RECENT RESET: Just Homered,193
+691720,Kyle Karros,5,Colorado Rockies,Tanner Bibee (RHP),R vs R,0.157,0,12.2,8.0,16.0,🔄 RECENT RESET: Just Homered,194
+650489,Willi Castro,6,Colorado Rockies,Tanner Bibee (RHP),S vs R,0.159,0,12.1,8.0,16.0,🔄 RECENT RESET: Just Homered,195
+687859,Troy Johnston,7,Colorado Rockies,Tanner Bibee (RHP),L vs R,0.109,0,17.6,8.0,16.0,🔄 RECENT RESET: Just Homered,196
+664954,Brett Sullivan,8,Colorado Rockies,Tanner Bibee (RHP),L vs R,0.202,0,9.5,8.0,16.0,🔄 RECENT RESET: Just Homered,197
+691728,Zac Veen,9,Colorado Rockies,Tanner Bibee (RHP),L vs R,0.369,0,5.2,8.0,16.0,🔄 RECENT RESET: Just Homered,198
+702176,Alan Roden,1,Minnesota Twins,Casey Mize (RHP),L vs R,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,199
+656577,Alex Jackson,2,Minnesota Twins,Casey Mize (RHP),R vs R,0.106,0,18.1,8.0,16.0,🔄 RECENT RESET: Just Homered,200
+686797,Brooks Lee,3,Minnesota Twins,Casey Mize (RHP),S vs R,0.174,0,11.0,8.0,16.0,🔄 RECENT RESET: Just Homered,201
+621439,Byron Buxton,4,Minnesota Twins,Casey Mize (RHP),R vs R,0.264,0,7.3,8.0,16.0,🔄 RECENT RESET: Just Homered,202
+605137,Josh Bell,5,Minnesota Twins,Casey Mize (RHP),S vs R,0.173,0,11.1,8.0,16.0,🔄 RECENT RESET: Just Homered,203
+701785,Kaelen Culpepper,6,Minnesota Twins,Casey Mize (RHP),R vs R,0.106,0,18.1,8.0,16.0,🔄 RECENT RESET: Just Homered,204
+665019,Kody Clemens,7,Minnesota Twins,Casey Mize (RHP),L vs R,0.232,0,8.3,8.0,16.0,🔄 RECENT RESET: Just Homered,205
+807712,Luke Keaschall,8,Minnesota Twins,Casey Mize (RHP),R vs R,0.103,0,18.6,8.0,16.0,🔄 RECENT RESET: Just Homered,206
+668904,Royce Lewis,9,Minnesota Twins,Casey Mize (RHP),R vs R,0.178,0,10.8,8.0,16.0,🔄 RECENT RESET: Just Homered,207
+669720,Austin Hays,1,San Diego Padres,Dean Kremer (RHP),R vs R,0.093,0,20.6,8.0,16.0,🔄 RECENT RESET: Just Homered,208
+665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer (RHP),R vs R,0.154,0,12.5,8.0,16.0,🔄 RECENT RESET: Just Homered,209
+666023,Freddy Fermin,3,San Diego Padres,Dean Kremer (RHP),R vs R,0.113,0,17.0,8.0,16.0,🔄 RECENT RESET: Just Homered,210
+657757,Gavin Sheets,4,San Diego Padres,Dean Kremer (RHP),L vs R,0.183,0,10.5,8.0,16.0,🔄 RECENT RESET: Just Homered,211
+701538,Jackson Merrill,5,San Diego Padres,Dean Kremer (RHP),L vs R,0.167,0,11.5,8.0,16.0,🔄 RECENT RESET: Just Homered,212
+630105,Jake Cronenworth,6,San Diego Padres,Dean Kremer (RHP),L vs R,0.073,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,213
+687749,Jase Bowen,7,San Diego Padres,Dean Kremer (RHP),R vs R,0.104,0,18.5,8.0,16.0,🔄 RECENT RESET: Just Homered,214
+669134,Luis Campusano,8,San Diego Padres,Dean Kremer (RHP),R vs R,0.195,0,9.8,8.0,16.0,🔄 RECENT RESET: Just Homered,215
+650859,Luis Rengifo,9,San Diego Padres,Dean Kremer (RHP),S vs R,0.05,0,24.0,8.0,16.0,🔄 RECENT RESET: Just Homered,216
