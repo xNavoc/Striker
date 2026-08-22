@@ -1,0 +1,271 @@
+player_id,player_name,order,team,opp_pitcher,p_hand,b_hand,ba,obp,opp_baa_split,contact_badge,exp_hits,prob_1h,prob_2plus_h,score,target_call,rank
+805811,Bryce Eldridge,2,San Francisco Giants,Patrick Sandoval,L,L,0.248,0.34,0.514,ABOVE-AVERAGE CONTACT,2.2,0.8892,0.6454,93.4,👑 LOCK: 1+ Hit (Parlay Anchor),1
+701852,Drew Cavanaugh,5,San Francisco Giants,Patrick Sandoval,L,L,0.226,0.33,0.514,ABOVE-AVERAGE CONTACT,2.2,0.8892,0.6454,93.4,👑 LOCK: 1+ Hit (Parlay Anchor),2
+687551,Drew Gilbert,6,San Francisco Giants,Patrick Sandoval,L,L,0.241,0.326,0.514,ABOVE-AVERAGE CONTACT,2.2,0.8892,0.6454,93.4,👑 LOCK: 1+ Hit (Parlay Anchor),3
+808982,Jung Hoo Lee,8,San Francisco Giants,Patrick Sandoval,L,L,0.291,0.328,0.514,ELITE CONTACT MATCHUP,2.2,0.8892,0.6454,93.4,👑 LOCK: 1+ Hit (Parlay Anchor),4
+694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes,R,S,0.32,0.382,0.286,ELITE CONTACT MATCHUP,2.2,0.8892,0.6454,93.4,👑 LOCK: 1+ Hit (Parlay Anchor),5
+800050,Chase DeLauter,5,Cleveland Guardians,Gabriel Hughes,R,L,0.286,0.359,0.286,ELITE CONTACT MATCHUP,2.04,0.8699,0.6047,91.5,👑 LOCK: 1+ Hit (Parlay Anchor),6
+694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford,L,L,0.276,0.351,0.4,ABOVE-AVERAGE CONTACT,2.03,0.8685,0.6017,91.4,👑 LOCK: 1+ Hit (Parlay Anchor),7
+676475,Alec Burleson,1,St. Louis Cardinals,Andrew Painter,R,L,0.289,0.355,0.299,ELITE CONTACT MATCHUP,1.83,0.8392,0.5452,87.5,👑 LOCK: 1+ Hit (Parlay Anchor),8
+624428,Adam Frazier,1,Los Angeles Angels,Cody Bradford,L,L,0.243,0.31,0.4,ABOVE-AVERAGE CONTACT,1.79,0.8324,0.533,86.5,👑 LOCK: 1+ Hit (Parlay Anchor),9
+663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes,R,L,0.267,0.3,0.286,ABOVE-AVERAGE CONTACT,1.79,0.8322,0.5328,86.4,👑 LOCK: 1+ Hit (Parlay Anchor),10
+650559,Bryan De La Cruz,3,Philadelphia Phillies,TBD Pitcher,R,R,0.355,0.405,0.24,ABOVE-AVERAGE CONTACT,1.69,0.8153,0.5034,83.4,👑 LOCK: 1+ Hit (Parlay Anchor),11
+691023,Jordan Walker,8,St. Louis Cardinals,Andrew Painter,R,R,0.291,0.35,0.274,ELITE CONTACT MATCHUP,1.69,0.8148,0.5024,83.3,👑 LOCK: 1+ Hit (Parlay Anchor),12
+677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes,R,S,0.251,0.314,0.286,ABOVE-AVERAGE CONTACT,1.68,0.8133,0.5,83.0,👑 LOCK: 1+ Hit (Parlay Anchor),13
+680664,Eduardo Valencia,6,Detroit Tigers,Michael Wacha,R,R,0.344,0.365,0.252,ABOVE-AVERAGE CONTACT,1.66,0.8092,0.4932,82.2,👑 LOCK: 1+ Hit (Parlay Anchor),14
+663662,Daz Cameron,7,Toronto Blue Jays,Ryan Weathers,L,R,0.364,0.364,0.234,ABOVE-AVERAGE CONTACT,1.66,0.809,0.4929,82.1,👑 LOCK: 1+ Hit (Parlay Anchor),15
+700652,Kenny Piper,7,Tampa Bay Rays,Brandon Young,R,R,0.286,0.375,0.295,ELITE CONTACT MATCHUP,1.65,0.8087,0.4922,82.1,👑 LOCK: 1+ Hit (Parlay Anchor),16
+703520,Brett Bateman,4,Toronto Blue Jays,Ryan Weathers,L,L,0.302,0.339,0.264,ELITE CONTACT MATCHUP,1.65,0.8085,0.4921,82.0,👑 LOCK: 1+ Hit (Parlay Anchor),17
+672515,Gabriel Moreno,2,Arizona Diamondbacks,Rhett Lowder,R,R,0.308,0.385,0.272,ELITE CONTACT MATCHUP,1.64,0.8064,0.4885,81.6,👑 LOCK: 1+ Hit (Parlay Anchor),18
+682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes,R,S,0.241,0.272,0.286,ABOVE-AVERAGE CONTACT,1.61,0.8004,0.4787,80.3,👑 LOCK: 1+ Hit (Parlay Anchor),19
+543510,James McCann,5,Arizona Diamondbacks,Rhett Lowder,R,R,0.296,0.331,0.272,ELITE CONTACT MATCHUP,1.58,0.7936,0.4679,78.8,👑 LOCK: 1+ Hit (Parlay Anchor),20
+608070,José Ramírez,8,Cleveland Guardians,Gabriel Hughes,R,S,0.235,0.336,0.286,ABOVE-AVERAGE CONTACT,1.57,0.7922,0.4657,78.4,👑 LOCK: 1+ Hit (Parlay Anchor),21
+691594,Javier Sanoja,7,Miami Marlins,Jake Irvin,R,R,0.282,0.32,0.284,ELITE CONTACT MATCHUP,1.57,0.7919,0.4652,78.4,👑 LOCK: 1+ Hit (Parlay Anchor),22
+678011,Anthony Seigler,3,Boston Red Sox,Blade Tidwell,R,S,0.252,0.321,0.308,ABOVE-AVERAGE CONTACT,1.57,0.7917,0.4649,78.3,👑 LOCK: 1+ Hit (Parlay Anchor),23
+665161,Jeremy Peña,6,Houston Astros,Jacob Lopez,L,R,0.283,0.338,0.28,ELITE CONTACT MATCHUP,1.55,0.7884,0.4598,77.5,👑 LOCK: 1+ Hit (Parlay Anchor),24
+666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford,L,L,0.209,0.266,0.4,ABOVE-AVERAGE CONTACT,1.54,0.7848,0.4542,76.6,👑 LOCK: 1+ Hit (Parlay Anchor),25
+664983,Jake McCarthy,6,Colorado Rockies,Tanner Bibee,R,L,0.292,0.333,0.225,ABOVE-AVERAGE CONTACT,1.54,0.7848,0.4541,76.6,👑 LOCK: 1+ Hit (Parlay Anchor),26
+691783,Jordan Lawlar,6,Arizona Diamondbacks,Rhett Lowder,R,R,0.283,0.356,0.272,ELITE CONTACT MATCHUP,1.51,0.7788,0.4451,75.1,💎 LADDER: 2+ Multi-Hit Value,27
+691720,Kyle Karros,8,Colorado Rockies,Tanner Bibee,R,R,0.265,0.362,0.242,ABOVE-AVERAGE CONTACT,1.5,0.7767,0.4419,74.5,💎 LADDER: 2+ Multi-Hit Value,28
+691406,Junior Caminero,6,Tampa Bay Rays,Brandon Young,R,R,0.276,0.363,0.295,ABOVE-AVERAGE CONTACT,1.5,0.776,0.4409,74.3,💎 LADDER: 2+ Multi-Hit Value,29
+694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee,R,S,0.282,0.366,0.225,ABOVE-AVERAGE CONTACT,1.48,0.7731,0.4366,73.6,💎 LADDER: 2+ Multi-Hit Value,30
+595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes,R,R,0.265,0.337,0.236,ABOVE-AVERAGE CONTACT,1.46,0.7683,0.4294,72.2,💎 LADDER: 2+ Multi-Hit Value,31
+663743,Nick Fortes,9,Tampa Bay Rays,Brandon Young,R,R,0.266,0.31,0.295,ABOVE-AVERAGE CONTACT,1.44,0.7635,0.4225,70.9,💎 LADDER: 2+ Multi-Hit Value,32
+676356,Jonny DeLuca,4,Tampa Bay Rays,Brandon Young,R,R,0.264,0.296,0.295,ABOVE-AVERAGE CONTACT,1.43,0.7609,0.4188,70.1,💎 LADDER: 2+ Multi-Hit Value,33
+802139,JJ Wetherholt,6,St. Louis Cardinals,Andrew Painter,R,L,0.241,0.345,0.299,ABOVE-AVERAGE CONTACT,1.43,0.7604,0.418,70.0,💎 LADDER: 2+ Multi-Hit Value,34
+683227,Cody Freeman,2,Texas Rangers,Ryan Johnson,R,R,0.276,0.364,0.278,ABOVE-AVERAGE CONTACT,1.41,0.7558,0.4116,68.6,💎 LADDER: 2+ Multi-Hit Value,35
+663494,Bryan Torres,3,St. Louis Cardinals,Andrew Painter,R,L,0.237,0.3,0.299,ABOVE-AVERAGE CONTACT,1.4,0.7546,0.4098,68.2,💎 LADDER: 2+ Multi-Hit Value,36
+666160,Mickey Moniak,9,Colorado Rockies,Tanner Bibee,R,L,0.264,0.307,0.225,ABOVE-AVERAGE CONTACT,1.39,0.7506,0.4043,67.0,💎 LADDER: 2+ Multi-Hit Value,37
+677649,Ezequiel Duran,7,Texas Rangers,Ryan Johnson,R,R,0.271,0.327,0.278,ABOVE-AVERAGE CONTACT,1.38,0.7495,0.4027,66.7,💎 LADDER: 2+ Multi-Hit Value,38
+665877,José Fermín,9,St. Louis Cardinals,Andrew Painter,R,R,0.251,0.324,0.274,ABOVE-AVERAGE CONTACT,1.36,0.7442,0.3955,65.0,💎 LADDER: 2+ Multi-Hit Value,39
+701807,Carson Benge,4,New York Mets,Luis Castillo,R,L,0.272,0.333,0.272,ABOVE-AVERAGE CONTACT,1.36,0.7432,0.3941,64.7,💎 LADDER: 2+ Multi-Hit Value,40
+670623,Isaac Paredes,5,Houston Astros,Jacob Lopez,L,R,0.262,0.356,0.28,ABOVE-AVERAGE CONTACT,1.35,0.7402,0.3901,63.7,💎 LADDER: 2+ Multi-Hit Value,41
+701678,Hao-Yu Lee,8,Detroit Tigers,Michael Wacha,R,R,0.277,0.319,0.252,ABOVE-AVERAGE CONTACT,1.33,0.7366,0.3852,62.5,💎 LADDER: 2+ Multi-Hit Value,42
+814430,Brett Callahan,2,Detroit Tigers,Michael Wacha,R,L,0.308,0.308,0.226,ABOVE-AVERAGE CONTACT,1.33,0.7356,0.3838,62.2,💎 LADDER: 2+ Multi-Hit Value,43
+669397,Nick Allen,9,Houston Astros,Jacob Lopez,L,R,0.258,0.303,0.28,ABOVE-AVERAGE CONTACT,1.33,0.7348,0.3829,61.9,💎 LADDER: 2+ Multi-Hit Value,44
+671056,Iván Herrera,5,St. Louis Cardinals,Andrew Painter,R,R,0.244,0.36,0.274,ABOVE-AVERAGE CONTACT,1.33,0.7343,0.3822,61.8,💎 LADDER: 2+ Multi-Hit Value,45
+678545,Osleivis Basabe,9,San Francisco Giants,Patrick Sandoval,L,R,0.235,0.264,0.279,ABOVE-AVERAGE CONTACT,1.33,0.7343,0.3821,61.8,💎 LADDER: 2+ Multi-Hit Value,46
+665923,Esteury Ruiz,3,Miami Marlins,Jake Irvin,R,R,0.253,0.369,0.284,ABOVE-AVERAGE CONTACT,1.32,0.7329,0.3803,61.3,💎 LADDER: 2+ Multi-Hit Value,47
+699912,Jose Fernandez,8,Arizona Diamondbacks,Rhett Lowder,R,R,0.264,0.307,0.272,ABOVE-AVERAGE CONTACT,1.32,0.7327,0.3801,61.2,💎 LADDER: 2+ Multi-Hit Value,48
+669016,Brandon Marsh,2,Philadelphia Phillies,TBD Pitcher,R,L,0.277,0.321,0.24,ABOVE-AVERAGE CONTACT,1.32,0.7323,0.3795,61.1,🔥 TARGET: 1+ Hit Spot,49
+813841,Jonah Cox,7,San Francisco Giants,Patrick Sandoval,L,R,0.233,0.233,0.279,ABOVE-AVERAGE CONTACT,1.31,0.7312,0.3781,60.7,🔥 TARGET: 1+ Hit Spot,50
+686681,Michael Massey,9,Kansas City Royals,Drew Anderson,R,L,0.278,0.31,0.247,ABOVE-AVERAGE CONTACT,1.31,0.7308,0.3775,60.6,🔥 TARGET: 1+ Hit Spot,51
+691458,Blaze Jordan,2,St. Louis Cardinals,Andrew Painter,R,R,0.241,0.269,0.274,ABOVE-AVERAGE CONTACT,1.31,0.7299,0.3764,60.3,🔥 TARGET: 1+ Hit Spot,52
+695506,Jac Caglianone,4,Kansas City Royals,Drew Anderson,R,L,0.277,0.329,0.247,ABOVE-AVERAGE CONTACT,1.31,0.7295,0.3758,60.2,🔥 TARGET: 1+ Hit Spot,53
+664040,Brandon Lowe,2,Pittsburgh Pirates,Tarik Skubal,L,L,0.254,0.319,0.28,ABOVE-AVERAGE CONTACT,1.31,0.7293,0.3756,60.1,🔥 TARGET: 1+ Hit Spot,54
+680776,Jarren Duran,9,Boston Red Sox,Blade Tidwell,R,L,0.209,0.267,0.308,ABOVE-AVERAGE CONTACT,1.3,0.7278,0.3736,59.6,🔥 TARGET: 1+ Hit Spot,55
+622761,Jorge Mateo,5,Tampa Bay Rays,Brandon Young,R,R,0.24,0.285,0.295,ABOVE-AVERAGE CONTACT,1.3,0.7277,0.3735,59.6,🔥 TARGET: 1+ Hit Spot,56
+607043,Brandon Nimmo,1,Texas Rangers,Ryan Johnson,R,L,0.266,0.331,0.266,ABOVE-AVERAGE CONTACT,1.3,0.7275,0.3732,59.5,🔥 TARGET: 1+ Hit Spot,57
+676391,Ernie Clement,8,Toronto Blue Jays,Ryan Weathers,L,R,0.285,0.31,0.234,ABOVE-AVERAGE CONTACT,1.3,0.7265,0.3719,59.2,🔥 TARGET: 1+ Hit Spot,58
+672386,Alejandro Kirk,1,Toronto Blue Jays,Ryan Weathers,L,R,0.284,0.365,0.234,ABOVE-AVERAGE CONTACT,1.29,0.7252,0.3703,58.7,🔥 TARGET: 1+ Hit Spot,59
+802415,Chandler Simpson,2,Tampa Bay Rays,Brandon Young,R,L,0.308,0.335,0.228,ABOVE-AVERAGE CONTACT,1.29,0.7248,0.3698,58.6,🔥 TARGET: 1+ Hit Spot,60
+518692,Freddie Freeman,5,Los Angeles Dodgers,Jared Jones,R,L,0.3,0.372,0.234,ABOVE-AVERAGE CONTACT,1.29,0.7247,0.3696,58.6,🔥 TARGET: 1+ Hit Spot,61
+677951,Bobby Witt Jr.,1,Kansas City Royals,Drew Anderson,R,R,0.288,0.363,0.234,ABOVE-AVERAGE CONTACT,1.29,0.7241,0.3689,58.4,🔥 TARGET: 1+ Hit Spot,62
+650402,Gleyber Torres,7,Detroit Tigers,Michael Wacha,R,R,0.266,0.375,0.252,ABOVE-AVERAGE CONTACT,1.28,0.7222,0.3664,57.7,🔥 TARGET: 1+ Hit Spot,63
+514888,Jose Altuve,7,Houston Astros,Jacob Lopez,L,R,0.247,0.31,0.28,ABOVE-AVERAGE CONTACT,1.27,0.7194,0.3628,56.7,⚾ Standard Contact,64
+545121,Ildemaro Vargas,4,Arizona Diamondbacks,Rhett Lowder,R,S,0.261,0.305,0.265,ABOVE-AVERAGE CONTACT,1.27,0.7194,0.3628,56.7,⚾ Standard Contact,65
+640902,Jhonny Pereda,6,Seattle Mariners,David Peterson,L,R,0.27,0.316,0.29,ABOVE-AVERAGE CONTACT,1.27,0.7189,0.3621,56.6,⚾ Standard Contact,66
+666182,Bo Bichette,2,New York Mets,Luis Castillo,R,R,0.266,0.313,0.259,ABOVE-AVERAGE CONTACT,1.27,0.718,0.3611,56.3,⚾ Standard Contact,67
+682829,Elly De La Cruz,2,Cincinnati Reds,Michael Soroka,R,S,0.257,0.34,0.266,ABOVE-AVERAGE CONTACT,1.26,0.7153,0.3576,55.3,⚾ Standard Contact,68
+694378,Jacob Gonzalez,6,Pittsburgh Pirates,Tarik Skubal,L,L,0.244,0.323,0.28,ABOVE-AVERAGE CONTACT,1.26,0.715,0.3573,55.2,⚾ Standard Contact,69
+641343,Jake Bauers,9,Milwaukee Brewers,Martín Pérez,L,L,0.273,0.383,0.25,ABOVE-AVERAGE CONTACT,1.25,0.7147,0.3568,55.1,⚾ Standard Contact,70
+682663,Agustín Ramírez,1,Miami Marlins,Jake Irvin,R,R,0.24,0.333,0.284,ABOVE-AVERAGE CONTACT,1.25,0.7142,0.3562,55.0,⚾ Standard Contact,71
+643376,Danny Jansen,4,Texas Rangers,Ryan Johnson,R,R,0.245,0.315,0.278,ABOVE-AVERAGE CONTACT,1.25,0.7139,0.3559,54.8,⚾ Standard Contact,72
+681082,Bryson Stott,5,Philadelphia Phillies,TBD Pitcher,R,L,0.262,0.34,0.24,ABOVE-AVERAGE CONTACT,1.25,0.7125,0.3541,54.4,⚾ Standard Contact,73
+656577,Alex Jackson,2,Minnesota Twins,Casey Mize,R,R,0.303,0.333,0.247,ABOVE-AVERAGE CONTACT,1.24,0.7092,0.3501,53.2,⚾ Standard Contact,74
+642350,Jose Siri,3,Los Angeles Angels,Cody Bradford,L,R,0.255,0.31,0.263,ABOVE-AVERAGE CONTACT,1.23,0.7084,0.349,52.9,⚾ Standard Contact,75
+665926,Andrés Giménez,2,Toronto Blue Jays,Ryan Weathers,L,L,0.24,0.284,0.264,ABOVE-AVERAGE CONTACT,1.23,0.7082,0.3488,52.9,⚾ Standard Contact,76
+595879,Javier Báez,9,Detroit Tigers,Michael Wacha,R,R,0.255,0.284,0.252,ABOVE-AVERAGE CONTACT,1.23,0.7071,0.3475,52.5,⚾ Standard Contact,77
+805999,A.J. Ewing,1,New York Mets,Luis Castillo,R,L,0.245,0.32,0.272,ABOVE-AVERAGE CONTACT,1.22,0.7061,0.3462,52.1,⚾ Standard Contact,78
+677592,Everson Pereira,4,St. Louis Cardinals,Andrew Painter,R,R,0.225,0.284,0.274,ABOVE-AVERAGE CONTACT,1.22,0.7054,0.3454,51.9,⚾ Standard Contact,79
+693307,Dillon Dingler,5,Detroit Tigers,Michael Wacha,R,R,0.252,0.316,0.252,ABOVE-AVERAGE CONTACT,1.21,0.7029,0.3423,51.0,⚾ Standard Contact,80
+668939,Adley Rutschman,1,Boston Red Sox,Blade Tidwell,R,S,0.194,0.324,0.308,ABOVE-AVERAGE CONTACT,1.21,0.7011,0.3402,50.4,⚾ Standard Contact,81
+682998,Corbin Carroll,1,Arizona Diamondbacks,Rhett Lowder,R,L,0.248,0.348,0.265,ABOVE-AVERAGE CONTACT,1.21,0.7011,0.3401,50.4,⚾ Standard Contact,82
+672695,Geraldo Perdomo,3,Arizona Diamondbacks,Rhett Lowder,R,S,0.248,0.357,0.265,ABOVE-AVERAGE CONTACT,1.21,0.7011,0.3401,50.4,⚾ Standard Contact,83
+701162,Ben Malgeri,1,Detroit Tigers,Michael Wacha,R,R,0.25,0.37,0.252,ABOVE-AVERAGE CONTACT,1.2,0.7,0.3388,50.0,⚾ Standard Contact,84
+667452,Corey Julks,4,Detroit Tigers,Michael Wacha,R,R,0.25,0.25,0.252,ABOVE-AVERAGE CONTACT,1.2,0.7,0.3388,50.0,⚾ Standard Contact,85
+668930,Brice Turang,2,Milwaukee Brewers,Martín Pérez,L,L,0.262,0.356,0.25,ABOVE-AVERAGE CONTACT,1.2,0.6999,0.3387,50.0,⚾ Standard Contact,86
+669394,Jake Burger,8,Texas Rangers,Ryan Johnson,R,R,0.235,0.295,0.278,ABOVE-AVERAGE CONTACT,1.2,0.6989,0.3375,49.6,⚾ Standard Contact,87
+669003,Garrett Mitchell,6,Milwaukee Brewers,Martín Pérez,L,L,0.261,0.358,0.25,ABOVE-AVERAGE CONTACT,1.2,0.6985,0.337,49.5,⚾ Standard Contact,88
+572233,Christian Walker,3,Houston Astros,Jacob Lopez,L,R,0.233,0.309,0.28,ABOVE-AVERAGE CONTACT,1.2,0.6984,0.3369,49.4,⚾ Standard Contact,89
+807727,Charles McAdoo,5,Toronto Blue Jays,Ryan Weathers,L,R,0.263,0.295,0.234,ABOVE-AVERAGE CONTACT,1.2,0.6977,0.336,49.2,⚾ Standard Contact,90
+664954,Brett Sullivan,2,Colorado Rockies,Tanner Bibee,R,L,0.238,0.284,0.225,STANDARD CONTACT,1.19,0.6965,0.3346,48.8,⚾ Standard Contact,91
+666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes,R,R,0.226,0.311,0.236,STANDARD CONTACT,1.19,0.695,0.3329,48.3,⚾ Standard Contact,92
+677594,Julio Rodríguez,8,Seattle Mariners,David Peterson,L,R,0.252,0.316,0.29,ABOVE-AVERAGE CONTACT,1.18,0.6941,0.3317,47.9,⚾ Standard Contact,93
+694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford,L,R,0.245,0.315,0.263,ABOVE-AVERAGE CONTACT,1.18,0.6939,0.3316,47.9,⚾ Standard Contact,94
+666018,Jonathan Aranda,3,Tampa Bay Rays,Brandon Young,R,L,0.282,0.365,0.228,ABOVE-AVERAGE CONTACT,1.18,0.6932,0.3307,47.6,⚾ Standard Contact,95
+689414,Liam Hicks,8,Tampa Bay Rays,Brandon Young,R,L,0.282,0.363,0.228,ABOVE-AVERAGE CONTACT,1.18,0.6932,0.3307,47.6,⚾ Standard Contact,96
+596019,Francisco Lindor,9,New York Mets,Luis Castillo,R,S,0.236,0.326,0.272,ABOVE-AVERAGE CONTACT,1.18,0.6926,0.33,47.4,⚾ Standard Contact,97
+681715,Heriberto Hernández,5,Miami Marlins,Jake Irvin,R,R,0.226,0.304,0.284,ABOVE-AVERAGE CONTACT,1.18,0.6925,0.3299,47.4,⚾ Standard Contact,98
+701785,Kaelen Culpepper,6,Minnesota Twins,Casey Mize,R,R,0.289,0.349,0.247,ABOVE-AVERAGE CONTACT,1.18,0.6921,0.3295,47.2,⚾ Standard Contact,99
+801126,Brock Rodden,2,Seattle Mariners,David Peterson,L,S,0.25,0.321,0.29,ABOVE-AVERAGE CONTACT,1.17,0.6912,0.3283,46.9,⚾ Standard Contact,100
+553869,Elias Díaz,5,Texas Rangers,Ryan Johnson,R,R,0.23,0.25,0.278,ABOVE-AVERAGE CONTACT,1.17,0.6911,0.3283,46.9,⚾ Standard Contact,101
+690993,Colt Keith,3,Detroit Tigers,Michael Wacha,R,L,0.272,0.329,0.226,ABOVE-AVERAGE CONTACT,1.17,0.6911,0.3282,46.9,⚾ Standard Contact,102
+547180,Bryce Harper,4,Philadelphia Phillies,TBD Pitcher,R,L,0.257,0.379,0.24,STANDARD CONTACT,1.16,0.6879,0.3245,45.8,⚾ Standard Contact,103
+683766,Christian Koss,4,San Francisco Giants,Patrick Sandoval,L,R,0.204,0.245,0.279,ABOVE-AVERAGE CONTACT,1.15,0.6835,0.3194,44.3,⚾ Standard Contact,104
+694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford,L,R,0.237,0.279,0.263,ABOVE-AVERAGE CONTACT,1.15,0.6819,0.3175,43.7,⚾ Standard Contact,105
+683734,Andrew Vaughn,1,Milwaukee Brewers,Martín Pérez,L,R,0.303,0.392,0.205,ABOVE-AVERAGE CONTACT,1.14,0.6806,0.3161,43.3,⚾ Standard Contact,106
+545361,Mike Trout,5,Los Angeles Angels,Cody Bradford,L,R,0.236,0.379,0.263,ABOVE-AVERAGE CONTACT,1.14,0.6803,0.3158,43.1,⚾ Standard Contact,107
+663457,Lars Nootbaar,9,Arizona Diamondbacks,Rhett Lowder,R,L,0.234,0.333,0.265,ABOVE-AVERAGE CONTACT,1.14,0.68,0.3154,43.0,⚾ Standard Contact,108
+543877,Christian Vázquez,2,Houston Astros,Jacob Lopez,L,R,0.22,0.276,0.28,ABOVE-AVERAGE CONTACT,1.13,0.6776,0.3126,42.2,⚾ Standard Contact,109
+500743,Miguel Rojas,9,Los Angeles Dodgers,Jared Jones,R,R,0.276,0.323,0.222,ABOVE-AVERAGE CONTACT,1.13,0.6756,0.3104,41.5,⚾ Standard Contact,110
+682626,Francisco Alvarez,8,New York Mets,Luis Castillo,R,R,0.236,0.325,0.259,ABOVE-AVERAGE CONTACT,1.12,0.6747,0.3094,41.2,⚾ Standard Contact,111
+701358,Cam Smith,1,Houston Astros,Jacob Lopez,L,R,0.218,0.285,0.28,ABOVE-AVERAGE CONTACT,1.12,0.6742,0.3089,41.1,⚾ Standard Contact,112
+669134,Luis Campusano,8,San Diego Padres,Dean Kremer,R,R,0.301,0.408,0.225,ABOVE-AVERAGE CONTACT,1.12,0.673,0.3075,40.7,⚾ Standard Contact,113
+666152,David Hamilton,5,Milwaukee Brewers,Martín Pérez,L,L,0.243,0.321,0.25,ABOVE-AVERAGE CONTACT,1.12,0.6725,0.3069,40.5,⚾ Standard Contact,114
+664761,Alec Bohm,1,Philadelphia Phillies,TBD Pitcher,R,R,0.246,0.303,0.24,STANDARD CONTACT,1.11,0.672,0.3064,40.3,⚾ Standard Contact,115
+806146,George Lombard Jr.,5,New York Yankees,Dylan Cease,R,R,0.288,0.345,0.199,ABOVE-AVERAGE CONTACT,1.11,0.6718,0.3061,40.3,⚾ Standard Contact,116
+680977,Brendan Donovan,1,Seattle Mariners,David Peterson,L,L,0.277,0.371,0.248,ABOVE-AVERAGE CONTACT,1.11,0.6715,0.3058,40.2,⚾ Standard Contact,117
+681624,Andy Pages,2,Los Angeles Dodgers,Jared Jones,R,R,0.272,0.338,0.222,ABOVE-AVERAGE CONTACT,1.11,0.6703,0.3045,39.8,⚾ Standard Contact,118
+807712,Luke Keaschall,8,Minnesota Twins,Casey Mize,R,R,0.272,0.363,0.247,ABOVE-AVERAGE CONTACT,1.11,0.6701,0.3042,39.7,⚾ Standard Contact,119
+672284,Jarred Kelenic,9,Texas Rangers,Ryan Johnson,R,L,0.226,0.305,0.266,ABOVE-AVERAGE CONTACT,1.1,0.6687,0.3027,39.2,⚾ Standard Contact,120
+681393,Connor Norby,4,Colorado Rockies,Tanner Bibee,R,R,0.205,0.313,0.242,STANDARD CONTACT,1.1,0.6687,0.3027,39.2,⚾ Standard Contact,121
+805367,Chase Meidroth,4,Chicago White Sox,Christian Scott,R,R,0.27,0.344,0.222,ABOVE-AVERAGE CONTACT,1.1,0.6676,0.3015,38.9,⚾ Standard Contact,122
+678662,Ezequiel Tovar,5,Colorado Rockies,Tanner Bibee,R,R,0.204,0.251,0.242,STANDARD CONTACT,1.1,0.6669,0.3007,38.6,⚾ Standard Contact,123
+672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford,L,R,0.226,0.278,0.263,ABOVE-AVERAGE CONTACT,1.09,0.6645,0.2981,37.8,⚾ Standard Contact,124
+693304,Nick Gonzales,9,Pittsburgh Pirates,Tarik Skubal,L,R,0.311,0.369,0.19,ABOVE-AVERAGE CONTACT,1.09,0.6624,0.2958,37.1,⚾ Standard Contact,125
+608369,Corey Seager,3,Texas Rangers,Ryan Johnson,R,L,0.221,0.316,0.266,ABOVE-AVERAGE CONTACT,1.08,0.6605,0.2937,36.5,⚾ Standard Contact,126
+647304,Josh Naylor,7,Seattle Mariners,David Peterson,L,L,0.268,0.331,0.248,ABOVE-AVERAGE CONTACT,1.08,0.6594,0.2926,36.2,⚾ Standard Contact,127
+683146,Brett Baty,3,New York Mets,Luis Castillo,R,L,0.215,0.287,0.272,ABOVE-AVERAGE CONTACT,1.07,0.6586,0.2916,35.9,⚾ Standard Contact,128
+665052,Griffin Conine,4,Miami Marlins,Jake Irvin,R,L,0.267,0.361,0.219,ABOVE-AVERAGE CONTACT,1.07,0.6585,0.2916,35.9,⚾ Standard Contact,129
+677870,Leo Jiménez,9,Miami Marlins,Jake Irvin,R,R,0.205,0.305,0.284,ABOVE-AVERAGE CONTACT,1.07,0.6569,0.2899,35.4,⚾ Standard Contact,130
+668709,JJ Bleday,5,Cincinnati Reds,Michael Soroka,R,L,0.217,0.33,0.266,ABOVE-AVERAGE CONTACT,1.06,0.6538,0.2865,34.4,⚾ Standard Contact,131
+592885,Christian Yelich,3,Milwaukee Brewers,Martín Pérez,L,L,0.23,0.312,0.25,ABOVE-AVERAGE CONTACT,1.06,0.6524,0.285,33.9,⚾ Standard Contact,132
+694192,Jackson Chourio,8,Milwaukee Brewers,Martín Pérez,L,R,0.28,0.343,0.205,ABOVE-AVERAGE CONTACT,1.05,0.6517,0.2844,33.7,⚾ Standard Contact,133
+665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer,R,R,0.284,0.357,0.225,ABOVE-AVERAGE CONTACT,1.05,0.6517,0.2843,33.7,⚾ Standard Contact,134
+664728,Kyle Isbel,6,Kansas City Royals,Drew Anderson,R,L,0.234,0.283,0.247,STANDARD CONTACT,1.05,0.6507,0.2833,33.4,⚾ Standard Contact,135
+683090,Matthew Lugo,8,Kansas City Royals,Drew Anderson,R,R,0.245,0.315,0.234,STANDARD CONTACT,1.04,0.6477,0.2802,32.5,⚾ Standard Contact,136
+663968,Jake Mangum,7,Pittsburgh Pirates,Tarik Skubal,L,S,0.297,0.351,0.19,ABOVE-AVERAGE CONTACT,1.04,0.6454,0.2778,31.8,⚾ Standard Contact,137
+571970,Max Muncy,8,Los Angeles Dodgers,Jared Jones,R,L,0.252,0.344,0.234,STANDARD CONTACT,1.03,0.6437,0.276,31.3,⚾ Standard Contact,138
+643289,Mauricio Dubón,8,Atlanta Braves,Logan Henderson,R,R,0.266,0.311,0.211,ABOVE-AVERAGE CONTACT,1.03,0.6435,0.2758,31.2,⚾ Standard Contact,139
+687597,Jordan Beck,7,Colorado Rockies,Tanner Bibee,R,R,0.19,0.246,0.242,STANDARD CONTACT,1.02,0.6408,0.273,30.4,⚾ Standard Contact,140
+663538,Nico Hoerner,9,Chicago Cubs,Kade Anderson,L,R,0.263,0.321,0.24,ABOVE-AVERAGE CONTACT,1.02,0.6405,0.2727,30.3,⚾ Standard Contact,141
+666126,Carlos Cortes,3,Athletics,Hunter Brown,R,L,0.261,0.336,0.213,ABOVE-AVERAGE CONTACT,1.02,0.64,0.2722,30.2,⚾ Standard Contact,142
+643446,Jeff McNeil,7,Athletics,Hunter Brown,R,L,0.261,0.313,0.213,ABOVE-AVERAGE CONTACT,1.02,0.64,0.2722,30.2,⚾ Standard Contact,143
+686555,Isaac Collins,3,Kansas City Royals,Drew Anderson,R,S,0.227,0.328,0.247,STANDARD CONTACT,1.02,0.6396,0.2718,30.0,⚾ Standard Contact,144
+699625,Jimmy Crooks,7,St. Louis Cardinals,Andrew Painter,R,L,0.172,0.25,0.299,ABOVE-AVERAGE CONTACT,1.02,0.6392,0.2714,29.9,⚾ Standard Contact,145
+608348,Carson Kelly,2,Chicago Cubs,Kade Anderson,L,R,0.262,0.343,0.24,ABOVE-AVERAGE CONTACT,1.02,0.6391,0.2713,29.9,⚾ Standard Contact,146
+543807,George Springer,9,Toronto Blue Jays,Ryan Weathers,L,R,0.235,0.314,0.234,STANDARD CONTACT,1.02,0.6387,0.2709,29.8,⚾ Standard Contact,147
+687952,Christian Encarnacion-Strand,2,Baltimore Orioles,Shane McClanahan,L,R,0.247,0.292,0.232,STANDARD CONTACT,1.0,0.6332,0.2653,28.2,⚾ Standard Contact,148
+678218,Brandon Valenzuela,3,Toronto Blue Jays,Ryan Weathers,L,S,0.23,0.308,0.234,STANDARD CONTACT,1.0,0.6308,0.2629,27.5,⚾ Standard Contact,149
+643217,Andrew Benintendi,1,Chicago White Sox,Christian Scott,R,L,0.245,0.308,0.232,STANDARD CONTACT,0.99,0.6302,0.2623,27.3,⚾ Standard Contact,150
+695600,Carter Jensen,2,Kansas City Royals,Drew Anderson,R,L,0.221,0.304,0.247,STANDARD CONTACT,0.99,0.6297,0.2618,27.2,⚾ Standard Contact,151
+624641,Edmundo Sosa,7,Philadelphia Phillies,TBD Pitcher,R,R,0.219,0.262,0.24,STANDARD CONTACT,0.99,0.6293,0.2614,27.1,⚾ Standard Contact,152
+592663,J.T. Realmuto,9,Philadelphia Phillies,TBD Pitcher,R,R,0.219,0.296,0.24,STANDARD CONTACT,0.99,0.6293,0.2614,27.1,⚾ Standard Contact,153
+686527,Dominic Canzone,5,Seattle Mariners,David Peterson,L,L,0.259,0.333,0.248,STANDARD CONTACT,0.99,0.6289,0.2611,27.0,⚾ Standard Contact,154
+621439,Byron Buxton,4,Minnesota Twins,Casey Mize,R,R,0.254,0.317,0.247,STANDARD CONTACT,0.99,0.627,0.2591,26.5,⚾ Standard Contact,155
+696285,Jacob Young,9,Washington Nationals,Eury Pérez,R,R,0.249,0.314,0.226,STANDARD CONTACT,0.98,0.6265,0.2586,26.3,⚾ Standard Contact,156
+669743,Alex Call,1,Los Angeles Dodgers,Jared Jones,R,R,0.252,0.355,0.222,STANDARD CONTACT,0.98,0.6243,0.2565,25.7,⚾ Standard Contact,157
+702284,Cole Young,4,Seattle Mariners,David Peterson,L,L,0.255,0.315,0.248,STANDARD CONTACT,0.98,0.6232,0.2554,25.4,⚾ Standard Contact,158
+671739,Michael Harris II,9,Atlanta Braves,Logan Henderson,R,L,0.293,0.32,0.18,ABOVE-AVERAGE CONTACT,0.97,0.6206,0.2529,25.0,⚾ Standard Contact,159
+656537,Derek Hill,6,Philadelphia Phillies,TBD Pitcher,R,R,0.213,0.284,0.24,STANDARD CONTACT,0.97,0.6191,0.2514,25.0,⚾ Standard Contact,160
+665953,Andrés Chaparro,2,Washington Nationals,Eury Pérez,R,R,0.244,0.354,0.226,STANDARD CONTACT,0.97,0.619,0.2514,25.0,⚾ Standard Contact,161
+694497,Evan Carter,6,Texas Rangers,Ryan Johnson,R,L,0.197,0.299,0.266,ABOVE-AVERAGE CONTACT,0.96,0.6182,0.2506,25.0,⚾ Standard Contact,162
+678489,Jorge Barrosa,7,Arizona Diamondbacks,Rhett Lowder,R,S,0.197,0.282,0.265,ABOVE-AVERAGE CONTACT,0.96,0.6168,0.2493,25.0,⚾ Standard Contact,163
+676439,Hunter Feduccia,6,Los Angeles Dodgers,Jared Jones,R,L,0.234,0.306,0.234,STANDARD CONTACT,0.96,0.6164,0.2489,25.0,⚾ Standard Contact,164
+681807,David Fry,6,Cleveland Guardians,Gabriel Hughes,R,R,0.182,0.304,0.236,STANDARD CONTACT,0.96,0.6157,0.2482,25.0,⚾ Standard Contact,165
+608324,Alex Bregman,1,Chicago Cubs,Kade Anderson,L,R,0.258,0.347,0.24,STANDARD CONTACT,0.96,0.6155,0.248,25.0,⚾ Standard Contact,166
+695731,Braden Montgomery,2,Chicago White Sox,Christian Scott,R,S,0.235,0.324,0.232,STANDARD CONTACT,0.95,0.6148,0.2474,25.0,⚾ Standard Contact,167
+690924,Braxton Fulford,1,Colorado Rockies,Tanner Bibee,R,R,0.176,0.256,0.242,STANDARD CONTACT,0.95,0.6126,0.2452,25.0,⚾ Standard Contact,168
+678246,Miguel Vargas,9,Chicago White Sox,Christian Scott,R,R,0.243,0.35,0.222,STANDARD CONTACT,0.94,0.611,0.2437,25.0,⚾ Standard Contact,169
+663656,Kyle Tucker,7,Los Angeles Dodgers,Jared Jones,R,L,0.23,0.325,0.234,STANDARD CONTACT,0.94,0.6101,0.2429,25.0,⚾ Standard Contact,170
+691781,Brady House,4,Washington Nationals,Eury Pérez,R,R,0.238,0.297,0.226,STANDARD CONTACT,0.94,0.6099,0.2427,25.0,⚾ Standard Contact,171
+665750,Leody Taveras,9,Baltimore Orioles,Shane McClanahan,L,S,0.231,0.304,0.232,STANDARD CONTACT,0.94,0.6085,0.2414,25.0,⚾ Standard Contact,172
+645305,Ali Sánchez,1,New York Yankees,Dylan Cease,R,R,0.254,0.284,0.199,STANDARD CONTACT,0.94,0.6077,0.2406,25.0,⚾ Standard Contact,173
+806198,Cooper Pratt,4,Milwaukee Brewers,Martín Pérez,L,R,0.259,0.337,0.205,STANDARD CONTACT,0.93,0.6051,0.2382,25.0,⚾ Standard Contact,174
+668904,Royce Lewis,9,Minnesota Twins,Casey Mize,R,R,0.238,0.31,0.247,STANDARD CONTACT,0.92,0.6031,0.2363,25.0,⚾ Standard Contact,175
+682928,CJ Abrams,5,Washington Nationals,Eury Pérez,R,L,0.279,0.354,0.18,ABOVE-AVERAGE CONTACT,0.92,0.6026,0.2359,25.0,⚾ Standard Contact,176
+701538,Jackson Merrill,5,San Diego Padres,Dean Kremer,R,L,0.238,0.288,0.246,STANDARD CONTACT,0.92,0.6016,0.2349,25.0,⚾ Standard Contact,177
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal,L,S,0.263,0.372,0.19,ABOVE-AVERAGE CONTACT,0.92,0.6008,0.2342,25.0,⚾ Standard Contact,178
+687605,Andrew Pinckney,3,Washington Nationals,Eury Pérez,R,R,0.231,0.313,0.226,STANDARD CONTACT,0.91,0.5989,0.2325,25.0,⚾ Standard Contact,179
+571771,Enrique Hernández,4,Los Angeles Dodgers,Jared Jones,R,R,0.235,0.278,0.222,STANDARD CONTACT,0.91,0.5987,0.2323,25.0,⚾ Standard Contact,180
+676572,Eric Wagaman,7,New York Mets,Luis Castillo,R,R,0.19,0.277,0.259,ABOVE-AVERAGE CONTACT,0.9,0.5951,0.2291,25.0,⚾ Standard Contact,181
+683737,Michael Busch,6,Chicago Cubs,Kade Anderson,L,L,0.244,0.35,0.24,STANDARD CONTACT,0.9,0.595,0.2289,25.0,⚾ Standard Contact,182
+682668,Luisangel Acuña,8,Chicago White Sox,Christian Scott,R,R,0.232,0.264,0.222,STANDARD CONTACT,0.9,0.594,0.228,25.0,⚾ Standard Contact,183
+703607,Henry Bolte,6,Athletics,Hunter Brown,R,R,0.267,0.341,0.182,ABOVE-AVERAGE CONTACT,0.89,0.5905,0.2249,25.0,⚾ Standard Contact,184
+686948,Drake Baldwin,3,Atlanta Braves,Logan Henderson,R,L,0.269,0.351,0.18,ABOVE-AVERAGE CONTACT,0.89,0.5892,0.2238,25.0,⚾ Standard Contact,185
+662139,Daulton Varsho,4,Houston Astros,Jacob Lopez,L,L,0.243,0.307,0.209,STANDARD CONTACT,0.89,0.5888,0.2234,25.0,⚾ Standard Contact,186
+691788,Joe Mack,8,Miami Marlins,Jake Irvin,R,L,0.231,0.287,0.219,STANDARD CONTACT,0.89,0.5874,0.2221,25.0,⚾ Standard Contact,187
+695657,Colson Montgomery,5,Chicago White Sox,Christian Scott,R,L,0.217,0.296,0.232,STANDARD CONTACT,0.88,0.5856,0.2206,25.0,⚾ Standard Contact,188
+665804,Miguel Amaya,8,Chicago Cubs,Kade Anderson,L,R,0.237,0.345,0.24,STANDARD CONTACT,0.88,0.5844,0.2195,25.0,⚾ Standard Contact,189
+678882,Ceddanne Rafaela,5,Boston Red Sox,Blade Tidwell,R,R,0.285,0.322,0.152,ABOVE-AVERAGE CONTACT,0.88,0.5834,0.2186,25.0,⚾ Standard Contact,190
+676609,José Caballero,8,New York Yankees,Dylan Cease,R,R,0.237,0.295,0.199,STANDARD CONTACT,0.87,0.5824,0.2177,25.0,⚾ Standard Contact,191
+675961,Alika Williams,1,Athletics,Hunter Brown,R,R,0.261,0.298,0.182,ABOVE-AVERAGE CONTACT,0.87,0.5822,0.2176,25.0,⚾ Standard Contact,192
+670231,John Rave,5,Kansas City Royals,Drew Anderson,R,L,0.194,0.254,0.247,STANDARD CONTACT,0.87,0.5819,0.2173,25.0,⚾ Standard Contact,193
+518595,Travis d'Arnaud,9,Los Angeles Angels,Cody Bradford,L,R,0.18,0.293,0.263,ABOVE-AVERAGE CONTACT,0.87,0.581,0.2165,25.0,⚾ Standard Contact,194
+630105,Jake Cronenworth,6,San Diego Padres,Dean Kremer,R,L,0.224,0.314,0.246,STANDARD CONTACT,0.87,0.5794,0.2152,25.0,⚾ Standard Contact,195
+642086,Dominic Smith,2,Atlanta Braves,Logan Henderson,R,L,0.261,0.316,0.18,ABOVE-AVERAGE CONTACT,0.86,0.5782,0.2141,25.0,⚾ Standard Contact,196
+621566,Matt Olson,7,Atlanta Braves,Logan Henderson,R,L,0.261,0.337,0.18,ABOVE-AVERAGE CONTACT,0.86,0.5782,0.2141,25.0,⚾ Standard Contact,197
+641680,Jonah Heim,8,Athletics,Hunter Brown,R,S,0.231,0.311,0.213,STANDARD CONTACT,0.86,0.5773,0.2133,25.0,⚾ Standard Contact,198
+691723,Coby Mayo,4,Baltimore Orioles,Shane McClanahan,L,R,0.21,0.275,0.232,STANDARD CONTACT,0.85,0.5737,0.2102,25.0,⚾ Standard Contact,199
+571912,Luke Maile,7,Kansas City Royals,Drew Anderson,R,R,0.2,0.231,0.234,STANDARD CONTACT,0.85,0.5733,0.2099,25.0,⚾ Standard Contact,200
+622268,Donovan Walton,5,Athletics,Hunter Brown,R,L,0.228,0.405,0.213,STANDARD CONTACT,0.85,0.5725,0.2092,25.0,⚾ Standard Contact,201
+695670,Harry Ford,8,Washington Nationals,Eury Pérez,R,R,0.212,0.328,0.226,STANDARD CONTACT,0.84,0.5676,0.2051,25.0,⚾ Standard Contact,202
+605137,Josh Bell,5,Minnesota Twins,Casey Mize,R,S,0.257,0.321,0.207,STANDARD CONTACT,0.84,0.5666,0.2043,25.0,⚾ Standard Contact,203
+642708,Amed Rosario,2,New York Yankees,Dylan Cease,R,R,0.226,0.272,0.199,STANDARD CONTACT,0.83,0.5651,0.203,25.0,⚾ Standard Contact,204
+686611,Dylan Crews,7,Washington Nationals,Eury Pérez,R,R,0.21,0.28,0.226,STANDARD CONTACT,0.83,0.5642,0.2022,25.0,⚾ Standard Contact,205
+657757,Gavin Sheets,4,San Diego Padres,Dean Kremer,R,L,0.214,0.316,0.246,STANDARD CONTACT,0.83,0.5629,0.2011,25.0,⚾ Standard Contact,206
+656775,Cedric Mullins,1,Tampa Bay Rays,Brandon Young,R,L,0.207,0.285,0.228,STANDARD CONTACT,0.83,0.5622,0.2006,25.0,⚾ Standard Contact,207
+669720,Austin Hays,1,San Diego Padres,Dean Kremer,R,R,0.233,0.25,0.225,STANDARD CONTACT,0.82,0.5613,0.1999,25.0,⚾ Standard Contact,208
+663586,Austin Riley,1,Atlanta Braves,Logan Henderson,R,R,0.221,0.293,0.211,STANDARD CONTACT,0.82,0.5578,0.197,25.0,⚾ Standard Contact,209
+699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Tarik Skubal,L,R,0.245,0.357,0.19,STANDARD CONTACT,0.81,0.5572,0.1965,25.0,⚾ Standard Contact,210
+667472,Dane Myers,1,Cincinnati Reds,Michael Soroka,R,R,0.257,0.352,0.18,STANDARD CONTACT,0.81,0.5549,0.1946,25.0,⚾ Standard Contact,211
+671732,Lawrence Butler,9,Athletics,Hunter Brown,R,L,0.216,0.306,0.213,STANDARD CONTACT,0.81,0.553,0.1931,25.0,⚾ Standard Contact,212
+682634,Kevin Alcántara,5,Chicago Cubs,Kade Anderson,L,R,0.217,0.28,0.24,STANDARD CONTACT,0.8,0.5524,0.1926,25.0,⚾ Standard Contact,213
+624424,Michael Conforto,7,Chicago Cubs,Kade Anderson,L,L,0.217,0.313,0.24,STANDARD CONTACT,0.8,0.5524,0.1926,25.0,⚾ Standard Contact,214
+664023,Ian Happ,4,Chicago Cubs,Kade Anderson,L,S,0.216,0.323,0.24,STANDARD CONTACT,0.8,0.5507,0.1913,25.0,⚾ Standard Contact,215
+664774,LaMonte Wade Jr.,8,Houston Astros,Jacob Lopez,L,L,0.218,0.346,0.209,STANDARD CONTACT,0.8,0.5495,0.1903,25.0,⚾ Standard Contact,216
+650859,Luis Rengifo,9,San Diego Padres,Dean Kremer,R,S,0.205,0.28,0.246,STANDARD CONTACT,0.79,0.5474,0.1886,25.0,⚾ Standard Contact,217
+686797,Brooks Lee,3,Minnesota Twins,Casey Mize,R,S,0.242,0.297,0.207,STANDARD CONTACT,0.79,0.545,0.1867,25.0,⚾ Standard Contact,218
+669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal,L,R,0.236,0.312,0.19,STANDARD CONTACT,0.78,0.5437,0.1857,25.0,⚾ Standard Contact,219
+596142,Gary Sánchez,7,Milwaukee Brewers,Martín Pérez,L,R,0.216,0.36,0.205,STANDARD CONTACT,0.77,0.5393,0.1822,25.0,⚾ Standard Contact,220
+665019,Kody Clemens,7,Minnesota Twins,Casey Mize,R,L,0.237,0.293,0.207,STANDARD CONTACT,0.77,0.5375,0.1809,25.0,⚾ Standard Contact,221
+666624,Christopher Morel,5,New York Mets,Luis Castillo,R,R,0.162,0.219,0.259,ABOVE-AVERAGE CONTACT,0.77,0.5374,0.1808,25.0,⚾ Standard Contact,222
+666163,Ben Rortvedt,3,Los Angeles Dodgers,Jared Jones,R,L,0.188,0.188,0.234,STANDARD CONTACT,0.77,0.5369,0.1804,25.0,⚾ Standard Contact,223
+695734,Daylen Lile,6,Washington Nationals,Eury Pérez,R,L,0.244,0.292,0.18,STANDARD CONTACT,0.77,0.5363,0.18,25.0,⚾ Standard Contact,224
+665966,Carlos Narváez,1,Baltimore Orioles,Shane McClanahan,L,R,0.187,0.26,0.232,STANDARD CONTACT,0.76,0.532,0.1766,25.0,⚾ Standard Contact,225
+694673,Abimelec Ortiz,1,Washington Nationals,Eury Pérez,R,L,0.241,0.268,0.18,STANDARD CONTACT,0.76,0.5319,0.1766,25.0,⚾ Standard Contact,226
+655316,Andruw Monasterio,2,Boston Red Sox,Blade Tidwell,R,R,0.258,0.318,0.152,STANDARD CONTACT,0.75,0.5299,0.1751,25.0,⚾ Standard Contact,227
+686668,Brenton Doyle,3,Chicago White Sox,Christian Scott,R,R,0.194,0.194,0.222,STANDARD CONTACT,0.75,0.5294,0.1747,25.0,⚾ Standard Contact,228
+687231,Darell Hernaiz,4,Athletics,Hunter Brown,R,R,0.236,0.317,0.182,STANDARD CONTACT,0.75,0.5284,0.1739,25.0,⚾ Standard Contact,229
+671277,Luis García Jr.,9,New York Yankees,Dylan Cease,R,L,0.25,0.283,0.162,STANDARD CONTACT,0.75,0.5275,0.1733,25.0,⚾ Standard Contact,230
+624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka,R,R,0.238,0.245,0.18,STANDARD CONTACT,0.75,0.5275,0.1733,25.0,⚾ Standard Contact,231
+702176,Alan Roden,1,Minnesota Twins,Casey Mize,R,L,0.23,0.31,0.207,STANDARD CONTACT,0.75,0.5269,0.1728,25.0,⚾ Standard Contact,232
+700250,Ben Rice,4,New York Yankees,Dylan Cease,R,L,0.249,0.345,0.162,STANDARD CONTACT,0.75,0.5261,0.1722,25.0,⚾ Standard Contact,233
+702332,Caleb Durbin,4,Boston Red Sox,Blade Tidwell,R,R,0.254,0.324,0.152,STANDARD CONTACT,0.74,0.5244,0.171,25.0,⚾ Standard Contact,234
+681047,Christian Franklin,3,Baltimore Orioles,Shane McClanahan,L,R,0.182,0.357,0.232,STANDARD CONTACT,0.74,0.5224,0.1694,25.0,⚾ Standard Contact,235
+663728,Cal Raleigh,3,Seattle Mariners,David Peterson,L,S,0.157,0.273,0.29,ABOVE-AVERAGE CONTACT,0.74,0.5219,0.1691,25.0,⚾ Standard Contact,236
+657136,Connor Wong,6,Boston Red Sox,Blade Tidwell,R,R,0.25,0.332,0.152,STANDARD CONTACT,0.73,0.5188,0.1668,25.0,⚾ Standard Contact,237
+596117,Garrett Stubbs,8,Philadelphia Phillies,TBD Pitcher,R,L,0.159,0.224,0.24,STANDARD CONTACT,0.72,0.5135,0.163,25.0,⚾ Standard Contact,238
+640459,Brian Navarreto,2,Miami Marlins,Jake Irvin,R,R,0.138,0.242,0.284,ABOVE-AVERAGE CONTACT,0.72,0.5133,0.1628,25.0,⚾ Standard Contact,239
+805300,Jakob Marsee,6,Miami Marlins,Jake Irvin,R,L,0.206,0.325,0.219,HEAVY CONTACT SUPPRESSION,0.69,0.5008,0.154,25.0,⚾ Standard Contact,240
+642201,Eli White,7,Boston Red Sox,Blade Tidwell,R,R,0.233,0.285,0.152,STANDARD CONTACT,0.68,0.4943,0.1495,25.0,⚾ Standard Contact,241
+666023,Freddy Fermin,3,San Diego Padres,Dean Kremer,R,R,0.191,0.264,0.225,STANDARD CONTACT,0.68,0.4911,0.1473,25.0,⚾ Standard Contact,242
+805347,Jim Jarvis,5,Atlanta Braves,Logan Henderson,R,L,0.213,0.274,0.18,STANDARD CONTACT,0.67,0.4888,0.1458,25.0,⚾ Standard Contact,243
+660844,Leo Rivas,9,Seattle Mariners,David Peterson,L,S,0.138,0.264,0.29,ABOVE-AVERAGE CONTACT,0.65,0.4772,0.1381,25.0,⚾ Standard Contact,244
+671083,Buddy Kennedy,3,San Francisco Giants,Patrick Sandoval,L,R,0.115,0.258,0.279,ABOVE-AVERAGE CONTACT,0.65,0.4772,0.1381,25.0,⚾ Standard Contact,245
+665862,Jazz Chisholm Jr.,7,New York Yankees,Dylan Cease,R,L,0.214,0.294,0.162,STANDARD CONTACT,0.64,0.4737,0.1358,25.0,⚾ Standard Contact,246
+657041,Lane Thomas,6,Atlanta Braves,Logan Henderson,R,R,0.19,0.292,0.211,HEAVY CONTACT SUPPRESSION,0.62,0.4606,0.1277,25.0,⚾ Standard Contact,247
+676914,Davis Schneider,6,Toronto Blue Jays,Ryan Weathers,L,R,0.142,0.295,0.234,STANDARD CONTACT,0.62,0.4594,0.1269,25.0,⚾ Standard Contact,248
+687749,Jase Bowen,7,San Diego Padres,Dean Kremer,R,R,0.169,0.21,0.225,STANDARD CONTACT,0.6,0.4499,0.1211,25.0,⚾ Standard Contact,249
+699302,Héctor Rodríguez,4,Cincinnati Reds,Michael Soroka,R,L,0.118,0.189,0.266,ABOVE-AVERAGE CONTACT,0.58,0.4383,0.1143,25.0,⚾ Standard Contact,250
+661531,Brian Serven,2,Athletics,Hunter Brown,R,R,0.205,0.225,0.182,HEAVY CONTACT SUPPRESSION,0.57,0.4371,0.1136,25.0,⚾ Standard Contact,251
+553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka,R,R,0.207,0.291,0.18,HEAVY CONTACT SUPPRESSION,0.57,0.4366,0.1134,25.0,⚾ Standard Contact,252
+669911,Michael Toglia,9,Cincinnati Reds,Michael Soroka,R,S,0.115,0.179,0.266,ABOVE-AVERAGE CONTACT,0.56,0.43,0.1096,25.0,⚾ Standard Contact,253
+691011,Drew Romo,6,Chicago White Sox,Christian Scott,R,S,0.138,0.22,0.232,STANDARD CONTACT,0.56,0.429,0.109,25.0,⚾ Standard Contact,254
+668670,Jake Rogers,7,Chicago White Sox,Christian Scott,R,R,0.143,0.25,0.222,STANDARD CONTACT,0.56,0.4262,0.1075,25.0,⚾ Standard Contact,255
+687637,Dylan Beavers,6,Baltimore Orioles,Shane McClanahan,L,L,0.241,0.318,0.131,STANDARD CONTACT,0.55,0.4245,0.1065,25.0,⚾ Standard Contact,256
+695257,Billy Cook,1,Pittsburgh Pirates,Tarik Skubal,L,R,0.188,0.204,0.19,HEAVY CONTACT SUPPRESSION,0.55,0.4231,0.1058,25.0,⚾ Standard Contact,257
+680574,Matt McLain,8,Cincinnati Reds,Michael Soroka,R,R,0.198,0.295,0.18,HEAVY CONTACT SUPPRESSION,0.55,0.4224,0.1054,25.0,⚾ Standard Contact,258
+702616,Jackson Holliday,8,Baltimore Orioles,Shane McClanahan,L,L,0.232,0.327,0.131,STANDARD CONTACT,0.53,0.4125,0.1,25.0,⚾ Standard Contact,259
+683002,Gunnar Henderson,7,Baltimore Orioles,Shane McClanahan,L,L,0.222,0.306,0.131,STANDARD CONTACT,0.51,0.3989,0.0929,25.0,⚾ Standard Contact,260
+680779,Henry Davis,5,Pittsburgh Pirates,Tarik Skubal,L,R,0.17,0.266,0.19,HEAVY CONTACT SUPPRESSION,0.5,0.3919,0.0894,25.0,⚾ Standard Contact,261
+681297,Colton Cowser,5,Baltimore Orioles,Shane McClanahan,L,L,0.214,0.31,0.131,STANDARD CONTACT,0.49,0.3877,0.0874,25.0,⚾ Standard Contact,262
+669224,Austin Wells,3,New York Yankees,Dylan Cease,R,L,0.175,0.268,0.162,HEAVY CONTACT SUPPRESSION,0.46,0.3699,0.0789,25.0,⚾ Standard Contact,263
+663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka,R,R,0.155,0.206,0.18,HEAVY CONTACT SUPPRESSION,0.43,0.3493,0.0697,25.0,⚾ Standard Contact,264
+671218,Heliot Ramos,6,New York Yankees,Dylan Cease,R,R,0.122,0.246,0.199,HEAVY CONTACT SUPPRESSION,0.4,0.3297,0.0616,25.0,⚾ Standard Contact,265
+673490,Ha-Seong Kim,4,Atlanta Braves,Logan Henderson,R,R,0.066,0.165,0.211,HEAVY CONTACT SUPPRESSION,0.4,0.3297,0.0616,25.0,⚾ Standard Contact,266
+665506,Cristian Pache,6,New York Mets,Luis Castillo,R,R,0.0,0.0,0.259,ABOVE-AVERAGE CONTACT,0.4,0.3297,0.0616,25.0,⚾ Standard Contact,267
+672356,Gabriel Arias,3,Chicago Cubs,Kade Anderson,L,R,0.0,0.0,0.24,STANDARD CONTACT,0.4,0.3297,0.0616,25.0,⚾ Standard Contact,268
+668800,Andrew Knizner,1,San Francisco Giants,Patrick Sandoval,L,R,0.0,0.222,0.279,ABOVE-AVERAGE CONTACT,0.4,0.3297,0.0616,25.0,⚾ Standard Contact,269
+663330,Jahmai Jones,8,Boston Red Sox,Blade Tidwell,R,R,0.137,0.219,0.152,HEAVY CONTACT SUPPRESSION,0.4,0.3297,0.0616,25.0,⚾ Standard Contact,270

@@ -1,0 +1,30 @@
+pitcher_id,pitcher_name,p_hand,k9,whip,opp_team,workload_desc,matchup_badge,match_k_pct,exp_ks,prob_o45,prob_o55,prob_o65,prob_o75,score,target_call,rank
+656302,Dylan Cease,R,13.14,1.06,New York Yankees,WORKHORSE (6+ IP),HIGH WHIFF [+12%],39.3,9.62,0.9627,0.9171,0.8439,0.7435,96.5,💎 LOCK: Over 6.5 Ks (Apex),1
+691587,Eury Pérez,R,9.76,1.11,Washington Nationals,STANDARD (5-6 IP),HIGH WHIFF [+12%],29.8,6.4,0.7647,0.6159,0.4573,0.3124,89.0,⚾ Standard K Spot,2
+701656,Logan Henderson,R,10.66,0.87,Atlanta Braves,STANDARD (5-6 IP),NEUTRAL SPLIT,29.0,6.24,0.7457,0.5919,0.432,0.2895,83.9,⚾ Standard K Spot,3
+622491,Luis Castillo,R,9.19,1.21,New York Mets,STANDARD (5-6 IP),HIGH WHIFF [+12%],28.0,6.02,0.7182,0.5582,0.3976,0.2594,74.0,⚾ Standard K Spot,4
+807739,Kade Anderson,L,8.5,1.25,Chicago Cubs,STANDARD (5-6 IP),HIGH WHIFF [+12%],28.0,6.02,0.7173,0.5571,0.3965,0.2584,73.6,⚾ Standard K Spot,5
+681035,Christian Scott,R,11.16,1.29,Chicago White Sox,SHORT LEASH (<5 IP),HIGH WHIFF [+12%],34.0,5.95,0.7088,0.547,0.3864,0.2498,70.0,🛑 FADE: Under K Trap,6
+669373,Tarik Skubal,L,10.06,1.24,Pittsburgh Pirates,STANDARD (5-6 IP),NEUTRAL SPLIT,27.4,5.89,0.6997,0.5361,0.3757,0.2407,65.7,⚾ Standard K Spot,7
+647336,Michael Soroka,R,8.61,1.11,Cincinnati Reds,STANDARD (5-6 IP),HIGH WHIFF [+12%],26.3,5.64,0.6645,0.4956,0.3367,0.2086,48.0,⚾ Standard K Spot,8
+686613,Hunter Brown,R,9.44,1.3,Athletics,STANDARD (5-6 IP),NEUTRAL SPLIT,25.7,5.53,0.6464,0.4754,0.3179,0.1936,39.1,⚾ Standard K Spot,9
+677960,Ryan Weathers,L,9.4,1.19,Toronto Blue Jays,STANDARD (5-6 IP),NEUTRAL SPLIT,25.1,5.39,0.6253,0.4524,0.297,0.1773,29.8,⚾ Standard K Spot,10
+608379,Michael Wacha,R,6.94,1.15,Detroit Tigers,WORKHORSE (6+ IP),HIGH WHIFF [+12%],19.9,4.87,0.5369,0.3618,0.2195,0.1204,25.0,⚾ Standard K Spot,11
+683003,Jared Jones,R,10.13,1.2,Los Angeles Dodgers,SHORT LEASH (<5 IP),NEUTRAL SPLIT,27.6,4.83,0.5284,0.3535,0.2128,0.1158,25.0,🛑 FADE: Under K Trap,12
+665152,Dean Kremer,R,7.79,0.81,San Diego Padres,STANDARD (5-6 IP),NEUTRAL SPLIT,22.5,4.83,0.5297,0.3547,0.2138,0.1165,25.0,⚾ Standard K Spot,13
+663776,Patrick Sandoval,L,9.26,1.85,San Francisco Giants,SHORT LEASH (<5 IP),HIGH WHIFF [+12%],26.8,4.69,0.5042,0.3305,0.1945,0.1034,25.0,🛑 FADE: Under K Trap,14
+663556,Shane McClanahan,L,8.27,1.12,Baltimore Orioles,SHORT LEASH (<5 IP),HIGH WHIFF [+12%],25.2,4.41,0.4512,0.2822,0.1579,0.0796,25.0,🛑 FADE: Under K Trap,15
+663623,Jake Irvin,R,9.08,1.36,Miami Marlins,SHORT LEASH (<5 IP),NEUTRAL SPLIT,24.7,4.33,0.4345,0.2676,0.1473,0.0729,25.0,🛑 FADE: Under K Trap,16
+687064,Brandon Young,R,7.34,1.35,Tampa Bay Rays,STANDARD (5-6 IP),NEUTRAL SPLIT,20.0,4.3,0.4288,0.2627,0.1437,0.0707,25.0,🛑 FADE: Under K Trap,17
+656849,David Peterson,L,8.34,1.65,Seattle Mariners,SHORT LEASH (<5 IP),NEUTRAL SPLIT,24.5,4.29,0.4278,0.2618,0.1431,0.0704,25.0,🛑 FADE: Under K Trap,18
+682052,Jacob Lopez,L,8.28,1.53,Houston Astros,SHORT LEASH (<5 IP),NEUTRAL SPLIT,22.5,3.94,0.3603,0.2063,0.105,0.0479,25.0,🛑 FADE: Under K Trap,19
+663554,Casey Mize,R,5.87,1.5,Minnesota Twins,STANDARD (5-6 IP),NEUTRAL SPLIT,16.9,3.64,0.3016,0.1617,0.0768,0.0326,25.0,🛑 FADE: Under K Trap,20
+695076,Rhett Lowder,R,7.31,1.49,Arizona Diamondbacks,SHORT LEASH (<5 IP),NEUTRAL SPLIT,19.9,3.48,0.2712,0.1401,0.0639,0.0261,25.0,🛑 FADE: Under K Trap,21
+691725,Andrew Painter,R,7.49,1.55,St. Louis Cardinals,SHORT LEASH (<5 IP),NEUTRAL SPLIT,19.8,3.46,0.2672,0.1373,0.0623,0.0253,25.0,🛑 FADE: Under K Trap,22
+674003,Cody Bradford,L,5.87,1.43,Los Angeles Angels,STANDARD (5-6 IP),NEUTRAL SPLIT,16.0,3.44,0.2625,0.134,0.0604,0.0243,25.0,🛑 FADE: Under K Trap,23
+676440,Tanner Bibee,R,7.0,1.15,Colorado Rockies,STANDARD (5-6 IP),NEUTRAL SPLIT,16.0,3.44,0.2635,0.1347,0.0609,0.0245,25.0,🛑 FADE: Under K Trap,24
+696270,Ryan Johnson,R,7.01,1.54,Texas Rangers,SHORT LEASH (<5 IP),NEUTRAL SPLIT,19.1,3.34,0.2446,0.1219,0.0536,0.021,25.0,🛑 FADE: Under K Trap,25
+527048,Martín Pérez,L,6.71,1.19,Milwaukee Brewers,SHORT LEASH (<5 IP),NEUTRAL SPLIT,18.3,3.2,0.2188,0.105,0.0444,0.0167,25.0,🛑 FADE: Under K Trap,26
+687312,Gabriel Hughes,R,7.88,1.38,Cleveland Guardians,SHORT LEASH (<5 IP),NEUTRAL SPLIT,18.0,3.15,0.2111,0.1002,0.0418,0.0156,25.0,🛑 FADE: Under K Trap,27
+623454,Drew Anderson,R,10.26,1.3,Kansas City Royals,OPENER / BP,NEUTRAL SPLIT,26.3,2.36,0.0913,0.0335,0.0107,0.003,25.0,🛑 FADE: Under K Trap,28
+694918,Blade Tidwell,R,6.67,1.22,Boston Red Sox,OPENER / BP,NEUTRAL SPLIT,17.2,1.55,0.0212,0.0052,0.0011,0.0002,25.0,🛑 FADE: Under K Trap,29
