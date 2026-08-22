@@ -29,7 +29,7 @@ def calculate_l15_slg_and_bb(game_logs, fallback_slg=0.410, fallback_bb_pct=0.08
         t = int(g.get('3b', 0))
         hr = int(g.get('hr', 0))
 
-        # Calculate Total Bases: Singles (H - 2B - 3B - HR) * 1 + XBH weights
+        # Total Bases: Singles + (2B * 2) + (3B * 3) + (HR * 4)
         singles = max(0, h - d - t - hr)
         tb = singles + (d * 2) + (t * 3) + (hr * 4)
 
@@ -43,7 +43,7 @@ def calculate_l15_slg_and_bb(game_logs, fallback_slg=0.410, fallback_bb_pct=0.08
     
     return l15_slg, l15_bb_pct
 
-def run_total_bases_model(mode="predict"):
+def run_tb_model(mode="predict"):
     today_str, games = load_daily_slate()
     os.makedirs("exports/total_bases", exist_ok=True)
 
@@ -91,7 +91,7 @@ def run_total_bases_model(mode="predict"):
                 elif order_num in [4, 5, 6]:
                     expected_pa = 4.1
                 else:
-                    expected_pa = 3.6 # Severe volume drop for bottom of the order
+                    expected_pa = 3.6
 
                 b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
                 
@@ -106,15 +106,11 @@ def run_total_bases_model(mode="predict"):
                 blended_slg = (0.60 * season_slg) + (0.40 * l15_slg)
                 blended_bb_pct = (0.60 * season_bb_pct) + (0.40 * l15_bb_pct)
 
-                # Pillar 2: True At-Bats (Penalize high walk rates)
-                # If a player walks 15% of the time, 15% of their PAs yield 0 total bases.
+                # True At-Bats (Penalize high walk rates)
                 true_ab = expected_pa * (1.0 - blended_bb_pct)
 
-                # Core Math: Calculate Expected Total Bases
-                # Expected TB = True ABs * Blended SLG * Pitcher/Park Multipliers
+                # Projected Total Bases
                 expected_tb = float(np.clip(true_ab * blended_slg * pitcher_tb_multiplier * park_tb_adj, 0.5, 3.5))
-                
-                # Map expected output to a 10-99 score (targeting 1.5+ for props)
                 score = round(float(np.clip((expected_tb / 2.0) * 100.0, 10.0, 99.0)), 1)
 
                 if score >= 80.0:
@@ -198,7 +194,6 @@ def render_total_bases_card(df, out_path, today_str):
             elif col == 4:
                 cell.set_text_props(color='#38bdf8', weight='bold')
             elif col == 5:
-                # Highlight high walk rates (bad for TB) in red/muted
                 bb = float(rows[row-1][5].strip('%'))
                 if bb > 12.0:
                     cell.set_text_props(color='#f87171')
@@ -211,3 +206,6 @@ def render_total_bases_card(df, out_path, today_str):
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close('all')
     print(f"[✓] Saved Streamlined Total Bases Card to {out_path}")
+
+# Dual naming alias to prevent import errors across orchestrators
+run_total_bases_model = run_tb_model
