@@ -31,18 +31,18 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,blended_iso,drought
 575929,Willson Contreras,4,Boston Red Sox,Blade Tidwell (RHP),R vs R,☁️ 1.00x,0.256,0,17.8,0.75,13.3,26.7,⚾ Standard Rotation,30
 668709,JJ Bleday,5,Cincinnati Reds,Michael Soroka (RHP),L vs R,☁️ 1.00x,0.211,0,17.7,0.75,13.3,26.6,⚾ Standard Rotation,31
 642350,Jose Siri,3,Los Angeles Angels,Cody Bradford (LHP),R vs L,☁️ 1.00x,0.2,0,17.6,0.75,13.2,26.4,⚾ Standard Rotation,32
-661531,Brian Serven,2,Athletics,Hunter Brown (RHP),R vs R,☁️ 1.00x,0.231,0,17.6,0.75,13.2,26.4,⚾ Standard Rotation,33
-621439,Byron Buxton,4,Minnesota Twins,Casey Mize (RHP),R vs R,☁️ 1.00x,0.264,0,17.5,0.75,13.1,26.2,⚾ Standard Rotation,34
-691718,Pete Crow-Armstrong,1,Chicago Cubs,Kade Anderson (LHP),L vs L,☁️ 1.00x,0.275,0,17.3,0.75,13.0,25.9,⚾ Standard Rotation,35
-694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee (RHP),S vs R,☁️ 1.00x,0.188,0,17.1,0.75,12.8,25.7,⚾ Standard Rotation,36
-545361,Mike Trout,5,Los Angeles Angels,Cody Bradford (LHP),R vs L,☁️ 1.00x,0.194,0,17.1,0.75,12.8,25.6,⚾ Standard Rotation,37
-665019,Kody Clemens,7,Minnesota Twins,Casey Mize (RHP),L vs R,☁️ 1.00x,0.232,0,17.0,0.75,12.8,25.5,⚾ Standard Rotation,38
-673548,Seiya Suzuki,2,Chicago Cubs,Kade Anderson (LHP),R vs L,☁️ 1.00x,0.213,0,16.8,0.75,12.6,25.2,⚾ Standard Rotation,39
-682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,☁️ 1.00x,0.184,0,16.8,0.75,12.6,25.2,⚾ Standard Rotation,40
-656537,Derek Hill,9,Philadelphia Phillies,Quinn Mathews (LHP),R vs L,☁️ 1.00x,0.162,0,16.4,0.75,12.3,24.7,⚾ Standard Rotation,41
-608369,Corey Seager,2,Texas Rangers,Ryan Johnson (RHP),L vs R,☁️ 1.00x,0.194,0,16.4,0.75,12.3,24.6,⚾ Standard Rotation,42
-665161,Jeremy Peña,1,Houston Astros,Jacob Lopez (LHP),R vs L,☁️ 1.00x,0.186,0,16.4,0.75,12.3,24.6,⚾ Standard Rotation,43
-677800,Wilyer Abreu,3,Boston Red Sox,Blade Tidwell (RHP),L vs R,☁️ 1.00x,0.213,0,16.4,0.75,12.3,24.6,⚾ Standard Rotation,44
+621439,Byron Buxton,4,Minnesota Twins,Casey Mize (RHP),R vs R,☁️ 1.00x,0.264,0,17.5,0.75,13.1,26.2,⚾ Standard Rotation,33
+691718,Pete Crow-Armstrong,1,Chicago Cubs,Kade Anderson (LHP),L vs L,☁️ 1.00x,0.275,0,17.3,0.75,13.0,25.9,⚾ Standard Rotation,34
+694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee (RHP),S vs R,☁️ 1.00x,0.188,0,17.1,0.75,12.8,25.7,⚾ Standard Rotation,35
+545361,Mike Trout,5,Los Angeles Angels,Cody Bradford (LHP),R vs L,☁️ 1.00x,0.194,0,17.1,0.75,12.8,25.6,⚾ Standard Rotation,36
+665019,Kody Clemens,7,Minnesota Twins,Casey Mize (RHP),L vs R,☁️ 1.00x,0.232,0,17.0,0.75,12.8,25.5,⚾ Standard Rotation,37
+673548,Seiya Suzuki,2,Chicago Cubs,Kade Anderson (LHP),R vs L,☁️ 1.00x,0.213,0,16.8,0.75,12.6,25.2,⚾ Standard Rotation,38
+682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,☁️ 1.00x,0.184,0,16.8,0.75,12.6,25.2,⚾ Standard Rotation,39
+656537,Derek Hill,9,Philadelphia Phillies,Quinn Mathews (LHP),R vs L,☁️ 1.00x,0.162,0,16.4,0.75,12.3,24.7,⚾ Standard Rotation,40
+608369,Corey Seager,2,Texas Rangers,Ryan Johnson (RHP),L vs R,☁️ 1.00x,0.194,0,16.4,0.75,12.3,24.6,⚾ Standard Rotation,41
+665161,Jeremy Peña,1,Houston Astros,Jacob Lopez (LHP),R vs L,☁️ 1.00x,0.186,0,16.4,0.75,12.3,24.6,⚾ Standard Rotation,42
+677800,Wilyer Abreu,3,Boston Red Sox,Blade Tidwell (RHP),L vs R,☁️ 1.00x,0.213,0,16.4,0.75,12.3,24.6,⚾ Standard Rotation,43
+680869,Zack Gelof,3,Athletics,Hunter Brown (RHP),R vs R,☁️ 1.00x,0.209,0,16.0,0.75,12.0,24.0,⚾ Standard Rotation,44
 665833,Oneil Cruz,4,Pittsburgh Pirates,Tarik Skubal (LHP),L vs L,☁️ 1.00x,0.224,0,15.9,0.75,11.9,23.9,⚾ Standard Rotation,45
 682829,Elly De La Cruz,2,Cincinnati Reds,Michael Soroka (RHP),S vs R,☁️ 1.00x,0.206,0,15.8,0.75,11.9,23.7,⚾ Standard Rotation,46
 553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka (RHP),R vs R,☁️ 1.00x,0.204,0,15.7,0.75,11.8,23.5,⚾ Standard Rotation,47
@@ -69,7 +69,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,blended_iso,drought
 668227,Randy Arozarena,2,Seattle Mariners,David Peterson (LHP),R vs L,☁️ 1.00x,0.176,0,14.0,0.75,10.5,21.1,⚾ Standard Rotation,68
 669394,Jake Burger,7,Texas Rangers,Ryan Johnson (RHP),R vs R,☁️ 1.00x,0.181,0,14.0,0.75,10.5,21.0,⚾ Standard Rotation,69
 518692,Freddie Freeman,2,Los Angeles Dodgers,Jared Jones (RHP),L vs R,☁️ 1.00x,0.163,0,13.9,0.75,10.4,20.9,⚾ Standard Rotation,70
-641680,Jonah Heim,8,Athletics,Hunter Brown (RHP),S vs R,☁️ 1.00x,0.179,0,13.9,0.75,10.4,20.8,⚾ Standard Rotation,71
+641680,Jonah Heim,7,Athletics,Hunter Brown (RHP),S vs R,☁️ 1.00x,0.179,0,13.9,0.75,10.4,20.8,⚾ Standard Rotation,71
 624641,Edmundo Sosa,6,Philadelphia Phillies,Quinn Mathews (LHP),R vs L,☁️ 1.00x,0.134,0,13.7,0.75,10.3,20.6,⚾ Standard Rotation,72
 607043,Brandon Nimmo,4,Texas Rangers,Ryan Johnson (RHP),L vs R,☁️ 1.00x,0.16,0,13.7,0.75,10.2,20.5,⚾ Standard Rotation,73
 657757,Gavin Sheets,4,San Diego Padres,Dean Kremer (RHP),L vs R,☁️ 1.00x,0.183,0,13.6,0.75,10.2,20.5,⚾ Standard Rotation,74
@@ -98,61 +98,61 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,blended_iso,drought
 656775,Cedric Mullins,8,Tampa Bay Rays,Brandon Young (RHP),L vs R,☁️ 1.00x,0.146,0,12.5,0.75,9.4,18.8,⚾ Standard Rotation,97
 672515,Gabriel Moreno,3,Arizona Diamondbacks,Rhett Lowder (RHP),R vs R,☁️ 1.00x,0.161,0,12.5,0.75,9.4,18.8,⚾ Standard Rotation,98
 701538,Jackson Merrill,5,San Diego Padres,Dean Kremer (RHP),L vs R,☁️ 1.00x,0.167,0,12.5,0.75,9.4,18.8,⚾ Standard Rotation,99
-666126,Carlos Cortes,3,Athletics,Hunter Brown (RHP),L vs R,☁️ 1.00x,0.145,0,12.4,0.75,9.3,18.7,⚾ Standard Rotation,100
+666126,Carlos Cortes,4,Athletics,Hunter Brown (RHP),L vs R,☁️ 1.00x,0.145,0,12.4,0.75,9.3,18.7,⚾ Standard Rotation,100
 701807,Carson Benge,4,New York Mets,Luis Castillo (RHP),L vs R,☁️ 1.00x,0.145,0,12.4,0.75,9.3,18.7,⚾ Standard Rotation,101
 686681,Michael Massey,7,Kansas City Royals,Drew Anderson (RHP),L vs R,☁️ 1.00x,0.17,0,12.4,0.75,9.3,18.7,⚾ Standard Rotation,102
 805811,Bryce Eldridge,4,San Francisco Giants,Patrick Sandoval (LHP),L vs L,☁️ 1.00x,0.188,0,12.4,0.75,9.3,18.7,⚾ Standard Rotation,103
 673237,Yainer Diaz,7,Houston Astros,Jacob Lopez (LHP),R vs L,☁️ 1.00x,0.138,0,12.4,0.75,9.3,18.6,⚾ Standard Rotation,104
 671056,Iván Herrera,2,St. Louis Cardinals,Andrew Painter (RHP),R vs R,☁️ 1.00x,0.138,0,12.4,0.75,9.3,18.5,⚾ Standard Rotation,105
-679529,Spencer Torkelson,7,Detroit Tigers,Michael Wacha (RHP),R vs R,☁️ 1.00x,0.186,0,12.4,0.75,9.3,18.5,⚾ Standard Rotation,106
-680776,Jarren Duran,7,Boston Red Sox,Blade Tidwell (RHP),L vs R,☁️ 1.00x,0.156,0,12.3,0.75,9.2,18.4,⚾ Standard Rotation,107
-680574,Matt McLain,8,Cincinnati Reds,Michael Soroka (RHP),R vs R,☁️ 1.00x,0.156,0,12.2,0.75,9.1,18.3,⚾ Standard Rotation,108
-668904,Royce Lewis,9,Minnesota Twins,Casey Mize (RHP),R vs R,☁️ 1.00x,0.178,0,12.1,0.75,9.1,18.2,⚾ Standard Rotation,109
-694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford (LHP),R vs L,☁️ 1.00x,0.134,0,12.0,0.75,9.0,18.1,⚾ Standard Rotation,110
-668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal (LHP),S vs L,☁️ 1.00x,0.167,0,12.1,0.75,9.1,18.1,⚾ Standard Rotation,111
-701675,Nathan Church,6,St. Louis Cardinals,Andrew Painter (RHP),L vs R,☁️ 1.00x,0.12,0,11.8,0.75,8.9,17.8,⚾ Standard Rotation,112
-694374,Tim Tawa,6,Arizona Diamondbacks,Rhett Lowder (RHP),R vs R,☁️ 1.00x,0.152,0,11.9,0.75,8.9,17.8,⚾ Standard Rotation,113
-686797,Brooks Lee,3,Minnesota Twins,Casey Mize (RHP),S vs R,☁️ 1.00x,0.174,0,11.9,0.75,8.9,17.8,⚾ Standard Rotation,114
-666018,Jonathan Aranda,2,Tampa Bay Rays,Brandon Young (RHP),L vs R,☁️ 1.00x,0.137,0,11.8,0.75,8.8,17.7,⚾ Standard Rotation,115
-671732,Lawrence Butler,9,Athletics,Hunter Brown (RHP),L vs R,☁️ 1.00x,0.137,0,11.8,0.75,8.8,17.7,⚾ Standard Rotation,116
-605137,Josh Bell,5,Minnesota Twins,Casey Mize (RHP),S vs R,☁️ 1.00x,0.173,0,11.8,0.75,8.9,17.7,⚾ Standard Rotation,117
-677951,Bobby Witt Jr.,2,Kansas City Royals,Drew Anderson (RHP),R vs R,☁️ 1.00x,0.175,0,11.7,0.75,8.8,17.5,⚾ Standard Rotation,118
-606192,Teoscar Hernández,7,Los Angeles Dodgers,Jared Jones (RHP),R vs R,☁️ 1.00x,0.149,0,11.7,0.75,8.7,17.5,⚾ Standard Rotation,119
-680779,Henry Davis,9,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,☁️ 1.00x,0.129,0,11.6,0.75,8.7,17.4,⚾ Standard Rotation,120
-663656,Kyle Tucker,6,Los Angeles Dodgers,Jared Jones (RHP),L vs R,☁️ 1.00x,0.134,0,11.5,0.75,8.7,17.3,⚾ Standard Rotation,121
-655316,Andruw Monasterio,8,Boston Red Sox,Blade Tidwell (RHP),R vs R,☁️ 1.00x,0.161,0,11.5,0.75,8.7,17.3,⚾ Standard Rotation,122
-690993,Colt Keith,3,Detroit Tigers,Michael Wacha (RHP),L vs R,☁️ 1.00x,0.153,0,11.3,0.75,8.4,16.9,⚾ Standard Rotation,123
-694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford (LHP),L vs L,☁️ 1.00x,0.154,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,124
-676572,Eric Wagaman,7,New York Mets,Luis Castillo (RHP),R vs R,☁️ 1.00x,0.143,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,125
-624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka (RHP),R vs R,☁️ 1.00x,0.143,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,126
-694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,☁️ 1.00x,0.12,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,127
-677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,☁️ 1.00x,0.12,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,128
-687859,Troy Johnston,7,Colorado Rockies,Tanner Bibee (RHP),L vs R,☁️ 1.00x,0.109,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,129
-672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford (LHP),R vs L,☁️ 1.00x,0.123,0,11.1,0.75,8.3,16.7,⚾ Standard Rotation,130
-694497,Evan Carter,6,Texas Rangers,Ryan Johnson (RHP),L vs R,☁️ 1.00x,0.128,0,11.1,0.75,8.3,16.6,⚾ Standard Rotation,131
-545121,Ildemaro Vargas,7,Arizona Diamondbacks,Rhett Lowder (RHP),S vs R,☁️ 1.00x,0.141,0,11.1,0.75,8.3,16.6,⚾ Standard Rotation,132
-666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford (LHP),L vs L,☁️ 1.00x,0.151,0,11.0,0.75,8.2,16.5,⚾ Standard Rotation,133
-665804,Miguel Amaya,9,Chicago Cubs,Kade Anderson (LHP),R vs L,☁️ 1.00x,0.136,0,11.0,0.75,8.2,16.5,⚾ Standard Rotation,134
-691458,Blaze Jordan,9,St. Louis Cardinals,Andrew Painter (RHP),R vs R,☁️ 1.00x,0.121,0,10.9,0.75,8.2,16.4,⚾ Standard Rotation,135
-669242,Tommy Edman,5,Los Angeles Dodgers,Jared Jones (RHP),S vs R,☁️ 1.00x,0.137,0,10.8,0.75,8.1,16.2,⚾ Standard Rotation,136
-665877,José Fermín,7,St. Louis Cardinals,Andrew Painter (RHP),R vs R,☁️ 1.00x,0.119,0,10.7,0.75,8.0,16.1,⚾ Standard Rotation,137
-803011,Sam Antonacci,1,Chicago White Sox,Christian Scott (RHP),L vs R,☁️ 1.00x,0.124,0,10.7,0.75,8.0,16.1,⚾ Standard Rotation,138
-595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes (RHP),R vs R,☁️ 1.00x,0.115,0,10.7,0.75,8.1,16.1,⚾ Standard Rotation,139
-682634,Kevin Alcántara,8,Chicago Cubs,Kade Anderson (LHP),R vs L,☁️ 1.00x,0.131,0,10.6,0.75,8.0,15.9,⚾ Standard Rotation,140
-702332,Caleb Durbin,6,Boston Red Sox,Blade Tidwell (RHP),R vs R,☁️ 1.00x,0.147,0,10.6,0.75,7.9,15.9,⚾ Standard Rotation,141
-665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer (RHP),R vs R,☁️ 1.00x,0.154,0,10.6,0.75,7.9,15.9,⚾ Standard Rotation,142
-805999,A.J. Ewing,1,New York Mets,Luis Castillo (RHP),L vs R,☁️ 1.00x,0.122,0,10.6,0.75,7.9,15.8,⚾ Standard Rotation,143
-695731,Braden Montgomery,5,Chicago White Sox,Christian Scott (RHP),S vs R,☁️ 1.00x,0.134,0,10.5,0.75,7.9,15.8,⚾ Standard Rotation,144
-805367,Chase Meidroth,7,Chicago White Sox,Christian Scott (RHP),R vs R,☁️ 1.00x,0.132,0,10.4,0.75,7.8,15.6,⚾ Standard Rotation,145
-663457,Lars Nootbaar,1,Arizona Diamondbacks,Rhett Lowder (RHP),L vs R,☁️ 1.00x,0.12,0,10.4,0.75,7.8,15.6,⚾ Standard Rotation,146
-805808,Kevin McGonigle,1,Detroit Tigers,Michael Wacha (RHP),L vs R,☁️ 1.00x,0.14,0,10.4,0.75,7.8,15.5,⚾ Standard Rotation,147
-643376,Danny Jansen,9,Texas Rangers,Ryan Johnson (RHP),R vs R,☁️ 1.00x,0.13,0,10.2,0.75,7.7,15.4,⚾ Standard Rotation,148
-703601,Max Clark,8,Detroit Tigers,Michael Wacha (RHP),L vs R,☁️ 1.00x,0.137,0,10.1,0.75,7.6,15.2,⚾ Standard Rotation,149
-683146,Brett Baty,3,New York Mets,Luis Castillo (RHP),L vs R,☁️ 1.00x,0.116,0,10.1,0.75,7.5,15.1,⚾ Standard Rotation,150
-672695,Geraldo Perdomo,4,Arizona Diamondbacks,Rhett Lowder (RHP),S vs R,☁️ 1.00x,0.128,0,10.1,0.75,7.6,15.1,⚾ Standard Rotation,151
-680700,Richie Palacios,7,Tampa Bay Rays,Brandon Young (RHP),L vs R,☁️ 1.00x,0.115,0,10.0,0.75,7.5,15.0,⚾ Standard Rotation,152
-666182,Bo Bichette,2,New York Mets,Luis Castillo (RHP),R vs R,☁️ 1.00x,0.127,0,10.0,0.75,7.5,15.0,⚾ Standard Rotation,153
-675961,Alika Williams,1,Athletics,Hunter Brown (RHP),R vs R,☁️ 1.00x,0.126,0,9.9,0.75,7.5,14.9,⚾ Standard Rotation,154
+691777,Max Muncy,9,Athletics,Hunter Brown (RHP),R vs R,☁️ 1.00x,0.158,0,12.3,0.75,9.2,18.5,⚾ Standard Rotation,106
+679529,Spencer Torkelson,7,Detroit Tigers,Michael Wacha (RHP),R vs R,☁️ 1.00x,0.186,0,12.4,0.75,9.3,18.5,⚾ Standard Rotation,107
+680776,Jarren Duran,7,Boston Red Sox,Blade Tidwell (RHP),L vs R,☁️ 1.00x,0.156,0,12.3,0.75,9.2,18.4,⚾ Standard Rotation,108
+680574,Matt McLain,8,Cincinnati Reds,Michael Soroka (RHP),R vs R,☁️ 1.00x,0.156,0,12.2,0.75,9.1,18.3,⚾ Standard Rotation,109
+668904,Royce Lewis,9,Minnesota Twins,Casey Mize (RHP),R vs R,☁️ 1.00x,0.178,0,12.1,0.75,9.1,18.2,⚾ Standard Rotation,110
+694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford (LHP),R vs L,☁️ 1.00x,0.134,0,12.0,0.75,9.0,18.1,⚾ Standard Rotation,111
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal (LHP),S vs L,☁️ 1.00x,0.167,0,12.1,0.75,9.1,18.1,⚾ Standard Rotation,112
+701675,Nathan Church,6,St. Louis Cardinals,Andrew Painter (RHP),L vs R,☁️ 1.00x,0.12,0,11.8,0.75,8.9,17.8,⚾ Standard Rotation,113
+694374,Tim Tawa,6,Arizona Diamondbacks,Rhett Lowder (RHP),R vs R,☁️ 1.00x,0.152,0,11.9,0.75,8.9,17.8,⚾ Standard Rotation,114
+686797,Brooks Lee,3,Minnesota Twins,Casey Mize (RHP),S vs R,☁️ 1.00x,0.174,0,11.9,0.75,8.9,17.8,⚾ Standard Rotation,115
+666018,Jonathan Aranda,2,Tampa Bay Rays,Brandon Young (RHP),L vs R,☁️ 1.00x,0.137,0,11.8,0.75,8.8,17.7,⚾ Standard Rotation,116
+671732,Lawrence Butler,5,Athletics,Hunter Brown (RHP),L vs R,☁️ 1.00x,0.137,0,11.8,0.75,8.8,17.7,⚾ Standard Rotation,117
+605137,Josh Bell,5,Minnesota Twins,Casey Mize (RHP),S vs R,☁️ 1.00x,0.173,0,11.8,0.75,8.9,17.7,⚾ Standard Rotation,118
+677951,Bobby Witt Jr.,2,Kansas City Royals,Drew Anderson (RHP),R vs R,☁️ 1.00x,0.175,0,11.7,0.75,8.8,17.5,⚾ Standard Rotation,119
+606192,Teoscar Hernández,7,Los Angeles Dodgers,Jared Jones (RHP),R vs R,☁️ 1.00x,0.149,0,11.7,0.75,8.7,17.5,⚾ Standard Rotation,120
+680779,Henry Davis,9,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,☁️ 1.00x,0.129,0,11.6,0.75,8.7,17.4,⚾ Standard Rotation,121
+663656,Kyle Tucker,6,Los Angeles Dodgers,Jared Jones (RHP),L vs R,☁️ 1.00x,0.134,0,11.5,0.75,8.7,17.3,⚾ Standard Rotation,122
+655316,Andruw Monasterio,8,Boston Red Sox,Blade Tidwell (RHP),R vs R,☁️ 1.00x,0.161,0,11.5,0.75,8.7,17.3,⚾ Standard Rotation,123
+690993,Colt Keith,3,Detroit Tigers,Michael Wacha (RHP),L vs R,☁️ 1.00x,0.153,0,11.3,0.75,8.4,16.9,⚾ Standard Rotation,124
+694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford (LHP),L vs L,☁️ 1.00x,0.154,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,125
+676572,Eric Wagaman,7,New York Mets,Luis Castillo (RHP),R vs R,☁️ 1.00x,0.143,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,126
+624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka (RHP),R vs R,☁️ 1.00x,0.143,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,127
+694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,☁️ 1.00x,0.12,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,128
+677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes (RHP),S vs R,☁️ 1.00x,0.12,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,129
+687859,Troy Johnston,7,Colorado Rockies,Tanner Bibee (RHP),L vs R,☁️ 1.00x,0.109,0,11.2,0.75,8.4,16.8,⚾ Standard Rotation,130
+672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford (LHP),R vs L,☁️ 1.00x,0.123,0,11.1,0.75,8.3,16.7,⚾ Standard Rotation,131
+694497,Evan Carter,6,Texas Rangers,Ryan Johnson (RHP),L vs R,☁️ 1.00x,0.128,0,11.1,0.75,8.3,16.6,⚾ Standard Rotation,132
+545121,Ildemaro Vargas,7,Arizona Diamondbacks,Rhett Lowder (RHP),S vs R,☁️ 1.00x,0.141,0,11.1,0.75,8.3,16.6,⚾ Standard Rotation,133
+666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford (LHP),L vs L,☁️ 1.00x,0.151,0,11.0,0.75,8.2,16.5,⚾ Standard Rotation,134
+665804,Miguel Amaya,9,Chicago Cubs,Kade Anderson (LHP),R vs L,☁️ 1.00x,0.136,0,11.0,0.75,8.2,16.5,⚾ Standard Rotation,135
+691458,Blaze Jordan,9,St. Louis Cardinals,Andrew Painter (RHP),R vs R,☁️ 1.00x,0.121,0,10.9,0.75,8.2,16.4,⚾ Standard Rotation,136
+669242,Tommy Edman,5,Los Angeles Dodgers,Jared Jones (RHP),S vs R,☁️ 1.00x,0.137,0,10.8,0.75,8.1,16.2,⚾ Standard Rotation,137
+665877,José Fermín,7,St. Louis Cardinals,Andrew Painter (RHP),R vs R,☁️ 1.00x,0.119,0,10.7,0.75,8.0,16.1,⚾ Standard Rotation,138
+803011,Sam Antonacci,1,Chicago White Sox,Christian Scott (RHP),L vs R,☁️ 1.00x,0.124,0,10.7,0.75,8.0,16.1,⚾ Standard Rotation,139
+595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes (RHP),R vs R,☁️ 1.00x,0.115,0,10.7,0.75,8.1,16.1,⚾ Standard Rotation,140
+682634,Kevin Alcántara,8,Chicago Cubs,Kade Anderson (LHP),R vs L,☁️ 1.00x,0.131,0,10.6,0.75,8.0,15.9,⚾ Standard Rotation,141
+702332,Caleb Durbin,6,Boston Red Sox,Blade Tidwell (RHP),R vs R,☁️ 1.00x,0.147,0,10.6,0.75,7.9,15.9,⚾ Standard Rotation,142
+665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer (RHP),R vs R,☁️ 1.00x,0.154,0,10.6,0.75,7.9,15.9,⚾ Standard Rotation,143
+805999,A.J. Ewing,1,New York Mets,Luis Castillo (RHP),L vs R,☁️ 1.00x,0.122,0,10.6,0.75,7.9,15.8,⚾ Standard Rotation,144
+695731,Braden Montgomery,5,Chicago White Sox,Christian Scott (RHP),S vs R,☁️ 1.00x,0.134,0,10.5,0.75,7.9,15.8,⚾ Standard Rotation,145
+805367,Chase Meidroth,7,Chicago White Sox,Christian Scott (RHP),R vs R,☁️ 1.00x,0.132,0,10.4,0.75,7.8,15.6,⚾ Standard Rotation,146
+663457,Lars Nootbaar,1,Arizona Diamondbacks,Rhett Lowder (RHP),L vs R,☁️ 1.00x,0.12,0,10.4,0.75,7.8,15.6,⚾ Standard Rotation,147
+805808,Kevin McGonigle,1,Detroit Tigers,Michael Wacha (RHP),L vs R,☁️ 1.00x,0.14,0,10.4,0.75,7.8,15.5,⚾ Standard Rotation,148
+643376,Danny Jansen,9,Texas Rangers,Ryan Johnson (RHP),R vs R,☁️ 1.00x,0.13,0,10.2,0.75,7.7,15.4,⚾ Standard Rotation,149
+703601,Max Clark,8,Detroit Tigers,Michael Wacha (RHP),L vs R,☁️ 1.00x,0.137,0,10.1,0.75,7.6,15.2,⚾ Standard Rotation,150
+683146,Brett Baty,3,New York Mets,Luis Castillo (RHP),L vs R,☁️ 1.00x,0.116,0,10.1,0.75,7.5,15.1,⚾ Standard Rotation,151
+672695,Geraldo Perdomo,4,Arizona Diamondbacks,Rhett Lowder (RHP),S vs R,☁️ 1.00x,0.128,0,10.1,0.75,7.6,15.1,⚾ Standard Rotation,152
+680700,Richie Palacios,7,Tampa Bay Rays,Brandon Young (RHP),L vs R,☁️ 1.00x,0.115,0,10.0,0.75,7.5,15.0,⚾ Standard Rotation,153
+666182,Bo Bichette,2,New York Mets,Luis Castillo (RHP),R vs R,☁️ 1.00x,0.127,0,10.0,0.75,7.5,15.0,⚾ Standard Rotation,154
 521692,Salvador Perez,4,Kansas City Royals,Drew Anderson (RHP),R vs R,☁️ 1.00x,0.148,0,10.0,0.75,7.5,14.9,⚾ Standard Rotation,155
 686469,Vinnie Pasquantino,5,Kansas City Royals,Drew Anderson (RHP),L vs R,☁️ 1.00x,0.134,0,9.9,0.75,7.4,14.9,⚾ Standard Rotation,156
 701678,Hao-Yu Lee,9,Detroit Tigers,Michael Wacha (RHP),R vs R,☁️ 1.00x,0.146,0,9.8,0.75,7.4,14.8,⚾ Standard Rotation,157
@@ -168,7 +168,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,blended_iso,drought
 668939,Adley Rutschman,5,Boston Red Sox,Blade Tidwell (RHP),S vs R,☁️ 1.00x,0.129,0,9.4,0.75,7.0,14.0,⚾ Standard Rotation,167
 702284,Cole Young,8,Seattle Mariners,David Peterson (LHP),L vs L,☁️ 1.00x,0.14,0,9.2,0.75,6.9,13.8,⚾ Standard Rotation,168
 687551,Drew Gilbert,8,San Francisco Giants,Patrick Sandoval (LHP),L vs L,☁️ 1.00x,0.137,0,9.2,0.75,6.9,13.8,⚾ Standard Rotation,169
-622268,Donovan Walton,5,Athletics,Hunter Brown (RHP),L vs R,☁️ 1.00x,0.105,0,9.1,0.75,6.9,13.7,⚾ Standard Rotation,170
+622268,Donovan Walton,8,Athletics,Hunter Brown (RHP),L vs R,☁️ 1.00x,0.105,0,9.1,0.75,6.9,13.7,⚾ Standard Rotation,170
 814439,Ryan Waldschmidt,9,Arizona Diamondbacks,Rhett Lowder (RHP),R vs R,☁️ 1.00x,0.115,0,9.1,0.75,6.8,13.7,⚾ Standard Rotation,171
 664728,Kyle Isbel,9,Kansas City Royals,Drew Anderson (RHP),L vs R,☁️ 1.00x,0.12,0,8.9,0.75,6.7,13.4,⚾ Standard Rotation,172
 680977,Brendan Donovan,1,Seattle Mariners,David Peterson (LHP),L vs L,☁️ 1.00x,0.132,0,8.7,0.75,6.5,13.1,⚾ Standard Rotation,173
@@ -178,7 +178,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,blended_iso,drought
 664774,LaMonte Wade Jr.,9,Houston Astros,Jacob Lopez (LHP),L vs L,☁️ 1.00x,0.115,0,8.5,0.75,6.4,12.7,⚾ Standard Rotation,177
 693304,Nick Gonzales,1,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,☁️ 1.00x,0.093,0,8.5,0.75,6.4,12.7,⚾ Standard Rotation,178
 699393,Pedro Ramírez,7,Chicago Cubs,Kade Anderson (LHP),S vs L,☁️ 1.00x,0.127,0,8.4,0.75,6.3,12.6,⚾ Standard Rotation,179
-643446,Jeff McNeil,7,Athletics,Hunter Brown (RHP),L vs R,☁️ 1.00x,0.095,0,8.3,0.75,6.2,12.4,⚾ Standard Rotation,180
+643446,Jeff McNeil,2,Athletics,Hunter Brown (RHP),L vs R,☁️ 1.00x,0.095,0,8.3,0.75,6.2,12.4,⚾ Standard Rotation,180
 663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka (RHP),R vs R,☁️ 1.00x,0.102,0,8.1,0.75,6.1,12.2,⚾ Standard Rotation,181
 665966,Carlos Narváez,9,Baltimore Orioles,Shane McClanahan (LHP),R vs L,☁️ 1.00x,0.088,0,8.0,0.75,6.0,12.1,⚾ Standard Rotation,182
 694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford (LHP),L vs L,☁️ 1.00x,0.109,0,8.1,0.75,6.0,12.1,⚾ Standard Rotation,183
@@ -186,7 +186,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,blended_iso,drought
 656716,Zach McKinstry,5,Detroit Tigers,Michael Wacha (RHP),L vs R,☁️ 1.00x,0.107,0,8.0,0.75,6.0,12.0,⚾ Standard Rotation,185
 663538,Nico Hoerner,5,Chicago Cubs,Kade Anderson (LHP),R vs L,☁️ 1.00x,0.098,0,8.0,0.75,6.0,12.0,⚾ Standard Rotation,186
 666023,Freddy Fermin,3,San Diego Padres,Dean Kremer (RHP),R vs R,☁️ 1.00x,0.113,0,7.9,0.75,5.9,11.8,⚾ Standard Rotation,187
-703607,Henry Bolte,6,Athletics,Hunter Brown (RHP),R vs R,☁️ 1.00x,0.098,0,7.8,0.75,5.9,11.7,⚾ Standard Rotation,188
+703607,Henry Bolte,1,Athletics,Hunter Brown (RHP),R vs R,☁️ 1.00x,0.098,0,7.8,0.75,5.9,11.7,⚾ Standard Rotation,188
 686765,Nick Sogard,1,Boston Red Sox,Blade Tidwell (RHP),S vs R,☁️ 1.00x,0.104,0,7.6,0.75,5.7,11.4,⚾ Standard Rotation,189
 694377,Nick Yorke,7,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,☁️ 1.00x,0.081,0,7.4,0.75,5.6,11.1,⚾ Standard Rotation,190
 656577,Alex Jackson,2,Minnesota Twins,Casey Mize (RHP),R vs R,☁️ 1.00x,0.106,0,7.4,0.75,5.6,11.1,⚾ Standard Rotation,191
@@ -200,7 +200,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,weather,blended_iso,drought
 670764,Taylor Walls,9,Tampa Bay Rays,Brandon Young (RHP),S vs R,☁️ 1.00x,0.077,0,6.2,0.75,4.6,10.0,⚾ Standard Rotation,199
 681047,Christian Franklin,7,Baltimore Orioles,Shane McClanahan (LHP),R vs L,☁️ 1.00x,0.05,0,4.6,0.75,3.5,10.0,⚾ Standard Rotation,200
 683227,Cody Freeman,8,Texas Rangers,Ryan Johnson (RHP),R vs R,☁️ 1.00x,0.05,0,4.0,0.75,3.0,10.0,⚾ Standard Rotation,201
-687231,Darell Hernaiz,4,Athletics,Hunter Brown (RHP),R vs R,☁️ 1.00x,0.05,0,4.0,0.75,3.0,10.0,⚾ Standard Rotation,202
+695720,Tommy White,6,Athletics,Hunter Brown (RHP),R vs R,☁️ 1.00x,0.071,0,5.7,0.75,4.3,10.0,⚾ Standard Rotation,202
 666624,Christopher Morel,5,New York Mets,Luis Castillo (RHP),R vs R,☁️ 1.00x,0.05,0,4.0,0.75,3.0,10.0,⚾ Standard Rotation,203
 665506,Cristian Pache,6,New York Mets,Luis Castillo (RHP),R vs R,☁️ 1.00x,0.05,0,4.0,0.75,3.0,10.0,⚾ Standard Rotation,204
 669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal (LHP),R vs L,☁️ 1.00x,0.068,0,6.3,0.75,4.7,10.0,⚾ Standard Rotation,205
