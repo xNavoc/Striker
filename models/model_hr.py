@@ -2,10 +2,35 @@ import os
 from datetime import datetime
 import pandas as pd
 import numpy as np
-from scipy.stats import poisson
 import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
+
+def calculate_l15_iso(game_logs, fallback_iso=0.160):
+    """Calculates ISO across the batter's last 15 games from game logs."""
+    if not isinstance(game_logs, list) or len(game_logs) == 0:
+        return fallback_iso
+
+    try:
+        sorted_logs = sorted(game_logs, key=lambda x: str(x.get('date', '')), reverse=True)[:15]
+    except Exception:
+        sorted_logs = game_logs[:15]
+
+    total_ab = 0
+    total_extra_bases = 0
+
+    for g in sorted_logs:
+        ab = int(g.get('ab', 0))
+        d = int(g.get('2b', 0))
+        t = int(g.get('3b', 0))
+        hr = int(g.get('hr', 0))
+
+        total_ab += ab
+        total_extra_bases += (d * 1) + (t * 2) + (hr * 3)
+
+    if total_ab >= 15:
+        return total_extra_bases / total_ab
+    return fallback_iso
 
 def run_hr_model(mode="predict"):
     today_str, games = load_daily_slate()
@@ -18,12 +43,14 @@ def run_hr_model(mode="predict"):
         ))
         return
 
-    print(f"[{datetime.now()}] Running Clash-Refined Home Run (HR) Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Calibrated HR Model for {today_str}...")
     targets = []
 
     for g in games:
-        park_hr_adj = g.get('park_factors', {}).get('hr', 100) / 100.0
-        weather_hr_adj = g.get('weather_info', {}).get('hr_mod', 1.00)
+        # Pillar 3: Environmental / Weather & Park Factors
+        park_factors = g.get('park_factors', {})
+        park_hr_adj = park_factors.get('hr', 100) / 100.0
+        weather_mod = g.get('weather', {}).get('hr_mod', 1.0)
 
         for side, team_name, opp_p, opp_bp, batters in [
             ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
@@ -41,45 +68,39 @@ def run_hr_model(mode="predict"):
 
                 b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
                 b_hand = b_prof_dict.get('b_hand', 'R')
-                iso = float(b_prof_dict.get('iso', 0.160))
-                slg = float(b_prof_dict.get('slg', 0.405))
+                
+                # Pillar 2: Power Metrics (60% Season ISO + 40% Last 15 Games ISO)
+                season_iso = float(b_prof_dict.get('iso', 0.160))
+                game_logs = b_prof_dict.get('game_logs', [])
+                l15_iso = calculate_l15_iso(game_logs, fallback_iso=season_iso)
+                blended_iso = (0.60 * season_iso) + (0.40 * l15_iso)
 
-                # Handedness split resolution (Switch hitters bat opposite to pitcher)
-                effective_b_hand = 'L' if b_hand == 'S' and opp_p_hand == 'R' else ('R' if b_hand == 'S' and opp_p_hand == 'L' else b_hand)
-                sp_hr9 = float(opp_p_dict.get('hr9_lhb', 1.20) if effective_b_hand == 'L' else opp_p_dict.get('hr9_rhb', 1.20))
-
-                # Trajectory clash dynamics
-                if iso >= 0.220 and sp_hr9 >= 1.25:
-                    clash_badge = "ELEVATED POWER EDGE"
-                    clash_mult = 1.15
-                elif iso >= 0.180 or sp_hr9 >= 1.30:
-                    clash_badge = "ABOVE-AVG MATCHUP"
-                    clash_mult = 1.05
-                elif iso <= 0.120 and sp_hr9 <= 0.85:
-                    clash_badge = "POWER SUPPRESSED"
-                    clash_mult = 0.85
+                # Pillar 1: Handedness Split (Pitcher HR/9 vs Batter Stance)
+                splits_dict = opp_p_dict.get('splits', {})
+                if opp_p_hand == 'R':
+                    pitcher_hr9_vs_hand = float(splits_dict.get('hr9_vs_l', 1.15)) if b_hand == 'L' else float(splits_dict.get('hr9_vs_r', 1.05))
                 else:
-                    clash_badge = "NEUTRAL TRAJECTORY"
-                    clash_mult = 1.00
+                    pitcher_hr9_vs_hand = float(splits_dict.get('hr9_vs_r', 1.20)) if b_hand == 'R' else float(splits_dict.get('hr9_vs_l', 0.95))
 
-                # Lambda calculation for Poisson HR distribution (per plate appearance scaled to ~4.2 PA)
-                base_hr_rate = (iso / 0.160) * 0.035
-                pitcher_hr_rate = (sp_hr9 / 1.20)
-                lambda_hr = base_hr_rate * pitcher_hr_rate * park_hr_adj * weather_hr_adj * clash_mult * 4.2
-                lambda_hr = float(np.clip(lambda_hr, 0.02, 0.65))
+                # Calibrated Per-Game Probability Formulation
+                pa_hr_rate = np.clip(blended_iso * 0.22, 0.005, 0.120)
+                base_hr_prob = 1.0 - ((1.0 - pa_hr_rate) ** 4.1)
 
-                prob_1plus_hr = round(float(1.0 - poisson.cdf(0, lambda_hr)), 4)
-                score_raw = 100.0 / (1.0 + np.exp(-18.0 * (prob_1plus_hr - 0.185)))
-                score = round(float(np.clip(score_raw, 25.0, 96.5)), 1)
+                # Multipliers: Normalized Pitcher Split and Park/Atmospheric Factors
+                league_avg_hr9 = 1.15
+                matchup_multiplier = np.clip(pitcher_hr9_vs_hand / league_avg_hr9, 0.65, 1.65)
+                environment_multiplier = park_hr_adj * weather_mod
 
-                if prob_1plus_hr >= 0.25:
-                    call = "👑 APEX: Home Run Lock"
-                elif prob_1plus_hr >= 0.19:
-                    call = "🔥 TARGET: Home Run Play"
-                elif prob_1plus_hr <= 0.08:
-                    call = "🛑 FADE: Under Low Power"
+                # Final Probability & Index Score
+                final_hr_prob = float(np.clip(base_hr_prob * matchup_multiplier * environment_multiplier, 0.03, 0.48))
+                score = round(float(np.clip(final_hr_prob * 200.0, 10.0, 99.0)), 1)
+
+                if score >= 75.0:
+                    call = "👑 HR LOCK: Elite Form & Matchup"
+                elif score >= 55.0:
+                    call = "🔥 HR TARGET: Strong Power Split"
                 else:
-                    call = "⚾ Standard Matchup"
+                    call = "⚾ Standard Power Spot"
 
                 targets.append({
                     'player_id': b_id,
@@ -87,20 +108,18 @@ def run_hr_model(mode="predict"):
                     'order': order,
                     'team': team_name,
                     'opp_pitcher': opp_p_name,
-                    'p_hand': opp_p_hand,
-                    'b_hand': b_hand,
-                    'iso': round(iso, 3),
-                    'slg': round(slg, 3),
-                    'sp_hr9_split': round(sp_hr9, 2),
-                    'clash_badge': clash_badge,
-                    'prob': prob_1plus_hr,
+                    'matchup': f"{b_hand} vs {opp_p_hand}HP",
+                    'season_iso': round(season_iso, 3),
+                    'l15_iso': round(l15_iso, 3),
+                    'blended_iso': round(blended_iso, 3),
+                    'hr_prob': round(final_hr_prob * 100, 1),
                     'score': score,
                     'target_call': call
                 })
 
     df = pd.DataFrame(targets)
     if not df.empty:
-        df = df.sort_values(by=['score', 'prob'], ascending=False).reset_index(drop=True)
+        df = df.sort_values(by='score', ascending=False).reset_index(drop=True)
         df['rank'] = df.index + 1
         df.to_csv(f"exports/hr/hr_top50_{today_str}.csv", index=False)
         render_hr_card(df.head(35), f"exports/hr/hr_top50_card_{today_str}.png", today_str)
@@ -114,29 +133,25 @@ def render_hr_card(df, out_path, today_str):
     fig.patch.set_facecolor('#070d1e')
     ax.axis('off')
 
-    fig.text(0.5, 0.965, "MLB DAILY HOME RUN (HR) CLASH & POWER MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.938, f"Batted-Ball Trajectory Clash • Handedness Split SP HR/9 • Poisson Distribution • {today_str}", ha='center', color='#38bdf8', fontsize=12)
+    fig.text(0.5, 0.965, "MLB STREAMLINED CORE HOME RUN MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
+    fig.text(0.5, 0.938, f"Handedness Splits • 60/40 Power Recency (Season/L15) • Environment • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Batter & Stance', 'Team', 'Opp Pitcher', 'ISO', 'SLG', 'SP HR/9 (Split)', 'Batted-Ball Clash', 'HR Prob', 'Score', 'ACTIONABLE HR CALL']
+    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Matchup', 'Season ISO', 'L15 ISO', 'Blended ISO', 'HR Prob', 'Score', 'ACTIONABLE HR CALL']
     rows = []
 
     for _, r in df.iterrows():
-        p_val = float(r.get('prob', 0.0))
-        s_val = float(r.get('score', 0.0))
-        call = str(r.get('target_call', 'Standard Matchup'))
-
         rows.append([
             r.get('rank', 1),
-            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')} ({r.get('b_hand', 'R')})",
+            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
             str(r.get('team', 'Team'))[:11],
-            f"{str(r.get('opp_pitcher', 'TBD'))[:11]} ({r.get('p_hand', 'R')})",
-            f"{float(r.get('iso', 0.160)):.3f}",
-            f"{float(r.get('slg', 0.405)):.3f}",
-            f"{float(r.get('sp_hr9_split', 1.20)):.2f} vs {r.get('b_hand', 'R')}",
-            str(r.get('clash_badge', 'NEUTRAL')),
-            f"{p_val * 100:.1f}%",
-            f"{s_val:.1f}",
-            call
+            str(r.get('opp_pitcher', 'TBD'))[:11],
+            str(r.get('matchup', 'R vs R')),
+            f"{float(r.get('season_iso', 0.160)):.3f}",
+            f"{float(r.get('l15_iso', 0.160)):.3f}",
+            f"{float(r.get('blended_iso', 0.160)):.3f}",
+            f"{r.get('hr_prob', 0.0)}%",
+            f"{float(r.get('score', 0.0)):.1f}",
+            str(r.get('target_call', 'Standard Power'))
         ])
 
     table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
@@ -153,10 +168,10 @@ def render_hr_card(df, out_path, today_str):
             if col == 10:
                 txt = rows[row-1][10]
                 cell.set_text_props(
-                    color='#38bdf8' if 'APEX' in txt else ('#4ade80' if 'TARGET' in txt else ('#f87171' if 'FADE' in txt else '#94a3b8')),
+                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else '#94a3b8'),
                     weight='bold'
                 )
-            elif col in [8, 9]:
+            elif col in [7, 8, 9]:
                 cell.set_text_props(color='#facc15', weight='bold')
             elif col == 6:
                 cell.set_text_props(color='#38bdf8', weight='bold')
@@ -166,4 +181,4 @@ def render_hr_card(df, out_path, today_str):
 
     plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
     plt.close('all')
-    print(f"[✓] Saved HR Clash Card to {out_path}")
+    print(f"[✓] Saved Streamlined HR Card to {out_path}")
