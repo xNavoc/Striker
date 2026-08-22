@@ -32,6 +32,19 @@ def calculate_l15_iso(game_logs, fallback_iso=0.160):
         return total_extra_bases / total_ab
     return fallback_iso
 
+def format_weather(mod):
+    """Translates the capped weather multiplier into a clean emoji string."""
+    if mod >= 1.15:
+        return f"🌪️ {mod:.2f}x"
+    elif mod >= 1.05:
+        return f"🔥 {mod:.2f}x"
+    elif mod >= 0.95:
+        return f"☁️ {mod:.2f}x"
+    elif mod >= 0.85:
+        return f"🌬️ {mod:.2f}x"
+    else:
+        return f"❄️ {mod:.2f}x"
+
 def run_hr_model(mode="predict"):
     today_str, games = load_daily_slate()
     os.makedirs("exports/hr", exist_ok=True)
@@ -50,7 +63,11 @@ def run_hr_model(mode="predict"):
         # Pillar 3: Environmental / Weather & Park Factors
         park_factors = g.get('park_factors', {})
         park_hr_adj = park_factors.get('hr', 100) / 100.0
-        weather_mod = g.get('weather', {}).get('hr_mod', 1.0)
+        
+        # Pull raw weather, then immediately CAP it to prevent extreme data glitches [0.75 to 1.35]
+        weather_mod_raw = float(g.get('weather', {}).get('hr_mod', 1.0))
+        weather_mod_capped = float(np.clip(weather_mod_raw, 0.75, 1.35))
+        weather_display = format_weather(weather_mod_capped)
 
         for side, team_name, opp_p, opp_bp, batters in [
             ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
@@ -69,11 +86,12 @@ def run_hr_model(mode="predict"):
                 b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
                 b_hand = b_prof_dict.get('b_hand', 'R')
                 
-                # Pillar 2: Power Metrics (60% Season ISO + 40% Last 15 Games ISO)
+                # Pillar 2: Power Metrics (45% Season ISO + 55% Last 15 Games ISO)
                 season_iso = float(b_prof_dict.get('iso', 0.160))
                 game_logs = b_prof_dict.get('game_logs', [])
                 l15_iso = calculate_l15_iso(game_logs, fallback_iso=season_iso)
-                blended_iso = (0.60 * season_iso) + (0.40 * l15_iso)
+                
+                blended_iso = (0.45 * season_iso) + (0.55 * l15_iso)
 
                 # Pillar 1: Handedness Split (Pitcher HR/9 vs Batter Stance)
                 splits_dict = opp_p_dict.get('splits', {})
@@ -82,14 +100,13 @@ def run_hr_model(mode="predict"):
                 else:
                     pitcher_hr9_vs_hand = float(splits_dict.get('hr9_vs_r', 1.20)) if b_hand == 'R' else float(splits_dict.get('hr9_vs_l', 0.95))
 
-                # Calibrated Per-Game Probability Formulation
                 pa_hr_rate = np.clip(blended_iso * 0.22, 0.005, 0.120)
                 base_hr_prob = 1.0 - ((1.0 - pa_hr_rate) ** 4.1)
 
-                # Multipliers: Normalized Pitcher Split and Park/Atmospheric Factors
+                # Multipliers: Matchup (Strict 15% Cap) and Environment (Capped)
                 league_avg_hr9 = 1.15
-                matchup_multiplier = np.clip(pitcher_hr9_vs_hand / league_avg_hr9, 0.65, 1.65)
-                environment_multiplier = park_hr_adj * weather_mod
+                matchup_multiplier = np.clip(pitcher_hr9_vs_hand / league_avg_hr9, 0.85, 1.15)
+                environment_multiplier = park_hr_adj * weather_mod_capped
 
                 # Final Probability & Index Score
                 final_hr_prob = float(np.clip(base_hr_prob * matchup_multiplier * environment_multiplier, 0.03, 0.48))
@@ -109,6 +126,7 @@ def run_hr_model(mode="predict"):
                     'team': team_name,
                     'opp_pitcher': opp_p_name,
                     'matchup': f"{b_hand} vs {opp_p_hand}HP",
+                    'weather': weather_display,
                     'season_iso': round(season_iso, 3),
                     'l15_iso': round(l15_iso, 3),
                     'blended_iso': round(blended_iso, 3),
@@ -134,9 +152,9 @@ def render_hr_card(df, out_path, today_str):
     ax.axis('off')
 
     fig.text(0.5, 0.965, "MLB STREAMLINED CORE HOME RUN MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.938, f"Handedness Splits • 60/40 Power Recency (Season/L15) • Environment • {today_str}", ha='center', color='#38bdf8', fontsize=12)
+    fig.text(0.5, 0.938, f"Handedness Splits (15% Cap) • 45/55 Power Recency (Season/L15) • Dynamic Weather Limits • {today_str}", ha='center', color='#38bdf8', fontsize=12)
 
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Matchup', 'Season ISO', 'L15 ISO', 'Blended ISO', 'HR Prob', 'Score', 'ACTIONABLE HR CALL']
+    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Matchup', 'Weather', 'Season ISO', 'L15 ISO', 'Blended ISO', 'HR Prob', 'Score', 'ACTIONABLE HR CALL']
     rows = []
 
     for _, r in df.iterrows():
@@ -146,6 +164,7 @@ def render_hr_card(df, out_path, today_str):
             str(r.get('team', 'Team'))[:11],
             str(r.get('opp_pitcher', 'TBD'))[:11],
             str(r.get('matchup', 'R vs R')),
+            str(r.get('weather', '☁️ 1.00x')),
             f"{float(r.get('season_iso', 0.160)):.3f}",
             f"{float(r.get('l15_iso', 0.160)):.3f}",
             f"{float(r.get('blended_iso', 0.160)):.3f}",
@@ -165,15 +184,15 @@ def render_hr_card(df, out_path, today_str):
             cell.set_text_props(color='#38bdf8', weight='bold')
             cell.set_facecolor('#0f172a')
         else:
-            if col == 10:
-                txt = rows[row-1][10]
+            if col == 11:
+                txt = rows[row-1][11]
                 cell.set_text_props(
                     color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else '#94a3b8'),
                     weight='bold'
                 )
-            elif col in [7, 8, 9]:
+            elif col in [8, 9, 10]:
                 cell.set_text_props(color='#facc15', weight='bold')
-            elif col == 6:
+            elif col == 7:
                 cell.set_text_props(color='#38bdf8', weight='bold')
             else:
                 cell.set_text_props(color='#f1f5f9')
