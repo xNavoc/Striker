@@ -1,271 +1,271 @@
-player_id,player_name,order,team,opp_pitcher,p_hand,b_hand,iso,current_drought_pa,current_drought_games,mean_interval_pa,saturation,rho_shape,prob,score,target_call,rank
-621439,Byron Buxton,4,Minnesota Twins,Casey Mize,R,R,0.264,62,14,15.6,3.97,1.12,0.289,92.3,👑 APEX: Due Saturation Surge,1
-691406,Junior Caminero,6,Tampa Bay Rays,Brandon Young,R,R,0.26,37,8,16.0,2.31,1.12,0.2683,88.8,👑 APEX: Due Saturation Surge,2
-621566,Matt Olson,7,Atlanta Braves,Logan Henderson,R,L,0.278,24,6,15.6,1.54,1.12,0.2637,87.8,👑 APEX: Due Saturation Surge,3
-700250,Ben Rice,4,New York Yankees,Dylan Cease,R,L,0.281,17,4,15.5,1.1,1.12,0.2569,86.3,🔥 TARGET: Active Hazard Cycle,4
-665052,Griffin Conine,4,Miami Marlins,Jake Irvin,R,L,0.273,7,4,14.4,0.49,1.06,0.2543,85.6,⚾ Normal Cycle Range,5
-694673,Abimelec Ortiz,1,Washington Nationals,Eury Pérez,R,L,0.31500000000000006,2,1,14.0,0.14,1.06,0.2499,84.5,🛑 RESET: HR Just Occurred,6
-671277,Luis García Jr.,9,New York Yankees,Dylan Cease,R,L,0.16099999999999998,29,8,17.4,1.67,1.12,0.2417,82.3,👑 APEX: Due Saturation Surge,7
-681715,Heriberto Hernández,5,Miami Marlins,Jake Irvin,R,R,0.217,86,26,19.7,4.37,1.12,0.2388,81.4,👑 APEX: Due Saturation Surge,8
-680664,Eduardo Valencia,6,Detroit Tigers,Michael Wacha,R,R,0.394,0,0,14.0,0.0,1.06,0.2385,81.3,🛑 RESET: HR Just Occurred,9
-691723,Coby Mayo,4,Baltimore Orioles,Shane McClanahan,L,R,0.226,62,18,19.6,3.16,1.12,0.2321,79.3,👑 APEX: Due Saturation Surge,10
-665953,Andrés Chaparro,2,Washington Nationals,Eury Pérez,R,R,0.276,56,25,18.0,3.11,1.06,0.2282,78.0,👑 APEX: Due Saturation Surge,11
-687952,Christian Encarnacion-Strand,2,Baltimore Orioles,Shane McClanahan,L,R,0.247,5,1,16.2,0.31,1.06,0.2251,76.9,🛑 RESET: HR Just Occurred,12
-571970,Max Muncy,8,Los Angeles Dodgers,Jared Jones,R,L,0.252,11,4,17.1,0.64,1.12,0.2245,76.7,⚾ Normal Cycle Range,13
-699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Tarik Skubal,L,R,0.28600000000000003,6,2,16.8,0.36,1.06,0.2192,74.7,⚾ Normal Cycle Range,14
-695506,Jac Caglianone,4,Kansas City Royals,Drew Anderson,R,L,0.21399999999999997,70,19,21.1,3.32,1.12,0.2186,74.5,👑 APEX: Due Saturation Surge,15
-682928,CJ Abrams,5,Washington Nationals,Eury Pérez,R,L,0.251,18,4,18.4,0.98,1.12,0.2185,74.5,🔥 TARGET: Active Hazard Cycle,16
-666160,Mickey Moniak,9,Colorado Rockies,Tanner Bibee,R,L,0.27,5,2,16.8,0.3,1.12,0.2139,72.7,🛑 RESET: HR Just Occurred,17
-678246,Miguel Vargas,9,Chicago White Sox,Christian Scott,R,R,0.254,11,3,19.1,0.58,1.12,0.2012,67.3,⚾ Normal Cycle Range,18
-691788,Joe Mack,8,Miami Marlins,Jake Irvin,R,L,0.18799999999999997,72,22,20.9,3.44,1.06,0.2009,67.2,👑 APEX: Due Saturation Surge,19
-656537,Derek Hill,6,Philadelphia Phillies,TBD Pitcher,R,R,0.162,27,16,20.2,1.34,1.06,0.1974,65.7,👑 APEX: Due Saturation Surge,20
-695657,Colson Montgomery,5,Chicago White Sox,Christian Scott,R,L,0.222,8,2,18.9,0.42,1.12,0.1976,65.7,⚾ Normal Cycle Range,21
-572233,Christian Walker,3,Houston Astros,Jacob Lopez,L,R,0.209,30,8,22.1,1.36,1.12,0.1914,62.9,👑 APEX: Due Saturation Surge,22
-691023,Jordan Walker,8,St. Louis Cardinals,Andrew Painter,R,R,0.22200000000000003,8,2,20.0,0.4,1.12,0.1867,60.7,⚾ Normal Cycle Range,23
-547180,Bryce Harper,4,Philadelphia Phillies,TBD Pitcher,R,L,0.23099999999999998,22,5,22.0,1.0,1.12,0.1864,60.5,🔥 TARGET: Active Hazard Cycle,24
-642708,Amed Rosario,2,New York Yankees,Dylan Cease,R,R,0.19899999999999998,7,3,20.2,0.35,1.06,0.1853,60.0,🛑 RESET: HR Just Occurred,25
-624424,Michael Conforto,7,Chicago Cubs,Kade Anderson,L,L,0.212,38,17,23.0,1.65,1.06,0.1774,56.2,👑 APEX: Due Saturation Surge,26
-665019,Kody Clemens,7,Minnesota Twins,Casey Mize,R,L,0.23199999999999998,10,3,21.5,0.47,1.12,0.177,56.0,⚾ Normal Cycle Range,27
-657757,Gavin Sheets,4,San Diego Padres,Dean Kremer,R,L,0.18300000000000002,40,12,24.9,1.61,1.12,0.1747,54.8,👑 APEX: Due Saturation Surge,28
-665161,Jeremy Peña,6,Houston Astros,Jacob Lopez,L,R,0.186,76,17,24.3,3.13,1.06,0.1745,54.7,👑 APEX: Due Saturation Surge,29
-553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka,R,R,0.204,9,2,21.6,0.42,1.12,0.1745,54.7,⚾ Normal Cycle Range,30
-663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes,R,L,0.22199999999999998,34,14,23.3,1.46,1.06,0.1742,54.6,👑 APEX: Due Saturation Surge,31
-694192,Jackson Chourio,8,Milwaukee Brewers,Martín Pérez,L,R,0.188,43,9,25.2,1.71,1.12,0.1739,54.4,👑 APEX: Due Saturation Surge,32
-665862,Jazz Chisholm Jr.,7,New York Yankees,Dylan Cease,R,L,0.17200000000000001,91,23,27.4,3.32,1.12,0.1729,53.9,👑 APEX: Due Saturation Surge,33
-677592,Everson Pereira,4,St. Louis Cardinals,Andrew Painter,R,R,0.213,7,2,22.2,0.32,1.06,0.1693,52.1,🛑 RESET: HR Just Occurred,34
-677594,Julio Rodríguez,8,Seattle Mariners,David Peterson,L,R,0.16199999999999998,61,14,27.0,2.26,1.12,0.1682,51.6,👑 APEX: Due Saturation Surge,35
-642350,Jose Siri,3,Los Angeles Angels,Cody Bradford,L,R,0.2,11,9,22.9,0.48,1.06,0.1676,51.3,⚾ Normal Cycle Range,36
-608369,Corey Seager,3,Texas Rangers,Ryan Johnson,R,L,0.19399999999999998,4,1,22.4,0.18,1.06,0.1641,49.6,🛑 RESET: HR Just Occurred,37
-596019,Francisco Lindor,9,New York Mets,Luis Castillo,R,S,0.184,79,17,26.1,3.03,1.06,0.1632,49.1,👑 APEX: Due Saturation Surge,38
-664954,Brett Sullivan,2,Colorado Rockies,Tanner Bibee,R,L,0.202,82,26,26.3,3.12,1.06,0.1623,48.7,👑 APEX: Due Saturation Surge,39
-666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes,R,R,0.24599999999999997,40,10,27.2,1.47,1.12,0.1597,47.4,👑 APEX: Due Saturation Surge,40
-677951,Bobby Witt Jr.,1,Kansas City Royals,Drew Anderson,R,R,0.17500000000000004,120,27,30.6,3.92,1.12,0.1591,47.1,👑 APEX: Due Saturation Surge,41
-693307,Dillon Dingler,5,Detroit Tigers,Michael Wacha,R,R,0.23299999999999998,0,0,19.4,0.0,1.12,0.158,46.5,🛑 RESET: HR Just Occurred,42
-686797,Brooks Lee,3,Minnesota Twins,Casey Mize,R,S,0.174,33,11,27.3,1.21,1.12,0.1559,45.5,🔥 TARGET: Active Hazard Cycle,43
-805811,Bryce Eldridge,2,San Francisco Giants,Patrick Sandoval,L,L,0.188,10,3,24.8,0.4,1.06,0.1545,44.8,⚾ Normal Cycle Range,44
-681297,Colton Cowser,5,Baltimore Orioles,Shane McClanahan,L,L,0.13899999999999998,90,36,27.9,3.23,1.06,0.1541,44.6,👑 APEX: Due Saturation Surge,45
-664040,Brandon Lowe,2,Pittsburgh Pirates,Tarik Skubal,L,L,0.22699999999999998,0,0,19.9,0.0,1.12,0.1539,44.5,🛑 RESET: HR Just Occurred,46
-682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes,R,S,0.184,30,10,26.6,1.13,1.06,0.1523,43.7,🔥 TARGET: Active Hazard Cycle,47
-641680,Jonah Heim,8,Athletics,Hunter Brown,R,S,0.17899999999999996,40,11,27.1,1.48,1.06,0.1518,43.4,👑 APEX: Due Saturation Surge,48
-701358,Cam Smith,1,Houston Astros,Jacob Lopez,L,R,0.17500000000000002,21,5,27.1,0.77,1.12,0.15,42.6,⚾ Normal Cycle Range,49
-596142,Gary Sánchez,7,Milwaukee Brewers,Martín Pérez,L,R,0.222,0,0,22.8,0.0,1.06,0.1499,42.5,🛑 RESET: HR Just Occurred,50
-680776,Jarren Duran,9,Boston Red Sox,Blade Tidwell,R,L,0.156,53,12,29.9,1.77,1.12,0.1492,42.2,👑 APEX: Due Saturation Surge,51
-686527,Dominic Canzone,5,Seattle Mariners,David Peterson,L,L,0.22999999999999998,0,0,20.5,0.0,1.12,0.1493,42.2,🛑 RESET: HR Just Occurred,52
-691011,Drew Romo,6,Chicago White Sox,Christian Scott,R,S,0.16399999999999998,5,2,25.4,0.2,1.06,0.1464,40.8,🛑 RESET: HR Just Occurred,53
-668709,JJ Bleday,5,Cincinnati Reds,Michael Soroka,R,L,0.211,0,0,20.9,0.0,1.12,0.1463,40.8,🛑 RESET: HR Just Occurred,54
-663728,Cal Raleigh,3,Seattle Mariners,David Peterson,L,S,0.148,43,10,28.3,1.52,1.06,0.1461,40.7,👑 APEX: Due Saturation Surge,55
-681807,David Fry,6,Cleveland Guardians,Gabriel Hughes,R,R,0.15400000000000003,35,14,28.0,1.25,1.06,0.146,40.6,👑 APEX: Due Saturation Surge,56
-641343,Jake Bauers,9,Milwaukee Brewers,Martín Pérez,L,L,0.22699999999999998,0,0,21.1,0.0,1.12,0.1449,40.1,🛑 RESET: HR Just Occurred,57
-643217,Andrew Benintendi,1,Chicago White Sox,Christian Scott,R,L,0.178,59,18,29.3,2.01,1.06,0.1436,39.5,👑 APEX: Due Saturation Surge,58
-669016,Brandon Marsh,2,Philadelphia Phillies,TBD Pitcher,R,L,0.16299999999999998,22,6,28.5,0.77,1.12,0.1431,39.2,⚾ Normal Cycle Range,59
-670623,Isaac Paredes,5,Houston Astros,Jacob Lopez,L,R,0.16399999999999998,74,18,32.3,2.29,1.12,0.1428,39.1,👑 APEX: Due Saturation Surge,60
-682829,Elly De La Cruz,2,Cincinnati Reds,Michael Soroka,R,S,0.20600000000000002,4,1,24.6,0.16,1.12,0.1428,39.1,🛑 RESET: HR Just Occurred,61
-664023,Ian Happ,4,Chicago Cubs,Kade Anderson,L,S,0.19799999999999998,5,1,25.1,0.2,1.12,0.1423,38.8,🛑 RESET: HR Just Occurred,62
-672356,Gabriel Arias,3,Chicago Cubs,Kade Anderson,L,R,0.05,17,5,27.8,0.61,1.06,0.1417,38.6,⚾ Normal Cycle Range,63
-666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford,L,L,0.151,4,1,26.1,0.15,1.06,0.1414,38.4,🛑 RESET: HR Just Occurred,64
-665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer,R,R,0.15400000000000003,236,55,37.3,6.33,1.12,0.1396,37.6,👑 APEX: Due Saturation Surge,65
-701538,Jackson Merrill,5,San Diego Padres,Dean Kremer,R,L,0.16700000000000004,12,3,27.7,0.43,1.12,0.1388,37.2,⚾ Normal Cycle Range,66
-686948,Drake Baldwin,3,Atlanta Braves,Logan Henderson,R,L,0.176,0,0,22.4,0.0,1.12,0.1362,36.0,🛑 RESET: HR Just Occurred,67
-676609,José Caballero,8,New York Yankees,Dylan Cease,R,R,0.14400000000000002,51,14,30.8,1.66,1.06,0.1356,35.7,👑 APEX: Due Saturation Surge,68
-663586,Austin Riley,1,Atlanta Braves,Logan Henderson,R,R,0.146,75,18,34.1,2.2,1.12,0.1352,35.5,👑 APEX: Due Saturation Surge,69
-683002,Gunnar Henderson,7,Baltimore Orioles,Shane McClanahan,L,L,0.17700000000000002,14,3,28.9,0.48,1.12,0.1348,35.3,⚾ Normal Cycle Range,70
-680574,Matt McLain,8,Cincinnati Reds,Michael Soroka,R,R,0.15599999999999997,107,25,32.4,3.3,1.06,0.1343,35.1,👑 APEX: Due Saturation Surge,71
-682626,Francisco Alvarez,8,New York Mets,Luis Castillo,R,R,0.172,0,0,25.7,0.0,1.06,0.1333,34.7,🛑 RESET: HR Just Occurred,72
-605137,Josh Bell,5,Minnesota Twins,Casey Mize,R,S,0.173,16,4,29.6,0.54,1.12,0.1332,34.6,⚾ Normal Cycle Range,73
-680779,Henry Davis,5,Pittsburgh Pirates,Tarik Skubal,L,R,0.12899999999999998,74,25,32.1,2.31,1.06,0.1329,34.5,👑 APEX: Due Saturation Surge,74
-695734,Daylen Lile,6,Washington Nationals,Eury Pérez,R,L,0.15900000000000003,87,19,35.3,2.46,1.12,0.1325,34.3,👑 APEX: Due Saturation Surge,75
-694378,Jacob Gonzalez,6,Pittsburgh Pirates,Tarik Skubal,L,L,0.11599999999999999,17,5,29.8,0.57,1.06,0.1323,34.2,⚾ Normal Cycle Range,76
-657041,Lane Thomas,6,Atlanta Braves,Logan Henderson,R,R,0.239,58,21,32.0,1.81,1.06,0.1315,33.8,👑 APEX: Due Saturation Surge,77
-669394,Jake Burger,8,Texas Rangers,Ryan Johnson,R,R,0.181,0,0,23.2,0.0,1.12,0.1313,33.8,🛑 RESET: HR Just Occurred,78
-802415,Chandler Simpson,2,Tampa Bay Rays,Brandon Young,R,L,0.055999999999999994,485,120,32.0,15.16,1.02,0.1308,33.5,🔥 TARGET: Active Hazard Cycle,79
-678218,Brandon Valenzuela,3,Toronto Blue Jays,Ryan Weathers,L,S,0.158,8,4,29.4,0.27,1.06,0.1294,32.9,🛑 RESET: HR Just Occurred,80
-650859,Luis Rengifo,9,San Diego Padres,Dean Kremer,R,S,0.05,223,61,32.0,6.97,1.02,0.1289,32.7,🔥 TARGET: Active Hazard Cycle,81
-695600,Carter Jensen,2,Kansas City Royals,Drew Anderson,R,L,0.18599999999999997,6,2,28.1,0.21,1.12,0.1284,32.5,🛑 RESET: HR Just Occurred,82
-669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal,L,R,0.068,168,51,32.0,5.25,1.02,0.1283,32.4,🔥 TARGET: Active Hazard Cycle,83
-666152,David Hamilton,5,Milwaukee Brewers,Martín Pérez,L,L,0.09700000000000003,144,43,32.0,4.5,1.02,0.1279,32.3,🔥 TARGET: Active Hazard Cycle,84
-682668,Luisangel Acuña,8,Chicago White Sox,Christian Scott,R,R,0.05,135,53,32.0,4.22,1.02,0.1278,32.2,🔥 TARGET: Active Hazard Cycle,85
-660844,Leo Rivas,9,Seattle Mariners,David Peterson,L,S,0.05,131,45,32.0,4.09,1.02,0.1277,32.2,🔥 TARGET: Active Hazard Cycle,86
-666023,Freddy Fermin,3,San Diego Padres,Dean Kremer,R,R,0.11299999999999999,119,45,32.0,3.72,1.02,0.1275,32.1,🔥 TARGET: Active Hazard Cycle,87
-669743,Alex Call,1,Los Angeles Dodgers,Jared Jones,R,R,0.07600000000000001,114,47,32.0,3.56,1.02,0.1274,32.0,🔥 TARGET: Active Hazard Cycle,88
-677870,Leo Jiménez,9,Miami Marlins,Jake Irvin,R,R,0.06700000000000003,109,37,32.0,3.41,1.02,0.1273,32.0,🔥 TARGET: Active Hazard Cycle,89
-663968,Jake Mangum,7,Pittsburgh Pirates,Tarik Skubal,L,S,0.09200000000000003,109,39,32.0,3.41,1.02,0.1273,32.0,🔥 TARGET: Active Hazard Cycle,90
-701852,Drew Cavanaugh,5,San Francisco Giants,Patrick Sandoval,L,L,0.05,99,34,32.0,3.09,1.02,0.127,31.9,🔥 TARGET: Active Hazard Cycle,91
-657136,Connor Wong,6,Boston Red Sox,Blade Tidwell,R,R,0.131,99,32,32.0,3.09,1.02,0.127,31.9,🔥 TARGET: Active Hazard Cycle,92
-683766,Christian Koss,4,San Francisco Giants,Patrick Sandoval,L,R,0.05400000000000002,98,36,32.0,3.06,1.02,0.127,31.9,🔥 TARGET: Active Hazard Cycle,93
-806198,Cooper Pratt,4,Milwaukee Brewers,Martín Pérez,L,R,0.09099999999999997,97,27,32.0,3.03,1.02,0.127,31.9,🔥 TARGET: Active Hazard Cycle,94
-682998,Corbin Carroll,1,Arizona Diamondbacks,Rhett Lowder,R,L,0.238,12,3,30.2,0.4,1.12,0.1268,31.8,⚾ Normal Cycle Range,95
-673490,Ha-Seong Kim,4,Atlanta Braves,Logan Henderson,R,R,0.05,85,31,32.0,2.66,1.02,0.1267,31.7,🔥 TARGET: Active Hazard Cycle,96
-666624,Christopher Morel,5,New York Mets,Luis Castillo,R,R,0.05,77,23,32.0,2.41,1.02,0.1264,31.6,🔥 TARGET: Active Hazard Cycle,97
-702176,Alan Roden,1,Minnesota Twins,Casey Mize,R,L,0.05,72,26,32.0,2.25,1.02,0.1263,31.6,🔥 TARGET: Active Hazard Cycle,98
-656775,Cedric Mullins,1,Tampa Bay Rays,Brandon Young,R,L,0.146,37,9,32.5,1.14,1.06,0.1264,31.6,🔥 TARGET: Active Hazard Cycle,99
-543510,James McCann,5,Arizona Diamondbacks,Rhett Lowder,R,R,0.14700000000000002,65,22,32.0,2.03,1.02,0.1261,31.5,🔥 TARGET: Active Hazard Cycle,100
-682663,Agustín Ramírez,1,Miami Marlins,Jake Irvin,R,R,0.10899999999999999,64,15,32.0,2.0,1.02,0.126,31.4,🔥 TARGET: Active Hazard Cycle,101
-676439,Hunter Feduccia,6,Los Angeles Dodgers,Jared Jones,R,L,0.10600000000000001,62,27,32.0,1.94,1.02,0.126,31.4,🔥 TARGET: Active Hazard Cycle,102
-668670,Jake Rogers,7,Chicago White Sox,Christian Scott,R,R,0.214,59,18,32.0,1.84,1.02,0.1258,31.3,🔥 TARGET: Active Hazard Cycle,103
-687749,Jase Bowen,7,San Diego Padres,Dean Kremer,R,R,0.10400000000000001,59,39,32.0,1.84,1.02,0.1258,31.3,🔥 TARGET: Active Hazard Cycle,104
-703520,Brett Bateman,4,Toronto Blue Jays,Ryan Weathers,L,L,0.09400000000000003,56,12,32.0,1.75,1.02,0.1257,31.3,🔥 TARGET: Active Hazard Cycle,105
-622268,Donovan Walton,5,Athletics,Hunter Brown,R,L,0.10500000000000001,55,17,32.0,1.72,1.02,0.1257,31.3,🔥 TARGET: Active Hazard Cycle,106
-624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka,R,R,0.14300000000000002,55,18,32.0,1.72,1.02,0.1257,31.3,🔥 TARGET: Active Hazard Cycle,107
-665966,Carlos Narváez,1,Baltimore Orioles,Shane McClanahan,L,R,0.08800000000000002,53,15,32.0,1.66,1.02,0.1256,31.3,🔥 TARGET: Active Hazard Cycle,108
-678489,Jorge Barrosa,7,Arizona Diamondbacks,Rhett Lowder,R,S,0.14400000000000002,53,15,32.0,1.66,1.02,0.1256,31.3,🔥 TARGET: Active Hazard Cycle,109
-686611,Dylan Crews,7,Washington Nationals,Eury Pérez,R,R,0.143,17,4,31.4,0.54,1.06,0.1257,31.3,⚾ Normal Cycle Range,110
-596117,Garrett Stubbs,8,Philadelphia Phillies,TBD Pitcher,R,L,0.05,49,26,32.0,1.53,1.02,0.1254,31.2,🔥 TARGET: Active Hazard Cycle,111
-695257,Billy Cook,1,Pittsburgh Pirates,Tarik Skubal,L,R,0.062,49,69,32.0,1.53,1.02,0.1254,31.2,🔥 TARGET: Active Hazard Cycle,112
-645305,Ali Sánchez,1,New York Yankees,Dylan Cease,R,R,0.07900000000000001,47,24,32.0,1.47,1.02,0.1253,31.1,🔥 TARGET: Active Hazard Cycle,113
-656577,Alex Jackson,2,Minnesota Twins,Casey Mize,R,R,0.10599999999999998,47,18,32.0,1.47,1.02,0.1253,31.1,🔥 TARGET: Active Hazard Cycle,114
-701162,Ben Malgeri,1,Detroit Tigers,Michael Wacha,R,R,0.183,42,19,32.0,1.31,1.02,0.1251,31.0,🔥 TARGET: Active Hazard Cycle,115
-671083,Buddy Kennedy,3,San Francisco Giants,Patrick Sandoval,L,R,0.05,42,22,32.0,1.31,1.02,0.1251,31.0,🔥 TARGET: Active Hazard Cycle,116
-630105,Jake Cronenworth,6,San Diego Padres,Dean Kremer,R,L,0.07299999999999998,42,11,32.0,1.31,1.02,0.1251,31.0,🔥 TARGET: Active Hazard Cycle,117
-686668,Brenton Doyle,3,Chicago White Sox,Christian Scott,R,R,0.11199999999999999,39,12,32.0,1.22,1.02,0.1249,31.0,🔥 TARGET: Active Hazard Cycle,118
-595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes,R,R,0.11499999999999999,39,12,32.0,1.22,1.02,0.1249,31.0,🔥 TARGET: Active Hazard Cycle,119
-518595,Travis d'Arnaud,9,Los Angeles Angels,Cody Bradford,L,R,0.08000000000000002,38,13,32.0,1.19,1.02,0.1249,31.0,🔥 TARGET: Active Hazard Cycle,120
-681393,Connor Norby,4,Colorado Rockies,Tanner Bibee,R,R,0.12000000000000002,38,10,32.0,1.19,1.02,0.1249,31.0,🔥 TARGET: Active Hazard Cycle,121
-669134,Luis Campusano,8,San Diego Padres,Dean Kremer,R,R,0.195,15,6,31.4,0.48,1.06,0.1249,31.0,⚾ Normal Cycle Range,122
-664983,Jake McCarthy,6,Colorado Rockies,Tanner Bibee,R,L,0.193,73,26,34.2,2.13,1.06,0.1247,30.9,👑 APEX: Due Saturation Surge,123
-672284,Jarred Kelenic,9,Texas Rangers,Ryan Johnson,R,L,0.095,37,12,32.0,1.16,1.02,0.1248,30.9,🔥 TARGET: Active Hazard Cycle,124
-669397,Nick Allen,9,Houston Astros,Jacob Lopez,L,R,0.08400000000000002,37,24,32.0,1.16,1.02,0.1248,30.9,🔥 TARGET: Active Hazard Cycle,125
-699302,Héctor Rodríguez,4,Cincinnati Reds,Michael Soroka,R,L,0.05,37,12,32.0,1.16,1.02,0.1248,30.9,🔥 TARGET: Active Hazard Cycle,126
-500743,Miguel Rojas,9,Los Angeles Dodgers,Jared Jones,R,R,0.121,35,12,32.0,1.09,1.02,0.1247,30.9,🔥 TARGET: Active Hazard Cycle,127
-683227,Cody Freeman,2,Texas Rangers,Ryan Johnson,R,R,0.05,34,13,32.0,1.06,1.02,0.1246,30.8,🔥 TARGET: Active Hazard Cycle,128
-595879,Javier Báez,9,Detroit Tigers,Michael Wacha,R,R,0.09999999999999998,34,9,32.0,1.06,1.02,0.1246,30.8,🔥 TARGET: Active Hazard Cycle,129
-687597,Jordan Beck,7,Colorado Rockies,Tanner Bibee,R,R,0.12,33,11,32.0,1.03,1.02,0.1245,30.8,🔥 TARGET: Active Hazard Cycle,130
-675961,Alika Williams,1,Athletics,Hunter Brown,R,R,0.126,32,15,32.0,1.0,1.02,0.1245,30.8,🔥 TARGET: Active Hazard Cycle,131
-678011,Anthony Seigler,3,Boston Red Sox,Blade Tidwell,R,S,0.15100000000000002,30,9,32.0,0.94,1.02,0.1243,30.7,🔥 TARGET: Active Hazard Cycle,132
-640459,Brian Navarreto,2,Miami Marlins,Jake Irvin,R,R,0.138,28,12,32.0,0.88,1.02,0.1242,30.7,⚾ Normal Cycle Range,133
-681047,Christian Franklin,3,Baltimore Orioles,Shane McClanahan,L,R,0.05,28,12,32.0,0.88,1.02,0.1242,30.7,⚾ Normal Cycle Range,134
-801126,Brock Rodden,2,Seattle Mariners,David Peterson,L,S,0.16699999999999998,28,7,32.0,0.88,1.02,0.1242,30.7,⚾ Normal Cycle Range,135
-669911,Michael Toglia,9,Cincinnati Reds,Michael Soroka,R,S,0.077,28,10,32.0,0.88,1.02,0.1242,30.7,⚾ Normal Cycle Range,136
-694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford,L,R,0.134,38,9,33.2,1.14,1.06,0.124,30.6,🔥 TARGET: Active Hazard Cycle,137
-624428,Adam Frazier,1,Los Angeles Angels,Cody Bradford,L,L,0.11599999999999999,26,10,32.0,0.81,1.02,0.124,30.6,⚾ Normal Cycle Range,138
-668904,Royce Lewis,9,Minnesota Twins,Casey Mize,R,R,0.178,3,1,29.5,0.1,1.06,0.124,30.6,🛑 RESET: HR Just Occurred,139
-683737,Michael Busch,6,Chicago Cubs,Kade Anderson,L,L,0.14600000000000002,93,22,37.9,2.45,1.12,0.1239,30.5,👑 APEX: Due Saturation Surge,140
-686681,Michael Massey,9,Kansas City Royals,Drew Anderson,R,L,0.16999999999999998,27,12,32.7,0.83,1.06,0.1236,30.4,⚾ Normal Cycle Range,141
-687231,Darell Hernaiz,4,Athletics,Hunter Brown,R,R,0.05,21,12,32.0,0.66,1.02,0.1236,30.4,⚾ Normal Cycle Range,142
-682634,Kevin Alcántara,5,Chicago Cubs,Kade Anderson,L,R,0.13099999999999998,21,19,32.0,0.66,1.02,0.1236,30.4,⚾ Normal Cycle Range,143
-805347,Jim Jarvis,5,Atlanta Braves,Logan Henderson,R,L,0.093,20,6,32.0,0.62,1.02,0.1235,30.4,⚾ Normal Cycle Range,144
-699625,Jimmy Crooks,7,St. Louis Cardinals,Andrew Painter,R,L,0.139,20,6,32.0,0.62,1.02,0.1235,30.4,⚾ Normal Cycle Range,145
-671739,Michael Harris II,9,Atlanta Braves,Logan Henderson,R,L,0.194,0,0,24.6,0.0,1.12,0.1235,30.4,🛑 RESET: HR Just Occurred,146
-545361,Mike Trout,5,Los Angeles Angels,Cody Bradford,L,R,0.194,0,0,24.6,0.0,1.12,0.1235,30.4,🛑 RESET: HR Just Occurred,147
-663330,Jahmai Jones,8,Boston Red Sox,Blade Tidwell,R,R,0.08399999999999999,17,9,32.0,0.53,1.02,0.1231,30.2,⚾ Normal Cycle Range,148
-691783,Jordan Lawlar,6,Arizona Diamondbacks,Rhett Lowder,R,R,0.15100000000000002,17,5,32.0,0.53,1.02,0.1231,30.2,⚾ Normal Cycle Range,149
-666163,Ben Rortvedt,3,Los Angeles Dodgers,Jared Jones,R,L,0.05,16,10,32.0,0.5,1.02,0.123,30.2,⚾ Normal Cycle Range,150
-640902,Jhonny Pereda,6,Seattle Mariners,David Peterson,L,R,0.08099999999999996,16,5,32.0,0.5,1.02,0.123,30.2,⚾ Normal Cycle Range,151
-672386,Alejandro Kirk,1,Toronto Blue Jays,Ryan Weathers,L,R,0.14800000000000002,4,1,30.1,0.13,1.06,0.1228,30.1,🛑 RESET: HR Just Occurred,152
-663743,Nick Fortes,9,Tampa Bay Rays,Brandon Young,R,R,0.10099999999999998,13,4,32.0,0.41,1.02,0.1226,30.0,⚾ Normal Cycle Range,153
-694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes,R,S,0.12,13,3,32.0,0.41,1.02,0.1226,30.0,⚾ Normal Cycle Range,154
-683090,Matthew Lugo,8,Kansas City Royals,Drew Anderson,R,R,0.16,14,4,32.0,0.44,1.04,0.1225,29.9,⚾ Normal Cycle Range,155
-669720,Austin Hays,1,San Diego Padres,Dean Kremer,R,R,0.093,10,3,32.0,0.31,1.02,0.1221,29.8,🛑 RESET: HR Just Occurred,156
-642201,Eli White,7,Boston Red Sox,Blade Tidwell,R,R,0.17300000000000001,24,11,33.0,0.73,1.06,0.1218,29.7,⚾ Normal Cycle Range,157
-668800,Andrew Knizner,1,San Francisco Giants,Patrick Sandoval,L,R,0.05,9,4,32.0,0.28,1.02,0.1219,29.7,🛑 RESET: HR Just Occurred,158
-622761,Jorge Mateo,5,Tampa Bay Rays,Brandon Young,R,R,0.14,3,2,30.0,0.1,1.06,0.1219,29.7,🛑 RESET: HR Just Occurred,159
-643376,Danny Jansen,4,Texas Rangers,Ryan Johnson,R,R,0.16,8,2,32.0,0.25,1.02,0.1217,29.6,🛑 RESET: HR Just Occurred,160
-663662,Daz Cameron,7,Toronto Blue Jays,Ryan Weathers,L,R,0.363,6,2,32.0,0.19,1.02,0.1211,29.4,🛑 RESET: HR Just Occurred,161
-665506,Cristian Pache,6,New York Mets,Luis Castillo,R,R,0.05,6,8,32.0,0.19,1.02,0.1211,29.4,🛑 RESET: HR Just Occurred,162
-814430,Brett Callahan,2,Detroit Tigers,Michael Wacha,R,L,0.38399999999999995,6,2,32.0,0.19,1.02,0.1211,29.4,🛑 RESET: HR Just Occurred,163
-813841,Jonah Cox,7,San Francisco Giants,Patrick Sandoval,L,R,0.18599999999999997,6,5,32.0,0.19,1.02,0.1211,29.4,🛑 RESET: HR Just Occurred,164
-663457,Lars Nootbaar,9,Arizona Diamondbacks,Rhett Lowder,R,L,0.11999999999999997,6,1,32.0,0.19,1.02,0.1211,29.4,🛑 RESET: HR Just Occurred,165
-700652,Kenny Piper,7,Tampa Bay Rays,Brandon Young,R,R,0.428,5,1,32.0,0.16,1.02,0.1208,29.2,🛑 RESET: HR Just Occurred,166
-691781,Brady House,4,Washington Nationals,Eury Pérez,R,R,0.15800000000000003,0,0,28.4,0.0,1.06,0.1208,29.2,🛑 RESET: HR Just Occurred,167
-691458,Blaze Jordan,2,St. Louis Cardinals,Andrew Painter,R,R,0.121,4,1,32.0,0.12,1.02,0.1205,29.1,🛑 RESET: HR Just Occurred,168
-661531,Brian Serven,2,Athletics,Hunter Brown,R,R,0.231,4,2,32.0,0.12,1.02,0.1205,29.1,🛑 RESET: HR Just Occurred,169
-664774,LaMonte Wade Jr.,8,Houston Astros,Jacob Lopez,L,L,0.11500000000000002,4,1,32.0,0.12,1.02,0.1205,29.1,🛑 RESET: HR Just Occurred,170
-667452,Corey Julks,4,Detroit Tigers,Michael Wacha,R,R,0.25,4,2,32.0,0.12,1.02,0.1205,29.1,🛑 RESET: HR Just Occurred,171
-668930,Brice Turang,2,Milwaukee Brewers,Martín Pérez,L,L,0.176,23,5,33.8,0.68,1.12,0.1203,29.0,⚾ Normal Cycle Range,172
-676914,Davis Schneider,6,Toronto Blue Jays,Ryan Weathers,L,R,0.13200000000000003,3,1,32.0,0.09,1.02,0.1201,28.9,🛑 RESET: HR Just Occurred,173
-665923,Esteury Ruiz,3,Miami Marlins,Jake Irvin,R,R,0.2,2,4,30.2,0.07,1.06,0.1195,28.7,🛑 RESET: HR Just Occurred,174
-676572,Eric Wagaman,7,New York Mets,Luis Castillo,R,R,0.14300000000000002,2,1,32.0,0.06,1.02,0.1195,28.7,🛑 RESET: HR Just Occurred,175
-571771,Enrique Hernández,4,Los Angeles Dodgers,Jared Jones,R,R,0.236,2,1,32.0,0.06,1.02,0.1195,28.7,🛑 RESET: HR Just Occurred,176
-678545,Osleivis Basabe,9,San Francisco Giants,Patrick Sandoval,L,R,0.16200000000000003,2,2,32.0,0.06,1.02,0.1195,28.7,🛑 RESET: HR Just Occurred,177
-690924,Braxton Fulford,1,Colorado Rockies,Tanner Bibee,R,R,0.10300000000000004,2,2,32.0,0.06,1.02,0.1195,28.7,🛑 RESET: HR Just Occurred,178
-678882,Ceddanne Rafaela,5,Boston Red Sox,Blade Tidwell,R,R,0.17700000000000005,13,4,32.4,0.4,1.12,0.1187,28.4,⚾ Normal Cycle Range,179
-670231,John Rave,5,Kansas City Royals,Drew Anderson,R,L,0.20900000000000002,1,1,32.0,0.03,1.02,0.1188,28.4,🛑 RESET: HR Just Occurred,180
-514888,Jose Altuve,7,Houston Astros,Jacob Lopez,L,R,0.14900000000000002,18,4,33.5,0.54,1.06,0.1182,28.2,⚾ Normal Cycle Range,181
-676356,Jonny DeLuca,4,Tampa Bay Rays,Brandon Young,R,R,0.16699999999999998,9,3,32.4,0.28,1.06,0.1181,28.1,🛑 RESET: HR Just Occurred,182
-807727,Charles McAdoo,5,Toronto Blue Jays,Ryan Weathers,L,R,0.14100000000000001,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,183
-806146,George Lombard Jr.,5,New York Yankees,Dylan Cease,R,R,0.135,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,184
-687605,Andrew Pinckney,3,Washington Nationals,Eury Pérez,R,R,0.384,0,1,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,185
-695670,Harry Ford,8,Washington Nationals,Eury Pérez,R,R,0.211,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,186
-663494,Bryan Torres,3,St. Louis Cardinals,Andrew Painter,R,L,0.14400000000000002,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,187
-650559,Bryan De La Cruz,3,Philadelphia Phillies,TBD Pitcher,R,R,0.22599999999999998,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,188
-695731,Braden Montgomery,2,Chicago White Sox,Christian Scott,R,S,0.134,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,189
-571912,Luke Maile,7,Kansas City Royals,Drew Anderson,R,R,0.15999999999999998,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,190
-680977,Brendan Donovan,1,Seattle Mariners,David Peterson,L,L,0.13199999999999995,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,191
-699912,Jose Fernandez,8,Arizona Diamondbacks,Rhett Lowder,R,R,0.10099999999999998,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,192
-701785,Kaelen Culpepper,6,Minnesota Twins,Casey Mize,R,R,0.10600000000000004,0,0,32.0,0.0,1.02,0.1175,27.9,🛑 RESET: HR Just Occurred,193
-608324,Alex Bregman,1,Chicago Cubs,Kade Anderson,L,R,0.15999999999999998,10,2,32.0,0.31,1.12,0.1173,27.8,🛑 RESET: HR Just Occurred,194
-676475,Alec Burleson,1,St. Louis Cardinals,Andrew Painter,R,L,0.2,0,0,26.0,0.0,1.12,0.1165,27.5,🛑 RESET: HR Just Occurred,195
-668939,Adley Rutschman,1,Boston Red Sox,Blade Tidwell,R,S,0.129,39,10,35.7,1.09,1.06,0.1155,27.1,🔥 TARGET: Active Hazard Cycle,196
-681624,Andy Pages,2,Los Angeles Dodgers,Jared Jones,R,R,0.186,0,0,26.2,0.0,1.12,0.1156,27.1,🛑 RESET: HR Just Occurred,197
-669224,Austin Wells,3,New York Yankees,Dylan Cease,R,L,0.11699999999999999,38,11,36.5,1.04,1.06,0.1128,26.0,🔥 TARGET: Active Hazard Cycle,198
-553869,Elias Díaz,5,Texas Rangers,Ryan Johnson,R,R,0.11499999999999996,8,3,33.8,0.24,1.06,0.1127,26.0,🛑 RESET: HR Just Occurred,199
-543807,George Springer,9,Toronto Blue Jays,Ryan Weathers,L,R,0.15200000000000002,10,2,34.2,0.29,1.06,0.1125,25.9,🛑 RESET: HR Just Occurred,200
-702332,Caleb Durbin,4,Boston Red Sox,Blade Tidwell,R,R,0.14700000000000002,91,24,38.5,2.36,1.06,0.1122,25.8,👑 APEX: Due Saturation Surge,201
-518692,Freddie Freeman,5,Los Angeles Dodgers,Jared Jones,R,L,0.16300000000000003,21,5,35.8,0.59,1.12,0.1122,25.8,⚾ Normal Cycle Range,202
-690993,Colt Keith,3,Detroit Tigers,Michael Wacha,R,L,0.15299999999999997,196,62,40.6,4.83,1.06,0.111,25.4,👑 APEX: Due Saturation Surge,203
-693304,Nick Gonzales,9,Pittsburgh Pirates,Tarik Skubal,L,R,0.09300000000000003,212,53,83.2,2.55,1.06,0.0538,25.0,👑 APEX: Due Saturation Surge,204
-676391,Ernie Clement,8,Toronto Blue Jays,Ryan Weathers,L,R,0.11800000000000005,121,29,56.2,2.15,1.06,0.0778,25.0,👑 APEX: Due Saturation Surge,205
-671056,Iván Herrera,5,St. Louis Cardinals,Andrew Painter,R,R,0.138,74,16,41.3,1.79,1.06,0.1034,25.0,👑 APEX: Due Saturation Surge,206
-681082,Bryson Stott,5,Philadelphia Phillies,TBD Pitcher,R,L,0.14899999999999997,95,25,53.9,1.76,1.06,0.0801,25.0,👑 APEX: Due Saturation Surge,207
-691594,Javier Sanoja,7,Miami Marlins,Jake Irvin,R,R,0.14500000000000002,100,34,58.5,1.71,1.06,0.0739,25.0,👑 APEX: Due Saturation Surge,208
-671218,Heliot Ramos,6,New York Yankees,Dylan Cease,R,R,0.08199999999999999,68,18,40.3,1.69,1.06,0.1055,25.0,👑 APEX: Due Saturation Surge,209
-691720,Kyle Karros,8,Colorado Rockies,Tanner Bibee,R,R,0.15699999999999997,67,21,40.1,1.67,1.06,0.1059,25.0,👑 APEX: Due Saturation Surge,210
-703607,Henry Bolte,6,Athletics,Hunter Brown,R,R,0.09799999999999998,85,24,53.7,1.58,1.06,0.0799,25.0,👑 APEX: Due Saturation Surge,211
-666182,Bo Bichette,2,New York Mets,Luis Castillo,R,R,0.127,65,14,42.5,1.53,1.06,0.0997,25.0,👑 APEX: Due Saturation Surge,212
-663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka,R,R,0.10200000000000001,60,21,39.8,1.51,1.06,0.1061,25.0,👑 APEX: Due Saturation Surge,213
-805300,Jakob Marsee,6,Miami Marlins,Jake Irvin,R,L,0.11000000000000001,104,23,70.1,1.48,1.06,0.0616,25.0,👑 APEX: Due Saturation Surge,214
-683146,Brett Baty,3,New York Mets,Luis Castillo,R,L,0.11600000000000002,72,21,49.4,1.46,1.06,0.0862,25.0,👑 APEX: Due Saturation Surge,215
-647304,Josh Naylor,7,Seattle Mariners,David Peterson,L,L,0.10199999999999998,66,15,51.5,1.28,1.06,0.0822,25.0,👑 APEX: Due Saturation Surge,216
-672515,Gabriel Moreno,2,Arizona Diamondbacks,Rhett Lowder,R,R,0.16099999999999998,50,14,41.8,1.2,1.06,0.1,25.0,🔥 TARGET: Active Hazard Cycle,217
-643446,Jeff McNeil,7,Athletics,Hunter Brown,R,L,0.09499999999999997,78,22,65.3,1.19,1.06,0.0651,25.0,🔥 TARGET: Active Hazard Cycle,218
-608348,Carson Kelly,2,Chicago Cubs,Kade Anderson,L,R,0.10999999999999999,50,14,48.3,1.04,1.06,0.0864,25.0,🔥 TARGET: Active Hazard Cycle,219
-808982,Jung Hoo Lee,8,San Francisco Giants,Patrick Sandoval,L,L,0.139,49,13,52.9,0.93,1.06,0.0787,25.0,🔥 TARGET: Active Hazard Cycle,220
-694497,Evan Carter,6,Texas Rangers,Ryan Johnson,R,L,0.128,40,12,46.0,0.87,1.06,0.0897,25.0,⚾ Normal Cycle Range,221
-662139,Daulton Varsho,4,Houston Astros,Jacob Lopez,L,L,0.132,44,12,53.4,0.82,1.06,0.0775,25.0,⚾ Normal Cycle Range,222
-665750,Leody Taveras,9,Baltimore Orioles,Shane McClanahan,L,S,0.13199999999999998,44,16,56.3,0.78,1.06,0.0734,25.0,⚾ Normal Cycle Range,223
-650402,Gleyber Torres,7,Detroit Tigers,Michael Wacha,R,R,0.127,31,7,39.6,0.78,1.06,0.1029,25.0,⚾ Normal Cycle Range,224
-677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes,R,S,0.12,35,10,48.2,0.73,1.06,0.0849,25.0,⚾ Normal Cycle Range,225
-655316,Andruw Monasterio,2,Boston Red Sox,Blade Tidwell,R,R,0.16099999999999998,35,12,48.3,0.72,1.06,0.0847,25.0,⚾ Normal Cycle Range,226
-667472,Dane Myers,1,Cincinnati Reds,Michael Soroka,R,R,0.10999999999999999,32,21,48.8,0.66,1.06,0.0835,25.0,⚾ Normal Cycle Range,227
-608070,José Ramírez,8,Cleveland Guardians,Gabriel Hughes,R,S,0.14200000000000002,26,6,41.5,0.63,1.06,0.0972,25.0,⚾ Normal Cycle Range,228
-663538,Nico Hoerner,9,Chicago Cubs,Kade Anderson,L,R,0.09799999999999998,48,11,79.1,0.61,1.06,0.052,25.0,⚾ Normal Cycle Range,229
-807712,Luke Keaschall,8,Minnesota Twins,Casey Mize,R,R,0.10299999999999998,39,9,67.9,0.57,1.06,0.0602,25.0,⚾ Normal Cycle Range,230
-694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford,L,R,0.16,22,8,40.0,0.55,1.06,0.1,25.0,⚾ Normal Cycle Range,231
-663656,Kyle Tucker,7,Los Angeles Dodgers,Jared Jones,R,L,0.13399999999999998,25,6,45.3,0.55,1.06,0.0888,25.0,⚾ Normal Cycle Range,232
-668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal,L,S,0.16699999999999998,19,4,37.7,0.5,1.12,0.1051,25.0,⚾ Normal Cycle Range,233
-701678,Hao-Yu Lee,8,Detroit Tigers,Michael Wacha,R,R,0.14599999999999996,18,6,38.3,0.47,1.06,0.1034,25.0,⚾ Normal Cycle Range,234
-666126,Carlos Cortes,3,Athletics,Hunter Brown,R,L,0.14500000000000002,17,8,42.1,0.4,1.06,0.0937,25.0,⚾ Normal Cycle Range,235
-669003,Garrett Mitchell,6,Milwaukee Brewers,Martín Pérez,L,L,0.15999999999999998,18,5,47.3,0.38,1.06,0.0836,25.0,⚾ Normal Cycle Range,236
-643289,Mauricio Dubón,8,Atlanta Braves,Logan Henderson,R,R,0.125,18,5,49.2,0.37,1.06,0.0803,25.0,⚾ Normal Cycle Range,237
-624641,Edmundo Sosa,7,Philadelphia Phillies,TBD Pitcher,R,R,0.13399999999999998,15,7,41.0,0.37,1.06,0.0957,25.0,⚾ Normal Cycle Range,238
-671732,Lawrence Butler,9,Athletics,Hunter Brown,R,L,0.13699999999999998,13,5,36.0,0.36,1.06,0.1082,25.0,⚾ Normal Cycle Range,239
-592663,J.T. Realmuto,9,Philadelphia Phillies,TBD Pitcher,R,R,0.12599999999999997,15,4,45.1,0.33,1.06,0.0869,25.0,🛑 RESET: HR Just Occurred,240
-665877,José Fermín,9,St. Louis Cardinals,Andrew Painter,R,R,0.119,17,7,55.2,0.31,1.06,0.0712,25.0,🛑 RESET: HR Just Occurred,241
-665926,Andrés Giménez,2,Toronto Blue Jays,Ryan Weathers,L,L,0.11599999999999999,12,3,52.6,0.23,1.06,0.0735,25.0,🛑 RESET: HR Just Occurred,242
-592885,Christian Yelich,3,Milwaukee Brewers,Martín Pérez,L,L,0.143,10,2,43.2,0.23,1.06,0.089,25.0,🛑 RESET: HR Just Occurred,243
-607043,Brandon Nimmo,1,Texas Rangers,Ryan Johnson,R,L,0.15999999999999998,9,2,39.9,0.23,1.06,0.0959,25.0,🛑 RESET: HR Just Occurred,244
-687637,Dylan Beavers,6,Baltimore Orioles,Shane McClanahan,L,L,0.139,9,3,40.5,0.22,1.06,0.0945,25.0,🛑 RESET: HR Just Occurred,245
-683734,Andrew Vaughn,1,Milwaukee Brewers,Martín Pérez,L,R,0.15200000000000002,9,2,53.6,0.17,1.06,0.0711,25.0,🛑 RESET: HR Just Occurred,246
-672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford,L,R,0.12299999999999997,8,2,46.4,0.17,1.06,0.0819,25.0,🛑 RESET: HR Just Occurred,247
-805999,A.J. Ewing,1,New York Mets,Luis Castillo,R,L,0.122,9,2,51.7,0.17,1.06,0.0737,25.0,🛑 RESET: HR Just Occurred,248
-694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee,R,S,0.188,8,2,47.2,0.17,1.06,0.0805,25.0,🛑 RESET: HR Just Occurred,249
-543877,Christian Vázquez,2,Houston Astros,Jacob Lopez,L,R,0.12999999999999998,5,2,33.9,0.15,1.06,0.1101,25.0,🛑 RESET: HR Just Occurred,250
-664728,Kyle Isbel,6,Kansas City Royals,Drew Anderson,R,L,0.11999999999999997,7,2,46.4,0.15,1.06,0.0814,25.0,🛑 RESET: HR Just Occurred,251
-677649,Ezequiel Duran,7,Texas Rangers,Ryan Johnson,R,R,0.16999999999999998,5,2,35.4,0.14,1.06,0.1054,25.0,🛑 RESET: HR Just Occurred,252
-687551,Drew Gilbert,6,San Francisco Giants,Patrick Sandoval,L,L,0.137,5,2,44.1,0.11,1.06,0.0845,25.0,🛑 RESET: HR Just Occurred,253
-686555,Isaac Collins,3,Kansas City Royals,Drew Anderson,R,S,0.12099999999999997,7,3,71.0,0.1,1.06,0.0526,25.0,🛑 RESET: HR Just Occurred,254
-702616,Jackson Holliday,8,Baltimore Orioles,Shane McClanahan,L,L,0.13199999999999998,4,2,44.5,0.09,1.06,0.0829,25.0,🛑 RESET: HR Just Occurred,255
-702284,Cole Young,4,Seattle Mariners,David Peterson,L,L,0.14,3,1,34.5,0.09,1.12,0.098,25.0,🛑 RESET: HR Just Occurred,256
-678662,Ezequiel Tovar,5,Colorado Rockies,Tanner Bibee,R,R,0.12200000000000003,4,1,47.0,0.09,1.06,0.0785,25.0,🛑 RESET: HR Just Occurred,257
-642086,Dominic Smith,2,Atlanta Braves,Logan Henderson,R,L,0.124,0,0,35.8,0.0,1.06,0.0958,25.0,🛑 RESET: HR Just Occurred,258
-696285,Jacob Young,9,Washington Nationals,Eury Pérez,R,R,0.15000000000000002,0,0,38.6,0.0,1.06,0.0888,25.0,🛑 RESET: HR Just Occurred,259
-802139,JJ Wetherholt,6,St. Louis Cardinals,Andrew Painter,R,L,0.128,0,0,35.1,0.0,1.12,0.0847,25.0,🛑 RESET: HR Just Occurred,260
-664761,Alec Bohm,1,Philadelphia Phillies,TBD Pitcher,R,R,0.14300000000000002,0,0,36.1,0.0,1.06,0.095,25.0,🛑 RESET: HR Just Occurred,261
-666018,Jonathan Aranda,3,Tampa Bay Rays,Brandon Young,R,L,0.137,0,0,36.3,0.0,1.12,0.0817,25.0,🛑 RESET: HR Just Occurred,262
-689414,Liam Hicks,8,Tampa Bay Rays,Brandon Young,R,L,0.15000000000000002,0,0,28.9,0.0,1.12,0.1042,25.0,🛑 RESET: HR Just Occurred,263
-694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford,L,L,0.10899999999999999,0,0,63.7,0.0,1.06,0.0532,25.0,🛑 RESET: HR Just Occurred,264
-701807,Carson Benge,4,New York Mets,Luis Castillo,R,L,0.14499999999999996,0,0,33.8,0.0,1.12,0.0882,25.0,🛑 RESET: HR Just Occurred,265
-805367,Chase Meidroth,4,Chicago White Sox,Christian Scott,R,R,0.132,0,0,43.1,0.0,1.06,0.0794,25.0,🛑 RESET: HR Just Occurred,266
-665804,Miguel Amaya,8,Chicago Cubs,Kade Anderson,L,R,0.136,0,0,41.6,0.0,1.06,0.0823,25.0,🛑 RESET: HR Just Occurred,267
-672695,Geraldo Perdomo,3,Arizona Diamondbacks,Rhett Lowder,R,S,0.128,0,0,59.8,0.0,1.06,0.0568,25.0,🛑 RESET: HR Just Occurred,268
-545121,Ildemaro Vargas,4,Arizona Diamondbacks,Rhett Lowder,R,S,0.14100000000000001,0,0,44.0,0.0,1.06,0.0777,25.0,🛑 RESET: HR Just Occurred,269
-800050,Chase DeLauter,5,Cleveland Guardians,Gabriel Hughes,R,L,0.15500000000000003,0,0,35.2,0.0,1.06,0.0974,25.0,🛑 RESET: HR Just Occurred,270
+player_id,player_name,order,team,opp_pitcher,p_hand,b_hand,iso,drought_games,projected_due_date,hazard_prob,hazard_badge,score,target_call,rank
+672386,Alejandro Kirk,1,Toronto Blue Jays,Ryan Weathers,L,R,0.148,0,2026-09-03,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,1
+665926,Andrés Giménez,2,Toronto Blue Jays,Ryan Weathers,L,L,0.116,0,2026-09-07,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,2
+678218,Brandon Valenzuela,3,Toronto Blue Jays,Ryan Weathers,L,S,0.158,0,2026-09-03,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,3
+703520,Brett Bateman,4,Toronto Blue Jays,Ryan Weathers,L,L,0.094,0,2026-09-11,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,4
+807727,Charles McAdoo,5,Toronto Blue Jays,Ryan Weathers,L,R,0.141,0,2026-09-04,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,5
+676914,Davis Schneider,6,Toronto Blue Jays,Ryan Weathers,L,R,0.132,0,2026-09-05,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,6
+663662,Daz Cameron,7,Toronto Blue Jays,Ryan Weathers,L,R,0.363,0,2026-08-27,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,7
+676391,Ernie Clement,8,Toronto Blue Jays,Ryan Weathers,L,R,0.118,0,2026-09-07,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,8
+543807,George Springer,9,Toronto Blue Jays,Ryan Weathers,L,R,0.152,0,2026-09-03,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,9
+663757,Trent Grisham,1,New York Yankees,Dylan Cease,R,L,0.197,0,2026-08-31,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,10
+700250,Ben Rice,2,New York Yankees,Dylan Cease,R,L,0.281,0,2026-08-28,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,11
+671218,Heliot Ramos,3,New York Yankees,Dylan Cease,R,R,0.082,0,2026-09-14,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,12
+671277,Luis García Jr.,4,New York Yankees,Dylan Cease,R,L,0.161,0,2026-09-02,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,13
+682987,Spencer Jones,5,New York Yankees,Dylan Cease,R,L,0.196,0,2026-08-31,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,14
+806146,George Lombard Jr.,6,New York Yankees,Dylan Cease,R,R,0.135,0,2026-09-05,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,15
+665862,Jazz Chisholm Jr.,7,New York Yankees,Dylan Cease,R,L,0.172,0,2026-09-02,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,16
+669224,Austin Wells,8,New York Yankees,Dylan Cease,R,L,0.117,0,2026-09-07,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,17
+676609,José Caballero,9,New York Yankees,Dylan Cease,R,R,0.144,0,2026-09-04,0.0928,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,18
+686948,Drake Baldwin,1,Atlanta Braves,Logan Henderson,R,L,0.176,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,19
+660670,Ronald Acuña Jr.,2,Atlanta Braves,Logan Henderson,R,R,0.182,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,20
+621566,Matt Olson,3,Atlanta Braves,Logan Henderson,R,L,0.278,0,2026-08-28,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,21
+671739,Michael Harris II,4,Atlanta Braves,Logan Henderson,R,L,0.194,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,22
+645277,Ozzie Albies,5,Atlanta Braves,Logan Henderson,R,S,0.169,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,23
+643289,Mauricio Dubón,6,Atlanta Braves,Logan Henderson,R,R,0.125,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,24
+573262,Mike Yastrzemski,7,Atlanta Braves,Logan Henderson,R,L,0.159,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,25
+663586,Austin Riley,8,Atlanta Braves,Logan Henderson,R,R,0.146,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,26
+805347,Jim Jarvis,9,Atlanta Braves,Logan Henderson,R,L,0.093,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,27
+694192,Jackson Chourio,1,Milwaukee Brewers,Martín Pérez,L,R,0.188,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,28
+668930,Brice Turang,2,Milwaukee Brewers,Martín Pérez,L,L,0.176,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,29
+661388,William Contreras,3,Milwaukee Brewers,Martín Pérez,L,R,0.123,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,30
+641343,Jake Bauers,4,Milwaukee Brewers,Martín Pérez,L,L,0.227,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,31
+683734,Andrew Vaughn,5,Milwaukee Brewers,Martín Pérez,L,R,0.152,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,32
+592885,Christian Yelich,6,Milwaukee Brewers,Martín Pérez,L,L,0.143,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,33
+687401,Joey Ortiz,7,Milwaukee Brewers,Martín Pérez,L,R,0.128,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,34
+800325,Luis Lara,8,Milwaukee Brewers,Martín Pérez,L,S,0.108,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,35
+806198,Cooper Pratt,9,Milwaukee Brewers,Martín Pérez,L,R,0.091,0,2026-09-12,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,36
+694673,Abimelec Ortiz,1,Washington Nationals,Eury Pérez,R,L,0.315,0,2026-08-28,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,37
+665953,Andrés Chaparro,2,Washington Nationals,Eury Pérez,R,R,0.276,0,2026-08-28,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,38
+687605,Andrew Pinckney,3,Washington Nationals,Eury Pérez,R,R,0.384,0,2026-08-27,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,39
+691781,Brady House,4,Washington Nationals,Eury Pérez,R,R,0.158,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,40
+682928,CJ Abrams,5,Washington Nationals,Eury Pérez,R,L,0.251,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,41
+695734,Daylen Lile,6,Washington Nationals,Eury Pérez,R,L,0.159,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,42
+686611,Dylan Crews,7,Washington Nationals,Eury Pérez,R,R,0.143,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,43
+695670,Harry Ford,8,Washington Nationals,Eury Pérez,R,R,0.211,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,44
+696285,Jacob Young,9,Washington Nationals,Eury Pérez,R,R,0.15,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,45
+669364,Xavier Edwards,1,Miami Marlins,Jake Irvin,R,S,0.098,0,2026-09-10,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,46
+665052,Griffin Conine,2,Miami Marlins,Jake Irvin,R,L,0.273,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,47
+683357,Owen Caissie,3,Miami Marlins,Jake Irvin,R,L,0.201,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,48
+672640,Otto Lopez,4,Miami Marlins,Jake Irvin,R,R,0.14,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,49
+805300,Jakob Marsee,5,Miami Marlins,Jake Irvin,R,L,0.11,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,50
+681715,Heriberto Hernández,6,Miami Marlins,Jake Irvin,R,R,0.217,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,51
+691788,Joe Mack,7,Miami Marlins,Jake Irvin,R,L,0.188,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,52
+691594,Javier Sanoja,8,Miami Marlins,Jake Irvin,R,R,0.145,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,53
+665923,Esteury Ruiz,9,Miami Marlins,Jake Irvin,R,R,0.2,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,54
+676475,Alec Burleson,1,St. Louis Cardinals,Andrew Painter,R,L,0.2,0,2026-08-31,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,55
+691458,Blaze Jordan,2,St. Louis Cardinals,Andrew Painter,R,R,0.121,0,2026-09-06,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,56
+663494,Bryan Torres,3,St. Louis Cardinals,Andrew Painter,R,L,0.144,0,2026-09-04,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,57
+677592,Everson Pereira,4,St. Louis Cardinals,Andrew Painter,R,R,0.213,0,2026-08-31,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,58
+671056,Iván Herrera,5,St. Louis Cardinals,Andrew Painter,R,R,0.138,0,2026-09-04,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,59
+802139,JJ Wetherholt,6,St. Louis Cardinals,Andrew Painter,R,L,0.128,0,2026-09-06,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,60
+699625,Jimmy Crooks,7,St. Louis Cardinals,Andrew Painter,R,L,0.139,0,2026-09-04,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,61
+691023,Jordan Walker,8,St. Louis Cardinals,Andrew Painter,R,R,0.222,0,2026-08-30,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,62
+665877,José Fermín,9,St. Louis Cardinals,Andrew Painter,R,R,0.119,0,2026-09-07,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,63
+664761,Alec Bohm,1,Philadelphia Phillies,TBD Pitcher,R,R,0.143,0,2026-09-04,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,64
+669016,Brandon Marsh,2,Philadelphia Phillies,TBD Pitcher,R,L,0.163,0,2026-09-02,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,65
+650559,Bryan De La Cruz,3,Philadelphia Phillies,TBD Pitcher,R,R,0.226,0,2026-08-30,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,66
+547180,Bryce Harper,4,Philadelphia Phillies,TBD Pitcher,R,L,0.231,0,2026-08-30,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,67
+681082,Bryson Stott,5,Philadelphia Phillies,TBD Pitcher,R,L,0.149,0,2026-09-03,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,68
+656537,Derek Hill,6,Philadelphia Phillies,TBD Pitcher,R,R,0.162,0,2026-09-02,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,69
+624641,Edmundo Sosa,7,Philadelphia Phillies,TBD Pitcher,R,R,0.134,0,2026-09-05,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,70
+596117,Garrett Stubbs,8,Philadelphia Phillies,TBD Pitcher,R,L,0.05,0,2026-09-15,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,71
+592663,J.T. Realmuto,9,Philadelphia Phillies,TBD Pitcher,R,R,0.126,0,2026-09-06,0.0912,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,72
+656775,Cedric Mullins,1,Tampa Bay Rays,Brandon Young,R,L,0.146,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,73
+802415,Chandler Simpson,2,Tampa Bay Rays,Brandon Young,R,L,0.056,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,74
+666018,Jonathan Aranda,3,Tampa Bay Rays,Brandon Young,R,L,0.137,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,75
+676356,Jonny DeLuca,4,Tampa Bay Rays,Brandon Young,R,R,0.167,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,76
+622761,Jorge Mateo,5,Tampa Bay Rays,Brandon Young,R,R,0.14,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,77
+691406,Junior Caminero,6,Tampa Bay Rays,Brandon Young,R,R,0.26,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,78
+700652,Kenny Piper,7,Tampa Bay Rays,Brandon Young,R,R,0.428,0,2026-08-26,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,79
+689414,Liam Hicks,8,Tampa Bay Rays,Brandon Young,R,L,0.15,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,80
+663743,Nick Fortes,9,Tampa Bay Rays,Brandon Young,R,R,0.101,0,2026-09-10,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,81
+665966,Carlos Narváez,1,Baltimore Orioles,Shane McClanahan,L,R,0.088,0,2026-09-12,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,82
+687952,Christian Encarnacion-Strand,2,Baltimore Orioles,Shane McClanahan,L,R,0.247,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,83
+681047,Christian Franklin,3,Baltimore Orioles,Shane McClanahan,L,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,84
+691723,Coby Mayo,4,Baltimore Orioles,Shane McClanahan,L,R,0.226,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,85
+681297,Colton Cowser,5,Baltimore Orioles,Shane McClanahan,L,L,0.139,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,86
+687637,Dylan Beavers,6,Baltimore Orioles,Shane McClanahan,L,L,0.139,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,87
+683002,Gunnar Henderson,7,Baltimore Orioles,Shane McClanahan,L,L,0.177,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,88
+702616,Jackson Holliday,8,Baltimore Orioles,Shane McClanahan,L,L,0.132,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,89
+665750,Leody Taveras,9,Baltimore Orioles,Shane McClanahan,L,S,0.132,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,90
+624428,Adam Frazier,1,Los Angeles Angels,Cody Bradford,L,L,0.116,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,91
+694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford,L,R,0.134,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,92
+642350,Jose Siri,3,Los Angeles Angels,Cody Bradford,L,R,0.2,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,93
+666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford,L,L,0.151,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,94
+545361,Mike Trout,5,Los Angeles Angels,Cody Bradford,L,R,0.194,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,95
+694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford,L,L,0.154,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,96
+694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford,L,L,0.109,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,97
+672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford,L,R,0.123,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,98
+518595,Travis d'Arnaud,9,Los Angeles Angels,Cody Bradford,L,R,0.08,0,2026-09-14,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,99
+607043,Brandon Nimmo,1,Texas Rangers,Ryan Johnson,R,L,0.16,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,100
+683227,Cody Freeman,2,Texas Rangers,Ryan Johnson,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,101
+608369,Corey Seager,3,Texas Rangers,Ryan Johnson,R,L,0.194,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,102
+643376,Danny Jansen,4,Texas Rangers,Ryan Johnson,R,R,0.13,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,103
+553869,Elias Díaz,5,Texas Rangers,Ryan Johnson,R,R,0.115,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,104
+694497,Evan Carter,6,Texas Rangers,Ryan Johnson,R,L,0.128,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,105
+677649,Ezequiel Duran,7,Texas Rangers,Ryan Johnson,R,R,0.17,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,106
+669394,Jake Burger,8,Texas Rangers,Ryan Johnson,R,R,0.181,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,107
+672284,Jarred Kelenic,9,Texas Rangers,Ryan Johnson,R,L,0.095,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,108
+675961,Alika Williams,1,Athletics,Hunter Brown,R,R,0.126,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,109
+661531,Brian Serven,2,Athletics,Hunter Brown,R,R,0.231,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,110
+666126,Carlos Cortes,3,Athletics,Hunter Brown,R,L,0.145,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,111
+687231,Darell Hernaiz,4,Athletics,Hunter Brown,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,112
+622268,Donovan Walton,5,Athletics,Hunter Brown,R,L,0.105,0,2026-09-09,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,113
+703607,Henry Bolte,6,Athletics,Hunter Brown,R,R,0.098,0,2026-09-10,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,114
+643446,Jeff McNeil,7,Athletics,Hunter Brown,R,L,0.095,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,115
+641680,Jonah Heim,8,Athletics,Hunter Brown,R,S,0.179,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,116
+671732,Lawrence Butler,9,Athletics,Hunter Brown,R,L,0.137,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,117
+701358,Cam Smith,1,Houston Astros,Jacob Lopez,L,R,0.175,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,118
+543877,Christian Vázquez,2,Houston Astros,Jacob Lopez,L,R,0.13,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,119
+572233,Christian Walker,3,Houston Astros,Jacob Lopez,L,R,0.209,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,120
+662139,Daulton Varsho,4,Houston Astros,Jacob Lopez,L,L,0.132,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,121
+670623,Isaac Paredes,5,Houston Astros,Jacob Lopez,L,R,0.164,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,122
+665161,Jeremy Peña,6,Houston Astros,Jacob Lopez,L,R,0.186,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,123
+514888,Jose Altuve,7,Houston Astros,Jacob Lopez,L,R,0.149,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,124
+664774,LaMonte Wade Jr.,8,Houston Astros,Jacob Lopez,L,L,0.115,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,125
+669397,Nick Allen,9,Houston Astros,Jacob Lopez,L,R,0.084,0,2026-09-13,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,126
+805999,A.J. Ewing,1,New York Mets,Luis Castillo,R,L,0.122,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,127
+666182,Bo Bichette,2,New York Mets,Luis Castillo,R,R,0.127,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,128
+683146,Brett Baty,3,New York Mets,Luis Castillo,R,L,0.116,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,129
+701807,Carson Benge,4,New York Mets,Luis Castillo,R,L,0.145,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,130
+666624,Christopher Morel,5,New York Mets,Luis Castillo,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,131
+665506,Cristian Pache,6,New York Mets,Luis Castillo,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,132
+676572,Eric Wagaman,7,New York Mets,Luis Castillo,R,R,0.143,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,133
+682626,Francisco Alvarez,8,New York Mets,Luis Castillo,R,R,0.172,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,134
+596019,Francisco Lindor,9,New York Mets,Luis Castillo,R,S,0.184,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,135
+643217,Andrew Benintendi,1,Chicago White Sox,Christian Scott,R,L,0.178,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,136
+695731,Braden Montgomery,2,Chicago White Sox,Christian Scott,R,S,0.134,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,137
+686668,Brenton Doyle,3,Chicago White Sox,Christian Scott,R,R,0.112,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,138
+805367,Chase Meidroth,4,Chicago White Sox,Christian Scott,R,R,0.132,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,139
+695657,Colson Montgomery,5,Chicago White Sox,Christian Scott,R,L,0.222,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,140
+691011,Drew Romo,6,Chicago White Sox,Christian Scott,R,S,0.164,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,141
+668670,Jake Rogers,7,Chicago White Sox,Christian Scott,R,R,0.214,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,142
+682668,Luisangel Acuña,8,Chicago White Sox,Christian Scott,R,R,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,143
+678246,Miguel Vargas,9,Chicago White Sox,Christian Scott,R,R,0.254,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,144
+701162,Ben Malgeri,1,Detroit Tigers,Michael Wacha,R,R,0.183,0,2026-09-01,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,145
+814430,Brett Callahan,2,Detroit Tigers,Michael Wacha,R,L,0.384,0,2026-08-27,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,146
+690993,Colt Keith,3,Detroit Tigers,Michael Wacha,R,L,0.153,0,2026-09-03,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,147
+667452,Corey Julks,4,Detroit Tigers,Michael Wacha,R,R,0.25,0,2026-08-29,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,148
+693307,Dillon Dingler,5,Detroit Tigers,Michael Wacha,R,R,0.233,0,2026-08-30,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,149
+680664,Eduardo Valencia,6,Detroit Tigers,Michael Wacha,R,R,0.394,0,2026-08-26,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,150
+650402,Gleyber Torres,7,Detroit Tigers,Michael Wacha,R,R,0.127,0,2026-09-06,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,151
+701678,Hao-Yu Lee,8,Detroit Tigers,Michael Wacha,R,R,0.146,0,2026-09-04,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,152
+595879,Javier Báez,9,Detroit Tigers,Michael Wacha,R,R,0.1,0,2026-09-10,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,153
+677951,Bobby Witt Jr.,1,Kansas City Royals,Drew Anderson,R,R,0.175,0,2026-09-01,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,154
+695600,Carter Jensen,2,Kansas City Royals,Drew Anderson,R,L,0.186,0,2026-09-01,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,155
+686555,Isaac Collins,3,Kansas City Royals,Drew Anderson,R,S,0.121,0,2026-09-06,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,156
+695506,Jac Caglianone,4,Kansas City Royals,Drew Anderson,R,L,0.214,0,2026-08-30,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,157
+670231,John Rave,5,Kansas City Royals,Drew Anderson,R,L,0.209,0,2026-08-31,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,158
+664728,Kyle Isbel,6,Kansas City Royals,Drew Anderson,R,L,0.12,0,2026-09-07,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,159
+571912,Luke Maile,7,Kansas City Royals,Drew Anderson,R,R,0.16,0,2026-09-03,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,160
+683090,Matthew Lugo,8,Kansas City Royals,Drew Anderson,R,R,0.16,0,2026-09-03,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,161
+686681,Michael Massey,9,Kansas City Royals,Drew Anderson,R,L,0.17,0,2026-09-02,0.0688,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,162
+695257,Billy Cook,1,Pittsburgh Pirates,Tarik Skubal,L,R,0.062,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,163
+664040,Brandon Lowe,2,Pittsburgh Pirates,Tarik Skubal,L,L,0.227,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,164
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal,L,S,0.167,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,165
+699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Tarik Skubal,L,R,0.286,0,2026-08-28,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,166
+680779,Henry Davis,5,Pittsburgh Pirates,Tarik Skubal,L,R,0.129,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,167
+694378,Jacob Gonzalez,6,Pittsburgh Pirates,Tarik Skubal,L,L,0.116,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,168
+663968,Jake Mangum,7,Pittsburgh Pirates,Tarik Skubal,L,S,0.092,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,169
+669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal,L,R,0.068,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,170
+693304,Nick Gonzales,9,Pittsburgh Pirates,Tarik Skubal,L,R,0.093,0,2026-09-11,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,171
+669743,Alex Call,1,Los Angeles Dodgers,Jared Jones,R,R,0.076,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,172
+681624,Andy Pages,2,Los Angeles Dodgers,Jared Jones,R,R,0.186,0,2026-09-01,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,173
+666163,Ben Rortvedt,3,Los Angeles Dodgers,Jared Jones,R,L,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,174
+571771,Enrique Hernández,4,Los Angeles Dodgers,Jared Jones,R,R,0.236,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,175
+518692,Freddie Freeman,5,Los Angeles Dodgers,Jared Jones,R,L,0.163,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,176
+676439,Hunter Feduccia,6,Los Angeles Dodgers,Jared Jones,R,L,0.106,0,2026-09-09,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,177
+663656,Kyle Tucker,7,Los Angeles Dodgers,Jared Jones,R,L,0.134,0,2026-09-05,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,178
+571970,Max Muncy,8,Los Angeles Dodgers,Jared Jones,R,L,0.252,0,2026-08-29,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,179
+500743,Miguel Rojas,9,Los Angeles Dodgers,Jared Jones,R,R,0.121,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,180
+608324,Alex Bregman,1,Chicago Cubs,Kade Anderson,L,R,0.16,0,2026-09-03,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,181
+608348,Carson Kelly,2,Chicago Cubs,Kade Anderson,L,R,0.11,0,2026-09-08,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,182
+672356,Gabriel Arias,3,Chicago Cubs,Kade Anderson,L,R,0.05,0,2026-09-15,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,183
+664023,Ian Happ,4,Chicago Cubs,Kade Anderson,L,S,0.198,0,2026-08-31,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,184
+682634,Kevin Alcántara,5,Chicago Cubs,Kade Anderson,L,R,0.131,0,2026-09-05,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,185
+683737,Michael Busch,6,Chicago Cubs,Kade Anderson,L,L,0.146,0,2026-09-04,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,186
+624424,Michael Conforto,7,Chicago Cubs,Kade Anderson,L,L,0.212,0,2026-08-31,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,187
+665804,Miguel Amaya,8,Chicago Cubs,Kade Anderson,L,R,0.136,0,2026-09-05,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,188
+663538,Nico Hoerner,9,Chicago Cubs,Kade Anderson,L,R,0.098,0,2026-09-10,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,189
+680977,Brendan Donovan,1,Seattle Mariners,David Peterson,L,L,0.132,0,2026-09-05,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,190
+801126,Brock Rodden,2,Seattle Mariners,David Peterson,L,S,0.167,0,2026-09-02,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,191
+663728,Cal Raleigh,3,Seattle Mariners,David Peterson,L,S,0.148,0,2026-09-03,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,192
+702284,Cole Young,4,Seattle Mariners,David Peterson,L,L,0.14,0,2026-09-04,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,193
+686527,Dominic Canzone,5,Seattle Mariners,David Peterson,L,L,0.23,0,2026-08-30,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,194
+640902,Jhonny Pereda,6,Seattle Mariners,David Peterson,L,R,0.081,0,2026-09-14,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,195
+647304,Josh Naylor,7,Seattle Mariners,David Peterson,L,L,0.102,0,2026-09-09,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,196
+677594,Julio Rodríguez,8,Seattle Mariners,David Peterson,L,R,0.162,0,2026-09-02,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,197
+660844,Leo Rivas,9,Seattle Mariners,David Peterson,L,S,0.05,0,2026-09-15,0.072,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,198
+668800,Andrew Knizner,1,San Francisco Giants,Patrick Sandoval,L,R,0.05,0,2026-09-15,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,199
+805811,Bryce Eldridge,2,San Francisco Giants,Patrick Sandoval,L,L,0.188,0,2026-09-01,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,200
+671083,Buddy Kennedy,3,San Francisco Giants,Patrick Sandoval,L,R,0.05,0,2026-09-15,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,201
+683766,Christian Koss,4,San Francisco Giants,Patrick Sandoval,L,R,0.054,0,2026-09-15,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,202
+701852,Drew Cavanaugh,5,San Francisco Giants,Patrick Sandoval,L,L,0.05,0,2026-09-15,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,203
+687551,Drew Gilbert,6,San Francisco Giants,Patrick Sandoval,L,L,0.137,0,2026-09-05,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,204
+813841,Jonah Cox,7,San Francisco Giants,Patrick Sandoval,L,R,0.186,0,2026-09-01,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,205
+808982,Jung Hoo Lee,8,San Francisco Giants,Patrick Sandoval,L,L,0.139,0,2026-09-04,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,206
+678545,Osleivis Basabe,9,San Francisco Giants,Patrick Sandoval,L,R,0.162,0,2026-09-02,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,207
+668939,Adley Rutschman,1,Boston Red Sox,Blade Tidwell,R,S,0.129,0,2026-09-05,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,208
+655316,Andruw Monasterio,2,Boston Red Sox,Blade Tidwell,R,R,0.161,0,2026-09-02,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,209
+678011,Anthony Seigler,3,Boston Red Sox,Blade Tidwell,R,S,0.151,0,2026-09-03,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,210
+702332,Caleb Durbin,4,Boston Red Sox,Blade Tidwell,R,R,0.147,0,2026-09-04,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,211
+678882,Ceddanne Rafaela,5,Boston Red Sox,Blade Tidwell,R,R,0.177,0,2026-09-01,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,212
+657136,Connor Wong,6,Boston Red Sox,Blade Tidwell,R,R,0.131,0,2026-09-05,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,213
+642201,Eli White,7,Boston Red Sox,Blade Tidwell,R,R,0.173,0,2026-09-02,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,214
+663330,Jahmai Jones,8,Boston Red Sox,Blade Tidwell,R,R,0.084,0,2026-09-13,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,215
+680776,Jarren Duran,9,Boston Red Sox,Blade Tidwell,R,L,0.156,0,2026-09-03,0.0736,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,216
+667472,Dane Myers,1,Cincinnati Reds,Michael Soroka,R,R,0.11,0,2026-09-08,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,217
+682829,Elly De La Cruz,2,Cincinnati Reds,Michael Soroka,R,S,0.206,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,218
+553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka,R,R,0.204,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,219
+699302,Héctor Rodríguez,4,Cincinnati Reds,Michael Soroka,R,L,0.05,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,220
+668709,JJ Bleday,5,Cincinnati Reds,Michael Soroka,R,L,0.211,0,2026-08-31,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,221
+624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka,R,R,0.143,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,222
+663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka,R,R,0.102,0,2026-09-09,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,223
+680574,Matt McLain,8,Cincinnati Reds,Michael Soroka,R,R,0.156,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,224
+669911,Michael Toglia,9,Cincinnati Reds,Michael Soroka,R,S,0.077,0,2026-09-15,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,225
+682998,Corbin Carroll,1,Arizona Diamondbacks,Rhett Lowder,R,L,0.238,0,2026-08-30,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,226
+672515,Gabriel Moreno,2,Arizona Diamondbacks,Rhett Lowder,R,R,0.161,0,2026-09-02,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,227
+672695,Geraldo Perdomo,3,Arizona Diamondbacks,Rhett Lowder,R,S,0.128,0,2026-09-06,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,228
+545121,Ildemaro Vargas,4,Arizona Diamondbacks,Rhett Lowder,R,S,0.141,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,229
+543510,James McCann,5,Arizona Diamondbacks,Rhett Lowder,R,R,0.147,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,230
+691783,Jordan Lawlar,6,Arizona Diamondbacks,Rhett Lowder,R,R,0.151,0,2026-09-03,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,231
+678489,Jorge Barrosa,7,Arizona Diamondbacks,Rhett Lowder,R,S,0.144,0,2026-09-04,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,232
+699912,Jose Fernandez,8,Arizona Diamondbacks,Rhett Lowder,R,R,0.101,0,2026-09-10,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,233
+663457,Lars Nootbaar,9,Arizona Diamondbacks,Rhett Lowder,R,L,0.12,0,2026-09-07,0.08,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,234
+694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes,R,S,0.12,0,2026-09-07,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,235
+682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes,R,S,0.184,0,2026-09-01,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,236
+595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes,R,R,0.115,0,2026-09-07,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,237
+677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes,R,S,0.12,0,2026-09-07,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,238
+800050,Chase DeLauter,5,Cleveland Guardians,Gabriel Hughes,R,L,0.155,0,2026-09-03,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,239
+681807,David Fry,6,Cleveland Guardians,Gabriel Hughes,R,R,0.154,0,2026-09-03,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,240
+666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes,R,R,0.246,0,2026-08-29,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,241
+608070,José Ramírez,8,Cleveland Guardians,Gabriel Hughes,R,S,0.142,0,2026-09-04,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,242
+663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes,R,L,0.222,0,2026-08-30,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,243
+690924,Braxton Fulford,1,Colorado Rockies,Tanner Bibee,R,R,0.103,0,2026-09-09,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,244
+664954,Brett Sullivan,2,Colorado Rockies,Tanner Bibee,R,L,0.202,0,2026-08-31,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,245
+694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee,R,S,0.188,0,2026-09-01,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,246
+681393,Connor Norby,4,Colorado Rockies,Tanner Bibee,R,R,0.12,0,2026-09-06,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,247
+678662,Ezequiel Tovar,5,Colorado Rockies,Tanner Bibee,R,R,0.122,0,2026-09-06,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,248
+664983,Jake McCarthy,6,Colorado Rockies,Tanner Bibee,R,L,0.193,0,2026-08-31,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,249
+687597,Jordan Beck,7,Colorado Rockies,Tanner Bibee,R,R,0.12,0,2026-09-07,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,250
+691720,Kyle Karros,8,Colorado Rockies,Tanner Bibee,R,R,0.157,0,2026-09-03,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,251
+666160,Mickey Moniak,9,Colorado Rockies,Tanner Bibee,R,L,0.27,0,2026-08-29,0.0944,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,252
+702176,Alan Roden,1,Minnesota Twins,Casey Mize,R,L,0.05,0,2026-09-15,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,253
+656577,Alex Jackson,2,Minnesota Twins,Casey Mize,R,R,0.106,0,2026-09-09,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,254
+686797,Brooks Lee,3,Minnesota Twins,Casey Mize,R,S,0.174,0,2026-09-02,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,255
+621439,Byron Buxton,4,Minnesota Twins,Casey Mize,R,R,0.264,0,2026-08-29,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,256
+605137,Josh Bell,5,Minnesota Twins,Casey Mize,R,S,0.173,0,2026-09-02,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,257
+701785,Kaelen Culpepper,6,Minnesota Twins,Casey Mize,R,R,0.106,0,2026-09-09,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,258
+665019,Kody Clemens,7,Minnesota Twins,Casey Mize,R,L,0.232,0,2026-08-30,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,259
+807712,Luke Keaschall,8,Minnesota Twins,Casey Mize,R,R,0.103,0,2026-09-09,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,260
+668904,Royce Lewis,9,Minnesota Twins,Casey Mize,R,R,0.178,0,2026-09-01,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,261
+669720,Austin Hays,1,San Diego Padres,Dean Kremer,R,R,0.093,0,2026-09-11,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,262
+665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer,R,R,0.154,0,2026-09-03,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,263
+666023,Freddy Fermin,3,San Diego Padres,Dean Kremer,R,R,0.113,0,2026-09-07,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,264
+657757,Gavin Sheets,4,San Diego Padres,Dean Kremer,R,L,0.183,0,2026-09-01,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,265
+701538,Jackson Merrill,5,San Diego Padres,Dean Kremer,R,L,0.167,0,2026-09-02,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,266
+630105,Jake Cronenworth,6,San Diego Padres,Dean Kremer,R,L,0.073,0,2026-09-15,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,267
+687749,Jase Bowen,7,San Diego Padres,Dean Kremer,R,R,0.104,0,2026-09-09,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,268
+669134,Luis Campusano,8,San Diego Padres,Dean Kremer,R,R,0.195,0,2026-08-31,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,269
+650859,Luis Rengifo,9,San Diego Padres,Dean Kremer,R,S,0.05,0,2026-09-15,0.0704,⚖️ NORMAL (Drought: 0G),20.0,⚾ Standard Hazard,270

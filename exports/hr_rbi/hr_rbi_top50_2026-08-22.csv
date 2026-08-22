@@ -3,269 +3,269 @@ player_id,player_name,order,team,opp_pitcher,p_hand,b_hand,ba,obp,slg,sp_whip,pr
 650559,Bryan De La Cruz,3,Philadelphia Phillies,TBD Pitcher,R,R,0.355,0.405,0.581,1.25,HEART / RBI CLEANUP,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,2
 814430,Brett Callahan,2,Detroit Tigers,Michael Wacha,R,L,0.308,0.308,0.692,1.15,LEADOFF / RUN ENGINE,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,3
 694197,Angel Genao,1,Cleveland Guardians,Gabriel Hughes,R,S,0.32,0.382,0.44,1.38,LEADOFF / RUN ENGINE,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,4
-595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes,R,R,0.265,0.337,0.38,1.38,HEART / RBI CLEANUP,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,5
-677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes,R,S,0.251,0.314,0.371,1.38,HEART / RBI CLEANUP,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,6
-800050,Chase DeLauter,5,Cleveland Guardians,Gabriel Hughes,R,L,0.286,0.359,0.441,1.38,HEART / RBI CLEANUP,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,7
-694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee,R,S,0.282,0.366,0.47,1.15,HEART / RBI CLEANUP,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,8
-665052,Griffin Conine,4,Miami Marlins,Jake Irvin,R,L,0.267,0.361,0.54,1.36,HEART / RBI CLEANUP,3.78,0.9772,0.8909,96.5,👑 LOCK: Over 1.5 H+R+RBI,9
-682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes,R,S,0.241,0.272,0.425,1.38,LEADOFF / RUN ENGINE,3.77,0.977,0.8901,96.5,👑 LOCK: Over 1.5 H+R+RBI,10
-672515,Gabriel Moreno,2,Arizona Diamondbacks,Rhett Lowder,R,R,0.308,0.385,0.469,1.49,LEADOFF / RUN ENGINE,3.72,0.9757,0.8855,96.5,👑 LOCK: Over 1.5 H+R+RBI,11
-543510,James McCann,5,Arizona Diamondbacks,Rhett Lowder,R,R,0.296,0.331,0.443,1.49,HEART / RBI CLEANUP,3.59,0.9724,0.8735,96.5,👑 LOCK: Over 1.5 H+R+RBI,12
-547180,Bryce Harper,4,Philadelphia Phillies,TBD Pitcher,R,L,0.257,0.379,0.488,1.25,HEART / RBI CLEANUP,3.59,0.9723,0.8729,96.5,👑 LOCK: Over 1.5 H+R+RBI,13
-666018,Jonathan Aranda,3,Tampa Bay Rays,Brandon Young,R,L,0.282,0.365,0.419,1.35,HEART / RBI CLEANUP,3.57,0.9717,0.8709,96.5,👑 LOCK: Over 1.5 H+R+RBI,14
-678882,Ceddanne Rafaela,5,Boston Red Sox,Blade Tidwell,R,R,0.285,0.322,0.462,1.22,HEART / RBI CLEANUP,3.56,0.9715,0.87,96.5,👑 LOCK: Over 1.5 H+R+RBI,15
-805811,Bryce Eldridge,2,San Francisco Giants,Patrick Sandoval,L,L,0.248,0.34,0.436,1.85,LEADOFF / RUN ENGINE,3.54,0.9711,0.8687,96.5,👑 LOCK: Over 1.5 H+R+RBI,16
-671056,Iván Herrera,5,St. Louis Cardinals,Andrew Painter,R,R,0.244,0.36,0.382,1.55,HEART / RBI CLEANUP,3.53,0.9706,0.8668,96.5,👑 LOCK: Over 1.5 H+R+RBI,17
-665923,Esteury Ruiz,3,Miami Marlins,Jake Irvin,R,R,0.253,0.369,0.453,1.36,HEART / RBI CLEANUP,3.52,0.9703,0.866,96.5,👑 LOCK: Over 1.5 H+R+RBI,18
-664954,Brett Sullivan,2,Colorado Rockies,Tanner Bibee,R,L,0.238,0.284,0.44,1.15,LEADOFF / RUN ENGINE,3.49,0.9696,0.8634,96.5,👑 LOCK: Over 1.5 H+R+RBI,19
-670623,Isaac Paredes,5,Houston Astros,Jacob Lopez,L,R,0.262,0.356,0.426,1.53,HEART / RBI CLEANUP,3.46,0.9684,0.8593,96.5,👑 LOCK: Over 1.5 H+R+RBI,20
-682928,CJ Abrams,5,Washington Nationals,Eury Pérez,R,L,0.279,0.354,0.53,1.11,HEART / RBI CLEANUP,3.45,0.9682,0.8586,96.5,👑 LOCK: Over 1.5 H+R+RBI,21
-518692,Freddie Freeman,5,Los Angeles Dodgers,Jared Jones,R,L,0.3,0.372,0.463,1.2,HEART / RBI CLEANUP,3.44,0.968,0.8579,96.5,👑 LOCK: Over 1.5 H+R+RBI,22
-663662,Daz Cameron,7,Toronto Blue Jays,Ryan Weathers,L,R,0.364,0.364,0.727,1.19,BOTTOM LINEUP,3.42,0.9672,0.8553,96.5,👑 LOCK: Over 1.5 H+R+RBI,23
-695506,Jac Caglianone,4,Kansas City Royals,Drew Anderson,R,L,0.277,0.329,0.491,1.3,HEART / RBI CLEANUP,3.41,0.9671,0.8547,96.5,👑 LOCK: Over 1.5 H+R+RBI,24
-545361,Mike Trout,5,Los Angeles Angels,Cody Bradford,L,R,0.236,0.379,0.43,1.43,HEART / RBI CLEANUP,3.41,0.9668,0.8538,96.5,👑 LOCK: Over 1.5 H+R+RBI,25
-703520,Brett Bateman,4,Toronto Blue Jays,Ryan Weathers,L,L,0.302,0.339,0.396,1.19,HEART / RBI CLEANUP,3.39,0.9664,0.8524,96.5,👑 LOCK: Over 1.5 H+R+RBI,26
-682998,Corbin Carroll,1,Arizona Diamondbacks,Rhett Lowder,R,L,0.248,0.348,0.486,1.49,LEADOFF / RUN ENGINE,3.36,0.9654,0.8491,96.5,👑 LOCK: Over 1.5 H+R+RBI,27
-642350,Jose Siri,3,Los Angeles Angels,Cody Bradford,L,R,0.255,0.31,0.455,1.43,HEART / RBI CLEANUP,3.35,0.965,0.8477,96.5,👑 LOCK: Over 1.5 H+R+RBI,28
-677951,Bobby Witt Jr.,1,Kansas City Royals,Drew Anderson,R,R,0.288,0.363,0.463,1.3,LEADOFF / RUN ENGINE,3.35,0.965,0.8476,96.5,👑 LOCK: Over 1.5 H+R+RBI,29
-683734,Andrew Vaughn,1,Milwaukee Brewers,Martín Pérez,L,R,0.303,0.392,0.455,1.19,LEADOFF / RUN ENGINE,3.35,0.9648,0.8471,96.5,👑 LOCK: Over 1.5 H+R+RBI,30
-672386,Alejandro Kirk,1,Toronto Blue Jays,Ryan Weathers,L,R,0.284,0.365,0.432,1.19,LEADOFF / RUN ENGINE,3.33,0.964,0.8444,96.5,👑 LOCK: Over 1.5 H+R+RBI,31
-677592,Everson Pereira,4,St. Louis Cardinals,Andrew Painter,R,R,0.225,0.284,0.438,1.55,HEART / RBI CLEANUP,3.32,0.964,0.8444,96.5,👑 LOCK: Over 1.5 H+R+RBI,32
-802415,Chandler Simpson,2,Tampa Bay Rays,Brandon Young,R,L,0.308,0.335,0.364,1.35,LEADOFF / RUN ENGINE,3.32,0.9639,0.8441,96.5,👑 LOCK: Over 1.5 H+R+RBI,33
-680664,Eduardo Valencia,6,Detroit Tigers,Michael Wacha,R,R,0.344,0.365,0.738,1.15,BOTTOM LINEUP,3.31,0.9636,0.8428,96.5,👑 LOCK: Over 1.5 H+R+RBI,34
-687605,Andrew Pinckney,3,Washington Nationals,Eury Pérez,R,R,0.231,0.313,0.615,1.11,HEART / RBI CLEANUP,3.31,0.9635,0.8426,96.5,👑 LOCK: Over 1.5 H+R+RBI,35
-663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes,R,L,0.267,0.3,0.489,1.38,BOTTOM LINEUP,3.31,0.9634,0.8424,96.5,👑 LOCK: Over 1.5 H+R+RBI,36
-681082,Bryson Stott,5,Philadelphia Phillies,TBD Pitcher,R,L,0.262,0.34,0.411,1.25,HEART / RBI CLEANUP,3.3,0.9633,0.842,96.5,👑 LOCK: Over 1.5 H+R+RBI,37
-699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Tarik Skubal,L,R,0.245,0.357,0.531,1.24,HEART / RBI CLEANUP,3.31,0.9633,0.842,96.5,👑 LOCK: Over 1.5 H+R+RBI,38
-676356,Jonny DeLuca,4,Tampa Bay Rays,Brandon Young,R,R,0.264,0.296,0.431,1.35,HEART / RBI CLEANUP,3.3,0.9629,0.8408,96.5,👑 LOCK: Over 1.5 H+R+RBI,39
-663494,Bryan Torres,3,St. Louis Cardinals,Andrew Painter,R,L,0.237,0.3,0.381,1.55,HEART / RBI CLEANUP,3.29,0.9627,0.84,96.5,👑 LOCK: Over 1.5 H+R+RBI,40
-672695,Geraldo Perdomo,3,Arizona Diamondbacks,Rhett Lowder,R,S,0.248,0.357,0.376,1.49,HEART / RBI CLEANUP,3.26,0.9618,0.837,96.5,👑 LOCK: Over 1.5 H+R+RBI,41
-700652,Kenny Piper,7,Tampa Bay Rays,Brandon Young,R,R,0.286,0.375,0.714,1.35,BOTTOM LINEUP,3.26,0.9618,0.8369,96.5,👑 LOCK: Over 1.5 H+R+RBI,42
-607043,Brandon Nimmo,1,Texas Rangers,Ryan Johnson,R,L,0.266,0.331,0.426,1.54,LEADOFF / RUN ENGINE,3.26,0.9615,0.8362,96.5,👑 LOCK: Over 1.5 H+R+RBI,43
-702332,Caleb Durbin,4,Boston Red Sox,Blade Tidwell,R,R,0.254,0.324,0.401,1.22,HEART / RBI CLEANUP,3.26,0.9614,0.8359,96.5,👑 LOCK: Over 1.5 H+R+RBI,44
-669016,Brandon Marsh,2,Philadelphia Phillies,TBD Pitcher,R,L,0.277,0.321,0.44,1.25,LEADOFF / RUN ENGINE,3.25,0.9613,0.8353,96.5,👑 LOCK: Over 1.5 H+R+RBI,45
-693307,Dillon Dingler,5,Detroit Tigers,Michael Wacha,R,R,0.252,0.316,0.485,1.15,HEART / RBI CLEANUP,3.24,0.961,0.8344,96.5,👑 LOCK: Over 1.5 H+R+RBI,46
-678011,Anthony Seigler,3,Boston Red Sox,Blade Tidwell,R,S,0.252,0.321,0.403,1.22,HEART / RBI CLEANUP,3.24,0.9609,0.8341,96.5,👑 LOCK: Over 1.5 H+R+RBI,47
-545121,Ildemaro Vargas,4,Arizona Diamondbacks,Rhett Lowder,R,S,0.261,0.305,0.402,1.49,HEART / RBI CLEANUP,3.24,0.9606,0.8333,96.5,👑 LOCK: Over 1.5 H+R+RBI,48
-690993,Colt Keith,3,Detroit Tigers,Michael Wacha,R,L,0.272,0.329,0.425,1.15,HEART / RBI CLEANUP,3.23,0.9606,0.8332,96.5,👑 LOCK: Over 1.5 H+R+RBI,49
-681393,Connor Norby,4,Colorado Rockies,Tanner Bibee,R,R,0.205,0.313,0.325,1.15,HEART / RBI CLEANUP,3.22,0.9602,0.832,96.5,👑 LOCK: Over 1.5 H+R+RBI,50
-572233,Christian Walker,3,Houston Astros,Jacob Lopez,L,R,0.233,0.309,0.442,1.53,HEART / RBI CLEANUP,3.21,0.9595,0.8298,96.5,👑 LOCK: Over 1.5 H+R+RBI,51
-668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal,L,S,0.263,0.372,0.43,1.24,HEART / RBI CLEANUP,3.2,0.9592,0.8287,96.5,👑 LOCK: Over 1.5 H+R+RBI,52
-664983,Jake McCarthy,6,Colorado Rockies,Tanner Bibee,R,L,0.292,0.333,0.485,1.15,BOTTOM LINEUP,3.19,0.959,0.8281,96.5,👑 LOCK: Over 1.5 H+R+RBI,53
-643376,Danny Jansen,4,Texas Rangers,Ryan Johnson,R,R,0.245,0.315,0.405,1.54,HEART / RBI CLEANUP,3.19,0.959,0.8279,96.5,👑 LOCK: Over 1.5 H+R+RBI,54
-621439,Byron Buxton,4,Minnesota Twins,Casey Mize,R,R,0.254,0.317,0.518,1.5,HEART / RBI CLEANUP,3.17,0.9579,0.8245,96.4,👑 LOCK: Over 1.5 H+R+RBI,55
-655316,Andruw Monasterio,2,Boston Red Sox,Blade Tidwell,R,R,0.258,0.318,0.419,1.22,LEADOFF / RUN ENGINE,3.16,0.9578,0.8241,96.4,👑 LOCK: Over 1.5 H+R+RBI,56
-681715,Heriberto Hernández,5,Miami Marlins,Jake Irvin,R,R,0.226,0.304,0.443,1.36,HEART / RBI CLEANUP,3.16,0.9576,0.8235,96.4,👑 LOCK: Over 1.5 H+R+RBI,57
-665953,Andrés Chaparro,2,Washington Nationals,Eury Pérez,R,R,0.244,0.354,0.52,1.11,LEADOFF / RUN ENGINE,3.13,0.9563,0.8196,96.2,👑 LOCK: Over 1.5 H+R+RBI,58
-701162,Ben Malgeri,1,Detroit Tigers,Michael Wacha,R,R,0.25,0.37,0.433,1.15,LEADOFF / RUN ENGINE,3.13,0.9563,0.8196,96.2,👑 LOCK: Over 1.5 H+R+RBI,59
-700250,Ben Rice,4,New York Yankees,Dylan Cease,R,L,0.249,0.345,0.53,1.06,HEART / RBI CLEANUP,3.13,0.9563,0.8195,96.2,👑 LOCK: Over 1.5 H+R+RBI,60
-686527,Dominic Canzone,5,Seattle Mariners,David Peterson,L,L,0.259,0.333,0.489,1.65,HEART / RBI CLEANUP,3.11,0.9555,0.8169,96.1,👑 LOCK: Over 1.5 H+R+RBI,61
-666160,Mickey Moniak,9,Colorado Rockies,Tanner Bibee,R,L,0.264,0.307,0.534,1.15,BOTTOM LINEUP,3.11,0.9554,0.8168,96.1,👑 LOCK: Over 1.5 H+R+RBI,62
-666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes,R,R,0.226,0.311,0.472,1.38,BOTTOM LINEUP,3.1,0.9552,0.8159,96.0,👑 LOCK: Over 1.5 H+R+RBI,63
-701807,Carson Benge,4,New York Mets,Luis Castillo,R,L,0.272,0.333,0.417,1.21,HEART / RBI CLEANUP,3.1,0.9551,0.8157,96.0,👑 LOCK: Over 1.5 H+R+RBI,64
-608369,Corey Seager,3,Texas Rangers,Ryan Johnson,R,L,0.221,0.316,0.415,1.54,HEART / RBI CLEANUP,3.1,0.955,0.8155,96.0,👑 LOCK: Over 1.5 H+R+RBI,65
-807727,Charles McAdoo,5,Toronto Blue Jays,Ryan Weathers,L,R,0.263,0.295,0.404,1.19,HEART / RBI CLEANUP,3.1,0.9548,0.8148,96.0,👑 LOCK: Over 1.5 H+R+RBI,66
+682657,Angel Martínez,2,Cleveland Guardians,Gabriel Hughes,R,S,0.241,0.272,0.425,1.38,LEADOFF / RUN ENGINE,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,5
+595978,Austin Hedges,3,Cleveland Guardians,Gabriel Hughes,R,R,0.265,0.337,0.38,1.38,HEART / RBI CLEANUP,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,6
+677587,Brayan Rocchio,4,Cleveland Guardians,Gabriel Hughes,R,S,0.251,0.314,0.371,1.38,HEART / RBI CLEANUP,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,7
+800050,Chase DeLauter,5,Cleveland Guardians,Gabriel Hughes,R,L,0.286,0.359,0.441,1.38,HEART / RBI CLEANUP,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,8
+694249,Cole Carrigg,3,Colorado Rockies,Tanner Bibee,R,S,0.282,0.366,0.47,1.15,HEART / RBI CLEANUP,3.8,0.9776,0.8926,96.5,👑 LOCK: Over 1.5 H+R+RBI,9
+672515,Gabriel Moreno,2,Arizona Diamondbacks,Rhett Lowder,R,R,0.308,0.385,0.469,1.49,LEADOFF / RUN ENGINE,3.72,0.9757,0.8855,96.5,👑 LOCK: Over 1.5 H+R+RBI,10
+672640,Otto Lopez,4,Miami Marlins,Jake Irvin,R,R,0.307,0.343,0.447,1.36,HEART / RBI CLEANUP,3.69,0.9751,0.8831,96.5,👑 LOCK: Over 1.5 H+R+RBI,11
+665052,Griffin Conine,2,Miami Marlins,Jake Irvin,R,L,0.267,0.361,0.54,1.36,LEADOFF / RUN ENGINE,3.62,0.9733,0.8765,96.5,👑 LOCK: Over 1.5 H+R+RBI,12
+547180,Bryce Harper,4,Philadelphia Phillies,TBD Pitcher,R,L,0.257,0.379,0.488,1.25,HEART / RBI CLEANUP,3.6,0.9727,0.8743,96.5,👑 LOCK: Over 1.5 H+R+RBI,13
+543510,James McCann,5,Arizona Diamondbacks,Rhett Lowder,R,R,0.296,0.331,0.443,1.49,HEART / RBI CLEANUP,3.59,0.9724,0.8735,96.5,👑 LOCK: Over 1.5 H+R+RBI,14
+666018,Jonathan Aranda,3,Tampa Bay Rays,Brandon Young,R,L,0.282,0.365,0.419,1.35,HEART / RBI CLEANUP,3.57,0.9717,0.8709,96.5,👑 LOCK: Over 1.5 H+R+RBI,15
+678882,Ceddanne Rafaela,5,Boston Red Sox,Blade Tidwell,R,R,0.285,0.322,0.462,1.22,HEART / RBI CLEANUP,3.56,0.9715,0.87,96.5,👑 LOCK: Over 1.5 H+R+RBI,16
+664954,Brett Sullivan,2,Colorado Rockies,Tanner Bibee,R,L,0.238,0.284,0.44,1.15,LEADOFF / RUN ENGINE,3.55,0.9712,0.8689,96.5,👑 LOCK: Over 1.5 H+R+RBI,17
+805811,Bryce Eldridge,2,San Francisco Giants,Patrick Sandoval,L,L,0.248,0.34,0.436,1.85,LEADOFF / RUN ENGINE,3.54,0.9711,0.8687,96.5,👑 LOCK: Over 1.5 H+R+RBI,18
+671056,Iván Herrera,5,St. Louis Cardinals,Andrew Painter,R,R,0.244,0.36,0.382,1.55,HEART / RBI CLEANUP,3.54,0.971,0.8683,96.5,👑 LOCK: Over 1.5 H+R+RBI,19
+683734,Andrew Vaughn,5,Milwaukee Brewers,Martín Pérez,L,R,0.303,0.392,0.455,1.19,HEART / RBI CLEANUP,3.49,0.9696,0.8634,96.5,👑 LOCK: Over 1.5 H+R+RBI,20
+670623,Isaac Paredes,5,Houston Astros,Jacob Lopez,L,R,0.262,0.356,0.426,1.53,HEART / RBI CLEANUP,3.46,0.9684,0.8593,96.5,👑 LOCK: Over 1.5 H+R+RBI,21
+682928,CJ Abrams,5,Washington Nationals,Eury Pérez,R,L,0.279,0.354,0.53,1.11,HEART / RBI CLEANUP,3.45,0.9682,0.8586,96.5,👑 LOCK: Over 1.5 H+R+RBI,22
+518692,Freddie Freeman,5,Los Angeles Dodgers,Jared Jones,R,L,0.3,0.372,0.463,1.2,HEART / RBI CLEANUP,3.44,0.968,0.8579,96.5,👑 LOCK: Over 1.5 H+R+RBI,23
+641343,Jake Bauers,4,Milwaukee Brewers,Martín Pérez,L,L,0.273,0.383,0.5,1.19,HEART / RBI CLEANUP,3.43,0.9677,0.857,96.5,👑 LOCK: Over 1.5 H+R+RBI,24
+663662,Daz Cameron,7,Toronto Blue Jays,Ryan Weathers,L,R,0.364,0.364,0.727,1.19,BOTTOM LINEUP,3.43,0.9677,0.8568,96.5,👑 LOCK: Over 1.5 H+R+RBI,25
+695506,Jac Caglianone,4,Kansas City Royals,Drew Anderson,R,L,0.277,0.329,0.491,1.3,HEART / RBI CLEANUP,3.42,0.9674,0.8558,96.5,👑 LOCK: Over 1.5 H+R+RBI,26
+703520,Brett Bateman,4,Toronto Blue Jays,Ryan Weathers,L,L,0.302,0.339,0.396,1.19,HEART / RBI CLEANUP,3.41,0.9669,0.8539,96.5,👑 LOCK: Over 1.5 H+R+RBI,27
+545361,Mike Trout,5,Los Angeles Angels,Cody Bradford,L,R,0.236,0.379,0.43,1.43,HEART / RBI CLEANUP,3.41,0.9668,0.8538,96.5,👑 LOCK: Over 1.5 H+R+RBI,28
+682998,Corbin Carroll,1,Arizona Diamondbacks,Rhett Lowder,R,L,0.248,0.348,0.486,1.49,LEADOFF / RUN ENGINE,3.36,0.9654,0.8491,96.5,👑 LOCK: Over 1.5 H+R+RBI,29
+677951,Bobby Witt Jr.,1,Kansas City Royals,Drew Anderson,R,R,0.288,0.363,0.463,1.3,LEADOFF / RUN ENGINE,3.36,0.9653,0.8487,96.5,👑 LOCK: Over 1.5 H+R+RBI,30
+663993,Nathaniel Lowe,9,Cleveland Guardians,Gabriel Hughes,R,L,0.267,0.3,0.489,1.38,BOTTOM LINEUP,3.36,0.9652,0.8483,96.5,👑 LOCK: Over 1.5 H+R+RBI,31
+669364,Xavier Edwards,1,Miami Marlins,Jake Irvin,R,S,0.286,0.366,0.384,1.36,LEADOFF / RUN ENGINE,3.36,0.9651,0.848,96.5,👑 LOCK: Over 1.5 H+R+RBI,32
+642350,Jose Siri,3,Los Angeles Angels,Cody Bradford,L,R,0.255,0.31,0.455,1.43,HEART / RBI CLEANUP,3.35,0.965,0.8477,96.5,👑 LOCK: Over 1.5 H+R+RBI,33
+672386,Alejandro Kirk,1,Toronto Blue Jays,Ryan Weathers,L,R,0.284,0.365,0.432,1.19,LEADOFF / RUN ENGINE,3.34,0.9645,0.846,96.5,👑 LOCK: Over 1.5 H+R+RBI,34
+677592,Everson Pereira,4,St. Louis Cardinals,Andrew Painter,R,R,0.225,0.284,0.438,1.55,HEART / RBI CLEANUP,3.34,0.9645,0.8459,96.5,👑 LOCK: Over 1.5 H+R+RBI,35
+802415,Chandler Simpson,2,Tampa Bay Rays,Brandon Young,R,L,0.308,0.335,0.364,1.35,LEADOFF / RUN ENGINE,3.32,0.9639,0.8441,96.5,👑 LOCK: Over 1.5 H+R+RBI,36
+680664,Eduardo Valencia,6,Detroit Tigers,Michael Wacha,R,R,0.344,0.365,0.738,1.15,BOTTOM LINEUP,3.32,0.9639,0.844,96.5,👑 LOCK: Over 1.5 H+R+RBI,37
+681082,Bryson Stott,5,Philadelphia Phillies,TBD Pitcher,R,L,0.262,0.34,0.411,1.25,HEART / RBI CLEANUP,3.32,0.9638,0.8436,96.5,👑 LOCK: Over 1.5 H+R+RBI,38
+687605,Andrew Pinckney,3,Washington Nationals,Eury Pérez,R,R,0.231,0.313,0.615,1.11,HEART / RBI CLEANUP,3.31,0.9635,0.8426,96.5,👑 LOCK: Over 1.5 H+R+RBI,39
+699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Tarik Skubal,L,R,0.245,0.357,0.531,1.24,HEART / RBI CLEANUP,3.31,0.9633,0.842,96.5,👑 LOCK: Over 1.5 H+R+RBI,40
+663494,Bryan Torres,3,St. Louis Cardinals,Andrew Painter,R,L,0.237,0.3,0.381,1.55,HEART / RBI CLEANUP,3.3,0.9632,0.8416,96.5,👑 LOCK: Over 1.5 H+R+RBI,41
+676356,Jonny DeLuca,4,Tampa Bay Rays,Brandon Young,R,R,0.264,0.296,0.431,1.35,HEART / RBI CLEANUP,3.3,0.9629,0.8408,96.5,👑 LOCK: Over 1.5 H+R+RBI,42
+681393,Connor Norby,4,Colorado Rockies,Tanner Bibee,R,R,0.205,0.313,0.325,1.15,HEART / RBI CLEANUP,3.27,0.9621,0.8381,96.5,👑 LOCK: Over 1.5 H+R+RBI,43
+669016,Brandon Marsh,2,Philadelphia Phillies,TBD Pitcher,R,L,0.277,0.321,0.44,1.25,LEADOFF / RUN ENGINE,3.26,0.9618,0.837,96.5,👑 LOCK: Over 1.5 H+R+RBI,44
+672695,Geraldo Perdomo,3,Arizona Diamondbacks,Rhett Lowder,R,S,0.248,0.357,0.376,1.49,HEART / RBI CLEANUP,3.26,0.9618,0.837,96.5,👑 LOCK: Over 1.5 H+R+RBI,45
+700652,Kenny Piper,7,Tampa Bay Rays,Brandon Young,R,R,0.286,0.375,0.714,1.35,BOTTOM LINEUP,3.26,0.9618,0.8369,96.5,👑 LOCK: Over 1.5 H+R+RBI,46
+607043,Brandon Nimmo,1,Texas Rangers,Ryan Johnson,R,L,0.266,0.331,0.426,1.54,LEADOFF / RUN ENGINE,3.26,0.9615,0.8362,96.5,👑 LOCK: Over 1.5 H+R+RBI,47
+702332,Caleb Durbin,4,Boston Red Sox,Blade Tidwell,R,R,0.254,0.324,0.401,1.22,HEART / RBI CLEANUP,3.26,0.9614,0.8359,96.5,👑 LOCK: Over 1.5 H+R+RBI,48
+693307,Dillon Dingler,5,Detroit Tigers,Michael Wacha,R,R,0.252,0.316,0.485,1.15,HEART / RBI CLEANUP,3.25,0.9614,0.8356,96.5,👑 LOCK: Over 1.5 H+R+RBI,49
+690993,Colt Keith,3,Detroit Tigers,Michael Wacha,R,L,0.272,0.329,0.425,1.15,HEART / RBI CLEANUP,3.24,0.961,0.8344,96.5,👑 LOCK: Over 1.5 H+R+RBI,50
+664983,Jake McCarthy,6,Colorado Rockies,Tanner Bibee,R,L,0.292,0.333,0.485,1.15,BOTTOM LINEUP,3.24,0.9609,0.8343,96.5,👑 LOCK: Over 1.5 H+R+RBI,51
+678011,Anthony Seigler,3,Boston Red Sox,Blade Tidwell,R,S,0.252,0.321,0.403,1.22,HEART / RBI CLEANUP,3.24,0.9609,0.8341,96.5,👑 LOCK: Over 1.5 H+R+RBI,52
+545121,Ildemaro Vargas,4,Arizona Diamondbacks,Rhett Lowder,R,S,0.261,0.305,0.402,1.49,HEART / RBI CLEANUP,3.24,0.9606,0.8333,96.5,👑 LOCK: Over 1.5 H+R+RBI,53
+572233,Christian Walker,3,Houston Astros,Jacob Lopez,L,R,0.233,0.309,0.442,1.53,HEART / RBI CLEANUP,3.21,0.9595,0.8298,96.5,👑 LOCK: Over 1.5 H+R+RBI,54
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Tarik Skubal,L,S,0.263,0.372,0.43,1.24,HEART / RBI CLEANUP,3.2,0.9592,0.8287,96.5,👑 LOCK: Over 1.5 H+R+RBI,55
+621439,Byron Buxton,4,Minnesota Twins,Casey Mize,R,R,0.254,0.317,0.518,1.5,HEART / RBI CLEANUP,3.18,0.9585,0.8266,96.5,👑 LOCK: Over 1.5 H+R+RBI,56
+655316,Andruw Monasterio,2,Boston Red Sox,Blade Tidwell,R,R,0.258,0.318,0.419,1.22,LEADOFF / RUN ENGINE,3.16,0.9578,0.8241,96.4,👑 LOCK: Over 1.5 H+R+RBI,57
+666160,Mickey Moniak,9,Colorado Rockies,Tanner Bibee,R,L,0.264,0.307,0.534,1.15,BOTTOM LINEUP,3.16,0.9575,0.8232,96.4,👑 LOCK: Over 1.5 H+R+RBI,58
+666176,Jo Adell,7,Cleveland Guardians,Gabriel Hughes,R,R,0.226,0.311,0.472,1.38,BOTTOM LINEUP,3.15,0.9572,0.8224,96.3,👑 LOCK: Over 1.5 H+R+RBI,59
+694192,Jackson Chourio,1,Milwaukee Brewers,Martín Pérez,L,R,0.28,0.343,0.468,1.19,LEADOFF / RUN ENGINE,3.15,0.957,0.8216,96.3,👑 LOCK: Over 1.5 H+R+RBI,60
+701162,Ben Malgeri,1,Detroit Tigers,Michael Wacha,R,R,0.25,0.37,0.433,1.15,LEADOFF / RUN ENGINE,3.14,0.9567,0.8209,96.3,👑 LOCK: Over 1.5 H+R+RBI,61
+665953,Andrés Chaparro,2,Washington Nationals,Eury Pérez,R,R,0.244,0.354,0.52,1.11,LEADOFF / RUN ENGINE,3.13,0.9563,0.8196,96.2,👑 LOCK: Over 1.5 H+R+RBI,62
+686527,Dominic Canzone,5,Seattle Mariners,David Peterson,L,L,0.259,0.333,0.489,1.65,HEART / RBI CLEANUP,3.12,0.9557,0.8177,96.1,👑 LOCK: Over 1.5 H+R+RBI,63
+807727,Charles McAdoo,5,Toronto Blue Jays,Ryan Weathers,L,R,0.263,0.295,0.404,1.19,HEART / RBI CLEANUP,3.11,0.9553,0.8165,96.1,👑 LOCK: Over 1.5 H+R+RBI,64
+701807,Carson Benge,4,New York Mets,Luis Castillo,R,L,0.272,0.333,0.417,1.21,HEART / RBI CLEANUP,3.1,0.9551,0.8157,96.0,👑 LOCK: Over 1.5 H+R+RBI,65
+608369,Corey Seager,3,Texas Rangers,Ryan Johnson,R,L,0.221,0.316,0.415,1.54,HEART / RBI CLEANUP,3.1,0.955,0.8155,96.0,👑 LOCK: Over 1.5 H+R+RBI,66
 805367,Chase Meidroth,4,Chicago White Sox,Christian Scott,R,R,0.27,0.344,0.402,1.29,HEART / RBI CLEANUP,3.09,0.9545,0.8139,96.0,👑 LOCK: Over 1.5 H+R+RBI,67
-662139,Daulton Varsho,4,Houston Astros,Jacob Lopez,L,L,0.243,0.307,0.375,1.53,HEART / RBI CLEANUP,3.08,0.9542,0.8131,95.9,👑 LOCK: Over 1.5 H+R+RBI,68
-667452,Corey Julks,4,Detroit Tigers,Michael Wacha,R,R,0.25,0.25,0.5,1.15,HEART / RBI CLEANUP,3.08,0.954,0.8124,95.9,👑 LOCK: Over 1.5 H+R+RBI,69
-681624,Andy Pages,2,Los Angeles Dodgers,Jared Jones,R,R,0.272,0.338,0.458,1.2,LEADOFF / RUN ENGINE,3.08,0.9538,0.8119,95.9,👑 LOCK: Over 1.5 H+R+RBI,70
-691023,Jordan Walker,8,St. Louis Cardinals,Andrew Painter,R,R,0.291,0.35,0.513,1.55,BOTTOM LINEUP,3.07,0.9538,0.8117,95.9,👑 LOCK: Over 1.5 H+R+RBI,71
-806146,George Lombard Jr.,5,New York Yankees,Dylan Cease,R,R,0.288,0.345,0.423,1.06,HEART / RBI CLEANUP,3.07,0.9535,0.8107,95.8,👑 LOCK: Over 1.5 H+R+RBI,72
-656577,Alex Jackson,2,Minnesota Twins,Casey Mize,R,R,0.303,0.333,0.409,1.5,LEADOFF / RUN ENGINE,3.05,0.9528,0.8087,95.7,👑 LOCK: Over 1.5 H+R+RBI,73
-683227,Cody Freeman,2,Texas Rangers,Ryan Johnson,R,R,0.276,0.364,0.276,1.54,LEADOFF / RUN ENGINE,3.04,0.9523,0.8072,95.6,👑 LOCK: Over 1.5 H+R+RBI,74
-668930,Brice Turang,2,Milwaukee Brewers,Martín Pérez,L,L,0.262,0.356,0.438,1.19,LEADOFF / RUN ENGINE,3.04,0.952,0.8063,95.6,👑 LOCK: Over 1.5 H+R+RBI,75
-666126,Carlos Cortes,3,Athletics,Hunter Brown,R,L,0.261,0.336,0.406,1.3,HEART / RBI CLEANUP,3.04,0.952,0.8062,95.6,👑 LOCK: Over 1.5 H+R+RBI,76
-682829,Elly De La Cruz,2,Cincinnati Reds,Michael Soroka,R,S,0.257,0.34,0.463,1.11,LEADOFF / RUN ENGINE,3.03,0.9515,0.8048,95.5,👑 LOCK: Over 1.5 H+R+RBI,77
-691458,Blaze Jordan,2,St. Louis Cardinals,Andrew Painter,R,R,0.241,0.269,0.362,1.55,LEADOFF / RUN ENGINE,3.03,0.9515,0.8046,95.5,👑 LOCK: Over 1.5 H+R+RBI,78
-691720,Kyle Karros,8,Colorado Rockies,Tanner Bibee,R,R,0.265,0.362,0.422,1.15,BOTTOM LINEUP,3.02,0.9511,0.8035,95.4,👑 LOCK: Over 1.5 H+R+RBI,79
-622761,Jorge Mateo,5,Tampa Bay Rays,Brandon Young,R,R,0.24,0.285,0.38,1.35,HEART / RBI CLEANUP,3.01,0.9509,0.803,95.4,👑 LOCK: Over 1.5 H+R+RBI,80
-678662,Ezequiel Tovar,5,Colorado Rockies,Tanner Bibee,R,R,0.204,0.251,0.326,1.15,HEART / RBI CLEANUP,3.0,0.9504,0.8013,95.3,👑 LOCK: Over 1.5 H+R+RBI,81
-701852,Drew Cavanaugh,5,San Francisco Giants,Patrick Sandoval,L,L,0.226,0.33,0.238,1.85,HEART / RBI CLEANUP,3.0,0.9502,0.8009,95.3,👑 LOCK: Over 1.5 H+R+RBI,82
-664040,Brandon Lowe,2,Pittsburgh Pirates,Tarik Skubal,L,L,0.254,0.319,0.481,1.24,LEADOFF / RUN ENGINE,3.0,0.9501,0.8004,95.3,👑 LOCK: Over 1.5 H+R+RBI,83
-608070,José Ramírez,8,Cleveland Guardians,Gabriel Hughes,R,S,0.235,0.336,0.377,1.38,BOTTOM LINEUP,2.99,0.9499,0.8,95.3,👑 LOCK: Over 1.5 H+R+RBI,84
-605137,Josh Bell,5,Minnesota Twins,Casey Mize,R,S,0.257,0.321,0.43,1.5,HEART / RBI CLEANUP,2.99,0.9499,0.8,95.3,👑 LOCK: Over 1.5 H+R+RBI,85
-680977,Brendan Donovan,1,Seattle Mariners,David Peterson,L,L,0.277,0.371,0.409,1.65,LEADOFF / RUN ENGINE,2.99,0.9496,0.7989,95.2,👑 LOCK: Over 1.5 H+R+RBI,86
-694673,Abimelec Ortiz,1,Washington Nationals,Eury Pérez,R,L,0.241,0.268,0.556,1.11,LEADOFF / RUN ENGINE,2.97,0.9486,0.796,95.0,👑 LOCK: Over 1.5 H+R+RBI,87
-682663,Agustín Ramírez,1,Miami Marlins,Jake Irvin,R,R,0.24,0.333,0.349,1.36,LEADOFF / RUN ENGINE,2.96,0.9479,0.794,94.9,👑 LOCK: Over 1.5 H+R+RBI,88
-678218,Brandon Valenzuela,3,Toronto Blue Jays,Ryan Weathers,L,S,0.23,0.308,0.388,1.19,HEART / RBI CLEANUP,2.94,0.947,0.7914,94.8,👑 LOCK: Over 1.5 H+R+RBI,89
-664761,Alec Bohm,1,Philadelphia Phillies,TBD Pitcher,R,R,0.246,0.303,0.389,1.25,LEADOFF / RUN ENGINE,2.93,0.9468,0.7908,94.7,👑 LOCK: Over 1.5 H+R+RBI,90
-624428,Adam Frazier,1,Los Angeles Angels,Cody Bradford,L,L,0.243,0.31,0.359,1.43,LEADOFF / RUN ENGINE,2.93,0.9464,0.7895,94.7,👑 LOCK: Over 1.5 H+R+RBI,91
-687952,Christian Encarnacion-Strand,2,Baltimore Orioles,Shane McClanahan,L,R,0.247,0.292,0.494,1.12,LEADOFF / RUN ENGINE,2.92,0.9462,0.7891,94.6,👑 LOCK: Over 1.5 H+R+RBI,92
-622268,Donovan Walton,5,Athletics,Hunter Brown,R,L,0.228,0.405,0.333,1.3,HEART / RBI CLEANUP,2.91,0.9456,0.7873,94.5,👑 LOCK: Over 1.5 H+R+RBI,93
-808982,Jung Hoo Lee,8,San Francisco Giants,Patrick Sandoval,L,L,0.291,0.328,0.43,1.85,BOTTOM LINEUP,2.91,0.9454,0.7867,94.5,👑 LOCK: Over 1.5 H+R+RBI,94
-571771,Enrique Hernández,4,Los Angeles Dodgers,Jared Jones,R,R,0.235,0.278,0.471,1.2,HEART / RBI CLEANUP,2.9,0.9452,0.7862,94.5,👑 LOCK: Over 1.5 H+R+RBI,95
-806198,Cooper Pratt,4,Milwaukee Brewers,Martín Pérez,L,R,0.259,0.337,0.35,1.19,HEART / RBI CLEANUP,2.9,0.9451,0.7859,94.4,👑 LOCK: Over 1.5 H+R+RBI,96
-686948,Drake Baldwin,3,Atlanta Braves,Logan Henderson,R,L,0.269,0.351,0.445,0.87,HEART / RBI CLEANUP,2.88,0.944,0.7825,94.2,👑 LOCK: Over 1.5 H+R+RBI,97
-668709,JJ Bleday,5,Cincinnati Reds,Michael Soroka,R,L,0.217,0.33,0.428,1.11,HEART / RBI CLEANUP,2.87,0.9433,0.7805,94.1,👑 LOCK: Over 1.5 H+R+RBI,98
-691406,Junior Caminero,6,Tampa Bay Rays,Brandon Young,R,R,0.276,0.363,0.536,1.35,BOTTOM LINEUP,2.87,0.9431,0.7799,94.0,👑 LOCK: Over 1.5 H+R+RBI,99
-667472,Dane Myers,1,Cincinnati Reds,Michael Soroka,R,R,0.257,0.352,0.367,1.11,LEADOFF / RUN ENGINE,2.85,0.9422,0.7773,93.9,👑 LOCK: Over 1.5 H+R+RBI,100
-666182,Bo Bichette,2,New York Mets,Luis Castillo,R,R,0.266,0.313,0.393,1.21,LEADOFF / RUN ENGINE,2.84,0.9417,0.776,93.8,👑 LOCK: Over 1.5 H+R+RBI,101
-702284,Cole Young,4,Seattle Mariners,David Peterson,L,L,0.255,0.315,0.395,1.65,HEART / RBI CLEANUP,2.84,0.9415,0.7754,93.7,👑 LOCK: Over 1.5 H+R+RBI,102
-686555,Isaac Collins,3,Kansas City Royals,Drew Anderson,R,S,0.227,0.328,0.348,1.3,HEART / RBI CLEANUP,2.84,0.9414,0.7752,93.7,👑 LOCK: Over 1.5 H+R+RBI,103
-694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford,L,R,0.237,0.279,0.371,1.43,LEADOFF / RUN ENGINE,2.84,0.9413,0.7749,93.7,👑 LOCK: Over 1.5 H+R+RBI,104
-686797,Brooks Lee,3,Minnesota Twins,Casey Mize,R,S,0.242,0.297,0.416,1.5,HEART / RBI CLEANUP,2.83,0.941,0.774,93.6,👑 LOCK: Over 1.5 H+R+RBI,105
-701358,Cam Smith,1,Houston Astros,Jacob Lopez,L,R,0.218,0.285,0.393,1.53,LEADOFF / RUN ENGINE,2.81,0.9401,0.7714,93.4,👑 LOCK: Over 1.5 H+R+RBI,106
-643217,Andrew Benintendi,1,Chicago White Sox,Christian Scott,R,L,0.245,0.308,0.423,1.29,LEADOFF / RUN ENGINE,2.8,0.9393,0.7694,93.3,👑 LOCK: Over 1.5 H+R+RBI,107
-691781,Brady House,4,Washington Nationals,Eury Pérez,R,R,0.238,0.297,0.396,1.11,HEART / RBI CLEANUP,2.8,0.9392,0.7691,93.3,👑 LOCK: Over 1.5 H+R+RBI,108
-695657,Colson Montgomery,5,Chicago White Sox,Christian Scott,R,L,0.217,0.296,0.439,1.29,HEART / RBI CLEANUP,2.8,0.9392,0.769,93.3,👑 LOCK: Over 1.5 H+R+RBI,109
-553869,Elias Díaz,5,Texas Rangers,Ryan Johnson,R,R,0.23,0.25,0.345,1.54,HEART / RBI CLEANUP,2.77,0.9374,0.7639,92.9,👑 LOCK: Over 1.5 H+R+RBI,110
-675961,Alika Williams,1,Athletics,Hunter Brown,R,R,0.261,0.298,0.387,1.3,LEADOFF / RUN ENGINE,2.77,0.9372,0.7633,92.8,👑 LOCK: Over 1.5 H+R+RBI,111
-666152,David Hamilton,5,Milwaukee Brewers,Martín Pérez,L,L,0.243,0.321,0.34,1.19,HEART / RBI CLEANUP,2.76,0.9369,0.7626,92.8,👑 LOCK: Over 1.5 H+R+RBI,112
-801126,Brock Rodden,2,Seattle Mariners,David Peterson,L,S,0.25,0.321,0.417,1.65,LEADOFF / RUN ENGINE,2.76,0.9368,0.7622,92.7,👑 LOCK: Over 1.5 H+R+RBI,113
-695600,Carter Jensen,2,Kansas City Royals,Drew Anderson,R,L,0.221,0.304,0.407,1.3,LEADOFF / RUN ENGINE,2.76,0.9366,0.7618,92.7,👑 LOCK: Over 1.5 H+R+RBI,114
-592885,Christian Yelich,3,Milwaukee Brewers,Martín Pérez,L,L,0.23,0.312,0.373,1.19,HEART / RBI CLEANUP,2.75,0.9363,0.761,92.6,👑 LOCK: Over 1.5 H+R+RBI,115
-666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford,L,L,0.209,0.266,0.36,1.43,HEART / RBI CLEANUP,2.75,0.9362,0.7606,92.6,👑 LOCK: Over 1.5 H+R+RBI,116
-669743,Alex Call,1,Los Angeles Dodgers,Jared Jones,R,R,0.252,0.355,0.328,1.2,LEADOFF / RUN ENGINE,2.75,0.9362,0.7605,92.6,👑 LOCK: Over 1.5 H+R+RBI,117
-665926,Andrés Giménez,2,Toronto Blue Jays,Ryan Weathers,L,L,0.24,0.284,0.356,1.19,LEADOFF / RUN ENGINE,2.72,0.9341,0.755,92.1,👑 LOCK: Over 1.5 H+R+RBI,118
-805999,A.J. Ewing,1,New York Mets,Luis Castillo,R,L,0.245,0.32,0.367,1.21,LEADOFF / RUN ENGINE,2.71,0.9336,0.7536,92.0,👑 LOCK: Over 1.5 H+R+RBI,119
-665161,Jeremy Peña,6,Houston Astros,Jacob Lopez,L,R,0.283,0.338,0.469,1.53,BOTTOM LINEUP,2.71,0.9334,0.7531,92.0,👑 LOCK: Over 1.5 H+R+RBI,120
-691723,Coby Mayo,4,Baltimore Orioles,Shane McClanahan,L,R,0.21,0.275,0.436,1.12,HEART / RBI CLEANUP,2.7,0.933,0.752,91.9,👑 LOCK: Over 1.5 H+R+RBI,121
-543877,Christian Vázquez,2,Houston Astros,Jacob Lopez,L,R,0.22,0.276,0.35,1.53,LEADOFF / RUN ENGINE,2.7,0.9325,0.7505,91.7,👑 LOCK: Over 1.5 H+R+RBI,122
-689414,Liam Hicks,8,Tampa Bay Rays,Brandon Young,R,L,0.282,0.363,0.432,1.35,BOTTOM LINEUP,2.69,0.9324,0.7502,91.7,👑 LOCK: Over 1.5 H+R+RBI,123
-691783,Jordan Lawlar,6,Arizona Diamondbacks,Rhett Lowder,R,R,0.283,0.356,0.434,1.49,BOTTOM LINEUP,2.69,0.9318,0.7486,91.6,👑 LOCK: Over 1.5 H+R+RBI,124
-695731,Braden Montgomery,2,Chicago White Sox,Christian Scott,R,S,0.235,0.324,0.369,1.29,LEADOFF / RUN ENGINE,2.68,0.9317,0.7485,91.5,👑 LOCK: Over 1.5 H+R+RBI,125
-553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka,R,R,0.207,0.291,0.411,1.11,HEART / RBI CLEANUP,2.68,0.9313,0.7473,91.4,👑 LOCK: Over 1.5 H+R+RBI,126
-656775,Cedric Mullins,1,Tampa Bay Rays,Brandon Young,R,L,0.207,0.285,0.353,1.35,LEADOFF / RUN ENGINE,2.67,0.9305,0.7452,91.2,👑 LOCK: Over 1.5 H+R+RBI,127
-683766,Christian Koss,4,San Francisco Giants,Patrick Sandoval,L,R,0.204,0.245,0.258,1.85,HEART / RBI CLEANUP,2.65,0.9293,0.742,90.9,👑 LOCK: Over 1.5 H+R+RBI,128
-668939,Adley Rutschman,1,Boston Red Sox,Blade Tidwell,R,S,0.194,0.324,0.323,1.22,LEADOFF / RUN ENGINE,2.65,0.9291,0.7415,90.9,👑 LOCK: Over 1.5 H+R+RBI,129
-681297,Colton Cowser,5,Baltimore Orioles,Shane McClanahan,L,L,0.214,0.31,0.353,1.12,HEART / RBI CLEANUP,2.63,0.928,0.7385,90.6,👑 LOCK: Over 1.5 H+R+RBI,130
-690924,Braxton Fulford,1,Colorado Rockies,Tanner Bibee,R,R,0.176,0.256,0.279,1.15,LEADOFF / RUN ENGINE,2.61,0.9265,0.7346,90.2,👑 LOCK: Over 1.5 H+R+RBI,131
-608324,Alex Bregman,1,Chicago Cubs,Kade Anderson,L,R,0.258,0.347,0.418,1.25,LEADOFF / RUN ENGINE,2.6,0.926,0.7333,90.0,👑 LOCK: Over 1.5 H+R+RBI,132
-670231,John Rave,5,Kansas City Royals,Drew Anderson,R,L,0.194,0.254,0.403,1.3,HEART / RBI CLEANUP,2.6,0.9256,0.7322,89.9,👑 LOCK: Over 1.5 H+R+RBI,133
-687231,Darell Hernaiz,4,Athletics,Hunter Brown,R,R,0.236,0.317,0.283,1.3,HEART / RBI CLEANUP,2.59,0.9251,0.7309,89.8,👑 LOCK: Over 1.5 H+R+RBI,134
-687551,Drew Gilbert,6,San Francisco Giants,Patrick Sandoval,L,L,0.241,0.326,0.378,1.85,BOTTOM LINEUP,2.59,0.925,0.7307,89.7,👑 LOCK: Over 1.5 H+R+RBI,135
-677649,Ezequiel Duran,7,Texas Rangers,Ryan Johnson,R,R,0.271,0.327,0.441,1.54,BOTTOM LINEUP,2.59,0.9248,0.7301,89.7,👑 LOCK: Over 1.5 H+R+RBI,136
-691594,Javier Sanoja,7,Miami Marlins,Jake Irvin,R,R,0.282,0.32,0.427,1.36,BOTTOM LINEUP,2.59,0.9247,0.7299,89.6,👑 LOCK: Over 1.5 H+R+RBI,137
-641343,Jake Bauers,9,Milwaukee Brewers,Martín Pérez,L,L,0.273,0.383,0.5,1.19,BOTTOM LINEUP,2.58,0.9239,0.7278,89.4,👑 LOCK: Over 1.5 H+R+RBI,138
-802139,JJ Wetherholt,6,St. Louis Cardinals,Andrew Painter,R,L,0.241,0.345,0.369,1.55,BOTTOM LINEUP,2.57,0.9234,0.7266,89.3,👑 LOCK: Over 1.5 H+R+RBI,139
-665877,José Fermín,9,St. Louis Cardinals,Andrew Painter,R,R,0.251,0.324,0.37,1.55,BOTTOM LINEUP,2.56,0.9227,0.7248,89.1,👑 LOCK: Over 1.5 H+R+RBI,140
-694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford,L,L,0.276,0.351,0.385,1.43,BOTTOM LINEUP,2.56,0.9224,0.724,89.0,👑 LOCK: Over 1.5 H+R+RBI,141
-681807,David Fry,6,Cleveland Guardians,Gabriel Hughes,R,R,0.182,0.304,0.336,1.38,BOTTOM LINEUP,2.55,0.922,0.723,88.9,👑 LOCK: Over 1.5 H+R+RBI,142
-665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer,R,R,0.284,0.357,0.438,0.81,LEADOFF / RUN ENGINE,2.53,0.9207,0.7196,88.4,👑 LOCK: Over 1.5 H+R+RBI,143
-642086,Dominic Smith,2,Atlanta Braves,Logan Henderson,R,L,0.261,0.316,0.385,0.87,LEADOFF / RUN ENGINE,2.53,0.9203,0.7188,88.3,👑 LOCK: Over 1.5 H+R+RBI,144
-683146,Brett Baty,3,New York Mets,Luis Castillo,R,L,0.215,0.287,0.331,1.21,HEART / RBI CLEANUP,2.52,0.9197,0.7171,88.1,👑 LOCK: Over 1.5 H+R+RBI,145
-608348,Carson Kelly,2,Chicago Cubs,Kade Anderson,L,R,0.262,0.343,0.372,1.25,LEADOFF / RUN ENGINE,2.52,0.9196,0.717,88.1,👑 LOCK: Over 1.5 H+R+RBI,146
-693304,Nick Gonzales,9,Pittsburgh Pirates,Tarik Skubal,L,R,0.311,0.369,0.404,1.24,BOTTOM LINEUP,2.51,0.9189,0.7152,87.9,👑 LOCK: Over 1.5 H+R+RBI,147
-642708,Amed Rosario,2,New York Yankees,Dylan Cease,R,R,0.226,0.272,0.425,1.06,LEADOFF / RUN ENGINE,2.5,0.9181,0.7133,87.6,👑 LOCK: Over 1.5 H+R+RBI,148
-664023,Ian Happ,4,Chicago Cubs,Kade Anderson,L,S,0.216,0.323,0.414,1.25,HEART / RBI CLEANUP,2.48,0.9164,0.709,87.1,👑 LOCK: Over 1.5 H+R+RBI,149
-694192,Jackson Chourio,8,Milwaukee Brewers,Martín Pérez,L,R,0.28,0.343,0.468,1.19,BOTTOM LINEUP,2.46,0.9147,0.7048,86.5,👑 LOCK: Over 1.5 H+R+RBI,150
-645305,Ali Sánchez,1,New York Yankees,Dylan Cease,R,R,0.254,0.284,0.333,1.06,LEADOFF / RUN ENGINE,2.46,0.9144,0.7041,86.4,👑 LOCK: Over 1.5 H+R+RBI,151
-678545,Osleivis Basabe,9,San Francisco Giants,Patrick Sandoval,L,R,0.235,0.264,0.397,1.85,BOTTOM LINEUP,2.45,0.9136,0.702,86.1,👑 LOCK: Over 1.5 H+R+RBI,152
-650402,Gleyber Torres,7,Detroit Tigers,Michael Wacha,R,R,0.266,0.375,0.393,1.15,BOTTOM LINEUP,2.45,0.9135,0.7017,86.1,👑 LOCK: Over 1.5 H+R+RBI,153
-686681,Michael Massey,9,Kansas City Royals,Drew Anderson,R,L,0.278,0.31,0.448,1.3,BOTTOM LINEUP,2.45,0.9134,0.7015,86.0,👑 LOCK: Over 1.5 H+R+RBI,154
-661531,Brian Serven,2,Athletics,Hunter Brown,R,R,0.205,0.225,0.436,1.3,LEADOFF / RUN ENGINE,2.44,0.9125,0.6994,85.7,👑 LOCK: Over 1.5 H+R+RBI,155
-676391,Ernie Clement,8,Toronto Blue Jays,Ryan Weathers,L,R,0.285,0.31,0.403,1.19,BOTTOM LINEUP,2.43,0.9122,0.6986,85.6,👑 LOCK: Over 1.5 H+R+RBI,156
-571970,Max Muncy,8,Los Angeles Dodgers,Jared Jones,R,L,0.252,0.344,0.504,1.2,BOTTOM LINEUP,2.43,0.9119,0.698,85.5,👑 LOCK: Over 1.5 H+R+RBI,157
-701678,Hao-Yu Lee,8,Detroit Tigers,Michael Wacha,R,R,0.277,0.319,0.423,1.15,BOTTOM LINEUP,2.42,0.9109,0.6955,85.1,👑 LOCK: Over 1.5 H+R+RBI,158
-813841,Jonah Cox,7,San Francisco Giants,Patrick Sandoval,L,R,0.233,0.233,0.419,1.85,BOTTOM LINEUP,2.41,0.91,0.6932,84.8,👑 LOCK: Over 1.5 H+R+RBI,159
-657136,Connor Wong,6,Boston Red Sox,Blade Tidwell,R,R,0.25,0.332,0.381,1.22,BOTTOM LINEUP,2.41,0.91,0.6932,84.8,👑 LOCK: Over 1.5 H+R+RBI,160
-663968,Jake Mangum,7,Pittsburgh Pirates,Tarik Skubal,L,S,0.297,0.351,0.389,1.24,BOTTOM LINEUP,2.4,0.9094,0.692,84.6,👑 LOCK: Over 1.5 H+R+RBI,161
-702176,Alan Roden,1,Minnesota Twins,Casey Mize,R,L,0.23,0.31,0.279,1.5,LEADOFF / RUN ENGINE,2.4,0.9093,0.6917,84.6,👑 LOCK: Over 1.5 H+R+RBI,162
-678246,Miguel Vargas,9,Chicago White Sox,Christian Scott,R,R,0.243,0.35,0.497,1.29,BOTTOM LINEUP,2.4,0.9093,0.6915,84.5,👑 LOCK: Over 1.5 H+R+RBI,163
-694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford,L,R,0.245,0.315,0.405,1.43,BOTTOM LINEUP,2.4,0.9088,0.6905,84.4,👑 LOCK: Over 1.5 H+R+RBI,164
-663743,Nick Fortes,9,Tampa Bay Rays,Brandon Young,R,R,0.266,0.31,0.367,1.35,BOTTOM LINEUP,2.39,0.9085,0.6896,84.2,👑 LOCK: Over 1.5 H+R+RBI,165
-514888,Jose Altuve,7,Houston Astros,Jacob Lopez,L,R,0.247,0.31,0.396,1.53,BOTTOM LINEUP,2.37,0.9069,0.6859,83.6,👑 LOCK: Over 1.5 H+R+RBI,166
-699912,Jose Fernandez,8,Arizona Diamondbacks,Rhett Lowder,R,R,0.264,0.307,0.365,1.49,BOTTOM LINEUP,2.37,0.9068,0.6856,83.6,👑 LOCK: Over 1.5 H+R+RBI,167
-701785,Kaelen Culpepper,6,Minnesota Twins,Casey Mize,R,R,0.289,0.349,0.395,1.5,BOTTOM LINEUP,2.35,0.9048,0.681,82.8,👑 LOCK: Over 1.5 H+R+RBI,168
-669003,Garrett Mitchell,6,Milwaukee Brewers,Martín Pérez,L,L,0.261,0.358,0.421,1.19,BOTTOM LINEUP,2.35,0.9045,0.6801,82.7,👑 LOCK: Over 1.5 H+R+RBI,169
-669394,Jake Burger,8,Texas Rangers,Ryan Johnson,R,R,0.235,0.295,0.416,1.54,BOTTOM LINEUP,2.33,0.9029,0.6766,82.0,👑 LOCK: Over 1.5 H+R+RBI,170
-681047,Christian Franklin,3,Baltimore Orioles,Shane McClanahan,L,R,0.182,0.357,0.227,1.12,HEART / RBI CLEANUP,2.33,0.9027,0.676,81.9,👑 LOCK: Over 1.5 H+R+RBI,171
-691788,Joe Mack,8,Miami Marlins,Jake Irvin,R,L,0.231,0.287,0.419,1.36,BOTTOM LINEUP,2.3,0.9002,0.6702,80.9,👑 LOCK: Over 1.5 H+R+RBI,172
-663457,Lars Nootbaar,9,Arizona Diamondbacks,Rhett Lowder,R,L,0.234,0.333,0.354,1.49,BOTTOM LINEUP,2.3,0.8997,0.669,80.7,👑 LOCK: Over 1.5 H+R+RBI,173
-669397,Nick Allen,9,Houston Astros,Jacob Lopez,L,R,0.258,0.303,0.342,1.53,BOTTOM LINEUP,2.3,0.8996,0.6688,80.6,👑 LOCK: Over 1.5 H+R+RBI,174
-807712,Luke Keaschall,8,Minnesota Twins,Casey Mize,R,R,0.272,0.363,0.375,1.5,BOTTOM LINEUP,2.29,0.8987,0.6669,80.3,👑 LOCK: Over 1.5 H+R+RBI,175
-500743,Miguel Rojas,9,Los Angeles Dodgers,Jared Jones,R,R,0.276,0.323,0.397,1.2,BOTTOM LINEUP,2.29,0.8983,0.6659,80.1,👑 LOCK: Over 1.5 H+R+RBI,176
-642201,Eli White,7,Boston Red Sox,Blade Tidwell,R,R,0.233,0.285,0.406,1.22,BOTTOM LINEUP,2.28,0.8981,0.6653,80.0,👑 LOCK: Over 1.5 H+R+RBI,177
-663586,Austin Riley,1,Atlanta Braves,Logan Henderson,R,R,0.221,0.293,0.367,0.87,LEADOFF / RUN ENGINE,2.28,0.898,0.6652,79.9,👑 LOCK: Over 1.5 H+R+RBI,178
-683090,Matthew Lugo,8,Kansas City Royals,Drew Anderson,R,R,0.245,0.315,0.405,1.3,BOTTOM LINEUP,2.26,0.8961,0.6608,79.1,👑 LOCK: Over 1.5 H+R+RBI,179
-701538,Jackson Merrill,5,San Diego Padres,Dean Kremer,R,L,0.238,0.288,0.405,0.81,HEART / RBI CLEANUP,2.26,0.8957,0.66,78.9,👑 LOCK: Over 1.5 H+R+RBI,180
-621566,Matt Olson,7,Atlanta Braves,Logan Henderson,R,L,0.261,0.337,0.539,0.87,BOTTOM LINEUP,2.25,0.8951,0.6586,78.6,👑 LOCK: Over 1.5 H+R+RBI,181
-682634,Kevin Alcántara,5,Chicago Cubs,Kade Anderson,L,R,0.217,0.28,0.348,1.25,HEART / RBI CLEANUP,2.25,0.8945,0.6572,78.4,👑 LOCK: Over 1.5 H+R+RBI,182
-671739,Michael Harris II,9,Atlanta Braves,Logan Henderson,R,L,0.293,0.32,0.487,0.87,BOTTOM LINEUP,2.24,0.8937,0.6554,78.0,👑 LOCK: Over 1.5 H+R+RBI,183
-703607,Henry Bolte,6,Athletics,Hunter Brown,R,R,0.267,0.341,0.365,1.3,BOTTOM LINEUP,2.24,0.8933,0.6546,77.8,👑 LOCK: Over 1.5 H+R+RBI,184
-543807,George Springer,9,Toronto Blue Jays,Ryan Weathers,L,R,0.235,0.314,0.387,1.19,BOTTOM LINEUP,2.23,0.8928,0.6533,77.5,👑 LOCK: Over 1.5 H+R+RBI,185
-664774,LaMonte Wade Jr.,8,Houston Astros,Jacob Lopez,L,L,0.218,0.346,0.333,1.53,BOTTOM LINEUP,2.23,0.8925,0.6527,77.4,👑 LOCK: Over 1.5 H+R+RBI,186
-596142,Gary Sánchez,7,Milwaukee Brewers,Martín Pérez,L,R,0.216,0.36,0.438,1.19,BOTTOM LINEUP,2.23,0.8923,0.6523,77.3,👑 LOCK: Over 1.5 H+R+RBI,187
-657757,Gavin Sheets,4,San Diego Padres,Dean Kremer,R,L,0.214,0.316,0.397,0.81,HEART / RBI CLEANUP,2.22,0.8915,0.6504,76.9,👑 LOCK: Over 1.5 H+R+RBI,188
-669134,Luis Campusano,8,San Diego Padres,Dean Kremer,R,R,0.301,0.408,0.496,0.81,BOTTOM LINEUP,2.2,0.8887,0.6443,75.6,🔥 TARGET: 2+ Combo Value,189
-596019,Francisco Lindor,9,New York Mets,Luis Castillo,R,S,0.236,0.326,0.42,1.21,BOTTOM LINEUP,2.2,0.8886,0.6442,75.6,🔥 TARGET: 2+ Combo Value,190
-680779,Henry Davis,5,Pittsburgh Pirates,Tarik Skubal,L,R,0.17,0.266,0.299,1.24,HEART / RBI CLEANUP,2.19,0.8877,0.6422,75.1,🔥 TARGET: 2+ Combo Value,191
-665019,Kody Clemens,7,Minnesota Twins,Casey Mize,R,L,0.237,0.293,0.469,1.5,BOTTOM LINEUP,2.19,0.8877,0.6422,75.1,🔥 TARGET: 2+ Combo Value,192
+667452,Corey Julks,4,Detroit Tigers,Michael Wacha,R,R,0.25,0.25,0.5,1.15,HEART / RBI CLEANUP,3.09,0.9544,0.8137,95.9,👑 LOCK: Over 1.5 H+R+RBI,68
+691023,Jordan Walker,8,St. Louis Cardinals,Andrew Painter,R,R,0.291,0.35,0.513,1.55,BOTTOM LINEUP,3.09,0.9543,0.8134,95.9,👑 LOCK: Over 1.5 H+R+RBI,69
+662139,Daulton Varsho,4,Houston Astros,Jacob Lopez,L,L,0.243,0.307,0.375,1.53,HEART / RBI CLEANUP,3.08,0.9542,0.8131,95.9,👑 LOCK: Over 1.5 H+R+RBI,70
+681624,Andy Pages,2,Los Angeles Dodgers,Jared Jones,R,R,0.272,0.338,0.458,1.2,LEADOFF / RUN ENGINE,3.08,0.9538,0.8119,95.9,👑 LOCK: Over 1.5 H+R+RBI,71
+656577,Alex Jackson,2,Minnesota Twins,Casey Mize,R,R,0.303,0.333,0.409,1.5,LEADOFF / RUN ENGINE,3.07,0.9535,0.8109,95.8,👑 LOCK: Over 1.5 H+R+RBI,72
+691720,Kyle Karros,8,Colorado Rockies,Tanner Bibee,R,R,0.265,0.362,0.422,1.15,BOTTOM LINEUP,3.06,0.9533,0.8101,95.8,👑 LOCK: Over 1.5 H+R+RBI,73
+683357,Owen Caissie,3,Miami Marlins,Jake Irvin,R,L,0.224,0.288,0.425,1.36,HEART / RBI CLEANUP,3.06,0.9529,0.8091,95.7,👑 LOCK: Over 1.5 H+R+RBI,74
+678662,Ezequiel Tovar,5,Colorado Rockies,Tanner Bibee,R,R,0.204,0.251,0.326,1.15,HEART / RBI CLEANUP,3.05,0.9526,0.808,95.7,👑 LOCK: Over 1.5 H+R+RBI,75
+683227,Cody Freeman,2,Texas Rangers,Ryan Johnson,R,R,0.276,0.364,0.276,1.54,LEADOFF / RUN ENGINE,3.04,0.9523,0.8072,95.6,👑 LOCK: Over 1.5 H+R+RBI,76
+608070,José Ramírez,8,Cleveland Guardians,Gabriel Hughes,R,S,0.235,0.336,0.377,1.38,BOTTOM LINEUP,3.04,0.9521,0.8066,95.6,👑 LOCK: Over 1.5 H+R+RBI,77
+691458,Blaze Jordan,2,St. Louis Cardinals,Andrew Painter,R,R,0.241,0.269,0.362,1.55,LEADOFF / RUN ENGINE,3.04,0.952,0.8064,95.6,👑 LOCK: Over 1.5 H+R+RBI,78
+668930,Brice Turang,2,Milwaukee Brewers,Martín Pérez,L,L,0.262,0.356,0.438,1.19,LEADOFF / RUN ENGINE,3.04,0.952,0.8063,95.6,👑 LOCK: Over 1.5 H+R+RBI,79
+666126,Carlos Cortes,3,Athletics,Hunter Brown,R,L,0.261,0.336,0.406,1.3,HEART / RBI CLEANUP,3.04,0.952,0.8062,95.6,👑 LOCK: Over 1.5 H+R+RBI,80
+682829,Elly De La Cruz,2,Cincinnati Reds,Michael Soroka,R,S,0.257,0.34,0.463,1.11,LEADOFF / RUN ENGINE,3.03,0.9515,0.8048,95.5,👑 LOCK: Over 1.5 H+R+RBI,81
+622761,Jorge Mateo,5,Tampa Bay Rays,Brandon Young,R,R,0.24,0.285,0.38,1.35,HEART / RBI CLEANUP,3.01,0.9509,0.803,95.4,👑 LOCK: Over 1.5 H+R+RBI,82
+700250,Ben Rice,2,New York Yankees,Dylan Cease,R,L,0.249,0.345,0.53,1.06,LEADOFF / RUN ENGINE,3.01,0.9508,0.8026,95.4,👑 LOCK: Over 1.5 H+R+RBI,83
+605137,Josh Bell,5,Minnesota Twins,Casey Mize,R,S,0.257,0.321,0.43,1.5,HEART / RBI CLEANUP,3.01,0.9507,0.8023,95.4,👑 LOCK: Over 1.5 H+R+RBI,84
+621566,Matt Olson,3,Atlanta Braves,Logan Henderson,R,L,0.261,0.337,0.539,0.87,HEART / RBI CLEANUP,3.01,0.9505,0.8018,95.4,👑 LOCK: Over 1.5 H+R+RBI,85
+661388,William Contreras,3,Milwaukee Brewers,Martín Pérez,L,R,0.264,0.335,0.387,1.19,HEART / RBI CLEANUP,3.0,0.9504,0.8014,95.3,👑 LOCK: Over 1.5 H+R+RBI,86
+701852,Drew Cavanaugh,5,San Francisco Giants,Patrick Sandoval,L,L,0.226,0.33,0.238,1.85,HEART / RBI CLEANUP,3.0,0.9502,0.8009,95.3,👑 LOCK: Over 1.5 H+R+RBI,87
+664040,Brandon Lowe,2,Pittsburgh Pirates,Tarik Skubal,L,L,0.254,0.319,0.481,1.24,LEADOFF / RUN ENGINE,3.0,0.9501,0.8004,95.3,👑 LOCK: Over 1.5 H+R+RBI,88
+680977,Brendan Donovan,1,Seattle Mariners,David Peterson,L,L,0.277,0.371,0.409,1.65,LEADOFF / RUN ENGINE,2.99,0.9499,0.7998,95.2,👑 LOCK: Over 1.5 H+R+RBI,89
+671739,Michael Harris II,4,Atlanta Braves,Logan Henderson,R,L,0.293,0.32,0.487,0.87,HEART / RBI CLEANUP,2.99,0.9496,0.7991,95.2,👑 LOCK: Over 1.5 H+R+RBI,90
+694673,Abimelec Ortiz,1,Washington Nationals,Eury Pérez,R,L,0.241,0.268,0.556,1.11,LEADOFF / RUN ENGINE,2.97,0.9486,0.796,95.0,👑 LOCK: Over 1.5 H+R+RBI,91
+678218,Brandon Valenzuela,3,Toronto Blue Jays,Ryan Weathers,L,S,0.23,0.308,0.388,1.19,HEART / RBI CLEANUP,2.95,0.9476,0.7932,94.9,👑 LOCK: Over 1.5 H+R+RBI,92
+664761,Alec Bohm,1,Philadelphia Phillies,TBD Pitcher,R,R,0.246,0.303,0.389,1.25,LEADOFF / RUN ENGINE,2.95,0.9475,0.7927,94.8,👑 LOCK: Over 1.5 H+R+RBI,93
+624428,Adam Frazier,1,Los Angeles Angels,Cody Bradford,L,L,0.243,0.31,0.359,1.43,LEADOFF / RUN ENGINE,2.93,0.9464,0.7895,94.7,👑 LOCK: Over 1.5 H+R+RBI,94
+687952,Christian Encarnacion-Strand,2,Baltimore Orioles,Shane McClanahan,L,R,0.247,0.292,0.494,1.12,LEADOFF / RUN ENGINE,2.92,0.9462,0.7891,94.6,👑 LOCK: Over 1.5 H+R+RBI,95
+622268,Donovan Walton,5,Athletics,Hunter Brown,R,L,0.228,0.405,0.333,1.3,HEART / RBI CLEANUP,2.91,0.9456,0.7873,94.5,👑 LOCK: Over 1.5 H+R+RBI,96
+808982,Jung Hoo Lee,8,San Francisco Giants,Patrick Sandoval,L,L,0.291,0.328,0.43,1.85,BOTTOM LINEUP,2.91,0.9454,0.7867,94.5,👑 LOCK: Over 1.5 H+R+RBI,97
+571771,Enrique Hernández,4,Los Angeles Dodgers,Jared Jones,R,R,0.235,0.278,0.471,1.2,HEART / RBI CLEANUP,2.9,0.9452,0.7862,94.5,👑 LOCK: Over 1.5 H+R+RBI,98
+668709,JJ Bleday,5,Cincinnati Reds,Michael Soroka,R,L,0.217,0.33,0.428,1.11,HEART / RBI CLEANUP,2.87,0.9433,0.7805,94.1,👑 LOCK: Over 1.5 H+R+RBI,99
+691406,Junior Caminero,6,Tampa Bay Rays,Brandon Young,R,R,0.276,0.363,0.536,1.35,BOTTOM LINEUP,2.87,0.9431,0.7799,94.0,👑 LOCK: Over 1.5 H+R+RBI,100
+667472,Dane Myers,1,Cincinnati Reds,Michael Soroka,R,R,0.257,0.352,0.367,1.11,LEADOFF / RUN ENGINE,2.85,0.9422,0.7773,93.9,👑 LOCK: Over 1.5 H+R+RBI,101
+686555,Isaac Collins,3,Kansas City Royals,Drew Anderson,R,S,0.227,0.328,0.348,1.3,HEART / RBI CLEANUP,2.85,0.9419,0.7766,93.8,👑 LOCK: Over 1.5 H+R+RBI,102
+686797,Brooks Lee,3,Minnesota Twins,Casey Mize,R,S,0.242,0.297,0.416,1.5,HEART / RBI CLEANUP,2.84,0.9418,0.7764,93.8,👑 LOCK: Over 1.5 H+R+RBI,103
+702284,Cole Young,4,Seattle Mariners,David Peterson,L,L,0.255,0.315,0.395,1.65,HEART / RBI CLEANUP,2.84,0.9418,0.7763,93.8,👑 LOCK: Over 1.5 H+R+RBI,104
+666182,Bo Bichette,2,New York Mets,Luis Castillo,R,R,0.266,0.313,0.393,1.21,LEADOFF / RUN ENGINE,2.84,0.9417,0.776,93.8,👑 LOCK: Over 1.5 H+R+RBI,105
+694203,Denzer Guzman,2,Los Angeles Angels,Cody Bradford,L,R,0.237,0.279,0.371,1.43,LEADOFF / RUN ENGINE,2.84,0.9413,0.7749,93.7,👑 LOCK: Over 1.5 H+R+RBI,106
+701358,Cam Smith,1,Houston Astros,Jacob Lopez,L,R,0.218,0.285,0.393,1.53,LEADOFF / RUN ENGINE,2.81,0.9401,0.7714,93.4,👑 LOCK: Over 1.5 H+R+RBI,107
+805300,Jakob Marsee,5,Miami Marlins,Jake Irvin,R,L,0.206,0.325,0.316,1.36,HEART / RBI CLEANUP,2.81,0.9396,0.7701,93.3,👑 LOCK: Over 1.5 H+R+RBI,108
+643217,Andrew Benintendi,1,Chicago White Sox,Christian Scott,R,L,0.245,0.308,0.423,1.29,LEADOFF / RUN ENGINE,2.8,0.9393,0.7694,93.3,👑 LOCK: Over 1.5 H+R+RBI,109
+691781,Brady House,4,Washington Nationals,Eury Pérez,R,R,0.238,0.297,0.396,1.11,HEART / RBI CLEANUP,2.8,0.9392,0.7691,93.3,👑 LOCK: Over 1.5 H+R+RBI,110
+695657,Colson Montgomery,5,Chicago White Sox,Christian Scott,R,L,0.217,0.296,0.439,1.29,HEART / RBI CLEANUP,2.8,0.9392,0.769,93.3,👑 LOCK: Over 1.5 H+R+RBI,111
+553869,Elias Díaz,5,Texas Rangers,Ryan Johnson,R,R,0.23,0.25,0.345,1.54,HEART / RBI CLEANUP,2.77,0.9374,0.7639,92.9,👑 LOCK: Over 1.5 H+R+RBI,112
+675961,Alika Williams,1,Athletics,Hunter Brown,R,R,0.261,0.298,0.387,1.3,LEADOFF / RUN ENGINE,2.77,0.9372,0.7633,92.8,👑 LOCK: Over 1.5 H+R+RBI,113
+695600,Carter Jensen,2,Kansas City Royals,Drew Anderson,R,L,0.221,0.304,0.407,1.3,LEADOFF / RUN ENGINE,2.77,0.9372,0.7633,92.8,👑 LOCK: Over 1.5 H+R+RBI,114
+801126,Brock Rodden,2,Seattle Mariners,David Peterson,L,S,0.25,0.321,0.417,1.65,LEADOFF / RUN ENGINE,2.77,0.9371,0.7632,92.8,👑 LOCK: Over 1.5 H+R+RBI,115
+686948,Drake Baldwin,1,Atlanta Braves,Logan Henderson,R,L,0.269,0.351,0.445,0.87,LEADOFF / RUN ENGINE,2.76,0.9368,0.7624,92.7,👑 LOCK: Over 1.5 H+R+RBI,116
+666139,Josh Lowe,4,Los Angeles Angels,Cody Bradford,L,L,0.209,0.266,0.36,1.43,HEART / RBI CLEANUP,2.75,0.9362,0.7606,92.6,👑 LOCK: Over 1.5 H+R+RBI,117
+669743,Alex Call,1,Los Angeles Dodgers,Jared Jones,R,R,0.252,0.355,0.328,1.2,LEADOFF / RUN ENGINE,2.75,0.9362,0.7605,92.6,👑 LOCK: Over 1.5 H+R+RBI,118
+665926,Andrés Giménez,2,Toronto Blue Jays,Ryan Weathers,L,L,0.24,0.284,0.356,1.19,LEADOFF / RUN ENGINE,2.73,0.9349,0.757,92.3,👑 LOCK: Over 1.5 H+R+RBI,119
+682987,Spencer Jones,5,New York Yankees,Dylan Cease,R,L,0.229,0.306,0.425,1.06,HEART / RBI CLEANUP,2.73,0.9345,0.7559,92.2,👑 LOCK: Over 1.5 H+R+RBI,120
+671277,Luis García Jr.,4,New York Yankees,Dylan Cease,R,L,0.25,0.283,0.411,1.06,HEART / RBI CLEANUP,2.72,0.9344,0.7558,92.2,👑 LOCK: Over 1.5 H+R+RBI,121
+805999,A.J. Ewing,1,New York Mets,Luis Castillo,R,L,0.245,0.32,0.367,1.21,LEADOFF / RUN ENGINE,2.71,0.9336,0.7536,92.0,👑 LOCK: Over 1.5 H+R+RBI,122
+665161,Jeremy Peña,6,Houston Astros,Jacob Lopez,L,R,0.283,0.338,0.469,1.53,BOTTOM LINEUP,2.71,0.9334,0.7531,92.0,👑 LOCK: Over 1.5 H+R+RBI,123
+691723,Coby Mayo,4,Baltimore Orioles,Shane McClanahan,L,R,0.21,0.275,0.436,1.12,HEART / RBI CLEANUP,2.7,0.933,0.752,91.9,👑 LOCK: Over 1.5 H+R+RBI,124
+543877,Christian Vázquez,2,Houston Astros,Jacob Lopez,L,R,0.22,0.276,0.35,1.53,LEADOFF / RUN ENGINE,2.7,0.9325,0.7505,91.7,👑 LOCK: Over 1.5 H+R+RBI,125
+689414,Liam Hicks,8,Tampa Bay Rays,Brandon Young,R,L,0.282,0.363,0.432,1.35,BOTTOM LINEUP,2.69,0.9324,0.7502,91.7,👑 LOCK: Over 1.5 H+R+RBI,126
+691783,Jordan Lawlar,6,Arizona Diamondbacks,Rhett Lowder,R,R,0.283,0.356,0.434,1.49,BOTTOM LINEUP,2.69,0.9318,0.7486,91.6,👑 LOCK: Over 1.5 H+R+RBI,127
+695731,Braden Montgomery,2,Chicago White Sox,Christian Scott,R,S,0.235,0.324,0.369,1.29,LEADOFF / RUN ENGINE,2.68,0.9317,0.7485,91.5,👑 LOCK: Over 1.5 H+R+RBI,128
+553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka,R,R,0.207,0.291,0.411,1.11,HEART / RBI CLEANUP,2.68,0.9313,0.7473,91.4,👑 LOCK: Over 1.5 H+R+RBI,129
+656775,Cedric Mullins,1,Tampa Bay Rays,Brandon Young,R,L,0.207,0.285,0.353,1.35,LEADOFF / RUN ENGINE,2.67,0.9305,0.7452,91.2,👑 LOCK: Over 1.5 H+R+RBI,130
+683766,Christian Koss,4,San Francisco Giants,Patrick Sandoval,L,R,0.204,0.245,0.258,1.85,HEART / RBI CLEANUP,2.65,0.9293,0.742,90.9,👑 LOCK: Over 1.5 H+R+RBI,131
+690924,Braxton Fulford,1,Colorado Rockies,Tanner Bibee,R,R,0.176,0.256,0.279,1.15,LEADOFF / RUN ENGINE,2.65,0.9293,0.742,90.9,👑 LOCK: Over 1.5 H+R+RBI,132
+668939,Adley Rutschman,1,Boston Red Sox,Blade Tidwell,R,S,0.194,0.324,0.323,1.22,LEADOFF / RUN ENGINE,2.65,0.9291,0.7415,90.9,👑 LOCK: Over 1.5 H+R+RBI,133
+665923,Esteury Ruiz,9,Miami Marlins,Jake Irvin,R,R,0.253,0.369,0.453,1.36,BOTTOM LINEUP,2.64,0.9285,0.7399,90.7,👑 LOCK: Over 1.5 H+R+RBI,134
+645277,Ozzie Albies,5,Atlanta Braves,Logan Henderson,R,S,0.249,0.305,0.418,0.87,HEART / RBI CLEANUP,2.63,0.928,0.7385,90.6,👑 LOCK: Over 1.5 H+R+RBI,135
+681297,Colton Cowser,5,Baltimore Orioles,Shane McClanahan,L,L,0.214,0.31,0.353,1.12,HEART / RBI CLEANUP,2.63,0.928,0.7385,90.6,👑 LOCK: Over 1.5 H+R+RBI,136
+608324,Alex Bregman,1,Chicago Cubs,Kade Anderson,L,R,0.258,0.347,0.418,1.25,LEADOFF / RUN ENGINE,2.61,0.9264,0.7343,90.1,👑 LOCK: Over 1.5 H+R+RBI,137
+670231,John Rave,5,Kansas City Royals,Drew Anderson,R,L,0.194,0.254,0.403,1.3,HEART / RBI CLEANUP,2.61,0.9262,0.7337,90.1,👑 LOCK: Over 1.5 H+R+RBI,138
+663757,Trent Grisham,1,New York Yankees,Dylan Cease,R,L,0.223,0.317,0.42,1.06,LEADOFF / RUN ENGINE,2.6,0.926,0.7334,90.0,👑 LOCK: Over 1.5 H+R+RBI,139
+687231,Darell Hernaiz,4,Athletics,Hunter Brown,R,R,0.236,0.317,0.283,1.3,HEART / RBI CLEANUP,2.59,0.9251,0.7309,89.8,👑 LOCK: Over 1.5 H+R+RBI,140
+687551,Drew Gilbert,6,San Francisco Giants,Patrick Sandoval,L,L,0.241,0.326,0.378,1.85,BOTTOM LINEUP,2.59,0.925,0.7307,89.7,👑 LOCK: Over 1.5 H+R+RBI,141
+681807,David Fry,6,Cleveland Guardians,Gabriel Hughes,R,R,0.182,0.304,0.336,1.38,BOTTOM LINEUP,2.59,0.9249,0.7306,89.7,👑 LOCK: Over 1.5 H+R+RBI,142
+677649,Ezequiel Duran,7,Texas Rangers,Ryan Johnson,R,R,0.271,0.327,0.441,1.54,BOTTOM LINEUP,2.59,0.9248,0.7301,89.7,👑 LOCK: Over 1.5 H+R+RBI,143
+691594,Javier Sanoja,8,Miami Marlins,Jake Irvin,R,R,0.282,0.32,0.427,1.36,BOTTOM LINEUP,2.59,0.9247,0.7299,89.6,👑 LOCK: Over 1.5 H+R+RBI,144
+802139,JJ Wetherholt,6,St. Louis Cardinals,Andrew Painter,R,L,0.241,0.345,0.369,1.55,BOTTOM LINEUP,2.58,0.9242,0.7286,89.5,👑 LOCK: Over 1.5 H+R+RBI,145
+665877,José Fermín,9,St. Louis Cardinals,Andrew Painter,R,R,0.251,0.324,0.37,1.55,BOTTOM LINEUP,2.57,0.9235,0.7268,89.3,👑 LOCK: Over 1.5 H+R+RBI,146
+694384,Nolan Schanuel,7,Los Angeles Angels,Cody Bradford,L,L,0.276,0.351,0.385,1.43,BOTTOM LINEUP,2.56,0.9224,0.724,89.0,👑 LOCK: Over 1.5 H+R+RBI,147
+665487,Fernando Tatis Jr.,2,San Diego Padres,Dean Kremer,R,R,0.284,0.357,0.438,0.81,LEADOFF / RUN ENGINE,2.55,0.9217,0.7222,88.8,👑 LOCK: Over 1.5 H+R+RBI,148
+660670,Ronald Acuña Jr.,2,Atlanta Braves,Logan Henderson,R,R,0.234,0.336,0.416,0.87,LEADOFF / RUN ENGINE,2.53,0.9205,0.7193,88.4,👑 LOCK: Over 1.5 H+R+RBI,149
+608348,Carson Kelly,2,Chicago Cubs,Kade Anderson,L,R,0.262,0.343,0.372,1.25,LEADOFF / RUN ENGINE,2.53,0.9201,0.7181,88.3,👑 LOCK: Over 1.5 H+R+RBI,150
+683146,Brett Baty,3,New York Mets,Luis Castillo,R,L,0.215,0.287,0.331,1.21,HEART / RBI CLEANUP,2.52,0.9197,0.7171,88.1,👑 LOCK: Over 1.5 H+R+RBI,151
+693304,Nick Gonzales,9,Pittsburgh Pirates,Tarik Skubal,L,R,0.311,0.369,0.404,1.24,BOTTOM LINEUP,2.51,0.9189,0.7152,87.9,👑 LOCK: Over 1.5 H+R+RBI,152
+664023,Ian Happ,4,Chicago Cubs,Kade Anderson,L,S,0.216,0.323,0.414,1.25,HEART / RBI CLEANUP,2.49,0.9168,0.71,87.2,👑 LOCK: Over 1.5 H+R+RBI,153
+650402,Gleyber Torres,7,Detroit Tigers,Michael Wacha,R,R,0.266,0.375,0.393,1.15,BOTTOM LINEUP,2.45,0.9141,0.7032,86.3,👑 LOCK: Over 1.5 H+R+RBI,154
+686681,Michael Massey,9,Kansas City Royals,Drew Anderson,R,L,0.278,0.31,0.448,1.3,BOTTOM LINEUP,2.45,0.914,0.7031,86.3,👑 LOCK: Over 1.5 H+R+RBI,155
+678545,Osleivis Basabe,9,San Francisco Giants,Patrick Sandoval,L,R,0.235,0.264,0.397,1.85,BOTTOM LINEUP,2.45,0.9136,0.702,86.1,👑 LOCK: Over 1.5 H+R+RBI,156
+676391,Ernie Clement,8,Toronto Blue Jays,Ryan Weathers,L,R,0.285,0.31,0.403,1.19,BOTTOM LINEUP,2.44,0.913,0.7007,85.9,👑 LOCK: Over 1.5 H+R+RBI,157
+661531,Brian Serven,2,Athletics,Hunter Brown,R,R,0.205,0.225,0.436,1.3,LEADOFF / RUN ENGINE,2.44,0.9125,0.6994,85.7,👑 LOCK: Over 1.5 H+R+RBI,158
+571970,Max Muncy,8,Los Angeles Dodgers,Jared Jones,R,L,0.252,0.344,0.504,1.2,BOTTOM LINEUP,2.43,0.9119,0.698,85.5,👑 LOCK: Over 1.5 H+R+RBI,159
+701678,Hao-Yu Lee,8,Detroit Tigers,Michael Wacha,R,R,0.277,0.319,0.423,1.15,BOTTOM LINEUP,2.43,0.9116,0.697,85.4,👑 LOCK: Over 1.5 H+R+RBI,160
+702176,Alan Roden,1,Minnesota Twins,Casey Mize,R,L,0.23,0.31,0.279,1.5,LEADOFF / RUN ENGINE,2.41,0.9104,0.6943,85.0,👑 LOCK: Over 1.5 H+R+RBI,161
+813841,Jonah Cox,7,San Francisco Giants,Patrick Sandoval,L,R,0.233,0.233,0.419,1.85,BOTTOM LINEUP,2.41,0.91,0.6932,84.8,👑 LOCK: Over 1.5 H+R+RBI,162
+657136,Connor Wong,6,Boston Red Sox,Blade Tidwell,R,R,0.25,0.332,0.381,1.22,BOTTOM LINEUP,2.41,0.91,0.6932,84.8,👑 LOCK: Over 1.5 H+R+RBI,163
+663968,Jake Mangum,7,Pittsburgh Pirates,Tarik Skubal,L,S,0.297,0.351,0.389,1.24,BOTTOM LINEUP,2.4,0.9094,0.692,84.6,👑 LOCK: Over 1.5 H+R+RBI,164
+678246,Miguel Vargas,9,Chicago White Sox,Christian Scott,R,R,0.243,0.35,0.497,1.29,BOTTOM LINEUP,2.4,0.9093,0.6915,84.5,👑 LOCK: Over 1.5 H+R+RBI,165
+663743,Nick Fortes,9,Tampa Bay Rays,Brandon Young,R,R,0.266,0.31,0.367,1.35,BOTTOM LINEUP,2.39,0.9085,0.6896,84.2,👑 LOCK: Over 1.5 H+R+RBI,166
+514888,Jose Altuve,7,Houston Astros,Jacob Lopez,L,R,0.247,0.31,0.396,1.53,BOTTOM LINEUP,2.37,0.9069,0.6859,83.6,👑 LOCK: Over 1.5 H+R+RBI,167
+699912,Jose Fernandez,8,Arizona Diamondbacks,Rhett Lowder,R,R,0.264,0.307,0.365,1.49,BOTTOM LINEUP,2.37,0.9068,0.6856,83.6,👑 LOCK: Over 1.5 H+R+RBI,168
+681715,Heriberto Hernández,6,Miami Marlins,Jake Irvin,R,R,0.226,0.304,0.443,1.36,BOTTOM LINEUP,2.37,0.9065,0.6849,83.5,👑 LOCK: Over 1.5 H+R+RBI,169
+701785,Kaelen Culpepper,6,Minnesota Twins,Casey Mize,R,R,0.289,0.349,0.395,1.5,BOTTOM LINEUP,2.36,0.9059,0.6836,83.2,👑 LOCK: Over 1.5 H+R+RBI,170
+643376,Danny Jansen,4,Texas Rangers,Ryan Johnson,R,R,0.162,0.264,0.292,1.54,HEART / RBI CLEANUP,2.34,0.9038,0.6787,82.4,👑 LOCK: Over 1.5 H+R+RBI,171
+669394,Jake Burger,8,Texas Rangers,Ryan Johnson,R,R,0.235,0.295,0.416,1.54,BOTTOM LINEUP,2.33,0.9029,0.6766,82.0,👑 LOCK: Over 1.5 H+R+RBI,172
+681047,Christian Franklin,3,Baltimore Orioles,Shane McClanahan,L,R,0.182,0.357,0.227,1.12,HEART / RBI CLEANUP,2.33,0.9027,0.676,81.9,👑 LOCK: Over 1.5 H+R+RBI,173
+806146,George Lombard Jr.,6,New York Yankees,Dylan Cease,R,R,0.288,0.345,0.423,1.06,BOTTOM LINEUP,2.31,0.9007,0.6714,81.1,👑 LOCK: Over 1.5 H+R+RBI,174
+691788,Joe Mack,7,Miami Marlins,Jake Irvin,R,L,0.231,0.287,0.419,1.36,BOTTOM LINEUP,2.3,0.9002,0.6702,80.9,👑 LOCK: Over 1.5 H+R+RBI,175
+807712,Luke Keaschall,8,Minnesota Twins,Casey Mize,R,R,0.272,0.363,0.375,1.5,BOTTOM LINEUP,2.3,0.8999,0.6695,80.8,👑 LOCK: Over 1.5 H+R+RBI,176
+663457,Lars Nootbaar,9,Arizona Diamondbacks,Rhett Lowder,R,L,0.234,0.333,0.354,1.49,BOTTOM LINEUP,2.3,0.8997,0.669,80.7,👑 LOCK: Over 1.5 H+R+RBI,177
+669397,Nick Allen,9,Houston Astros,Jacob Lopez,L,R,0.258,0.303,0.342,1.53,BOTTOM LINEUP,2.3,0.8996,0.6688,80.6,👑 LOCK: Over 1.5 H+R+RBI,178
+500743,Miguel Rojas,9,Los Angeles Dodgers,Jared Jones,R,R,0.276,0.323,0.397,1.2,BOTTOM LINEUP,2.29,0.8983,0.6659,80.1,👑 LOCK: Over 1.5 H+R+RBI,179
+642201,Eli White,7,Boston Red Sox,Blade Tidwell,R,R,0.233,0.285,0.406,1.22,BOTTOM LINEUP,2.28,0.8981,0.6653,80.0,👑 LOCK: Over 1.5 H+R+RBI,180
+694208,Moisés Ballesteros,6,Los Angeles Angels,Cody Bradford,L,L,0.231,0.303,0.385,1.43,BOTTOM LINEUP,2.28,0.8975,0.664,79.7,👑 LOCK: Over 1.5 H+R+RBI,181
+701538,Jackson Merrill,5,San Diego Padres,Dean Kremer,R,L,0.238,0.288,0.405,0.81,HEART / RBI CLEANUP,2.27,0.8969,0.6626,79.4,👑 LOCK: Over 1.5 H+R+RBI,182
+683090,Matthew Lugo,8,Kansas City Royals,Drew Anderson,R,R,0.245,0.315,0.405,1.3,BOTTOM LINEUP,2.27,0.8968,0.6624,79.4,👑 LOCK: Over 1.5 H+R+RBI,183
+682634,Kevin Alcántara,5,Chicago Cubs,Kade Anderson,L,R,0.217,0.28,0.348,1.25,HEART / RBI CLEANUP,2.25,0.895,0.6583,78.6,👑 LOCK: Over 1.5 H+R+RBI,184
+543807,George Springer,9,Toronto Blue Jays,Ryan Weathers,L,R,0.235,0.314,0.387,1.19,BOTTOM LINEUP,2.24,0.8937,0.6555,78.0,👑 LOCK: Over 1.5 H+R+RBI,185
+703607,Henry Bolte,6,Athletics,Hunter Brown,R,R,0.267,0.341,0.365,1.3,BOTTOM LINEUP,2.24,0.8933,0.6546,77.8,👑 LOCK: Over 1.5 H+R+RBI,186
+657757,Gavin Sheets,4,San Diego Padres,Dean Kremer,R,L,0.214,0.316,0.397,0.81,HEART / RBI CLEANUP,2.23,0.8927,0.6531,77.5,👑 LOCK: Over 1.5 H+R+RBI,187
+664774,LaMonte Wade Jr.,8,Houston Astros,Jacob Lopez,L,L,0.218,0.346,0.333,1.53,BOTTOM LINEUP,2.23,0.8925,0.6527,77.4,👑 LOCK: Over 1.5 H+R+RBI,188
+669134,Luis Campusano,8,San Diego Padres,Dean Kremer,R,R,0.301,0.408,0.496,0.81,BOTTOM LINEUP,2.21,0.8899,0.647,76.2,🔥 TARGET: 2+ Combo Value,189
+665019,Kody Clemens,7,Minnesota Twins,Casey Mize,R,L,0.237,0.293,0.469,1.5,BOTTOM LINEUP,2.2,0.8889,0.6449,75.7,🔥 TARGET: 2+ Combo Value,190
+596019,Francisco Lindor,9,New York Mets,Luis Castillo,R,S,0.236,0.326,0.42,1.21,BOTTOM LINEUP,2.2,0.8886,0.6442,75.6,🔥 TARGET: 2+ Combo Value,191
+680779,Henry Davis,5,Pittsburgh Pirates,Tarik Skubal,L,R,0.17,0.266,0.299,1.24,HEART / RBI CLEANUP,2.19,0.8877,0.6422,75.1,🔥 TARGET: 2+ Combo Value,192
 696285,Jacob Young,9,Washington Nationals,Eury Pérez,R,R,0.249,0.314,0.399,1.11,BOTTOM LINEUP,2.18,0.8868,0.6402,74.7,🔥 TARGET: 2+ Combo Value,193
-805347,Jim Jarvis,5,Atlanta Braves,Logan Henderson,R,L,0.213,0.274,0.306,0.87,HEART / RBI CLEANUP,2.18,0.8867,0.64,74.6,🔥 TARGET: 2+ Combo Value,194
-682626,Francisco Alvarez,8,New York Mets,Luis Castillo,R,R,0.236,0.325,0.408,1.21,BOTTOM LINEUP,2.17,0.8861,0.6387,74.4,🔥 TARGET: 2+ Combo Value,195
-647304,Josh Naylor,7,Seattle Mariners,David Peterson,L,L,0.268,0.331,0.37,1.65,BOTTOM LINEUP,2.16,0.885,0.6363,73.8,🔥 TARGET: 2+ Combo Value,196
-677594,Julio Rodríguez,8,Seattle Mariners,David Peterson,L,R,0.252,0.316,0.414,1.65,BOTTOM LINEUP,2.15,0.8838,0.6337,73.2,🔥 TARGET: 2+ Combo Value,197
-643446,Jeff McNeil,7,Athletics,Hunter Brown,R,L,0.261,0.313,0.356,1.3,BOTTOM LINEUP,2.14,0.8828,0.6316,72.7,🔥 TARGET: 2+ Combo Value,198
-595879,Javier Báez,9,Detroit Tigers,Michael Wacha,R,R,0.255,0.284,0.355,1.15,BOTTOM LINEUP,2.14,0.8828,0.6316,72.7,🔥 TARGET: 2+ Combo Value,199
-687597,Jordan Beck,7,Colorado Rockies,Tanner Bibee,R,R,0.19,0.246,0.31,1.15,BOTTOM LINEUP,2.14,0.8828,0.6316,72.7,🔥 TARGET: 2+ Combo Value,200
-672284,Jarred Kelenic,9,Texas Rangers,Ryan Johnson,R,L,0.226,0.305,0.321,1.54,BOTTOM LINEUP,2.14,0.8828,0.6315,72.7,🔥 TARGET: 2+ Combo Value,201
-668904,Royce Lewis,9,Minnesota Twins,Casey Mize,R,R,0.238,0.31,0.416,1.5,BOTTOM LINEUP,2.14,0.8819,0.6295,72.2,🔥 TARGET: 2+ Combo Value,202
-672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford,L,R,0.226,0.278,0.349,1.43,BOTTOM LINEUP,2.13,0.8817,0.6292,72.1,🔥 TARGET: 2+ Combo Value,203
-641680,Jonah Heim,8,Athletics,Hunter Brown,R,S,0.231,0.311,0.41,1.3,BOTTOM LINEUP,2.13,0.8811,0.628,71.8,🔥 TARGET: 2+ Combo Value,204
-687637,Dylan Beavers,6,Baltimore Orioles,Shane McClanahan,L,L,0.241,0.318,0.38,1.12,BOTTOM LINEUP,2.13,0.8809,0.6274,71.7,🔥 TARGET: 2+ Combo Value,205
-695734,Daylen Lile,6,Washington Nationals,Eury Pérez,R,L,0.244,0.292,0.403,1.11,BOTTOM LINEUP,2.12,0.8803,0.6262,71.4,🔥 TARGET: 2+ Combo Value,206
-695670,Harry Ford,8,Washington Nationals,Eury Pérez,R,R,0.212,0.328,0.423,1.11,BOTTOM LINEUP,2.12,0.8803,0.6262,71.4,🔥 TARGET: 2+ Combo Value,207
-694378,Jacob Gonzalez,6,Pittsburgh Pirates,Tarik Skubal,L,L,0.244,0.323,0.36,1.24,BOTTOM LINEUP,2.11,0.8792,0.624,70.8,🔥 TARGET: 2+ Combo Value,208
-686668,Brenton Doyle,3,Chicago White Sox,Christian Scott,R,R,0.194,0.194,0.306,1.29,HEART / RBI CLEANUP,2.11,0.879,0.6234,70.7,🔥 TARGET: 2+ Combo Value,209
-640902,Jhonny Pereda,6,Seattle Mariners,David Peterson,L,R,0.27,0.316,0.351,1.65,BOTTOM LINEUP,2.11,0.8785,0.6224,70.4,🔥 TARGET: 2+ Combo Value,210
-656537,Derek Hill,6,Philadelphia Phillies,TBD Pitcher,R,R,0.213,0.284,0.375,1.25,BOTTOM LINEUP,2.11,0.8784,0.6222,70.4,🔥 TARGET: 2+ Combo Value,211
-805300,Jakob Marsee,6,Miami Marlins,Jake Irvin,R,L,0.206,0.325,0.316,1.36,BOTTOM LINEUP,2.11,0.8782,0.6218,70.3,🔥 TARGET: 2+ Combo Value,212
-665966,Carlos Narváez,1,Baltimore Orioles,Shane McClanahan,L,R,0.187,0.26,0.275,1.12,LEADOFF / RUN ENGINE,2.1,0.8777,0.6207,70.0,🔥 TARGET: 2+ Combo Value,213
-592663,J.T. Realmuto,9,Philadelphia Phillies,TBD Pitcher,R,R,0.219,0.296,0.345,1.25,BOTTOM LINEUP,2.1,0.8777,0.6206,70.0,🔥 TARGET: 2+ Combo Value,214
-663728,Cal Raleigh,3,Seattle Mariners,David Peterson,L,S,0.157,0.273,0.305,1.65,HEART / RBI CLEANUP,2.1,0.8771,0.6194,69.7,🔥 TARGET: 2+ Combo Value,215
-669224,Austin Wells,3,New York Yankees,Dylan Cease,R,L,0.175,0.268,0.292,1.06,HEART / RBI CLEANUP,2.09,0.8768,0.6187,69.5,🔥 TARGET: 2+ Combo Value,216
+806198,Cooper Pratt,9,Milwaukee Brewers,Martín Pérez,L,R,0.259,0.337,0.35,1.19,BOTTOM LINEUP,2.18,0.8866,0.6398,74.6,🔥 TARGET: 2+ Combo Value,194
+687597,Jordan Beck,7,Colorado Rockies,Tanner Bibee,R,R,0.19,0.246,0.31,1.15,BOTTOM LINEUP,2.18,0.8865,0.6396,74.6,🔥 TARGET: 2+ Combo Value,195
+682626,Francisco Alvarez,8,New York Mets,Luis Castillo,R,R,0.236,0.325,0.408,1.21,BOTTOM LINEUP,2.17,0.8861,0.6387,74.4,🔥 TARGET: 2+ Combo Value,196
+647304,Josh Naylor,7,Seattle Mariners,David Peterson,L,L,0.268,0.331,0.37,1.65,BOTTOM LINEUP,2.17,0.8855,0.6374,74.1,🔥 TARGET: 2+ Combo Value,197
+677594,Julio Rodríguez,8,Seattle Mariners,David Peterson,L,R,0.252,0.316,0.414,1.65,BOTTOM LINEUP,2.16,0.8843,0.6347,73.4,🔥 TARGET: 2+ Combo Value,198
+595879,Javier Báez,9,Detroit Tigers,Michael Wacha,R,R,0.255,0.284,0.355,1.15,BOTTOM LINEUP,2.15,0.8836,0.6333,73.1,🔥 TARGET: 2+ Combo Value,199
+668904,Royce Lewis,9,Minnesota Twins,Casey Mize,R,R,0.238,0.31,0.416,1.5,BOTTOM LINEUP,2.15,0.8831,0.6322,72.8,🔥 TARGET: 2+ Combo Value,200
+643446,Jeff McNeil,7,Athletics,Hunter Brown,R,L,0.261,0.313,0.356,1.3,BOTTOM LINEUP,2.14,0.8828,0.6316,72.7,🔥 TARGET: 2+ Combo Value,201
+672284,Jarred Kelenic,9,Texas Rangers,Ryan Johnson,R,L,0.226,0.305,0.321,1.54,BOTTOM LINEUP,2.14,0.8828,0.6315,72.7,🔥 TARGET: 2+ Combo Value,202
+687401,Joey Ortiz,7,Milwaukee Brewers,Martín Pérez,L,R,0.249,0.314,0.377,1.19,BOTTOM LINEUP,2.14,0.8825,0.6309,72.5,🔥 TARGET: 2+ Combo Value,203
+672724,Oswald Peraza,8,Los Angeles Angels,Cody Bradford,L,R,0.226,0.278,0.349,1.43,BOTTOM LINEUP,2.13,0.8817,0.6292,72.1,🔥 TARGET: 2+ Combo Value,204
+641680,Jonah Heim,8,Athletics,Hunter Brown,R,S,0.231,0.311,0.41,1.3,BOTTOM LINEUP,2.13,0.8811,0.628,71.8,🔥 TARGET: 2+ Combo Value,205
+687637,Dylan Beavers,6,Baltimore Orioles,Shane McClanahan,L,L,0.241,0.318,0.38,1.12,BOTTOM LINEUP,2.13,0.8809,0.6274,71.7,🔥 TARGET: 2+ Combo Value,206
+695734,Daylen Lile,6,Washington Nationals,Eury Pérez,R,L,0.244,0.292,0.403,1.11,BOTTOM LINEUP,2.12,0.8803,0.6262,71.4,🔥 TARGET: 2+ Combo Value,207
+695670,Harry Ford,8,Washington Nationals,Eury Pérez,R,R,0.212,0.328,0.423,1.11,BOTTOM LINEUP,2.12,0.8803,0.6262,71.4,🔥 TARGET: 2+ Combo Value,208
+656537,Derek Hill,6,Philadelphia Phillies,TBD Pitcher,R,R,0.213,0.284,0.375,1.25,BOTTOM LINEUP,2.12,0.8794,0.6244,70.9,🔥 TARGET: 2+ Combo Value,209
+694378,Jacob Gonzalez,6,Pittsburgh Pirates,Tarik Skubal,L,L,0.244,0.323,0.36,1.24,BOTTOM LINEUP,2.11,0.8792,0.624,70.8,🔥 TARGET: 2+ Combo Value,210
+640902,Jhonny Pereda,6,Seattle Mariners,David Peterson,L,R,0.27,0.316,0.351,1.65,BOTTOM LINEUP,2.11,0.879,0.6235,70.7,🔥 TARGET: 2+ Combo Value,211
+686668,Brenton Doyle,3,Chicago White Sox,Christian Scott,R,R,0.194,0.194,0.306,1.29,HEART / RBI CLEANUP,2.11,0.879,0.6234,70.7,🔥 TARGET: 2+ Combo Value,212
+592663,J.T. Realmuto,9,Philadelphia Phillies,TBD Pitcher,R,R,0.219,0.296,0.345,1.25,BOTTOM LINEUP,2.11,0.8787,0.6228,70.5,🔥 TARGET: 2+ Combo Value,213
+800325,Luis Lara,8,Milwaukee Brewers,Martín Pérez,L,S,0.245,0.322,0.353,1.19,BOTTOM LINEUP,2.1,0.878,0.6213,70.2,🔥 TARGET: 2+ Combo Value,214
+665966,Carlos Narváez,1,Baltimore Orioles,Shane McClanahan,L,R,0.187,0.26,0.275,1.12,LEADOFF / RUN ENGINE,2.1,0.8777,0.6207,70.0,🔥 TARGET: 2+ Combo Value,215
+663728,Cal Raleigh,3,Seattle Mariners,David Peterson,L,S,0.157,0.273,0.305,1.65,HEART / RBI CLEANUP,2.1,0.8776,0.6205,70.0,🔥 TARGET: 2+ Combo Value,216
 702616,Jackson Holliday,8,Baltimore Orioles,Shane McClanahan,L,L,0.232,0.327,0.364,1.12,BOTTOM LINEUP,2.09,0.8761,0.6174,69.2,🔥 TARGET: 2+ Combo Value,217
 663656,Kyle Tucker,7,Los Angeles Dodgers,Jared Jones,R,L,0.23,0.325,0.364,1.2,BOTTOM LINEUP,2.08,0.8747,0.6145,68.4,🔥 TARGET: 2+ Combo Value,218
 680776,Jarren Duran,9,Boston Red Sox,Blade Tidwell,R,L,0.209,0.267,0.365,1.22,BOTTOM LINEUP,2.08,0.8745,0.6141,68.3,🔥 TARGET: 2+ Combo Value,219
-683002,Gunnar Henderson,7,Baltimore Orioles,Shane McClanahan,L,L,0.222,0.306,0.399,1.12,BOTTOM LINEUP,2.07,0.8738,0.6126,67.9,🔥 TARGET: 2+ Combo Value,220
-664728,Kyle Isbel,6,Kansas City Royals,Drew Anderson,R,L,0.234,0.283,0.354,1.3,BOTTOM LINEUP,2.07,0.8733,0.6116,67.7,🔥 TARGET: 2+ Combo Value,221
-624641,Edmundo Sosa,7,Philadelphia Phillies,TBD Pitcher,R,R,0.219,0.262,0.353,1.25,BOTTOM LINEUP,2.04,0.8699,0.6045,65.8,🔥 TARGET: 2+ Combo Value,222
-671277,Luis García Jr.,9,New York Yankees,Dylan Cease,R,L,0.25,0.283,0.411,1.06,BOTTOM LINEUP,2.04,0.8694,0.6035,65.5,🔥 TARGET: 2+ Combo Value,223
+664728,Kyle Isbel,6,Kansas City Royals,Drew Anderson,R,L,0.234,0.283,0.354,1.3,BOTTOM LINEUP,2.07,0.8741,0.6132,68.1,🔥 TARGET: 2+ Combo Value,220
+683002,Gunnar Henderson,7,Baltimore Orioles,Shane McClanahan,L,L,0.222,0.306,0.399,1.12,BOTTOM LINEUP,2.07,0.8738,0.6126,67.9,🔥 TARGET: 2+ Combo Value,221
+592885,Christian Yelich,6,Milwaukee Brewers,Martín Pérez,L,L,0.23,0.312,0.373,1.19,BOTTOM LINEUP,2.07,0.8733,0.6115,67.7,🔥 TARGET: 2+ Combo Value,222
+624641,Edmundo Sosa,7,Philadelphia Phillies,TBD Pitcher,R,R,0.219,0.262,0.353,1.25,BOTTOM LINEUP,2.05,0.8709,0.6067,66.4,🔥 TARGET: 2+ Combo Value,223
 665750,Leody Taveras,9,Baltimore Orioles,Shane McClanahan,L,S,0.231,0.304,0.363,1.12,BOTTOM LINEUP,2.04,0.8694,0.6035,65.5,🔥 TARGET: 2+ Combo Value,224
 694497,Evan Carter,6,Texas Rangers,Ryan Johnson,R,L,0.197,0.299,0.325,1.54,BOTTOM LINEUP,2.03,0.8685,0.6018,65.1,🔥 TARGET: 2+ Combo Value,225
-640459,Brian Navarreto,2,Miami Marlins,Jake Irvin,R,R,0.138,0.242,0.276,1.36,LEADOFF / RUN ENGINE,2.03,0.8683,0.6012,64.9,🔥 TARGET: 2+ Combo Value,226
-678489,Jorge Barrosa,7,Arizona Diamondbacks,Rhett Lowder,R,S,0.197,0.282,0.341,1.49,BOTTOM LINEUP,2.02,0.8674,0.5994,64.4,🔥 TARGET: 2+ Combo Value,227
-676439,Hunter Feduccia,6,Los Angeles Dodgers,Jared Jones,R,L,0.234,0.306,0.34,1.2,BOTTOM LINEUP,2.01,0.8661,0.5969,63.7,🔥 TARGET: 2+ Combo Value,228
-643289,Mauricio Dubón,8,Atlanta Braves,Logan Henderson,R,R,0.266,0.311,0.391,0.87,BOTTOM LINEUP,1.99,0.864,0.5926,62.5,🔥 TARGET: 2+ Combo Value,229
-677870,Leo Jiménez,9,Miami Marlins,Jake Irvin,R,R,0.205,0.305,0.272,1.36,BOTTOM LINEUP,1.97,0.861,0.5868,60.9,🔥 TARGET: 2+ Combo Value,230
-671732,Lawrence Butler,9,Athletics,Hunter Brown,R,L,0.216,0.306,0.353,1.3,BOTTOM LINEUP,1.97,0.8607,0.5862,60.7,🔥 TARGET: 2+ Combo Value,231
-676609,José Caballero,8,New York Yankees,Dylan Cease,R,R,0.237,0.295,0.381,1.06,BOTTOM LINEUP,1.97,0.8603,0.5854,60.5,🔥 TARGET: 2+ Combo Value,232
-669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal,L,R,0.236,0.312,0.304,1.24,BOTTOM LINEUP,1.97,0.8604,0.5854,60.5,🔥 TARGET: 2+ Combo Value,233
-624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka,R,R,0.238,0.245,0.381,1.11,BOTTOM LINEUP,1.97,0.8601,0.585,60.3,🔥 TARGET: 2+ Combo Value,234
-683737,Michael Busch,6,Chicago Cubs,Kade Anderson,L,L,0.244,0.35,0.39,1.25,BOTTOM LINEUP,1.96,0.859,0.5828,59.7,🔥 TARGET: 2+ Combo Value,235
-699625,Jimmy Crooks,7,St. Louis Cardinals,Andrew Painter,R,L,0.172,0.25,0.311,1.55,BOTTOM LINEUP,1.94,0.8562,0.5773,58.1,🎯 FLOOR: 1+ Combo Anchor,236
-669720,Austin Hays,1,San Diego Padres,Dean Kremer,R,R,0.233,0.25,0.326,0.81,LEADOFF / RUN ENGINE,1.93,0.8546,0.5743,57.2,🎯 FLOOR: 1+ Combo Anchor,237
-663538,Nico Hoerner,9,Chicago Cubs,Kade Anderson,L,R,0.263,0.321,0.361,1.25,BOTTOM LINEUP,1.92,0.8533,0.5717,56.5,🎯 FLOOR: 1+ Combo Anchor,238
-665804,Miguel Amaya,8,Chicago Cubs,Kade Anderson,L,R,0.237,0.345,0.373,1.25,BOTTOM LINEUP,1.9,0.8509,0.5672,55.1,🎯 FLOOR: 1+ Combo Anchor,239
+678489,Jorge Barrosa,7,Arizona Diamondbacks,Rhett Lowder,R,S,0.197,0.282,0.341,1.49,BOTTOM LINEUP,2.02,0.8674,0.5994,64.4,🔥 TARGET: 2+ Combo Value,226
+676439,Hunter Feduccia,6,Los Angeles Dodgers,Jared Jones,R,L,0.234,0.306,0.34,1.2,BOTTOM LINEUP,2.01,0.8661,0.5969,63.7,🔥 TARGET: 2+ Combo Value,227
+643289,Mauricio Dubón,6,Atlanta Braves,Logan Henderson,R,R,0.266,0.311,0.391,0.87,BOTTOM LINEUP,1.99,0.864,0.5926,62.5,🔥 TARGET: 2+ Combo Value,228
+676609,José Caballero,9,New York Yankees,Dylan Cease,R,R,0.237,0.295,0.381,1.06,BOTTOM LINEUP,1.98,0.8614,0.5876,61.1,🔥 TARGET: 2+ Combo Value,229
+671732,Lawrence Butler,9,Athletics,Hunter Brown,R,L,0.216,0.306,0.353,1.3,BOTTOM LINEUP,1.97,0.8607,0.5862,60.7,🔥 TARGET: 2+ Combo Value,230
+669707,Jared Triolo,8,Pittsburgh Pirates,Tarik Skubal,L,R,0.236,0.312,0.304,1.24,BOTTOM LINEUP,1.97,0.8604,0.5854,60.5,🔥 TARGET: 2+ Combo Value,231
+624431,Jose Trevino,6,Cincinnati Reds,Michael Soroka,R,R,0.238,0.245,0.381,1.11,BOTTOM LINEUP,1.97,0.8601,0.585,60.3,🔥 TARGET: 2+ Combo Value,232
+683737,Michael Busch,6,Chicago Cubs,Kade Anderson,L,L,0.244,0.35,0.39,1.25,BOTTOM LINEUP,1.96,0.8596,0.5839,60.0,🔥 TARGET: 2+ Combo Value,233
+699625,Jimmy Crooks,7,St. Louis Cardinals,Andrew Painter,R,L,0.172,0.25,0.311,1.55,BOTTOM LINEUP,1.95,0.8573,0.5794,58.7,🎯 FLOOR: 1+ Combo Anchor,234
+669720,Austin Hays,1,San Diego Padres,Dean Kremer,R,R,0.233,0.25,0.326,0.81,LEADOFF / RUN ENGINE,1.94,0.856,0.577,58.0,🎯 FLOOR: 1+ Combo Anchor,235
+663538,Nico Hoerner,9,Chicago Cubs,Kade Anderson,L,R,0.263,0.321,0.361,1.25,BOTTOM LINEUP,1.92,0.8539,0.5728,56.8,🎯 FLOOR: 1+ Combo Anchor,236
+573262,Mike Yastrzemski,7,Atlanta Braves,Logan Henderson,R,L,0.232,0.321,0.391,0.87,BOTTOM LINEUP,1.91,0.8519,0.569,55.7,🎯 FLOOR: 1+ Combo Anchor,237
+665862,Jazz Chisholm Jr.,7,New York Yankees,Dylan Cease,R,L,0.214,0.294,0.386,1.06,BOTTOM LINEUP,1.91,0.8516,0.5685,55.5,🎯 FLOOR: 1+ Combo Anchor,238
+665804,Miguel Amaya,8,Chicago Cubs,Kade Anderson,L,R,0.237,0.345,0.373,1.25,BOTTOM LINEUP,1.91,0.8515,0.5683,55.5,🎯 FLOOR: 1+ Combo Anchor,239
 695257,Billy Cook,1,Pittsburgh Pirates,Tarik Skubal,L,R,0.188,0.204,0.25,1.24,LEADOFF / RUN ENGINE,1.9,0.8508,0.567,55.1,🎯 FLOOR: 1+ Combo Anchor,240
-665862,Jazz Chisholm Jr.,7,New York Yankees,Dylan Cease,R,L,0.214,0.294,0.386,1.06,BOTTOM LINEUP,1.9,0.8505,0.5663,54.9,🎯 FLOOR: 1+ Combo Anchor,241
-686611,Dylan Crews,7,Washington Nationals,Eury Pérez,R,R,0.21,0.28,0.353,1.11,BOTTOM LINEUP,1.9,0.85,0.5654,54.6,🎯 FLOOR: 1+ Combo Anchor,242
-680574,Matt McLain,8,Cincinnati Reds,Michael Soroka,R,R,0.198,0.295,0.354,1.11,BOTTOM LINEUP,1.89,0.8488,0.5631,53.9,⚾ Standard Traffic,243
-624424,Michael Conforto,7,Chicago Cubs,Kade Anderson,L,L,0.217,0.313,0.429,1.25,BOTTOM LINEUP,1.87,0.8457,0.5573,52.2,⚾ Standard Traffic,244
-666023,Freddy Fermin,3,San Diego Padres,Dean Kremer,R,R,0.191,0.264,0.304,0.81,HEART / RBI CLEANUP,1.85,0.8427,0.5517,50.5,⚾ Standard Traffic,245
-571912,Luke Maile,7,Kansas City Royals,Drew Anderson,R,R,0.2,0.231,0.36,1.3,BOTTOM LINEUP,1.84,0.8418,0.5501,50.0,⚾ Standard Traffic,246
-518595,Travis d'Arnaud,9,Los Angeles Angels,Cody Bradford,L,R,0.18,0.293,0.26,1.43,BOTTOM LINEUP,1.83,0.8396,0.5461,48.8,⚾ Standard Traffic,247
-671083,Buddy Kennedy,3,San Francisco Giants,Patrick Sandoval,L,R,0.115,0.258,0.115,1.85,HEART / RBI CLEANUP,1.81,0.8367,0.5408,47.2,⚾ Standard Traffic,248
-666624,Christopher Morel,5,New York Mets,Luis Castillo,R,R,0.162,0.219,0.206,1.21,HEART / RBI CLEANUP,1.81,0.8362,0.5399,47.0,⚾ Standard Traffic,249
-666163,Ben Rortvedt,3,Los Angeles Dodgers,Jared Jones,R,L,0.188,0.188,0.188,1.2,HEART / RBI CLEANUP,1.8,0.8347,0.5372,46.2,⚾ Standard Traffic,250
-676572,Eric Wagaman,7,New York Mets,Luis Castillo,R,R,0.19,0.277,0.333,1.21,BOTTOM LINEUP,1.79,0.8328,0.5338,45.2,⚾ Standard Traffic,251
+686611,Dylan Crews,7,Washington Nationals,Eury Pérez,R,R,0.21,0.28,0.353,1.11,BOTTOM LINEUP,1.9,0.85,0.5654,54.6,🎯 FLOOR: 1+ Combo Anchor,241
+680574,Matt McLain,8,Cincinnati Reds,Michael Soroka,R,R,0.198,0.295,0.354,1.11,BOTTOM LINEUP,1.89,0.8488,0.5631,53.9,⚾ Standard Traffic,242
+624424,Michael Conforto,7,Chicago Cubs,Kade Anderson,L,L,0.217,0.313,0.429,1.25,BOTTOM LINEUP,1.87,0.8463,0.5584,52.5,⚾ Standard Traffic,243
+666023,Freddy Fermin,3,San Diego Padres,Dean Kremer,R,R,0.191,0.264,0.304,0.81,HEART / RBI CLEANUP,1.86,0.8441,0.5544,51.3,⚾ Standard Traffic,244
+571912,Luke Maile,7,Kansas City Royals,Drew Anderson,R,R,0.2,0.231,0.36,1.3,BOTTOM LINEUP,1.85,0.8427,0.5517,50.5,⚾ Standard Traffic,245
+518595,Travis d'Arnaud,9,Los Angeles Angels,Cody Bradford,L,R,0.18,0.293,0.26,1.43,BOTTOM LINEUP,1.83,0.8396,0.5461,48.8,⚾ Standard Traffic,246
+671083,Buddy Kennedy,3,San Francisco Giants,Patrick Sandoval,L,R,0.115,0.258,0.115,1.85,HEART / RBI CLEANUP,1.81,0.8367,0.5408,47.2,⚾ Standard Traffic,247
+666624,Christopher Morel,5,New York Mets,Luis Castillo,R,R,0.162,0.219,0.206,1.21,HEART / RBI CLEANUP,1.81,0.8362,0.5399,47.0,⚾ Standard Traffic,248
+666163,Ben Rortvedt,3,Los Angeles Dodgers,Jared Jones,R,L,0.188,0.188,0.188,1.2,HEART / RBI CLEANUP,1.8,0.8347,0.5372,46.2,⚾ Standard Traffic,249
+676572,Eric Wagaman,7,New York Mets,Luis Castillo,R,R,0.19,0.277,0.333,1.21,BOTTOM LINEUP,1.79,0.8328,0.5338,45.2,⚾ Standard Traffic,250
+663586,Austin Riley,8,Atlanta Braves,Logan Henderson,R,R,0.221,0.293,0.367,0.87,BOTTOM LINEUP,1.79,0.8325,0.5332,45.0,⚾ Standard Traffic,251
 682668,Luisangel Acuña,8,Chicago White Sox,Christian Scott,R,R,0.232,0.264,0.263,1.29,BOTTOM LINEUP,1.79,0.8323,0.5328,44.9,⚾ Standard Traffic,252
-657041,Lane Thomas,6,Atlanta Braves,Logan Henderson,R,R,0.19,0.292,0.429,0.87,BOTTOM LINEUP,1.78,0.8322,0.5326,44.8,⚾ Standard Traffic,253
-676914,Davis Schneider,6,Toronto Blue Jays,Ryan Weathers,L,R,0.142,0.295,0.274,1.19,BOTTOM LINEUP,1.65,0.8085,0.492,33.3,⚾ Standard Traffic,254
-668670,Jake Rogers,7,Chicago White Sox,Christian Scott,R,R,0.143,0.25,0.357,1.29,BOTTOM LINEUP,1.61,0.8008,0.4794,30.0,⚾ Standard Traffic,255
-630105,Jake Cronenworth,6,San Diego Padres,Dean Kremer,R,L,0.224,0.314,0.297,0.81,BOTTOM LINEUP,1.55,0.7882,0.4595,25.2,⚾ Standard Traffic,256
-691011,Drew Romo,6,Chicago White Sox,Christian Scott,R,S,0.138,0.22,0.302,1.29,BOTTOM LINEUP,1.44,0.7632,0.4221,25.0,⚾ Standard Traffic,257
-663330,Jahmai Jones,8,Boston Red Sox,Blade Tidwell,R,R,0.137,0.219,0.221,1.22,BOTTOM LINEUP,1.43,0.76,0.4175,25.0,⚾ Standard Traffic,258
-663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka,R,R,0.155,0.206,0.257,1.11,BOTTOM LINEUP,1.39,0.7516,0.4057,25.0,⚾ Standard Traffic,259
-699302,Héctor Rodríguez,4,Cincinnati Reds,Michael Soroka,R,L,0.118,0.189,0.147,1.11,HEART / RBI CLEANUP,1.39,0.7516,0.4056,25.0,⚾ Standard Traffic,260
-650859,Luis Rengifo,9,San Diego Padres,Dean Kremer,R,S,0.205,0.28,0.254,0.81,BOTTOM LINEUP,1.38,0.7493,0.4025,25.0,⚾ Standard Traffic,261
-596117,Garrett Stubbs,8,Philadelphia Phillies,TBD Pitcher,R,L,0.159,0.224,0.159,1.25,BOTTOM LINEUP,1.38,0.7479,0.4005,25.0,⚾ Standard Traffic,262
-660844,Leo Rivas,9,Seattle Mariners,David Peterson,L,S,0.138,0.264,0.174,1.65,BOTTOM LINEUP,1.28,0.7206,0.3643,25.0,⚾ Standard Traffic,263
-671218,Heliot Ramos,6,New York Yankees,Dylan Cease,R,R,0.122,0.246,0.204,1.06,BOTTOM LINEUP,1.21,0.7025,0.3419,25.0,⚾ Standard Traffic,264
-687749,Jase Bowen,7,San Diego Padres,Dean Kremer,R,R,0.169,0.21,0.273,0.81,BOTTOM LINEUP,1.19,0.6967,0.3349,25.0,⚾ Standard Traffic,265
-669911,Michael Toglia,9,Cincinnati Reds,Michael Soroka,R,S,0.115,0.179,0.192,1.11,BOTTOM LINEUP,1.09,0.6638,0.2973,25.0,⚾ Standard Traffic,266
-673490,Ha-Seong Kim,4,Atlanta Braves,Logan Henderson,R,R,0.066,0.165,0.066,0.87,HEART / RBI CLEANUP,0.82,0.5577,0.1969,25.0,⚾ Standard Traffic,267
+676914,Davis Schneider,6,Toronto Blue Jays,Ryan Weathers,L,R,0.142,0.295,0.274,1.19,BOTTOM LINEUP,1.66,0.8098,0.4941,33.8,⚾ Standard Traffic,253
+805347,Jim Jarvis,9,Atlanta Braves,Logan Henderson,R,L,0.213,0.274,0.306,0.87,BOTTOM LINEUP,1.63,0.8047,0.4858,31.6,⚾ Standard Traffic,254
+671218,Heliot Ramos,3,New York Yankees,Dylan Cease,R,R,0.122,0.246,0.204,1.06,HEART / RBI CLEANUP,1.62,0.8027,0.4825,30.8,⚾ Standard Traffic,255
+668670,Jake Rogers,7,Chicago White Sox,Christian Scott,R,R,0.143,0.25,0.357,1.29,BOTTOM LINEUP,1.61,0.8008,0.4794,30.0,⚾ Standard Traffic,256
+669224,Austin Wells,8,New York Yankees,Dylan Cease,R,L,0.175,0.268,0.292,1.06,BOTTOM LINEUP,1.58,0.7933,0.4674,27.1,⚾ Standard Traffic,257
+630105,Jake Cronenworth,6,San Diego Padres,Dean Kremer,R,L,0.224,0.314,0.297,0.81,BOTTOM LINEUP,1.56,0.7898,0.462,25.8,⚾ Standard Traffic,258
+691011,Drew Romo,6,Chicago White Sox,Christian Scott,R,S,0.138,0.22,0.302,1.29,BOTTOM LINEUP,1.44,0.7632,0.4221,25.0,⚾ Standard Traffic,259
+663330,Jahmai Jones,8,Boston Red Sox,Blade Tidwell,R,R,0.137,0.219,0.221,1.22,BOTTOM LINEUP,1.43,0.76,0.4175,25.0,⚾ Standard Traffic,260
+663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka,R,R,0.155,0.206,0.257,1.11,BOTTOM LINEUP,1.39,0.7516,0.4057,25.0,⚾ Standard Traffic,261
+699302,Héctor Rodríguez,4,Cincinnati Reds,Michael Soroka,R,L,0.118,0.189,0.147,1.11,HEART / RBI CLEANUP,1.39,0.7516,0.4056,25.0,⚾ Standard Traffic,262
+650859,Luis Rengifo,9,San Diego Padres,Dean Kremer,R,S,0.205,0.28,0.254,0.81,BOTTOM LINEUP,1.39,0.7511,0.4049,25.0,⚾ Standard Traffic,263
+596117,Garrett Stubbs,8,Philadelphia Phillies,TBD Pitcher,R,L,0.159,0.224,0.159,1.25,BOTTOM LINEUP,1.38,0.7493,0.4024,25.0,⚾ Standard Traffic,264
+660844,Leo Rivas,9,Seattle Mariners,David Peterson,L,S,0.138,0.264,0.174,1.65,BOTTOM LINEUP,1.28,0.7213,0.3653,25.0,⚾ Standard Traffic,265
+687749,Jase Bowen,7,San Diego Padres,Dean Kremer,R,R,0.169,0.21,0.273,0.81,BOTTOM LINEUP,1.2,0.6985,0.337,25.0,⚾ Standard Traffic,266
+669911,Michael Toglia,9,Cincinnati Reds,Michael Soroka,R,S,0.115,0.179,0.192,1.11,BOTTOM LINEUP,1.09,0.6638,0.2973,25.0,⚾ Standard Traffic,267
 668800,Andrew Knizner,1,San Francisco Giants,Patrick Sandoval,L,R,0.0,0.222,0.0,1.85,LEADOFF / RUN ENGINE,0.71,0.5101,0.1605,25.0,⚾ Standard Traffic,268
 665506,Cristian Pache,6,New York Mets,Luis Castillo,R,R,0.0,0.0,0.0,1.21,BOTTOM LINEUP,0.7,0.5034,0.1558,25.0,⚾ Standard Traffic,269
 672356,Gabriel Arias,3,Chicago Cubs,Kade Anderson,L,R,0.0,0.0,0.0,1.25,HEART / RBI CLEANUP,0.7,0.5034,0.1558,25.0,⚾ Standard Traffic,270
