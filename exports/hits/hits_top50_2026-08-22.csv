@@ -143,13 +143,13 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 553993,Eugenio Suárez,3,Cincinnati Reds,Michael Soroka,0.25,21.0,76.0,68.7,68.7,🟢 CONTACT TARGET: High Floor,142
 667472,Dane Myers,1,Cincinnati Reds,Michael Soroka,0.25,21.0,76.0,68.7,68.7,🟢 CONTACT TARGET: High Floor,143
 663647,Ke'Bryan Hayes,7,Cincinnati Reds,Michael Soroka,0.25,21.0,76.0,68.7,68.7,🟢 CONTACT TARGET: High Floor,144
-682626,Francisco Alvarez,8,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,145
-596019,Francisco Lindor,9,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,146
-683146,Brett Baty,3,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,147
-666182,Bo Bichette,2,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,148
-666624,Christopher Morel,5,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,149
-665506,Cristian Pache,6,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,150
-676572,Eric Wagaman,7,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,151
+543760,Marcus Semien,8,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,145
+682626,Francisco Alvarez,9,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,146
+666182,Bo Bichette,3,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,147
+596019,Francisco Lindor,2,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,148
+676724,Jared Young,5,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,149
+673357,Luis Robert Jr.,6,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,150
+683146,Brett Baty,7,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,151
 701807,Carson Benge,4,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,152
 805999,A.J. Ewing,1,New York Mets,Luis Castillo,0.25,21.0,76.0,66.0,66.0,🟢 CONTACT TARGET: High Floor,153
 687551,Drew Gilbert,8,San Francisco Giants,Patrick Sandoval,0.25,21.0,76.0,65.7,65.7,🟢 CONTACT TARGET: High Floor,154
