@@ -218,4 +218,3 @@ else:
                 st.download_button(label=f"📥 Download Card", data=file, file_name=os.path.basename(card_path), mime="image/png")
         else:
             st.info("Rendered image card not found.")
-
