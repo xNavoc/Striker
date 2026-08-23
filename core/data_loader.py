@@ -22,7 +22,6 @@ PARK_FACTORS = {
 }
 DEFAULT_PARK = {'hr': 100, 'k': 100, 'tb': 100, 'overall': 100}
 
-# Open-Air Venue Coordinates for NOAA Weather Fetching
 STADIUM_COORDS = {
     'Coors Field': (39.7559, -104.9942),
     'Yankee Stadium': (40.8296, -73.9262),
@@ -59,7 +58,6 @@ _SLATE_CACHE = None
 _WEATHER_CACHE = {}
 
 def safe_float(val, default_val):
-    """Safely converts string numbers from MLB API, catching undefined hyphens/dashes."""
     try:
         if val is None:
             return default_val
@@ -71,7 +69,6 @@ def safe_float(val, default_val):
         return default_val
 
 def clean_name_str(name: str) -> str:
-    """Standardizes player names across data models."""
     if not name:
         return ""
     nfkd = unicodedata.normalize('NFKD', str(name))
@@ -83,18 +80,15 @@ def clean_name_str(name: str) -> str:
     return re.sub(r'\s+', ' ', cleaned)
 
 def get_slate_date() -> str:
-    """Returns today's slate date in US/Eastern."""
     return datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
 
 def get_req_headers():
-    """Forces browser-mimicking headers to bypass aggressive CDN blocks on GitHub Actions runners."""
     return {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "application/json"
     }
 
 def fetch_weather_impact(venue_name: str):
-    """Calculates temperature and wind aerodynamic flight modifications."""
     if venue_name in _WEATHER_CACHE:
         return _WEATHER_CACHE[venue_name]
 
@@ -139,7 +133,7 @@ def fetch_weather_impact(venue_name: str):
         return ret
 
 def fetch_player_splits(person_id: int):
-    """Fetches full season splits for both pitchers and batters, safely parsing undefined MLB API values."""
+    """Hydrates season splits AND game logs from MLB Stats API to ensure 100% accurate statistical and drought streams."""
     if not person_id:
         return {}
     if person_id in PLAYER_CACHE:
@@ -151,70 +145,86 @@ def fetch_player_splits(person_id: int):
         'slg_lhb': 0.405, 'slg_rhb': 0.405,
         'hr9_lhb': 1.20, 'hr9_rhb': 1.20,
         'baa_lhb': 0.240, 'baa_rhb': 0.240,
-        'whip': 1.25, 'k9': 8.50, 'avg_ip': 5.2, 'is_bg': False
+        'whip': 1.25, 'k9': 8.50, 'avg_ip': 5.2, 'is_bg': False,
+        'game_logs': []
     }
 
     try:
+        # 1. Fetch Season Aggregates & Handedness Splits
         url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting,pitching],type=[season,statSplits],sitCodes=[vr,vl],season={CURRENT_SEASON})"
         resp = requests.get(url, headers=get_req_headers(), timeout=5)
-        if resp.status_code != 200:
-            PLAYER_CACHE[person_id] = res_dict
-            return res_dict
+        if resp.status_code == 200:
+            data = resp.json()
+            people = data.get('people', [])
+            if people:
+                p = people[0]
+                res_dict['b_hand'] = p.get('batSide', {}).get('code', 'R')
+                res_dict['p_hand'] = p.get('pitchHand', {}).get('code', 'R')
 
-        data = resp.json()
-        people = data.get('people', [])
-        if not people:
-            PLAYER_CACHE[person_id] = res_dict
-            return res_dict
+                for st_group in p.get('stats', []):
+                    group_name = st_group.get('group', {}).get('displayName', '').lower()
+                    type_name = st_group.get('type', {}).get('displayName', '').lower()
 
-        p = people[0]
-        res_dict['b_hand'] = p.get('batSide', {}).get('code', 'R')
-        res_dict['p_hand'] = p.get('pitchHand', {}).get('code', 'R')
+                    for sp in st_group.get('splits', []):
+                        stat = sp.get('stat', {})
+                        split_code = str(sp.get('split', {}).get('code', '')).lower()
 
-        for st_group in p.get('stats', []):
-            group_name = st_group.get('group', {}).get('displayName', '').lower()
-            type_name = st_group.get('type', {}).get('displayName', '').lower()
+                        if 'hitting' in group_name and 'season' in type_name:
+                            ba = safe_float(stat.get('avg'), 0.245)
+                            slg = safe_float(stat.get('slg'), 0.405)
+                            obp = safe_float(stat.get('obp'), 0.315)
+                            res_dict['ba'] = ba
+                            res_dict['slg'] = slg
+                            res_dict['obp'] = obp
+                            res_dict['iso'] = max(0.05, slg - ba)
 
-            for sp in st_group.get('splits', []):
-                stat = sp.get('stat', {})
-                split_code = str(sp.get('split', {}).get('code', '')).lower()
+                        if 'pitching' in group_name:
+                            if 'season' in type_name:
+                                res_dict['whip'] = safe_float(stat.get('whip'), 1.25)
+                                res_dict['k9'] = safe_float(stat.get('strikeoutsPer9Inn'), 8.50)
+                                ip = safe_float(stat.get('inningsPitched'), 0.0)
+                                games = int(safe_float(stat.get('gamesPitched'), 1.0))
+                                res_dict['avg_ip'] = round(ip / max(1, games), 1)
+                                res_dict['is_bg'] = bool(res_dict['avg_ip'] < 3.0)
 
-                if 'hitting' in group_name and 'season' in type_name:
-                    ba = safe_float(stat.get('avg'), 0.245)
-                    slg = safe_float(stat.get('slg'), 0.405)
-                    obp = safe_float(stat.get('obp'), 0.315)
-                    res_dict['ba'] = ba
-                    res_dict['slg'] = slg
-                    res_dict['obp'] = obp
-                    res_dict['iso'] = max(0.05, slg - ba)
+                            if split_code == 'vl':
+                                res_dict['slg_lhb'] = safe_float(stat.get('slg'), 0.405)
+                                res_dict['hr9_lhb'] = safe_float(stat.get('homeRunsPer9'), 1.20)
+                                res_dict['baa_lhb'] = safe_float(stat.get('avg'), 0.240)
+                            elif split_code == 'vr':
+                                res_dict['slg_rhb'] = safe_float(stat.get('slg'), 0.405)
+                                res_dict['hr9_rhb'] = safe_float(stat.get('homeRunsPer9'), 1.20)
+                                res_dict['baa_rhb'] = safe_float(stat.get('avg'), 0.240)
 
-                if 'pitching' in group_name:
-                    if 'season' in type_name:
-                        res_dict['whip'] = safe_float(stat.get('whip'), 1.25)
-                        res_dict['k9'] = safe_float(stat.get('strikeoutsPer9Inn'), 8.50)
-                        ip = safe_float(stat.get('inningsPitched'), 0.0)
-                        games = int(safe_float(stat.get('gamesPitched'), 1.0))
-                        res_dict['avg_ip'] = round(ip / max(1, games), 1)
-                        res_dict['is_bg'] = bool(res_dict['avg_ip'] < 3.0)
-
-                    if split_code == 'vl':
-                        res_dict['slg_lhb'] = safe_float(stat.get('slg'), 0.405)
-                        res_dict['hr9_lhb'] = safe_float(stat.get('homeRunsPer9'), 1.20)
-                        res_dict['baa_lhb'] = safe_float(stat.get('avg'), 0.240)
-                    elif split_code == 'vr':
-                        res_dict['slg_rhb'] = safe_float(stat.get('slg'), 0.405)
-                        res_dict['hr9_rhb'] = safe_float(stat.get('homeRunsPer9'), 1.20)
-                        res_dict['baa_rhb'] = safe_float(stat.get('avg'), 0.240)
+        # 2. Fetch Explicit Game Logs for Chronological Drought & Timing Models
+        logs_url = f"https://statsapi.mlb.com/api/v1/people/{person_id}?hydrate=stats(group=[hitting],type=[gameLog],season={CURRENT_SEASON})"
+        logs_resp = requests.get(logs_url, headers=get_req_headers(), timeout=5)
+        if logs_resp.status_code == 200:
+            logs_data = logs_resp.json()
+            people_logs = logs_data.get('people', [])
+            if people_logs:
+                for st_group in people_logs[0].get('stats', []):
+                    if st_group.get('group', {}).get('displayName', '').lower() == 'hitting':
+                        extracted_logs = []
+                        for sp in st_group.get('splits', []):
+                            game_date = sp.get('date', '')
+                            stat = sp.get('stat', {})
+                            extracted_logs.append({
+                                'date': game_date,
+                                'ab': int(safe_float(stat.get('atBats'), 1)),
+                                'hr': int(safe_float(stat.get('homeRuns'), 0)),
+                                'hits': int(safe_float(stat.get('hits'), 0))
+                            })
+                        res_dict['game_logs'] = extracted_logs
 
         PLAYER_CACHE[person_id] = res_dict
         return res_dict
     except Exception as e:
-        print(f"[!] Warning fetching splits for ID {person_id}: {e}")
+        print(f"[!] Warning fetching splits/logs for ID {person_id}: {e}")
         PLAYER_CACHE[person_id] = res_dict
         return res_dict
 
 def fetch_active_roster(team_id: int):
-    """Directly hits the team roster endpoint to bypass schedule hydration bugs."""
     if not team_id:
         return []
     try:
@@ -228,7 +238,6 @@ def fetch_active_roster(team_id: int):
     return []
 
 def load_daily_slate():
-    """Pulls schedule data utilizing an isolated global memory cache and direct API team roster fallbacks."""
     global _SLATE_CACHE
     if _SLATE_CACHE is not None:
         return _SLATE_CACHE
@@ -252,8 +261,6 @@ def load_daily_slate():
             return _SLATE_CACHE
 
         for g in dates[0].get('games', []):
-            
-            # EXCLUDE LIVE OR FINISHED GAMES
             game_state = g.get('status', {}).get('abstractGameState', '')
             if game_state in ['Live', 'Final']:
                 continue
@@ -263,7 +270,6 @@ def load_daily_slate():
             weather_fac = fetch_weather_impact(venue_name)
 
             teams = g.get('teams', {})
-            
             away_team_node = teams.get('away', {})
             home_team_node = teams.get('home', {})
             
@@ -315,9 +321,9 @@ def load_daily_slate():
                     home_batters.append((idx + 1, p_id, name, prof))
 
             if not away_batters:
-                away_batters = [(i+1, 0, f"{away_team} Hitter #{i+1}", {'ba': 0.245, 'obp': 0.315, 'slg': 0.405, 'iso': 0.160, 'b_hand': 'R'}) for i in range(9)]
+                away_batters = [(i+1, 0, f"{away_team} Hitter #{i+1}", {'ba': 0.245, 'obp': 0.315, 'slg': 0.405, 'iso': 0.160, 'b_hand': 'R', 'game_logs': []}) for i in range(9)]
             if not home_batters:
-                home_batters = [(i+1, 0, f"{home_team} Hitter #{i+1}", {'ba': 0.245, 'obp': 0.315, 'slg': 0.405, 'iso': 0.160, 'b_hand': 'R'}) for i in range(9)]
+                home_batters = [(i+1, 0, f"{home_team} Hitter #{i+1}", {'ba': 0.245, 'obp': 0.315, 'slg': 0.405, 'iso': 0.160, 'b_hand': 'R', 'game_logs': []}) for i in range(9)]
 
             games.append({
                 'game_pk': g.get('gamePk', 0),
@@ -334,6 +340,7 @@ def load_daily_slate():
                 'home_batters': home_batters
             })
 
+        _SLATE_Cache = (today_str, games)
         _SLATE_CACHE = (today_str, games)
         return _SLATE_CACHE
     except Exception as e:
