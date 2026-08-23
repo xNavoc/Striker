@@ -85,6 +85,7 @@ with st.sidebar:
     model_choice = st.radio(
         label="Select Slate Matrix",
         options=[
+            "Master Consensus",
             "Home Runs (HR)", 
             "Weibull Hazard", 
             "Power Synergy", 
@@ -101,6 +102,7 @@ with st.sidebar:
 
 # 4. File Routing Map
 model_dir_map = {
+    "Master Consensus": ("master", f"master_top50_{date_str}.csv", f"master_top50_card_{date_str}.png"),
     "Home Runs (HR)": ("hr", f"hr_top50_{date_str}.csv", f"hr_top50_card_{date_str}.png"),
     "Weibull Hazard": ("weibull", f"weibull_top50_{date_str}.csv", f"weibull_top50_card_{date_str}.png"),
     "Power Synergy": ("synergy", f"synergy_top50_{date_str}.csv", f"synergy_top50_card_{date_str}.png"),
@@ -139,11 +141,16 @@ else:
     df = pd.read_csv(csv_path)
 
     # --- KPI Ribbon Grid ---
-    score_col = next((c for c in ['score', 'synergy_score', 'hazard_score'] if c in df.columns), None)
+    score_col = next((c for c in ['score', 'synergy_score', 'hazard_score', 'consensus_score'] if c in df.columns), None)
     top_score_val = f"{df[score_col].max():.1f}" if score_col else "N/A"
     
     tier_1_locks = df['target_call'].astype(str).str.contains('LOCK|APEX|CRITICAL', case=False, na=False) if 'target_call' in df.columns else pd.Series([False]*len(df))
     tier_2_targets = df['target_call'].astype(str).str.contains('TARGET|LADDER|ELEVATED|WATCH', case=False, na=False) if 'target_call' in df.columns else pd.Series([False]*len(df))
+
+    # If it's the master board, we might rely on 'best_prop_target' instead of 'target_call'
+    if model_choice == "Master Consensus" and 'best_prop_target' in df.columns:
+        tier_1_locks = df['best_prop_target'].astype(str).str.contains('Apex|Anchor', case=False, na=False)
+        tier_2_targets = df['best_prop_target'].astype(str).str.contains('Over|1.5\\+', case=False, na=False)
 
     kpi1, kpi2, kpi3, kpi4 = st.columns(4)
     kpi1.metric("Total Slate Targets", f"{len(df)}")
@@ -171,8 +178,11 @@ else:
             mask = df_filtered.apply(lambda row: row.astype(str).str.contains(search_term, case=False).any(), axis=1)
             df_filtered = df_filtered[mask]
 
-        if hide_standard and 'target_call' in df_filtered.columns:
-            df_filtered = df_filtered[~df_filtered['target_call'].astype(str).str.contains('Standard|Baseline|Rotation', na=False)]
+        if hide_standard:
+            if 'target_call' in df_filtered.columns:
+                df_filtered = df_filtered[~df_filtered['target_call'].astype(str).str.contains('Standard|Baseline|Rotation', na=False)]
+            elif 'best_prop_target' in df_filtered.columns:
+                df_filtered = df_filtered[~df_filtered['best_prop_target'].astype(str).str.contains('Value', na=False)]
             
         if sort_order == "Model Score (High to Low)" and score_col in df_filtered.columns:
             df_filtered = df_filtered.sort_values(by=score_col, ascending=False)
@@ -195,14 +205,17 @@ else:
                     format_dict[col] = "{:.3f}"
                 elif 'prob' in col_lower or 'pct' in col_lower or '%' in col_lower:
                     format_dict[col] = "{:.1f}%"
-                elif 'score' in col_lower or 'rating' in col_lower or col_lower in ['expected_tb', 'true_ab', 'scale_lambda']:
+                elif 'score' in col_lower or 'rating' in col_lower or col_lower in ['expected_tb', 'true_ab', 'scale_lambda', 'exp_tb']:
                     format_dict[col] = "{:.1f}"
                 elif 'game' in col_lower or 'drought' in col_lower or col_lower in ['rank', 'order']:
                     format_dict[col] = "{:.0f}"
 
             styled = df_filtered.style.format(format_dict, na_rep="-")
+            
             if 'target_call' in df_filtered.columns:
                 styled = styled.map(style_target_calls, subset=['target_call'])
+            elif 'best_prop_target' in df_filtered.columns:
+                styled = styled.map(style_target_calls, subset=['best_prop_target'])
 
             st.dataframe(styled, use_container_width=True, height=650, hide_index=True)
         else:
