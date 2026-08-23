@@ -6,13 +6,26 @@ import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
+def safe_float(val, default_val):
+    """Safely converts string numbers, catching undefined hyphens/dashes from API feeds."""
+    try:
+        if val is None:
+            return default_val
+        clean = str(val).strip().replace(',', '')
+        if clean in ['', '-', '--', '---', '.---']:
+            return default_val
+        return float(clean)
+    except Exception:
+        return default_val
+
 def calculate_l15_ba(game_logs, fallback_ba=0.250):
-    """Calculates Batting Average across the batter's last 15 games."""
+    """Calculates Batting Average across the batter's last 15 games using clean game logs."""
     if not isinstance(game_logs, list) or len(game_logs) == 0:
         return fallback_ba
 
     try:
-        sorted_logs = sorted(game_logs, key=lambda x: str(x.get('date', '')), reverse=True)[:15]
+        valid_logs = [lg for lg in game_logs if isinstance(lg, dict)]
+        sorted_logs = sorted(valid_logs, key=lambda x: str(x.get('date', '')), reverse=True)[:15]
     except Exception:
         sorted_logs = game_logs[:15]
 
@@ -20,10 +33,10 @@ def calculate_l15_ba(game_logs, fallback_ba=0.250):
     total_hits = 0
 
     for g in sorted_logs:
-        total_ab += int(g.get('ab', 0))
-        total_hits += int(g.get('h', 0))
+        total_ab += int(safe_float(g.get('ab'), 0))
+        total_hits += int(safe_float(g.get('hits', g.get('h')), 0))
 
-    if total_ab >= 15:
+    if total_ab >= 10:
         return total_hits / total_ab
     return fallback_ba
 
@@ -33,18 +46,20 @@ def run_hits_model(mode="predict"):
 
     if mode == "settle":
         settle_projections("hits", today_str, lambda r, st: (
-            st.get('h', 0) > 0,
-            f"WIN ({st.get('h', 0)} H)" if st.get('h', 0) > 0 else "LOSS"
+            int(safe_float(st.get('h'), 0)) > 0,
+            f"WIN ({int(safe_float(st.get('h'), 0))} H)" if int(safe_float(st.get('h'), 0)) > 0 else "LOSS"
         ))
         return
 
-    print(f"[{datetime.now()}] Running Streamlined Contact & Hits Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Hardened Contact & Hits Model for {today_str}...")
     targets = []
 
     for g in games:
-        # Environmental: Focus on general Hit/BABIP park factors, not HRs
+        if not isinstance(g, dict):
+            continue
+
         park_factors = g.get('park_factors', {})
-        park_hit_adj = park_factors.get('hits', 100) / 100.0
+        park_hit_adj = safe_float(park_factors.get('hits', 100), 100) / 100.0
 
         for side, team_name, opp_p, opp_bp, batters in [
             ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
@@ -53,43 +68,41 @@ def run_hits_model(mode="predict"):
             opp_p_dict = opp_p if isinstance(opp_p, dict) else {}
             opp_p_name = opp_p_dict.get('pitcher_name', 'TBD Pitcher')
             
-            # Pitcher Hit Vulnerability (H/9) & Contact Allowed (Low K/9)
-            p_h9 = float(opp_p_dict.get('h9', 8.5))
-            p_k9 = float(opp_p_dict.get('k9', 8.5))
+            # Defensive Pitcher Vulnerability Extraction
+            p_h9 = safe_float(opp_p_dict.get('h9', opp_p_dict.get('baa', 0.240) * 9.0), 8.5)
+            p_k9 = safe_float(opp_p_dict.get('k9', 8.5), 8.5)
             
-            # Pitcher Multiplier: Rewards high H/9 and low K/9 (more balls in play)
             league_avg_h9 = 8.5
             league_avg_k9 = 8.5
             h9_factor = p_h9 / league_avg_h9
             k9_factor = league_avg_k9 / max(p_k9, 4.0) 
             pitcher_multiplier = np.clip(h9_factor * k9_factor, 0.70, 1.40)
 
+            if not isinstance(batters, list):
+                continue
+
             for b_tuple in batters:
-                if len(b_tuple) >= 4:
-                    order, b_id, b_name, b_prof = b_tuple[0], b_tuple[1], b_tuple[2], b_tuple[3]
-                else:
+                if not isinstance(b_tuple, (list, tuple)) or len(b_tuple) < 4:
                     continue
 
+                order, b_id, b_name, b_prof = b_tuple[0], b_tuple[1], b_tuple[2], b_tuple[3]
                 b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
                 
-                # Pillar 1: Batter Baseline (60/40 Season vs L15 BA)
-                season_ba = float(b_prof_dict.get('avg', 0.250))
+                # Pillar 1: Batter Baseline with Defensive Fallbacks
+                season_ba = safe_float(b_prof_dict.get('ba', b_prof_dict.get('avg', 0.250)), 0.250)
                 game_logs = b_prof_dict.get('game_logs', [])
                 l15_ba = calculate_l15_ba(game_logs, fallback_ba=season_ba)
                 blended_ba = (0.60 * season_ba) + (0.40 * l15_ba)
 
-                # Pillar 2: Batted Ball Profile (LD% & Contact%)
-                ld_rate = float(b_prof_dict.get('ld_pct', 0.210)) # MLB avg ~ 21%
-                contact_rate = float(b_prof_dict.get('contact_pct', 0.760)) # MLB avg ~ 76%
+                # Pillar 2: Batted Ball Profile with Defaults
+                ld_rate = safe_float(b_prof_dict.get('ld_pct', 0.210), 0.210)
+                contact_rate = safe_float(b_prof_dict.get('contact_pct', 0.760), 0.760)
                 
                 ld_multiplier = np.clip(ld_rate / 0.210, 0.80, 1.30)
                 contact_multiplier = np.clip(contact_rate / 0.760, 0.80, 1.20)
 
-                # Calibrated Base Hit Probability (Binomial approach)
-                # First, determine the true probability of a hit per plate appearance
+                # Calibrated Base Hit Probability
                 pa_hit_rate = np.clip(blended_ba * ld_multiplier * contact_multiplier * pitcher_multiplier * park_hit_adj, 0.10, 0.45)
-                
-                # Second, convert per-PA rate to game probability (assuming 4.1 PAs on average)
                 final_hit_prob = 1.0 - ((1.0 - pa_hit_rate) ** 4.1)
                 score = round(float(np.clip(final_hit_prob * 100.0, 10.0, 99.0)), 1)
 
@@ -138,12 +151,15 @@ def render_hits_card(df, out_path, today_str):
 
     for _, r in df.iterrows():
         call = str(r.get('target_call', 'Standard Hit Prob'))
+        ba_val = float(r.get('blended_ba', 0.250))
+        ba_formatted = f".{int(round(ba_val * 1000)):03d}" if ba_val < 1.0 else ".250"
+        
         rows.append([
             r.get('rank', 1),
             f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
             str(r.get('team', 'Team'))[:11],
             str(r.get('opp_pitcher', 'TBD'))[:14],
-            f".{str(float(r.get('blended_ba', 0.250)))[2:5].ljust(3, '0')}",
+            ba_formatted,
             f"{r.get('ld_rate', 0.0)}%",
             f"{r.get('contact_rate', 0.0)}%",
             f"{r.get('hit_prob', 0.0)}%",
