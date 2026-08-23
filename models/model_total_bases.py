@@ -6,13 +6,26 @@ import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
 from core.settlement_engine import settle_projections
 
+def safe_float(val, default_val):
+    """Safely converts string numbers, catching undefined hyphens/dashes from API feeds."""
+    try:
+        if val is None:
+            return default_val
+        clean = str(val).strip().replace(',', '')
+        if clean in ['', '-', '--', '---', '.---']:
+            return default_val
+        return float(clean)
+    except Exception:
+        return default_val
+
 def calculate_l15_slg_and_bb(game_logs, fallback_slg=0.410, fallback_bb_pct=0.08):
-    """Calculates SLG and Walk Rate across the batter's last 15 games."""
+    """Calculates SLG and Walk Rate across the batter's last 15 games using clean logs."""
     if not isinstance(game_logs, list) or len(game_logs) == 0:
         return fallback_slg, fallback_bb_pct
 
     try:
-        sorted_logs = sorted(game_logs, key=lambda x: str(x.get('date', '')), reverse=True)[:15]
+        valid_logs = [lg for lg in game_logs if isinstance(lg, dict)]
+        sorted_logs = sorted(valid_logs, key=lambda x: str(x.get('date', '')), reverse=True)[:15]
     except Exception:
         sorted_logs = game_logs[:15]
 
@@ -22,14 +35,13 @@ def calculate_l15_slg_and_bb(game_logs, fallback_slg=0.410, fallback_bb_pct=0.08
     total_tb = 0
 
     for g in sorted_logs:
-        ab = int(g.get('ab', 0))
-        bb = int(g.get('bb', 0))
-        h = int(g.get('h', 0))
-        d = int(g.get('2b', 0))
-        t = int(g.get('3b', 0))
-        hr = int(g.get('hr', 0))
+        ab = int(safe_float(g.get('ab'), 0))
+        bb = int(safe_float(g.get('bb'), 0))
+        h = int(safe_float(g.get('h', g.get('hits')), 0))
+        d = int(safe_float(g.get('2b'), 0))
+        t = int(safe_float(g.get('3b'), 0))
+        hr = int(safe_float(g.get('hr'), 0))
 
-        # Total Bases: Singles + (2B * 2) + (3B * 3) + (HR * 4)
         singles = max(0, h - d - t - hr)
         tb = singles + (d * 2) + (t * 3) + (hr * 4)
 
@@ -49,18 +61,20 @@ def run_tb_model(mode="predict"):
 
     if mode == "settle":
         settle_projections("total_bases", today_str, lambda r, st: (
-            st.get('tb', 0) >= 2,
-            f"WIN ({st.get('tb', 0)} TB)" if st.get('tb', 0) >= 2 else "LOSS"
+            int(safe_float(st.get('tb'), 0)) >= 2,
+            f"WIN ({int(safe_float(st.get('tb'), 0))} TB)" if int(safe_float(st.get('tb'), 0)) >= 2 else "LOSS"
         ))
         return
 
-    print(f"[{datetime.now()}] Running Streamlined Total Bases Model for {today_str}...")
+    print(f"[{datetime.now()}] Running Hardened Total Bases Model for {today_str}...")
     targets = []
 
     for g in games:
-        # Environmental: General ballpark run/XBH factor
+        if not isinstance(g, dict):
+            continue
+
         park_factors = g.get('park_factors', {})
-        park_tb_adj = park_factors.get('runs', 100) / 100.0
+        park_tb_adj = safe_float(park_factors.get('runs', 100), 100) / 100.0
 
         for side, team_name, opp_p, opp_bp, batters in [
             ('away', g.get('away_team', 'Away'), g.get('home_pitcher', {}), g.get('home_bp', {}), g.get('away_batters', [])),
@@ -69,23 +83,24 @@ def run_tb_model(mode="predict"):
             opp_p_dict = opp_p if isinstance(opp_p, dict) else {}
             opp_p_name = opp_p_dict.get('pitcher_name', 'TBD Pitcher')
             
-            # Pitcher Matchup: Slugging Allowed
-            p_slg_allowed = float(opp_p_dict.get('slg_allowed', 0.410))
+            p_slg_allowed = safe_float(opp_p_dict.get('slg_allowed', opp_p_dict.get('slg', 0.410)), 0.410)
             league_avg_slg = 0.410
             pitcher_tb_multiplier = np.clip(p_slg_allowed / league_avg_slg, 0.75, 1.35)
 
+            if not isinstance(batters, list):
+                continue
+
             for b_tuple in batters:
-                if len(b_tuple) >= 4:
-                    order, b_id, b_name, b_prof = b_tuple[0], b_tuple[1], b_tuple[2], b_tuple[3]
-                else:
+                if not isinstance(b_tuple, (list, tuple)) or len(b_tuple) < 4:
                     continue
+                
+                order, b_id, b_name, b_prof = b_tuple[0], b_tuple[1], b_tuple[2], b_tuple[3]
                 
                 try:
                     order_num = int(''.join(filter(str.isdigit, str(order))))
                 except ValueError:
                     order_num = 9
 
-                # Expected Plate Appearances based on lineup order
                 if order_num in [1, 2, 3]:
                     expected_pa = 4.5
                 elif order_num in [4, 5, 6]:
@@ -95,21 +110,17 @@ def run_tb_model(mode="predict"):
 
                 b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
                 
-                # Batter Baselines
-                season_slg = float(b_prof_dict.get('slg', 0.410))
-                season_bb_pct = float(b_prof_dict.get('bb_pct', 0.085))
+                season_slg = safe_float(b_prof_dict.get('slg'), 0.410)
+                season_bb_pct = safe_float(b_prof_dict.get('bb_pct'), 0.085)
                 
                 game_logs = b_prof_dict.get('game_logs', [])
                 l15_slg, l15_bb_pct = calculate_l15_slg_and_bb(game_logs, season_slg, season_bb_pct)
                 
-                # Blend 60/40 Season to Recency
                 blended_slg = (0.60 * season_slg) + (0.40 * l15_slg)
                 blended_bb_pct = (0.60 * season_bb_pct) + (0.40 * l15_bb_pct)
 
-                # True At-Bats (Penalize high walk rates)
                 true_ab = expected_pa * (1.0 - blended_bb_pct)
 
-                # Projected Total Bases
                 expected_tb = float(np.clip(true_ab * blended_slg * pitcher_tb_multiplier * park_tb_adj, 0.5, 3.5))
                 score = round(float(np.clip((expected_tb / 2.0) * 100.0, 10.0, 99.0)), 1)
 
@@ -159,12 +170,18 @@ def render_total_bases_card(df, out_path, today_str):
 
     for _, r in df.iterrows():
         call = str(r.get('target_call', 'Standard Base Volume'))
+        slg_val = float(r.get('blended_slg', 0.410))
+        slg_formatted = f".{int(round(slg_val * 1000)):03d}" if slg_val < 1.0 else f"{slg_val:.3f}"
+        
+        p_slg_val = float(r.get('p_slg_allowed', 0.410))
+        p_slg_formatted = f".{int(round(p_slg_val * 1000)):03d}" if p_slg_val < 1.0 else f"{p_slg_val:.3f}"
+
         rows.append([
             r.get('rank', 1),
             f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
             str(r.get('team', 'Team'))[:11],
-            f"{str(r.get('opp_pitcher', 'TBD'))[:11]} (.{str(float(r.get('p_slg_allowed', 0.410)))[2:5].ljust(3, '0')})",
-            f".{str(float(r.get('blended_slg', 0.410)))[2:5].ljust(3, '0')}",
+            f"{str(r.get('opp_pitcher', 'TBD'))[:11]} ({p_slg_formatted})",
+            slg_formatted,
             f"{r.get('bb_pct', 0.0)}%",
             f"{float(r.get('true_ab', 0.0)):.2f}",
             f"{float(r.get('expected_tb', 0.0)):.2f}",
@@ -194,10 +211,13 @@ def render_total_bases_card(df, out_path, today_str):
             elif col == 4:
                 cell.set_text_props(color='#38bdf8', weight='bold')
             elif col == 5:
-                bb = float(rows[row-1][5].strip('%'))
-                if bb > 12.0:
-                    cell.set_text_props(color='#f87171')
-                else:
+                try:
+                    bb = float(rows[row-1][5].strip('%'))
+                    if bb > 12.0:
+                        cell.set_text_props(color='#f87171')
+                    else:
+                        cell.set_text_props(color='#f1f5f9')
+                except:
                     cell.set_text_props(color='#f1f5f9')
             else:
                 cell.set_text_props(color='#f1f5f9')
@@ -207,5 +227,4 @@ def render_total_bases_card(df, out_path, today_str):
     plt.close('all')
     print(f"[✓] Saved Streamlined Total Bases Card to {out_path}")
 
-# Dual naming alias to prevent import errors across orchestrators
 run_total_bases_model = run_tb_model
