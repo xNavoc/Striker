@@ -2,7 +2,9 @@ name: Daily Pipeline
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    # Runs at 10am, 12pm, 2pm, 4pm, 6pm, and 8pm EDT during baseball season
+    # (Translated to 14, 16, 18, 20, 22, and 00 UTC)
+    - cron: '0 14,16,18,20,22,0 * * *'
   workflow_dispatch:
 
 permissions:
@@ -33,6 +35,6 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add exports/**/*.csv
-          git commit -m "Automated daily MLB projection update" || echo "No changes to commit"
+          git commit -m "Automated bi-hourly MLB projection update" || echo "No changes to commit"
           git pull origin main --rebase
           git push origin main
