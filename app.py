@@ -1,5 +1,3 @@
-I've got you. Here is the complete, raw, ready-to-copy code for the final app.py.
-No image dependencies, completely streamlined, with the ultra-wide immersive data table.
 import os
 from datetime import datetime
 import streamlit as st
@@ -27,6 +25,15 @@ st.markdown("""
 
     /* DataFrame Container */
     .stDataFrame { border-radius: 10px; border: 1px solid #1e293b; background-color: #0b1329; }
+    
+    /* Expander / Accordion Styling */
+    .streamlit-expanderHeader {
+        background-color: #0f172a !important;
+        border: 1px solid #1e293b !important;
+        border-radius: 8px !important;
+        color: #f8fafc !important;
+        font-weight: 700 !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -54,7 +61,7 @@ with st.sidebar:
     st.markdown("---")
     st.caption("Status: **ONLINE** 🟢 (Bi-Hourly Sync)")
 
-# 4. File Routing Map (Stripped of PNGs)
+# 4. File Routing Map
 model_dir_map = {
     "Master Consensus": ("master", f"master_top50_{date_str}.csv"),
     "Home Runs (HR)": ("hr", f"hr_top50_{date_str}.csv"),
@@ -80,7 +87,6 @@ def style_target_calls(val):
         return 'color: #facc15; font-weight: bold; background-color: rgba(250, 204, 21, 0.10);'
     return 'color: #94a3b8; font-style: italic;'
 
-# Columns to completely hide from the user UI to reduce clutter
 COLS_TO_DROP = [
     'player_id', 'merge_key', 'hazard_mult', 'core_hr_prob', 'synergy_prob', 
     'base_hr_prob', 'matchup_multiplier', 'rho_shape', 'saturation', 'wb_rk', 
@@ -88,7 +94,6 @@ COLS_TO_DROP = [
     'hit_score', 'combo_score', 'hr_score', 'order', 'pitcher_id'
 ]
 
-# Clean, punchy headers for the UI
 RENAME_MAP = {
     'rank': '#',
     'player_name': 'Batter',
@@ -114,6 +119,30 @@ RENAME_MAP = {
     'projected_due': 'Target Date'
 }
 
+def render_styled_table(df_subset):
+    """Utility to clean, format, and render a dataframe cleanly."""
+    df_clean = df_subset.drop(columns=[c for c in COLS_TO_DROP if c in df_subset.columns])
+    df_clean = df_clean.rename(columns=RENAME_MAP)
+    
+    cols = list(df_clean.columns)
+    if '#' in cols:
+        cols.insert(0, cols.pop(cols.index('#')))
+    if 'Actionable Target' in cols:
+        cols.append(cols.pop(cols.index('Actionable Target')))
+    df_clean = df_clean[cols]
+
+    format_dict = {}
+    for col in df_clean.columns:
+        if 'ISO' in col or 'SLG' in col: format_dict[col] = "{:.3f}"
+        elif '%' in col: format_dict[col] = "{:.1f}%"
+        elif col in ['Score', 'Consensus', 'Exp TB', 'Cycle (λ)']: format_dict[col] = "{:.1f}"
+
+    styled = df_clean.style.format(format_dict, na_rep="-")
+    if 'Actionable Target' in df_clean.columns:
+        styled = styled.map(style_target_calls, subset=['Actionable Target'])
+
+    st.dataframe(styled, use_container_width=True, hide_index=True)
+
 # 6. Main Layout
 st.title(f"⚡ {model_choice} Matrix")
 st.markdown(f"**Slate:** `{date_str}` | High-Conviction Prop & Matchup Intelligence")
@@ -124,7 +153,7 @@ if not os.path.exists(csv_path):
 else:
     df = pd.read_csv(csv_path)
 
-    # Calculate KPIs before dropping columns
+    # Calculate KPIs
     score_col = next((c for c in ['consensus_score', 'synergy_score', 'hazard_score', 'score'] if c in df.columns), None)
     top_score_val = f"{df[score_col].max():.1f}" if score_col else "N/A"
     
@@ -144,16 +173,19 @@ else:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # 🎛️ Interactive Filters
-    f_col1, f_col2, f_col3 = st.columns([2, 1, 1])
+    # 🎛️ Interactive Filters & Layout Switcher
+    f_col1, f_col2, f_col3, f_col4 = st.columns([1.5, 1.2, 1, 1])
+    
     with f_col1:
         search_term = st.text_input("🔍 Search Player, Team, or Pitcher...", placeholder="e.g. Ohtani, LAD, Snell")
     with f_col2:
-        hide_standard = st.checkbox("🎯 Hide Standard Targets", value=False)
+        view_mode = st.radio("📐 Grouping Mode", ["Master Board", "Group by Matchup"], horizontal=True)
     with f_col3:
+        hide_standard = st.checkbox("🎯 Actionable Only", value=False)
+    with f_col4:
         sort_order = st.selectbox("📊 Sort By", ["Model Score", "Player Name (A-Z)"])
 
-    # Filter Logic
+    # Filtering Logic
     df_filtered = df.copy()
     if search_term:
         mask = df_filtered.apply(lambda row: row.astype(str).str.contains(search_term, case=False).any(), axis=1)
@@ -167,33 +199,40 @@ else:
     elif sort_order == "Player Name (A-Z)" and 'player_name' in df_filtered.columns:
         df_filtered = df_filtered.sort_values(by='player_name', ascending=True)
 
-    # Clean Up Dataframe for UI
-    df_ui = df_filtered.drop(columns=[c for c in COLS_TO_DROP if c in df_filtered.columns])
-    df_ui = df_ui.rename(columns=RENAME_MAP)
-    
-    # Reorder columns slightly to ensure '#' is first and 'Actionable Target' is last
-    cols = list(df_ui.columns)
-    if '#' in cols:
-        cols.insert(0, cols.pop(cols.index('#')))
-    if 'Actionable Target' in cols:
-        cols.append(cols.pop(cols.index('Actionable Target')))
-    df_ui = df_ui[cols]
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    # Full Width Matrix Render
-    st.markdown("### 📊 Active Matrix Terminal")
-    if not df_ui.empty:
-        format_dict = {}
-        for col in df_ui.columns:
-            if 'ISO' in col or 'SLG' in col: format_dict[col] = "{:.3f}"
-            elif '%' in col: format_dict[col] = "{:.1f}%"
-            elif col in ['Score', 'Consensus', 'Exp TB', 'Cycle (λ)']: format_dict[col] = "{:.1f}"
-
-        styled = df_ui.style.format(format_dict, na_rep="-")
-        if 'Actionable Target' in df_ui.columns:
-            styled = styled.map(style_target_calls, subset=['Actionable Target'])
-
-        # Render wide table
-        st.dataframe(styled, use_container_width=True, height=800, hide_index=True)
-    else:
+    # --- Render Selected View ---
+    if df_filtered.empty:
         st.warning("No players matched the active filter criteria.")
+    else:
+        if view_mode == "Master Board":
+            st.markdown("### 📊 Slate Matrix Terminal (Full Slate)")
+            render_styled_table(df_filtered)
+        else:
+            st.markdown("### 🏟️ Game-by-Game Matchup Hub")
+            
+            # Determine grouping column (e.g. 'matchup' or create from 'team' / 'opp_pitcher')
+            group_col = 'matchup' if 'matchup' in df_filtered.columns else 'team'
+            unique_matchups = df_filtered[group_col].dropna().unique()
 
+            for match in unique_matchups:
+                sub_df = df_filtered[df_filtered[group_col] == match]
+                
+                # Count tier 1 & tier 2 targets in this specific game
+                match_t1 = sub_df[target_col].astype(str).str.contains('LOCK|APEX|CRITICAL|Anchor', case=False, na=False).sum() if target_col in sub_df.columns else 0
+                match_t2 = sub_df[target_col].astype(str).str.contains('TARGET|LADDER|ELEVATED|WATCH|Over', case=False, na=False).sum() if target_col in sub_df.columns else 0
+                
+                # Header formatting
+                badge = ""
+                if match_t1 > 0:
+                    badge = f"🔥 {match_t1} Apex Lock{'s' if match_t1 > 1 else ''}"
+                elif match_t2 > 0:
+                    badge = f"⚡ {match_t2} Target{'s' if match_t2 > 1 else ''}"
+                else:
+                    badge = "⚾ Standard Matchup"
+
+                # Expand game by default if it contains high-tier locks
+                is_expanded = bool(match_t1 > 0 or match_t2 >= 2)
+                
+                with st.expander(f"🏟️ **{match}** | {len(sub_df)} Players Available | {badge}", expanded=is_expanded):
+                    render_styled_table(sub_df)
