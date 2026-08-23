@@ -1,3 +1,5 @@
+I've got you. Here is the complete, raw, ready-to-copy code for the final app.py.
+No image dependencies, completely streamlined, with the ultra-wide immersive data table.
 import os
 from datetime import datetime
 import streamlit as st
@@ -25,12 +27,6 @@ st.markdown("""
 
     /* DataFrame Container */
     .stDataFrame { border-radius: 10px; border: 1px solid #1e293b; background-color: #0b1329; }
-    
-    /* Buttons */
-    .stDownloadButton > button {
-        background-color: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; border-radius: 8px; font-weight: 600; width: 100%;
-    }
-    .stDownloadButton > button:hover { background-color: #38bdf8; color: #070d1e; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -58,21 +54,20 @@ with st.sidebar:
     st.markdown("---")
     st.caption("Status: **ONLINE** 🟢 (Bi-Hourly Sync)")
 
-# 4. File Routing Map
+# 4. File Routing Map (Stripped of PNGs)
 model_dir_map = {
-    "Master Consensus": ("master", f"master_top50_{date_str}.csv", f"master_top50_card_{date_str}.png"),
-    "Home Runs (HR)": ("hr", f"hr_top50_{date_str}.csv", f"hr_top50_card_{date_str}.png"),
-    "Weibull Hazard": ("weibull", f"weibull_top50_{date_str}.csv", f"weibull_top50_card_{date_str}.png"),
-    "Power Synergy": ("synergy", f"synergy_top50_{date_str}.csv", f"synergy_top50_card_{date_str}.png"),
-    "Hits & Contact": ("hits", f"hits_top50_{date_str}.csv", f"hits_top50_card_{date_str}.png"),
-    "Total Bases": ("total_bases", f"total_bases_top50_{date_str}.csv", f"total_bases_top50_card_{date_str}.png"),
-    "H+R+RBI Traffic": ("hr_rbi", f"hr_rbi_top50_{date_str}.csv", f"hr_rbi_top50_card_{date_str}.png"),
-    "Pitcher Ks": ("pitcher_ks", f"pitcher_ks_top50_{date_str}.csv", f"pitcher_ks_top50_card_{date_str}.png")
+    "Master Consensus": ("master", f"master_top50_{date_str}.csv"),
+    "Home Runs (HR)": ("hr", f"hr_top50_{date_str}.csv"),
+    "Weibull Hazard": ("weibull", f"weibull_top50_{date_str}.csv"),
+    "Power Synergy": ("synergy", f"synergy_top50_{date_str}.csv"),
+    "Hits & Contact": ("hits", f"hits_top50_{date_str}.csv"),
+    "Total Bases": ("total_bases", f"total_bases_top50_{date_str}.csv"),
+    "H+R+RBI Traffic": ("hr_rbi", f"hr_rbi_top50_{date_str}.csv"),
+    "Pitcher Ks": ("pitcher_ks", f"pitcher_ks_top50_{date_str}.csv")
 }
 
-sub_dir, csv_file, card_file = model_dir_map[model_choice]
+sub_dir, csv_file = model_dir_map[model_choice]
 csv_path = os.path.join("exports", sub_dir, csv_file)
-card_path = os.path.join("exports", sub_dir, card_file)
 
 # 5. UI Helpers
 def style_target_calls(val):
@@ -140,6 +135,7 @@ else:
     else:
         tier_1, tier_2 = pd.Series([False]*len(df)), pd.Series([False]*len(df))
 
+    # KPI Ribbon
     kpi1, kpi2, kpi3, kpi4 = st.columns(4)
     kpi1.metric("Total Slate Targets", f"{len(df)}")
     kpi2.metric("Top Model Score", top_score_val)
@@ -183,38 +179,21 @@ else:
         cols.append(cols.pop(cols.index('Actionable Target')))
     df_ui = df_ui[cols]
 
-    # Render Split View
-    col_table, col_card = st.columns([1.6, 1])
+    # Full Width Matrix Render
+    st.markdown("### 📊 Active Matrix Terminal")
+    if not df_ui.empty:
+        format_dict = {}
+        for col in df_ui.columns:
+            if 'ISO' in col or 'SLG' in col: format_dict[col] = "{:.3f}"
+            elif '%' in col: format_dict[col] = "{:.1f}%"
+            elif col in ['Score', 'Consensus', 'Exp TB', 'Cycle (λ)']: format_dict[col] = "{:.1f}"
 
-    with col_table:
-        st.markdown("### 📊 Active Matrix Terminal")
-        if not df_ui.empty:
-            format_dict = {}
-            for col in df_ui.columns:
-                if 'ISO' in col or 'SLG' in col: format_dict[col] = "{:.3f}"
-                elif '%' in col: format_dict[col] = "{:.1f}%"
-                elif col in ['Score', 'Consensus', 'Exp TB', 'Cycle (λ)']: format_dict[col] = "{:.1f}"
+        styled = df_ui.style.format(format_dict, na_rep="-")
+        if 'Actionable Target' in df_ui.columns:
+            styled = styled.map(style_target_calls, subset=['Actionable Target'])
 
-            styled = df_ui.style.format(format_dict, na_rep="-")
-            if 'Actionable Target' in df_ui.columns:
-                styled = styled.map(style_target_calls, subset=['Actionable Target'])
+        # Render wide table
+        st.dataframe(styled, use_container_width=True, height=800, hide_index=True)
+    else:
+        st.warning("No players matched the active filter criteria.")
 
-            st.dataframe(styled, use_container_width=True, height=650, hide_index=True)
-        else:
-            st.warning("No players matched the active filter criteria.")
-
-    with col_card:
-        st.markdown("### 🖼️ Rendered Share Card")
-        if not os.path.exists(card_path):
-            card_dir = os.path.join("exports", sub_dir)
-            if os.path.exists(card_dir):
-                all_cards = [os.path.join(card_dir, f) for f in os.listdir(card_dir) if f.endswith('.png')]
-                if all_cards:
-                    card_path = max(all_cards, key=os.path.getmtime)
-
-        if os.path.exists(card_path):
-            st.image(card_path, use_container_width=True)
-            with open(card_path, "rb") as file:
-                st.download_button(label=f"📥 Download Card", data=file, file_name=os.path.basename(card_path), mime="image/png")
-        else:
-            st.info("Rendered image card not found.")
