@@ -1,271 +1,271 @@
 player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit_prob,score,target_call,rank
-695506,Jac Caglianone,4,Kansas City Royals,TBD Pitcher,0.337,21.0,76.0,66.8,66.8,🟢 CONTACT TARGET: High Floor,1
-543510,James McCann,5,Arizona Diamondbacks,Andrew Abbott,0.333,21.0,76.0,66.3,66.3,🟢 CONTACT TARGET: High Floor,2
-672569,Gustavo Campero,4,Los Angeles Angels,Cal Quantrill,0.333,21.0,76.0,66.3,66.3,🟢 CONTACT TARGET: High Floor,3
-672386,Alejandro Kirk,1,Toronto Blue Jays,Carlos Rodón,0.331,21.0,76.0,66.1,66.1,🟢 CONTACT TARGET: High Floor,4
-802415,Chandler Simpson,2,Tampa Bay Rays,Shane Baz,0.329,21.0,76.0,65.8,65.8,🟢 CONTACT TARGET: High Floor,5
-672515,Gabriel Moreno,2,Arizona Diamondbacks,Andrew Abbott,0.328,21.0,76.0,65.7,65.7,🟢 CONTACT TARGET: High Floor,6
-669134,Luis Campusano,8,San Diego Padres,Bailey Ober,0.324,21.0,76.0,65.2,65.2,🟢 CONTACT TARGET: High Floor,7
-703520,Brett Bateman,4,Toronto Blue Jays,Carlos Rodón,0.321,21.0,76.0,64.8,64.8,🟢 CONTACT TARGET: High Floor,8
-650559,Bryan De La Cruz,3,Philadelphia Phillies,Kyle Leahy,0.32,21.0,76.0,64.7,64.7,🟢 CONTACT TARGET: High Floor,9
-680664,Eduardo Valencia,6,Detroit Tigers,Daniel Lynch IV,0.315,21.0,76.0,64.1,64.1,🟢 CONTACT TARGET: High Floor,10
-694197,Angel Genao,1,Cleveland Guardians,Tomoyuki Sugano,0.315,21.0,76.0,64.0,64.0,🟢 CONTACT TARGET: High Floor,11
-683734,Andrew Vaughn,1,Milwaukee Brewers,Tyler Mahle,0.313,21.0,76.0,63.8,63.8,🟢 CONTACT TARGET: High Floor,12
-664761,Alec Bohm,1,Philadelphia Phillies,Kyle Leahy,0.312,21.0,76.0,63.6,63.6,🟢 CONTACT TARGET: High Floor,13
-691594,Javier Sanoja,8,Miami Marlins,Jackson Kent,0.312,21.0,76.0,63.6,63.6,🟢 CONTACT TARGET: High Floor,14
-701678,Hao-Yu Lee,8,Detroit Tigers,Daniel Lynch IV,0.311,21.0,76.0,63.4,63.4,🟢 CONTACT TARGET: High Floor,15
+676551,Brewer Hicklen,2,Atlanta Braves,Shane Drohan,0.368,21.0,76.0,70.5,70.5,🟢 CONTACT TARGET: High Floor,1
+624413,Pete Alonso,2,Baltimore Orioles,Nick Martinez,0.343,21.0,76.0,67.6,67.6,🟢 CONTACT TARGET: High Floor,2
+543510,James McCann,5,Arizona Diamondbacks,Andrew Abbott,0.333,21.0,76.0,66.3,66.3,🟢 CONTACT TARGET: High Floor,3
+672569,Gustavo Campero,6,Los Angeles Angels,Cal Quantrill,0.333,21.0,76.0,66.3,66.3,🟢 CONTACT TARGET: High Floor,4
+672386,Alejandro Kirk,3,Toronto Blue Jays,Carlos Rodón,0.331,21.0,76.0,66.1,66.1,🟢 CONTACT TARGET: High Floor,5
+802415,Chandler Simpson,5,Tampa Bay Rays,Shane Baz,0.329,21.0,76.0,65.8,65.8,🟢 CONTACT TARGET: High Floor,6
+672515,Gabriel Moreno,2,Arizona Diamondbacks,Andrew Abbott,0.328,21.0,76.0,65.7,65.7,🟢 CONTACT TARGET: High Floor,7
+669134,Luis Campusano,8,San Diego Padres,Bailey Ober,0.324,21.0,76.0,65.2,65.2,🟢 CONTACT TARGET: High Floor,8
+650490,Yandy Díaz,1,Tampa Bay Rays,Shane Baz,0.323,21.0,76.0,65.0,65.0,🟢 CONTACT TARGET: High Floor,9
+703520,Brett Bateman,1,Toronto Blue Jays,Carlos Rodón,0.321,21.0,76.0,64.8,64.8,🟢 CONTACT TARGET: High Floor,10
+650559,Bryan De La Cruz,9,Philadelphia Phillies,Kyle Leahy,0.32,21.0,76.0,64.7,64.7,🟢 CONTACT TARGET: High Floor,11
+680664,Eduardo Valencia,4,Detroit Tigers,Daniel Lynch IV,0.315,21.0,76.0,64.1,64.1,🟢 CONTACT TARGET: High Floor,12
+694197,Angel Genao,5,Cleveland Guardians,Tomoyuki Sugano,0.315,21.0,76.0,64.0,64.0,🟢 CONTACT TARGET: High Floor,13
+683734,Andrew Vaughn,1,Milwaukee Brewers,Tyler Mahle,0.313,21.0,76.0,63.8,63.8,🟢 CONTACT TARGET: High Floor,14
+691594,Javier Sanoja,6,Miami Marlins,Jackson Kent,0.312,21.0,76.0,63.6,63.6,🟢 CONTACT TARGET: High Floor,15
 656577,Alex Jackson,2,Minnesota Twins,Walker Buehler,0.31,21.0,76.0,63.4,63.4,🟢 CONTACT TARGET: High Floor,16
-663662,Daz Cameron,6,Toronto Blue Jays,Carlos Rodón,0.308,21.0,76.0,63.0,63.0,🟢 CONTACT TARGET: High Floor,17
-701807,Carson Benge,4,New York Mets,Sean Newcomb,0.308,21.0,76.0,63.0,63.0,🟢 CONTACT TARGET: High Floor,18
-666182,Bo Bichette,2,New York Mets,Sean Newcomb,0.306,21.0,76.0,62.7,62.7,🟢 CONTACT TARGET: High Floor,19
-800050,Chase DeLauter,5,Cleveland Guardians,Tomoyuki Sugano,0.304,21.0,76.0,62.5,62.5,🟢 CONTACT TARGET: High Floor,20
-691023,Jordan Walker,8,St. Louis Cardinals,Cristopher Sánchez,0.302,21.0,76.0,62.3,62.3,🟢 CONTACT TARGET: High Floor,21
-807712,Luke Keaschall,8,Minnesota Twins,Walker Buehler,0.303,21.0,76.0,62.3,62.3,🟢 CONTACT TARGET: High Floor,22
-665487,Fernando Tatis Jr.,2,San Diego Padres,Bailey Ober,0.302,21.0,76.0,62.2,62.2,🟢 CONTACT TARGET: High Floor,23
-676475,Alec Burleson,1,St. Louis Cardinals,Cristopher Sánchez,0.302,21.0,76.0,62.2,62.2,🟢 CONTACT TARGET: High Floor,24
-693304,Nick Gonzales,9,Pittsburgh Pirates,Blake Snell,0.299,21.0,76.0,61.8,61.8,⚾ Standard Hit Prob,25
-671739,Michael Harris II,9,Atlanta Braves,Shane Drohan,0.298,21.0,76.0,61.7,61.7,⚾ Standard Hit Prob,26
-664983,Jake McCarthy,6,Colorado Rockies,Foster Griffin,0.294,21.0,76.0,61.2,61.2,⚾ Standard Hit Prob,27
-608324,Alex Bregman,1,Chicago Cubs,Bryce Miller,0.295,21.0,76.0,61.2,61.2,⚾ Standard Hit Prob,28
-814430,Brett Callahan,2,Detroit Tigers,Daniel Lynch IV,0.294,21.0,76.0,61.1,61.1,⚾ Standard Hit Prob,29
-643289,Mauricio Dubón,8,Atlanta Braves,Shane Drohan,0.294,21.0,76.0,61.1,61.1,⚾ Standard Hit Prob,30
-686681,Michael Massey,9,Kansas City Royals,TBD Pitcher,0.293,21.0,76.0,61.0,61.0,⚾ Standard Hit Prob,31
-677951,Bobby Witt Jr.,1,Kansas City Royals,TBD Pitcher,0.292,21.0,76.0,60.9,60.9,⚾ Standard Hit Prob,32
-670623,Isaac Paredes,5,Houston Astros,Brady Basso,0.292,21.0,76.0,60.8,60.8,⚾ Standard Hit Prob,33
-640902,Jhonny Pereda,6,Seattle Mariners,Shota Imanaga,0.29,21.0,76.0,60.5,60.5,⚾ Standard Hit Prob,34
-643446,Jeff McNeil,7,Athletics,Cristian Javier,0.288,21.0,76.0,60.3,60.3,⚾ Standard Hit Prob,35
-676391,Ernie Clement,7,Toronto Blue Jays,Carlos Rodón,0.288,21.0,76.0,60.3,60.3,⚾ Standard Hit Prob,36
-691277,Deyvison De Los Santos,3,Miami Marlins,Jackson Kent,0.286,21.0,76.0,60.0,60.0,⚾ Standard Hit Prob,37
-701785,Kaelen Culpepper,6,Minnesota Twins,Walker Buehler,0.286,21.0,76.0,60.0,60.0,⚾ Standard Hit Prob,38
-689414,Liam Hicks,8,Tampa Bay Rays,Shane Baz,0.285,21.0,76.0,59.8,59.8,⚾ Standard Hit Prob,39
-663968,Jake Mangum,7,Pittsburgh Pirates,Blake Snell,0.284,21.0,76.0,59.7,59.7,⚾ Standard Hit Prob,40
-663330,Jahmai Jones,8,Boston Red Sox,Matt Wilkinson,0.282,21.0,76.0,59.4,59.4,⚾ Standard Hit Prob,41
-678882,Ceddanne Rafaela,5,Boston Red Sox,Matt Wilkinson,0.282,21.0,76.0,59.4,59.4,⚾ Standard Hit Prob,42
-691783,Jordan Lawlar,6,Arizona Diamondbacks,Andrew Abbott,0.282,21.0,76.0,59.4,59.4,⚾ Standard Hit Prob,43
-694192,Jackson Chourio,8,Milwaukee Brewers,Tyler Mahle,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,44
-683227,Cody Freeman,2,Texas Rangers,Yusei Kikuchi,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,45
-605137,Josh Bell,5,Minnesota Twins,Walker Buehler,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,46
-641343,Jake Bauers,9,Milwaukee Brewers,Tyler Mahle,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,47
-663538,Nico Hoerner,9,Chicago Cubs,Bryce Miller,0.28,21.0,76.0,59.1,59.1,⚾ Standard Hit Prob,48
-663993,Nathaniel Lowe,9,Cleveland Guardians,Tomoyuki Sugano,0.28,21.0,76.0,59.1,59.1,⚾ Standard Hit Prob,49
-642201,Eli White,7,Boston Red Sox,Matt Wilkinson,0.278,21.0,76.0,58.9,58.9,⚾ Standard Hit Prob,50
-676356,Jonny DeLuca,4,Tampa Bay Rays,Shane Baz,0.277,21.0,76.0,58.7,58.7,⚾ Standard Hit Prob,51
-680977,Brendan Donovan,1,Seattle Mariners,Shota Imanaga,0.277,21.0,76.0,58.6,58.6,⚾ Standard Hit Prob,52
-669003,Garrett Mitchell,6,Milwaukee Brewers,Tyler Mahle,0.276,21.0,76.0,58.5,58.5,⚾ Standard Hit Prob,53
-696285,Jacob Young,9,Washington Nationals,Janson Junk,0.275,21.0,76.0,58.4,58.4,⚾ Standard Hit Prob,54
-547180,Bryce Harper,4,Philadelphia Phillies,Kyle Leahy,0.274,21.0,76.0,58.3,58.3,⚾ Standard Hit Prob,55
-645305,Ali Sánchez,1,New York Yankees,José Soriano,0.274,21.0,76.0,58.3,58.3,⚾ Standard Hit Prob,56
-690993,Colt Keith,3,Detroit Tigers,Daniel Lynch IV,0.273,21.0,76.0,58.1,58.1,⚾ Standard Hit Prob,57
-518692,Freddie Freeman,5,Los Angeles Dodgers,Lake Bachar,0.273,21.0,76.0,58.1,58.1,⚾ Standard Hit Prob,58
-571970,Max Muncy,8,Los Angeles Dodgers,Lake Bachar,0.273,21.0,76.0,58.1,58.1,⚾ Standard Hit Prob,59
-668800,Andrew Knizner,1,San Francisco Giants,Jake Bennett,0.273,21.0,76.0,58.1,58.1,⚾ Standard Hit Prob,60
-682657,Angel Martínez,2,Cleveland Guardians,Tomoyuki Sugano,0.273,21.0,76.0,58.0,58.0,⚾ Standard Hit Prob,61
-702332,Caleb Durbin,4,Boston Red Sox,Matt Wilkinson,0.273,21.0,76.0,58.0,58.0,⚾ Standard Hit Prob,62
-703607,Henry Bolte,6,Athletics,Cristian Javier,0.272,21.0,76.0,57.9,57.9,⚾ Standard Hit Prob,63
-647304,Josh Naylor,7,Seattle Mariners,Shota Imanaga,0.271,21.0,76.0,57.8,57.8,⚾ Standard Hit Prob,64
-665052,Griffin Conine,5,Miami Marlins,Jackson Kent,0.271,21.0,76.0,57.8,57.8,⚾ Standard Hit Prob,65
-681082,Bryson Stott,5,Philadelphia Phillies,Kyle Leahy,0.271,21.0,76.0,57.8,57.8,⚾ Standard Hit Prob,66
-806146,George Lombard Jr.,5,New York Yankees,José Soriano,0.269,21.0,76.0,57.6,57.6,⚾ Standard Hit Prob,67
-514888,Jose Altuve,7,Houston Astros,Brady Basso,0.27,21.0,76.0,57.6,57.6,⚾ Standard Hit Prob,68
-624428,Adam Frazier,1,Los Angeles Angels,Cal Quantrill,0.27,21.0,76.0,57.6,57.6,⚾ Standard Hit Prob,69
-805367,Chase Meidroth,4,Chicago White Sox,Nolan McLean,0.268,21.0,76.0,57.4,57.4,⚾ Standard Hit Prob,70
-807727,Charles McAdoo,5,Toronto Blue Jays,Carlos Rodón,0.268,21.0,76.0,57.3,57.3,⚾ Standard Hit Prob,71
-669016,Brandon Marsh,2,Philadelphia Phillies,Kyle Leahy,0.268,21.0,76.0,57.3,57.3,⚾ Standard Hit Prob,72
-608348,Carson Kelly,2,Chicago Cubs,Bryce Miller,0.267,21.0,76.0,57.2,57.2,⚾ Standard Hit Prob,73
-682998,Corbin Carroll,1,Arizona Diamondbacks,Andrew Abbott,0.266,21.0,76.0,57.1,57.1,⚾ Standard Hit Prob,74
-666018,Jonathan Aranda,3,Tampa Bay Rays,Shane Baz,0.266,21.0,76.0,57.1,57.1,⚾ Standard Hit Prob,75
-664774,LaMonte Wade Jr.,8,Houston Astros,Brady Basso,0.267,21.0,76.0,57.1,57.1,⚾ Standard Hit Prob,76
-699912,Jose Fernandez,8,Arizona Diamondbacks,Andrew Abbott,0.266,21.0,76.0,57.0,57.0,⚾ Standard Hit Prob,77
-663743,Nick Fortes,9,Tampa Bay Rays,Shane Baz,0.265,21.0,76.0,57.0,57.0,⚾ Standard Hit Prob,78
-691720,Kyle Karros,8,Colorado Rockies,Foster Griffin,0.264,21.0,76.0,56.7,56.7,⚾ Standard Hit Prob,79
-665953,Andrés Chaparro,2,Washington Nationals,Janson Junk,0.263,21.0,76.0,56.7,56.7,⚾ Standard Hit Prob,80
-678246,Miguel Vargas,9,Chicago White Sox,Nolan McLean,0.261,21.0,76.0,56.3,56.3,⚾ Standard Hit Prob,81
-665926,Andrés Giménez,2,Toronto Blue Jays,Carlos Rodón,0.26,21.0,76.0,56.2,56.2,⚾ Standard Hit Prob,82
-686948,Drake Baldwin,3,Atlanta Braves,Shane Drohan,0.261,21.0,76.0,56.2,56.2,⚾ Standard Hit Prob,83
-686797,Brooks Lee,3,Minnesota Twins,Walker Buehler,0.26,21.0,76.0,56.2,56.2,⚾ Standard Hit Prob,84
-608369,Corey Seager,3,Texas Rangers,Yusei Kikuchi,0.26,21.0,76.0,56.1,56.1,⚾ Standard Hit Prob,85
-669397,Nick Allen,9,Houston Astros,Brady Basso,0.259,21.0,76.0,56.0,56.0,⚾ Standard Hit Prob,86
-686527,Dominic Canzone,5,Seattle Mariners,Shota Imanaga,0.259,21.0,76.0,55.9,55.9,⚾ Standard Hit Prob,87
-682928,CJ Abrams,5,Washington Nationals,Janson Junk,0.258,21.0,76.0,55.8,55.8,⚾ Standard Hit Prob,88
-665877,José Fermín,9,St. Louis Cardinals,Cristopher Sánchez,0.258,21.0,76.0,55.8,55.8,⚾ Standard Hit Prob,89
-642086,Dominic Smith,2,Atlanta Braves,Shane Drohan,0.257,21.0,76.0,55.6,55.6,⚾ Standard Hit Prob,90
-666126,Carlos Cortes,3,Athletics,Cristian Javier,0.254,21.0,76.0,55.3,55.3,⚾ Standard Hit Prob,91
-650402,Gleyber Torres,7,Detroit Tigers,Daniel Lynch IV,0.254,21.0,76.0,55.2,55.2,⚾ Standard Hit Prob,92
-675961,Alika Williams,1,Athletics,Cristian Javier,0.254,21.0,76.0,55.1,55.1,⚾ Standard Hit Prob,93
-808982,Jung Hoo Lee,8,San Francisco Giants,Jake Bennett,0.253,21.0,76.0,55.1,55.1,⚾ Standard Hit Prob,94
-701162,Ben Malgeri,1,Detroit Tigers,Daniel Lynch IV,0.254,21.0,76.0,55.1,55.1,⚾ Standard Hit Prob,95
-664954,Brett Sullivan,2,Colorado Rockies,Foster Griffin,0.253,21.0,76.0,55.0,55.0,⚾ Standard Hit Prob,96
-666152,David Hamilton,5,Milwaukee Brewers,Tyler Mahle,0.252,21.0,76.0,54.9,54.9,⚾ Standard Hit Prob,97
-691406,Junior Caminero,6,Tampa Bay Rays,Shane Baz,0.252,21.0,76.0,54.9,54.9,⚾ Standard Hit Prob,98
-683737,Michael Busch,6,Chicago Cubs,Bryce Miller,0.251,21.0,76.0,54.8,54.8,⚾ Standard Hit Prob,99
-801126,Brock Rodden,2,Seattle Mariners,Shota Imanaga,0.25,21.0,76.0,54.6,54.6,⚾ Standard Hit Prob,100
-677649,Ezequiel Duran,7,Texas Rangers,Yusei Kikuchi,0.25,21.0,76.0,54.6,54.6,⚾ Standard Hit Prob,101
-667452,Corey Julks,4,Detroit Tigers,Daniel Lynch IV,0.25,21.0,76.0,54.6,54.6,⚾ Standard Hit Prob,102
-700652,Kenny Piper,7,Tampa Bay Rays,Shane Baz,0.25,21.0,76.0,54.6,54.6,⚾ Standard Hit Prob,103
-687605,Andrew Pinckney,3,Washington Nationals,Janson Junk,0.25,21.0,76.0,54.6,54.6,⚾ Standard Hit Prob,104
-668804,Bryan Reynolds,3,Pittsburgh Pirates,Blake Snell,0.249,21.0,76.0,54.4,54.4,⚾ Standard Hit Prob,105
-671056,Iván Herrera,5,St. Louis Cardinals,Cristopher Sánchez,0.249,21.0,76.0,54.3,54.3,⚾ Standard Hit Prob,106
-677950,Alek Thomas,1,Los Angeles Dodgers,Lake Bachar,0.248,21.0,76.0,54.2,54.2,⚾ Standard Hit Prob,107
-672695,Geraldo Perdomo,3,Arizona Diamondbacks,Andrew Abbott,0.248,21.0,76.0,54.2,54.2,⚾ Standard Hit Prob,108
-671277,Luis García Jr.,9,New York Yankees,José Soriano,0.247,21.0,76.0,54.1,54.1,⚾ Standard Hit Prob,109
-664040,Brandon Lowe,2,Pittsburgh Pirates,Blake Snell,0.247,21.0,76.0,54.1,54.1,⚾ Standard Hit Prob,110
-622268,Donovan Walton,5,Athletics,Cristian Javier,0.247,21.0,76.0,54.1,54.1,⚾ Standard Hit Prob,111
-543807,George Springer,8,Toronto Blue Jays,Carlos Rodón,0.246,21.0,76.0,54.0,54.0,⚾ Standard Hit Prob,112
-694249,Cole Carrigg,3,Colorado Rockies,Foster Griffin,0.247,21.0,76.0,54.0,54.0,⚾ Standard Hit Prob,113
-669743,Alex Call,2,Los Angeles Dodgers,Lake Bachar,0.246,21.0,76.0,54.0,54.0,⚾ Standard Hit Prob,114
-687637,Dylan Beavers,6,Baltimore Orioles,Nick Martinez,0.246,21.0,76.0,54.0,54.0,⚾ Standard Hit Prob,115
-695731,Braden Montgomery,2,Chicago White Sox,Nolan McLean,0.245,21.0,76.0,53.8,53.8,⚾ Standard Hit Prob,116
-683090,Matthew Lugo,8,Kansas City Royals,TBD Pitcher,0.245,21.0,76.0,53.8,53.8,⚾ Standard Hit Prob,117
-701538,Jackson Merrill,5,San Diego Padres,Bailey Ober,0.245,21.0,76.0,53.7,53.7,⚾ Standard Hit Prob,118
-665923,Esteury Ruiz,4,Miami Marlins,Jackson Kent,0.244,21.0,76.0,53.6,53.6,⚾ Standard Hit Prob,119
-630105,Jake Cronenworth,6,San Diego Padres,Bailey Ober,0.243,21.0,76.0,53.5,53.5,⚾ Standard Hit Prob,120
-677592,Everson Pereira,4,St. Louis Cardinals,Cristopher Sánchez,0.243,21.0,76.0,53.4,53.4,⚾ Standard Hit Prob,121
-665750,Leody Taveras,9,Baltimore Orioles,Nick Martinez,0.242,21.0,76.0,53.4,53.4,⚾ Standard Hit Prob,122
-500743,Miguel Rojas,9,Los Angeles Dodgers,Lake Bachar,0.243,21.0,76.0,53.4,53.4,⚾ Standard Hit Prob,123
-671732,Lawrence Butler,9,Athletics,Cristian Javier,0.243,21.0,76.0,53.4,53.4,⚾ Standard Hit Prob,124
-678662,Ezequiel Tovar,5,Colorado Rockies,Foster Griffin,0.242,21.0,76.0,53.3,53.3,⚾ Standard Hit Prob,125
-643217,Andrew Benintendi,1,Chicago White Sox,Nolan McLean,0.242,21.0,76.0,53.3,53.3,⚾ Standard Hit Prob,126
-665019,Kody Clemens,7,Minnesota Twins,Walker Buehler,0.242,21.0,76.0,53.2,53.2,⚾ Standard Hit Prob,127
-668904,Royce Lewis,9,Minnesota Twins,Walker Buehler,0.242,21.0,76.0,53.2,53.2,⚾ Standard Hit Prob,128
-691458,Blaze Jordan,2,St. Louis Cardinals,Cristopher Sánchez,0.242,21.0,76.0,53.2,53.2,⚾ Standard Hit Prob,129
-624431,Jose Trevino,6,Cincinnati Reds,Mitch Bratt,0.241,21.0,76.0,53.1,53.1,⚾ Standard Hit Prob,130
-699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Blake Snell,0.241,21.0,76.0,53.1,53.1,⚾ Standard Hit Prob,131
-595879,Javier Báez,9,Detroit Tigers,Daniel Lynch IV,0.241,21.0,76.0,53.1,53.1,⚾ Standard Hit Prob,132
-691781,Brady House,4,Washington Nationals,Janson Junk,0.241,21.0,76.0,53.1,53.1,⚾ Standard Hit Prob,133
-608070,José Ramírez,8,Cleveland Guardians,Tomoyuki Sugano,0.241,21.0,76.0,53.1,53.1,⚾ Standard Hit Prob,134
-695734,Daylen Lile,6,Washington Nationals,Janson Junk,0.24,21.0,76.0,53.0,53.0,⚾ Standard Hit Prob,135
-669720,Austin Hays,1,San Diego Padres,Bailey Ober,0.24,21.0,76.0,52.9,52.9,⚾ Standard Hit Prob,136
-805300,Jakob Marsee,7,Miami Marlins,Jackson Kent,0.24,21.0,76.0,52.9,52.9,⚾ Standard Hit Prob,137
-650859,Luis Rengifo,9,San Diego Padres,Bailey Ober,0.239,21.0,76.0,52.9,52.9,⚾ Standard Hit Prob,138
-660821,Jesús Sánchez,9,Toronto Blue Jays,Carlos Rodón,0.238,21.0,76.0,52.7,52.7,⚾ Standard Hit Prob,139
-666176,Jo Adell,7,Cleveland Guardians,Tomoyuki Sugano,0.238,21.0,76.0,52.7,52.7,⚾ Standard Hit Prob,140
-678011,Anthony Seigler,3,Boston Red Sox,Matt Wilkinson,0.238,21.0,76.0,52.6,52.6,⚾ Standard Hit Prob,141
-682663,Agustín Ramírez,1,Miami Marlins,Jackson Kent,0.238,21.0,76.0,52.6,52.6,⚾ Standard Hit Prob,142
-545361,Mike Trout,7,Los Angeles Angels,Cal Quantrill,0.238,21.0,76.0,52.6,52.6,⚾ Standard Hit Prob,143
-666160,Mickey Moniak,9,Colorado Rockies,Foster Griffin,0.237,21.0,76.0,52.4,52.4,⚾ Standard Hit Prob,144
-596019,Francisco Lindor,9,New York Mets,Sean Newcomb,0.237,21.0,76.0,52.4,52.4,⚾ Standard Hit Prob,145
-681297,Colton Cowser,5,Baltimore Orioles,Nick Martinez,0.237,21.0,76.0,52.4,52.4,⚾ Standard Hit Prob,146
-691723,Coby Mayo,4,Baltimore Orioles,Nick Martinez,0.235,21.0,76.0,52.2,52.2,⚾ Standard Hit Prob,147
-678218,Brandon Valenzuela,3,Toronto Blue Jays,Carlos Rodón,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,148
-624641,Edmundo Sosa,7,Philadelphia Phillies,Kyle Leahy,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,149
-702176,Alan Roden,1,Minnesota Twins,Walker Buehler,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,150
-669394,Jake Burger,8,Texas Rangers,Yusei Kikuchi,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,151
-805811,Bryce Eldridge,2,San Francisco Giants,Jake Bennett,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,152
-683002,Gunnar Henderson,7,Baltimore Orioles,Nick Martinez,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,153
-607043,Brandon Nimmo,1,Texas Rangers,Yusei Kikuchi,0.234,21.0,76.0,52.0,52.0,⚾ Standard Hit Prob,154
-595978,Austin Hedges,3,Cleveland Guardians,Tomoyuki Sugano,0.233,21.0,76.0,51.8,51.8,⚾ Standard Hit Prob,155
-621566,Matt Olson,7,Atlanta Braves,Shane Drohan,0.233,21.0,76.0,51.8,51.8,⚾ Standard Hit Prob,156
-687551,Drew Gilbert,6,San Francisco Giants,Jake Bennett,0.233,21.0,76.0,51.8,51.8,⚾ Standard Hit Prob,157
-802139,JJ Wetherholt,6,St. Louis Cardinals,Cristopher Sánchez,0.232,21.0,76.0,51.7,51.7,⚾ Standard Hit Prob,158
-694203,Denzer Guzman,3,Los Angeles Angels,Cal Quantrill,0.232,21.0,76.0,51.7,51.7,⚾ Standard Hit Prob,159
-665804,Miguel Amaya,8,Chicago Cubs,Bryce Miller,0.232,21.0,76.0,51.7,51.7,⚾ Standard Hit Prob,160
-655316,Andruw Monasterio,2,Boston Red Sox,Matt Wilkinson,0.231,21.0,76.0,51.5,51.5,⚾ Standard Hit Prob,161
-676439,Hunter Feduccia,6,Los Angeles Dodgers,Lake Bachar,0.231,21.0,76.0,51.4,51.4,⚾ Standard Hit Prob,162
-668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,0.229,21.0,76.0,51.2,51.2,⚾ Standard Hit Prob,163
-677594,Julio Rodríguez,8,Seattle Mariners,Shota Imanaga,0.229,21.0,76.0,51.1,51.1,⚾ Standard Hit Prob,164
-666023,Freddy Fermin,3,San Diego Padres,Bailey Ober,0.229,21.0,76.0,51.1,51.1,⚾ Standard Hit Prob,165
-678545,Osleivis Basabe,9,San Francisco Giants,Jake Bennett,0.229,21.0,76.0,51.1,51.1,⚾ Standard Hit Prob,166
-663494,Bryan Torres,3,St. Louis Cardinals,Cristopher Sánchez,0.227,21.0,76.0,50.9,50.9,⚾ Standard Hit Prob,167
-691788,Joe Mack,9,Miami Marlins,Jackson Kent,0.227,21.0,76.0,50.8,50.8,⚾ Standard Hit Prob,168
-667472,Dane Myers,1,Cincinnati Reds,Mitch Bratt,0.227,21.0,76.0,50.8,50.8,⚾ Standard Hit Prob,169
-682829,Elly De La Cruz,2,Cincinnati Reds,Mitch Bratt,0.226,21.0,76.0,50.6,50.6,⚾ Standard Hit Prob,170
-687952,Christian Encarnacion-Strand,2,Baltimore Orioles,Nick Martinez,0.226,21.0,76.0,50.6,50.6,⚾ Standard Hit Prob,171
-592663,J.T. Realmuto,9,Philadelphia Phillies,Kyle Leahy,0.225,21.0,76.0,50.5,50.5,⚾ Standard Hit Prob,172
-702616,Jackson Holliday,8,Baltimore Orioles,Nick Martinez,0.225,21.0,76.0,50.5,50.5,⚾ Standard Hit Prob,173
-642350,Jose Siri,5,Los Angeles Angels,Cal Quantrill,0.225,21.0,76.0,50.5,50.5,⚾ Standard Hit Prob,174
-657136,Connor Wong,6,Boston Red Sox,Matt Wilkinson,0.224,21.0,76.0,50.4,50.4,⚾ Standard Hit Prob,175
-677587,Brayan Rocchio,4,Cleveland Guardians,Tomoyuki Sugano,0.225,21.0,76.0,50.4,50.4,⚾ Standard Hit Prob,176
-806198,Cooper Pratt,4,Milwaukee Brewers,Tyler Mahle,0.224,21.0,76.0,50.3,50.3,⚾ Standard Hit Prob,177
-694673,Abimelec Ortiz,1,Washington Nationals,Janson Junk,0.224,21.0,76.0,50.3,50.3,⚾ Standard Hit Prob,178
-545121,Ildemaro Vargas,4,Arizona Diamondbacks,Andrew Abbott,0.223,21.0,76.0,50.2,50.2,⚾ Standard Hit Prob,179
-664023,Ian Happ,4,Chicago Cubs,Bryce Miller,0.223,21.0,76.0,50.2,50.2,⚾ Standard Hit Prob,180
-572233,Christian Walker,3,Houston Astros,Brady Basso,0.222,21.0,76.0,50.0,50.0,⚾ Standard Hit Prob,181
-694378,Jacob Gonzalez,6,Pittsburgh Pirates,Blake Snell,0.222,21.0,76.0,50.0,50.0,⚾ Standard Hit Prob,182
-676609,José Caballero,8,New York Yankees,José Soriano,0.221,21.0,76.0,49.8,49.8,⚾ Standard Hit Prob,183
-669707,Jared Triolo,8,Pittsburgh Pirates,Blake Snell,0.22,21.0,76.0,49.7,49.7,⚾ Standard Hit Prob,184
-543877,Christian Vázquez,2,Houston Astros,Brady Basso,0.22,21.0,76.0,49.6,49.6,⚾ Standard Hit Prob,185
-701358,Cam Smith,1,Houston Astros,Brady Basso,0.218,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,186
-663457,Lars Nootbaar,9,Arizona Diamondbacks,Andrew Abbott,0.219,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,187
-682634,Kevin Alcántara,5,Chicago Cubs,Bryce Miller,0.219,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,188
-656537,Derek Hill,6,Philadelphia Phillies,Kyle Leahy,0.219,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,189
-656775,Cedric Mullins,1,Tampa Bay Rays,Shane Baz,0.218,21.0,76.0,49.3,49.3,⚾ Standard Hit Prob,190
-666139,Josh Lowe,6,Los Angeles Angels,Cal Quantrill,0.218,21.0,76.0,49.3,49.3,⚾ Standard Hit Prob,191
-695657,Colson Montgomery,5,Chicago White Sox,Nolan McLean,0.217,21.0,76.0,49.1,49.1,⚾ Standard Hit Prob,192
-665862,Jazz Chisholm Jr.,7,New York Yankees,José Soriano,0.217,21.0,76.0,49.1,49.1,⚾ Standard Hit Prob,193
-665161,Jeremy Peña,6,Houston Astros,Brady Basso,0.216,21.0,76.0,49.0,49.0,⚾ Standard Hit Prob,194
-663586,Austin Riley,1,Atlanta Braves,Shane Drohan,0.217,21.0,76.0,49.0,49.0,⚾ Standard Hit Prob,195
-702284,Cole Young,4,Seattle Mariners,Shota Imanaga,0.216,21.0,76.0,49.0,49.0,⚾ Standard Hit Prob,196
-668709,JJ Bleday,5,Cincinnati Reds,Mitch Bratt,0.216,21.0,76.0,48.9,48.9,⚾ Standard Hit Prob,197
-687231,Darell Hernaiz,4,Athletics,Cristian Javier,0.216,21.0,76.0,48.9,48.9,⚾ Standard Hit Prob,198
-642708,Amed Rosario,2,New York Yankees,José Soriano,0.216,21.0,76.0,48.9,48.9,⚾ Standard Hit Prob,199
-681393,Connor Norby,4,Colorado Rockies,Foster Griffin,0.216,21.0,76.0,48.9,48.9,⚾ Standard Hit Prob,200
-664728,Kyle Isbel,6,Kansas City Royals,TBD Pitcher,0.214,21.0,76.0,48.6,48.6,⚾ Standard Hit Prob,201
-592885,Christian Yelich,3,Milwaukee Brewers,Tyler Mahle,0.214,21.0,76.0,48.5,48.5,⚾ Standard Hit Prob,202
-657757,Gavin Sheets,4,San Diego Padres,Bailey Ober,0.213,21.0,76.0,48.4,48.4,⚾ Standard Hit Prob,203
-662139,Daulton Varsho,4,Houston Astros,Brady Basso,0.212,21.0,76.0,48.3,48.3,⚾ Standard Hit Prob,204
-553993,Eugenio Suárez,3,Cincinnati Reds,Mitch Bratt,0.212,21.0,76.0,48.2,48.2,⚾ Standard Hit Prob,205
-701852,Drew Cavanaugh,5,San Francisco Giants,Jake Bennett,0.212,21.0,76.0,48.2,48.2,⚾ Standard Hit Prob,206
-672284,Jarred Kelenic,9,Texas Rangers,Yusei Kikuchi,0.211,21.0,76.0,48.0,48.0,⚾ Standard Hit Prob,207
-680776,Jarren Duran,9,Boston Red Sox,Matt Wilkinson,0.21,21.0,76.0,47.9,47.9,⚾ Standard Hit Prob,208
-553869,Elias Díaz,5,Texas Rangers,Yusei Kikuchi,0.21,21.0,76.0,47.9,47.9,⚾ Standard Hit Prob,209
-681715,Heriberto Hernández,6,Miami Marlins,Jackson Kent,0.209,21.0,76.0,47.7,47.7,⚾ Standard Hit Prob,210
-700250,Ben Rice,4,New York Yankees,José Soriano,0.207,21.0,76.0,47.4,47.4,⚾ Standard Hit Prob,211
-680574,Matt McLain,8,Cincinnati Reds,Mitch Bratt,0.207,21.0,76.0,47.3,47.3,⚾ Standard Hit Prob,212
-682668,Luisangel Acuña,8,Chicago White Sox,Nolan McLean,0.206,21.0,76.0,47.2,47.2,⚾ Standard Hit Prob,213
-596142,Gary Sánchez,7,Milwaukee Brewers,Tyler Mahle,0.206,21.0,76.0,47.2,47.2,⚾ Standard Hit Prob,214
-661531,Brian Serven,2,Athletics,Cristian Javier,0.205,21.0,76.0,47.0,47.0,⚾ Standard Hit Prob,215
-695257,Billy Cook,1,Pittsburgh Pirates,Blake Snell,0.205,21.0,76.0,47.0,47.0,⚾ Standard Hit Prob,216
-805999,A.J. Ewing,1,New York Mets,Sean Newcomb,0.205,21.0,76.0,46.9,46.9,⚾ Standard Hit Prob,217
-683766,Christian Koss,4,San Francisco Giants,Jake Bennett,0.204,21.0,76.0,46.8,46.8,⚾ Standard Hit Prob,218
-621439,Byron Buxton,4,Minnesota Twins,Walker Buehler,0.203,21.0,76.0,46.7,46.7,⚾ Standard Hit Prob,219
-669224,Austin Wells,3,New York Yankees,José Soriano,0.203,21.0,76.0,46.7,46.7,⚾ Standard Hit Prob,220
-682626,Francisco Alvarez,8,New York Mets,Sean Newcomb,0.202,21.0,76.0,46.5,46.5,⚾ Standard Hit Prob,221
-694208,Moisés Ballesteros,8,Los Angeles Angels,Cal Quantrill,0.202,21.0,76.0,46.4,46.4,⚾ Standard Hit Prob,222
-687597,Jordan Beck,7,Colorado Rockies,Foster Griffin,0.201,21.0,76.0,46.3,46.3,⚾ Standard Hit Prob,223
-571771,Enrique Hernández,4,Los Angeles Dodgers,Lake Bachar,0.2,21.0,76.0,46.2,46.2,⚾ Standard Hit Prob,224
-571912,Luke Maile,7,Kansas City Royals,TBD Pitcher,0.2,21.0,76.0,46.1,46.1,⚾ Standard Hit Prob,225
-683146,Brett Baty,3,New York Mets,Sean Newcomb,0.199,21.0,76.0,46.0,46.0,⚾ Standard Hit Prob,226
-676572,Eric Wagaman,7,New York Mets,Sean Newcomb,0.198,21.0,76.0,45.8,45.8,⚾ Standard Hit Prob,227
-657041,Lane Thomas,6,Atlanta Braves,Shane Drohan,0.198,21.0,76.0,45.8,45.8,⚾ Standard Hit Prob,228
-693307,Dillon Dingler,5,Detroit Tigers,Daniel Lynch IV,0.197,21.0,76.0,45.6,45.6,⚾ Standard Hit Prob,229
-813841,Jonah Cox,7,San Francisco Giants,Jake Bennett,0.197,21.0,76.0,45.6,45.6,⚾ Standard Hit Prob,230
-678489,Jorge Barrosa,7,Arizona Diamondbacks,Andrew Abbott,0.197,21.0,76.0,45.6,45.6,⚾ Standard Hit Prob,231
-622761,Jorge Mateo,5,Tampa Bay Rays,Shane Baz,0.196,21.0,76.0,45.4,45.4,⚾ Standard Hit Prob,232
-663656,Kyle Tucker,7,Los Angeles Dodgers,Lake Bachar,0.194,21.0,76.0,45.1,45.1,⚾ Standard Hit Prob,233
-695670,Harry Ford,8,Washington Nationals,Janson Junk,0.194,21.0,76.0,45.0,45.0,⚾ Standard Hit Prob,234
-686611,Dylan Crews,7,Washington Nationals,Janson Junk,0.191,21.0,76.0,44.6,44.6,⚾ Standard Hit Prob,235
-686555,Isaac Collins,3,Kansas City Royals,TBD Pitcher,0.191,21.0,76.0,44.4,44.4,⚾ Standard Hit Prob,236
-694497,Evan Carter,6,Texas Rangers,Yusei Kikuchi,0.189,21.0,76.0,44.1,44.1,⚾ Standard Hit Prob,237
-687749,Jase Bowen,7,San Diego Padres,Bailey Ober,0.187,21.0,76.0,43.8,43.8,⚾ Standard Hit Prob,238
-686668,Brenton Doyle,3,Chicago White Sox,Nolan McLean,0.187,21.0,76.0,43.7,43.7,⚾ Standard Hit Prob,239
-695600,Carter Jensen,2,Kansas City Royals,TBD Pitcher,0.186,21.0,76.0,43.6,43.6,⚾ Standard Hit Prob,240
-805347,Jim Jarvis,5,Atlanta Braves,Shane Drohan,0.183,21.0,76.0,42.9,42.9,⚾ Standard Hit Prob,241
-641680,Jonah Heim,8,Athletics,Cristian Javier,0.179,21.0,76.0,42.2,42.2,⚾ Standard Hit Prob,242
-672724,Oswald Peraza,9,Los Angeles Angels,Cal Quantrill,0.177,21.0,76.0,41.9,41.9,⚾ Standard Hit Prob,243
-699625,Jimmy Crooks,7,St. Louis Cardinals,Cristopher Sánchez,0.176,21.0,76.0,41.7,41.7,⚾ Standard Hit Prob,244
-663647,Ke'Bryan Hayes,7,Cincinnati Reds,Mitch Bratt,0.176,21.0,76.0,41.7,41.7,⚾ Standard Hit Prob,245
-660844,Leo Rivas,9,Seattle Mariners,Shota Imanaga,0.175,21.0,76.0,41.4,41.4,⚾ Standard Hit Prob,246
-624424,Michael Conforto,7,Chicago Cubs,Bryce Miller,0.172,21.0,76.0,41.0,41.0,⚾ Standard Hit Prob,247
-668939,Adley Rutschman,1,Boston Red Sox,Matt Wilkinson,0.167,21.0,76.0,39.9,39.9,⚾ Standard Hit Prob,248
-695681,Christian Moore,2,Los Angeles Angels,Cal Quantrill,0.167,21.0,76.0,39.9,39.9,⚾ Standard Hit Prob,249
-666624,Christopher Morel,5,New York Mets,Sean Newcomb,0.165,21.0,76.0,39.6,39.6,⚾ Standard Hit Prob,250
-668670,Jake Rogers,7,Chicago White Sox,Nolan McLean,0.163,21.0,76.0,39.2,39.2,⚾ Standard Hit Prob,251
-691011,Drew Romo,6,Chicago White Sox,Nolan McLean,0.163,21.0,76.0,39.1,39.1,⚾ Standard Hit Prob,252
-699302,Héctor Rodríguez,4,Cincinnati Reds,Mitch Bratt,0.162,21.0,76.0,39.0,39.0,⚾ Standard Hit Prob,253
-681047,Christian Franklin,3,Baltimore Orioles,Nick Martinez,0.16,21.0,76.0,38.6,38.6,⚾ Standard Hit Prob,254
-680779,Henry Davis,5,Pittsburgh Pirates,Blake Snell,0.158,21.0,76.0,38.1,38.1,⚾ Standard Hit Prob,255
-690924,Braxton Fulford,1,Colorado Rockies,Foster Griffin,0.152,21.0,76.0,36.9,36.9,⚾ Standard Hit Prob,256
-670231,John Rave,5,Kansas City Royals,TBD Pitcher,0.152,21.0,76.0,36.9,36.9,⚾ Standard Hit Prob,257
-666163,Ben Rortvedt,3,Los Angeles Dodgers,Lake Bachar,0.15,21.0,76.0,36.5,36.5,⚾ Standard Hit Prob,258
-596117,Garrett Stubbs,8,Philadelphia Phillies,Kyle Leahy,0.145,21.0,76.0,35.6,35.6,⚾ Standard Hit Prob,259
-663728,Cal Raleigh,3,Seattle Mariners,Shota Imanaga,0.144,21.0,76.0,35.2,35.2,⚾ Standard Hit Prob,260
-673490,Ha-Seong Kim,4,Atlanta Braves,Shane Drohan,0.04,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,261
-643376,Danny Jansen,4,Texas Rangers,Yusei Kikuchi,0.135,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,262
-665506,Cristian Pache,6,New York Mets,Sean Newcomb,0.0,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,263
-681807,David Fry,6,Cleveland Guardians,Tomoyuki Sugano,0.125,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,264
-671083,Buddy Kennedy,3,San Francisco Giants,Jake Bennett,0.124,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,265
-672356,Gabriel Arias,3,Chicago Cubs,Bryce Miller,0.108,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,266
-671218,Heliot Ramos,6,New York Yankees,José Soriano,0.117,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,267
-640459,Brian Navarreto,2,Miami Marlins,Jackson Kent,0.138,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,268
-669911,Michael Toglia,9,Cincinnati Reds,Mitch Bratt,0.115,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,269
-665966,Carlos Narváez,1,Baltimore Orioles,Nick Martinez,0.141,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,270
+701678,Hao-Yu Lee,2,Detroit Tigers,Daniel Lynch IV,0.311,21.0,76.0,63.4,63.4,🟢 CONTACT TARGET: High Floor,17
+701807,Carson Benge,3,New York Mets,Sean Newcomb,0.308,21.0,76.0,63.0,63.0,🟢 CONTACT TARGET: High Floor,18
+663662,Daz Cameron,7,Toronto Blue Jays,Carlos Rodón,0.308,21.0,76.0,63.0,63.0,🟢 CONTACT TARGET: High Floor,19
+666182,Bo Bichette,2,New York Mets,Sean Newcomb,0.306,21.0,76.0,62.7,62.7,🟢 CONTACT TARGET: High Floor,20
+800050,Chase DeLauter,2,Cleveland Guardians,Tomoyuki Sugano,0.304,21.0,76.0,62.5,62.5,🟢 CONTACT TARGET: High Floor,21
+691023,Jordan Walker,3,St. Louis Cardinals,Cristopher Sánchez,0.302,21.0,76.0,62.3,62.3,🟢 CONTACT TARGET: High Floor,22
+807712,Luke Keaschall,8,Minnesota Twins,Walker Buehler,0.303,21.0,76.0,62.3,62.3,🟢 CONTACT TARGET: High Floor,23
+665487,Fernando Tatis Jr.,2,San Diego Padres,Bailey Ober,0.302,21.0,76.0,62.2,62.2,🟢 CONTACT TARGET: High Floor,24
+676475,Alec Burleson,4,St. Louis Cardinals,Cristopher Sánchez,0.302,21.0,76.0,62.2,62.2,🟢 CONTACT TARGET: High Floor,25
+660688,Keibert Ruiz,4,Washington Nationals,Janson Junk,0.301,21.0,76.0,62.1,62.1,🟢 CONTACT TARGET: High Floor,26
+693304,Nick Gonzales,9,Pittsburgh Pirates,Blake Snell,0.299,21.0,76.0,61.8,61.8,⚾ Standard Hit Prob,27
+702222,Justin Crawford,7,Philadelphia Phillies,Kyle Leahy,0.296,21.0,76.0,61.4,61.4,⚾ Standard Hit Prob,28
+664983,Jake McCarthy,6,Colorado Rockies,Foster Griffin,0.294,21.0,76.0,61.2,61.2,⚾ Standard Hit Prob,29
+608324,Alex Bregman,1,Chicago Cubs,Bryce Miller,0.295,21.0,76.0,61.2,61.2,⚾ Standard Hit Prob,30
+643289,Mauricio Dubón,9,Atlanta Braves,Shane Drohan,0.294,21.0,76.0,61.1,61.1,⚾ Standard Hit Prob,31
+677951,Bobby Witt Jr.,2,Kansas City Royals,Jacob Waguespack,0.292,21.0,76.0,60.9,60.9,⚾ Standard Hit Prob,32
+686765,Nick Sogard,6,Boston Red Sox,Matt Wilkinson,0.293,21.0,76.0,60.9,60.9,⚾ Standard Hit Prob,33
+670623,Isaac Paredes,3,Houston Astros,Brady Basso,0.292,21.0,76.0,60.8,60.8,⚾ Standard Hit Prob,34
+640902,Jhonny Pereda,6,Seattle Mariners,Shota Imanaga,0.29,21.0,76.0,60.5,60.5,⚾ Standard Hit Prob,35
+575929,Willson Contreras,4,Boston Red Sox,Matt Wilkinson,0.289,21.0,76.0,60.4,60.4,⚾ Standard Hit Prob,36
+676391,Ernie Clement,6,Toronto Blue Jays,Carlos Rodón,0.288,21.0,76.0,60.3,60.3,⚾ Standard Hit Prob,37
+671976,Tristan Peters,8,Chicago White Sox,Nolan McLean,0.287,21.0,76.0,60.1,60.1,⚾ Standard Hit Prob,38
+686469,Vinnie Pasquantino,3,Kansas City Royals,Jacob Waguespack,0.287,21.0,76.0,60.1,60.1,⚾ Standard Hit Prob,39
+701785,Kaelen Culpepper,6,Minnesota Twins,Walker Buehler,0.286,21.0,76.0,60.0,60.0,⚾ Standard Hit Prob,40
+691277,Deyvison De Los Santos,7,Miami Marlins,Jackson Kent,0.286,21.0,76.0,60.0,60.0,⚾ Standard Hit Prob,41
+670541,Yordan Alvarez,2,Houston Astros,Brady Basso,0.286,21.0,76.0,59.9,59.9,⚾ Standard Hit Prob,42
+689414,Liam Hicks,4,Tampa Bay Rays,Shane Baz,0.285,21.0,76.0,59.8,59.8,⚾ Standard Hit Prob,43
+663968,Jake Mangum,7,Pittsburgh Pirates,Blake Snell,0.284,21.0,76.0,59.7,59.7,⚾ Standard Hit Prob,44
+663330,Jahmai Jones,1,Boston Red Sox,Matt Wilkinson,0.282,21.0,76.0,59.4,59.4,⚾ Standard Hit Prob,45
+691783,Jordan Lawlar,6,Arizona Diamondbacks,Andrew Abbott,0.282,21.0,76.0,59.4,59.4,⚾ Standard Hit Prob,46
+678882,Ceddanne Rafaela,2,Boston Red Sox,Matt Wilkinson,0.282,21.0,76.0,59.4,59.4,⚾ Standard Hit Prob,47
+641343,Jake Bauers,9,Milwaukee Brewers,Tyler Mahle,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,48
+605137,Josh Bell,5,Minnesota Twins,Walker Buehler,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,49
+683227,Cody Freeman,2,Texas Rangers,Yusei Kikuchi,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,50
+694192,Jackson Chourio,8,Milwaukee Brewers,Tyler Mahle,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,51
+663993,Nathaniel Lowe,4,Cleveland Guardians,Tomoyuki Sugano,0.28,21.0,76.0,59.1,59.1,⚾ Standard Hit Prob,52
+663538,Nico Hoerner,9,Chicago Cubs,Bryce Miller,0.28,21.0,76.0,59.1,59.1,⚾ Standard Hit Prob,53
+669364,Xavier Edwards,4,Miami Marlins,Jackson Kent,0.28,21.0,76.0,59.1,59.1,⚾ Standard Hit Prob,54
+805808,Kevin McGonigle,3,Detroit Tigers,Daniel Lynch IV,0.28,21.0,76.0,59.1,59.1,⚾ Standard Hit Prob,55
+641355,Cody Bellinger,4,New York Yankees,José Soriano,0.279,21.0,76.0,59.0,59.0,⚾ Standard Hit Prob,56
+642201,Eli White,8,Boston Red Sox,Matt Wilkinson,0.278,21.0,76.0,58.9,58.9,⚾ Standard Hit Prob,57
+676356,Jonny DeLuca,6,Tampa Bay Rays,Shane Baz,0.277,21.0,76.0,58.7,58.7,⚾ Standard Hit Prob,58
+680977,Brendan Donovan,1,Seattle Mariners,Shota Imanaga,0.277,21.0,76.0,58.6,58.6,⚾ Standard Hit Prob,59
+669003,Garrett Mitchell,6,Milwaukee Brewers,Tyler Mahle,0.276,21.0,76.0,58.5,58.5,⚾ Standard Hit Prob,60
+696285,Jacob Young,9,Washington Nationals,Janson Junk,0.275,21.0,76.0,58.4,58.4,⚾ Standard Hit Prob,61
+547180,Bryce Harper,3,Philadelphia Phillies,Kyle Leahy,0.274,21.0,76.0,58.3,58.3,⚾ Standard Hit Prob,62
+668800,Andrew Knizner,7,San Francisco Giants,Jake Bennett,0.273,21.0,76.0,58.1,58.1,⚾ Standard Hit Prob,63
+518692,Freddie Freeman,5,Los Angeles Dodgers,Lake Bachar,0.273,21.0,76.0,58.1,58.1,⚾ Standard Hit Prob,64
+677800,Wilyer Abreu,3,Boston Red Sox,Matt Wilkinson,0.273,21.0,76.0,58.1,58.1,⚾ Standard Hit Prob,65
+620443,Luis Torrens,9,New York Mets,Sean Newcomb,0.273,21.0,76.0,58.1,58.1,⚾ Standard Hit Prob,66
+571970,Max Muncy,8,Los Angeles Dodgers,Lake Bachar,0.273,21.0,76.0,58.1,58.1,⚾ Standard Hit Prob,67
+682657,Angel Martínez,7,Cleveland Guardians,Tomoyuki Sugano,0.273,21.0,76.0,58.0,58.0,⚾ Standard Hit Prob,68
+702332,Caleb Durbin,5,Boston Red Sox,Matt Wilkinson,0.273,21.0,76.0,58.0,58.0,⚾ Standard Hit Prob,69
+703607,Henry Bolte,1,Athletics,Cristian Javier,0.272,21.0,76.0,57.9,57.9,⚾ Standard Hit Prob,70
+647304,Josh Naylor,7,Seattle Mariners,Shota Imanaga,0.271,21.0,76.0,57.8,57.8,⚾ Standard Hit Prob,71
+681082,Bryson Stott,4,Philadelphia Phillies,Kyle Leahy,0.271,21.0,76.0,57.8,57.8,⚾ Standard Hit Prob,72
+665052,Griffin Conine,8,Miami Marlins,Jackson Kent,0.271,21.0,76.0,57.8,57.8,⚾ Standard Hit Prob,73
+686475,Tyler Tolbert,7,Kansas City Royals,Jacob Waguespack,0.271,21.0,76.0,57.7,57.7,⚾ Standard Hit Prob,74
+672640,Otto Lopez,1,Miami Marlins,Jackson Kent,0.269,21.0,76.0,57.6,57.6,⚾ Standard Hit Prob,75
+514888,Jose Altuve,4,Houston Astros,Brady Basso,0.27,21.0,76.0,57.6,57.6,⚾ Standard Hit Prob,76
+806146,George Lombard Jr.,5,New York Yankees,José Soriano,0.269,21.0,76.0,57.6,57.6,⚾ Standard Hit Prob,77
+805367,Chase Meidroth,7,Chicago White Sox,Nolan McLean,0.268,21.0,76.0,57.4,57.4,⚾ Standard Hit Prob,78
+669016,Brandon Marsh,5,Philadelphia Phillies,Kyle Leahy,0.268,21.0,76.0,57.3,57.3,⚾ Standard Hit Prob,79
+807727,Charles McAdoo,8,Toronto Blue Jays,Carlos Rodón,0.268,21.0,76.0,57.3,57.3,⚾ Standard Hit Prob,80
+608348,Carson Kelly,2,Chicago Cubs,Bryce Miller,0.267,21.0,76.0,57.2,57.2,⚾ Standard Hit Prob,81
+666018,Jonathan Aranda,2,Tampa Bay Rays,Shane Baz,0.266,21.0,76.0,57.1,57.1,⚾ Standard Hit Prob,82
+682998,Corbin Carroll,1,Arizona Diamondbacks,Andrew Abbott,0.266,21.0,76.0,57.1,57.1,⚾ Standard Hit Prob,83
+664774,LaMonte Wade Jr.,7,Houston Astros,Brady Basso,0.267,21.0,76.0,57.1,57.1,⚾ Standard Hit Prob,84
+699912,Jose Fernandez,8,Arizona Diamondbacks,Andrew Abbott,0.266,21.0,76.0,57.0,57.0,⚾ Standard Hit Prob,85
+680757,Steven Kwan,1,Cleveland Guardians,Tomoyuki Sugano,0.266,21.0,76.0,57.0,57.0,⚾ Standard Hit Prob,86
+665489,Vladimir Guerrero Jr.,2,Toronto Blue Jays,Carlos Rodón,0.265,21.0,76.0,56.9,56.9,⚾ Standard Hit Prob,87
+695720,Tommy White,5,Athletics,Cristian Javier,0.265,21.0,76.0,56.8,56.8,⚾ Standard Hit Prob,88
+691720,Kyle Karros,8,Colorado Rockies,Foster Griffin,0.264,21.0,76.0,56.7,56.7,⚾ Standard Hit Prob,89
+665953,Andrés Chaparro,7,Washington Nationals,Janson Junk,0.263,21.0,76.0,56.7,56.7,⚾ Standard Hit Prob,90
+678246,Miguel Vargas,3,Chicago White Sox,Nolan McLean,0.261,21.0,76.0,56.3,56.3,⚾ Standard Hit Prob,91
+686948,Drake Baldwin,4,Atlanta Braves,Shane Drohan,0.261,21.0,76.0,56.2,56.2,⚾ Standard Hit Prob,92
+686797,Brooks Lee,3,Minnesota Twins,Walker Buehler,0.26,21.0,76.0,56.2,56.2,⚾ Standard Hit Prob,93
+608369,Corey Seager,3,Texas Rangers,Yusei Kikuchi,0.26,21.0,76.0,56.1,56.1,⚾ Standard Hit Prob,94
+686527,Dominic Canzone,5,Seattle Mariners,Shota Imanaga,0.259,21.0,76.0,55.9,55.9,⚾ Standard Hit Prob,95
+665877,José Fermín,7,St. Louis Cardinals,Cristopher Sánchez,0.258,21.0,76.0,55.8,55.8,⚾ Standard Hit Prob,96
+673357,Luis Robert Jr.,4,New York Mets,Sean Newcomb,0.258,21.0,76.0,55.8,55.8,⚾ Standard Hit Prob,97
+642086,Dominic Smith,3,Atlanta Braves,Shane Drohan,0.257,21.0,76.0,55.6,55.6,⚾ Standard Hit Prob,98
+680700,Richie Palacios,8,Tampa Bay Rays,Shane Baz,0.256,21.0,76.0,55.6,55.6,⚾ Standard Hit Prob,99
+687263,Zach Neto,1,Los Angeles Angels,Cal Quantrill,0.255,21.0,76.0,55.4,55.4,⚾ Standard Hit Prob,100
+656941,Kyle Schwarber,1,Philadelphia Phillies,Kyle Leahy,0.255,21.0,76.0,55.4,55.4,⚾ Standard Hit Prob,101
+666126,Carlos Cortes,2,Athletics,Cristian Javier,0.254,21.0,76.0,55.3,55.3,⚾ Standard Hit Prob,102
+650402,Gleyber Torres,1,Detroit Tigers,Daniel Lynch IV,0.254,21.0,76.0,55.2,55.2,⚾ Standard Hit Prob,103
+808982,Jung Hoo Lee,6,San Francisco Giants,Jake Bennett,0.253,21.0,76.0,55.1,55.1,⚾ Standard Hit Prob,104
+701162,Ben Malgeri,7,Detroit Tigers,Daniel Lynch IV,0.254,21.0,76.0,55.1,55.1,⚾ Standard Hit Prob,105
+664954,Brett Sullivan,2,Colorado Rockies,Foster Griffin,0.253,21.0,76.0,55.0,55.0,⚾ Standard Hit Prob,106
+691406,Junior Caminero,3,Tampa Bay Rays,Shane Baz,0.252,21.0,76.0,54.9,54.9,⚾ Standard Hit Prob,107
+666152,David Hamilton,5,Milwaukee Brewers,Tyler Mahle,0.252,21.0,76.0,54.9,54.9,⚾ Standard Hit Prob,108
+683737,Michael Busch,6,Chicago Cubs,Bryce Miller,0.251,21.0,76.0,54.8,54.8,⚾ Standard Hit Prob,109
+667452,Corey Julks,6,Detroit Tigers,Daniel Lynch IV,0.25,21.0,76.0,54.6,54.6,⚾ Standard Hit Prob,110
+677649,Ezequiel Duran,7,Texas Rangers,Yusei Kikuchi,0.25,21.0,76.0,54.6,54.6,⚾ Standard Hit Prob,111
+801126,Brock Rodden,2,Seattle Mariners,Shota Imanaga,0.25,21.0,76.0,54.6,54.6,⚾ Standard Hit Prob,112
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Blake Snell,0.249,21.0,76.0,54.4,54.4,⚾ Standard Hit Prob,113
+671056,Iván Herrera,2,St. Louis Cardinals,Cristopher Sánchez,0.249,21.0,76.0,54.3,54.3,⚾ Standard Hit Prob,114
+672695,Geraldo Perdomo,3,Arizona Diamondbacks,Andrew Abbott,0.248,21.0,76.0,54.2,54.2,⚾ Standard Hit Prob,115
+677950,Alek Thomas,1,Los Angeles Dodgers,Lake Bachar,0.248,21.0,76.0,54.2,54.2,⚾ Standard Hit Prob,116
+671277,Luis García Jr.,3,New York Yankees,José Soriano,0.247,21.0,76.0,54.1,54.1,⚾ Standard Hit Prob,117
+664040,Brandon Lowe,2,Pittsburgh Pirates,Blake Snell,0.247,21.0,76.0,54.1,54.1,⚾ Standard Hit Prob,118
+622268,Donovan Walton,7,Athletics,Cristian Javier,0.247,21.0,76.0,54.1,54.1,⚾ Standard Hit Prob,119
+687637,Dylan Beavers,6,Baltimore Orioles,Nick Martinez,0.246,21.0,76.0,54.0,54.0,⚾ Standard Hit Prob,120
+669743,Alex Call,2,Los Angeles Dodgers,Lake Bachar,0.246,21.0,76.0,54.0,54.0,⚾ Standard Hit Prob,121
+694249,Cole Carrigg,3,Colorado Rockies,Foster Griffin,0.247,21.0,76.0,54.0,54.0,⚾ Standard Hit Prob,122
+543807,George Springer,4,Toronto Blue Jays,Carlos Rodón,0.246,21.0,76.0,54.0,54.0,⚾ Standard Hit Prob,123
+695731,Braden Montgomery,5,Chicago White Sox,Nolan McLean,0.245,21.0,76.0,53.8,53.8,⚾ Standard Hit Prob,124
+607208,Trea Turner,2,Philadelphia Phillies,Kyle Leahy,0.245,21.0,76.0,53.8,53.8,⚾ Standard Hit Prob,125
+701538,Jackson Merrill,5,San Diego Padres,Bailey Ober,0.245,21.0,76.0,53.7,53.7,⚾ Standard Hit Prob,126
+665923,Esteury Ruiz,5,Miami Marlins,Jackson Kent,0.244,21.0,76.0,53.6,53.6,⚾ Standard Hit Prob,127
+630105,Jake Cronenworth,6,San Diego Padres,Bailey Ober,0.243,21.0,76.0,53.5,53.5,⚾ Standard Hit Prob,128
+671732,Lawrence Butler,4,Athletics,Cristian Javier,0.243,21.0,76.0,53.4,53.4,⚾ Standard Hit Prob,129
+665750,Leody Taveras,9,Baltimore Orioles,Nick Martinez,0.242,21.0,76.0,53.4,53.4,⚾ Standard Hit Prob,130
+500743,Miguel Rojas,9,Los Angeles Dodgers,Lake Bachar,0.243,21.0,76.0,53.4,53.4,⚾ Standard Hit Prob,131
+643217,Andrew Benintendi,4,Chicago White Sox,Nolan McLean,0.242,21.0,76.0,53.3,53.3,⚾ Standard Hit Prob,132
+678662,Ezequiel Tovar,5,Colorado Rockies,Foster Griffin,0.242,21.0,76.0,53.3,53.3,⚾ Standard Hit Prob,133
+691458,Blaze Jordan,6,St. Louis Cardinals,Cristopher Sánchez,0.242,21.0,76.0,53.2,53.2,⚾ Standard Hit Prob,134
+665019,Kody Clemens,7,Minnesota Twins,Walker Buehler,0.242,21.0,76.0,53.2,53.2,⚾ Standard Hit Prob,135
+668904,Royce Lewis,9,Minnesota Twins,Walker Buehler,0.242,21.0,76.0,53.2,53.2,⚾ Standard Hit Prob,136
+595879,Javier Báez,9,Detroit Tigers,Daniel Lynch IV,0.241,21.0,76.0,53.1,53.1,⚾ Standard Hit Prob,137
+624431,Jose Trevino,7,Cincinnati Reds,Mitch Bratt,0.241,21.0,76.0,53.1,53.1,⚾ Standard Hit Prob,138
+642715,Willy Adames,3,San Francisco Giants,Jake Bennett,0.241,21.0,76.0,53.1,53.1,⚾ Standard Hit Prob,139
+699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Blake Snell,0.241,21.0,76.0,53.1,53.1,⚾ Standard Hit Prob,140
+695734,Daylen Lile,1,Washington Nationals,Janson Junk,0.24,21.0,76.0,53.0,53.0,⚾ Standard Hit Prob,141
+669720,Austin Hays,1,San Diego Padres,Bailey Ober,0.24,21.0,76.0,52.9,52.9,⚾ Standard Hit Prob,142
+650859,Luis Rengifo,9,San Diego Padres,Bailey Ober,0.239,21.0,76.0,52.9,52.9,⚾ Standard Hit Prob,143
+666176,Jo Adell,3,Cleveland Guardians,Tomoyuki Sugano,0.238,21.0,76.0,52.7,52.7,⚾ Standard Hit Prob,144
+682663,Agustín Ramírez,2,Miami Marlins,Jackson Kent,0.238,21.0,76.0,52.6,52.6,⚾ Standard Hit Prob,145
+545361,Mike Trout,2,Los Angeles Angels,Cal Quantrill,0.238,21.0,76.0,52.6,52.6,⚾ Standard Hit Prob,146
+803011,Sam Antonacci,1,Chicago White Sox,Nolan McLean,0.237,21.0,76.0,52.4,52.4,⚾ Standard Hit Prob,147
+666160,Mickey Moniak,9,Colorado Rockies,Foster Griffin,0.237,21.0,76.0,52.4,52.4,⚾ Standard Hit Prob,148
+681297,Colton Cowser,8,Baltimore Orioles,Nick Martinez,0.237,21.0,76.0,52.4,52.4,⚾ Standard Hit Prob,149
+596019,Francisco Lindor,1,New York Mets,Sean Newcomb,0.237,21.0,76.0,52.4,52.4,⚾ Standard Hit Prob,150
+663757,Trent Grisham,1,New York Yankees,José Soriano,0.236,21.0,76.0,52.3,52.3,⚾ Standard Hit Prob,151
+691723,Coby Mayo,5,Baltimore Orioles,Nick Martinez,0.235,21.0,76.0,52.2,52.2,⚾ Standard Hit Prob,152
+679529,Spencer Torkelson,5,Detroit Tigers,Daniel Lynch IV,0.235,21.0,76.0,52.2,52.2,⚾ Standard Hit Prob,153
+682674,Victor Bericoto,5,San Francisco Giants,Jake Bennett,0.235,21.0,76.0,52.2,52.2,⚾ Standard Hit Prob,154
+683002,Gunnar Henderson,3,Baltimore Orioles,Nick Martinez,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,155
+669394,Jake Burger,8,Texas Rangers,Yusei Kikuchi,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,156
+805811,Bryce Eldridge,4,San Francisco Giants,Jake Bennett,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,157
+624641,Edmundo Sosa,8,Philadelphia Phillies,Kyle Leahy,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,158
+702176,Alan Roden,1,Minnesota Twins,Walker Buehler,0.235,21.0,76.0,52.1,52.1,⚾ Standard Hit Prob,159
+703601,Max Clark,8,Detroit Tigers,Daniel Lynch IV,0.234,21.0,76.0,52.0,52.0,⚾ Standard Hit Prob,160
+607043,Brandon Nimmo,1,Texas Rangers,Yusei Kikuchi,0.234,21.0,76.0,52.0,52.0,⚾ Standard Hit Prob,161
+683953,Travis Bazzana,6,Cleveland Guardians,Tomoyuki Sugano,0.234,21.0,76.0,52.0,52.0,⚾ Standard Hit Prob,162
+595978,Austin Hedges,8,Cleveland Guardians,Tomoyuki Sugano,0.233,21.0,76.0,51.8,51.8,⚾ Standard Hit Prob,163
+646240,Rafael Devers,2,San Francisco Giants,Jake Bennett,0.233,21.0,76.0,51.8,51.8,⚾ Standard Hit Prob,164
+621566,Matt Olson,8,Atlanta Braves,Shane Drohan,0.233,21.0,76.0,51.8,51.8,⚾ Standard Hit Prob,165
+802139,JJ Wetherholt,1,St. Louis Cardinals,Cristopher Sánchez,0.232,21.0,76.0,51.7,51.7,⚾ Standard Hit Prob,166
+665804,Miguel Amaya,8,Chicago Cubs,Bryce Miller,0.232,21.0,76.0,51.7,51.7,⚾ Standard Hit Prob,167
+687093,Vaughn Grissom,4,Los Angeles Angels,Cal Quantrill,0.232,21.0,76.0,51.6,51.6,⚾ Standard Hit Prob,168
+677588,José Tena,5,Washington Nationals,Janson Junk,0.232,21.0,76.0,51.6,51.6,⚾ Standard Hit Prob,169
+521692,Salvador Perez,4,Kansas City Royals,Jacob Waguespack,0.232,21.0,76.0,51.6,51.6,⚾ Standard Hit Prob,170
+655316,Andruw Monasterio,7,Boston Red Sox,Matt Wilkinson,0.231,21.0,76.0,51.5,51.5,⚾ Standard Hit Prob,171
+672960,Kazuma Okamoto,5,Toronto Blue Jays,Carlos Rodón,0.231,21.0,76.0,51.5,51.5,⚾ Standard Hit Prob,172
+676439,Hunter Feduccia,6,Los Angeles Dodgers,Lake Bachar,0.231,21.0,76.0,51.4,51.4,⚾ Standard Hit Prob,173
+680869,Zack Gelof,3,Athletics,Cristian Javier,0.23,21.0,76.0,51.3,51.3,⚾ Standard Hit Prob,174
+668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,0.229,21.0,76.0,51.2,51.2,⚾ Standard Hit Prob,175
+678545,Osleivis Basabe,1,San Francisco Giants,Jake Bennett,0.229,21.0,76.0,51.1,51.1,⚾ Standard Hit Prob,176
+677594,Julio Rodríguez,8,Seattle Mariners,Shota Imanaga,0.229,21.0,76.0,51.1,51.1,⚾ Standard Hit Prob,177
+666023,Freddy Fermin,3,San Diego Padres,Bailey Ober,0.229,21.0,76.0,51.1,51.1,⚾ Standard Hit Prob,178
+670764,Taylor Walls,9,Tampa Bay Rays,Shane Baz,0.228,21.0,76.0,50.9,50.9,⚾ Standard Hit Prob,179
+543760,Marcus Semien,7,New York Mets,Sean Newcomb,0.227,21.0,76.0,50.8,50.8,⚾ Standard Hit Prob,180
+667472,Dane Myers,1,Cincinnati Reds,Mitch Bratt,0.227,21.0,76.0,50.8,50.8,⚾ Standard Hit Prob,181
+682987,Spencer Jones,6,New York Yankees,José Soriano,0.227,21.0,76.0,50.8,50.8,⚾ Standard Hit Prob,182
+687952,Christian Encarnacion-Strand,7,Baltimore Orioles,Nick Martinez,0.226,21.0,76.0,50.6,50.6,⚾ Standard Hit Prob,183
+682829,Elly De La Cruz,2,Cincinnati Reds,Mitch Bratt,0.226,21.0,76.0,50.6,50.6,⚾ Standard Hit Prob,184
+592663,J.T. Realmuto,6,Philadelphia Phillies,Kyle Leahy,0.225,21.0,76.0,50.5,50.5,⚾ Standard Hit Prob,185
+702616,Jackson Holliday,1,Baltimore Orioles,Nick Martinez,0.225,21.0,76.0,50.5,50.5,⚾ Standard Hit Prob,186
+642350,Jose Siri,7,Los Angeles Angels,Cal Quantrill,0.225,21.0,76.0,50.5,50.5,⚾ Standard Hit Prob,187
+677587,Brayan Rocchio,9,Cleveland Guardians,Tomoyuki Sugano,0.225,21.0,76.0,50.4,50.4,⚾ Standard Hit Prob,188
+657136,Connor Wong,9,Boston Red Sox,Matt Wilkinson,0.224,21.0,76.0,50.4,50.4,⚾ Standard Hit Prob,189
+694673,Abimelec Ortiz,2,Washington Nationals,Janson Junk,0.224,21.0,76.0,50.3,50.3,⚾ Standard Hit Prob,190
+806198,Cooper Pratt,4,Milwaukee Brewers,Tyler Mahle,0.224,21.0,76.0,50.3,50.3,⚾ Standard Hit Prob,191
+545121,Ildemaro Vargas,4,Arizona Diamondbacks,Andrew Abbott,0.223,21.0,76.0,50.2,50.2,⚾ Standard Hit Prob,192
+664023,Ian Happ,4,Chicago Cubs,Bryce Miller,0.223,21.0,76.0,50.2,50.2,⚾ Standard Hit Prob,193
+686780,Pedro Pagés,9,St. Louis Cardinals,Cristopher Sánchez,0.223,21.0,76.0,50.1,50.1,⚾ Standard Hit Prob,194
+572233,Christian Walker,6,Houston Astros,Brady Basso,0.222,21.0,76.0,50.0,50.0,⚾ Standard Hit Prob,195
+694378,Jacob Gonzalez,6,Pittsburgh Pirates,Blake Snell,0.222,21.0,76.0,50.0,50.0,⚾ Standard Hit Prob,196
+676609,José Caballero,9,New York Yankees,José Soriano,0.221,21.0,76.0,49.8,49.8,⚾ Standard Hit Prob,197
+669707,Jared Triolo,8,Pittsburgh Pirates,Blake Snell,0.22,21.0,76.0,49.7,49.7,⚾ Standard Hit Prob,198
+543877,Christian Vázquez,9,Houston Astros,Brady Basso,0.22,21.0,76.0,49.6,49.6,⚾ Standard Hit Prob,199
+701358,Cam Smith,8,Houston Astros,Brady Basso,0.218,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,200
+682634,Kevin Alcántara,5,Chicago Cubs,Bryce Miller,0.219,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,201
+663457,Lars Nootbaar,9,Arizona Diamondbacks,Andrew Abbott,0.219,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,202
+666139,Josh Lowe,5,Los Angeles Angels,Cal Quantrill,0.218,21.0,76.0,49.3,49.3,⚾ Standard Hit Prob,203
+656775,Cedric Mullins,7,Tampa Bay Rays,Shane Baz,0.218,21.0,76.0,49.3,49.3,⚾ Standard Hit Prob,204
+665862,Jazz Chisholm Jr.,7,New York Yankees,José Soriano,0.217,21.0,76.0,49.1,49.1,⚾ Standard Hit Prob,205
+695657,Colson Montgomery,6,Chicago White Sox,Nolan McLean,0.217,21.0,76.0,49.1,49.1,⚾ Standard Hit Prob,206
+663586,Austin Riley,1,Atlanta Braves,Shane Drohan,0.217,21.0,76.0,49.0,49.0,⚾ Standard Hit Prob,207
+702284,Cole Young,4,Seattle Mariners,Shota Imanaga,0.216,21.0,76.0,49.0,49.0,⚾ Standard Hit Prob,208
+665161,Jeremy Peña,1,Houston Astros,Brady Basso,0.216,21.0,76.0,49.0,49.0,⚾ Standard Hit Prob,209
+687231,Darell Hernaiz,8,Athletics,Cristian Javier,0.216,21.0,76.0,48.9,48.9,⚾ Standard Hit Prob,210
+681393,Connor Norby,4,Colorado Rockies,Foster Griffin,0.216,21.0,76.0,48.9,48.9,⚾ Standard Hit Prob,211
+668709,JJ Bleday,6,Cincinnati Reds,Mitch Bratt,0.216,21.0,76.0,48.9,48.9,⚾ Standard Hit Prob,212
+664728,Kyle Isbel,9,Kansas City Royals,Jacob Waguespack,0.214,21.0,76.0,48.6,48.6,⚾ Standard Hit Prob,213
+592885,Christian Yelich,3,Milwaukee Brewers,Tyler Mahle,0.214,21.0,76.0,48.5,48.5,⚾ Standard Hit Prob,214
+657757,Gavin Sheets,4,San Diego Padres,Bailey Ober,0.213,21.0,76.0,48.4,48.4,⚾ Standard Hit Prob,215
+662139,Daulton Varsho,5,Houston Astros,Brady Basso,0.212,21.0,76.0,48.3,48.3,⚾ Standard Hit Prob,216
+553993,Eugenio Suárez,3,Cincinnati Reds,Mitch Bratt,0.212,21.0,76.0,48.2,48.2,⚾ Standard Hit Prob,217
+672284,Jarred Kelenic,9,Texas Rangers,Yusei Kikuchi,0.211,21.0,76.0,48.0,48.0,⚾ Standard Hit Prob,218
+553869,Elias Díaz,5,Texas Rangers,Yusei Kikuchi,0.21,21.0,76.0,47.9,47.9,⚾ Standard Hit Prob,219
+681715,Heriberto Hernández,3,Miami Marlins,Jackson Kent,0.209,21.0,76.0,47.7,47.7,⚾ Standard Hit Prob,220
+678391,Jorbit Vivas,6,Washington Nationals,Janson Junk,0.207,21.0,76.0,47.4,47.4,⚾ Standard Hit Prob,221
+700250,Ben Rice,2,New York Yankees,José Soriano,0.207,21.0,76.0,47.4,47.4,⚾ Standard Hit Prob,222
+680574,Matt McLain,9,Cincinnati Reds,Mitch Bratt,0.207,21.0,76.0,47.3,47.3,⚾ Standard Hit Prob,223
+596142,Gary Sánchez,7,Milwaukee Brewers,Tyler Mahle,0.206,21.0,76.0,47.2,47.2,⚾ Standard Hit Prob,224
+661531,Brian Serven,9,Athletics,Cristian Javier,0.205,21.0,76.0,47.0,47.0,⚾ Standard Hit Prob,225
+695257,Billy Cook,1,Pittsburgh Pirates,Blake Snell,0.205,21.0,76.0,47.0,47.0,⚾ Standard Hit Prob,226
+691777,Max Muncy,6,Athletics,Cristian Javier,0.205,21.0,76.0,46.9,46.9,⚾ Standard Hit Prob,227
+805999,A.J. Ewing,8,New York Mets,Sean Newcomb,0.205,21.0,76.0,46.9,46.9,⚾ Standard Hit Prob,228
+683766,Christian Koss,9,San Francisco Giants,Jake Bennett,0.204,21.0,76.0,46.8,46.8,⚾ Standard Hit Prob,229
+621439,Byron Buxton,4,Minnesota Twins,Walker Buehler,0.203,21.0,76.0,46.7,46.7,⚾ Standard Hit Prob,230
+669224,Austin Wells,8,New York Yankees,José Soriano,0.203,21.0,76.0,46.7,46.7,⚾ Standard Hit Prob,231
+694212,Samuel Basallo,4,Baltimore Orioles,Nick Martinez,0.202,21.0,76.0,46.4,46.4,⚾ Standard Hit Prob,232
+808959,Munetaka Murakami,2,Chicago White Sox,Nolan McLean,0.202,21.0,76.0,46.4,46.4,⚾ Standard Hit Prob,233
+694208,Moisés Ballesteros,3,Los Angeles Angels,Cal Quantrill,0.202,21.0,76.0,46.4,46.4,⚾ Standard Hit Prob,234
+687597,Jordan Beck,7,Colorado Rockies,Foster Griffin,0.201,21.0,76.0,46.3,46.3,⚾ Standard Hit Prob,235
+571771,Enrique Hernández,4,Los Angeles Dodgers,Lake Bachar,0.2,21.0,76.0,46.2,46.2,⚾ Standard Hit Prob,236
+571912,Luke Maile,8,Kansas City Royals,Jacob Waguespack,0.2,21.0,76.0,46.1,46.1,⚾ Standard Hit Prob,237
+657041,Lane Thomas,7,Atlanta Braves,Shane Drohan,0.198,21.0,76.0,45.8,45.8,⚾ Standard Hit Prob,238
+676572,Eric Wagaman,5,New York Mets,Sean Newcomb,0.198,21.0,76.0,45.8,45.8,⚾ Standard Hit Prob,239
+678489,Jorge Barrosa,7,Arizona Diamondbacks,Andrew Abbott,0.197,21.0,76.0,45.6,45.6,⚾ Standard Hit Prob,240
+813841,Jonah Cox,8,San Francisco Giants,Jake Bennett,0.197,21.0,76.0,45.6,45.6,⚾ Standard Hit Prob,241
+663656,Kyle Tucker,7,Los Angeles Dodgers,Lake Bachar,0.194,21.0,76.0,45.1,45.1,⚾ Standard Hit Prob,242
+686611,Dylan Crews,3,Washington Nationals,Janson Junk,0.191,21.0,76.0,44.6,44.6,⚾ Standard Hit Prob,243
+686555,Isaac Collins,5,Kansas City Royals,Jacob Waguespack,0.191,21.0,76.0,44.4,44.4,⚾ Standard Hit Prob,244
+679845,Nick Loftin,1,Kansas City Royals,Jacob Waguespack,0.19,21.0,76.0,44.3,44.3,⚾ Standard Hit Prob,245
+664702,Myles Straw,9,Toronto Blue Jays,Carlos Rodón,0.189,21.0,76.0,44.2,44.2,⚾ Standard Hit Prob,246
+694497,Evan Carter,6,Texas Rangers,Yusei Kikuchi,0.189,21.0,76.0,44.1,44.1,⚾ Standard Hit Prob,247
+683083,Nasim Nuñez,8,Washington Nationals,Janson Junk,0.189,21.0,76.0,44.1,44.1,⚾ Standard Hit Prob,248
+687749,Jase Bowen,7,San Diego Padres,Bailey Ober,0.187,21.0,76.0,43.8,43.8,⚾ Standard Hit Prob,249
+805347,Jim Jarvis,6,Atlanta Braves,Shane Drohan,0.183,21.0,76.0,42.9,42.9,⚾ Standard Hit Prob,250
+663647,Ke'Bryan Hayes,8,Cincinnati Reds,Mitch Bratt,0.176,21.0,76.0,41.7,41.7,⚾ Standard Hit Prob,251
+660844,Leo Rivas,9,Seattle Mariners,Shota Imanaga,0.175,21.0,76.0,41.4,41.4,⚾ Standard Hit Prob,252
+624424,Michael Conforto,7,Chicago Cubs,Bryce Miller,0.172,21.0,76.0,41.0,41.0,⚾ Standard Hit Prob,253
+623168,Tyler Heineman,9,Los Angeles Angels,Cal Quantrill,0.167,21.0,76.0,40.0,40.0,⚾ Standard Hit Prob,254
+695681,Christian Moore,8,Los Angeles Angels,Cal Quantrill,0.167,21.0,76.0,39.9,39.9,⚾ Standard Hit Prob,255
+666624,Christopher Morel,6,New York Mets,Sean Newcomb,0.165,21.0,76.0,39.6,39.6,⚾ Standard Hit Prob,256
+668670,Jake Rogers,9,Chicago White Sox,Nolan McLean,0.163,21.0,76.0,39.2,39.2,⚾ Standard Hit Prob,257
+699302,Héctor Rodríguez,4,Cincinnati Reds,Mitch Bratt,0.162,21.0,76.0,39.0,39.0,⚾ Standard Hit Prob,258
+680779,Henry Davis,5,Pittsburgh Pirates,Blake Snell,0.158,21.0,76.0,38.1,38.1,⚾ Standard Hit Prob,259
+695491,Joshua Báez,5,St. Louis Cardinals,Cristopher Sánchez,0.156,21.0,76.0,37.8,37.8,⚾ Standard Hit Prob,260
+690924,Braxton Fulford,1,Colorado Rockies,Foster Griffin,0.152,21.0,76.0,36.9,36.9,⚾ Standard Hit Prob,261
+670231,John Rave,6,Kansas City Royals,Jacob Waguespack,0.152,21.0,76.0,36.9,36.9,⚾ Standard Hit Prob,262
+666163,Ben Rortvedt,3,Los Angeles Dodgers,Lake Bachar,0.15,21.0,76.0,36.5,36.5,⚾ Standard Hit Prob,263
+663728,Cal Raleigh,3,Seattle Mariners,Shota Imanaga,0.144,21.0,76.0,35.2,35.2,⚾ Standard Hit Prob,264
+673490,Ha-Seong Kim,5,Atlanta Braves,Shane Drohan,0.04,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,265
+643376,Danny Jansen,4,Texas Rangers,Yusei Kikuchi,0.135,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,266
+640459,Brian Navarreto,9,Miami Marlins,Jackson Kent,0.138,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,267
+672356,Gabriel Arias,3,Chicago Cubs,Bryce Miller,0.108,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,268
+602104,Ramón Urías,8,St. Louis Cardinals,Cristopher Sánchez,0.138,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,269
+671155,Ivan Johnson,5,Cincinnati Reds,Mitch Bratt,0.083,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,270

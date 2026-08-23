@@ -27,4 +27,5 @@ pitcher_id,pitcher_name,team,opp_team,blended_k9,expected_ip,lineup_k_pct,k_mult
 656794,Sean Newcomb,Chicago White Sox,New York Mets,8.23,1.5,22.5,1.0,1.37,18.3,⚾ Standard K Volume,26
 669620,Brady Basso,Athletics,Houston Astros,7.43,1.4,22.5,1.0,1.16,15.4,⚾ Standard K Volume,27
 663738,Daniel Lynch IV,Kansas City Royals,Detroit Tigers,6.83,1.1,22.5,1.0,1.0,13.3,⚾ Standard K Volume,28
-683363,Matt Wilkinson,San Francisco Giants,Boston Red Sox,0.0,2.0,22.5,1.0,1.0,13.3,⚾ Standard K Volume,29
+621097,Jacob Waguespack,Detroit Tigers,Kansas City Royals,3.12,1.4,22.5,1.0,1.0,13.3,⚾ Standard K Volume,29
+683363,Matt Wilkinson,San Francisco Giants,Boston Red Sox,0.0,2.0,22.5,1.0,1.0,13.3,⚾ Standard K Volume,30

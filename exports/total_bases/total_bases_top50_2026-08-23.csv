@@ -1,271 +1,271 @@
 player_id,player_name,order,team,opp_pitcher,true_ab,blended_slg,bb_pct,p_slg_allowed,expected_tb,score,target_call,rank
-672386,Alejandro Kirk,1,Toronto Blue Jays,Carlos Rodón,4.27,0.488,5.1,0.405,2.06,99.0,💎 TB LOCK: Elite SLG & AB Volume,1
-650559,Bryan De La Cruz,3,Philadelphia Phillies,Kyle Leahy,4.27,0.483,5.1,0.405,2.04,99.0,💎 TB LOCK: Elite SLG & AB Volume,2
+650490,Yandy Díaz,1,Tampa Bay Rays,Shane Baz,4.27,0.494,5.1,0.405,2.08,99.0,💎 TB LOCK: Elite SLG & AB Volume,1
+695491,Joshua Báez,5,St. Louis Cardinals,Cristopher Sánchez,3.89,0.531,5.1,0.405,2.04,99.0,💎 TB LOCK: Elite SLG & AB Volume,2
 665487,Fernando Tatis Jr.,2,San Diego Padres,Bailey Ober,4.27,0.525,5.1,0.405,2.21,99.0,💎 TB LOCK: Elite SLG & AB Volume,3
-608324,Alex Bregman,1,Chicago Cubs,Bryce Miller,4.27,0.554,5.1,0.405,2.34,99.0,💎 TB LOCK: Elite SLG & AB Volume,4
-663662,Daz Cameron,6,Toronto Blue Jays,Carlos Rodón,3.89,0.584,5.1,0.405,2.25,99.0,💎 TB LOCK: Elite SLG & AB Volume,5
-695506,Jac Caglianone,4,Kansas City Royals,TBD Pitcher,3.89,0.552,5.1,0.41,2.15,99.0,💎 TB LOCK: Elite SLG & AB Volume,6
-694673,Abimelec Ortiz,1,Washington Nationals,Janson Junk,4.27,0.507,5.1,0.405,2.14,99.0,💎 TB LOCK: Elite SLG & AB Volume,7
-665953,Andrés Chaparro,2,Washington Nationals,Janson Junk,4.27,0.488,5.1,0.405,2.06,99.0,💎 TB LOCK: Elite SLG & AB Volume,8
-680664,Eduardo Valencia,6,Detroit Tigers,Daniel Lynch IV,3.89,0.606,5.1,0.405,2.33,99.0,💎 TB LOCK: Elite SLG & AB Volume,9
-676475,Alec Burleson,1,St. Louis Cardinals,Cristopher Sánchez,4.27,0.486,5.1,0.405,2.05,99.0,💎 TB LOCK: Elite SLG & AB Volume,10
-700652,Kenny Piper,7,Tampa Bay Rays,Shane Baz,3.42,0.625,5.1,0.405,2.11,99.0,💎 TB LOCK: Elite SLG & AB Volume,11
-701162,Ben Malgeri,1,Detroit Tigers,Daniel Lynch IV,4.27,0.497,5.1,0.405,2.1,99.0,💎 TB LOCK: Elite SLG & AB Volume,12
-814430,Brett Callahan,2,Detroit Tigers,Daniel Lynch IV,4.27,0.576,5.1,0.405,2.43,99.0,💎 TB LOCK: Elite SLG & AB Volume,13
-665052,Griffin Conine,5,Miami Marlins,Jackson Kent,3.89,0.536,5.1,0.405,2.06,99.0,💎 TB LOCK: Elite SLG & AB Volume,14
-668800,Andrew Knizner,1,San Francisco Giants,Jake Bennett,4.27,0.545,5.1,0.405,2.3,99.0,💎 TB LOCK: Elite SLG & AB Volume,15
-687605,Andrew Pinckney,3,Washington Nationals,Janson Junk,4.27,0.513,5.1,0.405,2.16,99.0,💎 TB LOCK: Elite SLG & AB Volume,16
-664040,Brandon Lowe,2,Pittsburgh Pirates,Blake Snell,4.27,0.465,5.1,0.405,1.96,98.1,💎 TB LOCK: Elite SLG & AB Volume,17
-677951,Bobby Witt Jr.,1,Kansas City Royals,TBD Pitcher,4.27,0.459,5.1,0.41,1.96,98.0,💎 TB LOCK: Elite SLG & AB Volume,18
-664954,Brett Sullivan,2,Colorado Rockies,Foster Griffin,4.27,0.463,5.1,0.405,1.95,97.7,💎 TB LOCK: Elite SLG & AB Volume,19
-672515,Gabriel Moreno,2,Arizona Diamondbacks,Andrew Abbott,4.27,0.462,5.1,0.405,1.95,97.5,💎 TB LOCK: Elite SLG & AB Volume,20
-682998,Corbin Carroll,1,Arizona Diamondbacks,Andrew Abbott,4.27,0.451,5.1,0.405,1.9,95.1,💎 TB LOCK: Elite SLG & AB Volume,21
-666182,Bo Bichette,2,New York Mets,Sean Newcomb,4.27,0.446,5.1,0.405,1.88,94.0,💎 TB LOCK: Elite SLG & AB Volume,22
-687952,Christian Encarnacion-Strand,2,Baltimore Orioles,Nick Martinez,4.27,0.442,5.1,0.405,1.87,93.3,💎 TB LOCK: Elite SLG & AB Volume,23
-608369,Corey Seager,3,Texas Rangers,Yusei Kikuchi,4.27,0.439,5.1,0.405,1.85,92.6,💎 TB LOCK: Elite SLG & AB Volume,24
-661531,Brian Serven,2,Athletics,Cristian Javier,4.27,0.436,5.1,0.405,1.84,92.0,💎 TB LOCK: Elite SLG & AB Volume,25
-701807,Carson Benge,4,New York Mets,Sean Newcomb,3.89,0.479,5.1,0.405,1.84,92.0,💎 TB LOCK: Elite SLG & AB Volume,26
-686797,Brooks Lee,3,Minnesota Twins,Walker Buehler,4.27,0.432,5.1,0.405,1.82,91.2,💎 TB LOCK: Elite SLG & AB Volume,27
-701358,Cam Smith,1,Houston Astros,Brady Basso,4.27,0.429,5.1,0.405,1.81,90.5,💎 TB LOCK: Elite SLG & AB Volume,28
-691023,Jordan Walker,8,St. Louis Cardinals,Cristopher Sánchez,3.42,0.536,5.1,0.405,1.81,90.4,💎 TB LOCK: Elite SLG & AB Volume,29
-571970,Max Muncy,8,Los Angeles Dodgers,Lake Bachar,3.42,0.535,5.1,0.405,1.81,90.3,💎 TB LOCK: Elite SLG & AB Volume,30
-543510,James McCann,5,Arizona Diamondbacks,Andrew Abbott,3.89,0.47,5.1,0.405,1.81,90.3,💎 TB LOCK: Elite SLG & AB Volume,31
-547180,Bryce Harper,4,Philadelphia Phillies,Kyle Leahy,3.89,0.463,5.1,0.405,1.78,89.0,💎 TB LOCK: Elite SLG & AB Volume,32
-677592,Everson Pereira,4,St. Louis Cardinals,Cristopher Sánchez,3.89,0.463,5.1,0.405,1.78,88.9,💎 TB LOCK: Elite SLG & AB Volume,33
-664761,Alec Bohm,1,Philadelphia Phillies,Kyle Leahy,4.27,0.419,5.1,0.405,1.77,88.4,💎 TB LOCK: Elite SLG & AB Volume,34
-656577,Alex Jackson,2,Minnesota Twins,Walker Buehler,4.27,0.417,5.1,0.405,1.76,87.9,💎 TB LOCK: Elite SLG & AB Volume,35
-678246,Miguel Vargas,9,Chicago White Sox,Nolan McLean,3.42,0.52,5.1,0.405,1.76,87.8,💎 TB LOCK: Elite SLG & AB Volume,36
-553993,Eugenio Suárez,3,Cincinnati Reds,Mitch Bratt,4.27,0.414,5.1,0.405,1.75,87.3,💎 TB LOCK: Elite SLG & AB Volume,37
-687637,Dylan Beavers,6,Baltimore Orioles,Nick Martinez,3.89,0.452,5.1,0.405,1.74,86.9,💎 TB LOCK: Elite SLG & AB Volume,38
-805811,Bryce Eldridge,2,San Francisco Giants,Jake Bennett,4.27,0.411,5.1,0.405,1.73,86.7,💎 TB LOCK: Elite SLG & AB Volume,39
-605137,Josh Bell,5,Minnesota Twins,Walker Buehler,3.89,0.448,5.1,0.405,1.72,86.2,💎 TB LOCK: Elite SLG & AB Volume,40
-664983,Jake McCarthy,6,Colorado Rockies,Foster Griffin,3.89,0.448,5.1,0.405,1.72,86.2,💎 TB LOCK: Elite SLG & AB Volume,41
-691406,Junior Caminero,6,Tampa Bay Rays,Shane Baz,3.89,0.446,5.1,0.405,1.72,85.8,💎 TB LOCK: Elite SLG & AB Volume,42
-682657,Angel Martínez,2,Cleveland Guardians,Tomoyuki Sugano,4.27,0.407,5.1,0.405,1.72,85.8,💎 TB LOCK: Elite SLG & AB Volume,43
-694197,Angel Genao,1,Cleveland Guardians,Tomoyuki Sugano,4.27,0.404,5.1,0.405,1.7,85.2,💎 TB LOCK: Elite SLG & AB Volume,44
-683734,Andrew Vaughn,1,Milwaukee Brewers,Tyler Mahle,4.27,0.403,5.1,0.405,1.7,85.1,💎 TB LOCK: Elite SLG & AB Volume,45
-701785,Kaelen Culpepper,6,Minnesota Twins,Walker Buehler,3.89,0.443,5.1,0.405,1.7,85.1,💎 TB LOCK: Elite SLG & AB Volume,46
-700250,Ben Rice,4,New York Yankees,José Soriano,3.89,0.439,5.1,0.405,1.69,84.4,💎 TB LOCK: Elite SLG & AB Volume,47
-666176,Jo Adell,7,Cleveland Guardians,Tomoyuki Sugano,3.42,0.497,5.1,0.405,1.68,83.8,💎 TB LOCK: Elite SLG & AB Volume,48
-690993,Colt Keith,3,Detroit Tigers,Daniel Lynch IV,4.27,0.397,5.1,0.405,1.67,83.7,💎 TB LOCK: Elite SLG & AB Volume,49
-701538,Jackson Merrill,5,San Diego Padres,Bailey Ober,3.89,0.433,5.1,0.405,1.66,83.2,💎 TB LOCK: Elite SLG & AB Volume,50
-641343,Jake Bauers,9,Milwaukee Brewers,Tyler Mahle,3.42,0.492,5.1,0.405,1.66,83.0,💎 TB LOCK: Elite SLG & AB Volume,51
-682928,CJ Abrams,5,Washington Nationals,Janson Junk,3.89,0.428,5.1,0.405,1.64,82.2,💎 TB LOCK: Elite SLG & AB Volume,52
-669016,Brandon Marsh,2,Philadelphia Phillies,Kyle Leahy,4.27,0.389,5.1,0.405,1.64,82.0,💎 TB LOCK: Elite SLG & AB Volume,53
-691723,Coby Mayo,4,Baltimore Orioles,Nick Martinez,3.89,0.425,5.1,0.405,1.63,81.7,💎 TB LOCK: Elite SLG & AB Volume,54
-621566,Matt Olson,7,Atlanta Braves,Shane Drohan,3.42,0.484,5.1,0.405,1.63,81.6,💎 TB LOCK: Elite SLG & AB Volume,55
-686948,Drake Baldwin,3,Atlanta Braves,Shane Drohan,4.27,0.386,5.1,0.405,1.63,81.4,💎 TB LOCK: Elite SLG & AB Volume,56
-691783,Jordan Lawlar,6,Arizona Diamondbacks,Andrew Abbott,3.89,0.42,5.1,0.405,1.62,80.8,💎 TB LOCK: Elite SLG & AB Volume,57
-681297,Colton Cowser,5,Baltimore Orioles,Nick Martinez,3.89,0.417,5.1,0.405,1.6,80.2,💎 TB LOCK: Elite SLG & AB Volume,58
-800050,Chase DeLauter,5,Cleveland Guardians,Tomoyuki Sugano,3.89,0.417,5.1,0.405,1.6,80.2,💎 TB LOCK: Elite SLG & AB Volume,59
-695731,Braden Montgomery,2,Chicago White Sox,Nolan McLean,4.27,0.38,5.1,0.405,1.6,80.1,💎 TB LOCK: Elite SLG & AB Volume,60
-666160,Mickey Moniak,9,Colorado Rockies,Foster Griffin,3.42,0.473,5.1,0.405,1.6,79.8,🎯 TB TARGET: Strong XBH Spot,61
-686527,Dominic Canzone,5,Seattle Mariners,Shota Imanaga,3.89,0.414,5.1,0.405,1.59,79.6,🎯 TB TARGET: Strong XBH Spot,62
-643217,Andrew Benintendi,1,Chicago White Sox,Nolan McLean,4.27,0.376,5.1,0.405,1.59,79.4,🎯 TB TARGET: Strong XBH Spot,63
-699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Blake Snell,3.89,0.413,5.1,0.405,1.59,79.4,🎯 TB TARGET: Strong XBH Spot,64
-664023,Ian Happ,4,Chicago Cubs,Bryce Miller,3.89,0.413,5.1,0.405,1.59,79.3,🎯 TB TARGET: Strong XBH Spot,65
-642708,Amed Rosario,2,New York Yankees,José Soriano,4.27,0.375,5.1,0.405,1.58,79.1,🎯 TB TARGET: Strong XBH Spot,66
-670623,Isaac Paredes,5,Houston Astros,Brady Basso,3.89,0.412,5.1,0.405,1.58,79.1,🎯 TB TARGET: Strong XBH Spot,67
-645305,Ali Sánchez,1,New York Yankees,José Soriano,4.27,0.374,5.1,0.405,1.58,78.8,🎯 TB TARGET: Strong XBH Spot,68
-682829,Elly De La Cruz,2,Cincinnati Reds,Mitch Bratt,4.27,0.373,5.1,0.405,1.57,78.7,🎯 TB TARGET: Strong XBH Spot,69
-681715,Heriberto Hernández,6,Miami Marlins,Jackson Kent,3.89,0.409,5.1,0.405,1.57,78.7,🎯 TB TARGET: Strong XBH Spot,70
-691277,Deyvison De Los Santos,3,Miami Marlins,Jackson Kent,4.27,0.372,5.1,0.405,1.57,78.4,🎯 TB TARGET: Strong XBH Spot,71
-669134,Luis Campusano,8,San Diego Padres,Bailey Ober,3.42,0.464,5.1,0.405,1.57,78.3,🎯 TB TARGET: Strong XBH Spot,72
-572233,Christian Walker,3,Houston Astros,Brady Basso,4.27,0.371,5.1,0.405,1.56,78.2,🎯 TB TARGET: Strong XBH Spot,73
-805367,Chase Meidroth,4,Chicago White Sox,Nolan McLean,3.89,0.405,5.1,0.405,1.56,77.9,🎯 TB TARGET: Strong XBH Spot,74
-666018,Jonathan Aranda,3,Tampa Bay Rays,Shane Baz,4.27,0.368,5.1,0.405,1.55,77.7,🎯 TB TARGET: Strong XBH Spot,75
-678882,Ceddanne Rafaela,5,Boston Red Sox,Matt Wilkinson,3.89,0.404,5.1,0.405,1.55,77.7,🎯 TB TARGET: Strong XBH Spot,76
-676356,Jonny DeLuca,4,Tampa Bay Rays,Shane Baz,3.89,0.403,5.1,0.405,1.55,77.5,🎯 TB TARGET: Strong XBH Spot,77
-624431,Jose Trevino,6,Cincinnati Reds,Mitch Bratt,3.89,0.4,5.1,0.405,1.54,76.9,🎯 TB TARGET: Strong XBH Spot,78
-667452,Corey Julks,4,Detroit Tigers,Daniel Lynch IV,3.89,0.4,5.1,0.405,1.54,76.9,🎯 TB TARGET: Strong XBH Spot,79
-642086,Dominic Smith,2,Atlanta Braves,Shane Drohan,4.27,0.364,5.1,0.405,1.54,76.8,🎯 TB TARGET: Strong XBH Spot,80
-669003,Garrett Mitchell,6,Milwaukee Brewers,Tyler Mahle,3.89,0.399,5.1,0.405,1.53,76.7,🎯 TB TARGET: Strong XBH Spot,81
-689414,Liam Hicks,8,Tampa Bay Rays,Shane Baz,3.42,0.455,5.1,0.405,1.53,76.7,🎯 TB TARGET: Strong XBH Spot,82
-665923,Esteury Ruiz,4,Miami Marlins,Jackson Kent,3.89,0.398,5.1,0.405,1.53,76.4,🎯 TB TARGET: Strong XBH Spot,83
-701678,Hao-Yu Lee,8,Detroit Tigers,Daniel Lynch IV,3.42,0.453,5.1,0.405,1.53,76.4,🎯 TB TARGET: Strong XBH Spot,84
-802415,Chandler Simpson,2,Tampa Bay Rays,Shane Baz,4.27,0.362,5.1,0.405,1.53,76.3,🎯 TB TARGET: Strong XBH Spot,85
-687551,Drew Gilbert,6,San Francisco Giants,Jake Bennett,3.89,0.396,5.1,0.405,1.52,76.1,🎯 TB TARGET: Strong XBH Spot,86
-691594,Javier Sanoja,8,Miami Marlins,Jackson Kent,3.42,0.45,5.1,0.405,1.52,75.9,🎯 TB TARGET: Strong XBH Spot,87
-657757,Gavin Sheets,4,San Diego Padres,Bailey Ober,3.89,0.395,5.1,0.405,1.52,75.8,🎯 TB TARGET: Strong XBH Spot,88
-694249,Cole Carrigg,3,Colorado Rockies,Foster Griffin,4.27,0.358,5.1,0.405,1.51,75.5,🎯 TB TARGET: Strong XBH Spot,89
-663993,Nathaniel Lowe,9,Cleveland Guardians,Tomoyuki Sugano,3.42,0.447,5.1,0.405,1.51,75.5,🎯 TB TARGET: Strong XBH Spot,90
-543877,Christian Vázquez,2,Houston Astros,Brady Basso,4.27,0.356,5.1,0.405,1.5,75.2,🎯 TB TARGET: Strong XBH Spot,91
-686681,Michael Massey,9,Kansas City Royals,TBD Pitcher,3.42,0.44,5.1,0.41,1.5,75.2,🎯 TB TARGET: Strong XBH Spot,92
-608348,Carson Kelly,2,Chicago Cubs,Bryce Miller,4.27,0.357,5.1,0.405,1.5,75.2,🎯 TB TARGET: Strong XBH Spot,93
-680977,Brendan Donovan,1,Seattle Mariners,Shota Imanaga,4.27,0.356,5.1,0.405,1.5,75.0,🎯 TB TARGET: Strong XBH Spot,94
-695657,Colson Montgomery,5,Chicago White Sox,Nolan McLean,3.89,0.389,5.1,0.405,1.5,74.8,🎯 TB TARGET: Strong XBH Spot,95
-663330,Jahmai Jones,8,Boston Red Sox,Matt Wilkinson,3.42,0.442,5.1,0.405,1.49,74.5,🎯 TB TARGET: Strong XBH Spot,96
-657136,Connor Wong,6,Boston Red Sox,Matt Wilkinson,3.89,0.387,5.1,0.405,1.49,74.3,🎯 TB TARGET: Strong XBH Spot,97
-665926,Andrés Giménez,2,Toronto Blue Jays,Carlos Rodón,4.27,0.352,5.1,0.405,1.48,74.2,🎯 TB TARGET: Strong XBH Spot,98
-571771,Enrique Hernández,4,Los Angeles Dodgers,Lake Bachar,3.89,0.386,5.1,0.405,1.48,74.2,🎯 TB TARGET: Strong XBH Spot,99
-691781,Brady House,4,Washington Nationals,Janson Junk,3.89,0.385,5.1,0.405,1.48,73.9,🎯 TB TARGET: Strong XBH Spot,100
-801126,Brock Rodden,2,Seattle Mariners,Shota Imanaga,4.27,0.35,5.1,0.405,1.48,73.9,🎯 TB TARGET: Strong XBH Spot,101
-681082,Bryson Stott,5,Philadelphia Phillies,Kyle Leahy,3.89,0.384,5.1,0.405,1.48,73.8,🎯 TB TARGET: Strong XBH Spot,102
-607043,Brandon Nimmo,1,Texas Rangers,Yusei Kikuchi,4.27,0.35,5.1,0.405,1.48,73.8,🎯 TB TARGET: Strong XBH Spot,103
-663586,Austin Riley,1,Atlanta Braves,Shane Drohan,4.27,0.349,5.1,0.405,1.47,73.6,🎯 TB TARGET: Strong XBH Spot,104
-702332,Caleb Durbin,4,Boston Red Sox,Matt Wilkinson,3.89,0.383,5.1,0.405,1.47,73.5,🎯 TB TARGET: Strong XBH Spot,105
-668804,Bryan Reynolds,3,Pittsburgh Pirates,Blake Snell,4.27,0.349,5.1,0.405,1.47,73.5,🎯 TB TARGET: Strong XBH Spot,106
-694192,Jackson Chourio,8,Milwaukee Brewers,Tyler Mahle,3.42,0.436,5.1,0.405,1.47,73.5,🎯 TB TARGET: Strong XBH Spot,107
-695600,Carter Jensen,2,Kansas City Royals,TBD Pitcher,4.27,0.344,5.1,0.41,1.47,73.4,🎯 TB TARGET: Strong XBH Spot,108
-683737,Michael Busch,6,Chicago Cubs,Bryce Miller,3.89,0.381,5.1,0.405,1.47,73.3,🎯 TB TARGET: Strong XBH Spot,109
-664728,Kyle Isbel,6,Kansas City Royals,TBD Pitcher,3.89,0.375,5.1,0.41,1.46,73.0,🎯 TB TARGET: Strong XBH Spot,110
-642350,Jose Siri,5,Los Angeles Angels,Cal Quantrill,3.89,0.38,5.1,0.405,1.46,73.0,🎯 TB TARGET: Strong XBH Spot,111
-657041,Lane Thomas,6,Atlanta Braves,Shane Drohan,3.89,0.379,5.1,0.405,1.46,72.8,🎯 TB TARGET: Strong XBH Spot,112
-592885,Christian Yelich,3,Milwaukee Brewers,Tyler Mahle,4.27,0.344,5.1,0.405,1.45,72.7,🎯 TB TARGET: Strong XBH Spot,113
-667472,Dane Myers,1,Cincinnati Reds,Mitch Bratt,4.27,0.342,5.1,0.405,1.44,72.2,🎯 TB TARGET: Strong XBH Spot,114
-703520,Brett Bateman,4,Toronto Blue Jays,Carlos Rodón,3.89,0.375,5.1,0.405,1.44,72.1,🎯 TB TARGET: Strong XBH Spot,115
-666126,Carlos Cortes,3,Athletics,Cristian Javier,4.27,0.341,5.1,0.405,1.44,72.0,🎯 TB TARGET: Strong XBH Spot,116
-691458,Blaze Jordan,2,St. Louis Cardinals,Cristopher Sánchez,4.27,0.34,5.1,0.405,1.44,71.8,🎯 TB TARGET: Strong XBH Spot,117
-668709,JJ Bleday,5,Cincinnati Reds,Mitch Bratt,3.89,0.373,5.1,0.405,1.43,71.7,🎯 TB TARGET: Strong XBH Spot,118
-807727,Charles McAdoo,5,Toronto Blue Jays,Carlos Rodón,3.89,0.372,5.1,0.405,1.43,71.5,🎯 TB TARGET: Strong XBH Spot,119
-624428,Adam Frazier,1,Los Angeles Angels,Cal Quantrill,4.27,0.339,5.1,0.405,1.43,71.5,🎯 TB TARGET: Strong XBH Spot,120
-622268,Donovan Walton,5,Athletics,Cristian Javier,3.89,0.372,5.1,0.405,1.43,71.4,🎯 TB TARGET: Strong XBH Spot,121
-694203,Denzer Guzman,3,Los Angeles Angels,Cal Quantrill,4.27,0.339,5.1,0.405,1.43,71.4,🎯 TB TARGET: Strong XBH Spot,122
-656537,Derek Hill,6,Philadelphia Phillies,Kyle Leahy,3.89,0.37,5.1,0.405,1.42,71.2,🎯 TB TARGET: Strong XBH Spot,123
-665019,Kody Clemens,7,Minnesota Twins,Walker Buehler,3.42,0.422,5.1,0.405,1.42,71.2,🎯 TB TARGET: Strong XBH Spot,124
-518692,Freddie Freeman,5,Los Angeles Dodgers,Lake Bachar,3.89,0.37,5.1,0.405,1.42,71.1,🎯 TB TARGET: Strong XBH Spot,125
-703607,Henry Bolte,6,Athletics,Cristian Javier,3.89,0.37,5.1,0.405,1.42,71.1,🎯 TB TARGET: Strong XBH Spot,126
-806146,George Lombard Jr.,5,New York Yankees,José Soriano,3.89,0.368,5.1,0.405,1.42,70.8,🎯 TB TARGET: Strong XBH Spot,127
-668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,4.27,0.334,5.1,0.405,1.41,70.4,🎯 TB TARGET: Strong XBH Spot,128
-595978,Austin Hedges,3,Cleveland Guardians,Tomoyuki Sugano,4.27,0.333,5.1,0.405,1.41,70.3,🎯 TB TARGET: Strong XBH Spot,129
-682634,Kevin Alcántara,5,Chicago Cubs,Bryce Miller,3.89,0.365,5.1,0.405,1.4,70.0,🎯 TB TARGET: Strong XBH Spot,130
-671739,Michael Harris II,9,Atlanta Braves,Shane Drohan,3.42,0.415,5.1,0.405,1.4,70.0,🎯 TB TARGET: Strong XBH Spot,131
-666139,Josh Lowe,6,Los Angeles Angels,Cal Quantrill,3.89,0.364,5.1,0.405,1.4,69.9,🎯 TB TARGET: Strong XBH Spot,132
-640902,Jhonny Pereda,6,Seattle Mariners,Shota Imanaga,3.89,0.364,5.1,0.405,1.4,69.9,🎯 TB TARGET: Strong XBH Spot,133
-671732,Lawrence Butler,9,Athletics,Cristian Javier,3.42,0.414,5.1,0.405,1.4,69.8,🎯 TB TARGET: Strong XBH Spot,134
-671277,Luis García Jr.,9,New York Yankees,José Soriano,3.42,0.413,5.1,0.405,1.39,69.7,🎯 TB TARGET: Strong XBH Spot,135
-678218,Brandon Valenzuela,3,Toronto Blue Jays,Carlos Rodón,4.27,0.33,5.1,0.405,1.39,69.6,🎯 TB TARGET: Strong XBH Spot,136
-807712,Luke Keaschall,8,Minnesota Twins,Walker Buehler,3.42,0.412,5.1,0.405,1.39,69.6,🎯 TB TARGET: Strong XBH Spot,137
-675961,Alika Williams,1,Athletics,Cristian Javier,4.27,0.329,5.1,0.405,1.39,69.4,🎯 TB TARGET: Strong XBH Spot,138
-621439,Byron Buxton,4,Minnesota Twins,Walker Buehler,3.89,0.361,5.1,0.405,1.39,69.3,🎯 TB TARGET: Strong XBH Spot,139
-678011,Anthony Seigler,3,Boston Red Sox,Matt Wilkinson,4.27,0.328,5.1,0.405,1.38,69.2,🎯 TB TARGET: Strong XBH Spot,140
-596019,Francisco Lindor,9,New York Mets,Sean Newcomb,3.42,0.409,5.1,0.405,1.38,69.0,🎯 TB TARGET: Strong XBH Spot,141
-683146,Brett Baty,3,New York Mets,Sean Newcomb,4.27,0.327,5.1,0.405,1.38,68.9,🎯 TB TARGET: Strong XBH Spot,142
-545121,Ildemaro Vargas,4,Arizona Diamondbacks,Andrew Abbott,3.89,0.359,5.1,0.405,1.38,68.9,🎯 TB TARGET: Strong XBH Spot,143
-655316,Andruw Monasterio,2,Boston Red Sox,Matt Wilkinson,4.27,0.326,5.1,0.405,1.38,68.8,🎯 TB TARGET: Strong XBH Spot,144
-694378,Jacob Gonzalez,6,Pittsburgh Pirates,Blake Snell,3.89,0.357,5.1,0.405,1.37,68.5,🎯 TB TARGET: Strong XBH Spot,145
-695734,Daylen Lile,6,Washington Nationals,Janson Junk,3.89,0.355,5.1,0.405,1.37,68.3,🎯 TB TARGET: Strong XBH Spot,146
-672695,Geraldo Perdomo,3,Arizona Diamondbacks,Andrew Abbott,4.27,0.323,5.1,0.405,1.36,68.2,🎯 TB TARGET: Strong XBH Spot,147
-693307,Dillon Dingler,5,Detroit Tigers,Daniel Lynch IV,3.89,0.355,5.1,0.405,1.36,68.2,🎯 TB TARGET: Strong XBH Spot,148
-666023,Freddy Fermin,3,San Diego Padres,Bailey Ober,4.27,0.322,5.1,0.405,1.36,67.9,🎯 TB TARGET: Strong XBH Spot,149
-669720,Austin Hays,1,San Diego Padres,Bailey Ober,4.27,0.321,5.1,0.405,1.35,67.6,🎯 TB TARGET: Strong XBH Spot,150
-671056,Iván Herrera,5,St. Louis Cardinals,Cristopher Sánchez,3.89,0.352,5.1,0.405,1.35,67.6,🎯 TB TARGET: Strong XBH Spot,151
-545361,Mike Trout,7,Los Angeles Angels,Cal Quantrill,3.42,0.398,5.1,0.405,1.34,67.2,🎯 TB TARGET: Strong XBH Spot,152
-596142,Gary Sánchez,7,Milwaukee Brewers,Tyler Mahle,3.42,0.396,5.1,0.405,1.34,66.8,🎯 TB TARGET: Strong XBH Spot,153
-683090,Matthew Lugo,8,Kansas City Royals,TBD Pitcher,3.29,0.405,8.5,0.41,1.33,66.7,🎯 TB TARGET: Strong XBH Spot,154
-665161,Jeremy Peña,6,Houston Astros,Brady Basso,3.89,0.347,5.1,0.405,1.33,66.7,🎯 TB TARGET: Strong XBH Spot,155
-669394,Jake Burger,8,Texas Rangers,Yusei Kikuchi,3.42,0.394,5.1,0.405,1.33,66.5,🎯 TB TARGET: Strong XBH Spot,156
-678662,Ezequiel Tovar,5,Colorado Rockies,Foster Griffin,3.89,0.346,5.1,0.405,1.33,66.4,🎯 TB TARGET: Strong XBH Spot,157
-663494,Bryan Torres,3,St. Louis Cardinals,Cristopher Sánchez,4.27,0.313,5.1,0.405,1.32,66.1,🎯 TB TARGET: Strong XBH Spot,158
-696285,Jacob Young,9,Washington Nationals,Janson Junk,3.42,0.39,5.1,0.405,1.32,65.8,🎯 TB TARGET: Strong XBH Spot,159
-691788,Joe Mack,9,Miami Marlins,Jackson Kent,3.42,0.39,5.1,0.405,1.32,65.8,🎯 TB TARGET: Strong XBH Spot,160
-643446,Jeff McNeil,7,Athletics,Cristian Javier,3.42,0.388,5.1,0.405,1.31,65.5,🎯 TB TARGET: Strong XBH Spot,161
-676609,José Caballero,8,New York Yankees,José Soriano,3.42,0.387,5.1,0.405,1.31,65.3,🎯 TB TARGET: Strong XBH Spot,162
-666152,David Hamilton,5,Milwaukee Brewers,Tyler Mahle,3.89,0.337,5.1,0.405,1.3,64.8,⚾ Standard Base Volume,163
-683002,Gunnar Henderson,7,Baltimore Orioles,Nick Martinez,3.42,0.384,5.1,0.405,1.3,64.8,⚾ Standard Base Volume,164
-656775,Cedric Mullins,1,Tampa Bay Rays,Shane Baz,4.27,0.307,5.1,0.405,1.29,64.7,⚾ Standard Base Volume,165
-662139,Daulton Varsho,4,Houston Astros,Brady Basso,3.89,0.336,5.1,0.405,1.29,64.6,⚾ Standard Base Volume,166
-642201,Eli White,7,Boston Red Sox,Matt Wilkinson,3.42,0.382,5.1,0.405,1.29,64.5,⚾ Standard Base Volume,167
-691720,Kyle Karros,8,Colorado Rockies,Foster Griffin,3.42,0.382,5.1,0.405,1.29,64.5,⚾ Standard Base Volume,168
-514888,Jose Altuve,7,Houston Astros,Brady Basso,3.42,0.382,5.1,0.405,1.29,64.4,⚾ Standard Base Volume,169
-802139,JJ Wetherholt,6,St. Louis Cardinals,Cristopher Sánchez,3.89,0.333,5.1,0.405,1.28,64.0,⚾ Standard Base Volume,170
-676439,Hunter Feduccia,6,Los Angeles Dodgers,Lake Bachar,3.89,0.333,5.1,0.405,1.28,64.0,⚾ Standard Base Volume,171
-672569,Gustavo Campero,4,Los Angeles Angels,Cal Quantrill,3.89,0.333,5.1,0.405,1.28,64.0,⚾ Standard Base Volume,172
-622761,Jorge Mateo,5,Tampa Bay Rays,Shane Baz,3.89,0.332,5.1,0.405,1.28,63.9,⚾ Standard Base Volume,173
-682663,Agustín Ramírez,1,Miami Marlins,Jackson Kent,4.27,0.303,5.1,0.405,1.28,63.9,⚾ Standard Base Volume,174
-680574,Matt McLain,8,Cincinnati Reds,Mitch Bratt,3.42,0.377,5.1,0.405,1.27,63.6,⚾ Standard Base Volume,175
-647304,Josh Naylor,7,Seattle Mariners,Shota Imanaga,3.42,0.375,5.1,0.405,1.26,63.2,⚾ Standard Base Volume,176
-660821,Jesús Sánchez,9,Toronto Blue Jays,Carlos Rodón,3.42,0.371,5.1,0.405,1.25,62.6,⚾ Standard Base Volume,177
-677950,Alek Thomas,1,Los Angeles Dodgers,Lake Bachar,4.27,0.297,5.1,0.405,1.25,62.6,⚾ Standard Base Volume,178
-643289,Mauricio Dubón,8,Atlanta Braves,Shane Drohan,3.42,0.369,5.1,0.405,1.24,62.2,⚾ Standard Base Volume,179
-665804,Miguel Amaya,8,Chicago Cubs,Bryce Miller,3.42,0.368,5.1,0.405,1.24,62.1,⚾ Standard Base Volume,180
-668904,Royce Lewis,9,Minnesota Twins,Walker Buehler,3.42,0.367,5.1,0.405,1.24,61.9,⚾ Standard Base Volume,181
-702284,Cole Young,4,Seattle Mariners,Shota Imanaga,3.89,0.321,5.1,0.405,1.23,61.7,⚾ Standard Base Volume,182
-669743,Alex Call,2,Los Angeles Dodgers,Lake Bachar,4.27,0.292,5.1,0.405,1.23,61.6,⚾ Standard Base Volume,183
-677594,Julio Rodríguez,8,Seattle Mariners,Shota Imanaga,3.42,0.364,5.1,0.405,1.23,61.4,⚾ Standard Base Volume,184
-677587,Brayan Rocchio,4,Cleveland Guardians,Tomoyuki Sugano,3.89,0.319,5.1,0.405,1.23,61.3,⚾ Standard Base Volume,185
-663728,Cal Raleigh,3,Seattle Mariners,Shota Imanaga,4.27,0.29,5.1,0.405,1.22,61.2,⚾ Standard Base Volume,186
-686668,Brenton Doyle,3,Chicago White Sox,Nolan McLean,4.27,0.289,5.1,0.405,1.22,61.1,⚾ Standard Base Volume,187
-669397,Nick Allen,9,Houston Astros,Brady Basso,3.42,0.362,5.1,0.405,1.22,61.0,⚾ Standard Base Volume,188
-663968,Jake Mangum,7,Pittsburgh Pirates,Blake Snell,3.42,0.361,5.1,0.405,1.22,60.9,⚾ Standard Base Volume,189
-691011,Drew Romo,6,Chicago White Sox,Nolan McLean,3.89,0.317,5.1,0.405,1.22,60.9,⚾ Standard Base Volume,190
-681393,Connor Norby,4,Colorado Rockies,Foster Griffin,3.89,0.316,5.1,0.405,1.21,60.7,⚾ Standard Base Volume,191
-676391,Ernie Clement,7,Toronto Blue Jays,Carlos Rodón,3.42,0.359,5.1,0.405,1.21,60.6,⚾ Standard Base Volume,192
-805300,Jakob Marsee,7,Miami Marlins,Jackson Kent,3.42,0.358,5.1,0.405,1.21,60.5,⚾ Standard Base Volume,193
-630105,Jake Cronenworth,6,San Diego Padres,Bailey Ober,3.89,0.313,5.1,0.405,1.2,60.1,⚾ Standard Base Volume,194
-808982,Jung Hoo Lee,8,San Francisco Giants,Jake Bennett,3.42,0.356,5.1,0.405,1.2,60.0,⚾ Standard Base Volume,195
-693304,Nick Gonzales,9,Pittsburgh Pirates,Blake Snell,3.42,0.353,5.1,0.405,1.19,59.6,⚾ Standard Base Volume,196
-683227,Cody Freeman,2,Texas Rangers,Yusei Kikuchi,4.27,0.281,5.1,0.405,1.19,59.3,⚾ Standard Base Volume,197
-677649,Ezequiel Duran,7,Texas Rangers,Yusei Kikuchi,3.42,0.352,5.1,0.405,1.19,59.3,⚾ Standard Base Volume,198
-650402,Gleyber Torres,7,Detroit Tigers,Daniel Lynch IV,3.42,0.348,5.1,0.405,1.18,58.8,⚾ Standard Base Volume,199
-571912,Luke Maile,7,Kansas City Royals,TBD Pitcher,3.42,0.344,5.1,0.41,1.18,58.8,⚾ Standard Base Volume,200
-665862,Jazz Chisholm Jr.,7,New York Yankees,José Soriano,3.42,0.346,5.1,0.405,1.17,58.5,⚾ Standard Base Volume,201
-680776,Jarren Duran,9,Boston Red Sox,Matt Wilkinson,3.42,0.346,5.1,0.405,1.17,58.4,⚾ Standard Base Volume,202
-805999,A.J. Ewing,1,New York Mets,Sean Newcomb,4.27,0.277,5.1,0.405,1.17,58.3,⚾ Standard Base Volume,203
-695670,Harry Ford,8,Washington Nationals,Janson Junk,3.42,0.345,5.1,0.405,1.17,58.3,⚾ Standard Base Volume,204
-665750,Leody Taveras,9,Baltimore Orioles,Nick Martinez,3.42,0.344,5.1,0.405,1.16,58.0,⚾ Standard Base Volume,205
-669224,Austin Wells,3,New York Yankees,José Soriano,4.27,0.272,5.1,0.405,1.15,57.5,⚾ Standard Base Volume,206
-664774,LaMonte Wade Jr.,8,Houston Astros,Brady Basso,3.42,0.34,5.1,0.405,1.15,57.3,⚾ Standard Base Volume,207
-663538,Nico Hoerner,9,Chicago Cubs,Bryce Miller,3.42,0.339,5.1,0.405,1.14,57.2,⚾ Standard Base Volume,208
-678489,Jorge Barrosa,7,Arizona Diamondbacks,Andrew Abbott,3.42,0.338,5.1,0.405,1.14,57.0,⚾ Standard Base Volume,209
-543807,George Springer,8,Toronto Blue Jays,Carlos Rodón,3.42,0.336,5.1,0.405,1.14,56.8,⚾ Standard Base Volume,210
-687749,Jase Bowen,7,San Diego Padres,Bailey Ober,3.42,0.335,5.1,0.405,1.13,56.6,⚾ Standard Base Volume,211
-686555,Isaac Collins,3,Kansas City Royals,TBD Pitcher,4.27,0.263,5.1,0.41,1.12,56.2,⚾ Standard Base Volume,212
-624424,Michael Conforto,7,Chicago Cubs,Bryce Miller,3.42,0.331,5.1,0.405,1.12,55.9,⚾ Standard Base Volume,213
-702176,Alan Roden,1,Minnesota Twins,Walker Buehler,4.27,0.264,5.1,0.405,1.12,55.8,⚾ Standard Base Volume,214
-668670,Jake Rogers,7,Chicago White Sox,Nolan McLean,3.42,0.33,5.1,0.405,1.11,55.7,⚾ Standard Base Volume,215
-665877,José Fermín,9,St. Louis Cardinals,Cristopher Sánchez,3.42,0.328,5.1,0.405,1.11,55.4,⚾ Standard Base Volume,216
-640459,Brian Navarreto,2,Miami Marlins,Jackson Kent,4.27,0.262,5.1,0.405,1.11,55.3,⚾ Standard Base Volume,217
-663743,Nick Fortes,9,Tampa Bay Rays,Shane Baz,3.42,0.326,5.1,0.405,1.1,55.0,⚾ Standard Base Volume,218
-699912,Jose Fernandez,8,Arizona Diamondbacks,Andrew Abbott,3.42,0.326,5.1,0.405,1.1,55.0,⚾ Standard Base Volume,219
-682626,Francisco Alvarez,8,New York Mets,Sean Newcomb,3.42,0.326,5.1,0.405,1.1,55.0,⚾ Standard Base Volume,220
-668939,Adley Rutschman,1,Boston Red Sox,Matt Wilkinson,4.27,0.26,5.1,0.405,1.1,54.8,⚾ Standard Base Volume,221
-608070,José Ramírez,8,Cleveland Guardians,Tomoyuki Sugano,3.42,0.325,5.1,0.405,1.1,54.8,⚾ Standard Base Volume,222
-702616,Jackson Holliday,8,Baltimore Orioles,Nick Martinez,3.42,0.322,5.1,0.405,1.09,54.4,⚾ Standard Base Volume,223
-678545,Osleivis Basabe,9,San Francisco Giants,Jake Bennett,3.42,0.321,5.1,0.405,1.08,54.1,⚾ Standard Base Volume,224
-670231,John Rave,5,Kansas City Royals,TBD Pitcher,3.89,0.277,5.1,0.41,1.08,53.9,⚾ Standard Base Volume,225
-553869,Elias Díaz,5,Texas Rangers,Yusei Kikuchi,3.89,0.279,5.1,0.405,1.07,53.6,⚾ Standard Base Volume,226
-676572,Eric Wagaman,7,New York Mets,Sean Newcomb,3.42,0.317,5.1,0.405,1.07,53.5,⚾ Standard Base Volume,227
-806198,Cooper Pratt,4,Milwaukee Brewers,Tyler Mahle,3.89,0.278,5.1,0.405,1.07,53.4,⚾ Standard Base Volume,228
-624641,Edmundo Sosa,7,Philadelphia Phillies,Kyle Leahy,3.42,0.317,5.1,0.405,1.07,53.4,⚾ Standard Base Volume,229
-500743,Miguel Rojas,9,Los Angeles Dodgers,Lake Bachar,3.42,0.316,5.1,0.405,1.07,53.3,⚾ Standard Base Volume,230
-663457,Lars Nootbaar,9,Arizona Diamondbacks,Andrew Abbott,3.42,0.314,5.1,0.405,1.06,53.0,⚾ Standard Base Volume,231
-650859,Luis Rengifo,9,San Diego Padres,Bailey Ober,3.42,0.312,5.1,0.405,1.05,52.7,⚾ Standard Base Volume,232
-813841,Jonah Cox,7,San Francisco Giants,Jake Bennett,3.42,0.309,5.1,0.405,1.04,52.1,⚾ Standard Base Volume,233
-695257,Billy Cook,1,Pittsburgh Pirates,Blake Snell,4.27,0.242,5.1,0.405,1.02,51.1,⚾ Standard Base Volume,234
-694497,Evan Carter,6,Texas Rangers,Yusei Kikuchi,3.89,0.264,5.1,0.405,1.02,50.8,⚾ Standard Base Volume,235
-595879,Javier Báez,9,Detroit Tigers,Daniel Lynch IV,3.42,0.301,5.1,0.405,1.02,50.8,⚾ Standard Base Volume,236
-592663,J.T. Realmuto,9,Philadelphia Phillies,Kyle Leahy,3.42,0.301,5.1,0.405,1.02,50.8,⚾ Standard Base Volume,237
-686611,Dylan Crews,7,Washington Nationals,Janson Junk,3.42,0.3,5.1,0.405,1.01,50.7,⚾ Standard Base Volume,238
-681807,David Fry,6,Cleveland Guardians,Tomoyuki Sugano,3.89,0.263,5.1,0.405,1.01,50.6,⚾ Standard Base Volume,239
-699302,Héctor Rodríguez,4,Cincinnati Reds,Mitch Bratt,3.89,0.259,5.1,0.405,1.0,49.8,⚾ Standard Base Volume,240
-663656,Kyle Tucker,7,Los Angeles Dodgers,Lake Bachar,3.42,0.295,5.1,0.405,1.0,49.8,⚾ Standard Base Volume,241
-694208,Moisés Ballesteros,8,Los Angeles Angels,Cal Quantrill,3.42,0.294,5.1,0.405,0.99,49.6,⚾ Standard Base Volume,242
-669707,Jared Triolo,8,Pittsburgh Pirates,Blake Snell,3.42,0.29,5.1,0.405,0.98,49.0,⚾ Standard Base Volume,243
-641680,Jonah Heim,8,Athletics,Cristian Javier,3.42,0.286,5.1,0.405,0.97,48.3,⚾ Standard Base Volume,244
-699625,Jimmy Crooks,7,St. Louis Cardinals,Cristopher Sánchez,3.42,0.284,5.1,0.405,0.96,47.9,⚾ Standard Base Volume,245
-687231,Darell Hernaiz,4,Athletics,Cristian Javier,3.89,0.244,5.1,0.405,0.94,46.9,⚾ Standard Base Volume,246
-643376,Danny Jansen,4,Texas Rangers,Yusei Kikuchi,3.89,0.243,5.1,0.405,0.93,46.7,⚾ Standard Base Volume,247
-687597,Jordan Beck,7,Colorado Rockies,Foster Griffin,3.42,0.273,5.1,0.405,0.92,46.1,⚾ Standard Base Volume,248
-663647,Ke'Bryan Hayes,7,Cincinnati Reds,Mitch Bratt,3.42,0.272,5.1,0.405,0.92,45.9,⚾ Standard Base Volume,249
-805347,Jim Jarvis,5,Atlanta Braves,Shane Drohan,3.89,0.237,5.1,0.405,0.91,45.5,⚾ Standard Base Volume,250
-672284,Jarred Kelenic,9,Texas Rangers,Yusei Kikuchi,3.42,0.268,5.1,0.405,0.9,45.2,⚾ Standard Base Volume,251
-680779,Henry Davis,5,Pittsburgh Pirates,Blake Snell,3.89,0.235,5.1,0.405,0.9,45.1,⚾ Standard Base Volume,252
-683766,Christian Koss,4,San Francisco Giants,Jake Bennett,3.89,0.234,5.1,0.405,0.9,45.1,⚾ Standard Base Volume,253
-690924,Braxton Fulford,1,Colorado Rockies,Foster Griffin,4.27,0.214,5.1,0.405,0.9,45.0,⚾ Standard Base Volume,254
-672724,Oswald Peraza,9,Los Angeles Angels,Cal Quantrill,3.42,0.251,5.1,0.405,0.85,42.3,⚾ Standard Base Volume,255
-701852,Drew Cavanaugh,5,San Francisco Giants,Jake Bennett,3.89,0.219,5.1,0.405,0.84,42.1,⚾ Standard Base Volume,256
-665966,Carlos Narváez,1,Baltimore Orioles,Nick Martinez,4.27,0.194,5.1,0.405,0.82,41.0,⚾ Standard Base Volume,257
-681047,Christian Franklin,3,Baltimore Orioles,Nick Martinez,4.27,0.184,5.1,0.405,0.78,38.8,⚾ Standard Base Volume,258
-682668,Luisangel Acuña,8,Chicago White Sox,Nolan McLean,3.42,0.224,5.1,0.405,0.76,37.9,⚾ Standard Base Volume,259
-666624,Christopher Morel,5,New York Mets,Sean Newcomb,3.89,0.192,5.1,0.405,0.74,36.8,⚾ Standard Base Volume,260
-695681,Christian Moore,2,Los Angeles Angels,Cal Quantrill,4.27,0.167,5.1,0.405,0.7,35.2,⚾ Standard Base Volume,261
-660844,Leo Rivas,9,Seattle Mariners,Shota Imanaga,3.42,0.201,5.1,0.405,0.68,33.9,⚾ Standard Base Volume,262
-666163,Ben Rortvedt,3,Los Angeles Dodgers,Lake Bachar,4.27,0.15,5.1,0.405,0.63,31.6,⚾ Standard Base Volume,263
-671218,Heliot Ramos,6,New York Yankees,José Soriano,3.89,0.162,5.1,0.405,0.62,31.2,⚾ Standard Base Volume,264
-669911,Michael Toglia,9,Cincinnati Reds,Mitch Bratt,3.42,0.161,5.1,0.405,0.54,27.2,⚾ Standard Base Volume,265
-671083,Buddy Kennedy,3,San Francisco Giants,Jake Bennett,4.27,0.124,5.1,0.405,0.52,26.2,⚾ Standard Base Volume,266
-665506,Cristian Pache,6,New York Mets,Sean Newcomb,3.89,0.0,5.1,0.405,0.5,25.0,⚾ Standard Base Volume,267
-673490,Ha-Seong Kim,4,Atlanta Braves,Shane Drohan,3.89,0.04,5.1,0.405,0.5,25.0,⚾ Standard Base Volume,268
+656941,Kyle Schwarber,1,Philadelphia Phillies,Kyle Leahy,4.27,0.528,5.1,0.405,2.23,99.0,💎 TB LOCK: Elite SLG & AB Volume,4
+808959,Munetaka Murakami,2,Chicago White Sox,Nolan McLean,4.27,0.49,5.1,0.405,2.07,99.0,💎 TB LOCK: Elite SLG & AB Volume,5
+680664,Eduardo Valencia,4,Detroit Tigers,Daniel Lynch IV,3.89,0.606,5.1,0.405,2.33,99.0,💎 TB LOCK: Elite SLG & AB Volume,6
+678246,Miguel Vargas,3,Chicago White Sox,Nolan McLean,4.27,0.52,5.1,0.405,2.19,99.0,💎 TB LOCK: Elite SLG & AB Volume,7
+701807,Carson Benge,3,New York Mets,Sean Newcomb,4.27,0.479,5.1,0.405,2.02,99.0,💎 TB LOCK: Elite SLG & AB Volume,8
+691023,Jordan Walker,3,St. Louis Cardinals,Cristopher Sánchez,4.27,0.536,5.1,0.405,2.26,99.0,💎 TB LOCK: Elite SLG & AB Volume,9
+624413,Pete Alonso,2,Baltimore Orioles,Nick Martinez,4.27,0.627,5.1,0.405,2.64,99.0,💎 TB LOCK: Elite SLG & AB Volume,10
+676551,Brewer Hicklen,2,Atlanta Braves,Shane Drohan,4.27,0.495,5.1,0.405,2.09,99.0,💎 TB LOCK: Elite SLG & AB Volume,11
+670541,Yordan Alvarez,2,Houston Astros,Brady Basso,4.27,0.486,5.1,0.405,2.05,99.0,💎 TB LOCK: Elite SLG & AB Volume,12
+694673,Abimelec Ortiz,2,Washington Nationals,Janson Junk,4.27,0.507,5.1,0.405,2.14,99.0,💎 TB LOCK: Elite SLG & AB Volume,13
+666176,Jo Adell,3,Cleveland Guardians,Tomoyuki Sugano,4.27,0.497,5.1,0.405,2.1,99.0,💎 TB LOCK: Elite SLG & AB Volume,14
+672386,Alejandro Kirk,3,Toronto Blue Jays,Carlos Rodón,4.27,0.488,5.1,0.405,2.06,99.0,💎 TB LOCK: Elite SLG & AB Volume,15
+608324,Alex Bregman,1,Chicago Cubs,Bryce Miller,4.27,0.554,5.1,0.405,2.34,99.0,💎 TB LOCK: Elite SLG & AB Volume,16
+663662,Daz Cameron,7,Toronto Blue Jays,Carlos Rodón,3.42,0.584,5.1,0.405,1.97,98.6,💎 TB LOCK: Elite SLG & AB Volume,17
+575929,Willson Contreras,4,Boston Red Sox,Matt Wilkinson,3.89,0.511,5.1,0.405,1.96,98.2,💎 TB LOCK: Elite SLG & AB Volume,18
+664040,Brandon Lowe,2,Pittsburgh Pirates,Blake Snell,4.27,0.465,5.1,0.405,1.96,98.1,💎 TB LOCK: Elite SLG & AB Volume,19
+547180,Bryce Harper,3,Philadelphia Phillies,Kyle Leahy,4.27,0.463,5.1,0.405,1.95,97.7,💎 TB LOCK: Elite SLG & AB Volume,20
+664954,Brett Sullivan,2,Colorado Rockies,Foster Griffin,4.27,0.463,5.1,0.405,1.95,97.7,💎 TB LOCK: Elite SLG & AB Volume,21
+672515,Gabriel Moreno,2,Arizona Diamondbacks,Andrew Abbott,4.27,0.462,5.1,0.405,1.95,97.5,💎 TB LOCK: Elite SLG & AB Volume,22
+663757,Trent Grisham,1,New York Yankees,José Soriano,4.27,0.456,5.1,0.405,1.93,96.3,💎 TB LOCK: Elite SLG & AB Volume,23
+673357,Luis Robert Jr.,4,New York Mets,Sean Newcomb,3.89,0.5,5.1,0.405,1.92,96.1,💎 TB LOCK: Elite SLG & AB Volume,24
+701678,Hao-Yu Lee,2,Detroit Tigers,Daniel Lynch IV,4.27,0.453,5.1,0.405,1.91,95.5,💎 TB LOCK: Elite SLG & AB Volume,25
+682998,Corbin Carroll,1,Arizona Diamondbacks,Andrew Abbott,4.27,0.451,5.1,0.405,1.9,95.1,💎 TB LOCK: Elite SLG & AB Volume,26
+691406,Junior Caminero,3,Tampa Bay Rays,Shane Baz,4.27,0.446,5.1,0.405,1.88,94.2,💎 TB LOCK: Elite SLG & AB Volume,27
+666182,Bo Bichette,2,New York Mets,Sean Newcomb,4.27,0.446,5.1,0.405,1.88,94.0,💎 TB LOCK: Elite SLG & AB Volume,28
+677800,Wilyer Abreu,3,Boston Red Sox,Matt Wilkinson,4.27,0.444,5.1,0.405,1.87,93.7,💎 TB LOCK: Elite SLG & AB Volume,29
+676475,Alec Burleson,4,St. Louis Cardinals,Cristopher Sánchez,3.89,0.486,5.1,0.405,1.87,93.3,💎 TB LOCK: Elite SLG & AB Volume,30
+663330,Jahmai Jones,1,Boston Red Sox,Matt Wilkinson,4.27,0.442,5.1,0.405,1.86,93.2,💎 TB LOCK: Elite SLG & AB Volume,31
+608369,Corey Seager,3,Texas Rangers,Yusei Kikuchi,4.27,0.439,5.1,0.405,1.85,92.6,💎 TB LOCK: Elite SLG & AB Volume,32
+700250,Ben Rice,2,New York Yankees,José Soriano,4.27,0.439,5.1,0.405,1.85,92.6,💎 TB LOCK: Elite SLG & AB Volume,33
+668800,Andrew Knizner,7,San Francisco Giants,Jake Bennett,3.42,0.545,5.1,0.405,1.84,92.0,💎 TB LOCK: Elite SLG & AB Volume,34
+646240,Rafael Devers,2,San Francisco Giants,Jake Bennett,4.27,0.435,5.1,0.405,1.84,91.8,💎 TB LOCK: Elite SLG & AB Volume,35
+686797,Brooks Lee,3,Minnesota Twins,Walker Buehler,4.27,0.432,5.1,0.405,1.82,91.2,💎 TB LOCK: Elite SLG & AB Volume,36
+620443,Luis Torrens,9,New York Mets,Sean Newcomb,3.42,0.539,5.1,0.405,1.82,91.0,💎 TB LOCK: Elite SLG & AB Volume,37
+665052,Griffin Conine,8,Miami Marlins,Jackson Kent,3.42,0.536,5.1,0.405,1.81,90.4,💎 TB LOCK: Elite SLG & AB Volume,38
+543510,James McCann,5,Arizona Diamondbacks,Andrew Abbott,3.89,0.47,5.1,0.405,1.81,90.3,💎 TB LOCK: Elite SLG & AB Volume,39
+571970,Max Muncy,8,Los Angeles Dodgers,Lake Bachar,3.42,0.535,5.1,0.405,1.81,90.3,💎 TB LOCK: Elite SLG & AB Volume,40
+642715,Willy Adames,3,San Francisco Giants,Jake Bennett,4.27,0.425,5.1,0.405,1.79,89.6,💎 TB LOCK: Elite SLG & AB Volume,41
+680869,Zack Gelof,3,Athletics,Cristian Javier,4.27,0.42,5.1,0.405,1.77,88.5,💎 TB LOCK: Elite SLG & AB Volume,42
+800050,Chase DeLauter,2,Cleveland Guardians,Tomoyuki Sugano,4.27,0.417,5.1,0.405,1.76,88.0,💎 TB LOCK: Elite SLG & AB Volume,43
+656577,Alex Jackson,2,Minnesota Twins,Walker Buehler,4.27,0.417,5.1,0.405,1.76,87.9,💎 TB LOCK: Elite SLG & AB Volume,44
+689414,Liam Hicks,4,Tampa Bay Rays,Shane Baz,3.89,0.455,5.1,0.405,1.75,87.4,💎 TB LOCK: Elite SLG & AB Volume,45
+553993,Eugenio Suárez,3,Cincinnati Reds,Mitch Bratt,4.27,0.414,5.1,0.405,1.75,87.3,💎 TB LOCK: Elite SLG & AB Volume,46
+671277,Luis García Jr.,3,New York Yankees,José Soriano,4.27,0.413,5.1,0.405,1.74,87.1,💎 TB LOCK: Elite SLG & AB Volume,47
+687637,Dylan Beavers,6,Baltimore Orioles,Nick Martinez,3.89,0.452,5.1,0.405,1.74,86.9,💎 TB LOCK: Elite SLG & AB Volume,48
+670623,Isaac Paredes,3,Houston Astros,Brady Basso,4.27,0.412,5.1,0.405,1.74,86.8,💎 TB LOCK: Elite SLG & AB Volume,49
+687263,Zach Neto,1,Los Angeles Angels,Cal Quantrill,4.27,0.41,5.1,0.405,1.73,86.6,💎 TB LOCK: Elite SLG & AB Volume,50
+691594,Javier Sanoja,6,Miami Marlins,Jackson Kent,3.89,0.45,5.1,0.405,1.73,86.4,💎 TB LOCK: Elite SLG & AB Volume,51
+596019,Francisco Lindor,1,New York Mets,Sean Newcomb,4.27,0.409,5.1,0.405,1.73,86.3,💎 TB LOCK: Elite SLG & AB Volume,52
+681715,Heriberto Hernández,3,Miami Marlins,Jackson Kent,4.27,0.409,5.1,0.405,1.73,86.3,💎 TB LOCK: Elite SLG & AB Volume,53
+605137,Josh Bell,5,Minnesota Twins,Walker Buehler,3.89,0.448,5.1,0.405,1.72,86.2,💎 TB LOCK: Elite SLG & AB Volume,54
+664983,Jake McCarthy,6,Colorado Rockies,Foster Griffin,3.89,0.448,5.1,0.405,1.72,86.2,💎 TB LOCK: Elite SLG & AB Volume,55
+663993,Nathaniel Lowe,4,Cleveland Guardians,Tomoyuki Sugano,3.89,0.447,5.1,0.405,1.72,86.0,💎 TB LOCK: Elite SLG & AB Volume,56
+678882,Ceddanne Rafaela,2,Boston Red Sox,Matt Wilkinson,4.27,0.404,5.1,0.405,1.7,85.2,💎 TB LOCK: Elite SLG & AB Volume,57
+701785,Kaelen Culpepper,6,Minnesota Twins,Walker Buehler,3.89,0.443,5.1,0.405,1.7,85.1,💎 TB LOCK: Elite SLG & AB Volume,58
+805808,Kevin McGonigle,3,Detroit Tigers,Daniel Lynch IV,4.27,0.403,5.1,0.405,1.7,85.1,💎 TB LOCK: Elite SLG & AB Volume,59
+683734,Andrew Vaughn,1,Milwaukee Brewers,Tyler Mahle,4.27,0.403,5.1,0.405,1.7,85.1,💎 TB LOCK: Elite SLG & AB Volume,60
+545361,Mike Trout,2,Los Angeles Angels,Cal Quantrill,4.27,0.398,5.1,0.405,1.68,83.9,💎 TB LOCK: Elite SLG & AB Volume,61
+701162,Ben Malgeri,7,Detroit Tigers,Daniel Lynch IV,3.42,0.497,5.1,0.405,1.68,83.8,💎 TB LOCK: Elite SLG & AB Volume,62
+701538,Jackson Merrill,5,San Diego Padres,Bailey Ober,3.89,0.433,5.1,0.405,1.66,83.2,💎 TB LOCK: Elite SLG & AB Volume,63
+641343,Jake Bauers,9,Milwaukee Brewers,Tyler Mahle,3.42,0.492,5.1,0.405,1.66,83.0,💎 TB LOCK: Elite SLG & AB Volume,64
+694212,Samuel Basallo,4,Baltimore Orioles,Nick Martinez,3.89,0.429,5.1,0.405,1.65,82.4,💎 TB LOCK: Elite SLG & AB Volume,65
+665953,Andrés Chaparro,7,Washington Nationals,Janson Junk,3.42,0.488,5.1,0.405,1.65,82.3,💎 TB LOCK: Elite SLG & AB Volume,66
+691723,Coby Mayo,5,Baltimore Orioles,Nick Martinez,3.89,0.425,5.1,0.405,1.63,81.7,💎 TB LOCK: Elite SLG & AB Volume,67
+621566,Matt Olson,8,Atlanta Braves,Shane Drohan,3.42,0.484,5.1,0.405,1.63,81.6,💎 TB LOCK: Elite SLG & AB Volume,68
+650559,Bryan De La Cruz,9,Philadelphia Phillies,Kyle Leahy,3.42,0.483,5.1,0.405,1.63,81.5,💎 TB LOCK: Elite SLG & AB Volume,69
+660688,Keibert Ruiz,4,Washington Nationals,Janson Junk,3.89,0.424,5.1,0.405,1.63,81.5,💎 TB LOCK: Elite SLG & AB Volume,70
+683002,Gunnar Henderson,3,Baltimore Orioles,Nick Martinez,4.27,0.384,5.1,0.405,1.62,81.0,💎 TB LOCK: Elite SLG & AB Volume,71
+691783,Jordan Lawlar,6,Arizona Diamondbacks,Andrew Abbott,3.89,0.42,5.1,0.405,1.62,80.8,💎 TB LOCK: Elite SLG & AB Volume,72
+666160,Mickey Moniak,9,Colorado Rockies,Foster Griffin,3.42,0.473,5.1,0.405,1.6,79.8,🎯 TB TARGET: Strong XBH Spot,73
+677588,José Tena,5,Washington Nationals,Janson Junk,3.89,0.415,5.1,0.405,1.6,79.8,🎯 TB TARGET: Strong XBH Spot,74
+686527,Dominic Canzone,5,Seattle Mariners,Shota Imanaga,3.89,0.414,5.1,0.405,1.59,79.6,🎯 TB TARGET: Strong XBH Spot,75
+671732,Lawrence Butler,4,Athletics,Cristian Javier,3.89,0.414,5.1,0.405,1.59,79.5,🎯 TB TARGET: Strong XBH Spot,76
+699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Blake Snell,3.89,0.413,5.1,0.405,1.59,79.4,🎯 TB TARGET: Strong XBH Spot,77
+664023,Ian Happ,4,Chicago Cubs,Bryce Miller,3.89,0.413,5.1,0.405,1.59,79.3,🎯 TB TARGET: Strong XBH Spot,78
+703520,Brett Bateman,1,Toronto Blue Jays,Carlos Rodón,4.27,0.375,5.1,0.405,1.58,79.1,🎯 TB TARGET: Strong XBH Spot,79
+805811,Bryce Eldridge,4,San Francisco Giants,Jake Bennett,3.89,0.411,5.1,0.405,1.58,79.0,🎯 TB TARGET: Strong XBH Spot,80
+682829,Elly De La Cruz,2,Cincinnati Reds,Mitch Bratt,4.27,0.373,5.1,0.405,1.57,78.7,🎯 TB TARGET: Strong XBH Spot,81
+669134,Luis Campusano,8,San Diego Padres,Bailey Ober,3.42,0.464,5.1,0.405,1.57,78.3,🎯 TB TARGET: Strong XBH Spot,82
+703607,Henry Bolte,1,Athletics,Cristian Javier,4.27,0.37,5.1,0.405,1.56,78.0,🎯 TB TARGET: Strong XBH Spot,83
+666018,Jonathan Aranda,2,Tampa Bay Rays,Shane Baz,4.27,0.368,5.1,0.405,1.55,77.7,🎯 TB TARGET: Strong XBH Spot,84
+694197,Angel Genao,5,Cleveland Guardians,Tomoyuki Sugano,3.89,0.404,5.1,0.405,1.55,77.6,🎯 TB TARGET: Strong XBH Spot,85
+676356,Jonny DeLuca,6,Tampa Bay Rays,Shane Baz,3.89,0.403,5.1,0.405,1.55,77.5,🎯 TB TARGET: Strong XBH Spot,86
+667452,Corey Julks,6,Detroit Tigers,Daniel Lynch IV,3.89,0.4,5.1,0.405,1.54,76.9,🎯 TB TARGET: Strong XBH Spot,87
+642086,Dominic Smith,3,Atlanta Braves,Shane Drohan,4.27,0.364,5.1,0.405,1.54,76.8,🎯 TB TARGET: Strong XBH Spot,88
+669003,Garrett Mitchell,6,Milwaukee Brewers,Tyler Mahle,3.89,0.399,5.1,0.405,1.53,76.7,🎯 TB TARGET: Strong XBH Spot,89
+665923,Esteury Ruiz,5,Miami Marlins,Jackson Kent,3.89,0.398,5.1,0.405,1.53,76.4,🎯 TB TARGET: Strong XBH Spot,90
+672960,Kazuma Okamoto,5,Toronto Blue Jays,Carlos Rodón,3.89,0.396,5.1,0.405,1.52,76.1,🎯 TB TARGET: Strong XBH Spot,91
+657757,Gavin Sheets,4,San Diego Padres,Bailey Ober,3.89,0.395,5.1,0.405,1.52,75.8,🎯 TB TARGET: Strong XBH Spot,92
+694249,Cole Carrigg,3,Colorado Rockies,Foster Griffin,4.27,0.358,5.1,0.405,1.51,75.5,🎯 TB TARGET: Strong XBH Spot,93
+671976,Tristan Peters,8,Chicago White Sox,Nolan McLean,3.42,0.447,5.1,0.405,1.51,75.4,🎯 TB TARGET: Strong XBH Spot,94
+608348,Carson Kelly,2,Chicago Cubs,Bryce Miller,4.27,0.357,5.1,0.405,1.5,75.2,🎯 TB TARGET: Strong XBH Spot,95
+680977,Brendan Donovan,1,Seattle Mariners,Shota Imanaga,4.27,0.356,5.1,0.405,1.5,75.0,🎯 TB TARGET: Strong XBH Spot,96
+695734,Daylen Lile,1,Washington Nationals,Janson Junk,4.27,0.355,5.1,0.405,1.5,74.9,🎯 TB TARGET: Strong XBH Spot,97
+695657,Colson Montgomery,6,Chicago White Sox,Nolan McLean,3.89,0.389,5.1,0.405,1.5,74.8,🎯 TB TARGET: Strong XBH Spot,98
+682987,Spencer Jones,6,New York Yankees,José Soriano,3.89,0.389,5.1,0.405,1.49,74.7,🎯 TB TARGET: Strong XBH Spot,99
+669016,Brandon Marsh,5,Philadelphia Phillies,Kyle Leahy,3.89,0.389,5.1,0.405,1.49,74.7,🎯 TB TARGET: Strong XBH Spot,100
+687952,Christian Encarnacion-Strand,7,Baltimore Orioles,Nick Martinez,3.42,0.442,5.1,0.405,1.49,74.6,🎯 TB TARGET: Strong XBH Spot,101
+672640,Otto Lopez,1,Miami Marlins,Jackson Kent,4.27,0.353,5.1,0.405,1.49,74.4,🎯 TB TARGET: Strong XBH Spot,102
+607208,Trea Turner,2,Philadelphia Phillies,Kyle Leahy,4.27,0.352,5.1,0.405,1.48,74.2,🎯 TB TARGET: Strong XBH Spot,103
+571771,Enrique Hernández,4,Los Angeles Dodgers,Lake Bachar,3.89,0.386,5.1,0.405,1.48,74.2,🎯 TB TARGET: Strong XBH Spot,104
+671056,Iván Herrera,2,St. Louis Cardinals,Cristopher Sánchez,4.27,0.352,5.1,0.405,1.48,74.1,🎯 TB TARGET: Strong XBH Spot,105
+686948,Drake Baldwin,4,Atlanta Braves,Shane Drohan,3.89,0.386,5.1,0.405,1.48,74.1,🎯 TB TARGET: Strong XBH Spot,106
+801126,Brock Rodden,2,Seattle Mariners,Shota Imanaga,4.27,0.35,5.1,0.405,1.48,73.9,🎯 TB TARGET: Strong XBH Spot,107
+681082,Bryson Stott,4,Philadelphia Phillies,Kyle Leahy,3.89,0.384,5.1,0.405,1.48,73.8,🎯 TB TARGET: Strong XBH Spot,108
+607043,Brandon Nimmo,1,Texas Rangers,Yusei Kikuchi,4.27,0.35,5.1,0.405,1.48,73.8,🎯 TB TARGET: Strong XBH Spot,109
+661531,Brian Serven,9,Athletics,Cristian Javier,3.42,0.436,5.1,0.405,1.47,73.6,🎯 TB TARGET: Strong XBH Spot,110
+663586,Austin Riley,1,Atlanta Braves,Shane Drohan,4.27,0.349,5.1,0.405,1.47,73.6,🎯 TB TARGET: Strong XBH Spot,111
+702332,Caleb Durbin,5,Boston Red Sox,Matt Wilkinson,3.89,0.383,5.1,0.405,1.47,73.5,🎯 TB TARGET: Strong XBH Spot,112
+650402,Gleyber Torres,1,Detroit Tigers,Daniel Lynch IV,4.27,0.348,5.1,0.405,1.47,73.5,🎯 TB TARGET: Strong XBH Spot,113
+694192,Jackson Chourio,8,Milwaukee Brewers,Tyler Mahle,3.42,0.436,5.1,0.405,1.47,73.5,🎯 TB TARGET: Strong XBH Spot,114
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Blake Snell,4.27,0.349,5.1,0.405,1.47,73.5,🎯 TB TARGET: Strong XBH Spot,115
+677951,Bobby Witt Jr.,2,Kansas City Royals,Jacob Waguespack,4.27,0.459,5.1,0.0,1.47,73.5,🎯 TB TARGET: Strong XBH Spot,116
+514888,Jose Altuve,4,Houston Astros,Brady Basso,3.89,0.382,5.1,0.405,1.47,73.4,🎯 TB TARGET: Strong XBH Spot,117
+683737,Michael Busch,6,Chicago Cubs,Bryce Miller,3.89,0.381,5.1,0.405,1.47,73.3,🎯 TB TARGET: Strong XBH Spot,118
+665161,Jeremy Peña,1,Houston Astros,Brady Basso,4.27,0.347,5.1,0.405,1.46,73.2,🎯 TB TARGET: Strong XBH Spot,119
+695731,Braden Montgomery,5,Chicago White Sox,Nolan McLean,3.89,0.38,5.1,0.405,1.46,73.0,🎯 TB TARGET: Strong XBH Spot,120
+686765,Nick Sogard,6,Boston Red Sox,Matt Wilkinson,3.89,0.38,5.1,0.405,1.46,72.9,🎯 TB TARGET: Strong XBH Spot,121
+592885,Christian Yelich,3,Milwaukee Brewers,Tyler Mahle,4.27,0.344,5.1,0.405,1.45,72.7,🎯 TB TARGET: Strong XBH Spot,122
+701358,Cam Smith,8,Houston Astros,Brady Basso,3.42,0.429,5.1,0.405,1.45,72.4,🎯 TB TARGET: Strong XBH Spot,123
+643217,Andrew Benintendi,4,Chicago White Sox,Nolan McLean,3.89,0.376,5.1,0.405,1.45,72.3,🎯 TB TARGET: Strong XBH Spot,124
+641355,Cody Bellinger,4,New York Yankees,José Soriano,3.89,0.376,5.1,0.405,1.44,72.2,🎯 TB TARGET: Strong XBH Spot,125
+667472,Dane Myers,1,Cincinnati Reds,Mitch Bratt,4.27,0.342,5.1,0.405,1.44,72.2,🎯 TB TARGET: Strong XBH Spot,126
+666126,Carlos Cortes,2,Athletics,Cristian Javier,4.27,0.341,5.1,0.405,1.44,72.0,🎯 TB TARGET: Strong XBH Spot,127
+665489,Vladimir Guerrero Jr.,2,Toronto Blue Jays,Carlos Rodón,4.27,0.34,5.1,0.405,1.44,71.8,🎯 TB TARGET: Strong XBH Spot,128
+668709,JJ Bleday,6,Cincinnati Reds,Mitch Bratt,3.89,0.373,5.1,0.405,1.43,71.7,🎯 TB TARGET: Strong XBH Spot,129
+665019,Kody Clemens,7,Minnesota Twins,Walker Buehler,3.42,0.422,5.1,0.405,1.42,71.2,🎯 TB TARGET: Strong XBH Spot,130
+572233,Christian Walker,6,Houston Astros,Brady Basso,3.89,0.371,5.1,0.405,1.42,71.2,🎯 TB TARGET: Strong XBH Spot,131
+518692,Freddie Freeman,5,Los Angeles Dodgers,Lake Bachar,3.89,0.37,5.1,0.405,1.42,71.1,🎯 TB TARGET: Strong XBH Spot,132
+806146,George Lombard Jr.,5,New York Yankees,José Soriano,3.89,0.368,5.1,0.405,1.42,70.8,🎯 TB TARGET: Strong XBH Spot,133
+668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,4.27,0.334,5.1,0.405,1.41,70.4,🎯 TB TARGET: Strong XBH Spot,134
+681297,Colton Cowser,8,Baltimore Orioles,Nick Martinez,3.42,0.417,5.1,0.405,1.41,70.4,🎯 TB TARGET: Strong XBH Spot,135
+682674,Victor Bericoto,5,San Francisco Giants,Jake Bennett,3.89,0.366,5.1,0.405,1.41,70.3,🎯 TB TARGET: Strong XBH Spot,136
+802139,JJ Wetherholt,1,St. Louis Cardinals,Cristopher Sánchez,4.27,0.333,5.1,0.405,1.4,70.2,🎯 TB TARGET: Strong XBH Spot,137
+682634,Kevin Alcántara,5,Chicago Cubs,Bryce Miller,3.89,0.365,5.1,0.405,1.4,70.0,🎯 TB TARGET: Strong XBH Spot,138
+666139,Josh Lowe,5,Los Angeles Angels,Cal Quantrill,3.89,0.364,5.1,0.405,1.4,69.9,🎯 TB TARGET: Strong XBH Spot,139
+640902,Jhonny Pereda,6,Seattle Mariners,Shota Imanaga,3.89,0.364,5.1,0.405,1.4,69.9,🎯 TB TARGET: Strong XBH Spot,140
+807712,Luke Keaschall,8,Minnesota Twins,Walker Buehler,3.42,0.412,5.1,0.405,1.39,69.6,🎯 TB TARGET: Strong XBH Spot,141
+802415,Chandler Simpson,5,Tampa Bay Rays,Shane Baz,3.89,0.362,5.1,0.405,1.39,69.5,🎯 TB TARGET: Strong XBH Spot,142
+621439,Byron Buxton,4,Minnesota Twins,Walker Buehler,3.89,0.361,5.1,0.405,1.39,69.3,🎯 TB TARGET: Strong XBH Spot,143
+676391,Ernie Clement,6,Toronto Blue Jays,Carlos Rodón,3.89,0.359,5.1,0.405,1.38,69.1,🎯 TB TARGET: Strong XBH Spot,144
+545121,Ildemaro Vargas,4,Arizona Diamondbacks,Andrew Abbott,3.89,0.359,5.1,0.405,1.38,68.9,🎯 TB TARGET: Strong XBH Spot,145
+682657,Angel Martínez,7,Cleveland Guardians,Tomoyuki Sugano,3.42,0.407,5.1,0.405,1.37,68.7,🎯 TB TARGET: Strong XBH Spot,146
+694378,Jacob Gonzalez,6,Pittsburgh Pirates,Blake Snell,3.89,0.357,5.1,0.405,1.37,68.5,🎯 TB TARGET: Strong XBH Spot,147
+805367,Chase Meidroth,7,Chicago White Sox,Nolan McLean,3.42,0.405,5.1,0.405,1.37,68.4,🎯 TB TARGET: Strong XBH Spot,148
+808982,Jung Hoo Lee,6,San Francisco Giants,Jake Bennett,3.89,0.356,5.1,0.405,1.37,68.4,🎯 TB TARGET: Strong XBH Spot,149
+695720,Tommy White,5,Athletics,Cristian Javier,3.89,0.356,5.1,0.405,1.37,68.4,🎯 TB TARGET: Strong XBH Spot,150
+672695,Geraldo Perdomo,3,Arizona Diamondbacks,Andrew Abbott,4.27,0.323,5.1,0.405,1.36,68.2,🎯 TB TARGET: Strong XBH Spot,151
+666023,Freddy Fermin,3,San Diego Padres,Bailey Ober,4.27,0.322,5.1,0.405,1.36,67.9,🎯 TB TARGET: Strong XBH Spot,152
+702616,Jackson Holliday,1,Baltimore Orioles,Nick Martinez,4.27,0.322,5.1,0.405,1.36,67.9,🎯 TB TARGET: Strong XBH Spot,153
+680757,Steven Kwan,1,Cleveland Guardians,Tomoyuki Sugano,4.27,0.322,5.1,0.405,1.36,67.9,🎯 TB TARGET: Strong XBH Spot,154
+678545,Osleivis Basabe,1,San Francisco Giants,Jake Bennett,4.27,0.321,5.1,0.405,1.35,67.6,🎯 TB TARGET: Strong XBH Spot,155
+669720,Austin Hays,1,San Diego Padres,Bailey Ober,4.27,0.321,5.1,0.405,1.35,67.6,🎯 TB TARGET: Strong XBH Spot,156
+624431,Jose Trevino,7,Cincinnati Reds,Mitch Bratt,3.42,0.4,5.1,0.405,1.35,67.5,🎯 TB TARGET: Strong XBH Spot,157
+596142,Gary Sánchez,7,Milwaukee Brewers,Tyler Mahle,3.42,0.396,5.1,0.405,1.34,66.8,🎯 TB TARGET: Strong XBH Spot,158
+679529,Spencer Torkelson,5,Detroit Tigers,Daniel Lynch IV,3.89,0.346,5.1,0.405,1.33,66.6,🎯 TB TARGET: Strong XBH Spot,159
+669394,Jake Burger,8,Texas Rangers,Yusei Kikuchi,3.42,0.394,5.1,0.405,1.33,66.5,🎯 TB TARGET: Strong XBH Spot,160
+678662,Ezequiel Tovar,5,Colorado Rockies,Foster Griffin,3.89,0.346,5.1,0.405,1.33,66.4,🎯 TB TARGET: Strong XBH Spot,161
+686469,Vinnie Pasquantino,3,Kansas City Royals,Jacob Waguespack,4.27,0.412,5.1,0.0,1.32,66.0,🎯 TB TARGET: Strong XBH Spot,162
+696285,Jacob Young,9,Washington Nationals,Janson Junk,3.42,0.39,5.1,0.405,1.32,65.8,🎯 TB TARGET: Strong XBH Spot,163
+803011,Sam Antonacci,1,Chicago White Sox,Nolan McLean,4.27,0.311,5.1,0.405,1.31,65.5,🎯 TB TARGET: Strong XBH Spot,164
+691458,Blaze Jordan,6,St. Louis Cardinals,Cristopher Sánchez,3.89,0.34,5.1,0.405,1.31,65.4,🎯 TB TARGET: Strong XBH Spot,165
+657136,Connor Wong,9,Boston Red Sox,Matt Wilkinson,3.42,0.387,5.1,0.405,1.31,65.3,🎯 TB TARGET: Strong XBH Spot,166
+676609,José Caballero,9,New York Yankees,José Soriano,3.42,0.387,5.1,0.405,1.31,65.3,🎯 TB TARGET: Strong XBH Spot,167
+669364,Xavier Edwards,4,Miami Marlins,Jackson Kent,3.89,0.339,5.1,0.405,1.3,65.1,🎯 TB TARGET: Strong XBH Spot,168
+666152,David Hamilton,5,Milwaukee Brewers,Tyler Mahle,3.89,0.337,5.1,0.405,1.3,64.8,⚾ Standard Base Volume,169
+543807,George Springer,4,Toronto Blue Jays,Carlos Rodón,3.89,0.336,5.1,0.405,1.29,64.6,⚾ Standard Base Volume,170
+662139,Daulton Varsho,5,Houston Astros,Brady Basso,3.89,0.336,5.1,0.405,1.29,64.6,⚾ Standard Base Volume,171
+691720,Kyle Karros,8,Colorado Rockies,Foster Griffin,3.42,0.382,5.1,0.405,1.29,64.5,⚾ Standard Base Volume,172
+642201,Eli White,8,Boston Red Sox,Matt Wilkinson,3.42,0.382,5.1,0.405,1.29,64.5,⚾ Standard Base Volume,173
+642350,Jose Siri,7,Los Angeles Angels,Cal Quantrill,3.42,0.38,5.1,0.405,1.28,64.1,⚾ Standard Base Volume,174
+672569,Gustavo Campero,6,Los Angeles Angels,Cal Quantrill,3.89,0.333,5.1,0.405,1.28,64.0,⚾ Standard Base Volume,175
+676439,Hunter Feduccia,6,Los Angeles Dodgers,Lake Bachar,3.89,0.333,5.1,0.405,1.28,64.0,⚾ Standard Base Volume,176
+682663,Agustín Ramírez,2,Miami Marlins,Jackson Kent,4.27,0.303,5.1,0.405,1.28,63.9,⚾ Standard Base Volume,177
+657041,Lane Thomas,7,Atlanta Braves,Shane Drohan,3.42,0.379,5.1,0.405,1.28,63.9,⚾ Standard Base Volume,178
+680574,Matt McLain,9,Cincinnati Reds,Mitch Bratt,3.42,0.377,5.1,0.405,1.27,63.6,⚾ Standard Base Volume,179
+686611,Dylan Crews,3,Washington Nationals,Janson Junk,4.27,0.3,5.1,0.405,1.27,63.3,⚾ Standard Base Volume,180
+647304,Josh Naylor,7,Seattle Mariners,Shota Imanaga,3.42,0.375,5.1,0.405,1.26,63.2,⚾ Standard Base Volume,181
+807727,Charles McAdoo,8,Toronto Blue Jays,Carlos Rodón,3.42,0.372,5.1,0.405,1.26,62.8,⚾ Standard Base Volume,182
+622268,Donovan Walton,7,Athletics,Cristian Javier,3.42,0.372,5.1,0.405,1.25,62.7,⚾ Standard Base Volume,183
+691277,Deyvison De Los Santos,7,Miami Marlins,Jackson Kent,3.42,0.372,5.1,0.405,1.25,62.7,⚾ Standard Base Volume,184
+677950,Alek Thomas,1,Los Angeles Dodgers,Lake Bachar,4.27,0.297,5.1,0.405,1.25,62.6,⚾ Standard Base Volume,185
+691777,Max Muncy,6,Athletics,Cristian Javier,3.89,0.326,5.1,0.405,1.25,62.6,⚾ Standard Base Volume,186
+643289,Mauricio Dubón,9,Atlanta Braves,Shane Drohan,3.42,0.369,5.1,0.405,1.24,62.2,⚾ Standard Base Volume,187
+665804,Miguel Amaya,8,Chicago Cubs,Bryce Miller,3.42,0.368,5.1,0.405,1.24,62.1,⚾ Standard Base Volume,188
+694208,Moisés Ballesteros,3,Los Angeles Angels,Cal Quantrill,4.27,0.294,5.1,0.405,1.24,62.0,⚾ Standard Base Volume,189
+668904,Royce Lewis,9,Minnesota Twins,Walker Buehler,3.42,0.367,5.1,0.405,1.24,61.9,⚾ Standard Base Volume,190
+702284,Cole Young,4,Seattle Mariners,Shota Imanaga,3.89,0.321,5.1,0.405,1.23,61.7,⚾ Standard Base Volume,191
+669743,Alex Call,2,Los Angeles Dodgers,Lake Bachar,4.27,0.292,5.1,0.405,1.23,61.6,⚾ Standard Base Volume,192
+677594,Julio Rodríguez,8,Seattle Mariners,Shota Imanaga,3.42,0.364,5.1,0.405,1.23,61.4,⚾ Standard Base Volume,193
+663728,Cal Raleigh,3,Seattle Mariners,Shota Imanaga,4.27,0.29,5.1,0.405,1.22,61.2,⚾ Standard Base Volume,194
+663968,Jake Mangum,7,Pittsburgh Pirates,Blake Snell,3.42,0.361,5.1,0.405,1.22,60.9,⚾ Standard Base Volume,195
+676572,Eric Wagaman,5,New York Mets,Sean Newcomb,3.89,0.317,5.1,0.405,1.22,60.9,⚾ Standard Base Volume,196
+681393,Connor Norby,4,Colorado Rockies,Foster Griffin,3.89,0.316,5.1,0.405,1.21,60.7,⚾ Standard Base Volume,197
+683953,Travis Bazzana,6,Cleveland Guardians,Tomoyuki Sugano,3.89,0.313,5.1,0.405,1.2,60.2,⚾ Standard Base Volume,198
+543877,Christian Vázquez,9,Houston Astros,Brady Basso,3.42,0.356,5.1,0.405,1.2,60.1,⚾ Standard Base Volume,199
+630105,Jake Cronenworth,6,San Diego Padres,Bailey Ober,3.89,0.313,5.1,0.405,1.2,60.1,⚾ Standard Base Volume,200
+543760,Marcus Semien,7,New York Mets,Sean Newcomb,3.42,0.355,5.1,0.405,1.2,59.9,⚾ Standard Base Volume,201
+693304,Nick Gonzales,9,Pittsburgh Pirates,Blake Snell,3.42,0.353,5.1,0.405,1.19,59.6,⚾ Standard Base Volume,202
+683227,Cody Freeman,2,Texas Rangers,Yusei Kikuchi,4.27,0.281,5.1,0.405,1.19,59.3,⚾ Standard Base Volume,203
+677649,Ezequiel Duran,7,Texas Rangers,Yusei Kikuchi,3.42,0.352,5.1,0.405,1.19,59.3,⚾ Standard Base Volume,204
+687093,Vaughn Grissom,4,Los Angeles Angels,Cal Quantrill,3.89,0.307,5.1,0.405,1.18,58.9,⚾ Standard Base Volume,205
+702222,Justin Crawford,7,Philadelphia Phillies,Kyle Leahy,3.42,0.349,5.1,0.405,1.18,58.9,⚾ Standard Base Volume,206
+665862,Jazz Chisholm Jr.,7,New York Yankees,José Soriano,3.42,0.346,5.1,0.405,1.17,58.5,⚾ Standard Base Volume,207
+665750,Leody Taveras,9,Baltimore Orioles,Nick Martinez,3.42,0.344,5.1,0.405,1.16,58.0,⚾ Standard Base Volume,208
+592663,J.T. Realmuto,6,Philadelphia Phillies,Kyle Leahy,3.89,0.301,5.1,0.405,1.16,57.9,⚾ Standard Base Volume,209
+664774,LaMonte Wade Jr.,7,Houston Astros,Brady Basso,3.42,0.34,5.1,0.405,1.15,57.3,⚾ Standard Base Volume,210
+663538,Nico Hoerner,9,Chicago Cubs,Bryce Miller,3.42,0.339,5.1,0.405,1.14,57.2,⚾ Standard Base Volume,211
+678489,Jorge Barrosa,7,Arizona Diamondbacks,Andrew Abbott,3.42,0.338,5.1,0.405,1.14,57.0,⚾ Standard Base Volume,212
+687749,Jase Bowen,7,San Diego Padres,Bailey Ober,3.42,0.335,5.1,0.405,1.13,56.6,⚾ Standard Base Volume,213
+595978,Austin Hedges,8,Cleveland Guardians,Tomoyuki Sugano,3.42,0.333,5.1,0.405,1.12,56.2,⚾ Standard Base Volume,214
+624424,Michael Conforto,7,Chicago Cubs,Bryce Miller,3.42,0.331,5.1,0.405,1.12,55.9,⚾ Standard Base Volume,215
+702176,Alan Roden,1,Minnesota Twins,Walker Buehler,4.27,0.264,5.1,0.405,1.12,55.8,⚾ Standard Base Volume,216
+668670,Jake Rogers,9,Chicago White Sox,Nolan McLean,3.42,0.33,5.1,0.405,1.11,55.7,⚾ Standard Base Volume,217
+665877,José Fermín,7,St. Louis Cardinals,Cristopher Sánchez,3.42,0.328,5.1,0.405,1.11,55.4,⚾ Standard Base Volume,218
+655316,Andruw Monasterio,7,Boston Red Sox,Matt Wilkinson,3.42,0.326,5.1,0.405,1.1,55.0,⚾ Standard Base Volume,219
+699912,Jose Fernandez,8,Arizona Diamondbacks,Andrew Abbott,3.42,0.326,5.1,0.405,1.1,55.0,⚾ Standard Base Volume,220
+670764,Taylor Walls,9,Tampa Bay Rays,Shane Baz,3.42,0.325,5.1,0.405,1.1,54.9,⚾ Standard Base Volume,221
+680700,Richie Palacios,8,Tampa Bay Rays,Shane Baz,3.42,0.324,5.1,0.405,1.09,54.7,⚾ Standard Base Volume,222
+677587,Brayan Rocchio,9,Cleveland Guardians,Tomoyuki Sugano,3.42,0.319,5.1,0.405,1.08,53.8,⚾ Standard Base Volume,223
+553869,Elias Díaz,5,Texas Rangers,Yusei Kikuchi,3.89,0.279,5.1,0.405,1.07,53.6,⚾ Standard Base Volume,224
+624641,Edmundo Sosa,8,Philadelphia Phillies,Kyle Leahy,3.42,0.317,5.1,0.405,1.07,53.4,⚾ Standard Base Volume,225
+806198,Cooper Pratt,4,Milwaukee Brewers,Tyler Mahle,3.89,0.278,5.1,0.405,1.07,53.4,⚾ Standard Base Volume,226
+500743,Miguel Rojas,9,Los Angeles Dodgers,Lake Bachar,3.42,0.316,5.1,0.405,1.07,53.3,⚾ Standard Base Volume,227
+663457,Lars Nootbaar,9,Arizona Diamondbacks,Andrew Abbott,3.42,0.314,5.1,0.405,1.06,53.0,⚾ Standard Base Volume,228
+703601,Max Clark,8,Detroit Tigers,Daniel Lynch IV,3.42,0.313,5.1,0.405,1.06,52.9,⚾ Standard Base Volume,229
+650859,Luis Rengifo,9,San Diego Padres,Bailey Ober,3.42,0.312,5.1,0.405,1.05,52.7,⚾ Standard Base Volume,230
+813841,Jonah Cox,8,San Francisco Giants,Jake Bennett,3.42,0.309,5.1,0.405,1.04,52.1,⚾ Standard Base Volume,231
+656775,Cedric Mullins,7,Tampa Bay Rays,Shane Baz,3.42,0.307,5.1,0.405,1.03,51.7,⚾ Standard Base Volume,232
+695257,Billy Cook,1,Pittsburgh Pirates,Blake Snell,4.27,0.242,5.1,0.405,1.02,51.1,⚾ Standard Base Volume,233
+694497,Evan Carter,6,Texas Rangers,Yusei Kikuchi,3.89,0.264,5.1,0.405,1.02,50.8,⚾ Standard Base Volume,234
+595879,Javier Báez,9,Detroit Tigers,Daniel Lynch IV,3.42,0.301,5.1,0.405,1.02,50.8,⚾ Standard Base Volume,235
+521692,Salvador Perez,4,Kansas City Royals,Jacob Waguespack,3.89,0.347,5.1,0.0,1.01,50.6,⚾ Standard Base Volume,236
+663656,Kyle Tucker,7,Los Angeles Dodgers,Lake Bachar,3.42,0.295,5.1,0.405,1.0,49.8,⚾ Standard Base Volume,237
+699302,Héctor Rodríguez,4,Cincinnati Reds,Mitch Bratt,3.89,0.259,5.1,0.405,1.0,49.8,⚾ Standard Base Volume,238
+678391,Jorbit Vivas,6,Washington Nationals,Janson Junk,3.89,0.255,5.1,0.405,0.98,49.0,⚾ Standard Base Volume,239
+669707,Jared Triolo,8,Pittsburgh Pirates,Blake Snell,3.42,0.29,5.1,0.405,0.98,49.0,⚾ Standard Base Volume,240
+686780,Pedro Pagés,9,St. Louis Cardinals,Cristopher Sánchez,3.42,0.287,5.1,0.405,0.97,48.5,⚾ Standard Base Volume,241
+664728,Kyle Isbel,9,Kansas City Royals,Jacob Waguespack,3.42,0.375,5.1,0.0,0.96,48.1,⚾ Standard Base Volume,242
+805999,A.J. Ewing,8,New York Mets,Sean Newcomb,3.42,0.277,5.1,0.405,0.93,46.7,⚾ Standard Base Volume,243
+643376,Danny Jansen,4,Texas Rangers,Yusei Kikuchi,3.89,0.243,5.1,0.405,0.93,46.7,⚾ Standard Base Volume,244
+687597,Jordan Beck,7,Colorado Rockies,Foster Griffin,3.42,0.273,5.1,0.405,0.92,46.1,⚾ Standard Base Volume,245
+669224,Austin Wells,8,New York Yankees,José Soriano,3.42,0.272,5.1,0.405,0.92,46.0,⚾ Standard Base Volume,246
+663647,Ke'Bryan Hayes,8,Cincinnati Reds,Mitch Bratt,3.42,0.272,5.1,0.405,0.92,45.9,⚾ Standard Base Volume,247
+805347,Jim Jarvis,6,Atlanta Braves,Shane Drohan,3.89,0.237,5.1,0.405,0.91,45.5,⚾ Standard Base Volume,248
+686475,Tyler Tolbert,7,Kansas City Royals,Jacob Waguespack,3.42,0.353,5.1,0.0,0.9,45.2,⚾ Standard Base Volume,249
+672284,Jarred Kelenic,9,Texas Rangers,Yusei Kikuchi,3.42,0.268,5.1,0.405,0.9,45.2,⚾ Standard Base Volume,250
+680779,Henry Davis,5,Pittsburgh Pirates,Blake Snell,3.89,0.235,5.1,0.405,0.9,45.1,⚾ Standard Base Volume,251
+690924,Braxton Fulford,1,Colorado Rockies,Foster Griffin,4.27,0.214,5.1,0.405,0.9,45.0,⚾ Standard Base Volume,252
+640459,Brian Navarreto,9,Miami Marlins,Jackson Kent,3.42,0.262,5.1,0.405,0.88,44.2,⚾ Standard Base Volume,253
+571912,Luke Maile,8,Kansas City Royals,Jacob Waguespack,3.42,0.344,5.1,0.0,0.88,44.1,⚾ Standard Base Volume,254
+679845,Nick Loftin,1,Kansas City Royals,Jacob Waguespack,4.27,0.275,5.1,0.0,0.88,44.0,⚾ Standard Base Volume,255
+664702,Myles Straw,9,Toronto Blue Jays,Carlos Rodón,3.42,0.255,5.1,0.405,0.86,43.0,⚾ Standard Base Volume,256
+687231,Darell Hernaiz,8,Athletics,Cristian Javier,3.42,0.244,5.1,0.405,0.82,41.2,⚾ Standard Base Volume,257
+670231,John Rave,6,Kansas City Royals,Jacob Waguespack,3.89,0.277,5.1,0.0,0.81,40.4,⚾ Standard Base Volume,258
+683766,Christian Koss,9,San Francisco Giants,Jake Bennett,3.42,0.234,5.1,0.405,0.79,39.6,⚾ Standard Base Volume,259
+602104,Ramón Urías,8,St. Louis Cardinals,Cristopher Sánchez,3.42,0.233,5.1,0.405,0.79,39.3,⚾ Standard Base Volume,260
+686555,Isaac Collins,5,Kansas City Royals,Jacob Waguespack,3.89,0.263,5.1,0.0,0.77,38.4,⚾ Standard Base Volume,261
+666624,Christopher Morel,6,New York Mets,Sean Newcomb,3.89,0.192,5.1,0.405,0.74,36.8,⚾ Standard Base Volume,262
+683083,Nasim Nuñez,8,Washington Nationals,Janson Junk,3.42,0.21,5.1,0.405,0.71,35.4,⚾ Standard Base Volume,263
+660844,Leo Rivas,9,Seattle Mariners,Shota Imanaga,3.42,0.201,5.1,0.405,0.68,33.9,⚾ Standard Base Volume,264
+623168,Tyler Heineman,9,Los Angeles Angels,Cal Quantrill,3.42,0.198,5.1,0.405,0.67,33.4,⚾ Standard Base Volume,265
+666163,Ben Rortvedt,3,Los Angeles Dodgers,Lake Bachar,4.27,0.15,5.1,0.405,0.63,31.6,⚾ Standard Base Volume,266
+695681,Christian Moore,8,Los Angeles Angels,Cal Quantrill,3.42,0.167,5.1,0.405,0.56,28.2,⚾ Standard Base Volume,267
+673490,Ha-Seong Kim,5,Atlanta Braves,Shane Drohan,3.89,0.04,5.1,0.405,0.5,25.0,⚾ Standard Base Volume,268
 672356,Gabriel Arias,3,Chicago Cubs,Bryce Miller,4.27,0.108,5.1,0.405,0.5,25.0,⚾ Standard Base Volume,269
-596117,Garrett Stubbs,8,Philadelphia Phillies,Kyle Leahy,3.42,0.145,5.1,0.405,0.5,25.0,⚾ Standard Base Volume,270
+671155,Ivan Johnson,5,Cincinnati Reds,Mitch Bratt,3.89,0.083,5.1,0.405,0.5,25.0,⚾ Standard Base Volume,270
