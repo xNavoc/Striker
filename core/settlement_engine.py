@@ -6,6 +6,18 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from core.data_loader import clean_name_str, get_req_headers
 
+def safe_float(val, default_val=0.0):
+    """Safely converts string numbers, catching undefined hyphens/dashes from API feeds."""
+    try:
+        if val is None:
+            return default_val
+        clean = str(val).strip().replace(',', '')
+        if clean in ['', '-', '--', '---', '.---']:
+            return default_val
+        return float(clean)
+    except Exception:
+        return default_val
+
 def get_yesterday_date() -> str:
     """Returns yesterday's date formatted as YYYY-MM-DD in US/Eastern."""
     yest = datetime.now(ZoneInfo("America/New_York")) - timedelta(days=1)
@@ -51,37 +63,41 @@ def fetch_actual_game_stats(date_str: str):
                     merge_key = clean_name_str(p_name)
                     stat_root = p_info.get('stats', {})
 
-                    # Batting stats
+                    # Safely extract Batting stats
                     bat_stats = stat_root.get('batting', {})
-                    h = int(bat_stats.get('hits', 0) or 0)
-                    doubles = int(bat_stats.get('doubles', 0) or 0)
-                    triples = int(bat_stats.get('triples', 0) or 0)
-                    hr = int(bat_stats.get('homeRuns', 0) or 0)
-                    r = int(bat_stats.get('runs', 0) or 0)
-                    rbi = int(bat_stats.get('rbi', 0) or 0)
-                    bb = int(bat_stats.get('baseOnBalls', 0) or 0)
-                    pa = int(bat_stats.get('plateAppearances', 0) or bat_stats.get('atBats', 0) or 0)
+                    h = int(safe_float(bat_stats.get('hits'), 0))
+                    doubles = int(safe_float(bat_stats.get('doubles'), 0))
+                    triples = int(safe_float(bat_stats.get('triples'), 0))
+                    hr = int(safe_float(bat_stats.get('homeRuns'), 0))
+                    r = int(safe_float(bat_stats.get('runs'), 0))
+                    rbi = int(safe_float(bat_stats.get('rbi'), 0))
+                    bb = int(safe_float(bat_stats.get('baseOnBalls'), 0))
+                    pa = int(safe_float(bat_stats.get('plateAppearances', bat_stats.get('atBats')), 0))
                     singles = max(0, h - (doubles + triples + hr))
                     tb = singles + (doubles * 2) + (triples * 3) + (hr * 4)
 
-                    # Pitching stats
+                    # Safely extract Pitching stats
                     pitch_stats = stat_root.get('pitching', {})
-                    k = int(pitch_stats.get('strikeOuts', 0) or pitch_stats.get('strikeouts', 0) or 0)
-                    ip = float(pitch_stats.get('inningsPitched', 0.0) or 0.0)
-                    er = int(pitch_stats.get('earnedRuns', 0) or 0)
-                    p_hits = int(pitch_stats.get('hits', 0) or 0)
+                    k = int(safe_float(pitch_stats.get('strikeOuts', pitch_stats.get('strikeouts')), 0))
+                    ip = float(safe_float(pitch_stats.get('inningsPitched'), 0.0))
+                    er = int(safe_float(pitch_stats.get('earnedRuns'), 0))
+                    p_hits = int(safe_float(pitch_stats.get('hits'), 0))
 
+                    # Provide dual keys to ensure compatibility with all model lambda functions
                     stats_map[merge_key] = {
                         'player_name': p_name,
                         'pa': pa,
+                        'h': h,
                         'hits': h,
                         'doubles': doubles,
                         'triples': triples,
                         'hr': hr,
+                        'r': r,
                         'runs': r,
                         'rbi': rbi,
                         'bb': bb,
                         'tb': tb,
+                        'k': k,
                         'strikeouts': k,
                         'ip': ip,
                         'earned_runs': er,
