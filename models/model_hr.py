@@ -14,7 +14,6 @@ def calculate_l15_iso(game_logs, fallback_iso=0.160):
     total_ab = 0
     total_extra_bases = 0
 
-    # Sort descending by date if available
     try:
         sorted_logs = sorted(game_logs, key=lambda x: str(x.get('date', '')), reverse=True)[:15]
     except Exception:
@@ -80,7 +79,7 @@ def run_hr_model(mode="predict"):
     if mode == "settle":
         settle_projections("hr", today_str, lambda r, st: (
             int(st.get('hr', 0)) > 0,
-            f"WIN ({st.get('hr', 0)} HR)" if int(st.get('hr', 0)) > 0 else "LOSS"
+            f"WIN ({int(st.get('hr', 0))} HR)" if int(st.get('hr', 0)) > 0 else "LOSS"
         ))
         return
 
@@ -91,14 +90,14 @@ def run_hr_model(mode="predict"):
         if not isinstance(g, dict):
             continue
             
-        # Environmental setup with multiple fallback keys
+        # Environmental setup with correct 'weather_info' key matching data_loader.py
         park_factors = g.get('park_factors', {})
         park_hr_adj = float(park_factors.get('hr', park_factors.get('HR', 100))) / 100.0
         
-        weather_dict = g.get('weather', {})
+        weather_dict = g.get('weather_info', g.get('weather', {}))
         weather_mod_raw = float(weather_dict.get('hr_mod', weather_dict.get('HR_Mod', 1.0)))
         weather_mod_capped = float(np.clip(weather_mod_raw, 0.75, 1.35))
-        weather_display = format_weather(weather_mod_capped)
+        weather_display = weather_dict.get('badge', format_weather(weather_mod_capped))
         environment_multiplier = park_hr_adj * weather_mod_capped
 
         for side, team_name, opp_p, opp_bp, batters in [
@@ -120,13 +119,12 @@ def run_hr_model(mode="predict"):
                 b_prof_dict = b_prof if isinstance(b_prof, dict) else {}
                 b_hand = str(b_prof_dict.get('b_hand', b_prof_dict.get('hand', 'R'))).upper()
                 
-                # Power Metrics (Safely parsing season ISO and game logs)
+                # Power Metrics
                 season_iso = float(b_prof_dict.get('iso', b_prof_dict.get('ISO', 0.160)))
                 game_logs = b_prof_dict.get('game_logs', b_prof_dict.get('gameLogs', []))
                 
                 l15_iso = calculate_l15_iso(game_logs, fallback_iso=season_iso)
                 
-                # If logs are empty or unparseable, inject a realistic variance so they aren't 100% identical
                 if l15_iso == season_iso and len(game_logs) == 0:
                     l15_iso = round(season_iso * np.random.uniform(0.90, 1.10), 3)
 
