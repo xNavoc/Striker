@@ -1,0 +1,271 @@
+player_name,team,opp_pitcher,hr_prob,hr_score,hr_rk,drought_games,wb_prob,wb_score,wb_rk,exp_tb,tb_score,tb_rk,prob_1h,hit_score,hit_rk,avg_combo,combo_score,combo_rk,consensus_score,best_prop_target,rank
+Andrew Pinckney,Washington Nationals,Janson Junk,18.5,37.0,19,7,25.1,50.2,4,2.16,99.0,16,54.6,54.6,104,2.07,82.8,9,61.9,💎 Over 1.5 TB,1
+Eduardo Valencia,Detroit Tigers,Daniel Lynch IV,18.8,37.6,15,4,27.2,54.5,3,2.33,99.0,9,64.1,64.1,10,1.36,54.2,118,61.1,💎 Over 1.5 TB,2
+Kenny Piper,Tampa Bay Rays,Shane Baz,27.2,54.3,1,1,13.6,27.2,43,2.11,99.0,11,54.6,54.6,103,1.84,73.6,28,60.5,👑 HR Prop (Apex),3
+Abimelec Ortiz,Washington Nationals,Janson Junk,22.8,45.5,4,5,20.1,40.2,11,2.14,99.0,7,50.3,50.3,178,1.86,74.6,26,60.4,👑 HR Prop (Apex),4
+Griffin Conine,Miami Marlins,Jackson Kent,18.5,37.0,18,3,13.7,27.4,41,2.06,99.0,14,57.8,57.8,65,2.88,99.0,1,59.3,💎 Over 1.5 TB,5
+Daz Cameron,Toronto Blue Jays,Carlos Rodón,26.5,52.9,2,1,10.2,20.3,91,2.25,99.0,5,63.0,63.0,17,1.56,62.4,69,58.6,👑 HR Prop (Apex),6
+Jac Caglianone,Kansas City Royals,TBD Pitcher,15.5,31.0,35,7,14.6,29.1,34,2.15,99.0,6,66.8,66.8,1,2.27,90.7,5,58.4,💎 Over 1.5 TB,7
+Brett Callahan,Detroit Tigers,Daniel Lynch IV,15.5,31.0,36,3,20.4,40.8,9,2.43,99.0,13,61.1,61.1,29,1.61,64.6,64,57.0,💎 Over 1.5 TB,8
+Esmerlyn Valdez,Pittsburgh Pirates,Blake Snell,11.6,23.3,78,23,37.8,75.6,1,1.59,79.4,64,53.1,53.1,131,1.55,61.9,71,56.5,⚾ High-Floor Value,9
+Bryan De La Cruz,Philadelphia Phillies,Kyle Leahy,13.3,26.6,51,6,12.2,24.4,66,2.04,99.0,2,64.7,64.7,9,2.07,82.6,10,54.9,💎 Over 1.5 TB,10
+Andrew Knizner,San Francisco Giants,Jake Bennett,21.3,42.7,8,0,8.0,16.0,149,2.3,99.0,15,58.1,58.1,60,1.72,68.9,43,54.8,💎 Over 1.5 TB,11
+Everson Pereira,St. Louis Cardinals,Cristopher Sánchez,22.2,44.3,6,6,13.4,26.8,47,1.78,88.9,33,53.4,53.4,121,1.71,68.6,45,54.6,👑 HR Prop (Apex),12
+Andrés Chaparro,Washington Nationals,Janson Junk,15.7,31.4,32,2,11.9,23.8,74,2.06,99.0,8,56.7,56.7,80,2.02,80.8,13,54.6,💎 Over 1.5 TB,13
+Alec Burleson,St. Louis Cardinals,Cristopher Sánchez,14.6,29.3,43,7,13.0,26.0,52,2.05,99.0,10,62.2,62.2,24,1.83,73.4,29,54.5,💎 Over 1.5 TB,14
+Alex Bregman,Chicago Cubs,Bryce Miller,19.7,39.4,10,0,8.0,16.0,150,2.34,99.0,4,61.2,61.2,28,1.71,68.2,47,54.3,💎 Over 1.5 TB,15
+Corbin Carroll,Arizona Diamondbacks,Andrew Abbott,12.0,24.0,73,8,17.6,35.2,18,1.9,95.1,21,57.1,57.1,74,1.98,79.1,16,54.0,💎 Over 1.5 TB,16
+Alejandro Kirk,Toronto Blue Jays,Carlos Rodón,16.6,33.2,27,3,5.6,11.2,216,2.06,99.0,1,66.1,66.1,4,1.94,77.7,19,53.4,💎 Over 1.5 TB,17
+Ben Malgeri,Detroit Tigers,Daniel Lynch IV,19.7,39.4,11,5,9.9,19.8,98,2.1,99.0,12,55.1,55.1,95,1.53,61.0,76,53.3,💎 Over 1.5 TB,18
+Fernando Tatis Jr.,San Diego Padres,Bailey Ober,16.5,33.1,29,3,6.1,12.1,211,2.21,99.0,3,62.2,62.2,23,1.98,79.0,17,53.1,💎 Over 1.5 TB,19
+Ben Rice,New York Yankees,José Soriano,20.9,41.9,9,3,14.4,28.9,35,1.69,84.4,47,47.4,47.4,211,1.8,72.1,33,52.9,⚾ High-Floor Value,20
+Eugenio Suárez,Cincinnati Reds,Mitch Bratt,17.7,35.4,21,10,15.7,31.4,25,1.75,87.3,37,48.2,48.2,205,1.89,75.7,22,52.8,⚾ High-Floor Value,21
+Jordan Walker,St. Louis Cardinals,Cristopher Sánchez,23.6,47.3,3,1,6.3,12.5,204,1.81,90.4,29,62.3,62.3,21,1.26,50.5,139,51.9,👑 HR Prop (Apex),22
+Brett Sullivan,Colorado Rockies,Foster Griffin,18.2,36.4,20,4,10.0,19.9,95,1.95,97.7,19,55.0,55.0,96,1.44,57.8,90,51.8,💎 Over 1.5 TB,23
+Junior Caminero,Tampa Bay Rays,Shane Baz,13.3,26.5,52,10,22.1,44.3,5,1.72,85.8,42,54.9,54.9,98,1.44,57.6,91,51.7,⚾ High-Floor Value,24
+Bryce Harper,Philadelphia Phillies,Kyle Leahy,16.7,33.3,26,0,8.0,16.0,134,1.78,89.0,32,58.3,58.3,55,2.01,80.5,14,51.4,⚾ High-Floor Value,25
+Gabriel Moreno,Arizona Diamondbacks,Andrew Abbott,11.2,22.4,91,3,6.5,13.1,200,1.95,97.5,20,65.7,65.7,6,2.13,85.1,8,51.3,💎 Over 1.5 TB,26
+James McCann,Arizona Diamondbacks,Andrew Abbott,12.0,24.0,74,6,7.8,15.6,164,1.81,90.3,31,66.3,66.3,2,2.19,87.5,7,51.1,💎 Over 1.5 TB,27
+Matt Olson,Atlanta Braves,Shane Drohan,17.0,34.0,23,6,19.6,39.2,12,1.63,81.6,55,51.8,51.8,156,1.36,54.2,119,50.9,⚾ High-Floor Value,28
+CJ Abrams,Washington Nationals,Janson Junk,12.0,24.0,72,7,18.2,36.4,15,1.64,82.2,52,55.8,55.8,88,1.88,75.4,23,50.8,⚾ High-Floor Value,29
+Cam Smith,Houston Astros,Brady Basso,19.6,39.1,13,4,8.3,16.5,126,1.81,90.5,28,49.4,49.4,186,1.69,67.5,50,50.5,💎 Over 1.5 TB,30
+Corey Seager,Texas Rangers,Yusei Kikuchi,12.6,25.2,62,2,7.0,13.9,185,1.85,92.6,24,56.1,56.1,85,2.27,90.7,6,50.3,💎 Over 1.5 TB,31
+Christian Encarnacion-Strand,Baltimore Orioles,Nick Martinez,16.0,32.1,30,4,12.9,25.9,53,1.87,93.3,23,50.6,50.6,171,1.44,57.5,93,50.2,💎 Over 1.5 TB,32
+Max Muncy,Los Angeles Dodgers,Lake Bachar,21.8,43.6,7,1,7.8,15.5,168,1.81,90.3,30,58.1,58.1,59,1.12,44.6,169,50.1,💎 Over 1.5 TB,33
+Brian Serven,Athletics,Cristian Javier,17.6,35.1,22,1,6.7,13.5,191,1.84,92.0,25,47.0,47.0,215,1.99,79.8,15,50.1,💎 Over 1.5 TB,34
+Esteury Ruiz,Miami Marlins,Jackson Kent,12.3,24.6,66,9,14.4,28.7,37,1.53,76.4,83,53.6,53.6,119,2.37,94.9,3,50.0,⚾ High-Floor Value,35
+Jo Adell,Cleveland Guardians,Tomoyuki Sugano,22.5,44.9,5,0,8.0,16.0,146,1.68,83.8,48,52.7,52.7,140,1.4,56.0,104,49.7,👑 HR Prop (Apex),36
+Carson Benge,New York Mets,Sean Newcomb,12.9,25.8,58,0,8.0,16.0,143,1.84,92.0,26,63.0,63.0,18,1.72,68.7,44,49.3,💎 Over 1.5 TB,37
+Bobby Witt Jr.,Kansas City Royals,TBD Pitcher,11.1,22.1,92,2,6.0,12.1,212,1.96,98.0,18,60.9,60.9,32,1.88,75.2,25,49.2,💎 Over 1.5 TB,38
+Byron Buxton,Minnesota Twins,Walker Buehler,8.2,16.4,157,22,32.4,64.9,2,1.39,69.3,139,46.7,46.7,219,1.59,63.6,66,49.2,⚾ High-Floor Value,39
+Brandon Lowe,Pittsburgh Pirates,Blake Snell,15.2,30.5,38,1,6.6,13.1,201,1.96,98.1,17,54.1,54.1,110,1.54,61.7,73,49.1,💎 Over 1.5 TB,40
+Bo Bichette,New York Mets,Sean Newcomb,12.9,25.8,59,0,8.0,16.0,142,1.88,94.0,22,62.7,62.7,19,1.56,62.3,70,48.9,💎 Over 1.5 TB,41
+Miguel Vargas,Chicago White Sox,Nolan McLean,19.7,39.3,12,1,7.7,15.4,171,1.76,87.8,36,56.3,56.3,81,1.17,46.7,156,48.3,⚾ High-Floor Value,42
+Brooks Lee,Minnesota Twins,Walker Buehler,11.5,23.0,81,0,8.0,16.0,152,1.82,91.2,27,56.2,56.2,84,1.91,76.5,20,48.2,💎 Over 1.5 TB,43
+Jake McCarthy,Colorado Rockies,Foster Griffin,12.1,24.3,69,12,15.6,31.2,26,1.72,86.2,41,61.2,61.2,27,1.17,46.7,155,48.0,⚾ High-Floor Value,44
+Deyvison De Los Santos,Miami Marlins,Jackson Kent,12.8,25.6,60,3,5.5,11.0,219,1.57,78.4,71,60.0,60.0,37,2.38,95.2,2,47.9,⚾ High-Floor Value,45
+Angel Martínez,Cleveland Guardians,Tomoyuki Sugano,10.9,21.7,98,10,13.6,27.3,42,1.72,85.8,43,58.0,58.0,61,1.6,64.0,65,47.9,⚾ High-Floor Value,46
+Josh Bell,Minnesota Twins,Walker Buehler,11.3,22.7,86,3,7.2,14.4,179,1.72,86.2,40,59.3,59.3,46,2.03,81.1,12,47.7,⚾ High-Floor Value,47
+Corey Julks,Detroit Tigers,Daniel Lynch IV,18.6,37.3,16,2,10.3,20.6,89,1.54,76.9,79,54.6,54.6,102,1.45,58.0,89,47.6,⚾ High-Floor Value,48
+Jackson Merrill,San Diego Padres,Bailey Ober,14.4,28.9,45,0,8.0,16.0,155,1.66,83.2,50,53.7,53.7,118,1.68,67.2,52,46.6,⚾ High-Floor Value,49
+Dylan Beavers,Baltimore Orioles,Nick Martinez,19.1,38.3,14,1,3.4,10.0,259,1.74,86.9,38,54.0,54.0,115,1.21,48.3,146,46.5,⚾ High-Floor Value,50
+Alec Bohm,Philadelphia Phillies,Kyle Leahy,8.6,17.2,151,5,6.9,13.7,188,1.77,88.4,34,63.6,63.6,13,1.82,72.9,32,46.2,⚾ High-Floor Value,51
+Chase DeLauter,Cleveland Guardians,Tomoyuki Sugano,10.2,20.3,119,7,9.0,17.9,111,1.6,80.2,59,62.5,62.5,20,1.83,73.2,30,46.1,⚾ High-Floor Value,52
+Dominic Canzone,Seattle Mariners,Shota Imanaga,8.5,17.1,152,9,17.6,35.3,17,1.59,79.6,62,55.9,55.9,87,1.48,59.3,85,46.1,⚾ High-Floor Value,53
+Coby Mayo,Baltimore Orioles,Nick Martinez,13.6,27.3,48,3,10.8,21.6,85,1.63,81.7,54,52.2,52.2,147,1.51,60.5,78,46.0,⚾ High-Floor Value,54
+Heriberto Hernández,Miami Marlins,Jackson Kent,16.9,33.7,25,0,8.0,16.0,136,1.57,78.7,70,47.7,47.7,210,1.66,66.5,55,45.9,⚾ High-Floor Value,55
+Amed Rosario,New York Yankees,José Soriano,13.2,26.3,55,8,13.8,27.6,39,1.58,79.1,66,48.9,48.9,199,1.52,60.7,77,45.9,⚾ High-Floor Value,56
+Nathaniel Lowe,Cleveland Guardians,Tomoyuki Sugano,15.6,31.3,33,6,12.6,25.2,57,1.51,75.5,90,59.1,59.1,49,1.11,44.6,170,45.7,⚾ High-Floor Value,57
+Isaac Paredes,Houston Astros,Brady Basso,9.4,18.9,135,6,9.0,18.0,110,1.58,79.1,67,60.8,60.8,33,1.94,77.8,18,45.7,⚾ High-Floor Value,58
+Colton Cowser,Baltimore Orioles,Nick Martinez,16.6,33.1,28,5,6.6,13.3,197,1.6,80.2,58,52.4,52.4,146,1.54,61.5,74,45.6,⚾ High-Floor Value,59
+Jake Bauers,Milwaukee Brewers,Tyler Mahle,17.0,34.0,24,0,8.0,16.0,161,1.66,83.0,51,59.3,59.3,47,0.97,38.8,212,45.4,⚾ High-Floor Value,60
+Jonny DeLuca,Tampa Bay Rays,Shane Baz,8.7,17.4,147,11,12.5,24.9,59,1.55,77.5,77,58.7,58.7,51,1.79,71.6,34,45.4,⚾ High-Floor Value,61
+Christian Walker,Houston Astros,Brady Basso,11.4,22.9,83,6,12.9,25.7,55,1.56,78.2,73,50.0,50.0,181,1.64,65.4,59,45.1,⚾ High-Floor Value,62
+Alex Jackson,Minnesota Twins,Walker Buehler,7.4,14.9,173,7,5.2,10.4,224,1.76,87.9,35,63.4,63.4,16,1.88,75.3,24,45.0,⚾ High-Floor Value,63
+Kaelen Culpepper,Minnesota Twins,Walker Buehler,10.5,21.0,106,0,8.0,16.0,153,1.7,85.1,46,60.0,60.0,38,1.5,60.2,79,44.9,⚾ High-Floor Value,64
+Brandon Marsh,Philadelphia Phillies,Kyle Leahy,10.5,21.0,107,6,9.1,18.2,109,1.64,82.0,53,57.3,57.3,72,1.63,65.0,61,44.9,⚾ High-Floor Value,65
+Jordan Lawlar,Arizona Diamondbacks,Andrew Abbott,12.0,24.1,71,0,8.0,16.0,160,1.62,80.8,57,59.4,59.4,43,1.49,59.4,84,44.7,⚾ High-Floor Value,66
+Liam Hicks,Tampa Bay Rays,Shane Baz,15.1,30.1,41,0,8.0,16.0,132,1.53,76.7,82,59.8,59.8,39,1.26,50.5,138,44.5,⚾ High-Floor Value,67
+Donovan Walton,Athletics,Cristian Javier,10.1,20.1,120,0,8.0,16.0,140,1.43,71.4,121,54.1,54.1,111,2.29,91.6,4,44.5,⚾ High-Floor Value,68
+Mickey Moniak,Colorado Rockies,Foster Griffin,18.7,37.3,17,0,8.0,16.0,148,1.6,79.8,61,52.4,52.4,144,0.93,37.3,222,44.4,⚾ High-Floor Value,69
+Bryce Eldridge,San Francisco Giants,Jake Bennett,11.4,22.8,84,4,9.2,18.5,103,1.73,86.7,39,52.1,52.1,152,1.37,54.7,113,44.4,⚾ High-Floor Value,70
+Angel Genao,Cleveland Guardians,Tomoyuki Sugano,7.6,15.3,169,10,6.6,13.1,199,1.7,85.2,44,64.0,64.0,11,1.73,69.0,42,44.4,⚾ High-Floor Value,71
+Freddie Freeman,Los Angeles Dodgers,Lake Bachar,5.8,11.7,199,39,20.9,41.8,8,1.42,71.1,125,58.1,58.1,58,1.42,56.8,100,44.2,⚾ High-Floor Value,72
+Cole Carrigg,Colorado Rockies,Foster Griffin,7.4,14.7,177,20,18.8,37.5,13,1.51,75.5,89,54.0,54.0,113,1.33,53.3,125,44.0,⚾ High-Floor Value,73
+Chandler Simpson,Tampa Bay Rays,Shane Baz,3.0,10.0,270,117,12.3,24.6,60,1.53,76.3,85,65.8,65.8,5,1.73,69.3,40,43.8,⚾ High-Floor Value,74
+Jose Trevino,Cincinnati Reds,Mitch Bratt,14.7,29.4,42,7,8.1,16.1,129,1.54,76.9,78,53.1,53.1,130,1.35,54.0,122,43.7,⚾ High-Floor Value,75
+Javier Sanoja,Miami Marlins,Jackson Kent,12.1,24.3,68,2,4.6,10.0,256,1.52,75.9,87,63.6,63.6,14,1.63,65.3,60,43.7,⚾ High-Floor Value,76
+Chase Meidroth,Chicago White Sox,Nolan McLean,11.0,21.9,94,10,8.2,16.5,125,1.56,77.9,74,57.4,57.4,70,1.58,63.1,68,43.7,⚾ High-Floor Value,77
+Andrew Vaughn,Milwaukee Brewers,Tyler Mahle,5.1,10.1,217,15,12.2,24.3,69,1.7,85.1,45,63.8,63.8,12,1.37,54.6,116,43.7,⚾ High-Floor Value,78
+Kody Clemens,Minnesota Twins,Walker Buehler,12.1,24.2,70,5,13.8,27.6,40,1.42,71.2,124,53.2,53.2,127,1.38,55.1,111,43.6,⚾ High-Floor Value,79
+Jose Siri,Los Angeles Angels,Cal Quantrill,11.0,21.9,95,10,14.9,29.9,32,1.46,73.0,111,50.5,50.5,174,1.4,55.9,105,43.6,⚾ High-Floor Value,80
+Luis Campusano,San Diego Padres,Bailey Ober,8.4,16.8,154,6,11.5,23.0,78,1.57,78.3,72,65.2,65.2,7,1.26,50.5,140,43.5,⚾ High-Floor Value,81
+Jonathan Aranda,Tampa Bay Rays,Shane Baz,7.8,15.5,167,14,10.3,20.7,88,1.55,77.7,75,57.1,57.1,75,1.75,70.2,36,43.5,⚾ High-Floor Value,82
+Carlos Cortes,Athletics,Cristian Javier,5.2,10.4,213,21,13.5,27.0,46,1.44,72.0,116,55.3,55.3,91,2.05,81.9,11,43.4,⚾ High-Floor Value,83
+Dillon Dingler,Detroit Tigers,Daniel Lynch IV,10.1,20.3,118,14,22.1,44.1,6,1.36,68.2,148,45.6,45.6,229,1.14,45.7,163,43.2,⚾ High-Floor Value,84
+Gavin Sheets,San Diego Padres,Bailey Ober,13.5,27.1,49,3,7.8,15.6,165,1.52,75.8,88,48.4,48.4,203,1.58,63.3,67,43.0,⚾ High-Floor Value,85
+Ceddanne Rafaela,Boston Red Sox,Matt Wilkinson,8.5,17.0,153,9,12.1,24.2,70,1.55,77.7,76,59.4,59.4,42,1.31,52.4,129,43.0,⚾ High-Floor Value,86
+Michael Harris II,Atlanta Braves,Shane Drohan,6.5,13.1,188,20,20.3,40.5,10,1.4,70.0,131,61.7,61.7,26,1.08,43.2,179,43.0,⚾ High-Floor Value,87
+Lane Thomas,Atlanta Braves,Shane Drohan,14.5,29.1,44,5,13.5,27.1,45,1.46,72.8,112,45.8,45.8,228,1.13,45.2,165,42.9,⚾ High-Floor Value,88
+Bryson Stott,Philadelphia Phillies,Kyle Leahy,9.8,19.7,126,6,8.0,16.0,130,1.48,73.8,102,57.8,57.8,66,1.75,69.8,38,42.9,⚾ High-Floor Value,89
+Drake Baldwin,Atlanta Braves,Shane Drohan,7.9,15.7,164,4,8.4,16.8,122,1.63,81.4,56,56.2,56.2,83,1.65,66.1,56,42.9,⚾ High-Floor Value,90
+Brady House,Washington Nationals,Janson Junk,10.9,21.8,97,6,8.5,17.1,119,1.48,73.9,100,53.1,53.1,133,1.71,68.3,46,42.8,⚾ High-Floor Value,91
+Jackson Chourio,Milwaukee Brewers,Tyler Mahle,11.2,22.4,90,12,15.0,30.1,30,1.47,73.5,107,59.3,59.3,44,0.87,34.9,237,42.7,⚾ High-Floor Value,92
+Lawrence Butler,Athletics,Cristian Javier,15.6,31.1,34,6,7.1,14.1,182,1.4,69.8,134,53.4,53.4,124,1.42,56.7,101,42.5,⚾ High-Floor Value,93
+Brandon Nimmo,Texas Rangers,Yusei Kikuchi,7.4,14.8,175,12,11.9,23.7,75,1.48,73.8,103,52.0,52.0,154,1.79,71.6,35,42.5,⚾ High-Floor Value,94
+Braden Montgomery,Chicago White Sox,Nolan McLean,10.3,20.7,111,0,8.0,16.0,144,1.6,80.1,60,53.8,53.8,116,1.43,57.3,94,42.4,⚾ High-Floor Value,95
+Bryan Reynolds,Pittsburgh Pirates,Blake Snell,5.6,11.2,204,23,17.1,34.2,19,1.47,73.5,106,54.4,54.4,105,1.42,56.8,99,42.4,⚾ High-Floor Value,96
+Ali Sánchez,New York Yankees,José Soriano,9.9,19.8,125,10,4.1,10.0,235,1.58,78.8,68,58.3,58.3,56,1.63,65.4,58,42.3,⚾ High-Floor Value,97
+Elly De La Cruz,Cincinnati Reds,Mitch Bratt,9.1,18.1,139,0,8.0,16.0,156,1.57,78.7,69,50.6,50.6,170,1.73,69.2,41,42.3,⚾ High-Floor Value,98
+Mike Trout,Los Angeles Angels,Cal Quantrill,11.5,23.1,80,11,15.4,30.7,27,1.34,67.2,152,52.6,52.6,143,1.18,47.1,151,42.1,⚾ High-Floor Value,99
+Andrew Benintendi,Chicago White Sox,Nolan McLean,10.3,20.5,115,4,8.5,16.9,120,1.59,79.4,63,53.3,53.3,126,1.38,55.3,109,42.1,⚾ High-Floor Value,100
+Ian Happ,Chicago Cubs,Bryce Miller,12.9,25.9,57,1,5.4,10.8,223,1.59,79.3,65,50.2,50.2,180,1.38,55.3,110,41.7,⚾ High-Floor Value,101
+Colt Keith,Detroit Tigers,Daniel Lynch IV,7.2,14.5,178,5,7.5,15.0,175,1.67,83.7,49,58.1,58.1,57,1.36,54.6,115,41.6,⚾ High-Floor Value,102
+Michael Massey,Kansas City Royals,TBD Pitcher,10.3,20.5,114,5,8.8,17.6,113,1.5,75.2,92,61.0,61.0,31,1.16,46.4,158,41.5,⚾ High-Floor Value,103
+Charles McAdoo,Toronto Blue Jays,Carlos Rodón,10.0,19.9,124,10,8.3,16.7,123,1.43,71.5,119,57.3,57.3,71,1.53,61.4,75,41.5,⚾ High-Floor Value,104
+George Lombard Jr.,New York Yankees,José Soriano,8.2,16.4,156,12,8.6,17.3,116,1.42,70.8,127,57.6,57.6,67,1.73,69.4,39,41.5,⚾ High-Floor Value,105
+Colson Montgomery,Chicago White Sox,Nolan McLean,13.2,26.4,53,1,6.2,12.5,205,1.5,74.8,95,49.1,49.1,192,1.44,57.5,92,41.4,⚾ High-Floor Value,106
+Alika Williams,Athletics,Cristian Javier,4.3,10.0,224,30,12.9,25.8,54,1.39,69.4,138,55.1,55.1,93,1.85,73.9,27,41.4,⚾ High-Floor Value,107
+JJ Bleday,Cincinnati Reds,Mitch Bratt,9.7,19.3,130,0,8.0,16.0,158,1.43,71.7,118,48.9,48.9,197,1.83,73.1,31,41.3,⚾ High-Floor Value,108
+Luis García Jr.,New York Yankees,José Soriano,15.1,30.2,40,0,8.0,16.0,135,1.39,69.7,135,54.1,54.1,109,1.1,43.9,173,41.2,⚾ High-Floor Value,109
+Austin Riley,Atlanta Braves,Shane Drohan,11.6,23.1,79,9,9.1,18.2,107,1.47,73.6,104,49.0,49.0,195,1.39,55.4,107,41.2,⚾ High-Floor Value,110
+Hao-Yu Lee,Detroit Tigers,Daniel Lynch IV,10.6,21.2,104,0,8.0,16.0,138,1.53,76.4,84,63.4,63.4,15,0.95,38.1,216,41.0,⚾ High-Floor Value,111
+Brendan Donovan,Seattle Mariners,Shota Imanaga,4.0,10.0,258,27,13.2,26.3,49,1.5,75.0,94,58.6,58.6,52,1.36,54.6,114,41.0,⚾ High-Floor Value,112
+Jahmai Jones,Boston Red Sox,Matt Wilkinson,15.1,30.3,39,5,3.2,10.0,246,1.49,74.5,96,59.4,59.4,41,0.89,35.7,229,40.9,⚾ High-Floor Value,113
+Derek Hill,Philadelphia Phillies,Kyle Leahy,13.2,26.4,54,7,9.7,19.3,101,1.42,71.2,123,49.4,49.4,189,1.18,47.1,153,40.9,⚾ High-Floor Value,114
+Gary Sánchez,Milwaukee Brewers,Tyler Mahle,13.8,27.7,47,6,14.2,28.4,38,1.34,66.8,153,47.2,47.2,214,0.95,38.2,215,40.8,⚾ High-Floor Value,115
+Christian Vázquez,Houston Astros,Brady Basso,12.5,24.9,63,1,3.0,10.0,262,1.5,75.2,91,49.6,49.6,185,1.5,59.9,82,40.8,⚾ High-Floor Value,116
+Dominic Smith,Atlanta Braves,Shane Drohan,7.5,15.1,171,10,7.7,15.4,170,1.54,76.8,80,55.6,55.6,90,1.49,59.4,83,40.5,⚾ High-Floor Value,117
+Dane Myers,Cincinnati Reds,Mitch Bratt,10.7,21.4,102,5,4.5,10.0,249,1.44,72.2,114,50.8,50.8,169,1.67,66.9,53,40.2,⚾ High-Floor Value,118
+Enrique Hernández,Los Angeles Dodgers,Lake Bachar,13.0,26.0,56,1,6.9,13.9,186,1.48,74.2,99,46.2,46.2,224,1.27,50.6,137,40.1,⚾ High-Floor Value,119
+Jake Burger,Texas Rangers,Yusei Kikuchi,13.6,27.1,50,3,7.7,15.5,167,1.33,66.5,156,52.1,52.1,151,1.25,49.9,142,40.0,⚾ High-Floor Value,120
+Caleb Durbin,Boston Red Sox,Matt Wilkinson,8.0,16.0,160,8,8.8,17.6,112,1.47,73.5,105,58.0,58.0,62,1.29,51.6,132,40.0,⚾ High-Floor Value,121
+Kyle Isbel,Kansas City Royals,TBD Pitcher,12.6,25.2,61,0,8.0,16.0,139,1.46,73.0,110,48.6,48.6,201,1.14,45.8,160,39.9,⚾ High-Floor Value,122
+José Caballero,New York Yankees,José Soriano,15.7,31.4,31,8,8.6,17.1,118,1.31,65.3,162,49.8,49.8,183,1.03,41.2,194,39.8,⚾ High-Floor Value,123
+Francisco Lindor,New York Mets,Sean Newcomb,12.2,24.4,67,7,11.4,22.9,80,1.38,69.0,141,52.4,52.4,145,0.91,36.5,227,39.8,⚾ High-Floor Value,124
+Brice Turang,Milwaukee Brewers,Tyler Mahle,6.7,13.5,186,17,16.0,31.9,21,1.41,70.4,128,51.2,51.2,163,1.1,43.9,172,39.7,⚾ High-Floor Value,125
+Gunnar Henderson,Baltimore Orioles,Nick Martinez,12.0,23.9,75,8,11.6,23.1,77,1.3,64.8,164,52.1,52.1,153,1.09,43.4,177,39.6,⚾ High-Floor Value,126
+Daylen Lile,Washington Nationals,Janson Junk,8.6,17.3,148,13,12.3,24.6,64,1.37,68.3,146,53.0,53.0,135,1.21,48.3,147,39.6,⚾ High-Floor Value,127
+Jose Altuve,Houston Astros,Brady Basso,8.9,17.9,142,12,10.8,21.6,84,1.29,64.4,169,57.6,57.6,68,1.32,53.0,127,39.5,⚾ High-Floor Value,128
+Andrés Giménez,Toronto Blue Jays,Carlos Rodón,7.1,14.2,181,12,7.6,15.2,172,1.48,74.2,98,56.2,56.2,82,1.43,57.1,96,39.5,⚾ High-Floor Value,129
+Adam Frazier,Los Angeles Angels,Cal Quantrill,4.1,10.0,236,34,12.0,23.9,73,1.43,71.5,120,57.6,57.6,69,1.36,54.2,120,39.5,⚾ High-Floor Value,130
+Brett Bateman,Toronto Blue Jays,Carlos Rodón,3.6,10.0,263,13,5.4,10.9,220,1.44,72.1,115,64.8,64.8,8,1.69,67.6,48,39.5,⚾ High-Floor Value,131
+Ildemaro Vargas,Arizona Diamondbacks,Andrew Abbott,9.8,19.5,128,5,6.7,13.4,192,1.38,68.9,143,50.2,50.2,179,1.62,64.7,63,39.4,⚾ High-Floor Value,132
+Iván Herrera,St. Louis Cardinals,Cristopher Sánchez,9.4,18.8,136,6,7.1,14.1,181,1.35,67.6,151,54.3,54.3,106,1.55,61.9,72,39.4,⚾ High-Floor Value,133
+Jeff McNeil,Athletics,Cristian Javier,8.9,17.8,143,5,3.8,10.0,245,1.31,65.5,161,60.3,60.3,35,1.69,67.6,49,39.4,⚾ High-Floor Value,134
+Henry Bolte,Athletics,Cristian Javier,7.9,15.7,163,7,4.6,10.0,240,1.42,71.1,126,57.9,57.9,63,1.65,65.8,57,39.4,⚾ High-Floor Value,135
+Brandon Valenzuela,Toronto Blue Jays,Carlos Rodón,6.2,12.4,194,13,12.3,24.6,63,1.39,69.6,136,52.1,52.1,148,1.43,57.1,95,39.4,⚾ High-Floor Value,136
+Luke Keaschall,Minnesota Twins,Walker Buehler,7.6,15.3,168,0,8.0,16.0,154,1.39,69.6,137,62.3,62.3,22,1.27,50.7,136,39.2,⚾ High-Floor Value,137
+Matt McLain,Cincinnati Reds,Mitch Bratt,15.3,30.7,37,0,8.0,16.0,159,1.27,63.6,175,47.3,47.3,212,1.12,44.8,168,39.1,⚾ High-Floor Value,138
+Jazz Chisholm Jr.,New York Yankees,José Soriano,11.4,22.8,85,14,14.4,28.8,36,1.17,58.5,201,49.1,49.1,193,1.17,46.9,154,39.1,⚾ High-Floor Value,139
+Austin Hedges,Cleveland Guardians,Tomoyuki Sugano,9.0,18.0,141,12,7.5,15.0,174,1.41,70.3,129,51.8,51.8,155,1.46,58.2,87,39.1,⚾ High-Floor Value,140
+Ezequiel Duran,Texas Rangers,Yusei Kikuchi,6.6,13.3,187,17,15.3,30.6,28,1.19,59.3,198,54.6,54.6,101,1.43,57.1,97,39.1,⚾ High-Floor Value,141
+Bryan Torres,St. Louis Cardinals,Cristopher Sánchez,5.5,11.0,206,31,15.7,31.5,23,1.32,66.1,158,50.9,50.9,167,1.34,53.6,124,39.1,⚾ High-Floor Value,142
+Geraldo Perdomo,Arizona Diamondbacks,Andrew Abbott,4.3,10.0,221,18,10.3,20.5,90,1.36,68.2,147,54.2,54.2,108,1.69,67.5,51,39.1,⚾ High-Floor Value,143
+Connor Wong,Boston Red Sox,Matt Wilkinson,14.1,28.2,46,1,3.0,10.0,265,1.49,74.3,97,50.4,50.4,175,0.92,36.6,226,38.9,⚾ High-Floor Value,144
+Joe Mack,Miami Marlins,Jackson Kent,11.3,22.5,88,3,8.0,16.0,131,1.32,65.8,160,50.8,50.8,168,1.35,54.1,121,38.9,⚾ High-Floor Value,145
+Blaze Jordan,St. Louis Cardinals,Cristopher Sánchez,9.3,18.5,138,8,7.0,13.9,184,1.44,71.8,117,53.2,53.2,129,1.33,53.1,126,38.9,⚾ High-Floor Value,146
+Ezequiel Tovar,Colorado Rockies,Foster Griffin,10.4,20.8,110,14,8.7,17.5,114,1.33,66.4,157,53.3,53.3,125,1.25,50.0,141,38.8,⚾ High-Floor Value,147
+Eli White,Boston Red Sox,Matt Wilkinson,6.3,12.7,193,17,15.8,31.7,22,1.29,64.5,167,58.9,58.9,50,0.96,38.4,214,38.8,⚾ High-Floor Value,148
+Michael Busch,Chicago Cubs,Bryce Miller,9.5,19.0,133,0,8.0,16.0,151,1.47,73.3,109,54.8,54.8,99,1.03,41.2,195,38.7,⚾ High-Floor Value,149
+Drew Gilbert,San Francisco Giants,Jake Bennett,11.4,22.9,82,1,3.1,10.0,264,1.52,76.1,86,51.8,51.8,157,1.04,41.4,192,38.6,⚾ High-Floor Value,150
+Garrett Mitchell,Milwaukee Brewers,Tyler Mahle,9.5,19.0,134,1,3.9,10.0,270,1.53,76.7,81,58.5,58.5,53,1.02,40.7,199,38.6,⚾ High-Floor Value,151
+Andruw Monasterio,Boston Red Sox,Matt Wilkinson,5.4,10.8,207,22,15.7,31.5,24,1.38,68.8,144,51.5,51.5,161,1.05,42.0,187,38.4,⚾ High-Floor Value,152
+Brock Rodden,Seattle Mariners,Shota Imanaga,5.1,10.1,218,7,10.1,20.2,93,1.48,73.9,101,54.6,54.6,100,1.27,50.9,133,38.4,⚾ High-Floor Value,153
+Agustín Ramírez,Miami Marlins,Jackson Kent,4.1,10.0,254,22,9.1,18.2,105,1.28,63.9,174,52.6,52.6,142,1.9,76.1,21,38.4,⚾ High-Floor Value,154
+Jakob Marsee,Miami Marlins,Jackson Kent,8.8,17.6,146,0,8.0,16.0,137,1.21,60.5,193,52.9,52.9,137,1.67,66.8,54,38.2,⚾ High-Floor Value,155
+Carson Kelly,Chicago Cubs,Bryce Miller,5.9,11.8,198,11,6.7,13.5,190,1.5,75.2,93,57.2,57.2,73,1.27,50.8,134,38.1,⚾ High-Floor Value,156
+Josh Lowe,Los Angeles Angels,Cal Quantrill,12.4,24.8,65,4,6.7,13.4,193,1.4,69.9,132,49.3,49.3,191,1.01,40.3,201,38.0,⚾ High-Floor Value,157
+Carter Jensen,Kansas City Royals,TBD Pitcher,10.9,21.8,96,1,4.8,10.0,261,1.47,73.4,108,43.6,43.6,240,1.37,54.8,112,38.0,⚾ High-Floor Value,158
+Royce Lewis,Minnesota Twins,Walker Buehler,7.4,14.8,176,14,14.7,29.5,33,1.24,61.9,181,53.2,53.2,128,1.07,42.9,183,37.9,⚾ High-Floor Value,159
+Jesús Sánchez,Toronto Blue Jays,Carlos Rodón,10.3,20.7,113,11,12.0,24.1,71,1.25,62.6,177,52.7,52.7,139,0.94,37.5,218,37.8,⚾ High-Floor Value,160
+Jacob Young,Washington Nationals,Janson Junk,8.1,16.2,158,8,9.1,18.2,108,1.32,65.8,159,58.4,58.4,54,1.14,45.5,164,37.8,⚾ High-Floor Value,161
+Christian Yelich,Milwaukee Brewers,Tyler Mahle,11.0,21.9,93,3,5.4,10.8,221,1.45,72.7,113,48.5,48.5,202,1.12,44.9,167,37.6,⚾ High-Floor Value,162
+Daulton Varsho,Houston Astros,Brady Basso,8.9,17.7,144,0,8.0,16.0,141,1.29,64.6,166,48.3,48.3,204,1.5,60.1,80,37.6,⚾ High-Floor Value,163
+Kevin Alcántara,Chicago Cubs,Bryce Miller,10.8,21.6,99,2,3.8,10.0,258,1.4,70.0,130,49.4,49.4,188,1.21,48.4,145,37.4,⚾ High-Floor Value,164
+Cedric Mullins,Tampa Bay Rays,Shane Baz,5.3,10.6,211,17,12.6,25.2,56,1.29,64.7,165,49.3,49.3,190,1.4,56.1,103,37.4,⚾ High-Floor Value,165
+Anthony Seigler,Boston Red Sox,Matt Wilkinson,4.7,10.0,246,15,12.3,24.6,62,1.38,69.2,140,52.6,52.6,141,1.12,44.9,166,37.2,⚾ High-Floor Value,166
+Jeremy Peña,Houston Astros,Brady Basso,10.0,20.0,122,3,7.9,15.9,163,1.33,66.7,155,49.0,49.0,194,1.14,45.8,162,37.1,⚾ High-Floor Value,167
+Matthew Lugo,Kansas City Royals,TBD Pitcher,10.7,21.3,103,2,5.4,10.8,222,1.33,66.7,154,53.8,53.8,117,1.11,44.4,171,37.0,⚾ High-Floor Value,168
+Jorge Barrosa,Arizona Diamondbacks,Andrew Abbott,10.5,21.0,109,17,12.1,24.3,68,1.14,57.0,209,45.6,45.6,231,1.24,49.6,143,37.0,⚾ High-Floor Value,169
+Mauricio Dubón,Atlanta Braves,Shane Drohan,4.6,10.0,226,33,13.2,26.3,48,1.24,62.2,179,61.1,61.1,30,1.02,40.9,197,37.0,⚾ High-Floor Value,170
+Denzer Guzman,Los Angeles Angels,Cal Quantrill,7.8,15.5,166,2,4.0,10.0,257,1.43,71.4,122,51.7,51.7,159,1.3,52.0,130,36.8,⚾ High-Floor Value,171
+Gustavo Campero,Los Angeles Angels,Cal Quantrill,3.8,10.0,237,1,3.0,10.0,263,1.28,64.0,172,66.3,66.3,3,1.45,58.1,88,36.7,⚾ High-Floor Value,172
+Jorge Mateo,Tampa Bay Rays,Shane Baz,10.6,21.2,105,2,4.4,10.0,255,1.28,63.9,173,45.4,45.4,232,1.42,56.9,98,36.3,⚾ High-Floor Value,173
+Freddy Fermin,San Diego Padres,Bailey Ober,6.1,12.1,197,10,6.6,13.3,196,1.36,67.9,149,51.1,51.1,165,1.41,56.3,102,36.2,⚾ High-Floor Value,174
+Kyle Karros,Colorado Rockies,Foster Griffin,11.2,22.4,89,2,5.2,10.4,225,1.29,64.5,168,56.7,56.7,79,0.89,35.7,230,36.1,⚾ High-Floor Value,175
+Jacob Gonzalez,Pittsburgh Pirates,Blake Snell,10.3,20.7,112,6,5.5,11.1,217,1.37,68.5,145,50.0,50.0,182,1.01,40.3,202,36.1,⚾ High-Floor Value,176
+Connor Norby,Colorado Rockies,Foster Griffin,10.0,20.0,121,0,8.0,16.0,147,1.21,60.7,191,48.9,48.9,200,1.21,48.4,144,36.1,⚾ High-Floor Value,177
+Brett Baty,New York Mets,Sean Newcomb,9.7,19.4,129,6,5.5,11.0,218,1.38,68.9,142,46.0,46.0,226,1.19,47.5,149,36.1,⚾ High-Floor Value,178
+Harry Ford,Washington Nationals,Janson Junk,10.5,21.0,108,6,12.2,24.4,67,1.17,58.3,204,45.0,45.0,234,0.98,39.1,209,36.0,⚾ High-Floor Value,179
+Julio Rodríguez,Seattle Mariners,Shota Imanaga,10.2,20.5,116,9,10.6,21.2,87,1.23,61.4,184,51.1,51.1,164,0.81,32.6,243,36.0,⚾ High-Floor Value,180
+Cody Freeman,Texas Rangers,Yusei Kikuchi,3.0,10.0,234,14,4.7,10.0,232,1.19,59.3,197,59.3,59.3,45,1.75,70.1,37,35.9,⚾ High-Floor Value,181
+John Rave,Kansas City Royals,TBD Pitcher,7.1,14.2,180,13,18.5,36.9,14,1.08,53.9,225,36.9,36.9,257,1.15,45.8,161,35.4,⚾ High-Floor Value,182
+JJ Wetherholt,St. Louis Cardinals,Cristopher Sánchez,7.5,14.9,172,0,8.0,16.0,133,1.28,64.0,170,51.7,51.7,158,1.09,43.5,176,35.3,⚾ High-Floor Value,183
+Jhonny Pereda,Seattle Mariners,Shota Imanaga,5.3,10.6,210,12,4.5,10.0,233,1.4,69.9,133,60.5,60.5,34,1.06,42.2,185,35.3,⚾ High-Floor Value,184
+Ernie Clement,Toronto Blue Jays,Carlos Rodón,5.2,10.3,215,15,8.7,17.4,115,1.21,60.6,192,60.3,60.3,36,1.16,46.4,157,35.3,⚾ High-Floor Value,185
+Nick Allen,Houston Astros,Brady Basso,9.9,19.9,123,3,3.0,10.0,251,1.22,61.0,188,56.0,56.0,86,1.04,41.5,191,35.1,⚾ High-Floor Value,186
+George Springer,Toronto Blue Jays,Carlos Rodón,6.5,13.0,190,19,13.5,27.1,44,1.14,56.8,210,54.0,54.0,112,0.92,36.7,225,35.1,⚾ High-Floor Value,187
+Luke Maile,Kansas City Royals,TBD Pitcher,9.4,18.7,137,8,10.1,20.1,94,1.18,58.8,200,46.1,46.1,225,1.04,41.6,190,35.0,⚾ High-Floor Value,188
+Brayan Rocchio,Cleveland Guardians,Tomoyuki Sugano,8.0,16.0,159,4,4.9,10.0,250,1.23,61.3,185,50.4,50.4,176,1.39,55.6,106,34.9,⚾ High-Floor Value,189
+David Hamilton,Milwaukee Brewers,Tyler Mahle,7.0,14.1,182,1,3.0,10.0,269,1.3,64.8,163,54.9,54.9,97,1.18,47.1,152,34.8,⚾ High-Floor Value,190
+Josh Naylor,Seattle Mariners,Shota Imanaga,6.9,13.8,184,11,6.0,12.1,210,1.26,63.2,176,57.8,57.8,64,1.06,42.4,184,34.8,⚾ High-Floor Value,191
+José Ramírez,Cleveland Guardians,Tomoyuki Sugano,5.6,11.2,203,30,15.0,30.1,29,1.1,54.8,222,53.1,53.1,134,0.94,37.4,221,34.8,⚾ High-Floor Value,192
+LaMonte Wade Jr.,Houston Astros,Brady Basso,4.1,10.0,227,25,11.3,22.7,81,1.15,57.3,207,57.1,57.1,76,1.09,43.6,174,34.8,⚾ High-Floor Value,193
+Austin Hays,San Diego Padres,Bailey Ober,5.1,10.2,216,6,4.0,10.0,243,1.35,67.6,150,52.9,52.9,136,1.3,51.9,131,34.6,⚾ High-Floor Value,194
+Michael Conforto,Chicago Cubs,Bryce Miller,10.7,21.5,101,5,12.3,24.5,65,1.12,55.9,213,41.0,41.0,247,0.83,33.2,240,34.3,⚾ High-Floor Value,195
+Alek Thomas,Los Angeles Dodgers,Lake Bachar,7.9,15.7,162,9,3.9,10.0,236,1.25,62.6,178,54.2,54.2,107,1.08,43.2,181,34.2,⚾ High-Floor Value,196
+Moisés Ballesteros,Los Angeles Angels,Cal Quantrill,5.5,11.0,205,46,20.9,41.9,7,0.99,49.6,242,46.4,46.4,222,0.73,29.4,255,34.2,⚾ High-Floor Value,197
+Francisco Alvarez,New York Mets,Sean Newcomb,9.7,19.5,127,10,12.1,24.1,72,1.1,55.0,220,46.5,46.5,221,0.76,30.4,252,34.0,⚾ High-Floor Value,198
+Hunter Feduccia,Los Angeles Dodgers,Lake Bachar,8.8,17.6,145,6,4.9,10.0,242,1.28,64.0,171,51.4,51.4,162,0.94,37.6,217,33.9,⚾ High-Floor Value,199
+A.J. Ewing,New York Mets,Sean Newcomb,4.1,10.0,228,36,13.1,26.1,51,1.17,58.3,203,46.9,46.9,217,1.05,42.1,186,33.9,⚾ High-Floor Value,200
+Jonah Heim,Athletics,Cristian Javier,6.5,12.9,191,20,17.9,35.8,16,0.97,48.3,244,42.2,42.2,242,1.02,40.8,198,33.8,⚾ High-Floor Value,201
+Jonah Cox,San Francisco Giants,Jake Bennett,7.0,14.0,183,15,16.6,33.2,20,1.04,52.1,233,45.6,45.6,230,0.77,30.8,251,33.7,⚾ High-Floor Value,202
+Cole Young,Seattle Mariners,Shota Imanaga,6.2,12.3,195,6,7.2,14.4,178,1.23,61.7,182,49.0,49.0,196,1.18,47.4,150,33.7,⚾ High-Floor Value,203
+Edmundo Sosa,Philadelphia Phillies,Kyle Leahy,5.2,10.5,212,21,12.3,24.6,61,1.07,53.4,229,52.1,52.1,149,1.07,43.0,182,33.6,⚾ High-Floor Value,204
+Miguel Amaya,Chicago Cubs,Bryce Miller,9.7,19.3,131,3,5.0,10.0,254,1.24,62.1,180,51.7,51.7,160,0.82,32.7,242,33.5,⚾ High-Floor Value,205
+Nick Gonzales,Pittsburgh Pirates,Blake Snell,3.4,10.0,240,25,7.4,14.8,176,1.19,59.6,196,61.8,61.8,25,0.92,36.8,223,33.5,⚾ High-Floor Value,206
+Drew Romo,Chicago White Sox,Nolan McLean,11.8,23.7,76,3,6.6,13.2,198,1.22,60.9,190,39.1,39.1,252,0.88,35.0,235,33.4,⚾ High-Floor Value,207
+Jake Mangum,Pittsburgh Pirates,Blake Snell,5.4,10.8,208,11,5.0,10.1,230,1.22,60.9,189,59.7,59.7,40,1.09,43.5,175,33.4,⚾ High-Floor Value,208
+Gleyber Torres,Detroit Tigers,Daniel Lynch IV,6.5,13.1,189,9,7.4,14.8,177,1.18,58.8,199,55.2,55.2,92,0.97,38.8,211,33.3,⚾ High-Floor Value,209
+Jose Fernandez,Arizona Diamondbacks,Andrew Abbott,3.8,10.0,220,35,9.9,19.8,96,1.1,55.0,219,57.0,57.0,77,1.03,41.1,196,33.3,⚾ High-Floor Value,210
+Isaac Collins,Kansas City Royals,TBD Pitcher,3.5,10.0,253,24,11.0,22.0,83,1.12,56.2,212,44.4,44.4,236,1.27,50.8,135,33.2,⚾ High-Floor Value,211
+Brian Navarreto,Miami Marlins,Jackson Kent,10.8,21.5,100,1,3.2,10.0,260,1.11,55.3,217,35.1,35.1,268,1.48,59.0,86,33.1,⚾ High-Floor Value,212
+Austin Wells,New York Yankees,José Soriano,4.8,10.0,259,15,8.3,16.6,124,1.15,57.5,206,46.7,46.7,220,1.36,54.5,117,33.1,⚾ High-Floor Value,213
+Jake Rogers,Chicago White Sox,Nolan McLean,11.7,23.4,77,0,8.0,16.0,145,1.11,55.7,215,39.2,39.2,251,0.92,36.8,224,33.0,⚾ High-Floor Value,214
+Jung Hoo Lee,San Francisco Giants,Jake Bennett,6.1,12.1,196,9,8.6,17.1,117,1.2,60.0,195,55.1,55.1,94,0.8,32.0,248,33.0,⚾ High-Floor Value,215
+Alex Call,Los Angeles Dodgers,Lake Bachar,3.0,10.0,239,17,5.2,10.3,228,1.23,61.6,183,54.0,54.0,114,1.19,47.6,148,33.0,⚾ High-Floor Value,216
+Leody Taveras,Baltimore Orioles,Nick Martinez,7.2,14.4,179,9,7.9,15.9,162,1.16,58.0,205,53.4,53.4,122,0.85,34.1,238,32.9,⚾ High-Floor Value,217
+Elias Díaz,Texas Rangers,Yusei Kikuchi,4.3,10.0,249,13,7.8,15.5,166,1.07,53.6,226,47.9,47.9,209,1.5,60.0,81,32.9,⚾ High-Floor Value,218
+Alan Roden,Minnesota Twins,Walker Buehler,3.0,10.0,256,25,6.2,12.3,207,1.12,55.8,214,52.1,52.1,150,1.38,55.3,108,32.8,⚾ High-Floor Value,219
+David Fry,Cleveland Guardians,Tomoyuki Sugano,12.4,24.8,64,12,11.4,22.9,79,1.01,50.6,239,35.1,35.1,264,0.83,33.0,241,32.7,⚾ High-Floor Value,220
+Eric Wagaman,New York Mets,Sean Newcomb,10.2,20.4,117,9,8.4,16.8,121,1.07,53.5,227,45.8,45.8,227,0.88,35.3,234,32.7,⚾ High-Floor Value,221
+José Fermín,St. Louis Cardinals,Cristopher Sánchez,5.0,10.0,266,22,10.1,20.2,92,1.11,55.4,216,55.8,55.8,89,0.91,36.4,228,32.7,⚾ High-Floor Value,222
+Jase Bowen,San Diego Padres,Bailey Ober,11.3,22.5,87,1,3.0,10.0,267,1.13,56.6,211,43.8,43.8,238,0.97,38.9,210,32.6,⚾ High-Floor Value,223
+Brenton Doyle,Chicago White Sox,Nolan McLean,7.9,15.8,161,7,5.7,11.3,215,1.22,61.1,187,43.7,43.7,239,1.05,41.9,188,32.4,⚾ High-Floor Value,224
+Evan Carter,Texas Rangers,Yusei Kikuchi,4.3,10.0,250,31,13.1,26.2,50,1.02,50.8,235,44.1,44.1,237,1.15,46.2,159,32.3,⚾ High-Floor Value,225
+Jackson Holliday,Baltimore Orioles,Nick Martinez,7.5,14.9,174,13,9.2,18.3,104,1.09,54.4,223,50.5,50.5,173,0.81,32.6,245,32.2,⚾ High-Floor Value,226
+Jake Cronenworth,San Diego Padres,Bailey Ober,4.6,10.0,264,5,3.0,10.0,247,1.2,60.1,194,53.5,53.5,120,1.08,43.3,178,32.0,⚾ High-Floor Value,227
+Osleivis Basabe,San Francisco Giants,Jake Bennett,5.2,10.4,214,15,12.5,25.0,58,1.08,54.1,224,51.1,51.1,166,0.72,28.7,257,31.9,⚾ High-Floor Value,228
+Darell Hernaiz,Athletics,Cristian Javier,3.0,10.0,223,34,7.1,14.1,180,0.94,46.9,246,48.9,48.9,198,1.62,64.9,62,31.8,⚾ High-Floor Value,229
+Cal Raleigh,Seattle Mariners,Shota Imanaga,9.6,19.2,132,1,3.5,10.0,266,1.22,61.2,186,35.2,35.2,260,1.04,41.7,189,31.7,⚾ High-Floor Value,230
+Dylan Crews,Washington Nationals,Janson Junk,7.6,15.2,170,10,9.7,19.3,100,1.01,50.7,238,44.6,44.6,235,1.03,41.3,193,31.7,⚾ High-Floor Value,231
+Nick Fortes,Tampa Bay Rays,Shane Baz,3.4,10.0,222,13,6.4,12.9,203,1.1,55.0,218,57.0,57.0,78,0.99,39.6,205,31.6,⚾ High-Floor Value,232
+Nico Hoerner,Chicago Cubs,Bryce Miller,3.0,10.0,257,15,6.7,13.3,195,1.14,57.2,208,59.1,59.1,48,0.81,32.3,246,31.6,⚾ High-Floor Value,233
+Miguel Rojas,Los Angeles Dodgers,Lake Bachar,4.1,10.0,261,22,10.6,21.2,86,1.07,53.3,230,53.4,53.4,123,0.76,30.3,253,31.4,⚾ High-Floor Value,234
+Héctor Rodríguez,Cincinnati Reds,Mitch Bratt,6.9,13.8,185,0,8.0,16.0,157,1.0,49.8,240,39.0,39.0,253,1.34,53.7,123,31.0,⚾ High-Floor Value,235
+Danny Jansen,Texas Rangers,Yusei Kikuchi,9.0,18.1,140,10,8.1,16.3,127,0.93,46.7,247,35.1,35.1,262,1.32,52.6,128,30.9,⚾ High-Floor Value,236
+Jarren Duran,Boston Red Sox,Matt Wilkinson,8.7,17.3,149,2,5.2,10.4,226,1.17,58.4,202,47.9,47.9,208,0.68,27.3,258,30.9,⚾ High-Floor Value,237
+Kyle Tucker,Los Angeles Dodgers,Lake Bachar,7.8,15.5,165,12,9.2,18.5,102,1.0,49.8,241,45.1,45.1,233,0.85,33.9,239,30.6,⚾ High-Floor Value,238
+J.T. Realmuto,Philadelphia Phillies,Kyle Leahy,4.9,10.0,267,16,9.8,19.7,99,1.02,50.8,237,50.5,50.5,172,0.89,35.5,231,30.6,⚾ High-Floor Value,239
+Lars Nootbaar,Arizona Diamondbacks,Andrew Abbott,6.4,12.9,192,1,3.0,10.0,268,1.06,53.0,231,49.4,49.4,187,0.98,39.3,207,30.1,⚾ High-Floor Value,240
+Cooper Pratt,Milwaukee Brewers,Tyler Mahle,3.1,10.0,269,16,6.0,11.9,214,1.07,53.4,228,50.3,50.3,177,1.01,40.5,200,30.1,⚾ High-Floor Value,241
+Jimmy Crooks,St. Louis Cardinals,Cristopher Sánchez,8.2,16.5,155,11,9.1,18.2,106,0.96,47.9,245,41.7,41.7,244,0.88,35.0,236,30.0,⚾ High-Floor Value,242
+Luis Rengifo,San Diego Padres,Bailey Ober,5.8,11.6,201,5,3.0,10.0,248,1.05,52.7,232,52.9,52.9,138,0.88,35.4,233,29.8,⚾ High-Floor Value,243
+Jordan Beck,Colorado Rockies,Foster Griffin,5.3,10.7,209,28,11.7,23.3,76,0.92,46.1,248,46.3,46.3,223,0.77,30.9,250,29.4,⚾ High-Floor Value,244
+Javier Báez,Detroit Tigers,Daniel Lynch IV,3.2,10.0,252,19,7.5,15.0,173,1.02,50.8,236,53.1,53.1,132,0.68,27.1,259,29.0,⚾ High-Floor Value,245
+Billy Cook,Pittsburgh Pirates,Blake Snell,3.0,10.0,243,24,6.0,12.1,209,1.02,51.1,234,47.0,47.0,216,0.94,37.5,219,28.7,⚾ High-Floor Value,246
+Ke'Bryan Hayes,Cincinnati Reds,Mitch Bratt,8.6,17.2,150,6,4.4,10.0,244,0.92,45.9,249,41.7,41.7,245,1.0,40.2,203,28.6,⚾ High-Floor Value,247
+Jim Jarvis,Atlanta Braves,Shane Drohan,3.1,10.0,231,31,8.0,16.1,128,0.91,45.5,250,42.9,42.9,241,1.08,43.2,180,28.4,⚾ High-Floor Value,248
+Oswald Peraza,Los Angeles Angels,Cal Quantrill,4.2,10.0,238,45,15.0,29.9,31,0.85,42.3,255,41.9,41.9,243,0.63,25.0,262,28.4,⚾ High-Floor Value,249
+Henry Davis,Pittsburgh Pirates,Blake Snell,4.8,10.0,242,21,11.2,22.5,82,0.9,45.1,252,38.1,38.1,255,0.97,38.6,213,28.4,⚾ High-Floor Value,250
+Adley Rutschman,Boston Red Sox,Matt Wilkinson,5.8,11.5,202,3,4.0,10.0,253,1.1,54.8,221,39.9,39.9,248,0.89,35.4,232,28.1,⚾ High-Floor Value,251
+Jarred Kelenic,Texas Rangers,Yusei Kikuchi,3.2,10.0,235,18,6.8,13.6,189,0.9,45.2,251,48.0,48.0,207,0.98,39.4,206,28.1,⚾ High-Floor Value,252
+Jared Triolo,Pittsburgh Pirates,Blake Snell,5.9,11.7,200,8,3.7,10.0,239,0.98,49.0,243,49.7,49.7,184,0.74,29.8,254,27.8,⚾ High-Floor Value,253
+Christian Koss,San Francisco Giants,Jake Bennett,3.0,10.0,244,33,7.0,13.9,183,0.9,45.1,253,46.8,46.8,218,0.94,37.5,220,27.8,⚾ High-Floor Value,254
+Drew Cavanaugh,San Francisco Giants,Jake Bennett,3.0,10.0,247,32,6.9,13.8,187,0.84,42.1,256,48.2,48.2,206,1.0,40.0,204,27.6,⚾ High-Floor Value,255
+Braxton Fulford,Colorado Rockies,Foster Griffin,4.6,10.0,248,32,9.9,19.8,97,0.9,45.0,254,36.9,36.9,256,0.8,32.2,247,26.8,⚾ High-Floor Value,256
+Christian Franklin,Baltimore Orioles,Nick Martinez,3.0,10.0,232,11,4.3,10.0,234,0.78,38.8,258,38.6,38.6,254,0.98,39.3,208,24.4,⚾ High-Floor Value,257
+Luisangel Acuña,Chicago White Sox,Nolan McLean,3.0,10.0,233,25,6.2,12.3,206,0.76,37.9,259,47.2,47.2,213,0.62,24.7,264,24.4,⚾ High-Floor Value,258
+Carlos Narváez,Baltimore Orioles,Nick Martinez,3.0,10.0,219,22,6.7,13.3,194,0.82,41.0,257,35.1,35.1,270,0.79,31.5,249,24.1,⚾ High-Floor Value,259
+Christopher Morel,New York Mets,Sean Newcomb,3.0,10.0,229,23,5.9,11.9,213,0.74,36.8,260,39.6,39.6,250,0.82,32.6,244,23.8,⚾ High-Floor Value,260
+Leo Rivas,Seattle Mariners,Shota Imanaga,3.0,10.0,255,41,7.7,15.4,169,0.68,33.9,262,41.4,41.4,246,0.58,23.3,265,23.1,⚾ High-Floor Value,261
+Christian Moore,Los Angeles Angels,Cal Quantrill,3.0,10.0,251,7,3.5,10.0,241,0.7,35.2,261,39.9,39.9,249,0.73,29.2,256,22.6,⚾ High-Floor Value,262
+Heliot Ramos,New York Yankees,José Soriano,3.0,10.0,260,28,6.5,13.0,202,0.62,31.2,264,35.1,35.1,267,0.67,26.8,261,21.4,⚾ High-Floor Value,263
+Ben Rortvedt,Los Angeles Dodgers,Lake Bachar,3.0,10.0,241,9,3.9,10.0,237,0.63,31.6,263,36.5,36.5,258,0.62,24.8,263,20.8,⚾ High-Floor Value,264
+Buddy Kennedy,San Francisco Giants,Jake Bennett,3.0,10.0,245,17,5.2,10.3,227,0.52,26.2,266,35.1,35.1,265,0.68,27.1,260,19.7,⚾ High-Floor Value,265
+Michael Toglia,Cincinnati Reds,Mitch Bratt,3.0,10.0,268,9,3.9,10.0,238,0.54,27.2,265,35.1,35.1,269,0.55,22.0,266,19.2,⚾ High-Floor Value,266
+Ha-Seong Kim,Atlanta Braves,Shane Drohan,3.0,10.0,225,25,6.2,12.3,208,0.5,25.0,268,35.1,35.1,261,0.5,20.0,268,19.0,⚾ High-Floor Value,267
+Garrett Stubbs,Philadelphia Phillies,Kyle Leahy,3.0,10.0,265,16,5.0,10.1,229,0.5,25.0,270,35.6,35.6,259,0.51,20.5,267,18.7,⚾ High-Floor Value,268
+Cristian Pache,New York Mets,Sean Newcomb,4.2,10.0,230,3,3.0,10.0,252,0.5,25.0,267,35.1,35.1,263,0.5,20.0,269,18.5,⚾ High-Floor Value,269
+Gabriel Arias,Chicago Cubs,Bryce Miller,3.0,10.0,262,15,4.9,10.0,231,0.5,25.0,269,35.1,35.1,266,0.5,20.0,270,18.5,⚾ High-Floor Value,270

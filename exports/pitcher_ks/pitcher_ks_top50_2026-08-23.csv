@@ -1,0 +1,30 @@
+pitcher_id,pitcher_name,team,opp_team,blended_k9,expected_ip,lineup_k_pct,k_multiplier,expected_ks,score,target_call,rank
+650911,Cristopher Sánchez,Philadelphia Phillies,St. Louis Cardinals,10.41,6.2,22.5,1.0,7.17,95.6,🔥 K LOCK: Elite Stuff & Matchup,1
+605483,Blake Snell,Los Angeles Dodgers,Pittsburgh Pirates,12.0,5.0,22.5,1.0,6.67,88.9,🔥 K LOCK: Elite Stuff & Matchup,2
+690997,Nolan McLean,New York Mets,Chicago White Sox,10.22,5.7,22.5,1.0,6.47,86.3,🔥 K LOCK: Elite Stuff & Matchup,3
+641816,Tyler Mahle,Atlanta Braves,Milwaukee Brewers,9.16,6.1,22.5,1.0,6.21,82.8,🔥 K LOCK: Elite Stuff & Matchup,4
+684007,Shota Imanaga,Chicago Cubs,Seattle Mariners,8.79,5.7,22.5,1.0,5.57,74.2,🎯 K LADDER: Strong Target,5
+607074,Carlos Rodón,New York Yankees,Toronto Blue Jays,10.01,5.0,22.5,1.0,5.56,74.1,🎯 K LADDER: Strong Target,6
+682243,Bryce Miller,Seattle Mariners,Chicago Cubs,8.73,5.6,22.5,1.0,5.43,72.4,🎯 K LADDER: Strong Target,7
+656492,Foster Griffin,Cleveland Guardians,Colorado Rockies,8.07,5.9,22.5,1.0,5.29,70.5,🎯 K LADDER: Strong Target,8
+669358,Shane Baz,Baltimore Orioles,Tampa Bay Rays,8.16,5.8,22.5,1.0,5.26,70.1,🎯 K LADDER: Strong Target,9
+579328,Yusei Kikuchi,Los Angeles Angels,Texas Rangers,9.58,4.4,22.5,1.0,4.68,62.4,⚾ Standard K Volume,10
+681517,Kyle Leahy,St. Louis Cardinals,Philadelphia Phillies,8.17,5.1,22.5,1.0,4.63,61.7,⚾ Standard K Volume,11
+687562,Jake Bennett,Boston Red Sox,San Francisco Giants,6.81,5.7,22.5,1.0,4.31,57.5,⚾ Standard K Volume,12
+800600,Jackson Kent,Washington Nationals,Miami Marlins,10.57,3.6,22.5,1.0,4.23,56.4,⚾ Standard K Volume,13
+621111,Walker Buehler,San Diego Padres,Minnesota Twins,7.78,4.8,22.5,1.0,4.15,55.3,⚾ Standard K Volume,14
+671096,Andrew Abbott,Cincinnati Reds,Arizona Diamondbacks,6.98,5.3,22.5,1.0,4.11,54.8,⚾ Standard K Volume,15
+675660,Shane Drohan,Milwaukee Brewers,Atlanta Braves,8.88,4.0,22.5,1.0,3.95,52.6,⚾ Standard K Volume,16
+641927,Bailey Ober,Minnesota Twins,San Diego Padres,6.18,5.4,22.5,1.0,3.71,49.4,⚾ Standard K Volume,17
+676083,Janson Junk,Miami Marlins,Washington Nationals,6.41,5.1,22.5,1.0,3.63,48.4,⚾ Standard K Volume,18
+607259,Nick Martinez,Tampa Bay Rays,Baltimore Orioles,5.27,5.9,22.5,1.0,3.45,46.1,⚾ Standard K Volume,19
+608372,Tomoyuki Sugano,Colorado Rockies,Cleveland Guardians,5.23,5.4,22.5,1.0,3.14,41.8,⚾ Standard K Volume,20
+683352,Mitch Bratt,Arizona Diamondbacks,Cincinnati Reds,6.14,4.5,22.5,1.0,3.07,40.9,⚾ Standard K Volume,21
+667755,José Soriano,Toronto Blue Jays,New York Yankees,4.96,5.4,22.5,1.0,2.98,39.7,⚾ Standard K Volume,22
+664299,Cristian Javier,Houston Astros,Athletics,7.43,3.3,22.5,1.0,2.72,36.3,⚾ Standard K Volume,23
+615698,Cal Quantrill,Texas Rangers,Los Angeles Angels,6.26,3.0,22.5,1.0,2.09,27.8,⚾ Standard K Volume,24
+669199,Lake Bachar,Pittsburgh Pirates,Los Angeles Dodgers,9.36,1.5,22.5,1.0,1.56,20.8,⚾ Standard K Volume,25
+656794,Sean Newcomb,Chicago White Sox,New York Mets,8.23,1.5,22.5,1.0,1.37,18.3,⚾ Standard K Volume,26
+669620,Brady Basso,Athletics,Houston Astros,7.43,1.4,22.5,1.0,1.16,15.4,⚾ Standard K Volume,27
+663738,Daniel Lynch IV,Kansas City Royals,Detroit Tigers,6.83,1.1,22.5,1.0,1.0,13.3,⚾ Standard K Volume,28
+683363,Matt Wilkinson,San Francisco Giants,Boston Red Sox,0.0,2.0,22.5,1.0,1.0,13.3,⚾ Standard K Volume,29

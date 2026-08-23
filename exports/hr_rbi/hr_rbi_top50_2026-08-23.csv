@@ -1,0 +1,271 @@
+player_id,player_name,order,team,opp_pitcher,p_whip,blended_ops,lineup_mult,expected_hrr,score,target_call,rank
+665052,Griffin Conine,5,Miami Marlins,Jackson Kent,2.48,0.864,1.2,2.88,99.0,🚂 TRAFFIC LOCK: Elite Setup & Position,1
+691277,Deyvison De Los Santos,3,Miami Marlins,Jackson Kent,2.48,0.715,1.2,2.38,95.2,🚂 TRAFFIC LOCK: Elite Setup & Position,2
+665923,Esteury Ruiz,4,Miami Marlins,Jackson Kent,2.48,0.713,1.2,2.37,94.9,🚂 TRAFFIC LOCK: Elite Setup & Position,3
+622268,Donovan Walton,5,Athletics,Cristian Javier,1.68,0.719,1.2,2.29,91.6,🚂 TRAFFIC LOCK: Elite Setup & Position,4
+695506,Jac Caglianone,4,Kansas City Royals,TBD Pitcher,1.3,0.92,1.2,2.27,90.7,🚂 TRAFFIC LOCK: Elite Setup & Position,5
+608369,Corey Seager,3,Texas Rangers,Yusei Kikuchi,1.58,0.756,1.2,2.27,90.7,🚂 TRAFFIC LOCK: Elite Setup & Position,6
+543510,James McCann,5,Arizona Diamondbacks,Andrew Abbott,1.4,0.824,1.2,2.19,87.5,🚂 TRAFFIC LOCK: Elite Setup & Position,7
+672515,Gabriel Moreno,2,Arizona Diamondbacks,Andrew Abbott,1.4,0.836,1.15,2.13,85.1,🚂 TRAFFIC LOCK: Elite Setup & Position,8
+687605,Andrew Pinckney,3,Washington Nationals,Janson Junk,1.36,0.802,1.2,2.07,82.8,🚂 TRAFFIC LOCK: Elite Setup & Position,9
+650559,Bryan De La Cruz,3,Philadelphia Phillies,Kyle Leahy,1.31,0.831,1.2,2.07,82.6,🚂 TRAFFIC LOCK: Elite Setup & Position,10
+666126,Carlos Cortes,3,Athletics,Cristian Javier,1.68,0.642,1.2,2.05,81.9,🚂 TRAFFIC LOCK: Elite Setup & Position,11
+605137,Josh Bell,5,Minnesota Twins,Walker Buehler,1.39,0.769,1.2,2.03,81.1,🚂 TRAFFIC LOCK: Elite Setup & Position,12
+665953,Andrés Chaparro,2,Washington Nationals,Janson Junk,1.36,0.817,1.15,2.02,80.8,🚂 TRAFFIC LOCK: Elite Setup & Position,13
+547180,Bryce Harper,4,Philadelphia Phillies,Kyle Leahy,1.31,0.81,1.2,2.01,80.5,🚂 TRAFFIC LOCK: Elite Setup & Position,14
+661531,Brian Serven,2,Athletics,Cristian Javier,1.68,0.653,1.15,1.99,79.8,🚂 TRAFFIC LOCK: Elite Setup & Position,15
+682998,Corbin Carroll,1,Arizona Diamondbacks,Andrew Abbott,1.4,0.777,1.15,1.98,79.1,🚂 TRAFFIC LOCK: Elite Setup & Position,16
+665487,Fernando Tatis Jr.,2,San Diego Padres,Bailey Ober,1.25,0.87,1.15,1.98,79.0,🚂 TRAFFIC LOCK: Elite Setup & Position,17
+670623,Isaac Paredes,5,Houston Astros,Brady Basso,1.35,0.759,1.2,1.94,77.8,🚂 TRAFFIC LOCK: Elite Setup & Position,18
+672386,Alejandro Kirk,1,Toronto Blue Jays,Carlos Rodón,1.23,0.869,1.15,1.94,77.7,🚂 TRAFFIC LOCK: Elite Setup & Position,19
+686797,Brooks Lee,3,Minnesota Twins,Walker Buehler,1.39,0.725,1.2,1.91,76.5,🚂 TRAFFIC LOCK: Elite Setup & Position,20
+682663,Agustín Ramírez,1,Miami Marlins,Jackson Kent,2.48,0.596,1.15,1.9,76.1,🚂 TRAFFIC LOCK: Elite Setup & Position,21
+553993,Eugenio Suárez,3,Cincinnati Reds,Mitch Bratt,1.47,0.678,1.2,1.89,75.7,🚂 TRAFFIC LOCK: Elite Setup & Position,22
+682928,CJ Abrams,5,Washington Nationals,Janson Junk,1.36,0.73,1.2,1.88,75.4,🚂 TRAFFIC LOCK: Elite Setup & Position,23
+656577,Alex Jackson,2,Minnesota Twins,Walker Buehler,1.39,0.745,1.15,1.88,75.3,🚂 TRAFFIC LOCK: Elite Setup & Position,24
+677951,Bobby Witt Jr.,1,Kansas City Royals,TBD Pitcher,1.3,0.796,1.15,1.88,75.2,🚂 TRAFFIC LOCK: Elite Setup & Position,25
+694673,Abimelec Ortiz,1,Washington Nationals,Janson Junk,1.36,0.754,1.15,1.86,74.6,🚦 PRODUCTION TARGET: High Ceiling,26
+675961,Alika Williams,1,Athletics,Cristian Javier,1.68,0.605,1.15,1.85,73.9,🚦 PRODUCTION TARGET: High Ceiling,27
+700652,Kenny Piper,7,Tampa Bay Rays,Shane Baz,1.35,0.958,0.9,1.84,73.6,🚦 PRODUCTION TARGET: High Ceiling,28
+676475,Alec Burleson,1,St. Louis Cardinals,Cristopher Sánchez,1.22,0.827,1.15,1.83,73.4,🚦 PRODUCTION TARGET: High Ceiling,29
+800050,Chase DeLauter,5,Cleveland Guardians,Tomoyuki Sugano,1.26,0.765,1.2,1.83,73.2,🚦 PRODUCTION TARGET: High Ceiling,30
+668709,JJ Bleday,5,Cincinnati Reds,Mitch Bratt,1.47,0.656,1.2,1.83,73.1,🚦 PRODUCTION TARGET: High Ceiling,31
+664761,Alec Bohm,1,Philadelphia Phillies,Kyle Leahy,1.31,0.765,1.15,1.82,72.9,🚦 PRODUCTION TARGET: High Ceiling,32
+700250,Ben Rice,4,New York Yankees,José Soriano,1.35,0.704,1.2,1.8,72.1,🚦 PRODUCTION TARGET: High Ceiling,33
+676356,Jonny DeLuca,4,Tampa Bay Rays,Shane Baz,1.35,0.699,1.2,1.79,71.6,🚦 PRODUCTION TARGET: High Ceiling,34
+607043,Brandon Nimmo,1,Texas Rangers,Yusei Kikuchi,1.58,0.623,1.15,1.79,71.6,🚦 PRODUCTION TARGET: High Ceiling,35
+666018,Jonathan Aranda,3,Tampa Bay Rays,Shane Baz,1.35,0.685,1.2,1.75,70.2,🚦 PRODUCTION TARGET: High Ceiling,36
+683227,Cody Freeman,2,Texas Rangers,Yusei Kikuchi,1.58,0.61,1.15,1.75,70.1,🚦 PRODUCTION TARGET: High Ceiling,37
+681082,Bryson Stott,5,Philadelphia Phillies,Kyle Leahy,1.31,0.703,1.2,1.75,69.8,🚦 PRODUCTION TARGET: High Ceiling,38
+806146,George Lombard Jr.,5,New York Yankees,José Soriano,1.35,0.677,1.2,1.73,69.4,🚦 PRODUCTION TARGET: High Ceiling,39
+802415,Chandler Simpson,2,Tampa Bay Rays,Shane Baz,1.35,0.706,1.15,1.73,69.3,🚦 PRODUCTION TARGET: High Ceiling,40
+682829,Elly De La Cruz,2,Cincinnati Reds,Mitch Bratt,1.47,0.647,1.15,1.73,69.2,🚦 PRODUCTION TARGET: High Ceiling,41
+694197,Angel Genao,1,Cleveland Guardians,Tomoyuki Sugano,1.26,0.753,1.15,1.73,69.0,🚦 PRODUCTION TARGET: High Ceiling,42
+668800,Andrew Knizner,1,San Francisco Giants,Jake Bennett,1.07,0.885,1.15,1.72,68.9,🚦 PRODUCTION TARGET: High Ceiling,43
+701807,Carson Benge,4,New York Mets,Sean Newcomb,1.1,0.823,1.2,1.72,68.7,🚦 PRODUCTION TARGET: High Ceiling,44
+677592,Everson Pereira,4,St. Louis Cardinals,Cristopher Sánchez,1.22,0.741,1.2,1.71,68.6,🚦 PRODUCTION TARGET: High Ceiling,45
+691781,Brady House,4,Washington Nationals,Janson Junk,1.36,0.662,1.2,1.71,68.3,🚦 PRODUCTION TARGET: High Ceiling,46
+608324,Alex Bregman,1,Chicago Cubs,Bryce Miller,1.04,0.902,1.15,1.71,68.2,🚦 PRODUCTION TARGET: High Ceiling,47
+703520,Brett Bateman,4,Toronto Blue Jays,Carlos Rodón,1.23,0.724,1.2,1.69,67.6,🚦 PRODUCTION TARGET: High Ceiling,48
+643446,Jeff McNeil,7,Athletics,Cristian Javier,1.68,0.707,0.9,1.69,67.6,🚦 PRODUCTION TARGET: High Ceiling,49
+701358,Cam Smith,1,Houston Astros,Brady Basso,1.35,0.688,1.15,1.69,67.5,🚦 PRODUCTION TARGET: High Ceiling,50
+672695,Geraldo Perdomo,3,Arizona Diamondbacks,Andrew Abbott,1.4,0.636,1.2,1.69,67.5,🚦 PRODUCTION TARGET: High Ceiling,51
+701538,Jackson Merrill,5,San Diego Padres,Bailey Ober,1.25,0.708,1.2,1.68,67.2,🚦 PRODUCTION TARGET: High Ceiling,52
+667472,Dane Myers,1,Cincinnati Reds,Mitch Bratt,1.47,0.626,1.15,1.67,66.9,🚦 PRODUCTION TARGET: High Ceiling,53
+805300,Jakob Marsee,7,Miami Marlins,Jackson Kent,2.48,0.669,0.9,1.67,66.8,🚦 PRODUCTION TARGET: High Ceiling,54
+681715,Heriberto Hernández,6,Miami Marlins,Jackson Kent,2.48,0.666,0.9,1.66,66.5,🚦 PRODUCTION TARGET: High Ceiling,55
+686948,Drake Baldwin,3,Atlanta Braves,Shane Drohan,1.25,0.697,1.2,1.65,66.1,🚦 PRODUCTION TARGET: High Ceiling,56
+703607,Henry Bolte,6,Athletics,Cristian Javier,1.68,0.688,0.9,1.65,65.8,🚦 PRODUCTION TARGET: High Ceiling,57
+645305,Ali Sánchez,1,New York Yankees,José Soriano,1.35,0.666,1.15,1.63,65.4,🚦 PRODUCTION TARGET: High Ceiling,58
+572233,Christian Walker,3,Houston Astros,Brady Basso,1.35,0.639,1.2,1.64,65.4,🚦 PRODUCTION TARGET: High Ceiling,59
+691594,Javier Sanoja,8,Miami Marlins,Jackson Kent,2.48,0.784,0.75,1.63,65.3,🚦 PRODUCTION TARGET: High Ceiling,60
+669016,Brandon Marsh,2,Philadelphia Phillies,Kyle Leahy,1.31,0.683,1.15,1.63,65.0,🚦 PRODUCTION TARGET: High Ceiling,61
+687231,Darell Hernaiz,4,Athletics,Cristian Javier,1.68,0.509,1.2,1.62,64.9,🚦 PRODUCTION TARGET: High Ceiling,62
+545121,Ildemaro Vargas,4,Arizona Diamondbacks,Andrew Abbott,1.4,0.609,1.2,1.62,64.7,🚦 PRODUCTION TARGET: High Ceiling,63
+814430,Brett Callahan,2,Detroit Tigers,Daniel Lynch IV,1.02,0.87,1.15,1.61,64.6,🚦 PRODUCTION TARGET: High Ceiling,64
+682657,Angel Martínez,2,Cleveland Guardians,Tomoyuki Sugano,1.26,0.698,1.15,1.6,64.0,🚦 PRODUCTION TARGET: High Ceiling,65
+621439,Byron Buxton,4,Minnesota Twins,Walker Buehler,1.39,0.603,1.2,1.59,63.6,🚦 PRODUCTION TARGET: High Ceiling,66
+657757,Gavin Sheets,4,San Diego Padres,Bailey Ober,1.25,0.668,1.2,1.58,63.3,🚦 PRODUCTION TARGET: High Ceiling,67
+805367,Chase Meidroth,4,Chicago White Sox,Nolan McLean,1.16,0.717,1.2,1.58,63.1,🚦 PRODUCTION TARGET: High Ceiling,68
+663662,Daz Cameron,6,Toronto Blue Jays,Carlos Rodón,1.23,0.892,0.9,1.56,62.4,🚦 PRODUCTION TARGET: High Ceiling,69
+666182,Bo Bichette,2,New York Mets,Sean Newcomb,1.1,0.779,1.15,1.56,62.3,🚦 PRODUCTION TARGET: High Ceiling,70
+699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Blake Snell,1.13,0.722,1.2,1.55,61.9,⚾ Standard Volume,71
+671056,Iván Herrera,5,St. Louis Cardinals,Cristopher Sánchez,1.22,0.669,1.2,1.55,61.9,⚾ Standard Volume,72
+664040,Brandon Lowe,2,Pittsburgh Pirates,Blake Snell,1.13,0.751,1.15,1.54,61.7,⚾ Standard Volume,73
+681297,Colton Cowser,5,Baltimore Orioles,Nick Martinez,1.14,0.711,1.2,1.54,61.5,⚾ Standard Volume,74
+807727,Charles McAdoo,5,Toronto Blue Jays,Carlos Rodón,1.23,0.658,1.2,1.53,61.4,⚾ Standard Volume,75
+701162,Ben Malgeri,1,Detroit Tigers,Daniel Lynch IV,1.02,0.823,1.15,1.53,61.0,⚾ Standard Volume,76
+642708,Amed Rosario,2,New York Yankees,José Soriano,1.35,0.618,1.15,1.52,60.7,⚾ Standard Volume,77
+691723,Coby Mayo,4,Baltimore Orioles,Nick Martinez,1.14,0.699,1.2,1.51,60.5,⚾ Standard Volume,78
+701785,Kaelen Culpepper,6,Minnesota Twins,Walker Buehler,1.39,0.761,0.9,1.5,60.2,⚾ Standard Volume,79
+662139,Daulton Varsho,4,Houston Astros,Brady Basso,1.35,0.587,1.2,1.5,60.1,⚾ Standard Volume,80
+553869,Elias Díaz,5,Texas Rangers,Yusei Kikuchi,1.58,0.501,1.2,1.5,60.0,⚾ Standard Volume,81
+543877,Christian Vázquez,2,Houston Astros,Brady Basso,1.35,0.61,1.15,1.5,59.9,⚾ Standard Volume,82
+642086,Dominic Smith,2,Atlanta Braves,Shane Drohan,1.25,0.654,1.15,1.49,59.4,⚾ Standard Volume,83
+691783,Jordan Lawlar,6,Arizona Diamondbacks,Andrew Abbott,1.4,0.746,0.9,1.49,59.4,⚾ Standard Volume,84
+686527,Dominic Canzone,5,Seattle Mariners,Shota Imanaga,1.09,0.717,1.2,1.48,59.3,⚾ Standard Volume,85
+640459,Brian Navarreto,2,Miami Marlins,Jackson Kent,2.48,0.463,1.15,1.48,59.0,⚾ Standard Volume,86
+595978,Austin Hedges,3,Cleveland Guardians,Tomoyuki Sugano,1.26,0.609,1.2,1.46,58.2,⚾ Standard Volume,87
+672569,Gustavo Campero,4,Los Angeles Angels,Cal Quantrill,1.15,0.666,1.2,1.45,58.1,⚾ Standard Volume,88
+667452,Corey Julks,4,Detroit Tigers,Daniel Lynch IV,1.02,0.75,1.2,1.45,58.0,⚾ Standard Volume,89
+664954,Brett Sullivan,2,Colorado Rockies,Foster Griffin,1.07,0.743,1.15,1.44,57.8,⚾ Standard Volume,90
+691406,Junior Caminero,6,Tampa Bay Rays,Shane Baz,1.35,0.75,0.9,1.44,57.6,⚾ Standard Volume,91
+695657,Colson Montgomery,5,Chicago White Sox,Nolan McLean,1.16,0.653,1.2,1.44,57.5,⚾ Standard Volume,92
+687952,Christian Encarnacion-Strand,2,Baltimore Orioles,Nick Martinez,1.14,0.693,1.15,1.44,57.5,⚾ Standard Volume,93
+695731,Braden Montgomery,2,Chicago White Sox,Nolan McLean,1.16,0.679,1.15,1.43,57.3,⚾ Standard Volume,94
+678218,Brandon Valenzuela,3,Toronto Blue Jays,Carlos Rodón,1.23,0.612,1.2,1.43,57.1,⚾ Standard Volume,95
+665926,Andrés Giménez,2,Toronto Blue Jays,Carlos Rodón,1.23,0.639,1.15,1.43,57.1,⚾ Standard Volume,96
+677649,Ezequiel Duran,7,Texas Rangers,Yusei Kikuchi,1.58,0.636,0.9,1.43,57.1,⚾ Standard Volume,97
+622761,Jorge Mateo,5,Tampa Bay Rays,Shane Baz,1.35,0.556,1.2,1.42,56.9,⚾ Standard Volume,98
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Blake Snell,1.13,0.662,1.2,1.42,56.8,⚾ Standard Volume,99
+518692,Freddie Freeman,5,Los Angeles Dodgers,Lake Bachar,1.09,0.687,1.2,1.42,56.8,⚾ Standard Volume,100
+671732,Lawrence Butler,9,Athletics,Cristian Javier,1.68,0.711,0.75,1.42,56.7,⚾ Standard Volume,101
+666023,Freddy Fermin,3,San Diego Padres,Bailey Ober,1.25,0.594,1.2,1.41,56.3,⚾ Standard Volume,102
+656775,Cedric Mullins,1,Tampa Bay Rays,Shane Baz,1.35,0.572,1.15,1.4,56.1,⚾ Standard Volume,103
+666176,Jo Adell,7,Cleveland Guardians,Tomoyuki Sugano,1.26,0.781,0.9,1.4,56.0,⚾ Standard Volume,104
+642350,Jose Siri,5,Los Angeles Angels,Cal Quantrill,1.15,0.64,1.2,1.4,55.9,⚾ Standard Volume,105
+677587,Brayan Rocchio,4,Cleveland Guardians,Tomoyuki Sugano,1.26,0.581,1.2,1.39,55.6,⚾ Standard Volume,106
+663586,Austin Riley,1,Atlanta Braves,Shane Drohan,1.25,0.61,1.15,1.39,55.4,⚾ Standard Volume,107
+702176,Alan Roden,1,Minnesota Twins,Walker Buehler,1.39,0.547,1.15,1.38,55.3,⚾ Standard Volume,108
+643217,Andrew Benintendi,1,Chicago White Sox,Nolan McLean,1.16,0.655,1.15,1.38,55.3,⚾ Standard Volume,109
+664023,Ian Happ,4,Chicago Cubs,Bryce Miller,1.04,0.7,1.2,1.38,55.3,⚾ Standard Volume,110
+665019,Kody Clemens,7,Minnesota Twins,Walker Buehler,1.39,0.697,0.9,1.38,55.1,⚾ Standard Volume,111
+695600,Carter Jensen,2,Kansas City Royals,TBD Pitcher,1.3,0.579,1.15,1.37,54.8,⚾ Standard Volume,112
+805811,Bryce Eldridge,2,San Francisco Giants,Jake Bennett,1.07,0.703,1.15,1.37,54.7,⚾ Standard Volume,113
+680977,Brendan Donovan,1,Seattle Mariners,Shota Imanaga,1.09,0.689,1.15,1.36,54.6,⚾ Standard Volume,114
+690993,Colt Keith,3,Detroit Tigers,Daniel Lynch IV,1.02,0.705,1.2,1.36,54.6,⚾ Standard Volume,115
+683734,Andrew Vaughn,1,Milwaukee Brewers,Tyler Mahle,0.86,0.771,1.15,1.37,54.6,⚾ Standard Volume,116
+669224,Austin Wells,3,New York Yankees,José Soriano,1.35,0.532,1.2,1.36,54.5,⚾ Standard Volume,117
+680664,Eduardo Valencia,6,Detroit Tigers,Daniel Lynch IV,1.02,0.935,0.9,1.36,54.2,⚾ Standard Volume,118
+621566,Matt Olson,7,Atlanta Braves,Shane Drohan,1.25,0.762,0.9,1.36,54.2,⚾ Standard Volume,119
+624428,Adam Frazier,1,Los Angeles Angels,Cal Quantrill,1.15,0.649,1.15,1.36,54.2,⚾ Standard Volume,120
+691788,Joe Mack,9,Miami Marlins,Jackson Kent,2.48,0.65,0.75,1.35,54.1,⚾ Standard Volume,121
+624431,Jose Trevino,6,Cincinnati Reds,Mitch Bratt,1.47,0.645,0.9,1.35,54.0,⚾ Standard Volume,122
+699302,Héctor Rodríguez,4,Cincinnati Reds,Mitch Bratt,1.47,0.481,1.2,1.34,53.7,⚾ Standard Volume,123
+663494,Bryan Torres,3,St. Louis Cardinals,Cristopher Sánchez,1.22,0.579,1.2,1.34,53.6,⚾ Standard Volume,124
+694249,Cole Carrigg,3,Colorado Rockies,Foster Griffin,1.07,0.656,1.2,1.33,53.3,⚾ Standard Volume,125
+691458,Blaze Jordan,2,St. Louis Cardinals,Cristopher Sánchez,1.22,0.598,1.15,1.33,53.1,⚾ Standard Volume,126
+514888,Jose Altuve,7,Houston Astros,Brady Basso,1.35,0.69,0.9,1.32,53.0,⚾ Standard Volume,127
+643376,Danny Jansen,4,Texas Rangers,Yusei Kikuchi,1.58,0.439,1.2,1.32,52.6,⚾ Standard Volume,128
+678882,Ceddanne Rafaela,5,Boston Red Sox,Matt Wilkinson,0.5,0.709,1.2,1.31,52.4,⚾ Standard Volume,129
+694203,Denzer Guzman,3,Los Angeles Angels,Cal Quantrill,1.15,0.596,1.2,1.3,52.0,⚾ Standard Volume,130
+669720,Austin Hays,1,San Diego Padres,Bailey Ober,1.25,0.571,1.15,1.3,51.9,⚾ Standard Volume,131
+702332,Caleb Durbin,4,Boston Red Sox,Matt Wilkinson,0.5,0.698,1.2,1.29,51.6,⚾ Standard Volume,132
+801126,Brock Rodden,2,Seattle Mariners,Shota Imanaga,1.09,0.643,1.15,1.27,50.9,⚾ Standard Volume,133
+608348,Carson Kelly,2,Chicago Cubs,Bryce Miller,1.04,0.672,1.15,1.27,50.8,⚾ Standard Volume,134
+686555,Isaac Collins,3,Kansas City Royals,TBD Pitcher,1.3,0.515,1.2,1.27,50.8,⚾ Standard Volume,135
+807712,Luke Keaschall,8,Minnesota Twins,Walker Buehler,1.39,0.769,0.75,1.27,50.7,⚾ Standard Volume,136
+571771,Enrique Hernández,4,Los Angeles Dodgers,Lake Bachar,1.09,0.612,1.2,1.27,50.6,⚾ Standard Volume,137
+689414,Liam Hicks,8,Tampa Bay Rays,Shane Baz,1.35,0.788,0.75,1.26,50.5,⚾ Standard Volume,138
+691023,Jordan Walker,8,St. Louis Cardinals,Cristopher Sánchez,1.22,0.873,0.75,1.26,50.5,⚾ Standard Volume,139
+669134,Luis Campusano,8,San Diego Padres,Bailey Ober,1.25,0.851,0.75,1.26,50.5,⚾ Standard Volume,140
+678662,Ezequiel Tovar,5,Colorado Rockies,Foster Griffin,1.07,0.616,1.2,1.25,50.0,⚾ Standard Volume,141
+669394,Jake Burger,8,Texas Rangers,Yusei Kikuchi,1.58,0.666,0.75,1.25,49.9,⚾ Standard Volume,142
+678489,Jorge Barrosa,7,Arizona Diamondbacks,Andrew Abbott,1.4,0.623,0.9,1.24,49.6,⚾ Standard Volume,143
+681393,Connor Norby,4,Colorado Rockies,Foster Griffin,1.07,0.597,1.2,1.21,48.4,⚾ Standard Volume,144
+682634,Kevin Alcántara,5,Chicago Cubs,Bryce Miller,1.04,0.614,1.2,1.21,48.4,⚾ Standard Volume,145
+687637,Dylan Beavers,6,Baltimore Orioles,Nick Martinez,1.14,0.745,0.9,1.21,48.3,⚾ Standard Volume,146
+695734,Daylen Lile,6,Washington Nationals,Janson Junk,1.36,0.624,0.9,1.21,48.3,⚾ Standard Volume,147
+669743,Alex Call,2,Los Angeles Dodgers,Lake Bachar,1.09,0.6,1.15,1.19,47.6,⚾ Standard Volume,148
+683146,Brett Baty,3,New York Mets,Sean Newcomb,1.1,0.569,1.2,1.19,47.5,⚾ Standard Volume,149
+702284,Cole Young,4,Seattle Mariners,Shota Imanaga,1.09,0.573,1.2,1.18,47.4,⚾ Standard Volume,150
+545361,Mike Trout,7,Los Angeles Angels,Cal Quantrill,1.15,0.721,0.9,1.18,47.1,⚾ Standard Volume,151
+666152,David Hamilton,5,Milwaukee Brewers,Tyler Mahle,0.86,0.637,1.2,1.18,47.1,⚾ Standard Volume,152
+656537,Derek Hill,6,Philadelphia Phillies,Kyle Leahy,1.31,0.632,0.9,1.18,47.1,⚾ Standard Volume,153
+665862,Jazz Chisholm Jr.,7,New York Yankees,José Soriano,1.35,0.611,0.9,1.17,46.9,⚾ Standard Volume,154
+664983,Jake McCarthy,6,Colorado Rockies,Foster Griffin,1.07,0.767,0.9,1.17,46.7,⚾ Standard Volume,155
+678246,Miguel Vargas,9,Chicago White Sox,Nolan McLean,1.16,0.848,0.75,1.17,46.7,⚾ Standard Volume,156
+676391,Ernie Clement,7,Toronto Blue Jays,Carlos Rodón,1.23,0.662,0.9,1.16,46.4,⚾ Standard Volume,157
+686681,Michael Massey,9,Kansas City Royals,TBD Pitcher,1.3,0.752,0.75,1.16,46.4,⚾ Standard Volume,158
+694497,Evan Carter,6,Texas Rangers,Yusei Kikuchi,1.58,0.514,0.9,1.15,46.2,⚾ Standard Volume,159
+664728,Kyle Isbel,6,Kansas City Royals,TBD Pitcher,1.3,0.618,0.9,1.14,45.8,⚾ Standard Volume,160
+670231,John Rave,5,Kansas City Royals,TBD Pitcher,1.3,0.465,1.2,1.15,45.8,⚾ Standard Volume,161
+665161,Jeremy Peña,6,Houston Astros,Brady Basso,1.35,0.596,0.9,1.14,45.8,⚾ Standard Volume,162
+693307,Dillon Dingler,5,Detroit Tigers,Daniel Lynch IV,1.02,0.591,1.2,1.14,45.7,⚾ Standard Volume,163
+696285,Jacob Young,9,Washington Nationals,Janson Junk,1.36,0.705,0.75,1.14,45.5,⚾ Standard Volume,164
+657041,Lane Thomas,6,Atlanta Braves,Shane Drohan,1.25,0.636,0.9,1.13,45.2,⚾ Standard Volume,165
+678011,Anthony Seigler,3,Boston Red Sox,Matt Wilkinson,0.5,0.607,1.2,1.12,44.9,⚾ Standard Volume,166
+592885,Christian Yelich,3,Milwaukee Brewers,Tyler Mahle,0.86,0.607,1.2,1.12,44.9,⚾ Standard Volume,167
+680574,Matt McLain,8,Cincinnati Reds,Mitch Bratt,1.47,0.643,0.75,1.12,44.8,⚾ Standard Volume,168
+571970,Max Muncy,8,Los Angeles Dodgers,Lake Bachar,1.09,0.863,0.75,1.12,44.6,⚾ Standard Volume,169
+663993,Nathaniel Lowe,9,Cleveland Guardians,Tomoyuki Sugano,1.26,0.746,0.75,1.11,44.6,⚾ Standard Volume,170
+683090,Matthew Lugo,8,Kansas City Royals,TBD Pitcher,1.3,0.72,0.75,1.11,44.4,⚾ Standard Volume,171
+668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,0.86,0.619,1.15,1.1,43.9,⚾ Standard Volume,172
+671277,Luis García Jr.,9,New York Yankees,José Soriano,1.35,0.686,0.75,1.1,43.9,⚾ Standard Volume,173
+664774,LaMonte Wade Jr.,8,Houston Astros,Brady Basso,1.35,0.681,0.75,1.09,43.6,⚾ Standard Volume,174
+663968,Jake Mangum,7,Pittsburgh Pirates,Blake Snell,1.13,0.677,0.9,1.09,43.5,⚾ Standard Volume,175
+802139,JJ Wetherholt,6,St. Louis Cardinals,Cristopher Sánchez,1.22,0.627,0.9,1.09,43.5,⚾ Standard Volume,176
+683002,Gunnar Henderson,7,Baltimore Orioles,Nick Martinez,1.14,0.669,0.9,1.09,43.4,⚾ Standard Volume,177
+630105,Jake Cronenworth,6,San Diego Padres,Bailey Ober,1.25,0.609,0.9,1.08,43.3,⚾ Standard Volume,178
+671739,Michael Harris II,9,Atlanta Braves,Shane Drohan,1.25,0.729,0.75,1.08,43.2,⚾ Standard Volume,179
+805347,Jim Jarvis,5,Atlanta Braves,Shane Drohan,1.25,0.455,1.2,1.08,43.2,⚾ Standard Volume,180
+677950,Alek Thomas,1,Los Angeles Dodgers,Lake Bachar,1.09,0.545,1.15,1.08,43.2,⚾ Standard Volume,181
+624641,Edmundo Sosa,7,Philadelphia Phillies,Kyle Leahy,1.31,0.577,0.9,1.07,43.0,⚾ Standard Volume,182
+668904,Royce Lewis,9,Minnesota Twins,Walker Buehler,1.39,0.651,0.75,1.07,42.9,⚾ Standard Volume,183
+647304,Josh Naylor,7,Seattle Mariners,Shota Imanaga,1.09,0.684,0.9,1.06,42.4,⚾ Standard Volume,184
+640902,Jhonny Pereda,6,Seattle Mariners,Shota Imanaga,1.09,0.681,0.9,1.06,42.2,⚾ Standard Volume,185
+805999,A.J. Ewing,1,New York Mets,Sean Newcomb,1.1,0.526,1.15,1.05,42.1,⚾ Standard Volume,186
+655316,Andruw Monasterio,2,Boston Red Sox,Matt Wilkinson,0.5,0.593,1.15,1.05,42.0,⚾ Standard Volume,187
+686668,Brenton Doyle,3,Chicago White Sox,Nolan McLean,1.16,0.476,1.2,1.05,41.9,⚾ Standard Volume,188
+663728,Cal Raleigh,3,Seattle Mariners,Shota Imanaga,1.09,0.504,1.2,1.04,41.7,⚾ Standard Volume,189
+571912,Luke Maile,7,Kansas City Royals,TBD Pitcher,1.3,0.563,0.9,1.04,41.6,⚾ Standard Volume,190
+669397,Nick Allen,9,Houston Astros,Brady Basso,1.35,0.648,0.75,1.04,41.5,⚾ Standard Volume,191
+687551,Drew Gilbert,6,San Francisco Giants,Jake Bennett,1.07,0.68,0.9,1.04,41.4,⚾ Standard Volume,192
+686611,Dylan Crews,7,Washington Nationals,Janson Junk,1.36,0.534,0.9,1.03,41.3,⚾ Standard Volume,193
+676609,José Caballero,8,New York Yankees,José Soriano,1.35,0.644,0.75,1.03,41.2,⚾ Standard Volume,194
+683737,Michael Busch,6,Chicago Cubs,Bryce Miller,1.04,0.696,0.9,1.03,41.2,⚾ Standard Volume,195
+699912,Jose Fernandez,8,Arizona Diamondbacks,Andrew Abbott,1.4,0.619,0.75,1.03,41.1,⚾ Standard Volume,196
+643289,Mauricio Dubón,8,Atlanta Braves,Shane Drohan,1.25,0.69,0.75,1.02,40.9,⚾ Standard Volume,197
+641680,Jonah Heim,8,Athletics,Cristian Javier,1.68,0.513,0.75,1.02,40.8,⚾ Standard Volume,198
+669003,Garrett Mitchell,6,Milwaukee Brewers,Tyler Mahle,0.86,0.733,0.9,1.02,40.7,⚾ Standard Volume,199
+806198,Cooper Pratt,4,Milwaukee Brewers,Tyler Mahle,0.86,0.548,1.2,1.01,40.5,⚾ Standard Volume,200
+666139,Josh Lowe,6,Los Angeles Angels,Cal Quantrill,1.15,0.616,0.9,1.01,40.3,⚾ Standard Volume,201
+694378,Jacob Gonzalez,6,Pittsburgh Pirates,Blake Snell,1.13,0.626,0.9,1.01,40.3,⚾ Standard Volume,202
+663647,Ke'Bryan Hayes,7,Cincinnati Reds,Mitch Bratt,1.47,0.48,0.9,1.0,40.2,⚾ Standard Volume,203
+701852,Drew Cavanaugh,5,San Francisco Giants,Jake Bennett,1.07,0.493,1.2,1.0,40.0,⚾ Standard Volume,204
+663743,Nick Fortes,9,Tampa Bay Rays,Shane Baz,1.35,0.618,0.75,0.99,39.6,⚾ Standard Volume,205
+672284,Jarred Kelenic,9,Texas Rangers,Yusei Kikuchi,1.58,0.526,0.75,0.98,39.4,⚾ Standard Volume,206
+663457,Lars Nootbaar,9,Arizona Diamondbacks,Andrew Abbott,1.4,0.593,0.75,0.98,39.3,⚾ Standard Volume,207
+681047,Christian Franklin,3,Baltimore Orioles,Nick Martinez,1.14,0.454,1.2,0.98,39.3,⚾ Standard Volume,208
+695670,Harry Ford,8,Washington Nationals,Janson Junk,1.36,0.607,0.75,0.98,39.1,⚾ Standard Volume,209
+687749,Jase Bowen,7,San Diego Padres,Bailey Ober,1.25,0.547,0.9,0.97,38.9,⚾ Standard Volume,210
+650402,Gleyber Torres,7,Detroit Tigers,Daniel Lynch IV,1.02,0.668,0.9,0.97,38.8,⚾ Standard Volume,211
+641343,Jake Bauers,9,Milwaukee Brewers,Tyler Mahle,0.86,0.84,0.75,0.97,38.8,⚾ Standard Volume,212
+680779,Henry Davis,5,Pittsburgh Pirates,Blake Snell,1.13,0.45,1.2,0.97,38.6,⚾ Standard Volume,213
+642201,Eli White,7,Boston Red Sox,Matt Wilkinson,0.5,0.692,0.9,0.96,38.4,⚾ Standard Volume,214
+596142,Gary Sánchez,7,Milwaukee Brewers,Tyler Mahle,0.86,0.688,0.9,0.95,38.2,⚾ Standard Volume,215
+701678,Hao-Yu Lee,8,Detroit Tigers,Daniel Lynch IV,1.02,0.788,0.75,0.95,38.1,⚾ Standard Volume,216
+676439,Hunter Feduccia,6,Los Angeles Dodgers,Lake Bachar,1.09,0.607,0.9,0.94,37.6,⚾ Standard Volume,217
+660821,Jesús Sánchez,9,Toronto Blue Jays,Carlos Rodón,1.23,0.644,0.75,0.94,37.5,⚾ Standard Volume,218
+695257,Billy Cook,1,Pittsburgh Pirates,Blake Snell,1.13,0.457,1.15,0.94,37.5,⚾ Standard Volume,219
+683766,Christian Koss,4,San Francisco Giants,Jake Bennett,1.07,0.462,1.2,0.94,37.5,⚾ Standard Volume,220
+608070,José Ramírez,8,Cleveland Guardians,Tomoyuki Sugano,1.26,0.626,0.75,0.94,37.4,⚾ Standard Volume,221
+666160,Mickey Moniak,9,Colorado Rockies,Foster Griffin,1.07,0.735,0.75,0.93,37.3,⚾ Standard Volume,222
+693304,Nick Gonzales,9,Pittsburgh Pirates,Blake Snell,1.13,0.686,0.75,0.92,36.8,⚾ Standard Volume,223
+668670,Jake Rogers,7,Chicago White Sox,Nolan McLean,1.16,0.558,0.9,0.92,36.8,⚾ Standard Volume,224
+543807,George Springer,8,Toronto Blue Jays,Carlos Rodón,1.23,0.629,0.75,0.92,36.7,⚾ Standard Volume,225
+657136,Connor Wong,6,Boston Red Sox,Matt Wilkinson,0.5,0.66,0.9,0.92,36.6,⚾ Standard Volume,226
+596019,Francisco Lindor,9,New York Mets,Sean Newcomb,1.1,0.7,0.75,0.91,36.5,⚾ Standard Volume,227
+665877,José Fermín,9,St. Louis Cardinals,Cristopher Sánchez,1.22,0.63,0.75,0.91,36.4,⚾ Standard Volume,228
+663330,Jahmai Jones,8,Boston Red Sox,Matt Wilkinson,0.5,0.773,0.75,0.89,35.7,⚾ Standard Volume,229
+691720,Kyle Karros,8,Colorado Rockies,Foster Griffin,1.07,0.704,0.75,0.89,35.7,⚾ Standard Volume,230
+592663,J.T. Realmuto,9,Philadelphia Phillies,Kyle Leahy,1.31,0.571,0.75,0.89,35.5,⚾ Standard Volume,231
+668939,Adley Rutschman,1,Boston Red Sox,Matt Wilkinson,0.5,0.499,1.15,0.89,35.4,⚾ Standard Volume,232
+650859,Luis Rengifo,9,San Diego Padres,Bailey Ober,1.25,0.597,0.75,0.88,35.4,⚾ Standard Volume,233
+676572,Eric Wagaman,7,New York Mets,Sean Newcomb,1.1,0.564,0.9,0.88,35.3,⚾ Standard Volume,234
+691011,Drew Romo,6,Chicago White Sox,Nolan McLean,1.16,0.531,0.9,0.88,35.0,⚾ Standard Volume,235
+699625,Jimmy Crooks,7,St. Louis Cardinals,Cristopher Sánchez,1.22,0.505,0.9,0.88,35.0,⚾ Standard Volume,236
+694192,Jackson Chourio,8,Milwaukee Brewers,Tyler Mahle,0.86,0.756,0.75,0.87,34.9,⚾ Standard Volume,237
+665750,Leody Taveras,9,Baltimore Orioles,Nick Martinez,1.14,0.63,0.75,0.85,34.1,⚾ Standard Volume,238
+663656,Kyle Tucker,7,Los Angeles Dodgers,Lake Bachar,1.09,0.546,0.9,0.85,33.9,⚾ Standard Volume,239
+624424,Michael Conforto,7,Chicago Cubs,Bryce Miller,1.04,0.561,0.9,0.83,33.2,⚾ Standard Volume,240
+681807,David Fry,6,Cleveland Guardians,Tomoyuki Sugano,1.26,0.461,0.9,0.83,33.0,⚾ Standard Volume,241
+665804,Miguel Amaya,8,Chicago Cubs,Bryce Miller,1.04,0.664,0.75,0.82,32.7,⚾ Standard Volume,242
+677594,Julio Rodríguez,8,Seattle Mariners,Shota Imanaga,1.09,0.631,0.75,0.81,32.6,⚾ Standard Volume,243
+666624,Christopher Morel,5,New York Mets,Sean Newcomb,1.1,0.391,1.2,0.82,32.6,⚾ Standard Volume,244
+702616,Jackson Holliday,8,Baltimore Orioles,Nick Martinez,1.14,0.603,0.75,0.81,32.6,⚾ Standard Volume,245
+663538,Nico Hoerner,9,Chicago Cubs,Bryce Miller,1.04,0.655,0.75,0.81,32.3,⚾ Standard Volume,246
+690924,Braxton Fulford,1,Colorado Rockies,Foster Griffin,1.07,0.413,1.15,0.8,32.2,⚾ Standard Volume,247
+808982,Jung Hoo Lee,8,San Francisco Giants,Jake Bennett,1.07,0.631,0.75,0.8,32.0,⚾ Standard Volume,248
+665966,Carlos Narváez,1,Baltimore Orioles,Nick Martinez,1.14,0.38,1.15,0.79,31.5,⚾ Standard Volume,249
+687597,Jordan Beck,7,Colorado Rockies,Foster Griffin,1.07,0.508,0.9,0.77,30.9,⚾ Standard Volume,250
+813841,Jonah Cox,7,San Francisco Giants,Jake Bennett,1.07,0.505,0.9,0.77,30.8,⚾ Standard Volume,251
+682626,Francisco Alvarez,8,New York Mets,Sean Newcomb,1.1,0.582,0.75,0.76,30.4,⚾ Standard Volume,252
+500743,Miguel Rojas,9,Los Angeles Dodgers,Lake Bachar,1.09,0.587,0.75,0.76,30.3,⚾ Standard Volume,253
+669707,Jared Triolo,8,Pittsburgh Pirates,Blake Snell,1.13,0.556,0.75,0.74,29.8,⚾ Standard Volume,254
+694208,Moisés Ballesteros,8,Los Angeles Angels,Cal Quantrill,1.15,0.539,0.75,0.73,29.4,⚾ Standard Volume,255
+695681,Christian Moore,2,Los Angeles Angels,Cal Quantrill,1.15,0.349,1.15,0.73,29.2,⚾ Standard Volume,256
+678545,Osleivis Basabe,9,San Francisco Giants,Jake Bennett,1.07,0.566,0.75,0.72,28.7,⚾ Standard Volume,257
+680776,Jarren Duran,9,Boston Red Sox,Matt Wilkinson,0.5,0.591,0.75,0.68,27.3,⚾ Standard Volume,258
+595879,Javier Báez,9,Detroit Tigers,Daniel Lynch IV,1.02,0.56,0.75,0.68,27.1,⚾ Standard Volume,259
+671083,Buddy Kennedy,3,San Francisco Giants,Jake Bennett,1.07,0.334,1.2,0.68,27.1,⚾ Standard Volume,260
+671218,Heliot Ramos,6,New York Yankees,José Soriano,1.35,0.349,0.9,0.67,26.8,⚾ Standard Volume,261
+672724,Oswald Peraza,9,Los Angeles Angels,Cal Quantrill,1.15,0.459,0.75,0.63,25.0,⚾ Standard Volume,262
+666163,Ben Rortvedt,3,Los Angeles Dodgers,Lake Bachar,1.09,0.3,1.2,0.62,24.8,⚾ Standard Volume,263
+682668,Luisangel Acuña,8,Chicago White Sox,Nolan McLean,1.16,0.45,0.75,0.62,24.7,⚾ Standard Volume,264
+660844,Leo Rivas,9,Seattle Mariners,Shota Imanaga,1.09,0.451,0.75,0.58,23.3,⚾ Standard Volume,265
+669911,Michael Toglia,9,Cincinnati Reds,Mitch Bratt,1.47,0.315,0.75,0.55,22.0,⚾ Standard Volume,266
+596117,Garrett Stubbs,8,Philadelphia Phillies,Kyle Leahy,1.31,0.33,0.75,0.51,20.5,⚾ Standard Volume,267
+673490,Ha-Seong Kim,4,Atlanta Braves,Shane Drohan,1.25,0.139,1.2,0.5,20.0,⚾ Standard Volume,268
+665506,Cristian Pache,6,New York Mets,Sean Newcomb,1.1,0.0,0.9,0.5,20.0,⚾ Standard Volume,269
+672356,Gabriel Arias,3,Chicago Cubs,Bryce Miller,1.04,0.217,1.2,0.5,20.0,⚾ Standard Volume,270
