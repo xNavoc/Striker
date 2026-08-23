@@ -1,127 +1,19 @@
 player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,blended_iso,hr_prob,score,target_call,rank
-804668,Rafael Flores Jr.,5,Pittsburgh Pirates,Blake Snell,R vs LHP,[DOME / CONTROLLED],0.357,0.341,0.348,29.1,58.2,🔥 HR TARGET: Strong Power Split,1
-666176,Jo Adell,3,Cleveland Guardians,Tomoyuki Sugano,R vs RHP,[NEUTRAL 93° 7MPH],0.28,0.226,0.251,23.2,46.3,⚾ Standard Power Spot,2
-571448,Nolan Arenado,5,Arizona Diamondbacks,Andrew Abbott,R vs LHP,[DOME / CONTROLLED],0.203,0.316,0.265,22.8,45.6,⚾ Standard Power Spot,3
-571970,Max Muncy,4,Los Angeles Dodgers,Lake Bachar,L vs RHP,[DOME / CONTROLLED],0.255,0.273,0.265,21.8,43.6,⚾ Standard Power Spot,4
-668800,Andrew Knizner,7,San Francisco Giants,Jake Bennett,R vs LHP,[NEUTRAL 67° 2MPH],0.272,0.273,0.272,21.3,42.6,⚾ Standard Power Spot,5
-691718,Pete Crow-Armstrong,1,Chicago Cubs,Bryce Miller,L vs RHP,[NEUTRAL 72°],0.275,0.281,0.278,20.5,41.1,⚾ Standard Power Spot,6
-608324,Alex Bregman,4,Chicago Cubs,Bryce Miller,R vs RHP,[NEUTRAL 72°],0.165,0.4,0.294,19.7,39.4,⚾ Standard Power Spot,7
-666160,Mickey Moniak,4,Colorado Rockies,Foster Griffin,L vs LHP,[NEUTRAL 93° 7MPH],0.276,0.176,0.221,19.2,38.5,⚾ Standard Power Spot,8
-660271,Shohei Ohtani,1,Los Angeles Dodgers,Lake Bachar,L vs RHP,[DOME / CONTROLLED],0.26,0.203,0.229,19.1,38.2,⚾ Standard Power Spot,9
-664954,Brett Sullivan,7,Colorado Rockies,Foster Griffin,L vs LHP,[NEUTRAL 93° 7MPH],0.197,0.231,0.216,18.8,37.6,⚾ Standard Power Spot,10
-553993,Eugenio Suárez,5,Cincinnati Reds,Mitch Bratt,R vs LHP,[DOME / CONTROLLED],0.203,0.2,0.201,17.7,35.4,⚾ Standard Power Spot,11
-668227,Randy Arozarena,1,Seattle Mariners,Shota Imanaga,R vs LHP,[NEUTRAL 72°],0.188,0.25,0.222,17.4,34.9,⚾ Standard Power Spot,12
-665487,Fernando Tatis Jr.,1,San Diego Padres,Bailey Ober,R vs RHP,[NEUTRAL 87° 7MPH],0.153,0.327,0.249,17.0,34.0,⚾ Standard Power Spot,13
-621566,Matt Olson,8,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.277,0.211,0.24,17.0,34.0,⚾ Standard Power Spot,14
-641343,Jake Bauers,9,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.233,0.176,0.202,17.0,34.0,⚾ Standard Power Spot,15
-575929,Willson Contreras,4,Boston Red Sox,Matt Wilkinson,R vs LHP,[NEUTRAL 67° 2MPH],0.253,0.176,0.211,16.9,33.7,⚾ Standard Power Spot,16
-663993,Nathaniel Lowe,4,Cleveland Guardians,Tomoyuki Sugano,L vs RHP,[NEUTRAL 93° 7MPH],0.204,0.113,0.154,16.1,32.3,⚾ Standard Power Spot,17
-663886,Tyler Stephenson,4,Cincinnati Reds,Mitch Bratt,R vs LHP,[DOME / CONTROLLED],0.167,0.188,0.178,15.8,31.6,⚾ Standard Power Spot,18
-680574,Matt McLain,6,Cincinnati Reds,Mitch Bratt,R vs LHP,[DOME / CONTROLLED],0.164,0.18,0.173,15.3,30.7,⚾ Standard Power Spot,19
-664040,Brandon Lowe,4,Pittsburgh Pirates,Blake Snell,L vs LHP,[DOME / CONTROLLED],0.227,0.203,0.214,15.2,30.5,⚾ Standard Power Spot,20
-663330,Jahmai Jones,1,Boston Red Sox,Matt Wilkinson,R vs LHP,[NEUTRAL 67° 2MPH],0.084,0.273,0.188,15.1,30.3,⚾ Standard Power Spot,21
-701538,Jackson Merrill,5,San Diego Padres,Bailey Ober,L vs RHP,[NEUTRAL 87° 7MPH],0.171,0.214,0.195,14.8,29.7,⚾ Standard Power Spot,22
-657041,Lane Thomas,7,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.227,0.111,0.163,14.5,29.1,⚾ Standard Power Spot,23
-642715,Willy Adames,3,San Francisco Giants,Jake Bennett,R vs LHP,[NEUTRAL 67° 2MPH],0.195,0.167,0.179,14.5,29.0,⚾ Standard Power Spot,24
-657136,Connor Wong,9,Boston Red Sox,Matt Wilkinson,R vs LHP,[NEUTRAL 67° 2MPH],0.131,0.209,0.174,14.1,28.2,⚾ Standard Power Spot,25
-657757,Gavin Sheets,7,San Diego Padres,Bailey Ober,L vs RHP,[NEUTRAL 87° 7MPH],0.182,0.182,0.182,13.9,27.8,⚾ Standard Power Spot,26
-596142,Gary Sánchez,7,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.222,0.143,0.178,13.8,27.7,⚾ Standard Power Spot,27
-701398,Sal Stewart,2,Cincinnati Reds,Mitch Bratt,R vs LHP,[DOME / CONTROLLED],0.211,0.098,0.149,13.3,26.7,⚾ Standard Power Spot,28
-605141,Mookie Betts,3,Los Angeles Dodgers,Lake Bachar,R vs RHP,[DOME / CONTROLLED],0.172,0.164,0.167,13.0,26.0,⚾ Standard Power Spot,29
-664023,Ian Happ,5,Chicago Cubs,Bryce Miller,S vs RHP,[NEUTRAL 72°],0.198,0.176,0.186,12.9,25.9,⚾ Standard Power Spot,30
-646240,Rafael Devers,2,San Francisco Giants,Jake Bennett,L vs LHP,[NEUTRAL 67° 2MPH],0.228,0.164,0.193,12.6,25.2,⚾ Standard Power Spot,31
-664983,Jake McCarthy,1,Colorado Rockies,Foster Griffin,L vs LHP,[NEUTRAL 93° 7MPH],0.191,0.098,0.14,12.5,25.1,⚾ Standard Power Spot,32
-665019,Kody Clemens,4,Minnesota Twins,Walker Buehler,L vs RHP,[NEUTRAL 87° 7MPH],0.23,0.105,0.161,12.4,24.9,⚾ Standard Power Spot,33
-673548,Seiya Suzuki,2,Chicago Cubs,Bryce Miller,R vs RHP,[NEUTRAL 72°],0.211,0.145,0.175,12.2,24.4,⚾ Standard Power Spot,34
-691783,Jordan Lawlar,7,Arizona Diamondbacks,Andrew Abbott,R vs LHP,[DOME / CONTROLLED],0.151,0.12,0.134,12.0,24.1,⚾ Standard Power Spot,35
-682998,Corbin Carroll,2,Arizona Diamondbacks,Andrew Abbott,L vs LHP,[DOME / CONTROLLED],0.235,0.109,0.166,12.0,24.0,⚾ Standard Power Spot,36
-543510,James McCann,8,Arizona Diamondbacks,Andrew Abbott,R vs LHP,[DOME / CONTROLLED],0.147,0.122,0.133,12.0,24.0,⚾ Standard Power Spot,37
-694374,Tim Tawa,6,Arizona Diamondbacks,Andrew Abbott,R vs LHP,[DOME / CONTROLLED],0.164,0.105,0.132,11.8,23.7,⚾ Standard Power Spot,38
-650489,Willi Castro,3,Colorado Rockies,Foster Griffin,S vs LHP,[NEUTRAL 93° 7MPH],0.157,0.111,0.132,11.8,23.6,⚾ Standard Power Spot,39
-686797,Brooks Lee,6,Minnesota Twins,Walker Buehler,S vs RHP,[NEUTRAL 87° 7MPH],0.181,0.158,0.168,11.8,23.6,⚾ Standard Power Spot,40
-664034,Ty France,4,San Diego Padres,Bailey Ober,R vs RHP,[NEUTRAL 87° 7MPH],0.226,0.118,0.166,11.7,23.4,⚾ Standard Power Spot,41
-605137,Josh Bell,3,Minnesota Twins,Walker Buehler,S vs RHP,[NEUTRAL 87° 7MPH],0.172,0.161,0.166,11.6,23.3,⚾ Standard Power Spot,42
-699013,Esmerlyn Valdez,2,Pittsburgh Pirates,Blake Snell,R vs LHP,[DOME / CONTROLLED],0.287,0.0,0.129,11.6,23.3,⚾ Standard Power Spot,43
-663586,Austin Riley,1,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.144,0.115,0.128,11.6,23.1,⚾ Standard Power Spot,44
-805811,Bryce Eldridge,4,San Francisco Giants,Jake Bennett,L vs LHP,[NEUTRAL 67° 2MPH],0.187,0.161,0.173,11.4,22.8,⚾ Standard Power Spot,45
-694192,Jackson Chourio,8,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.186,0.107,0.143,11.2,22.4,⚾ Standard Power Spot,46
-672515,Gabriel Moreno,3,Arizona Diamondbacks,Andrew Abbott,R vs LHP,[DOME / CONTROLLED],0.161,0.094,0.124,11.2,22.4,⚾ Standard Power Spot,47
-682657,Angel Martínez,7,Cleveland Guardians,Tomoyuki Sugano,S vs RHP,[NEUTRAL 93° 7MPH],0.184,0.06,0.116,11.2,22.4,⚾ Standard Power Spot,48
-592885,Christian Yelich,3,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.141,0.115,0.127,11.0,21.9,⚾ Standard Power Spot,49
-701785,Kaelen Culpepper,9,Minnesota Twins,Walker Buehler,R vs RHP,[NEUTRAL 87° 7MPH],0.166,0.143,0.153,10.8,21.6,⚾ Standard Power Spot,50
-624424,Michael Conforto,8,Chicago Cubs,Bryce Miller,L vs RHP,[NEUTRAL 72°],0.212,0.079,0.139,10.7,21.5,⚾ Standard Power Spot,51
-667472,Dane Myers,3,Cincinnati Reds,Mitch Bratt,R vs LHP,[DOME / CONTROLLED],0.107,0.128,0.118,10.7,21.4,⚾ Standard Power Spot,52
-678662,Ezequiel Tovar,9,Colorado Rockies,Foster Griffin,R vs LHP,[NEUTRAL 93° 7MPH],0.122,0.075,0.096,10.7,21.4,⚾ Standard Power Spot,53
-800050,Chase DeLauter,2,Cleveland Guardians,Tomoyuki Sugano,L vs RHP,[NEUTRAL 93° 7MPH],0.154,0.053,0.098,10.5,21.0,⚾ Standard Power Spot,54
-677800,Wilyer Abreu,3,Boston Red Sox,Matt Wilkinson,L vs LHP,[NEUTRAL 67° 2MPH],0.211,0.111,0.156,10.4,20.7,⚾ Standard Power Spot,55
-681393,Connor Norby,5,Colorado Rockies,Foster Griffin,R vs LHP,[NEUTRAL 93° 7MPH],0.12,0.07,0.092,10.3,20.6,⚾ Standard Power Spot,56
-642215,Weston Wilson,6,Seattle Mariners,Shota Imanaga,R vs LHP,[NEUTRAL 72°],0.179,0.083,0.126,10.3,20.5,⚾ Standard Power Spot,57
-677594,Julio Rodríguez,3,Seattle Mariners,Shota Imanaga,R vs LHP,[NEUTRAL 72°],0.16,0.098,0.126,10.2,20.5,⚾ Standard Power Spot,58
-545121,Ildemaro Vargas,1,Arizona Diamondbacks,Andrew Abbott,S vs LHP,[DOME / CONTROLLED],0.14,0.128,0.133,9.8,19.5,⚾ Standard Power Spot,59
-668709,JJ Bleday,7,Cincinnati Reds,Mitch Bratt,L vs LHP,[DOME / CONTROLLED],0.225,0.056,0.132,9.7,19.3,⚾ Standard Power Spot,60
-663728,Cal Raleigh,4,Seattle Mariners,Shota Imanaga,S vs LHP,[NEUTRAL 72°],0.147,0.146,0.147,9.6,19.2,⚾ Standard Power Spot,61
-683737,Michael Busch,3,Chicago Cubs,Bryce Miller,L vs RHP,[NEUTRAL 72°],0.151,0.098,0.122,9.5,19.0,⚾ Standard Power Spot,62
-669003,Garrett Mitchell,6,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.16,0.068,0.109,9.5,19.0,⚾ Standard Power Spot,63
-595978,Austin Hedges,8,Cleveland Guardians,Tomoyuki Sugano,R vs RHP,[NEUTRAL 93° 7MPH],0.115,0.079,0.095,9.3,18.6,⚾ Standard Power Spot,64
-682674,Victor Bericoto,5,San Francisco Giants,Jake Bennett,R vs LHP,[NEUTRAL 67° 2MPH],0.179,0.058,0.112,9.3,18.6,⚾ Standard Power Spot,65
-682829,Elly De La Cruz,1,Cincinnati Reds,Mitch Bratt,S vs LHP,[DOME / CONTROLLED],0.212,0.051,0.123,9.1,18.1,⚾ Standard Power Spot,66
-676439,Hunter Feduccia,9,Los Angeles Dodgers,Lake Bachar,L vs RHP,[DOME / CONTROLLED],0.106,0.097,0.101,8.8,17.6,⚾ Standard Power Spot,67
-676551,Brewer Hicklen,2,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.211,0.0,0.095,8.7,17.3,⚾ Standard Power Spot,68
-669134,Luis Campusano,6,San Diego Padres,Bailey Ober,R vs RHP,[NEUTRAL 87° 7MPH],0.192,0.062,0.121,8.6,17.2,⚾ Standard Power Spot,69
-686527,Dominic Canzone,2,Seattle Mariners,Shota Imanaga,L vs LHP,[NEUTRAL 72°],0.227,0.049,0.129,8.5,17.1,⚾ Standard Power Spot,70
-678882,Ceddanne Rafaela,2,Boston Red Sox,Matt Wilkinson,R vs LHP,[NEUTRAL 67° 2MPH],0.175,0.043,0.103,8.5,17.0,⚾ Standard Power Spot,71
-593428,Xander Bogaerts,8,San Diego Padres,Bailey Ober,R vs RHP,[NEUTRAL 87° 7MPH],0.106,0.128,0.118,8.4,16.8,⚾ Standard Power Spot,72
-621439,Byron Buxton,2,Minnesota Twins,Walker Buehler,R vs RHP,[NEUTRAL 87° 7MPH],0.262,0.0,0.118,8.4,16.8,⚾ Standard Power Spot,73
-592518,Manny Machado,3,San Diego Padres,Bailey Ober,R vs RHP,[NEUTRAL 87° 7MPH],0.195,0.053,0.117,8.3,16.7,⚾ Standard Power Spot,74
-677587,Brayan Rocchio,9,Cleveland Guardians,Tomoyuki Sugano,S vs RHP,[NEUTRAL 93° 7MPH],0.12,0.056,0.085,8.3,16.6,⚾ Standard Power Spot,75
-702332,Caleb Durbin,5,Boston Red Sox,Matt Wilkinson,R vs LHP,[NEUTRAL 67° 2MPH],0.146,0.056,0.096,8.0,16.0,⚾ Standard Power Spot,76
-694197,Angel Genao,5,Cleveland Guardians,Tomoyuki Sugano,S vs RHP,[NEUTRAL 93° 7MPH],0.111,0.056,0.081,7.9,15.8,⚾ Standard Power Spot,77
-686948,Drake Baldwin,4,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.175,0.05,0.106,7.9,15.7,⚾ Standard Power Spot,78
-677950,Alek Thomas,8,Los Angeles Dodgers,Lake Bachar,L vs RHP,[DOME / CONTROLLED],0.05,0.122,0.09,7.9,15.7,⚾ Standard Power Spot,79
-814439,Ryan Waldschmidt,9,Arizona Diamondbacks,Andrew Abbott,R vs LHP,[DOME / CONTROLLED],0.113,0.064,0.086,7.9,15.7,⚾ Standard Power Spot,80
-807712,Luke Keaschall,1,Minnesota Twins,Walker Buehler,R vs RHP,[NEUTRAL 87° 7MPH],0.11,0.109,0.11,7.8,15.7,⚾ Standard Power Spot,81
-663656,Kyle Tucker,6,Los Angeles Dodgers,Lake Bachar,L vs RHP,[DOME / CONTROLLED],0.133,0.053,0.089,7.8,15.5,⚾ Standard Power Spot,82
-694249,Cole Carrigg,2,Colorado Rockies,Foster Griffin,S vs LHP,[NEUTRAL 93° 7MPH],0.185,0.0,0.083,7.6,15.2,⚾ Standard Power Spot,83
-668904,Royce Lewis,5,Minnesota Twins,Walker Buehler,R vs RHP,[NEUTRAL 87° 7MPH],0.175,0.05,0.106,7.6,15.2,⚾ Standard Power Spot,84
-642086,Dominic Smith,3,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.124,0.083,0.102,7.5,15.1,⚾ Standard Power Spot,85
-694377,Nick Yorke,6,Pittsburgh Pirates,Blake Snell,R vs LHP,[DOME / CONTROLLED],0.078,0.081,0.08,7.3,14.5,⚾ Standard Power Spot,86
-669242,Tommy Edman,5,Los Angeles Dodgers,Lake Bachar,S vs RHP,[DOME / CONTROLLED],0.134,0.055,0.09,7.2,14.4,⚾ Standard Power Spot,87
-666152,David Hamilton,5,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.097,0.067,0.08,7.0,14.1,⚾ Standard Power Spot,88
-813841,Jonah Cox,8,San Francisco Giants,Jake Bennett,R vs LHP,[NEUTRAL 67° 2MPH],0.186,0.0,0.084,7.0,14.0,⚾ Standard Power Spot,89
-647304,Josh Naylor,5,Seattle Mariners,Shota Imanaga,L vs LHP,[NEUTRAL 72°],0.102,0.105,0.104,6.9,13.8,⚾ Standard Power Spot,90
-699302,Héctor Rodríguez,9,Cincinnati Reds,Mitch Bratt,L vs LHP,[DOME / CONTROLLED],0.108,0.081,0.093,6.9,13.8,⚾ Standard Power Spot,91
-668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.174,0.0,0.078,6.7,13.5,⚾ Standard Power Spot,92
-699393,Pedro Ramírez,7,Chicago Cubs,Bryce Miller,S vs RHP,[NEUTRAL 72°],0.124,0.062,0.09,6.5,13.0,⚾ Standard Power Spot,93
-642201,Eli White,8,Boston Red Sox,Matt Wilkinson,R vs LHP,[NEUTRAL 67° 2MPH],0.173,0.0,0.078,6.3,12.7,⚾ Standard Power Spot,94
-702284,Cole Young,7,Seattle Mariners,Shota Imanaga,L vs LHP,[NEUTRAL 72°],0.139,0.054,0.092,6.2,12.3,⚾ Standard Power Spot,95
-808982,Jung Hoo Lee,6,San Francisco Giants,Jake Bennett,L vs LHP,[NEUTRAL 67° 2MPH],0.138,0.049,0.089,6.1,12.1,⚾ Standard Power Spot,96
-650859,Luis Rengifo,9,San Diego Padres,Bailey Ober,S vs RHP,[NEUTRAL 87° 7MPH],0.05,0.109,0.083,6.0,11.9,⚾ Standard Power Spot,97
-608348,Carson Kelly,9,Chicago Cubs,Bryce Miller,R vs RHP,[NEUTRAL 72°],0.11,0.059,0.082,5.9,11.8,⚾ Standard Power Spot,98
-518692,Freddie Freeman,2,Los Angeles Dodgers,Lake Bachar,L vs RHP,[DOME / CONTROLLED],0.162,0.0,0.073,5.8,11.7,⚾ Standard Power Spot,99
-669707,Jared Triolo,8,Pittsburgh Pirates,Blake Snell,R vs LHP,[DOME / CONTROLLED],0.068,0.073,0.071,5.9,11.7,⚾ Standard Power Spot,100
-683953,Travis Bazzana,6,Cleveland Guardians,Tomoyuki Sugano,L vs RHP,[NEUTRAL 93° 7MPH],0.132,0.0,0.059,5.8,11.6,⚾ Standard Power Spot,101
-668804,Bryan Reynolds,3,Pittsburgh Pirates,Blake Snell,S vs LHP,[DOME / CONTROLLED],0.166,0.0,0.075,5.6,11.2,⚾ Standard Power Spot,102
-687597,Jordan Beck,6,Colorado Rockies,Foster Griffin,R vs LHP,[NEUTRAL 93° 7MPH],0.12,0.0,0.054,5.5,11.0,⚾ Standard Power Spot,103
-655316,Andruw Monasterio,7,Boston Red Sox,Matt Wilkinson,R vs LHP,[NEUTRAL 67° 2MPH],0.159,0.0,0.072,5.4,10.8,⚾ Standard Power Spot,104
-680757,Steven Kwan,1,Cleveland Guardians,Tomoyuki Sugano,L vs RHP,[NEUTRAL 93° 7MPH],0.06,0.051,0.055,5.4,10.7,⚾ Standard Power Spot,105
-686765,Nick Sogard,6,Boston Red Sox,Matt Wilkinson,S vs LHP,[NEUTRAL 67° 2MPH],0.11,0.053,0.078,5.3,10.7,⚾ Standard Power Spot,106
-678545,Osleivis Basabe,1,San Francisco Giants,Jake Bennett,R vs LHP,[NEUTRAL 67° 2MPH],0.153,0.0,0.069,5.2,10.4,⚾ Standard Power Spot,107
-690022,Ryan Ritter,8,Colorado Rockies,Foster Griffin,R vs LHP,[NEUTRAL 93° 7MPH],0.05,0.05,0.05,5.1,10.2,⚾ Standard Power Spot,108
-683734,Andrew Vaughn,1,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.15,0.0,0.068,5.1,10.1,⚾ Standard Power Spot,109
-683766,Christian Koss,9,San Francisco Giants,Jake Bennett,R vs LHP,[NEUTRAL 67° 2MPH],0.051,0.0,0.023,3.0,10.0,⚾ Standard Power Spot,110
-663538,Nico Hoerner,6,Chicago Cubs,Bryce Miller,R vs RHP,[NEUTRAL 72°],0.099,0.0,0.045,3.0,10.0,⚾ Standard Power Spot,111
-606192,Teoscar Hernández,7,Los Angeles Dodgers,Lake Bachar,R vs RHP,[DOME / CONTROLLED],0.148,0.0,0.067,5.0,10.0,⚾ Standard Power Spot,112
-687462,Spencer Horwitz,7,Pittsburgh Pirates,Blake Snell,L vs LHP,[DOME / CONTROLLED],0.147,0.0,0.066,5.0,10.0,⚾ Standard Power Spot,113
-695257,Billy Cook,9,Pittsburgh Pirates,Blake Snell,R vs LHP,[DOME / CONTROLLED],0.062,0.0,0.028,3.0,10.0,⚾ Standard Power Spot,114
-693304,Nick Gonzales,1,Pittsburgh Pirates,Blake Snell,R vs LHP,[DOME / CONTROLLED],0.091,0.0,0.041,3.4,10.0,⚾ Standard Power Spot,115
-645302,Victor Robles,8,Seattle Mariners,Shota Imanaga,R vs LHP,[NEUTRAL 72°],0.055,0.0,0.025,3.0,10.0,⚾ Standard Power Spot,116
-630105,Jake Cronenworth,2,San Diego Padres,Bailey Ober,L vs RHP,[NEUTRAL 87° 7MPH],0.08,0.054,0.065,4.7,10.0,⚾ Standard Power Spot,117
-660844,Leo Rivas,9,Seattle Mariners,Shota Imanaga,S vs LHP,[NEUTRAL 72°],0.05,0.0,0.023,3.0,10.0,⚾ Standard Power Spot,118
-702176,Alan Roden,7,Minnesota Twins,Walker Buehler,L vs RHP,[NEUTRAL 87° 7MPH],0.05,0.0,0.023,3.0,10.0,⚾ Standard Power Spot,119
-605170,Victor Caratini,8,Minnesota Twins,Walker Buehler,S vs RHP,[NEUTRAL 87° 7MPH],0.105,0.0,0.047,3.2,10.0,⚾ Standard Power Spot,120
-672695,Geraldo Perdomo,4,Arizona Diamondbacks,Andrew Abbott,S vs LHP,[DOME / CONTROLLED],0.126,0.0,0.057,4.3,10.0,⚾ Standard Power Spot,121
-677943,Will Banfield,8,Cincinnati Reds,Mitch Bratt,R vs LHP,[DOME / CONTROLLED],0.05,0.05,0.05,4.2,10.0,⚾ Standard Power Spot,122
-643289,Mauricio Dubón,9,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.124,0.0,0.056,4.6,10.0,⚾ Standard Power Spot,123
-805347,Jim Jarvis,6,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.09,0.0,0.041,3.1,10.0,⚾ Standard Power Spot,124
-673490,Ha-Seong Kim,5,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.05,0.0,0.023,3.0,10.0,⚾ Standard Power Spot,125
-806198,Cooper Pratt,4,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.09,0.0,0.04,3.1,10.0,⚾ Standard Power Spot,126
+641343,Jake Bauers,4,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.233,0.176,0.202,17.0,34.0,⚾ Standard Power Spot,1
+621566,Matt Olson,8,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.277,0.211,0.24,17.0,34.0,⚾ Standard Power Spot,2
+657041,Lane Thomas,7,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.227,0.111,0.163,14.5,29.1,⚾ Standard Power Spot,3
+663586,Austin Riley,1,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.144,0.115,0.128,11.6,23.1,⚾ Standard Power Spot,4
+694192,Jackson Chourio,1,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.186,0.107,0.143,11.2,22.4,⚾ Standard Power Spot,5
+592885,Christian Yelich,6,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.141,0.115,0.127,11.0,21.9,⚾ Standard Power Spot,6
+687401,Joey Ortiz,7,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.13,0.136,0.134,10.5,21.0,⚾ Standard Power Spot,7
+669003,Garrett Mitchell,8,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.16,0.068,0.109,9.5,19.0,⚾ Standard Power Spot,8
+661388,William Contreras,3,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.124,0.109,0.116,9.2,18.3,⚾ Standard Power Spot,9
+676551,Brewer Hicklen,2,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.211,0.0,0.095,8.7,17.3,⚾ Standard Power Spot,10
+686948,Drake Baldwin,4,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.175,0.05,0.106,7.9,15.7,⚾ Standard Power Spot,11
+642086,Dominic Smith,3,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.124,0.083,0.102,7.5,15.1,⚾ Standard Power Spot,12
+666152,David Hamilton,9,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.097,0.067,0.08,7.0,14.1,⚾ Standard Power Spot,13
+668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.174,0.0,0.078,6.7,13.5,⚾ Standard Power Spot,14
+683734,Andrew Vaughn,5,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.15,0.0,0.068,5.1,10.1,⚾ Standard Power Spot,15
+643289,Mauricio Dubón,9,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.124,0.0,0.056,4.6,10.0,⚾ Standard Power Spot,16
+673490,Ha-Seong Kim,5,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.05,0.0,0.023,3.0,10.0,⚾ Standard Power Spot,17
+805347,Jim Jarvis,6,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.09,0.0,0.041,3.1,10.0,⚾ Standard Power Spot,18

@@ -1,127 +1,19 @@
 player_id,player_name,order,team,opp_pitcher,matchup,season_iso,drought_games,scale_lambda,hazard_rate,projected_due,hazard_score,target_call,rank
-699013,Esmerlyn Valdez,2,Pittsburgh Pirates,Blake Snell (LHP),R vs L,0.287,23,6.7,37.8,⚡ DUE NOW (Aug 24),75.6,⚡ DUE DATE WATCH: Critical Hazard Spike,1
-621439,Byron Buxton,2,Minnesota Twins,Walker Buehler (RHP),R vs R,0.262,22,7.3,32.4,⚡ DUE NOW (Aug 24),64.9,⚡ DUE DATE WATCH: Critical Hazard Spike,2
-518692,Freddie Freeman,2,Los Angeles Dodgers,Lake Bachar (RHP),L vs R,0.162,39,11.9,20.9,⚡ DUE NOW (Aug 24),41.8,⚡ DUE DATE WATCH: Critical Hazard Spike,3
-621566,Matt Olson,8,Atlanta Braves,Shane Drohan (LHP),L vs L,0.277,6,6.9,19.6,🔥 PEAK WINDOW (Aug 24),39.2,🔥 ELEVATED HAZARD: Approaching Due Window,4
-694249,Cole Carrigg,2,Colorado Rockies,Foster Griffin (LHP),S vs L,0.185,20,10.4,18.8,⚡ DUE NOW (Aug 24),37.5,⚡ DUE DATE WATCH: Critical Hazard Spike,5
-686527,Dominic Canzone,2,Seattle Mariners,Shota Imanaga (LHP),L vs L,0.227,9,8.5,17.6,⚡ DUE NOW (Aug 24),35.3,⚡ DUE DATE WATCH: Critical Hazard Spike,6
-682998,Corbin Carroll,2,Arizona Diamondbacks,Andrew Abbott (LHP),L vs L,0.235,8,8.2,17.6,🔥 PEAK WINDOW (Aug 24),35.2,🔥 ELEVATED HAZARD: Approaching Due Window,7
-804668,Rafael Flores Jr.,5,Pittsburgh Pirates,Blake Snell (LHP),R vs L,0.357,2,5.4,17.3,⏳ Developing (Aug 27),34.5,⚾ Baseline Rotation,8
-668804,Bryan Reynolds,3,Pittsburgh Pirates,Blake Snell (LHP),S vs L,0.166,23,11.6,17.1,⚡ DUE NOW (Aug 24),34.2,⚡ DUE DATE WATCH: Critical Hazard Spike,9
-813841,Jonah Cox,8,San Francisco Giants,Jake Bennett (LHP),R vs L,0.186,15,10.3,16.6,⚡ DUE NOW (Aug 24),33.2,⚡ DUE DATE WATCH: Critical Hazard Spike,10
-668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.174,17,11.0,16.0,⚡ DUE NOW (Aug 24),31.9,⚡ DUE DATE WATCH: Critical Hazard Spike,11
-642201,Eli White,8,Boston Red Sox,Matt Wilkinson (LHP),R vs L,0.173,17,11.1,15.8,⚡ DUE NOW (Aug 24),31.7,⚡ DUE DATE WATCH: Critical Hazard Spike,12
-655316,Andruw Monasterio,7,Boston Red Sox,Matt Wilkinson (LHP),R vs L,0.159,22,12.1,15.7,⚡ DUE NOW (Aug 24),31.5,⚡ DUE DATE WATCH: Critical Hazard Spike,13
-553993,Eugenio Suárez,5,Cincinnati Reds,Mitch Bratt (LHP),R vs L,0.203,10,9.5,15.7,⚡ DUE NOW (Aug 24),31.4,⚡ DUE DATE WATCH: Critical Hazard Spike,14
-664983,Jake McCarthy,1,Colorado Rockies,Foster Griffin (LHP),L vs L,0.191,12,10.1,15.6,⚡ DUE NOW (Aug 24),31.2,⚡ DUE DATE WATCH: Critical Hazard Spike,15
-694192,Jackson Chourio,8,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,0.186,12,10.3,15.0,⚡ DUE NOW (Aug 24),30.1,⚡ DUE DATE WATCH: Critical Hazard Spike,16
-668904,Royce Lewis,5,Minnesota Twins,Walker Buehler (RHP),R vs R,0.175,14,11.0,14.7,⚡ DUE NOW (Aug 24),29.5,⚡ DUE DATE WATCH: Critical Hazard Spike,17
-682674,Victor Bericoto,5,San Francisco Giants,Jake Bennett (LHP),R vs L,0.179,13,10.7,14.7,⚡ DUE NOW (Aug 24),29.5,⚡ DUE DATE WATCH: Critical Hazard Spike,18
-596142,Gary Sánchez,7,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,0.222,6,8.6,14.2,🔥 PEAK WINDOW (Aug 25),28.4,🔥 ELEVATED HAZARD: Approaching Due Window,19
-665019,Kody Clemens,4,Minnesota Twins,Walker Buehler (RHP),L vs R,0.23,5,8.3,13.8,⏳ Developing (Aug 27),27.6,⚾ Baseline Rotation,20
-682657,Angel Martínez,7,Cleveland Guardians,Tomoyuki Sugano (RHP),S vs R,0.184,10,10.4,13.6,🔥 PEAK WINDOW (Aug 24),27.3,🔥 ELEVATED HAZARD: Approaching Due Window,21
-657041,Lane Thomas,7,Atlanta Braves,Shane Drohan (LHP),R vs L,0.227,5,8.5,13.5,⏳ Developing (Aug 27),27.1,⚾ Baseline Rotation,22
-677800,Wilyer Abreu,3,Boston Red Sox,Matt Wilkinson (LHP),L vs L,0.211,6,9.1,13.2,⏳ Developing (Aug 27),26.4,⚾ Baseline Rotation,23
-676551,Brewer Hicklen,2,Atlanta Braves,Shane Drohan (LHP),R vs L,0.211,6,9.1,13.2,⏳ Developing (Aug 27),26.4,⚾ Baseline Rotation,24
-643289,Mauricio Dubón,9,Atlanta Braves,Shane Drohan (LHP),R vs L,0.124,33,15.5,13.2,⚡ DUE NOW (Aug 24),26.3,⚡ DUE DATE WATCH: Critical Hazard Spike,25
-683953,Travis Bazzana,6,Cleveland Guardians,Tomoyuki Sugano (RHP),L vs R,0.132,27,14.5,13.2,⚡ DUE NOW (Aug 24),26.3,⚡ DUE DATE WATCH: Critical Hazard Spike,26
-660271,Shohei Ohtani,1,Los Angeles Dodgers,Lake Bachar (RHP),L vs R,0.26,3,7.4,13.1,⏳ Developing (Aug 28),26.2,⚾ Baseline Rotation,27
-606192,Teoscar Hernández,7,Los Angeles Dodgers,Lake Bachar (RHP),R vs R,0.148,17,13.0,12.6,⚡ DUE NOW (Aug 24),25.2,⚡ DUE DATE WATCH: Critical Hazard Spike,28
-663993,Nathaniel Lowe,4,Cleveland Guardians,Tomoyuki Sugano (RHP),L vs R,0.204,6,9.4,12.6,⏳ Developing (Aug 27),25.2,⚾ Baseline Rotation,29
-687462,Spencer Horwitz,7,Pittsburgh Pirates,Blake Snell (LHP),L vs L,0.147,17,13.1,12.5,⚡ DUE NOW (Aug 24),25.0,⚡ DUE DATE WATCH: Critical Hazard Spike,30
-678545,Osleivis Basabe,1,San Francisco Giants,Jake Bennett (LHP),R vs L,0.153,15,12.5,12.5,⚡ DUE NOW (Aug 24),25.0,⚡ DUE DATE WATCH: Critical Hazard Spike,31
-624424,Michael Conforto,8,Chicago Cubs,Bryce Miller (RHP),L vs R,0.212,5,9.1,12.3,⏳ Developing (Aug 28),24.5,⚾ Baseline Rotation,32
-683734,Andrew Vaughn,1,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,0.15,15,12.8,12.2,⚡ DUE NOW (Aug 24),24.3,⚡ DUE DATE WATCH: Critical Hazard Spike,33
-678882,Ceddanne Rafaela,2,Boston Red Sox,Matt Wilkinson (LHP),R vs L,0.175,9,11.0,12.1,🔥 PEAK WINDOW (Aug 24),24.2,🔥 ELEVATED HAZARD: Approaching Due Window,34
-687597,Jordan Beck,6,Colorado Rockies,Foster Griffin (LHP),R vs L,0.12,28,16.0,11.7,⚡ DUE NOW (Aug 24),23.3,⚡ DUE DATE WATCH: Critical Hazard Spike,35
-669134,Luis Campusano,6,San Diego Padres,Bailey Ober (RHP),R vs R,0.192,6,10.0,11.5,⏳ Developing (Aug 28),23.0,⚾ Baseline Rotation,36
-673548,Seiya Suzuki,2,Chicago Cubs,Bryce Miller (RHP),R vs R,0.211,4,9.1,11.0,⏳ Developing (Aug 29),22.0,⚾ Baseline Rotation,37
-677594,Julio Rodríguez,3,Seattle Mariners,Shota Imanaga (LHP),R vs L,0.16,9,12.0,10.6,⏳ Developing (Aug 27),21.2,⚾ Baseline Rotation,38
-672695,Geraldo Perdomo,4,Arizona Diamondbacks,Andrew Abbott (LHP),S vs L,0.126,18,15.2,10.3,⚡ DUE NOW (Aug 24),20.5,⚡ DUE DATE WATCH: Critical Hazard Spike,39
-664954,Brett Sullivan,7,Colorado Rockies,Foster Griffin (LHP),L vs L,0.197,4,9.7,10.0,⏳ Developing (Aug 29),19.9,⚾ Baseline Rotation,40
-605170,Victor Caratini,8,Minnesota Twins,Walker Buehler (RHP),S vs R,0.105,29,18.3,9.8,⚡ DUE NOW (Aug 24),19.5,⚡ DUE DATE WATCH: Critical Hazard Spike,41
-701398,Sal Stewart,2,Cincinnati Reds,Mitch Bratt (LHP),R vs L,0.211,3,9.1,9.7,⏳ Developing (Aug 31),19.3,⚾ Baseline Rotation,42
-663886,Tyler Stephenson,4,Cincinnati Reds,Mitch Bratt (LHP),R vs L,0.167,6,11.5,9.4,⏳ Developing (Aug 29),18.8,⚾ Baseline Rotation,43
-663656,Kyle Tucker,6,Los Angeles Dodgers,Lake Bachar (RHP),L vs R,0.133,12,14.4,9.2,🔥 PEAK WINDOW (Aug 25),18.5,🔥 ELEVATED HAZARD: Approaching Due Window,44
-805811,Bryce Eldridge,4,San Francisco Giants,Jake Bennett (LHP),L vs L,0.187,4,10.3,9.2,⏳ Developing (Aug 31),18.5,⚾ Baseline Rotation,45
-663586,Austin Riley,1,Atlanta Braves,Shane Drohan (LHP),R vs L,0.144,9,13.3,9.1,⏳ Developing (Aug 28),18.2,⚾ Baseline Rotation,46
-800050,Chase DeLauter,2,Cleveland Guardians,Tomoyuki Sugano (RHP),L vs R,0.154,7,12.5,9.0,⏳ Developing (Aug 29),17.9,⚾ Baseline Rotation,47
-702332,Caleb Durbin,5,Boston Red Sox,Matt Wilkinson (LHP),R vs L,0.146,8,13.2,8.8,⏳ Developing (Aug 29),17.6,⚾ Baseline Rotation,48
-678662,Ezequiel Tovar,9,Colorado Rockies,Foster Griffin (LHP),R vs L,0.122,14,15.7,8.7,🔥 PEAK WINDOW (Aug 24),17.5,🔥 ELEVATED HAZARD: Approaching Due Window,49
-642215,Weston Wilson,6,Seattle Mariners,Shota Imanaga (LHP),R vs L,0.179,4,10.7,8.7,⏳ Developing (Aug 31),17.3,⚾ Baseline Rotation,50
-592518,Manny Machado,3,San Diego Padres,Bailey Ober (RHP),R vs R,0.195,3,9.8,8.6,⏳ Developing (Aug 31),17.3,⚾ Baseline Rotation,51
-691718,Pete Crow-Armstrong,1,Chicago Cubs,Bryce Miller (RHP),L vs R,0.275,1,7.0,8.7,⏳ Developing (Aug 29),17.3,⚾ Baseline Rotation,52
-808982,Jung Hoo Lee,6,San Francisco Giants,Jake Bennett (LHP),L vs L,0.138,9,13.9,8.6,⏳ Developing (Aug 28),17.1,⚾ Baseline Rotation,53
-686948,Drake Baldwin,4,Atlanta Braves,Shane Drohan (LHP),L vs L,0.175,4,11.0,8.4,⏳ Developing (Aug 31),16.8,⚾ Baseline Rotation,54
-805347,Jim Jarvis,6,Atlanta Braves,Shane Drohan (LHP),L vs L,0.09,31,21.3,8.0,⚡ DUE NOW (Aug 24),16.1,⚡ DUE DATE WATCH: Critical Hazard Spike,55
-699393,Pedro Ramírez,7,Chicago Cubs,Bryce Miller (RHP),S vs R,0.124,11,15.5,8.0,⏳ Developing (Aug 28),16.1,⚾ Baseline Rotation,56
-666176,Jo Adell,3,Cleveland Guardians,Tomoyuki Sugano (RHP),R vs R,0.28,0,6.9,8.0,⏳ Developing (Aug 31),16.0,⚾ Baseline Rotation,57
-666160,Mickey Moniak,4,Colorado Rockies,Foster Griffin (LHP),L vs L,0.276,0,7.0,8.0,⏳ Developing (Aug 31),16.0,⚾ Baseline Rotation,58
-681393,Connor Norby,5,Colorado Rockies,Foster Griffin (LHP),R vs L,0.12,0,16.0,8.0,⏳ Developing (Sep 12),16.0,⚾ Baseline Rotation,59
-642715,Willy Adames,3,San Francisco Giants,Jake Bennett (LHP),R vs L,0.195,0,9.8,8.0,⏳ Developing (Sep 04),16.0,⚾ Baseline Rotation,60
-668800,Andrew Knizner,7,San Francisco Giants,Jake Bennett (LHP),R vs L,0.272,0,7.1,8.0,⏳ Developing (Sep 01),16.0,⚾ Baseline Rotation,61
-683737,Michael Busch,3,Chicago Cubs,Bryce Miller (RHP),L vs R,0.151,0,12.7,8.0,⏳ Developing (Sep 08),16.0,⚾ Baseline Rotation,62
-608324,Alex Bregman,4,Chicago Cubs,Bryce Miller (RHP),R vs R,0.165,0,11.6,8.0,⏳ Developing (Sep 06),16.0,⚾ Baseline Rotation,63
-668227,Randy Arozarena,1,Seattle Mariners,Shota Imanaga (LHP),R vs L,0.188,0,10.2,8.0,⏳ Developing (Sep 05),16.0,⚾ Baseline Rotation,64
-807712,Luke Keaschall,1,Minnesota Twins,Walker Buehler (RHP),R vs R,0.11,0,17.5,8.0,⏳ Developing (Sep 14),16.0,⚾ Baseline Rotation,65
-686797,Brooks Lee,6,Minnesota Twins,Walker Buehler (RHP),S vs R,0.181,0,10.6,8.0,⏳ Developing (Sep 05),16.0,⚾ Baseline Rotation,66
-701785,Kaelen Culpepper,9,Minnesota Twins,Walker Buehler (RHP),R vs R,0.166,0,11.6,8.0,⏳ Developing (Sep 06),16.0,⚾ Baseline Rotation,67
-701538,Jackson Merrill,5,San Diego Padres,Bailey Ober (RHP),L vs R,0.171,0,11.2,8.0,⏳ Developing (Sep 06),16.0,⚾ Baseline Rotation,68
-682829,Elly De La Cruz,1,Cincinnati Reds,Mitch Bratt (LHP),S vs L,0.212,0,9.1,8.0,⏳ Developing (Sep 04),16.0,⚾ Baseline Rotation,69
-680574,Matt McLain,6,Cincinnati Reds,Mitch Bratt (LHP),R vs L,0.164,0,11.7,8.0,⏳ Developing (Sep 06),16.0,⚾ Baseline Rotation,70
-668709,JJ Bleday,7,Cincinnati Reds,Mitch Bratt (LHP),L vs L,0.225,0,8.5,8.0,⏳ Developing (Sep 02),16.0,⚾ Baseline Rotation,71
-699302,Héctor Rodríguez,9,Cincinnati Reds,Mitch Bratt (LHP),L vs L,0.108,0,17.8,8.0,⏳ Developing (Sep 14),16.0,⚾ Baseline Rotation,72
-571448,Nolan Arenado,5,Arizona Diamondbacks,Andrew Abbott (LHP),R vs L,0.203,0,9.5,8.0,⏳ Developing (Sep 04),16.0,⚾ Baseline Rotation,73
-694374,Tim Tawa,6,Arizona Diamondbacks,Andrew Abbott (LHP),R vs L,0.164,0,11.7,8.0,⏳ Developing (Sep 06),16.0,⚾ Baseline Rotation,74
-691783,Jordan Lawlar,7,Arizona Diamondbacks,Andrew Abbott (LHP),R vs L,0.151,0,12.7,8.0,⏳ Developing (Sep 08),16.0,⚾ Baseline Rotation,75
-641343,Jake Bauers,9,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.233,0,8.2,8.0,⏳ Developing (Sep 02),16.0,⚾ Baseline Rotation,76
-543510,James McCann,8,Arizona Diamondbacks,Andrew Abbott (LHP),R vs L,0.147,6,13.1,7.8,⏳ Developing (Sep 01),15.6,⚾ Baseline Rotation,77
-657757,Gavin Sheets,7,San Diego Padres,Bailey Ober (RHP),L vs R,0.182,3,10.5,7.8,⏳ Developing (Sep 01),15.6,⚾ Baseline Rotation,78
-645302,Victor Robles,8,Seattle Mariners,Shota Imanaga (LHP),R vs L,0.055,42,24.0,7.8,⚡ DUE NOW (Aug 24),15.5,⚡ DUE DATE WATCH: Critical Hazard Spike,79
-571970,Max Muncy,4,Los Angeles Dodgers,Lake Bachar (RHP),L vs R,0.255,1,7.5,7.8,⏳ Developing (Aug 31),15.5,⚾ Baseline Rotation,80
-660844,Leo Rivas,9,Seattle Mariners,Shota Imanaga (LHP),S vs L,0.05,41,24.0,7.7,⚡ DUE NOW (Aug 24),15.4,⚡ DUE DATE WATCH: Critical Hazard Spike,81
-642086,Dominic Smith,3,Atlanta Braves,Shane Drohan (LHP),L vs L,0.124,10,15.5,7.7,⏳ Developing (Aug 29),15.4,⚾ Baseline Rotation,82
-575929,Willson Contreras,4,Boston Red Sox,Matt Wilkinson (LHP),R vs L,0.253,1,7.6,7.7,⏳ Developing (Aug 31),15.4,⚾ Baseline Rotation,83
-595978,Austin Hedges,8,Cleveland Guardians,Tomoyuki Sugano (RHP),R vs R,0.115,12,16.7,7.5,⏳ Developing (Aug 28),15.0,⚾ Baseline Rotation,84
-693304,Nick Gonzales,1,Pittsburgh Pirates,Blake Snell (LHP),R vs L,0.091,25,21.1,7.4,⚡ DUE NOW (Aug 24),14.8,⚡ DUE DATE WATCH: Critical Hazard Spike,85
-814439,Ryan Waldschmidt,9,Arizona Diamondbacks,Andrew Abbott (LHP),R vs L,0.113,12,17.0,7.3,⏳ Developing (Aug 28),14.6,⚾ Baseline Rotation,86
-702284,Cole Young,7,Seattle Mariners,Shota Imanaga (LHP),L vs L,0.139,6,13.8,7.2,⏳ Developing (Sep 01),14.4,⚾ Baseline Rotation,87
-605137,Josh Bell,3,Minnesota Twins,Walker Buehler (RHP),S vs R,0.172,3,11.2,7.2,⏳ Developing (Sep 02),14.4,⚾ Baseline Rotation,88
-683766,Christian Koss,9,San Francisco Giants,Jake Bennett (LHP),R vs L,0.051,33,24.0,7.0,⚡ DUE NOW (Aug 24),13.9,⚡ DUE DATE WATCH: Critical Hazard Spike,89
-669242,Tommy Edman,5,Los Angeles Dodgers,Lake Bachar (RHP),S vs R,0.134,6,14.3,6.8,⏳ Developing (Sep 02),13.7,⚾ Baseline Rotation,90
-608348,Carson Kelly,9,Chicago Cubs,Bryce Miller (RHP),R vs R,0.11,11,17.5,6.7,⏳ Developing (Aug 31),13.5,⚾ Baseline Rotation,91
-545121,Ildemaro Vargas,1,Arizona Diamondbacks,Andrew Abbott (LHP),S vs L,0.14,5,13.7,6.7,⏳ Developing (Sep 02),13.4,⚾ Baseline Rotation,92
-663538,Nico Hoerner,6,Chicago Cubs,Bryce Miller (RHP),R vs R,0.099,15,19.4,6.7,⏳ Developing (Aug 28),13.3,⚾ Baseline Rotation,93
-646240,Rafael Devers,2,San Francisco Giants,Jake Bennett (LHP),L vs L,0.228,1,8.4,6.6,⏳ Developing (Sep 01),13.2,⚾ Baseline Rotation,94
-694197,Angel Genao,5,Cleveland Guardians,Tomoyuki Sugano (RHP),S vs R,0.111,10,17.3,6.6,⏳ Developing (Sep 01),13.1,⚾ Baseline Rotation,95
-672515,Gabriel Moreno,3,Arizona Diamondbacks,Andrew Abbott (LHP),R vs L,0.161,3,11.9,6.5,⏳ Developing (Sep 02),13.1,⚾ Baseline Rotation,96
-664040,Brandon Lowe,4,Pittsburgh Pirates,Blake Snell (LHP),L vs L,0.227,1,8.5,6.6,⏳ Developing (Sep 01),13.1,⚾ Baseline Rotation,97
-664034,Ty France,4,San Diego Padres,Bailey Ober (RHP),R vs R,0.226,1,8.5,6.5,⏳ Developing (Sep 01),13.0,⚾ Baseline Rotation,98
-650489,Willi Castro,3,Colorado Rockies,Foster Griffin (LHP),S vs L,0.157,3,12.2,6.3,⏳ Developing (Sep 04),12.6,⚾ Baseline Rotation,99
-702176,Alan Roden,7,Minnesota Twins,Walker Buehler (RHP),L vs R,0.05,25,24.0,6.2,⚡ DUE NOW (Aug 24),12.3,⚡ DUE DATE WATCH: Critical Hazard Spike,100
-673490,Ha-Seong Kim,5,Atlanta Braves,Shane Drohan (LHP),R vs L,0.05,25,24.0,6.2,⚡ DUE NOW (Aug 24),12.3,⚡ DUE DATE WATCH: Critical Hazard Spike,101
-695257,Billy Cook,9,Pittsburgh Pirates,Blake Snell (LHP),R vs L,0.062,24,24.0,6.0,⚡ DUE NOW (Aug 24),12.1,⚡ DUE DATE WATCH: Critical Hazard Spike,102
-647304,Josh Naylor,5,Seattle Mariners,Shota Imanaga (LHP),L vs L,0.102,11,18.8,6.0,⏳ Developing (Sep 01),12.1,⚾ Baseline Rotation,103
-665487,Fernando Tatis Jr.,1,San Diego Padres,Bailey Ober (RHP),R vs R,0.153,3,12.5,6.1,⏳ Developing (Sep 04),12.1,⚾ Baseline Rotation,104
-605141,Mookie Betts,3,Los Angeles Dodgers,Lake Bachar (RHP),R vs R,0.172,2,11.2,6.0,⏳ Developing (Sep 04),12.0,⚾ Baseline Rotation,105
-806198,Cooper Pratt,4,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,0.09,16,21.3,6.0,⏳ Developing (Aug 29),11.9,⚾ Baseline Rotation,106
-592885,Christian Yelich,3,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.141,3,13.6,5.4,⏳ Developing (Sep 05),10.8,⚾ Baseline Rotation,107
-664023,Ian Happ,5,Chicago Cubs,Bryce Miller (RHP),S vs R,0.198,1,9.7,5.4,⏳ Developing (Sep 02),10.8,⚾ Baseline Rotation,108
-593428,Xander Bogaerts,8,San Diego Padres,Bailey Ober (RHP),R vs R,0.106,7,18.1,5.2,⏳ Developing (Sep 06),10.4,⚾ Baseline Rotation,109
-680757,Steven Kwan,1,Cleveland Guardians,Tomoyuki Sugano (RHP),L vs R,0.06,13,24.0,4.6,⏳ Developing (Sep 06),10.0,⚾ Baseline Rotation,110
-694377,Nick Yorke,6,Pittsburgh Pirates,Blake Snell (LHP),R vs L,0.078,12,24.0,4.4,⏳ Developing (Sep 08),10.0,⚾ Baseline Rotation,111
-677950,Alek Thomas,8,Los Angeles Dodgers,Lake Bachar (RHP),L vs R,0.05,9,24.0,3.9,⏳ Developing (Sep 12),10.0,⚾ Baseline Rotation,112
-669707,Jared Triolo,8,Pittsburgh Pirates,Blake Snell (LHP),R vs L,0.068,8,24.0,3.7,⏳ Developing (Sep 13),10.0,⚾ Baseline Rotation,113
-676439,Hunter Feduccia,9,Los Angeles Dodgers,Lake Bachar (RHP),L vs R,0.106,6,18.1,4.9,⏳ Developing (Sep 08),10.0,⚾ Baseline Rotation,114
-690022,Ryan Ritter,8,Colorado Rockies,Foster Griffin (LHP),R vs L,0.05,5,24.0,3.0,⏳ Developing (Sep 17),10.0,⚾ Baseline Rotation,115
-663330,Jahmai Jones,1,Boston Red Sox,Matt Wilkinson (LHP),R vs L,0.084,5,22.9,3.2,⏳ Developing (Sep 14),10.0,⚾ Baseline Rotation,116
-630105,Jake Cronenworth,2,San Diego Padres,Bailey Ober (RHP),L vs R,0.08,5,24.0,3.0,⏳ Developing (Sep 17),10.0,⚾ Baseline Rotation,117
-650859,Luis Rengifo,9,San Diego Padres,Bailey Ober (RHP),S vs R,0.05,5,24.0,3.0,⏳ Developing (Sep 17),10.0,⚾ Baseline Rotation,118
-667472,Dane Myers,3,Cincinnati Reds,Mitch Bratt (LHP),R vs L,0.107,5,17.9,4.5,⏳ Developing (Sep 08),10.0,⚾ Baseline Rotation,119
-677587,Brayan Rocchio,9,Cleveland Guardians,Tomoyuki Sugano (RHP),S vs R,0.12,4,16.0,4.9,⏳ Developing (Sep 08),10.0,⚾ Baseline Rotation,120
-686765,Nick Sogard,6,Boston Red Sox,Matt Wilkinson (LHP),S vs L,0.11,2,17.5,3.1,⏳ Developing (Sep 12),10.0,⚾ Baseline Rotation,121
-657136,Connor Wong,9,Boston Red Sox,Matt Wilkinson (LHP),R vs L,0.131,1,14.7,3.0,⏳ Developing (Sep 09),10.0,⚾ Baseline Rotation,122
-663728,Cal Raleigh,4,Seattle Mariners,Shota Imanaga (LHP),S vs L,0.147,1,13.1,3.5,⏳ Developing (Sep 08),10.0,⚾ Baseline Rotation,123
-677943,Will Banfield,8,Cincinnati Reds,Mitch Bratt (LHP),R vs L,0.05,1,24.0,3.0,⏳ Developing (Sep 23),10.0,⚾ Baseline Rotation,124
-666152,David Hamilton,5,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.097,1,19.8,3.0,⏳ Developing (Sep 16),10.0,⚾ Baseline Rotation,125
-669003,Garrett Mitchell,6,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.16,1,12.0,3.9,⏳ Developing (Sep 06),10.0,⚾ Baseline Rotation,126
+621566,Matt Olson,8,Atlanta Braves,Shane Drohan (LHP),L vs L,0.277,6,6.9,19.6,🔥 PEAK WINDOW (Aug 24),39.2,🔥 ELEVATED HAZARD: Approaching Due Window,1
+668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.174,17,11.0,16.0,⚡ DUE NOW (Aug 24),31.9,⚡ DUE DATE WATCH: Critical Hazard Spike,2
+694192,Jackson Chourio,1,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,0.186,12,10.3,15.0,⚡ DUE NOW (Aug 24),30.1,⚡ DUE DATE WATCH: Critical Hazard Spike,3
+657041,Lane Thomas,7,Atlanta Braves,Shane Drohan (LHP),R vs L,0.227,5,8.5,13.5,⏳ Developing (Aug 27),27.1,⚾ Baseline Rotation,4
+676551,Brewer Hicklen,2,Atlanta Braves,Shane Drohan (LHP),R vs L,0.211,6,9.1,13.2,⏳ Developing (Aug 27),26.4,⚾ Baseline Rotation,5
+643289,Mauricio Dubón,9,Atlanta Braves,Shane Drohan (LHP),R vs L,0.124,33,15.5,13.2,⚡ DUE NOW (Aug 24),26.3,⚡ DUE DATE WATCH: Critical Hazard Spike,6
+683734,Andrew Vaughn,5,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,0.15,15,12.8,12.2,⚡ DUE NOW (Aug 24),24.3,⚡ DUE DATE WATCH: Critical Hazard Spike,7
+663586,Austin Riley,1,Atlanta Braves,Shane Drohan (LHP),R vs L,0.144,9,13.3,9.1,⏳ Developing (Aug 28),18.2,⚾ Baseline Rotation,8
+686948,Drake Baldwin,4,Atlanta Braves,Shane Drohan (LHP),L vs L,0.175,4,11.0,8.4,⏳ Developing (Aug 31),16.8,⚾ Baseline Rotation,9
+805347,Jim Jarvis,6,Atlanta Braves,Shane Drohan (LHP),L vs L,0.09,31,21.3,8.0,⚡ DUE NOW (Aug 24),16.1,⚡ DUE DATE WATCH: Critical Hazard Spike,10
+641343,Jake Bauers,4,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.233,0,8.2,8.0,⏳ Developing (Sep 02),16.0,⚾ Baseline Rotation,11
+642086,Dominic Smith,3,Atlanta Braves,Shane Drohan (LHP),L vs L,0.124,10,15.5,7.7,⏳ Developing (Aug 29),15.4,⚾ Baseline Rotation,12
+673490,Ha-Seong Kim,5,Atlanta Braves,Shane Drohan (LHP),R vs L,0.05,25,24.0,6.2,⚡ DUE NOW (Aug 24),12.3,⚡ DUE DATE WATCH: Critical Hazard Spike,13
+661388,William Contreras,3,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,0.124,5,15.5,5.6,⏳ Developing (Sep 05),11.3,⚾ Baseline Rotation,14
+592885,Christian Yelich,6,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.141,3,13.6,5.4,⏳ Developing (Sep 05),10.8,⚾ Baseline Rotation,15
+687401,Joey Ortiz,7,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,0.13,3,14.8,4.8,⏳ Developing (Sep 06),10.0,⚾ Baseline Rotation,16
+669003,Garrett Mitchell,8,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.16,1,12.0,3.9,⏳ Developing (Sep 06),10.0,⚾ Baseline Rotation,17
+666152,David Hamilton,9,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,0.097,1,19.8,3.0,⏳ Developing (Sep 16),10.0,⚾ Baseline Rotation,18
