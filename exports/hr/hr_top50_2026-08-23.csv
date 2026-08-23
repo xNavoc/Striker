@@ -1,19 +1,19 @@
 player_id,player_name,order,team,opp_pitcher,matchup,weather,season_iso,l15_iso,blended_iso,hr_prob,score,target_call,rank
 641343,Jake Bauers,4,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.233,0.176,0.202,17.0,34.0,⚾ Standard Power Spot,1
-621566,Matt Olson,8,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.277,0.211,0.24,17.0,34.0,⚾ Standard Power Spot,2
-657041,Lane Thomas,7,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.227,0.111,0.163,14.5,29.1,⚾ Standard Power Spot,3
-663586,Austin Riley,1,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.144,0.115,0.128,11.6,23.1,⚾ Standard Power Spot,4
-694192,Jackson Chourio,1,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.186,0.107,0.143,11.2,22.4,⚾ Standard Power Spot,5
-592885,Christian Yelich,6,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.141,0.115,0.127,11.0,21.9,⚾ Standard Power Spot,6
-687401,Joey Ortiz,7,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.13,0.136,0.134,10.5,21.0,⚾ Standard Power Spot,7
-669003,Garrett Mitchell,8,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.16,0.068,0.109,9.5,19.0,⚾ Standard Power Spot,8
-661388,William Contreras,3,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.124,0.109,0.116,9.2,18.3,⚾ Standard Power Spot,9
-676551,Brewer Hicklen,2,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.211,0.0,0.095,8.7,17.3,⚾ Standard Power Spot,10
-686948,Drake Baldwin,4,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.175,0.05,0.106,7.9,15.7,⚾ Standard Power Spot,11
-642086,Dominic Smith,3,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.124,0.083,0.102,7.5,15.1,⚾ Standard Power Spot,12
+621566,Matt Olson,3,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.277,0.211,0.24,17.0,34.0,⚾ Standard Power Spot,2
+657041,Lane Thomas,6,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.227,0.111,0.163,14.5,29.1,⚾ Standard Power Spot,3
+660670,Ronald Acuña Jr.,2,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.179,0.098,0.135,12.1,24.2,⚾ Standard Power Spot,4
+663586,Austin Riley,8,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.144,0.115,0.128,11.6,23.1,⚾ Standard Power Spot,5
+694192,Jackson Chourio,1,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.186,0.107,0.143,11.2,22.4,⚾ Standard Power Spot,6
+592885,Christian Yelich,6,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.141,0.115,0.127,11.0,21.9,⚾ Standard Power Spot,7
+687401,Joey Ortiz,7,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.13,0.136,0.134,10.5,21.0,⚾ Standard Power Spot,8
+669003,Garrett Mitchell,8,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.16,0.068,0.109,9.5,19.0,⚾ Standard Power Spot,9
+661388,William Contreras,3,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.124,0.109,0.116,9.2,18.3,⚾ Standard Power Spot,10
+645277,Ozzie Albies,4,Atlanta Braves,Shane Drohan,S vs LHP,[DOME / CONTROLLED],0.167,0.058,0.107,7.9,15.8,⚾ Standard Power Spot,11
+686948,Drake Baldwin,5,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.175,0.05,0.106,7.9,15.7,⚾ Standard Power Spot,12
 666152,David Hamilton,9,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.097,0.067,0.08,7.0,14.1,⚾ Standard Power Spot,13
 668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,L vs RHP,[DOME / CONTROLLED],0.174,0.0,0.078,6.7,13.5,⚾ Standard Power Spot,14
-683734,Andrew Vaughn,5,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.15,0.0,0.068,5.1,10.1,⚾ Standard Power Spot,15
-643289,Mauricio Dubón,9,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.124,0.0,0.056,4.6,10.0,⚾ Standard Power Spot,16
-673490,Ha-Seong Kim,5,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.05,0.0,0.023,3.0,10.0,⚾ Standard Power Spot,17
-805347,Jim Jarvis,6,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.09,0.0,0.041,3.1,10.0,⚾ Standard Power Spot,18
+671739,Michael Harris II,1,Atlanta Braves,Shane Drohan,L vs LHP,[DOME / CONTROLLED],0.195,0.0,0.088,6.5,13.1,⚾ Standard Power Spot,15
+683734,Andrew Vaughn,5,Milwaukee Brewers,Tyler Mahle,R vs RHP,[DOME / CONTROLLED],0.15,0.0,0.068,5.1,10.1,⚾ Standard Power Spot,16
+669221,Sean Murphy,9,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.05,0.0,0.023,3.0,10.0,⚾ Standard Power Spot,17
+643289,Mauricio Dubón,7,Atlanta Braves,Shane Drohan,R vs LHP,[DOME / CONTROLLED],0.124,0.0,0.056,4.6,10.0,⚾ Standard Power Spot,18

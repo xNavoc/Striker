@@ -1,19 +1,19 @@
 player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit_prob,score,target_call,rank
-676551,Brewer Hicklen,2,Atlanta Braves,Shane Drohan,0.368,21.0,76.0,70.5,70.5,🟢 CONTACT TARGET: High Floor,1
-683734,Andrew Vaughn,5,Milwaukee Brewers,Tyler Mahle,0.313,21.0,76.0,63.8,63.8,🟢 CONTACT TARGET: High Floor,2
-643289,Mauricio Dubón,9,Atlanta Braves,Shane Drohan,0.294,21.0,76.0,61.1,61.1,⚾ Standard Hit Prob,3
+683734,Andrew Vaughn,5,Milwaukee Brewers,Tyler Mahle,0.313,21.0,76.0,63.8,63.8,🟢 CONTACT TARGET: High Floor,1
+671739,Michael Harris II,1,Atlanta Braves,Shane Drohan,0.298,21.0,76.0,61.7,61.7,⚾ Standard Hit Prob,2
+643289,Mauricio Dubón,7,Atlanta Braves,Shane Drohan,0.294,21.0,76.0,61.1,61.1,⚾ Standard Hit Prob,3
 641343,Jake Bauers,4,Milwaukee Brewers,Tyler Mahle,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,4
 694192,Jackson Chourio,1,Milwaukee Brewers,Tyler Mahle,0.281,21.0,76.0,59.3,59.3,⚾ Standard Hit Prob,5
 687401,Joey Ortiz,7,Milwaukee Brewers,Tyler Mahle,0.277,21.0,76.0,58.6,58.6,⚾ Standard Hit Prob,6
 669003,Garrett Mitchell,8,Milwaukee Brewers,Tyler Mahle,0.276,21.0,76.0,58.5,58.5,⚾ Standard Hit Prob,7
-686948,Drake Baldwin,4,Atlanta Braves,Shane Drohan,0.261,21.0,76.0,56.2,56.2,⚾ Standard Hit Prob,8
-642086,Dominic Smith,3,Atlanta Braves,Shane Drohan,0.257,21.0,76.0,55.6,55.6,⚾ Standard Hit Prob,9
-661388,William Contreras,3,Milwaukee Brewers,Tyler Mahle,0.254,21.0,76.0,55.2,55.2,⚾ Standard Hit Prob,10
-666152,David Hamilton,9,Milwaukee Brewers,Tyler Mahle,0.252,21.0,76.0,54.9,54.9,⚾ Standard Hit Prob,11
-621566,Matt Olson,8,Atlanta Braves,Shane Drohan,0.233,21.0,76.0,51.8,51.8,⚾ Standard Hit Prob,12
-668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,0.229,21.0,76.0,51.2,51.2,⚾ Standard Hit Prob,13
-663586,Austin Riley,1,Atlanta Braves,Shane Drohan,0.217,21.0,76.0,49.0,49.0,⚾ Standard Hit Prob,14
+686948,Drake Baldwin,5,Atlanta Braves,Shane Drohan,0.261,21.0,76.0,56.2,56.2,⚾ Standard Hit Prob,8
+661388,William Contreras,3,Milwaukee Brewers,Tyler Mahle,0.254,21.0,76.0,55.2,55.2,⚾ Standard Hit Prob,9
+666152,David Hamilton,9,Milwaukee Brewers,Tyler Mahle,0.252,21.0,76.0,54.9,54.9,⚾ Standard Hit Prob,10
+621566,Matt Olson,3,Atlanta Braves,Shane Drohan,0.233,21.0,76.0,51.8,51.8,⚾ Standard Hit Prob,11
+668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle,0.229,21.0,76.0,51.2,51.2,⚾ Standard Hit Prob,12
+645277,Ozzie Albies,4,Atlanta Braves,Shane Drohan,0.22,21.0,76.0,49.7,49.7,⚾ Standard Hit Prob,13
+663586,Austin Riley,8,Atlanta Braves,Shane Drohan,0.217,21.0,76.0,49.0,49.0,⚾ Standard Hit Prob,14
 592885,Christian Yelich,6,Milwaukee Brewers,Tyler Mahle,0.214,21.0,76.0,48.5,48.5,⚾ Standard Hit Prob,15
-657041,Lane Thomas,7,Atlanta Braves,Shane Drohan,0.198,21.0,76.0,45.8,45.8,⚾ Standard Hit Prob,16
-805347,Jim Jarvis,6,Atlanta Braves,Shane Drohan,0.183,21.0,76.0,42.9,42.9,⚾ Standard Hit Prob,17
-673490,Ha-Seong Kim,5,Atlanta Braves,Shane Drohan,0.04,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,18
+660670,Ronald Acuña Jr.,2,Atlanta Braves,Shane Drohan,0.211,21.0,76.0,48.0,48.0,⚾ Standard Hit Prob,16
+657041,Lane Thomas,6,Atlanta Braves,Shane Drohan,0.198,21.0,76.0,45.8,45.8,⚾ Standard Hit Prob,17
+669221,Sean Murphy,9,Atlanta Braves,Shane Drohan,0.132,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,18

@@ -1,19 +1,19 @@
 player_id,player_name,order,team,opp_pitcher,matchup,weather,blended_iso,drought_games,core_hr_prob,hazard_mult,synergy_prob,synergy_score,target_call,rank
-621566,Matt Olson,8,Atlanta Braves,Shane Drohan (LHP),L vs L,[DOME / CONTROLLED],0.24,6,17.0,1.6,27.2,54.3,⚾ Standard Rotation,1
-657041,Lane Thomas,7,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.163,6,14.5,1.22,17.8,35.6,⚾ Standard Rotation,2
+621566,Matt Olson,3,Atlanta Braves,Shane Drohan (LHP),L vs L,[DOME / CONTROLLED],0.24,6,17.0,1.6,27.2,54.3,⚾ Standard Rotation,1
+657041,Lane Thomas,6,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.163,6,14.5,1.22,17.8,35.6,⚾ Standard Rotation,2
 694192,Jackson Chourio,1,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,[DOME / CONTROLLED],0.143,12,11.2,1.25,14.0,28.0,⚾ Standard Rotation,3
 641343,Jake Bauers,4,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,[DOME / CONTROLLED],0.202,0,17.0,0.75,12.7,25.5,⚾ Standard Rotation,4
-676551,Brewer Hicklen,2,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.095,8,8.7,1.25,10.8,21.7,⚾ Standard Rotation,5
-668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,[DOME / CONTROLLED],0.078,17,6.9,1.33,9.1,18.3,⚾ Standard Rotation,6
-663586,Austin Riley,1,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.128,9,11.6,0.76,8.8,17.5,⚾ Standard Rotation,7
-592885,Christian Yelich,6,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,[DOME / CONTROLLED],0.127,3,11.0,0.75,8.2,16.4,⚾ Standard Rotation,8
-687401,Joey Ortiz,7,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,[DOME / CONTROLLED],0.134,3,10.5,0.75,7.9,15.8,⚾ Standard Rotation,9
-669003,Garrett Mitchell,8,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,[DOME / CONTROLLED],0.109,2,9.5,0.75,7.1,14.3,⚾ Standard Rotation,10
-661388,William Contreras,3,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,[DOME / CONTROLLED],0.116,5,9.2,0.75,6.9,13.8,⚾ Standard Rotation,11
-686948,Drake Baldwin,4,Atlanta Braves,Shane Drohan (LHP),L vs L,[DOME / CONTROLLED],0.106,4,7.9,0.75,5.9,11.8,⚾ Standard Rotation,12
-643289,Mauricio Dubón,9,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.056,33,5.2,1.1,5.7,11.3,⚾ Standard Rotation,13
-642086,Dominic Smith,3,Atlanta Braves,Shane Drohan (LHP),L vs L,[DOME / CONTROLLED],0.102,11,7.5,0.75,5.6,11.3,⚾ Standard Rotation,14
-683734,Andrew Vaughn,5,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,[DOME / CONTROLLED],0.068,15,5.4,1.01,5.5,11.0,⚾ Standard Rotation,15
-666152,David Hamilton,9,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,[DOME / CONTROLLED],0.08,1,7.0,0.75,5.3,10.6,⚾ Standard Rotation,16
-673490,Ha-Seong Kim,5,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.023,31,3.0,0.75,3.0,10.0,⚾ Standard Rotation,17
-805347,Jim Jarvis,6,Atlanta Braves,Shane Drohan (LHP),L vs L,[DOME / CONTROLLED],0.041,31,3.1,0.75,3.0,10.0,⚾ Standard Rotation,18
+660670,Ronald Acuña Jr.,2,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.135,7,12.1,0.93,11.3,22.5,⚾ Standard Rotation,5
+671739,Michael Harris II,1,Atlanta Braves,Shane Drohan (LHP),L vs L,[DOME / CONTROLLED],0.088,20,6.5,1.6,10.4,20.9,⚾ Standard Rotation,6
+668930,Brice Turang,2,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,[DOME / CONTROLLED],0.078,17,6.9,1.33,9.1,18.3,⚾ Standard Rotation,7
+663586,Austin Riley,8,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.128,9,11.6,0.76,8.8,17.5,⚾ Standard Rotation,8
+592885,Christian Yelich,6,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,[DOME / CONTROLLED],0.127,3,11.0,0.75,8.2,16.4,⚾ Standard Rotation,9
+687401,Joey Ortiz,7,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,[DOME / CONTROLLED],0.134,3,10.5,0.75,7.9,15.8,⚾ Standard Rotation,10
+645277,Ozzie Albies,4,Atlanta Braves,Shane Drohan (LHP),S vs L,[DOME / CONTROLLED],0.107,10,7.9,0.99,7.8,15.6,⚾ Standard Rotation,11
+669003,Garrett Mitchell,8,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,[DOME / CONTROLLED],0.109,2,9.5,0.75,7.1,14.3,⚾ Standard Rotation,12
+661388,William Contreras,3,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,[DOME / CONTROLLED],0.116,5,9.2,0.75,6.9,13.8,⚾ Standard Rotation,13
+686948,Drake Baldwin,5,Atlanta Braves,Shane Drohan (LHP),L vs L,[DOME / CONTROLLED],0.106,4,7.9,0.75,5.9,11.8,⚾ Standard Rotation,14
+643289,Mauricio Dubón,7,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.056,33,5.2,1.1,5.7,11.3,⚾ Standard Rotation,15
+683734,Andrew Vaughn,5,Milwaukee Brewers,Tyler Mahle (RHP),R vs R,[DOME / CONTROLLED],0.068,15,5.4,1.01,5.5,11.0,⚾ Standard Rotation,16
+666152,David Hamilton,9,Milwaukee Brewers,Tyler Mahle (RHP),L vs R,[DOME / CONTROLLED],0.08,1,7.0,0.75,5.3,10.6,⚾ Standard Rotation,17
+669221,Sean Murphy,9,Atlanta Braves,Shane Drohan (LHP),R vs L,[DOME / CONTROLLED],0.023,11,3.0,0.75,3.0,10.0,⚾ Standard Rotation,18
