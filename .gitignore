@@ -1,8 +1,14 @@
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-.env
-data/raw/*
-data/processed/*
-*.db
+# OS Generated Files
+.DS_Store
+Thumbs.db
+
+# Striker Engine Specifics
+# Ignore the generated image cards to prevent massive Git repository bloat over time. 
+# Your GitHub Action is already configured to only commit the .csv files!
+exports/**/*.png
+
+# Streamlit Local Configs (Optional, ignores local theme settings if you have them)
+.streamlit/
+
+# Jupyter Notebook Checkpoints (If you ever do exploratory data analysis)
+.ipynb_checkpoints/
