@@ -2,11 +2,10 @@ import os
 from datetime import datetime
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
-from core.settlement_engine import settle_projections
+from core.settlement_engine import settle_projections, get_yesterday_date
 
-def safe_float(val, default_val):
+def safe_float(val, default_val=0.0):
     """Safely converts string numbers, catching undefined hyphens/dashes from API feeds."""
     try:
         if val is None:
@@ -56,15 +55,20 @@ def calculate_l15_slg_and_bb(game_logs, fallback_slg=0.410, fallback_bb_pct=0.08
     return l15_slg, l15_bb_pct
 
 def run_tb_model(mode="predict"):
-    today_str, games = load_daily_slate()
-    os.makedirs("exports/total_bases", exist_ok=True)
-
+    # 1. SETTLEMENT MODE
     if mode == "settle":
-        settle_projections("total_bases", today_str, lambda r, st: (
+        yesterday_str = get_yesterday_date()
+        print(f"[{datetime.now()}] Settling Total Bases Model for {yesterday_str}...")
+        
+        settle_projections("total_bases", yesterday_str, lambda r, st: (
             int(safe_float(st.get('tb'), 0)) >= 2,
             f"WIN ({int(safe_float(st.get('tb'), 0))} TB)" if int(safe_float(st.get('tb'), 0)) >= 2 else "LOSS"
         ))
         return
+
+    # 2. PREDICTION MODE
+    today_str, games = load_daily_slate()
+    os.makedirs("exports/total_bases", exist_ok=True)
 
     print(f"[{datetime.now()}] Running Hardened Total Bases Model for {today_str}...")
     targets = []
@@ -150,81 +154,8 @@ def run_tb_model(mode="predict"):
     if not df.empty:
         df = df.sort_values(by='score', ascending=False).reset_index(drop=True)
         df['rank'] = df.index + 1
-        df.to_csv(f"exports/total_bases/total_bases_top50_{today_str}.csv", index=False)
-        render_total_bases_card(df.head(35), f"exports/total_bases/total_bases_top50_card_{today_str}.png", today_str)
-
-def render_total_bases_card(df, out_path, today_str):
-    if df.empty:
-        return
-    plt.close('all')
-
-    fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
-    fig.patch.set_facecolor('#070d1e')
-    ax.axis('off')
-
-    fig.text(0.5, 0.965, "MLB TOTAL BASES MATRIX (SLG & VOLUME INDEX)", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.938, f"Blended SLG • Walk-Adjusted True ABs • Pitcher SLG Allowed • {today_str}", ha='center', color='#38bdf8', fontsize=12)
-
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher (SLG)', 'Blended SLG', 'Walk % Penalty', 'Est True ABs', 'Proj Total Bases', 'Score', 'ACTIONABLE CALL']
-    rows = []
-
-    for _, r in df.iterrows():
-        call = str(r.get('target_call', 'Standard Base Volume'))
-        slg_val = float(r.get('blended_slg', 0.410))
-        slg_formatted = f".{int(round(slg_val * 1000)):03d}" if slg_val < 1.0 else f"{slg_val:.3f}"
-        
-        p_slg_val = float(r.get('p_slg_allowed', 0.410))
-        p_slg_formatted = f".{int(round(p_slg_val * 1000)):03d}" if p_slg_val < 1.0 else f"{p_slg_val:.3f}"
-
-        rows.append([
-            r.get('rank', 1),
-            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
-            str(r.get('team', 'Team'))[:11],
-            f"{str(r.get('opp_pitcher', 'TBD'))[:11]} ({p_slg_formatted})",
-            slg_formatted,
-            f"{r.get('bb_pct', 0.0)}%",
-            f"{float(r.get('true_ab', 0.0)):.2f}",
-            f"{float(r.get('expected_tb', 0.0)):.2f}",
-            f"{float(r.get('score', 0.0)):.1f}",
-            call
-        ])
-
-    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
-    table.auto_set_font_size(False)
-    table.set_fontsize(7.5)
-    table.scale(1.0, 1.85)
-
-    for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#1e293b')
-        if row == 0:
-            cell.set_text_props(color='#38bdf8', weight='bold')
-            cell.set_facecolor('#0f172a')
-        else:
-            if col == 9:
-                txt = rows[row-1][9]
-                cell.set_text_props(
-                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else '#94a3b8'),
-                    weight='bold'
-                )
-            elif col in [7, 8]:
-                cell.set_text_props(color='#facc15', weight='bold')
-            elif col == 4:
-                cell.set_text_props(color='#38bdf8', weight='bold')
-            elif col == 5:
-                try:
-                    bb = float(rows[row-1][5].strip('%'))
-                    if bb > 12.0:
-                        cell.set_text_props(color='#f87171')
-                    else:
-                        cell.set_text_props(color='#f1f5f9')
-                except:
-                    cell.set_text_props(color='#f1f5f9')
-            else:
-                cell.set_text_props(color='#f1f5f9')
-            cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
-
-    plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
-    plt.close('all')
-    print(f"[✓] Saved Streamlined Total Bases Card to {out_path}")
+        out_path = f"exports/total_bases/total_bases_top50_{today_str}.csv"
+        df.to_csv(out_path, index=False)
+        print(f"[✓] Saved Total Bases Matrix to {out_path}")
 
 run_total_bases_model = run_tb_model
