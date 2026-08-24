@@ -2,11 +2,10 @@ import os
 from datetime import datetime
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
-from core.settlement_engine import settle_projections
+from core.settlement_engine import settle_projections, get_yesterday_date
 
-def safe_float(val, default_val):
+def safe_float(val, default_val=0.0):
     """Safely converts string numbers, catching undefined hyphens/dashes from API feeds."""
     try:
         if val is None:
@@ -58,15 +57,22 @@ def calculate_l15_ops(game_logs, fallback_ops=0.730):
     return fallback_ops
 
 def run_hr_rbi_model(mode="predict"):
-    today_str, games = load_daily_slate()
-    os.makedirs("exports/hr_rbi", exist_ok=True)
-
+    # 1. SETTLEMENT MODE
     if mode == "settle":
-        settle_projections("hr_rbi", today_str, lambda r, st: (
+        yesterday_str = get_yesterday_date()
+        print(f"[{datetime.now()}] Settling H+R+RBI Model for {yesterday_str}...")
+        
+        settle_projections("hr_rbi", yesterday_str, lambda r, st: (
             (int(safe_float(st.get('h'), 0)) + int(safe_float(st.get('r'), 0)) + int(safe_float(st.get('rbi'), 0))) >= 2,
-            f"WIN ({int(safe_float(st.get('h'), 0))+int(safe_float(st.get('r'), 0))+int(safe_float(st.get('rbi'), 0))} HRR)" if (int(safe_float(st.get('h'), 0)) + int(safe_float(st.get('r'), 0)) + int(safe_float(st.get('rbi'), 0))) >= 2 else "LOSS"
+            f"WIN ({int(safe_float(st.get('h'), 0)) + int(safe_float(st.get('r'), 0)) + int(safe_float(st.get('rbi'), 0))} HRR)"
+            if (int(safe_float(st.get('h'), 0)) + int(safe_float(st.get('r'), 0)) + int(safe_float(st.get('rbi'), 0))) >= 2
+            else "LOSS"
         ))
         return
+
+    # 2. PREDICTION MODE
+    today_str, games = load_daily_slate()
+    os.makedirs("exports/hr_rbi", exist_ok=True)
 
     print(f"[{datetime.now()}] Running Hardened H+R+RBI Traffic Model for {today_str}...")
     targets = []
@@ -153,68 +159,6 @@ def run_hr_rbi_model(mode="predict"):
     if not df.empty:
         df = df.sort_values(by='score', ascending=False).reset_index(drop=True)
         df['rank'] = df.index + 1
-        df.to_csv(f"exports/hr_rbi/hr_rbi_top50_{today_str}.csv", index=False)
-        render_hr_rbi_card(df.head(35), f"exports/hr_rbi/hr_rbi_top50_card_{today_str}.png", today_str)
-
-def render_hr_rbi_card(df, out_path, today_str):
-    if df.empty:
-        return
-    plt.close('all')
-
-    fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
-    fig.patch.set_facecolor('#070d1e')
-    ax.axis('off')
-
-    fig.text(0.5, 0.965, "MLB TRAFFIC & PRODUCTION INDEX (H+R+RBI MATRIX)", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.938, f"Blended OPS • Lineup Position Multiplier • Opposing Pitcher WHIP • {today_str}", ha='center', color='#38bdf8', fontsize=12)
-
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher (WHIP)', 'Blended OPS', 'Lineup Spot', 'Proj H+R+RBI', 'Score', 'ACTIONABLE CALL']
-    rows = []
-
-    for _, r in df.iterrows():
-        call = str(r.get('target_call', 'Standard Volume'))
-        ops_val = float(r.get('blended_ops', 0.730))
-        ops_formatted = f".{int(round(ops_val * 1000)):03d}" if ops_val < 1.0 else f"{ops_val:.3f}"
-        
-        rows.append([
-            r.get('rank', 1),
-            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
-            str(r.get('team', 'Team'))[:11],
-            f"{str(r.get('opp_pitcher', 'TBD'))[:11]} ({float(r.get('p_whip', 1.30)):.2f})",
-            ops_formatted,
-            f"Spot #{r.get('order', 1)} ({r.get('lineup_mult', 1.0)}x)",
-            f"{float(r.get('expected_hrr', 0.0)):.2f}",
-            f"{float(r.get('score', 0.0)):.1f}",
-            call
-        ])
-
-    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
-    table.auto_set_font_size(False)
-    table.set_fontsize(7.5)
-    table.scale(1.0, 1.85)
-
-    for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#1e293b')
-        if row == 0:
-            cell.set_text_props(color='#38bdf8', weight='bold')
-            cell.set_facecolor('#0f172a')
-        else:
-            if col == 8:
-                txt = rows[row-1][8]
-                cell.set_text_props(
-                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else '#94a3b8'),
-                    weight='bold'
-                )
-            elif col in [6, 7]:
-                cell.set_text_props(color='#facc15', weight='bold')
-            elif col == 4:
-                cell.set_text_props(color='#38bdf8', weight='bold')
-            else:
-                cell.set_text_props(color='#f1f5f9')
-            cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
-
-    plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
-    plt.close('all')
-    print(f"[✓] Saved Streamlined H+R+RBI Card to {out_path}")
-
-run_hr_rbi_model = run_hr_rbi_model
+        out_path = f"exports/hr_rbi/hr_rbi_top50_{today_str}.csv"
+        df.to_csv(out_path, index=False)
+        print(f"[✓] Saved H+R+RBI Matrix to {out_path}")
