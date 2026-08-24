@@ -7,7 +7,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,season_iso,drought_games,sc
 693307,Dillon Dingler,5,Detroit Tigers,Drew Rasmussen (RHP),R vs R,0.231,14,8.3,22.1,⚡ DUE NOW (Aug 25),44.1,⚡ DUE DATE WATCH: Critical Hazard Spike,6
 814430,Brett Callahan,2,Detroit Tigers,Drew Rasmussen (RHP),L vs R,0.333,4,5.8,21.3,🔥 PEAK WINDOW (Aug 25),42.7,🔥 ELEVATED HAZARD: Approaching Due Window,7
 694208,Moisés Ballesteros,8,Los Angeles Angels,Parker Messick (LHP),L vs L,0.154,47,12.5,21.1,⚡ DUE NOW (Aug 25),42.3,⚡ DUE DATE WATCH: Critical Hazard Spike,8
-592626,Joc Pederson,9,Texas Rangers,TBD Pitcher (RHP),L vs R,0.241,10,8.0,20.2,⚡ DUE NOW (Aug 25),40.3,⚡ DUE DATE WATCH: Critical Hazard Spike,9
+592626,Joc Pederson,9,Texas Rangers,José Urquidy (RHP),L vs R,0.241,10,8.0,20.2,⚡ DUE NOW (Aug 25),40.3,⚡ DUE DATE WATCH: Critical Hazard Spike,9
 694673,Abimelec Ortiz,1,Washington Nationals,Ryan Feltner (RHP),L vs R,0.274,6,7.0,19.3,🔥 PEAK WINDOW (Aug 25),38.6,🔥 ELEVATED HAZARD: Approaching Due Window,10
 682998,Corbin Carroll,1,Arizona Diamondbacks,Kevin Gausman (RHP),L vs R,0.24,9,8.0,19.1,⚡ DUE NOW (Aug 25),38.2,⚡ DUE DATE WATCH: Critical Hazard Spike,11
 694249,Cole Carrigg,3,Colorado Rockies,Cade Cavalli (RHP),S vs R,0.182,21,10.5,18.7,⚡ DUE NOW (Aug 25),37.5,⚡ DUE DATE WATCH: Critical Hazard Spike,12
@@ -32,7 +32,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,season_iso,drought_games,sc
 650559,Bryan De La Cruz,3,Philadelphia Phillies,Logan Gilbert (RHP),R vs R,0.205,7,9.4,13.6,🔥 PEAK WINDOW (Aug 26),27.2,🔥 ELEVATED HAZARD: Approaching Due Window,31
 700652,Kenny Piper,7,Tampa Bay Rays,Framber Valdez (LHP),R vs L,0.375,1,5.1,13.6,⏳ Developing (Aug 29),27.2,⚾ Baseline Rotation,32
 666126,Carlos Cortes,3,Athletics,Zebby Matthews (RHP),L vs R,0.142,22,13.5,13.4,⚡ DUE NOW (Aug 25),26.7,⚡ DUE DATE WATCH: Critical Hazard Spike,33
-694497,Evan Carter,6,Texas Rangers,TBD Pitcher (RHP),L vs R,0.126,31,15.2,13.1,⚡ DUE NOW (Aug 25),26.2,⚡ DUE DATE WATCH: Critical Hazard Spike,34
+694497,Evan Carter,6,Texas Rangers,José Urquidy (RHP),L vs R,0.126,31,15.2,13.1,⚡ DUE NOW (Aug 25),26.2,⚡ DUE DATE WATCH: Critical Hazard Spike,34
 675961,Alika Williams,1,Athletics,Zebby Matthews (RHP),R vs R,0.126,30,15.2,12.9,⚡ DUE NOW (Aug 25),25.8,⚡ DUE DATE WATCH: Critical Hazard Spike,35
 656775,Cedric Mullins,1,Tampa Bay Rays,Framber Valdez (LHP),L vs L,0.147,18,13.1,12.8,⚡ DUE NOW (Aug 25),25.7,⚡ DUE DATE WATCH: Critical Hazard Spike,36
 695734,Daylen Lile,6,Washington Nationals,Ryan Feltner (RHP),L vs R,0.159,14,12.1,12.8,⚡ DUE NOW (Aug 25),25.7,⚡ DUE DATE WATCH: Critical Hazard Spike,37
@@ -41,7 +41,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,season_iso,drought_games,sc
 676356,Jonny DeLuca,4,Tampa Bay Rays,Framber Valdez (LHP),R vs L,0.165,12,11.6,12.6,⚡ DUE NOW (Aug 25),25.3,⚡ DUE DATE WATCH: Critical Hazard Spike,40
 802415,Chandler Simpson,2,Tampa Bay Rays,Framber Valdez (LHP),L vs L,0.055,118,24.0,12.4,⚡ DUE NOW (Aug 25),24.7,⚡ DUE DATE WATCH: Critical Hazard Spike,41
 678011,Anthony Seigler,3,Boston Red Sox,Sandy Alcantara (RHP),S vs R,0.151,15,12.7,12.3,⚡ DUE NOW (Aug 25),24.6,⚡ DUE DATE WATCH: Critical Hazard Spike,42
-607043,Brandon Nimmo,1,Texas Rangers,TBD Pitcher (RHP),L vs R,0.157,13,12.2,12.2,⚡ DUE NOW (Aug 25),24.4,⚡ DUE DATE WATCH: Critical Hazard Spike,43
+607043,Brandon Nimmo,1,Texas Rangers,José Urquidy (RHP),L vs R,0.157,13,12.2,12.2,⚡ DUE NOW (Aug 25),24.4,⚡ DUE DATE WATCH: Critical Hazard Spike,43
 695670,Harry Ford,8,Washington Nationals,Ryan Feltner (RHP),R vs R,0.2,6,9.6,12.2,⏳ Developing (Aug 28),24.4,⚾ Baseline Rotation,44
 678489,Jorge Barrosa,7,Arizona Diamondbacks,Kevin Gausman (RHP),S vs R,0.144,17,13.3,12.1,⚡ DUE NOW (Aug 25),24.3,⚡ DUE DATE WATCH: Critical Hazard Spike,45
 669134,Luis Campusano,8,San Diego Padres,Braxton Ashcraft (RHP),R vs R,0.189,7,10.2,12.1,⏳ Developing (Aug 28),24.1,⚾ Baseline Rotation,46
@@ -74,7 +74,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,season_iso,drought_games,sc
 678662,Ezequiel Tovar,5,Colorado Rockies,Cade Cavalli (RHP),R vs R,0.121,15,15.9,8.9,🔥 PEAK WINDOW (Aug 25),17.8,🔥 ELEVATED HAZARD: Approaching Due Window,73
 664040,Brandon Lowe,2,Pittsburgh Pirates,Robbie Ray (LHP),L vs L,0.225,2,8.5,8.8,⏳ Developing (Sep 01),17.7,⚾ Baseline Rotation,74
 808982,Jung Hoo Lee,8,San Francisco Giants,Chase Burns (RHP),L vs R,0.136,10,14.1,8.8,⏳ Developing (Aug 29),17.6,⚾ Baseline Rotation,75
-669394,Jake Burger,8,Texas Rangers,TBD Pitcher (RHP),R vs R,0.18,4,10.7,8.7,⏳ Developing (Sep 01),17.5,⚾ Baseline Rotation,76
+669394,Jake Burger,8,Texas Rangers,José Urquidy (RHP),R vs R,0.18,4,10.7,8.7,⏳ Developing (Sep 01),17.5,⚾ Baseline Rotation,76
 805367,Chase Meidroth,4,Chicago White Sox,Kumar Rocker (RHP),R vs R,0.13,11,14.8,8.6,⏳ Developing (Aug 28),17.2,⚾ Baseline Rotation,77
 666176,Jo Adell,7,Cleveland Guardians,George Klassen (RHP),R vs R,0.274,1,7.0,8.6,⏳ Developing (Sep 01),17.2,⚾ Baseline Rotation,78
 691781,Brady House,4,Washington Nationals,Ryan Feltner (RHP),R vs R,0.156,6,12.3,8.5,⏳ Developing (Sep 01),17.1,⚾ Baseline Rotation,79
@@ -83,13 +83,13 @@ player_id,player_name,order,team,opp_pitcher,matchup,season_iso,drought_games,sc
 681082,Bryson Stott,5,Philadelphia Phillies,Logan Gilbert (RHP),L vs R,0.147,7,13.1,8.4,⏳ Developing (Sep 01),16.8,⚾ Baseline Rotation,82
 695657,Colson Montgomery,5,Chicago White Sox,Kumar Rocker (RHP),L vs R,0.217,2,8.8,8.4,⏳ Developing (Sep 01),16.8,⚾ Baseline Rotation,83
 595879,Javier Báez,9,Detroit Tigers,Drew Rasmussen (RHP),R vs R,0.105,20,18.3,8.3,⚡ DUE NOW (Aug 25),16.5,⚡ DUE DATE WATCH: Critical Hazard Spike,84
-608369,Corey Seager,3,Texas Rangers,TBD Pitcher (RHP),L vs R,0.189,3,10.2,8.2,⏳ Developing (Sep 02),16.5,⚾ Baseline Rotation,85
-643376,Danny Jansen,4,Texas Rangers,TBD Pitcher (RHP),R vs R,0.129,10,14.9,8.1,⏳ Developing (Aug 29),16.3,⚾ Baseline Rotation,86
+608369,Corey Seager,3,Texas Rangers,José Urquidy (RHP),L vs R,0.189,3,10.2,8.2,⏳ Developing (Sep 02),16.5,⚾ Baseline Rotation,85
+643376,Danny Jansen,4,Texas Rangers,José Urquidy (RHP),R vs R,0.129,10,14.9,8.1,⏳ Developing (Aug 29),16.3,⚾ Baseline Rotation,86
 543510,James McCann,5,Arizona Diamondbacks,Kevin Gausman (RHP),R vs R,0.144,7,13.3,8.1,⏳ Developing (Sep 01),16.3,⚾ Baseline Rotation,87
 690993,Colt Keith,3,Detroit Tigers,Drew Rasmussen (RHP),L vs R,0.151,6,12.7,8.1,⏳ Developing (Sep 01),16.3,⚾ Baseline Rotation,88
 605137,Josh Bell,5,Minnesota Twins,Jeffrey Springs (LHP),S vs L,0.17,4,11.3,8.0,⏳ Developing (Sep 02),16.1,⚾ Baseline Rotation,89
-553869,Elias Díaz,5,Texas Rangers,TBD Pitcher (RHP),R vs R,0.135,0,14.2,8.0,⏳ Developing (Sep 11),16.0,⚾ Baseline Rotation,90
-677649,Ezequiel Duran,7,Texas Rangers,TBD Pitcher (RHP),R vs R,0.174,0,11.0,8.0,⏳ Developing (Sep 07),16.0,⚾ Baseline Rotation,91
+553869,Elias Díaz,5,Texas Rangers,José Urquidy (RHP),R vs R,0.135,0,14.2,8.0,⏳ Developing (Sep 11),16.0,⚾ Baseline Rotation,90
+677649,Ezequiel Duran,7,Texas Rangers,José Urquidy (RHP),R vs R,0.174,0,11.0,8.0,⏳ Developing (Sep 07),16.0,⚾ Baseline Rotation,91
 664023,Ian Happ,4,Chicago Cubs,Merrill Kelly (RHP),S vs R,0.202,0,9.5,8.0,⏳ Developing (Sep 05),16.0,⚾ Baseline Rotation,92
 624424,Michael Conforto,7,Chicago Cubs,Merrill Kelly (RHP),L vs R,0.225,0,8.5,8.0,⏳ Developing (Sep 03),16.0,⚾ Baseline Rotation,93
 665487,Fernando Tatis Jr.,2,San Diego Padres,Braxton Ashcraft (RHP),R vs R,0.163,0,11.8,8.0,⏳ Developing (Sep 07),16.0,⚾ Baseline Rotation,94
@@ -138,7 +138,7 @@ player_id,player_name,order,team,opp_pitcher,matchup,season_iso,drought_games,sc
 596117,Garrett Stubbs,8,Philadelphia Phillies,Logan Gilbert (RHP),L vs R,0.05,16,24.0,5.0,⏳ Developing (Sep 03),10.1,⚾ Baseline Rotation,137
 663968,Jake Mangum,7,Pittsburgh Pirates,Robbie Ray (LHP),S vs L,0.09,11,21.3,5.0,⏳ Developing (Sep 06),10.1,⚾ Baseline Rotation,138
 667472,Dane Myers,1,Cincinnati Reds,TBD Pitcher (RHP),R vs R,0.109,6,17.6,5.1,⏳ Developing (Sep 07),10.1,⚾ Baseline Rotation,139
-683227,Cody Freeman,2,Texas Rangers,TBD Pitcher (RHP),R vs R,0.057,15,24.0,4.9,⏳ Developing (Sep 05),10.0,⚾ Baseline Rotation,140
+683227,Cody Freeman,2,Texas Rangers,José Urquidy (RHP),R vs R,0.057,15,24.0,4.9,⏳ Developing (Sep 05),10.0,⚾ Baseline Rotation,140
 640902,Jhonny Pereda,5,Seattle Mariners,Zack Wheeler (RHP),R vs R,0.081,12,23.7,4.5,⏳ Developing (Sep 07),10.0,⚾ Baseline Rotation,141
 669707,Jared Triolo,8,Pittsburgh Pirates,Robbie Ray (LHP),R vs L,0.067,9,24.0,3.9,⏳ Developing (Sep 13),10.0,⚾ Baseline Rotation,142
 695681,Christian Moore,2,Los Angeles Angels,Parker Messick (LHP),R vs L,0.05,8,24.0,3.7,⏳ Developing (Sep 14),10.0,⚾ Baseline Rotation,143

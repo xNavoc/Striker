@@ -16,8 +16,8 @@ player_id,player_name,order,team,opp_pitcher,true_ab,blended_slg,bb_pct,p_slg_al
 686797,Brooks Lee,3,Minnesota Twins,Jeffrey Springs,4.27,0.464,5.1,0.405,1.96,97.8,💎 TB LOCK: Elite SLG & AB Volume,15
 664954,Brett Sullivan,2,Colorado Rockies,Cade Cavalli,4.27,0.455,5.1,0.405,1.92,95.9,💎 TB LOCK: Elite SLG & AB Volume,16
 672515,Gabriel Moreno,2,Arizona Diamondbacks,Kevin Gausman,4.27,0.451,5.1,0.405,1.9,95.1,💎 TB LOCK: Elite SLG & AB Volume,17
-608369,Corey Seager,3,Texas Rangers,TBD Pitcher,4.27,0.437,5.1,0.41,1.87,93.3,💎 TB LOCK: Elite SLG & AB Volume,18
-701162,Ben Malgeri,1,Detroit Tigers,Drew Rasmussen,4.27,0.437,5.1,0.405,1.84,92.1,💎 TB LOCK: Elite SLG & AB Volume,19
+701162,Ben Malgeri,1,Detroit Tigers,Drew Rasmussen,4.27,0.437,5.1,0.405,1.84,92.1,💎 TB LOCK: Elite SLG & AB Volume,18
+608369,Corey Seager,3,Texas Rangers,José Urquidy,4.27,0.437,5.1,0.405,1.84,92.1,💎 TB LOCK: Elite SLG & AB Volume,19
 678246,Miguel Vargas,9,Chicago White Sox,Kumar Rocker,3.42,0.54,5.1,0.405,1.82,91.1,💎 TB LOCK: Elite SLG & AB Volume,20
 547180,Bryce Harper,4,Philadelphia Phillies,Logan Gilbert,3.89,0.467,5.1,0.405,1.79,89.7,💎 TB LOCK: Elite SLG & AB Volume,21
 805811,Bryce Eldridge,2,San Francisco Giants,Chase Burns,4.27,0.421,5.1,0.405,1.78,88.8,💎 TB LOCK: Elite SLG & AB Volume,22
@@ -70,13 +70,13 @@ player_id,player_name,order,team,opp_pitcher,true_ab,blended_slg,bb_pct,p_slg_al
 666160,Mickey Moniak,8,Colorado Rockies,Cade Cavalli,3.42,0.435,5.1,0.405,1.47,73.4,🎯 TB TARGET: Strong XBH Spot,69
 668804,Bryan Reynolds,3,Pittsburgh Pirates,Robbie Ray,4.27,0.347,5.1,0.405,1.46,73.2,🎯 TB TARGET: Strong XBH Spot,70
 683737,Michael Busch,6,Chicago Cubs,Merrill Kelly,3.89,0.379,5.1,0.405,1.46,72.9,🎯 TB TARGET: Strong XBH Spot,71
-607043,Brandon Nimmo,1,Texas Rangers,TBD Pitcher,4.27,0.341,5.1,0.41,1.46,72.8,🎯 TB TARGET: Strong XBH Spot,72
-622268,Donovan Walton,5,Athletics,Zebby Matthews,3.89,0.378,5.1,0.405,1.45,72.6,🎯 TB TARGET: Strong XBH Spot,73
+622268,Donovan Walton,5,Athletics,Zebby Matthews,3.89,0.378,5.1,0.405,1.45,72.6,🎯 TB TARGET: Strong XBH Spot,72
+665923,Esteury Ruiz,4,Miami Marlins,Ranger Suarez,3.89,0.377,5.1,0.405,1.45,72.5,🎯 TB TARGET: Strong XBH Spot,73
 668709,JJ Bleday,6,Cincinnati Reds,TBD Pitcher,3.89,0.373,5.1,0.41,1.45,72.5,🎯 TB TARGET: Strong XBH Spot,74
-665923,Esteury Ruiz,4,Miami Marlins,Ranger Suarez,3.89,0.377,5.1,0.405,1.45,72.5,🎯 TB TARGET: Strong XBH Spot,75
-695657,Colson Montgomery,5,Chicago White Sox,Kumar Rocker,3.89,0.375,5.1,0.405,1.44,72.1,🎯 TB TARGET: Strong XBH Spot,76
-689414,Liam Hicks,8,Tampa Bay Rays,Framber Valdez,3.42,0.427,5.1,0.405,1.44,72.0,🎯 TB TARGET: Strong XBH Spot,77
-666018,Jonathan Aranda,3,Tampa Bay Rays,Framber Valdez,4.27,0.341,5.1,0.405,1.44,71.9,🎯 TB TARGET: Strong XBH Spot,78
+695657,Colson Montgomery,5,Chicago White Sox,Kumar Rocker,3.89,0.375,5.1,0.405,1.44,72.1,🎯 TB TARGET: Strong XBH Spot,75
+689414,Liam Hicks,8,Tampa Bay Rays,Framber Valdez,3.42,0.427,5.1,0.405,1.44,72.0,🎯 TB TARGET: Strong XBH Spot,76
+666018,Jonathan Aranda,3,Tampa Bay Rays,Framber Valdez,4.27,0.341,5.1,0.405,1.44,71.9,🎯 TB TARGET: Strong XBH Spot,77
+607043,Brandon Nimmo,1,Texas Rangers,José Urquidy,4.27,0.341,5.1,0.405,1.44,71.9,🎯 TB TARGET: Strong XBH Spot,78
 666126,Carlos Cortes,3,Athletics,Zebby Matthews,4.27,0.339,5.1,0.405,1.43,71.6,🎯 TB TARGET: Strong XBH Spot,79
 702332,Caleb Durbin,4,Boston Red Sox,Sandy Alcantara,3.89,0.373,5.1,0.405,1.43,71.6,🎯 TB TARGET: Strong XBH Spot,80
 624428,Adam Frazier,1,Los Angeles Angels,Parker Messick,4.27,0.339,5.1,0.405,1.43,71.5,🎯 TB TARGET: Strong XBH Spot,81
@@ -98,24 +98,24 @@ player_id,player_name,order,team,opp_pitcher,true_ab,blended_slg,bb_pct,p_slg_al
 672695,Geraldo Perdomo,3,Arizona Diamondbacks,Kevin Gausman,4.27,0.326,5.1,0.405,1.38,68.8,🎯 TB TARGET: Strong XBH Spot,97
 666139,Josh Lowe,6,Los Angeles Angels,Parker Messick,3.89,0.358,5.1,0.405,1.38,68.8,🎯 TB TARGET: Strong XBH Spot,98
 691788,Joe Mack,9,Miami Marlins,Ranger Suarez,3.42,0.405,5.1,0.405,1.37,68.3,🎯 TB TARGET: Strong XBH Spot,99
-683227,Cody Freeman,2,Texas Rangers,TBD Pitcher,4.27,0.32,5.1,0.41,1.37,68.3,🎯 TB TARGET: Strong XBH Spot,100
-693307,Dillon Dingler,5,Detroit Tigers,Drew Rasmussen,3.89,0.355,5.1,0.405,1.36,68.2,🎯 TB TARGET: Strong XBH Spot,101
-666023,Freddy Fermin,3,San Diego Padres,Braxton Ashcraft,4.27,0.322,5.1,0.405,1.36,67.9,🎯 TB TARGET: Strong XBH Spot,102
-621439,Byron Buxton,4,Minnesota Twins,Jeffrey Springs,3.89,0.352,5.1,0.405,1.35,67.6,🎯 TB TARGET: Strong XBH Spot,103
+693307,Dillon Dingler,5,Detroit Tigers,Drew Rasmussen,3.89,0.355,5.1,0.405,1.36,68.2,🎯 TB TARGET: Strong XBH Spot,100
+666023,Freddy Fermin,3,San Diego Padres,Braxton Ashcraft,4.27,0.322,5.1,0.405,1.36,67.9,🎯 TB TARGET: Strong XBH Spot,101
+621439,Byron Buxton,4,Minnesota Twins,Jeffrey Springs,3.89,0.352,5.1,0.405,1.35,67.6,🎯 TB TARGET: Strong XBH Spot,102
+683227,Cody Freeman,2,Texas Rangers,José Urquidy,4.27,0.32,5.1,0.405,1.35,67.5,🎯 TB TARGET: Strong XBH Spot,103
 655316,Andruw Monasterio,2,Boston Red Sox,Sandy Alcantara,4.27,0.319,5.1,0.405,1.35,67.3,🎯 TB TARGET: Strong XBH Spot,104
-592626,Joc Pederson,9,Texas Rangers,TBD Pitcher,3.42,0.391,5.1,0.41,1.34,66.9,🎯 TB TARGET: Strong XBH Spot,105
-702284,Cole Young,3,Seattle Mariners,Zack Wheeler,4.27,0.317,5.1,0.405,1.34,66.9,🎯 TB TARGET: Strong XBH Spot,106
-682663,Agustín Ramírez,1,Miami Marlins,Ranger Suarez,4.27,0.316,5.1,0.405,1.33,66.7,🎯 TB TARGET: Strong XBH Spot,107
-663330,Jahmai Jones,8,Boston Red Sox,Sandy Alcantara,3.42,0.393,5.1,0.405,1.33,66.4,🎯 TB TARGET: Strong XBH Spot,108
+702284,Cole Young,3,Seattle Mariners,Zack Wheeler,4.27,0.317,5.1,0.405,1.34,66.9,🎯 TB TARGET: Strong XBH Spot,105
+682663,Agustín Ramírez,1,Miami Marlins,Ranger Suarez,4.27,0.316,5.1,0.405,1.33,66.7,🎯 TB TARGET: Strong XBH Spot,106
+663330,Jahmai Jones,8,Boston Red Sox,Sandy Alcantara,3.42,0.393,5.1,0.405,1.33,66.4,🎯 TB TARGET: Strong XBH Spot,107
+592626,Joc Pederson,9,Texas Rangers,José Urquidy,3.42,0.391,5.1,0.405,1.32,66.1,🎯 TB TARGET: Strong XBH Spot,108
 643446,Jeff McNeil,7,Athletics,Zebby Matthews,3.42,0.388,5.1,0.405,1.31,65.5,🎯 TB TARGET: Strong XBH Spot,109
 696285,Jacob Young,9,Washington Nationals,Ryan Feltner,3.42,0.388,5.1,0.405,1.31,65.5,🎯 TB TARGET: Strong XBH Spot,110
-677649,Ezequiel Duran,7,Texas Rangers,TBD Pitcher,3.42,0.383,5.1,0.41,1.31,65.4,🎯 TB TARGET: Strong XBH Spot,111
-624431,Jose Trevino,7,Cincinnati Reds,TBD Pitcher,3.42,0.383,5.1,0.41,1.31,65.4,🎯 TB TARGET: Strong XBH Spot,112
-669394,Jake Burger,8,Texas Rangers,TBD Pitcher,3.42,0.378,5.1,0.41,1.29,64.6,⚾ Standard Base Volume,113
-624424,Michael Conforto,7,Chicago Cubs,Merrill Kelly,3.42,0.38,5.1,0.405,1.28,64.1,⚾ Standard Base Volume,114
-553869,Elias Díaz,5,Texas Rangers,TBD Pitcher,3.89,0.329,5.1,0.41,1.28,64.0,⚾ Standard Base Volume,115
-622761,Jorge Mateo,5,Tampa Bay Rays,Framber Valdez,3.89,0.332,5.1,0.405,1.28,63.9,⚾ Standard Base Volume,116
-680574,Matt McLain,9,Cincinnati Reds,TBD Pitcher,3.42,0.372,5.1,0.41,1.27,63.5,⚾ Standard Base Volume,117
+624431,Jose Trevino,7,Cincinnati Reds,TBD Pitcher,3.42,0.383,5.1,0.41,1.31,65.4,🎯 TB TARGET: Strong XBH Spot,111
+677649,Ezequiel Duran,7,Texas Rangers,José Urquidy,3.42,0.383,5.1,0.405,1.29,64.6,⚾ Standard Base Volume,112
+624424,Michael Conforto,7,Chicago Cubs,Merrill Kelly,3.42,0.38,5.1,0.405,1.28,64.1,⚾ Standard Base Volume,113
+669394,Jake Burger,8,Texas Rangers,José Urquidy,3.42,0.378,5.1,0.405,1.28,63.9,⚾ Standard Base Volume,114
+622761,Jorge Mateo,5,Tampa Bay Rays,Framber Valdez,3.89,0.332,5.1,0.405,1.28,63.9,⚾ Standard Base Volume,115
+680574,Matt McLain,9,Cincinnati Reds,TBD Pitcher,3.42,0.372,5.1,0.41,1.27,63.5,⚾ Standard Base Volume,116
+553869,Elias Díaz,5,Texas Rangers,José Urquidy,3.89,0.329,5.1,0.405,1.26,63.2,⚾ Standard Base Volume,117
 545361,Mike Trout,7,Los Angeles Angels,Parker Messick,3.42,0.374,5.1,0.405,1.26,63.1,⚾ Standard Base Volume,118
 702176,Alan Roden,1,Minnesota Twins,Jeffrey Springs,4.27,0.297,5.1,0.405,1.25,62.6,⚾ Standard Base Volume,119
 681393,Connor Norby,4,Colorado Rockies,Cade Cavalli,3.89,0.325,5.1,0.405,1.25,62.5,⚾ Standard Base Volume,120
@@ -150,8 +150,8 @@ player_id,player_name,order,team,opp_pitcher,true_ab,blended_slg,bb_pct,p_slg_al
 699302,Héctor Rodríguez,4,Cincinnati Reds,TBD Pitcher,3.89,0.273,5.1,0.41,1.06,53.2,⚾ Standard Base Volume,149
 686611,Dylan Crews,7,Washington Nationals,Ryan Feltner,3.42,0.313,5.1,0.405,1.06,52.8,⚾ Standard Base Volume,150
 663457,Lars Nootbaar,9,Arizona Diamondbacks,Kevin Gausman,3.42,0.312,5.1,0.405,1.05,52.7,⚾ Standard Base Volume,151
-694497,Evan Carter,6,Texas Rangers,TBD Pitcher,3.89,0.268,5.1,0.41,1.04,52.1,⚾ Standard Base Volume,152
-640459,Brian Navarreto,2,Miami Marlins,Ranger Suarez,4.27,0.245,5.1,0.405,1.03,51.7,⚾ Standard Base Volume,153
+640459,Brian Navarreto,2,Miami Marlins,Ranger Suarez,4.27,0.245,5.1,0.405,1.03,51.7,⚾ Standard Base Volume,152
+694497,Evan Carter,6,Texas Rangers,José Urquidy,3.89,0.268,5.1,0.405,1.03,51.4,⚾ Standard Base Volume,153
 595879,Javier Báez,9,Detroit Tigers,Drew Rasmussen,3.42,0.304,5.1,0.405,1.03,51.3,⚾ Standard Base Volume,154
 678545,Osleivis Basabe,9,San Francisco Giants,Chase Burns,3.42,0.301,5.1,0.405,1.02,50.8,⚾ Standard Base Volume,155
 681807,David Fry,6,Cleveland Guardians,George Klassen,3.89,0.263,5.1,0.405,1.01,50.6,⚾ Standard Base Volume,156
@@ -162,7 +162,7 @@ player_id,player_name,order,team,opp_pitcher,true_ab,blended_slg,bb_pct,p_slg_al
 669707,Jared Triolo,8,Pittsburgh Pirates,Robbie Ray,3.42,0.289,5.1,0.405,0.97,48.7,⚾ Standard Base Volume,161
 641680,Jonah Heim,8,Athletics,Zebby Matthews,3.42,0.286,5.1,0.405,0.97,48.3,⚾ Standard Base Volume,162
 695257,Billy Cook,1,Pittsburgh Pirates,Robbie Ray,4.27,0.224,5.1,0.405,0.94,47.2,⚾ Standard Base Volume,163
-643376,Danny Jansen,4,Texas Rangers,TBD Pitcher,3.89,0.243,5.1,0.41,0.94,47.2,⚾ Standard Base Volume,164
+643376,Danny Jansen,4,Texas Rangers,José Urquidy,3.89,0.243,5.1,0.405,0.93,46.7,⚾ Standard Base Volume,164
 683766,Christian Koss,4,San Francisco Giants,Chase Burns,3.89,0.242,5.1,0.405,0.93,46.6,⚾ Standard Base Volume,165
 687231,Darell Hernaiz,4,Athletics,Zebby Matthews,3.89,0.242,5.1,0.405,0.93,46.5,⚾ Standard Base Volume,166
 663647,Ke'Bryan Hayes,8,Cincinnati Reds,TBD Pitcher,3.42,0.272,5.1,0.41,0.93,46.4,⚾ Standard Base Volume,167

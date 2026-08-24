@@ -24,7 +24,7 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 640902,Jhonny Pereda,5,Seattle Mariners,Zack Wheeler,0.289,21.0,76.0,60.5,60.5,⚾ Standard Hit Prob,23
 701785,Kaelen Culpepper,6,Minnesota Twins,Jeffrey Springs,0.289,21.0,76.0,60.4,60.4,⚾ Standard Hit Prob,24
 643446,Jeff McNeil,7,Athletics,Zebby Matthews,0.288,21.0,76.0,60.3,60.3,⚾ Standard Hit Prob,25
-683227,Cody Freeman,2,Texas Rangers,TBD Pitcher,0.286,21.0,76.0,60.0,60.0,⚾ Standard Hit Prob,26
+683227,Cody Freeman,2,Texas Rangers,José Urquidy,0.286,21.0,76.0,60.0,60.0,⚾ Standard Hit Prob,26
 647304,Josh Naylor,6,Seattle Mariners,Zack Wheeler,0.284,21.0,76.0,59.7,59.7,⚾ Standard Hit Prob,27
 663968,Jake Mangum,7,Pittsburgh Pirates,Robbie Ray,0.284,21.0,76.0,59.7,59.7,⚾ Standard Hit Prob,28
 682657,Angel Martínez,2,Cleveland Guardians,George Klassen,0.283,21.0,76.0,59.6,59.6,⚾ Standard Hit Prob,29
@@ -55,11 +55,11 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 702176,Alan Roden,1,Minnesota Twins,Jeffrey Springs,0.259,21.0,76.0,56.0,56.0,⚾ Standard Hit Prob,54
 663993,Nathaniel Lowe,9,Cleveland Guardians,George Klassen,0.259,21.0,76.0,56.0,56.0,⚾ Standard Hit Prob,55
 665953,Andrés Chaparro,2,Washington Nationals,Ryan Feltner,0.258,21.0,76.0,55.9,55.9,⚾ Standard Hit Prob,56
-608369,Corey Seager,3,Texas Rangers,TBD Pitcher,0.258,21.0,76.0,55.8,55.8,⚾ Standard Hit Prob,57
+608369,Corey Seager,3,Texas Rangers,José Urquidy,0.258,21.0,76.0,55.8,55.8,⚾ Standard Hit Prob,57
 682928,CJ Abrams,5,Washington Nationals,Ryan Feltner,0.258,21.0,76.0,55.8,55.8,⚾ Standard Hit Prob,58
 622268,Donovan Walton,5,Athletics,Zebby Matthews,0.258,21.0,76.0,55.8,55.8,⚾ Standard Hit Prob,59
 691406,Junior Caminero,6,Tampa Bay Rays,Framber Valdez,0.257,21.0,76.0,55.7,55.7,⚾ Standard Hit Prob,60
-677649,Ezequiel Duran,7,Texas Rangers,TBD Pitcher,0.257,21.0,76.0,55.6,55.6,⚾ Standard Hit Prob,61
+677649,Ezequiel Duran,7,Texas Rangers,José Urquidy,0.257,21.0,76.0,55.6,55.6,⚾ Standard Hit Prob,61
 664040,Brandon Lowe,2,Pittsburgh Pirates,Robbie Ray,0.256,21.0,76.0,55.6,55.6,⚾ Standard Hit Prob,62
 681082,Bryson Stott,5,Philadelphia Phillies,Logan Gilbert,0.255,21.0,76.0,55.4,55.4,⚾ Standard Hit Prob,63
 682634,Kevin Alcántara,5,Chicago Cubs,Merrill Kelly,0.255,21.0,76.0,55.4,55.4,⚾ Standard Hit Prob,64
@@ -109,12 +109,12 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 666023,Freddy Fermin,3,San Diego Padres,Braxton Ashcraft,0.229,21.0,76.0,51.1,51.1,⚾ Standard Hit Prob,108
 695731,Braden Montgomery,2,Chicago White Sox,Kumar Rocker,0.227,21.0,76.0,50.8,50.8,⚾ Standard Hit Prob,109
 545121,Ildemaro Vargas,4,Arizona Diamondbacks,Kevin Gausman,0.226,21.0,76.0,50.7,50.7,⚾ Standard Hit Prob,110
-607043,Brandon Nimmo,1,Texas Rangers,TBD Pitcher,0.226,21.0,76.0,50.7,50.7,⚾ Standard Hit Prob,111
+607043,Brandon Nimmo,1,Texas Rangers,José Urquidy,0.226,21.0,76.0,50.7,50.7,⚾ Standard Hit Prob,111
 681393,Connor Norby,4,Colorado Rockies,Cade Cavalli,0.225,21.0,76.0,50.5,50.5,⚾ Standard Hit Prob,112
 677587,Brayan Rocchio,4,Cleveland Guardians,George Klassen,0.225,21.0,76.0,50.5,50.5,⚾ Standard Hit Prob,113
 666160,Mickey Moniak,8,Colorado Rockies,Cade Cavalli,0.225,21.0,76.0,50.5,50.5,⚾ Standard Hit Prob,114
 655316,Andruw Monasterio,2,Boston Red Sox,Sandy Alcantara,0.223,21.0,76.0,50.1,50.1,⚾ Standard Hit Prob,115
-669394,Jake Burger,8,Texas Rangers,TBD Pitcher,0.221,21.0,76.0,49.9,49.9,⚾ Standard Hit Prob,116
+669394,Jake Burger,8,Texas Rangers,José Urquidy,0.221,21.0,76.0,49.9,49.9,⚾ Standard Hit Prob,116
 687551,Drew Gilbert,6,San Francisco Giants,Chase Burns,0.222,21.0,76.0,49.9,49.9,⚾ Standard Hit Prob,117
 592663,J.T. Realmuto,9,Philadelphia Phillies,Logan Gilbert,0.222,21.0,76.0,49.9,49.9,⚾ Standard Hit Prob,118
 677594,Julio Rodríguez,7,Seattle Mariners,Zack Wheeler,0.221,21.0,76.0,49.8,49.8,⚾ Standard Hit Prob,119
@@ -122,7 +122,7 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 624431,Jose Trevino,7,Cincinnati Reds,TBD Pitcher,0.22,21.0,76.0,49.6,49.6,⚾ Standard Hit Prob,121
 669707,Jared Triolo,8,Pittsburgh Pirates,Robbie Ray,0.219,21.0,76.0,49.5,49.5,⚾ Standard Hit Prob,122
 656537,Derek Hill,6,Philadelphia Phillies,Logan Gilbert,0.219,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,123
-553869,Elias Díaz,5,Texas Rangers,TBD Pitcher,0.218,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,124
+553869,Elias Díaz,5,Texas Rangers,José Urquidy,0.218,21.0,76.0,49.4,49.4,⚾ Standard Hit Prob,124
 681715,Heriberto Hernández,6,Miami Marlins,Ranger Suarez,0.218,21.0,76.0,49.3,49.3,⚾ Standard Hit Prob,125
 687597,Jordan Beck,7,Colorado Rockies,Cade Cavalli,0.217,21.0,76.0,49.1,49.1,⚾ Standard Hit Prob,126
 668709,JJ Bleday,6,Cincinnati Reds,TBD Pitcher,0.217,21.0,76.0,49.1,49.1,⚾ Standard Hit Prob,127
@@ -152,7 +152,7 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 622761,Jorge Mateo,5,Tampa Bay Rays,Framber Valdez,0.196,21.0,76.0,45.4,45.4,⚾ Standard Hit Prob,151
 621439,Byron Buxton,4,Minnesota Twins,Jeffrey Springs,0.196,21.0,76.0,45.4,45.4,⚾ Standard Hit Prob,152
 695670,Harry Ford,8,Washington Nationals,Ryan Feltner,0.194,21.0,76.0,45.0,45.0,⚾ Standard Hit Prob,153
-694497,Evan Carter,6,Texas Rangers,TBD Pitcher,0.192,21.0,76.0,44.7,44.7,⚾ Standard Hit Prob,154
+694497,Evan Carter,6,Texas Rangers,José Urquidy,0.192,21.0,76.0,44.7,44.7,⚾ Standard Hit Prob,154
 686668,Brenton Doyle,3,Chicago White Sox,Kumar Rocker,0.189,21.0,76.0,44.1,44.1,⚾ Standard Hit Prob,155
 695257,Billy Cook,1,Pittsburgh Pirates,Robbie Ray,0.188,21.0,76.0,43.9,43.9,⚾ Standard Hit Prob,156
 687749,Jase Bowen,7,San Diego Padres,Braxton Ashcraft,0.186,21.0,76.0,43.5,43.5,⚾ Standard Hit Prob,157
@@ -161,7 +161,7 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 641680,Jonah Heim,8,Athletics,Zebby Matthews,0.179,21.0,76.0,42.2,42.2,⚾ Standard Hit Prob,160
 672724,Oswald Peraza,9,Los Angeles Angels,Parker Messick,0.177,21.0,76.0,41.9,41.9,⚾ Standard Hit Prob,161
 663647,Ke'Bryan Hayes,8,Cincinnati Reds,TBD Pitcher,0.176,21.0,76.0,41.7,41.7,⚾ Standard Hit Prob,162
-592626,Joc Pederson,9,Texas Rangers,TBD Pitcher,0.176,21.0,76.0,41.7,41.7,⚾ Standard Hit Prob,163
+592626,Joc Pederson,9,Texas Rangers,José Urquidy,0.176,21.0,76.0,41.7,41.7,⚾ Standard Hit Prob,163
 699302,Héctor Rodríguez,4,Cincinnati Reds,TBD Pitcher,0.171,21.0,76.0,40.7,40.7,⚾ Standard Hit Prob,164
 668939,Adley Rutschman,1,Boston Red Sox,Sandy Alcantara,0.166,21.0,76.0,39.6,39.6,⚾ Standard Hit Prob,165
 691011,Drew Romo,6,Chicago White Sox,Kumar Rocker,0.163,21.0,76.0,39.1,39.1,⚾ Standard Hit Prob,166
@@ -174,7 +174,7 @@ player_id,player_name,order,team,opp_pitcher,blended_ba,ld_rate,contact_rate,hit
 596117,Garrett Stubbs,8,Philadelphia Phillies,Logan Gilbert,0.145,21.0,76.0,35.6,35.6,⚾ Standard Hit Prob,173
 640459,Brian Navarreto,2,Miami Marlins,Ranger Suarez,0.129,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,174
 690022,Ryan Ritter,9,Colorado Rockies,Cade Cavalli,0.111,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,175
-643376,Danny Jansen,4,Texas Rangers,TBD Pitcher,0.135,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,176
+643376,Danny Jansen,4,Texas Rangers,José Urquidy,0.135,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,176
 672356,Gabriel Arias,3,Chicago Cubs,Merrill Kelly,0.096,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,177
 681807,David Fry,6,Cleveland Guardians,George Klassen,0.125,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,178
 621550,Patrick Wisdom,9,Seattle Mariners,Zack Wheeler,0.123,21.0,76.0,35.1,35.1,⚾ Standard Hit Prob,179
