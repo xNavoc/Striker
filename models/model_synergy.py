@@ -2,11 +2,10 @@ import os
 from datetime import datetime
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
-from core.settlement_engine import settle_projections
+from core.settlement_engine import settle_projections, get_yesterday_date
 
-def safe_float(val, default_val):
+def safe_float(val, default_val=0.0):
     """Safely converts string numbers, catching undefined hyphens/dashes from API feeds."""
     try:
         if val is None:
@@ -59,15 +58,20 @@ def format_weather(mod):
         return f"❄️ {mod:.2f}x"
 
 def run_synergy_model(mode="predict"):
-    today_str, games = load_daily_slate()
-    os.makedirs("exports/synergy", exist_ok=True)
-
+    # 1. SETTLEMENT MODE
     if mode == "settle":
-        settle_projections("synergy", today_str, lambda r, st: (
+        yesterday_str = get_yesterday_date()
+        print(f"[{datetime.now()}] Settling Power Synergy Model for {yesterday_str}...")
+        
+        settle_projections("synergy", yesterday_str, lambda r, st: (
             int(safe_float(st.get('hr'), 0)) > 0,
             f"WIN ({int(safe_float(st.get('hr'), 0))} HR)" if int(safe_float(st.get('hr'), 0)) > 0 else "LOSS"
         ))
         return
+
+    # 2. PREDICTION MODE
+    today_str, games = load_daily_slate()
+    os.makedirs("exports/synergy", exist_ok=True)
 
     print(f"[{datetime.now()}] Running Synchronized & Hardened Power Synergy Model for {today_str}...")
     targets = []
@@ -183,67 +187,6 @@ def run_synergy_model(mode="predict"):
     if not df.empty:
         df = df.sort_values(by=['synergy_score', 'drought_games'], ascending=[False, False]).reset_index(drop=True)
         df['rank'] = df.index + 1
-        df.to_csv(f"exports/synergy/synergy_top50_{today_str}.csv", index=False)
-        render_synergy_card(df.head(35), f"exports/synergy/synergy_top50_card_{today_str}.png", today_str)
-
-def render_synergy_card(df, out_path, today_str):
-    if df.empty:
-        return
-    plt.close('all')
-
-    fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
-    fig.patch.set_facecolor('#070d1e')
-    ax.axis('off')
-
-    fig.text(0.5, 0.965, "MLB POWER SYNERGY CONVERGENCE MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.938, f"Core HR Model x Weibull Hazard Timing • Full Slate Evaluation • {today_str}", ha='center', color='#38bdf8', fontsize=12)
-
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Matchup', 'Weather', 'Blended ISO', 'Drought', 'Core HR %', 'Hazard Surge', 'Synergy Score', 'ACTIONABLE CALL']
-    rows = []
-
-    for _, r in df.iterrows():
-        rows.append([
-            r.get('rank', 1),
-            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
-            str(r.get('team', 'Team'))[:11],
-            str(r.get('opp_pitcher', 'TBD'))[:14],
-            str(r.get('matchup', 'R vs R')),
-            str(r.get('weather', '☁️ 1.00x')),
-            f"{float(r.get('blended_iso', 0.160)):.3f}",
-            f"{int(r.get('drought_games', 0))}G",
-            f"{float(r.get('core_hr_prob', 0.0)):.1f}%",
-            f"{float(r.get('hazard_mult', 1.0)):.2f}x",
-            f"{float(r.get('synergy_score', 0.0)):.1f}",
-            str(r.get('target_call', 'Standard Rotation'))
-        ])
-
-    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
-    table.auto_set_font_size(False)
-    table.set_fontsize(7.5)
-    table.scale(1.0, 1.85)
-
-    for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#1e293b')
-        if row == 0:
-            cell.set_text_props(color='#38bdf8', weight='bold')
-            cell.set_facecolor('#0f172a')
-        else:
-            if col == 11:
-                txt = rows[row-1][11]
-                cell.set_text_props(
-                    color='#38bdf8' if 'APEX' in txt else ('#4ade80' if 'TARGET' in txt else ('#facc15' if 'WATCH' in txt else '#94a3b8')),
-                    weight='bold'
-                )
-            elif col in [9, 10]:
-                cell.set_text_props(color='#facc15', weight='bold')
-            elif col in [6, 7]:
-                cell.set_text_props(color='#38bdf8', weight='bold')
-            else:
-                cell.set_text_props(color='#f1f5f9')
-            cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
-
-    plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
-    plt.close('all')
-    print(f"[✓] Saved Synergy Convergence Card to {out_path}")
-
-run_synergy_model = run_synergy_model
+        out_path = f"exports/synergy/synergy_top50_{today_str}.csv"
+        df.to_csv(out_path, index=False)
+        print(f"[✓] Saved Synergy Convergence Matrix to {out_path}")
