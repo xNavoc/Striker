@@ -1,0 +1,181 @@
+player_id,player_name,order,team,opp_pitcher,p_whip,blended_ops,lineup_mult,expected_hrr,score,target_call,rank
+800050,Chase DeLauter,5,Cleveland Guardians,George Klassen,1.62,0.79,1.2,2.43,97.0,🚂 TRAFFIC LOCK: Elite Setup & Position,1
+608324,Alex Bregman,1,Chicago Cubs,Merrill Kelly,1.52,0.86,1.15,2.37,95.0,🚂 TRAFFIC LOCK: Elite Setup & Position,2
+687605,Andrew Pinckney,3,Washington Nationals,Ryan Feltner,1.53,0.802,1.2,2.33,93.1,🚂 TRAFFIC LOCK: Elite Setup & Position,3
+665953,Andrés Chaparro,2,Washington Nationals,Ryan Feltner,1.53,0.808,1.15,2.25,89.9,🚂 TRAFFIC LOCK: Elite Setup & Position,4
+664023,Ian Happ,4,Chicago Cubs,Merrill Kelly,1.52,0.762,1.2,2.2,87.9,🚂 TRAFFIC LOCK: Elite Setup & Position,5
+686797,Brooks Lee,3,Minnesota Twins,Jeffrey Springs,1.48,0.764,1.2,2.14,85.8,🚂 TRAFFIC LOCK: Elite Setup & Position,6
+682928,CJ Abrams,5,Washington Nationals,Ryan Feltner,1.53,0.73,1.2,2.12,84.8,🚂 TRAFFIC LOCK: Elite Setup & Position,7
+682657,Angel Martínez,2,Cleveland Guardians,George Klassen,1.62,0.719,1.15,2.12,84.7,🚂 TRAFFIC LOCK: Elite Setup & Position,8
+605137,Josh Bell,5,Minnesota Twins,Jeffrey Springs,1.48,0.745,1.2,2.09,83.7,🚂 TRAFFIC LOCK: Elite Setup & Position,9
+656577,Alex Jackson,2,Minnesota Twins,Jeffrey Springs,1.48,0.745,1.15,2.0,80.2,🚂 TRAFFIC LOCK: Elite Setup & Position,10
+595978,Austin Hedges,3,Cleveland Guardians,George Klassen,1.62,0.643,1.2,1.98,79.1,🚂 TRAFFIC LOCK: Elite Setup & Position,11
+543510,James McCann,5,Arizona Diamondbacks,Kevin Gausman,1.29,0.806,1.2,1.97,78.9,🚂 TRAFFIC LOCK: Elite Setup & Position,12
+672569,Gustavo Campero,4,Los Angeles Angels,Parker Messick,1.03,1.0,1.2,1.95,78.1,🚂 TRAFFIC LOCK: Elite Setup & Position,13
+682634,Kevin Alcántara,5,Chicago Cubs,Merrill Kelly,1.52,0.676,1.2,1.95,78.0,🚂 TRAFFIC LOCK: Elite Setup & Position,14
+665052,Griffin Conine,5,Miami Marlins,Ranger Suarez,1.18,0.864,1.2,1.93,77.3,🚂 TRAFFIC LOCK: Elite Setup & Position,15
+694673,Abimelec Ortiz,1,Washington Nationals,Ryan Feltner,1.53,0.694,1.15,1.93,77.2,🚂 TRAFFIC LOCK: Elite Setup & Position,16
+694197,Angel Genao,1,Cleveland Guardians,George Klassen,1.62,0.655,1.15,1.93,77.2,🚂 TRAFFIC LOCK: Elite Setup & Position,17
+691781,Brady House,4,Washington Nationals,Ryan Feltner,1.53,0.662,1.2,1.92,76.9,🚂 TRAFFIC LOCK: Elite Setup & Position,18
+700652,Kenny Piper,7,Tampa Bay Rays,Framber Valdez,1.4,0.958,0.9,1.91,76.3,🚂 TRAFFIC LOCK: Elite Setup & Position,19
+672515,Gabriel Moreno,2,Arizona Diamondbacks,Kevin Gausman,1.29,0.812,1.15,1.9,76.2,🚂 TRAFFIC LOCK: Elite Setup & Position,20
+665487,Fernando Tatis Jr.,2,San Diego Padres,Braxton Ashcraft,1.08,0.96,1.15,1.88,75.4,🚂 TRAFFIC LOCK: Elite Setup & Position,21
+666176,Jo Adell,7,Cleveland Guardians,George Klassen,1.62,0.818,0.9,1.89,75.4,🚂 TRAFFIC LOCK: Elite Setup & Position,22
+805367,Chase Meidroth,4,Chicago White Sox,Kumar Rocker,1.4,0.709,1.2,1.88,75.3,🚂 TRAFFIC LOCK: Elite Setup & Position,23
+682998,Corbin Carroll,1,Arizona Diamondbacks,Kevin Gausman,1.29,0.802,1.15,1.88,75.2,🚂 TRAFFIC LOCK: Elite Setup & Position,24
+608369,Corey Seager,3,Texas Rangers,TBD Pitcher,1.3,0.753,1.2,1.86,74.3,🚦 PRODUCTION TARGET: High Ceiling,25
+622268,Donovan Walton,5,Athletics,Zebby Matthews,1.33,0.737,1.2,1.86,74.3,🚦 PRODUCTION TARGET: High Ceiling,26
+802415,Chandler Simpson,2,Tampa Bay Rays,Framber Valdez,1.4,0.726,1.15,1.85,73.9,🚦 PRODUCTION TARGET: High Ceiling,27
+676356,Jonny DeLuca,4,Tampa Bay Rays,Framber Valdez,1.4,0.692,1.2,1.84,73.5,🚦 PRODUCTION TARGET: High Ceiling,28
+608348,Carson Kelly,2,Chicago Cubs,Merrill Kelly,1.52,0.664,1.15,1.84,73.4,🚦 PRODUCTION TARGET: High Ceiling,29
+661531,Brian Serven,2,Athletics,Zebby Matthews,1.33,0.755,1.15,1.82,73.0,🚦 PRODUCTION TARGET: High Ceiling,30
+664040,Brandon Lowe,2,Pittsburgh Pirates,Robbie Ray,1.29,0.77,1.15,1.8,72.2,🚦 PRODUCTION TARGET: High Ceiling,31
+677587,Brayan Rocchio,4,Cleveland Guardians,George Klassen,1.62,0.581,1.2,1.79,71.4,🚦 PRODUCTION TARGET: High Ceiling,32
+699013,Esmerlyn Valdez,4,Pittsburgh Pirates,Robbie Ray,1.29,0.72,1.2,1.76,70.4,🚦 PRODUCTION TARGET: High Ceiling,33
+691277,Deyvison De Los Santos,3,Miami Marlins,Ranger Suarez,1.18,0.777,1.2,1.74,69.6,🚦 PRODUCTION TARGET: High Ceiling,34
+666018,Jonathan Aranda,3,Tampa Bay Rays,Framber Valdez,1.4,0.65,1.2,1.73,69.1,🚦 PRODUCTION TARGET: High Ceiling,35
+643217,Andrew Benintendi,1,Chicago White Sox,Kumar Rocker,1.4,0.658,1.15,1.67,66.9,🚦 PRODUCTION TARGET: High Ceiling,36
+695657,Colson Montgomery,5,Chicago White Sox,Kumar Rocker,1.4,0.626,1.2,1.66,66.5,🚦 PRODUCTION TARGET: High Ceiling,37
+621439,Byron Buxton,4,Minnesota Twins,Jeffrey Springs,1.48,0.587,1.2,1.65,65.9,🚦 PRODUCTION TARGET: High Ceiling,38
+678882,Ceddanne Rafaela,5,Boston Red Sox,Sandy Alcantara,1.18,0.736,1.2,1.65,65.9,🚦 PRODUCTION TARGET: High Ceiling,39
+650559,Bryan De La Cruz,3,Philadelphia Phillies,Logan Gilbert,1.01,0.849,1.2,1.63,65.1,🚦 PRODUCTION TARGET: High Ceiling,40
+664954,Brett Sullivan,2,Colorado Rockies,Cade Cavalli,1.22,0.732,1.15,1.62,65.0,🚦 PRODUCTION TARGET: High Ceiling,41
+553993,Eugenio Suárez,3,Cincinnati Reds,TBD Pitcher,1.3,0.659,1.2,1.63,65.0,🚦 PRODUCTION TARGET: High Ceiling,42
+668804,Bryan Reynolds,3,Pittsburgh Pirates,Robbie Ray,1.29,0.66,1.2,1.62,64.6,🚦 PRODUCTION TARGET: High Ceiling,43
+702176,Alan Roden,1,Minnesota Twins,Jeffrey Springs,1.48,0.6,1.15,1.62,64.6,🚦 PRODUCTION TARGET: High Ceiling,44
+666126,Carlos Cortes,3,Athletics,Zebby Matthews,1.33,0.639,1.2,1.61,64.5,🚦 PRODUCTION TARGET: High Ceiling,45
+701785,Kaelen Culpepper,6,Minnesota Twins,Jeffrey Springs,1.48,0.755,0.9,1.59,63.6,🚦 PRODUCTION TARGET: High Ceiling,46
+695731,Braden Montgomery,2,Chicago White Sox,Kumar Rocker,1.4,0.619,1.15,1.58,63.0,🚦 PRODUCTION TARGET: High Ceiling,47
+672695,Geraldo Perdomo,3,Arizona Diamondbacks,Kevin Gausman,1.29,0.642,1.2,1.57,62.9,🚦 PRODUCTION TARGET: High Ceiling,48
+667472,Dane Myers,1,Cincinnati Reds,TBD Pitcher,1.3,0.662,1.15,1.57,62.6,🚦 PRODUCTION TARGET: High Ceiling,49
+547180,Bryce Harper,4,Philadelphia Phillies,Logan Gilbert,1.01,0.815,1.2,1.56,62.5,🚦 PRODUCTION TARGET: High Ceiling,50
+682829,Elly De La Cruz,2,Cincinnati Reds,TBD Pitcher,1.3,0.657,1.15,1.55,62.1,🚦 PRODUCTION TARGET: High Ceiling,51
+667452,Corey Julks,4,Detroit Tigers,Drew Rasmussen,0.95,0.833,1.2,1.54,61.6,⚾ Standard Volume,52
+683227,Cody Freeman,2,Texas Rangers,TBD Pitcher,1.3,0.65,1.15,1.54,61.4,⚾ Standard Volume,53
+814430,Brett Callahan,2,Detroit Tigers,Drew Rasmussen,0.95,0.865,1.15,1.53,61.4,⚾ Standard Volume,54
+702332,Caleb Durbin,4,Boston Red Sox,Sandy Alcantara,1.18,0.679,1.2,1.52,60.8,⚾ Standard Volume,55
+665923,Esteury Ruiz,4,Miami Marlins,Ranger Suarez,1.18,0.678,1.2,1.52,60.7,⚾ Standard Volume,56
+545121,Ildemaro Vargas,4,Arizona Diamondbacks,Kevin Gausman,1.29,0.62,1.2,1.52,60.7,⚾ Standard Volume,57
+691406,Junior Caminero,6,Tampa Bay Rays,Framber Valdez,1.4,0.76,0.9,1.51,60.5,⚾ Standard Volume,58
+683737,Michael Busch,6,Chicago Cubs,Merrill Kelly,1.52,0.692,0.9,1.5,59.9,⚾ Standard Volume,59
+694249,Cole Carrigg,3,Colorado Rockies,Cade Cavalli,1.22,0.645,1.2,1.49,59.7,⚾ Standard Volume,60
+622761,Jorge Mateo,5,Tampa Bay Rays,Framber Valdez,1.4,0.556,1.2,1.48,59.0,⚾ Standard Volume,61
+665019,Kody Clemens,7,Minnesota Twins,Jeffrey Springs,1.48,0.698,0.9,1.47,58.8,⚾ Standard Volume,62
+701538,Jackson Merrill,5,San Diego Padres,Braxton Ashcraft,1.08,0.717,1.2,1.47,58.8,⚾ Standard Volume,63
+678246,Miguel Vargas,9,Chicago White Sox,Kumar Rocker,1.4,0.882,0.75,1.46,58.6,⚾ Standard Volume,64
+675961,Alika Williams,1,Athletics,Zebby Matthews,1.33,0.605,1.15,1.46,58.5,⚾ Standard Volume,65
+805811,Bryce Eldridge,2,San Francisco Giants,Chase Burns,1.11,0.723,1.15,1.46,58.4,⚾ Standard Volume,66
+607043,Brandon Nimmo,1,Texas Rangers,TBD Pitcher,1.3,0.606,1.15,1.43,57.2,⚾ Standard Volume,67
+681393,Connor Norby,4,Colorado Rockies,Cade Cavalli,1.22,0.615,1.2,1.42,57.0,⚾ Standard Volume,68
+664761,Alec Bohm,1,Philadelphia Phillies,Logan Gilbert,1.01,0.765,1.15,1.4,56.2,⚾ Standard Volume,69
+691783,Jordan Lawlar,6,Arizona Diamondbacks,Kevin Gausman,1.29,0.764,0.9,1.4,56.1,⚾ Standard Volume,70
+656775,Cedric Mullins,1,Tampa Bay Rays,Framber Valdez,1.4,0.548,1.15,1.39,55.7,⚾ Standard Volume,71
+686527,Dominic Canzone,4,Seattle Mariners,Zack Wheeler,1.01,0.722,1.2,1.38,55.3,⚾ Standard Volume,72
+703607,Henry Bolte,6,Athletics,Zebby Matthews,1.33,0.73,0.9,1.38,55.2,⚾ Standard Volume,73
+695734,Daylen Lile,6,Washington Nationals,Ryan Feltner,1.53,0.632,0.9,1.37,55.0,⚾ Standard Volume,74
+553869,Elias Díaz,5,Texas Rangers,TBD Pitcher,1.3,0.558,1.2,1.38,55.0,⚾ Standard Volume,75
+678011,Anthony Seigler,3,Boston Red Sox,Sandy Alcantara,1.18,0.607,1.2,1.36,54.4,⚾ Standard Volume,76
+657757,Gavin Sheets,4,San Diego Padres,Braxton Ashcraft,1.08,0.66,1.2,1.35,54.1,⚾ Standard Volume,77
+807712,Luke Keaschall,8,Minnesota Twins,Jeffrey Springs,1.48,0.768,0.75,1.35,53.9,⚾ Standard Volume,78
+682663,Agustín Ramírez,1,Miami Marlins,Ranger Suarez,1.18,0.625,1.15,1.34,53.7,⚾ Standard Volume,79
+664983,Jake McCarthy,6,Colorado Rockies,Cade Cavalli,1.22,0.772,0.9,1.34,53.6,⚾ Standard Volume,80
+624424,Michael Conforto,7,Chicago Cubs,Merrill Kelly,1.52,0.62,0.9,1.34,53.6,⚾ Standard Volume,81
+643446,Jeff McNeil,7,Athletics,Zebby Matthews,1.33,0.707,0.9,1.34,53.5,⚾ Standard Volume,82
+663993,Nathaniel Lowe,9,Cleveland Guardians,George Klassen,1.62,0.691,0.75,1.33,53.1,⚾ Standard Volume,83
+668800,Andrew Knizner,1,San Francisco Giants,Chase Burns,1.11,0.656,1.15,1.32,53.0,⚾ Standard Volume,84
+642350,Jose Siri,5,Los Angeles Angels,Parker Messick,1.03,0.673,1.2,1.32,52.6,⚾ Standard Volume,85
+640902,Jhonny Pereda,5,Seattle Mariners,Zack Wheeler,1.01,0.682,1.2,1.31,52.3,⚾ Standard Volume,86
+680664,Eduardo Valencia,6,Detroit Tigers,Drew Rasmussen,0.95,0.928,0.9,1.29,51.5,⚾ Standard Volume,87
+687231,Darell Hernaiz,4,Athletics,Zebby Matthews,1.33,0.509,1.2,1.29,51.4,⚾ Standard Volume,88
+681082,Bryson Stott,5,Philadelphia Phillies,Logan Gilbert,1.01,0.669,1.2,1.28,51.3,⚾ Standard Volume,89
+686668,Brenton Doyle,3,Chicago White Sox,Kumar Rocker,1.4,0.482,1.2,1.28,51.2,⚾ Standard Volume,90
+701162,Ben Malgeri,1,Detroit Tigers,Drew Rasmussen,0.95,0.721,1.15,1.28,51.1,⚾ Standard Volume,91
+696285,Jacob Young,9,Washington Nationals,Ryan Feltner,1.53,0.703,0.75,1.27,51.0,⚾ Standard Volume,92
+669016,Brandon Marsh,2,Philadelphia Phillies,Logan Gilbert,1.01,0.693,1.15,1.27,50.9,⚾ Standard Volume,93
+689414,Liam Hicks,8,Tampa Bay Rays,Framber Valdez,1.4,0.756,0.75,1.25,50.2,⚾ Standard Volume,94
+677649,Ezequiel Duran,7,Texas Rangers,TBD Pitcher,1.3,0.673,0.9,1.24,49.8,⚾ Standard Volume,95
+663968,Jake Mangum,7,Pittsburgh Pirates,Robbie Ray,1.29,0.677,0.9,1.24,49.7,⚾ Standard Volume,96
+655316,Andruw Monasterio,2,Boston Red Sox,Sandy Alcantara,1.18,0.577,1.15,1.24,49.5,⚾ Standard Volume,97
+678662,Ezequiel Tovar,5,Colorado Rockies,Cade Cavalli,1.22,0.533,1.2,1.23,49.3,⚾ Standard Volume,98
+699302,Héctor Rodríguez,4,Cincinnati Reds,TBD Pitcher,1.3,0.498,1.2,1.23,49.1,⚾ Standard Volume,99
+666023,Freddy Fermin,3,San Diego Padres,Braxton Ashcraft,1.08,0.594,1.2,1.22,48.7,⚾ Standard Volume,100
+624428,Adam Frazier,1,Los Angeles Angels,Parker Messick,1.03,0.649,1.15,1.21,48.6,⚾ Standard Volume,101
+686611,Dylan Crews,7,Washington Nationals,Ryan Feltner,1.53,0.557,0.9,1.21,48.5,⚾ Standard Volume,102
+668709,JJ Bleday,6,Cincinnati Reds,TBD Pitcher,1.3,0.656,0.9,1.21,48.5,⚾ Standard Volume,103
+690993,Colt Keith,3,Detroit Tigers,Drew Rasmussen,0.95,0.653,1.2,1.21,48.3,⚾ Standard Volume,104
+608070,José Ramírez,8,Cleveland Guardians,George Klassen,1.62,0.626,0.75,1.2,48.1,⚾ Standard Volume,105
+657136,Connor Wong,6,Boston Red Sox,Sandy Alcantara,1.18,0.707,0.9,1.19,47.5,⚾ Standard Volume,106
+801126,Brock Rodden,1,Seattle Mariners,Zack Wheeler,1.01,0.643,1.15,1.18,47.2,⚾ Standard Volume,107
+665804,Miguel Amaya,8,Chicago Cubs,Merrill Kelly,1.52,0.647,0.75,1.17,46.7,⚾ Standard Volume,108
+669720,Austin Hays,1,San Diego Padres,Braxton Ashcraft,1.08,0.591,1.15,1.16,46.4,⚾ Standard Volume,109
+681715,Heriberto Hernández,6,Miami Marlins,Ranger Suarez,1.18,0.687,0.9,1.15,46.2,⚾ Standard Volume,110
+694203,Denzer Guzman,3,Los Angeles Angels,Parker Messick,1.03,0.589,1.2,1.15,46.0,⚾ Standard Volume,111
+805300,Jakob Marsee,7,Miami Marlins,Ranger Suarez,1.18,0.681,0.9,1.14,45.7,⚾ Standard Volume,112
+678489,Jorge Barrosa,7,Arizona Diamondbacks,Kevin Gausman,1.29,0.623,0.9,1.14,45.7,⚾ Standard Volume,113
+671732,Lawrence Butler,9,Athletics,Zebby Matthews,1.33,0.722,0.75,1.14,45.5,⚾ Standard Volume,114
+663538,Nico Hoerner,9,Chicago Cubs,Merrill Kelly,1.52,0.627,0.75,1.13,45.2,⚾ Standard Volume,115
+624431,Jose Trevino,7,Cincinnati Reds,TBD Pitcher,1.3,0.607,0.9,1.12,44.9,⚾ Standard Volume,116
+642201,Eli White,7,Boston Red Sox,Sandy Alcantara,1.18,0.663,0.9,1.11,44.5,⚾ Standard Volume,117
+680779,Henry Davis,5,Pittsburgh Pirates,Robbie Ray,1.29,0.45,1.2,1.1,44.1,⚾ Standard Volume,118
+695670,Harry Ford,8,Washington Nationals,Ryan Feltner,1.53,0.607,0.75,1.1,44.0,⚾ Standard Volume,119
+693307,Dillon Dingler,5,Detroit Tigers,Drew Rasmussen,0.95,0.591,1.2,1.09,43.7,⚾ Standard Volume,120
+702284,Cole Young,3,Seattle Mariners,Zack Wheeler,1.01,0.566,1.2,1.08,43.4,⚾ Standard Volume,121
+643376,Danny Jansen,4,Texas Rangers,TBD Pitcher,1.3,0.439,1.2,1.08,43.3,⚾ Standard Volume,122
+668904,Royce Lewis,9,Minnesota Twins,Jeffrey Springs,1.48,0.616,0.75,1.08,43.3,⚾ Standard Volume,123
+691594,Javier Sanoja,8,Miami Marlins,Ranger Suarez,1.18,0.768,0.75,1.07,43.0,⚾ Standard Volume,124
+694378,Jacob Gonzalez,6,Pittsburgh Pirates,Robbie Ray,1.29,0.581,0.9,1.07,42.7,⚾ Standard Volume,125
+681807,David Fry,6,Cleveland Guardians,George Klassen,1.62,0.461,0.9,1.06,42.5,⚾ Standard Volume,126
+668939,Adley Rutschman,1,Boston Red Sox,Sandy Alcantara,1.18,0.494,1.15,1.06,42.3,⚾ Standard Volume,127
+691011,Drew Romo,6,Chicago White Sox,Kumar Rocker,1.4,0.531,0.9,1.06,42.3,⚾ Standard Volume,128
+693304,Nick Gonzales,9,Pittsburgh Pirates,Robbie Ray,1.29,0.688,0.75,1.05,42.1,⚾ Standard Volume,129
+669134,Luis Campusano,8,San Diego Padres,Braxton Ashcraft,1.08,0.815,0.75,1.04,41.8,⚾ Standard Volume,130
+701852,Drew Cavanaugh,5,San Francisco Giants,Chase Burns,1.11,0.493,1.2,1.04,41.5,⚾ Standard Volume,131
+687551,Drew Gilbert,6,San Francisco Giants,Chase Burns,1.11,0.653,0.9,1.03,41.3,⚾ Standard Volume,132
+663743,Nick Fortes,9,Tampa Bay Rays,Framber Valdez,1.4,0.618,0.75,1.03,41.0,⚾ Standard Volume,133
+663330,Jahmai Jones,8,Boston Red Sox,Sandy Alcantara,1.18,0.734,0.75,1.03,41.0,⚾ Standard Volume,134
+813841,Jonah Cox,7,San Francisco Giants,Chase Burns,1.11,0.646,0.9,1.02,40.8,⚾ Standard Volume,135
+647304,Josh Naylor,6,Seattle Mariners,Zack Wheeler,1.01,0.708,0.9,1.02,40.7,⚾ Standard Volume,136
+545361,Mike Trout,7,Los Angeles Angels,Parker Messick,1.03,0.695,0.9,1.02,40.7,⚾ Standard Volume,137
+683766,Christian Koss,4,San Francisco Giants,Chase Burns,1.11,0.477,1.2,1.01,40.2,⚾ Standard Volume,138
+666160,Mickey Moniak,8,Colorado Rockies,Cade Cavalli,1.22,0.686,0.75,0.99,39.7,⚾ Standard Volume,139
+668670,Jake Rogers,7,Chicago White Sox,Kumar Rocker,1.4,0.497,0.9,0.99,39.6,⚾ Standard Volume,140
+695257,Billy Cook,1,Pittsburgh Pirates,Robbie Ray,1.29,0.422,1.15,0.99,39.5,⚾ Standard Volume,141
+669394,Jake Burger,8,Texas Rangers,TBD Pitcher,1.3,0.638,0.75,0.98,39.3,⚾ Standard Volume,142
+680574,Matt McLain,9,Cincinnati Reds,TBD Pitcher,1.3,0.635,0.75,0.98,39.1,⚾ Standard Volume,143
+592626,Joc Pederson,9,Texas Rangers,TBD Pitcher,1.3,0.625,0.75,0.96,38.5,⚾ Standard Volume,144
+694497,Evan Carter,6,Texas Rangers,TBD Pitcher,1.3,0.52,0.9,0.96,38.5,⚾ Standard Volume,145
+691788,Joe Mack,9,Miami Marlins,Ranger Suarez,1.18,0.677,0.75,0.95,37.9,⚾ Standard Volume,146
+699912,Jose Fernandez,8,Arizona Diamondbacks,Kevin Gausman,1.29,0.619,0.75,0.95,37.9,⚾ Standard Volume,147
+663728,Cal Raleigh,2,Seattle Mariners,Zack Wheeler,1.01,0.515,1.15,0.95,37.8,⚾ Standard Volume,148
+687597,Jordan Beck,7,Colorado Rockies,Cade Cavalli,1.22,0.538,0.9,0.93,37.4,⚾ Standard Volume,149
+640459,Brian Navarreto,2,Miami Marlins,Ranger Suarez,1.18,0.434,1.15,0.93,37.2,⚾ Standard Volume,150
+630105,Jake Cronenworth,6,San Diego Padres,Braxton Ashcraft,1.08,0.599,0.9,0.92,36.8,⚾ Standard Volume,151
+650402,Gleyber Torres,7,Detroit Tigers,Drew Rasmussen,0.95,0.661,0.9,0.92,36.7,⚾ Standard Volume,152
+690924,Braxton Fulford,1,Colorado Rockies,Cade Cavalli,1.22,0.413,1.15,0.92,36.7,⚾ Standard Volume,153
+701678,Hao-Yu Lee,8,Detroit Tigers,Drew Rasmussen,0.95,0.789,0.75,0.91,36.5,⚾ Standard Volume,154
+656537,Derek Hill,6,Philadelphia Phillies,Logan Gilbert,1.01,0.632,0.9,0.91,36.3,⚾ Standard Volume,155
+663457,Lars Nootbaar,9,Arizona Diamondbacks,Kevin Gausman,1.29,0.587,0.75,0.9,35.9,⚾ Standard Volume,156
+666139,Josh Lowe,6,Los Angeles Angels,Parker Messick,1.03,0.605,0.9,0.89,35.5,⚾ Standard Volume,157
+677594,Julio Rodríguez,7,Seattle Mariners,Zack Wheeler,1.01,0.614,0.9,0.88,35.3,⚾ Standard Volume,158
+680776,Jarren Duran,9,Boston Red Sox,Sandy Alcantara,1.18,0.607,0.75,0.85,34.0,⚾ Standard Volume,159
+669707,Jared Triolo,8,Pittsburgh Pirates,Robbie Ray,1.29,0.553,0.75,0.85,33.8,⚾ Standard Volume,160
+624641,Edmundo Sosa,7,Philadelphia Phillies,Logan Gilbert,1.01,0.584,0.9,0.84,33.6,⚾ Standard Volume,161
+687749,Jase Bowen,7,San Diego Padres,Braxton Ashcraft,1.08,0.543,0.9,0.83,33.4,⚾ Standard Volume,162
+671083,Buddy Kennedy,3,San Francisco Giants,Chase Burns,1.11,0.395,1.2,0.83,33.3,⚾ Standard Volume,163
+808982,Jung Hoo Lee,8,San Francisco Giants,Chase Burns,1.11,0.616,0.75,0.81,32.4,⚾ Standard Volume,164
+641680,Jonah Heim,8,Athletics,Zebby Matthews,1.33,0.513,0.75,0.81,32.3,⚾ Standard Volume,165
+650859,Luis Rengifo,9,San Diego Padres,Braxton Ashcraft,1.08,0.611,0.75,0.78,31.3,⚾ Standard Volume,166
+682668,Luisangel Acuña,8,Chicago White Sox,Kumar Rocker,1.4,0.453,0.75,0.75,30.1,⚾ Standard Volume,167
+663647,Ke'Bryan Hayes,8,Cincinnati Reds,TBD Pitcher,1.3,0.48,0.75,0.74,29.6,⚾ Standard Volume,168
+695681,Christian Moore,2,Los Angeles Angels,Parker Messick,1.03,0.391,1.15,0.73,29.3,⚾ Standard Volume,169
+678545,Osleivis Basabe,9,San Francisco Giants,Chase Burns,1.11,0.531,0.75,0.7,27.9,⚾ Standard Volume,170
+592663,J.T. Realmuto,9,Philadelphia Phillies,Logan Gilbert,1.01,0.563,0.75,0.67,27.0,⚾ Standard Volume,171
+694208,Moisés Ballesteros,8,Los Angeles Angels,Parker Messick,1.03,0.551,0.75,0.67,26.9,⚾ Standard Volume,172
+595879,Javier Báez,9,Detroit Tigers,Drew Rasmussen,0.95,0.562,0.75,0.65,26.0,⚾ Standard Volume,173
+671155,Ivan Johnson,5,Cincinnati Reds,TBD Pitcher,1.3,0.245,1.2,0.6,24.2,⚾ Standard Volume,174
+672724,Oswald Peraza,9,Los Angeles Angels,Parker Messick,1.03,0.459,0.75,0.56,22.4,⚾ Standard Volume,175
+672356,Gabriel Arias,3,Chicago Cubs,Merrill Kelly,1.52,0.191,1.2,0.55,22.1,⚾ Standard Volume,176
+690022,Ryan Ritter,9,Colorado Rockies,Cade Cavalli,1.22,0.222,0.75,0.5,20.0,⚾ Standard Volume,177
+660844,Leo Rivas,8,Seattle Mariners,Zack Wheeler,1.01,0.404,0.75,0.5,20.0,⚾ Standard Volume,178
+596117,Garrett Stubbs,8,Philadelphia Phillies,Logan Gilbert,1.01,0.33,0.75,0.5,20.0,⚾ Standard Volume,179
+621550,Patrick Wisdom,9,Seattle Mariners,Zack Wheeler,1.01,0.371,0.75,0.5,20.0,⚾ Standard Volume,180

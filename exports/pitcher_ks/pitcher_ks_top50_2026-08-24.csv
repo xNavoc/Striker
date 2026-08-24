@@ -1,0 +1,19 @@
+pitcher_id,pitcher_name,team,opp_team,blended_k9,expected_ip,lineup_k_pct,k_multiplier,expected_ks,score,target_call,rank
+554430,Zack Wheeler,Philadelphia Phillies,Seattle Mariners,10.77,5.7,22.5,1.0,6.82,90.9,🔥 K LOCK: Elite Stuff & Matchup,1
+695505,Chase Burns,Cincinnati Reds,San Francisco Giants,10.52,5.7,22.5,1.0,6.66,88.8,🔥 K LOCK: Elite Stuff & Matchup,2
+677952,Braxton Ashcraft,Pittsburgh Pirates,San Diego Padres,9.58,6.0,22.5,1.0,6.39,85.2,🔥 K LOCK: Elite Stuff & Matchup,3
+669302,Logan Gilbert,Seattle Mariners,Philadelphia Phillies,9.4,6.0,22.5,1.0,6.27,83.6,🔥 K LOCK: Elite Stuff & Matchup,4
+800048,Parker Messick,Cleveland Guardians,Los Angeles Angels,9.18,6.0,22.5,1.0,6.12,81.6,🎯 K LADDER: Strong Target,5
+676917,Cade Cavalli,Washington Nationals,Colorado Rockies,10.22,5.3,22.5,1.0,6.02,80.2,🎯 K LADDER: Strong Target,6
+656876,Drew Rasmussen,Tampa Bay Rays,Detroit Tigers,9.25,5.6,22.5,1.0,5.76,76.7,🎯 K LADDER: Strong Target,7
+592332,Kevin Gausman,Chicago Cubs,Arizona Diamondbacks,8.98,5.5,22.5,1.0,5.49,73.2,🎯 K LADDER: Strong Target,8
+624133,Ranger Suarez,Boston Red Sox,Miami Marlins,8.97,5.1,22.5,1.0,5.08,67.8,⚾ Standard K Volume,9
+592662,Robbie Ray,San Diego Padres,Pittsburgh Pirates,7.85,5.6,22.5,1.0,4.88,65.1,⚾ Standard K Volume,10
+645261,Sandy Alcantara,Miami Marlins,Boston Red Sox,6.67,6.5,22.5,1.0,4.82,64.2,⚾ Standard K Volume,11
+805673,Zebby Matthews,Minnesota Twins,Athletics,7.54,5.7,22.5,1.0,4.78,63.7,⚾ Standard K Volume,12
+677958,Kumar Rocker,Texas Rangers,Chicago White Sox,8.11,5.0,22.5,1.0,4.51,60.1,⚾ Standard K Volume,13
+664285,Framber Valdez,Detroit Tigers,Tampa Bay Rays,7.2,5.5,22.5,1.0,4.4,58.7,⚾ Standard K Volume,14
+691946,George Klassen,Los Angeles Angels,Cleveland Guardians,8.72,4.2,22.5,1.0,4.07,54.3,⚾ Standard K Volume,15
+605488,Jeffrey Springs,Athletics,Minnesota Twins,7.05,4.9,22.5,1.0,3.84,51.2,⚾ Standard K Volume,16
+518876,Merrill Kelly,Arizona Diamondbacks,Chicago Cubs,5.86,5.6,22.5,1.0,3.65,48.6,⚾ Standard K Volume,17
+663372,Ryan Feltner,Colorado Rockies,Washington Nationals,6.26,4.8,22.5,1.0,3.34,44.5,⚾ Standard K Volume,18
