@@ -2,10 +2,10 @@ import os
 from datetime import datetime
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from core.data_loader import get_slate_date, clean_name_str
+from core.settlement_engine import settle_projections, get_yesterday_date
 
-def safe_float(val, default_val):
+def safe_float(val, default_val=0.0):
     """Safely converts string numbers, catching undefined hyphens/dashes from API feeds."""
     try:
         if val is None:
@@ -17,12 +17,40 @@ def safe_float(val, default_val):
     except Exception:
         return default_val
 
+def eval_master_target(r, st):
+    """Dynamically grades player outcome against their primary recommended target."""
+    target = str(r.get('best_prop_target', ''))
+    h = int(safe_float(st.get('h'), 0))
+    hr = int(safe_float(st.get('hr'), 0))
+    tb = int(safe_float(st.get('tb'), 0))
+    r_stat = int(safe_float(st.get('r'), 0))
+    rbi = int(safe_float(st.get('rbi'), 0))
+
+    if 'HR' in target:
+        is_win = hr > 0
+        txt = f"WIN ({hr} HR)" if is_win else "LOSS"
+    elif 'TB' in target:
+        is_win = tb >= 2
+        txt = f"WIN ({tb} TB)" if is_win else "LOSS"
+    elif 'Hit' in target:
+        is_win = h > 0
+        txt = f"WIN ({h} H)" if is_win else "LOSS"
+    else:
+        is_win = h > 0 or (h + r_stat + rbi) >= 2
+        txt = f"WIN ({h} H / {h+r_stat+rbi} HRR)" if is_win else "LOSS"
+    return is_win, txt
+
 def run_master_leaderboard(mode="predict"):
+    # 1. SETTLEMENT MODE
+    if mode == "settle":
+        yesterday_str = get_yesterday_date()
+        print(f"[{datetime.now()}] Settling Master Consensus Board for {yesterday_str}...")
+        settle_projections("master", yesterday_str, eval_master_target)
+        return
+
+    # 2. PREDICTION MODE
     today_str = get_slate_date()
     os.makedirs("exports/master", exist_ok=True)
-
-    if mode == "settle":
-        return
 
     hr_p = f"exports/hr/hr_top50_{today_str}.csv"
     wb_p = f"exports/weibull/weibull_top50_{today_str}.csv"
@@ -135,73 +163,7 @@ def run_master_leaderboard(mode="predict"):
         base = base.drop(columns=['merge_key'])
 
     csv_path = f"exports/master/master_top50_{today_str}.csv"
-    card_path = f"exports/master/master_top50_card_{today_str}.png"
-
     base.to_csv(csv_path, index=False)
-    render_master_card(base.head(40), card_path, today_str)
     print(f"[✓] Successfully wrote Master Board CSV: {csv_path}")
-
-def render_master_card(df, out_path, today_str):
-    if df.empty:
-        return
-    plt.close('all')
-    
-    fig, ax = plt.subplots(figsize=(28, 16), dpi=300)
-    fig.patch.set_facecolor('#050a18')
-    ax.axis('off')
-
-    fig.text(0.5, 0.968, "MLB DAILY MASTER TOP 50 PROP & CONSENSUS MATRIX", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.942, f"Unified Ensemble: HR Physics (28%) + Weibull Hazards (22%) + Total Bases (22%) + Hits (16%) + H+R+RBI (12%) • {today_str}", ha='center', color='#38bdf8', fontsize=12)
-
-    cols = ['#', 'Player & Stance', 'Team', 'Opp Pitcher', 'HR Prob', 'Drought', 'Exp TB', 'Hit Prob', 'Consensus Score', 'PRIMARY ACTIONABLE TARGET']
-    rows = []
-    
-    for _, r in df.iterrows():
-        drought_val = int(safe_float(r.get('drought_games'), 0))
-        drought_str = f"{drought_val} Games" if drought_val > 0 else "-"
-
-        rows.append([
-            r.get('rank', 1),
-            f"{r.get('player_name', 'Player')} ({r.get('b_hand', 'R')})",
-            str(r.get('team', 'Team'))[:11],
-            str(r.get('opp_pitcher', 'TBD'))[:14],
-            f"{float(safe_float(r.get('hr_prob'), 0.0)):.1f}%",
-            drought_str,
-            f"{float(safe_float(r.get('exp_tb'), 1.0)):.2f}",
-            f"{float(safe_float(r.get('prob_1h'), 0.0)):.1f}%",
-            f"{float(safe_float(r.get('consensus_score'), 50.0)):.1f}",
-            str(r.get('best_prop_target', 'Value'))
-        ])
-
-    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
-    table.auto_set_font_size(False)
-    table.set_fontsize(7.5)
-    table.scale(1.0, 1.82)
-
-    for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#1e293b')
-        if row == 0:
-            cell.set_text_props(color='#38bdf8', weight='bold')
-            cell.set_facecolor('#0f172a')
-        else:
-            if col == 9:
-                txt = str(rows[row-1][9])
-                cell.set_text_props(
-                    color='#38bdf8' if 'HR' in txt else ('#4ade80' if 'TB' in txt else ('#facc15' if 'Hit' in txt else '#c084fc')),
-                    weight='bold'
-                )
-            elif col == 8:
-                cell.set_text_props(color='#facc15', weight='bold')
-            elif col in [4, 6, 7]:
-                cell.set_text_props(color='#f1f5f9', weight='semibold')
-            elif col == 5:
-                cell.set_text_props(color='#38bdf8', weight='bold')
-            else:
-                cell.set_text_props(color='#f1f5f9')
-            cell.set_facecolor('#0f172a' if row % 2 == 0 else '#050a18')
-
-    plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
-    plt.close('all')
-    print(f"[✓] Saved Master Consensus Visual Card: {out_path}")
 
 run_master_leaderboard = run_master_leaderboard
