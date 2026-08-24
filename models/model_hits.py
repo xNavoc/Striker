@@ -2,9 +2,8 @@ import os
 from datetime import datetime
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from core.data_loader import load_daily_slate
-from core.settlement_engine import settle_projections
+from core.settlement_engine import settle_projections, get_yesterday_date
 
 def safe_float(val, default_val):
     """Safely converts string numbers, catching undefined hyphens/dashes from API feeds."""
@@ -41,16 +40,21 @@ def calculate_l15_ba(game_logs, fallback_ba=0.250):
     return fallback_ba
 
 def run_hits_model(mode="predict"):
-    today_str, games = load_daily_slate()
-    os.makedirs("exports/hits", exist_ok=True)
-
+    # 1. SETTLEMENT MODE
     if mode == "settle":
-        settle_projections("hits", today_str, lambda r, st: (
+        yesterday_str = get_yesterday_date()
+        print(f"[{datetime.now()}] Settling Hits Model for {yesterday_str}...")
+        
+        settle_projections("hits", yesterday_str, lambda r, st: (
             int(safe_float(st.get('h'), 0)) > 0,
             f"WIN ({int(safe_float(st.get('h'), 0))} H)" if int(safe_float(st.get('h'), 0)) > 0 else "LOSS"
         ))
         return
 
+    # 2. PREDICTION MODE
+    today_str, games = load_daily_slate()
+    os.makedirs("exports/hits", exist_ok=True)
+    
     print(f"[{datetime.now()}] Running Hardened Contact & Hits Model for {today_str}...")
     targets = []
 
@@ -131,67 +135,6 @@ def run_hits_model(mode="predict"):
     if not df.empty:
         df = df.sort_values(by='score', ascending=False).reset_index(drop=True)
         df['rank'] = df.index + 1
-        df.to_csv(f"exports/hits/hits_top50_{today_str}.csv", index=False)
-        render_hits_card(df.head(35), f"exports/hits/hits_top50_card_{today_str}.png", today_str)
-
-def render_hits_card(df, out_path, today_str):
-    if df.empty:
-        return
-    plt.close('all')
-
-    fig, ax = plt.subplots(figsize=(26, 14), dpi=300)
-    fig.patch.set_facecolor('#070d1e')
-    ax.axis('off')
-
-    fig.text(0.5, 0.965, "MLB CONTACT & CONSISTENCY INDEX (HITS MATRIX)", ha='center', color='#f8fafc', fontsize=22, weight='bold')
-    fig.text(0.5, 0.938, f"Blended BA • Line Drive & Contact % • Pitch-to-Contact Matchups • {today_str}", ha='center', color='#38bdf8', fontsize=12)
-
-    cols = ['#', 'Batter', 'Team', 'Opp Pitcher', 'Blended BA', 'Line Drive %', 'Contact %', 'Hit Prob (Game)', 'Score', 'ACTIONABLE CALL']
-    rows = []
-
-    for _, r in df.iterrows():
-        call = str(r.get('target_call', 'Standard Hit Prob'))
-        ba_val = float(r.get('blended_ba', 0.250))
-        ba_formatted = f".{int(round(ba_val * 1000)):03d}" if ba_val < 1.0 else ".250"
-        
-        rows.append([
-            r.get('rank', 1),
-            f"#{r.get('order', 1)} {r.get('player_name', 'Batter')}",
-            str(r.get('team', 'Team'))[:11],
-            str(r.get('opp_pitcher', 'TBD'))[:14],
-            ba_formatted,
-            f"{r.get('ld_rate', 0.0)}%",
-            f"{r.get('contact_rate', 0.0)}%",
-            f"{r.get('hit_prob', 0.0)}%",
-            f"{float(r.get('score', 0.0)):.1f}",
-            call
-        ])
-
-    table = ax.table(cellText=rows, colLabels=cols, loc='center', cellLoc='center', colColours=['#0f172a'] * len(cols))
-    table.auto_set_font_size(False)
-    table.set_fontsize(7.5)
-    table.scale(1.0, 1.85)
-
-    for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#1e293b')
-        if row == 0:
-            cell.set_text_props(color='#38bdf8', weight='bold')
-            cell.set_facecolor('#0f172a')
-        else:
-            if col == 9:
-                txt = rows[row-1][9]
-                cell.set_text_props(
-                    color='#38bdf8' if 'LOCK' in txt else ('#4ade80' if 'TARGET' in txt else '#94a3b8'),
-                    weight='bold'
-                )
-            elif col in [7, 8]:
-                cell.set_text_props(color='#facc15', weight='bold')
-            elif col == 4:
-                cell.set_text_props(color='#38bdf8', weight='bold')
-            else:
-                cell.set_text_props(color='#f1f5f9')
-            cell.set_facecolor('#0f172a' if row % 2 == 0 else '#070d1e')
-
-    plt.savefig(out_path, facecolor=fig.get_facecolor(), bbox_inches='tight')
-    plt.close('all')
-    print(f"[✓] Saved Streamlined Hits Card to {out_path}")
+        out_path = f"exports/hits/hits_top50_{today_str}.csv"
+        df.to_csv(out_path, index=False)
+        print(f"[✓] Saved Hits Matrix to {out_path}")
