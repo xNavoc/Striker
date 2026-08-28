@@ -1,0 +1,28 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Local data files and artifacts
+data/raw/*
+data/processed/*
+data/models/*
+!data/**/.gitkeep
+*.parquet
+*.csv
+*.db
+*.sqlite
+
+# Streamlit secrets & config overrides
+.streamlit/secrets.toml
+
+# OS Files
+.DS_Store
+Thumbs.db
+.env
