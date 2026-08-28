@@ -1,11 +1,10 @@
 """
-Model Accuracy & Calibration Ledger
+Model Accuracy & Calibration Ledger Module
 Compares historical quantile projections against actual NFL outcomes
 and maintains a persistent performance tracking ledger.
 """
 
 from pathlib import Path
-from typing import Dict
 import numpy as np
 import pandas as pd
 import nflreadpy as nfl
@@ -35,8 +34,14 @@ class AccuracyLedger:
             return pd.DataFrame()
 
         # Isolate actual total yards (receiving + rushing) and touchdowns
-        actuals_week["actual_total_yards"] = actuals_week.get("receiving_yards", 0).fillna(0) + actuals_week.get("rushing_yards", 0).fillna(0)
-        actuals_week["actual_touchdowns"] = actuals_week.get("receiving_tds", 0).fillna(0) + actuals_week.get("rushing_tds", 0).fillna(0)
+        actuals_week["actual_total_yards"] = (
+            actuals_week.get("receiving_yards", 0).fillna(0) + 
+            actuals_week.get("rushing_yards", 0).fillna(0)
+        )
+        actuals_week["actual_touchdowns"] = (
+            actuals_week.get("receiving_tds", 0).fillna(0) + 
+            actuals_week.get("rushing_tds", 0).fillna(0)
+        )
         actuals_week["scored_any_td"] = (actuals_week["actual_touchdowns"] >= 1).astype(int)
 
         # 2. Merge projections with actuals on player identifier / name
