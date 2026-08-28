@@ -153,3 +153,62 @@ elif view_mode == "High-Confidence Stack Optimizer":
         )
     else:
         st.warning("No combinations satisfied the constraints. Lower the Minimum Confidence Floor.")
+# In app/streamlit_app.py, update the navigation options:
+view_mode = st.sidebar.radio(
+    "Navigation:",
+    [
+        "Trench Mismatch Analyzer", 
+        "Player Prop Projections", 
+        "High-Confidence Stack Optimizer",
+        "Model Accuracy Ledger"
+    ]
+)
+
+# Add this block to the bottom of app/streamlit_app.py:
+# -----------------------------------------------------------------------------
+# VIEW 4: MODEL ACCURACY LEDGER
+# -----------------------------------------------------------------------------
+if view_mode == "Model Accuracy Ledger":
+    st.header("🎯 Model Accuracy & Calibration Ledger")
+    st.markdown("Tracks empirical quantile coverage, median error, and scoring calibration across all past weeks.")
+    
+    ledger_path = Path("data/processed/accuracy_ledger.parquet")
+    if ledger_path.exists():
+        acc_df = pd.read_parquet(ledger_path)
+        
+        # Top-level Metric Cards
+        coverage_rate = (acc_df["quantile_hit"].mean()) * 100
+        mean_abs_error = acc_df["abs_yard_error"].mean()
+        brier_score = acc_df["td_brier_score"].mean()
+        
+        c1, c2, c3 = st.columns(3)
+        c1.metric("10th-90th Quantile Coverage", f"{coverage_rate:.1f}%", help="Target is ~80%")
+        c2.metric("Median Yardage MAE", f"±{mean_abs_error:.1f} yds", help="Lower is better")
+        c3.metric("TD Brier Calibration", f"{brier_score:.3f}", help="0 is perfect calibration")
+        
+        st.markdown("---")
+        
+        # Weekly performance trend chart
+        weekly_acc = acc_df.groupby("week").agg(
+            Coverage_Rate=("quantile_hit", lambda x: (x.mean() * 100)),
+            Mean_Absolute_Error=("abs_yard_error", "mean")
+        ).reset_index()
+        
+        fig_cov = px.line(
+            weekly_acc, x="week", y="Coverage_Rate", 
+            title="Weekly 80% Quantile Envelope Coverage",
+            markers=True, template="plotly_dark"
+        )
+        fig_cov.add_hline(y=80.0, line_dash="dash", line_color="green", annotation_text="Target 80%")
+        st.plotly_chart(fig_cov, use_container_width=True)
+        
+        # Recent game logs table
+        st.subheader("Historical Log Details")
+        st.dataframe(
+            acc_df[["season", "week", "player_name", "proj_floor", "actual_total_yards", "proj_ceiling", "quantile_hit", "abs_yard_error"]]
+            .sort_values(by=["week", "abs_yard_error"], ascending=[False, True]),
+            use_container_width=True,
+            height=400
+        )
+    else:
+        st.info("No historical accuracy records logged yet.")
