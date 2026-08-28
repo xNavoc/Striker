@@ -1,6 +1,6 @@
 """
 Configuration Loader Module
-Loads settings.yaml into structured Python dictionaries or dataclasses.
+Parses settings.yaml into a structured Python dictionary.
 """
 
 from pathlib import Path
@@ -15,8 +15,6 @@ def get_project_root() -> Path:
 def load_config(config_path: str = "config/settings.yaml") -> dict:
     """
     Parses and returns the YAML configuration file.
-    :param config_path: Relative path from project root to settings file.
-    :return: Dictionary of configuration parameters.
     """
     full_path = get_project_root() / config_path
     if not full_path.exists():
