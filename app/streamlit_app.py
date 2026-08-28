@@ -1,6 +1,7 @@
 """
 SureDude NFL Predictive Engine - Streamlit Dashboard
-Interactive UI for Trench Mismatches, Quantile Projections, and Confidence Stacking.
+Interactive UI for Trench Mismatches, Quantile Projections, 
+Confidence Stacking, and Empirical Model Calibration.
 """
 
 from pathlib import Path
@@ -43,7 +44,12 @@ st.sidebar.markdown("---")
 
 view_mode = st.sidebar.radio(
     "Navigation:",
-    ["Trench Mismatch Analyzer", "Player Prop Projections", "High-Confidence Stack Optimizer"]
+    [
+        "Trench Mismatch Analyzer", 
+        "Player Prop Projections", 
+        "High-Confidence Stack Optimizer",
+        "Model Accuracy Ledger"
+    ]
 )
 
 st.sidebar.markdown("---")
@@ -153,22 +159,11 @@ elif view_mode == "High-Confidence Stack Optimizer":
         )
     else:
         st.warning("No combinations satisfied the constraints. Lower the Minimum Confidence Floor.")
-# In app/streamlit_app.py, update the navigation options:
-view_mode = st.sidebar.radio(
-    "Navigation:",
-    [
-        "Trench Mismatch Analyzer", 
-        "Player Prop Projections", 
-        "High-Confidence Stack Optimizer",
-        "Model Accuracy Ledger"
-    ]
-)
 
-# Add this block to the bottom of app/streamlit_app.py:
 # -----------------------------------------------------------------------------
 # VIEW 4: MODEL ACCURACY LEDGER
 # -----------------------------------------------------------------------------
-if view_mode == "Model Accuracy Ledger":
+elif view_mode == "Model Accuracy Ledger":
     st.header("🎯 Model Accuracy & Calibration Ledger")
     st.markdown("Tracks empirical quantile coverage, median error, and scoring calibration across all past weeks.")
     
