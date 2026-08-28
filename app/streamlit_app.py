@@ -26,7 +26,41 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# -----------------------------------------------------------------------------
+# AUTHENTICATION GATEKEEPER
+# -----------------------------------------------------------------------------
+def check_password():
+    """Returns True if the correct password was entered."""
+    if "password_correct" not in st.session_state:
+        st.session_state["password_correct"] = False
+        
+    def verify_password():
+        if st.session_state["pwd_input"] == st.secrets["APP_PASSWORD"]:
+            st.session_state["password_correct"] = True
+            del st.session_state["pwd_input"]  # Clear the input for security
+        else:
+            st.session_state["password_correct"] = False
+            
+    if not st.session_state["password_correct"]:
+        st.title("🏈 SureDude NFL Engine")
+        st.text_input(
+            "Enter Engine Access Password:", 
+            type="password", 
+            on_change=verify_password, 
+            key="pwd_input"
+        )
+        if "pwd_input" in st.session_state and not st.session_state["password_correct"]:
+            st.error("Incorrect password.")
+        return False
+        
+    return True
 
+if not check_password():
+    st.stop()  # Halts all execution below this line until authenticated
+
+# -----------------------------------------------------------------------------
+# DATA LOADING
+# -----------------------------------------------------------------------------
 @st.cache_data(ttl=3600)
 def load_data() -> pd.DataFrame:
     parquet_path = Path("data/processed/weekly_projections.parquet")
@@ -35,10 +69,11 @@ def load_data() -> pd.DataFrame:
         st.stop()
     return pd.read_parquet(parquet_path)
 
-
 df_raw = load_data()
 
-# Sidebar Controls
+# -----------------------------------------------------------------------------
+# SIDEBAR CONTROLS
+# -----------------------------------------------------------------------------
 st.sidebar.title("🏈 Engine Controls")
 st.sidebar.markdown("---")
 
