@@ -149,22 +149,30 @@ class NFLPredictiveModelEngine:
         return upcoming_games_df
 
     # =========================================================================
-    # 4. EXPORT FOR GRAPHICS PIPELINE
+    # 4. EXPORT FOR STREAMLIT DASHBOARD
     # =========================================================================
-    def export_stat_card_payloads(self, df: pd.DataFrame, file_path: str = "data/processed/weekly_projections.parquet"):
+    def export_projections_for_dashboard(self, df: pd.DataFrame, file_path: str = "data/processed/weekly_projections.parquet"):
         """
-        Saves the final projections to be ingested by the Streamlit app
-        and the Pillow visual graphics generator.
+        Saves the final projections to Parquet format for fast loading in Streamlit.
         """
-        print(f"[*] Exporting curated projections to {file_path}...")
+        from pathlib import Path
         
-        # Isolate the exact columns needed for the infographic stat cards
-        export_df = df[[
+        # Ensure target directory exists
+        Path(file_path).parent.mkdir(parents=True, exist_ok=True)
+        
+        print(f"[*] Exporting dashboard projections to {file_path}...")
+        
+        # Columns consumed directly by app/streamlit_app.py
+        export_cols = [
             'player_id', 'player_name', 'team', 'opponent', 'position',
             'player_rating', 'trench_mismatch_delta',
             'proj_floor', 'proj_median', 'proj_ceiling', 
             'proj_expected_tds', 'prob_any_time_td'
-        ]]
+        ]
+        
+        # Select only available export columns
+        available_cols = [c for c in export_cols if c in df.columns]
+        export_df = df[available_cols]
         
         export_df.to_parquet(file_path, index=False)
-        print("[+] Payload successfully exported.")
+        print(f"[+] Successfully exported {len(export_df)} player projections.")
