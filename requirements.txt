@@ -1,28 +1,10 @@
-# Python bytecode & cache
-__pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-
-# Virtual Environment
-venv/
-env/
-ENV/
-
-# Local data files and artifacts
-data/raw/*
-data/processed/*
-data/models/*
-!data/**/.gitkeep
-*.parquet
-*.csv
-*.db
-*.sqlite
-
-# Streamlit secrets & config overrides
-.streamlit/secrets.toml
-
-# OS Files
-.DS_Store
-Thumbs.db
-.env
+pyspark>=3.5.0
+nflreadpy>=0.1.0
+pandas>=2.0.0
+pyarrow>=14.0.0
+xgboost>=2.0.0
+scikit-learn>=1.3.0
+requests>=2.31.0
+pyyaml>=6.0.1
+streamlit>=1.35.0
+plotly>=5.20.0
