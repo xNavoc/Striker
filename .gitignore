@@ -9,20 +9,20 @@ venv/
 env/
 ENV/
 
-# Local data files and artifacts
+# Local raw data & models
 data/raw/*
-data/processed/*
 data/models/*
-!data/**/.gitkeep
-*.parquet
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/*.parquet
+
 *.csv
 *.db
 *.sqlite
 
-# Streamlit secrets & config overrides
+# Streamlit secrets
 .streamlit/secrets.toml
 
 # OS Files
 .DS_Store
 Thumbs.db
-.env
