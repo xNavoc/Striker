@@ -1,5 +1,6 @@
 """
 NFL Predictive Engine - Pipeline Orchestrator
+Executes data processing, accuracy tracking, and exports weekly parquet files for Streamlit.
 """
 
 from pathlib import Path
@@ -44,13 +45,14 @@ def generate_dev_projections(file_path: str = "data/processed/weekly_projections
     df = pd.DataFrame(records)
     Path(file_path).parent.mkdir(parents=True, exist_ok=True)
     df.to_parquet(file_path, index=False)
+    print(f"[+] Saved {len(df)} projections to {file_path}")
     return df
 
 
-def generate_dev_accuracy_history():
+def generate_dev_accuracy_history(ledger_path: str = "data/processed/accuracy_ledger.parquet"):
     """Generates synthetic historical accuracy ledger for initial testing."""
-    ledger_path = Path("data/processed/accuracy_ledger.parquet")
-    if not ledger_path.exists():
+    target_path = Path(ledger_path)
+    if not target_path.exists():
         records = []
         for week in range(1, 5):
             for i in range(1, 40):
@@ -62,24 +64,25 @@ def generate_dev_accuracy_history():
                     "season": 2025,
                     "week": week,
                     "player_name": f"Player {i}",
-                    "proj_floor": floor,
-                    "proj_median": med,
-                    "proj_ceiling": ceiling,
-                    "actual_total_yards": actual,
-                    "abs_yard_error": abs(med - actual),
+                    "proj_floor": round(floor, 1),
+                    "proj_median": round(med, 1),
+                    "proj_ceiling": round(ceiling, 1),
+                    "actual_total_yards": round(actual, 1),
+                    "abs_yard_error": round(abs(med - actual), 1),
                     "quantile_hit": 1 if floor <= actual <= ceiling else 0,
                     "prob_any_time_td": 45.0,
                     "scored_any_td": np.random.choice([0, 1], p=[0.6, 0.4]),
-                    "td_brier_score": np.random.uniform(0.05, 0.25)
+                    "td_brier_score": round(np.random.uniform(0.05, 0.25), 4)
                 })
         df = pd.DataFrame(records)
-        ledger_path.parent.mkdir(parents=True, exist_ok=True)
-        df.to_parquet(ledger_path, index=False)
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        df.to_parquet(target_path, index=False)
+        print(f"[+] Initialized accuracy history ledger at {target_path}")
 
 
 def run_pipeline():
     print("=" * 60)
-    print(f"Starting {CONFIG['app']['name']} Automated Execution")
+    print(f"Starting {CONFIG['app']['name']} Pipeline Orchestration")
     print("=" * 60)
 
     # 1. Update Projections
@@ -87,15 +90,19 @@ def run_pipeline():
     
     # 2. Maintain Accuracy Ledger
     generate_dev_accuracy_history()
-    print("[+] Accuracy ledger verified.")
 
     # 3. Optimize High-Confidence Stacks
     optimizer = ParlayOptimizer(max_legs=3, max_team_overlap=1)
     pool = optimizer.prepare_prop_pool(df_projections, min_confidence=45.0)
-    optimizer.build_optimal_parlay(pool)
+    optimal_parlay = optimizer.build_optimal_parlay(pool)
 
-    print("=" * 60)
-    print("Pipeline Execution Complete.")
+    print("\n[+] Top Model Confidence Stack:")
+    for leg in optimal_parlay:
+        print(f"    - {leg['player_name']} ({leg['team']} - {leg['position']}) | "
+              f"Confidence: {leg['confidence_score']} | Median: {leg['proj_median']} yds | TD Prob: {leg['prob_td']}%")
+
+    print("\n=" * 60)
+    print("Pipeline Execution Complete. Launch dashboard with: streamlit run app/streamlit_app.py")
     print("=" * 60)
 
 
