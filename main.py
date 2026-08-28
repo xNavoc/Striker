@@ -3,6 +3,7 @@ NFL Predictive Engine - Pipeline Orchestrator
 Executes data processing, accuracy tracking, and exports weekly parquet files for Streamlit.
 """
 
+import os
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -10,11 +11,17 @@ import pandas as pd
 from src.config import CONFIG
 from src.optimizer import ParlayOptimizer
 from src.accuracy import AccuracyLedger
+from src.ingestion import NFLDataIngestionPipeline
+from src.ratings import NFLRatingSystem
+from src.models import NFLPredictiveModelEngine
+
+# Toggle for Local UI Testing vs. Full PySpark/ML Production Run
+PROD_MODE = os.getenv("PROD_MODE", "False") == "True"
 
 
 def generate_dev_projections(file_path: str = "data/processed/weekly_projections.parquet") -> pd.DataFrame:
-    """Generates synthetic projections for pipeline and UI testing."""
-    print("[*] Generating projections dataset...")
+    """Generates synthetic projections for rapid UI development."""
+    print("[*] Generating synthetic projections dataset (Dev Mode)...")
     np.random.seed(42)
     teams = ["KC", "SF", "PHI", "CIN", "BUF", "DAL", "BAL", "DET"]
     positions = ["QB", "RB", "WR", "TE", "LT", "EDGE", "CB"]
@@ -45,53 +52,38 @@ def generate_dev_projections(file_path: str = "data/processed/weekly_projections
     df = pd.DataFrame(records)
     Path(file_path).parent.mkdir(parents=True, exist_ok=True)
     df.to_parquet(file_path, index=False)
-    print(f"[+] Saved {len(df)} projections to {file_path}")
     return df
-
-
-def generate_dev_accuracy_history(ledger_path: str = "data/processed/accuracy_ledger.parquet"):
-    """Generates synthetic historical accuracy ledger for initial testing."""
-    target_path = Path(ledger_path)
-    if not target_path.exists():
-        records = []
-        for week in range(1, 5):
-            for i in range(1, 40):
-                med = np.random.normal(60, 15)
-                actual = med + np.random.normal(0, 12)
-                floor = max(0, med - 20)
-                ceiling = med + 35
-                records.append({
-                    "season": 2025,
-                    "week": week,
-                    "player_name": f"Player {i}",
-                    "proj_floor": round(floor, 1),
-                    "proj_median": round(med, 1),
-                    "proj_ceiling": round(ceiling, 1),
-                    "actual_total_yards": round(actual, 1),
-                    "abs_yard_error": round(abs(med - actual), 1),
-                    "quantile_hit": 1 if floor <= actual <= ceiling else 0,
-                    "prob_any_time_td": 45.0,
-                    "scored_any_td": np.random.choice([0, 1], p=[0.6, 0.4]),
-                    "td_brier_score": round(np.random.uniform(0.05, 0.25), 4)
-                })
-        df = pd.DataFrame(records)
-        target_path.parent.mkdir(parents=True, exist_ok=True)
-        df.to_parquet(target_path, index=False)
-        print(f"[+] Initialized accuracy history ledger at {target_path}")
 
 
 def run_pipeline():
     print("=" * 60)
     print(f"Starting {CONFIG['app']['name']} Pipeline Orchestration")
+    print(f"Execution Mode: {'PRODUCTION' if PROD_MODE else 'DEVELOPMENT'}")
     print("=" * 60)
 
-    # 1. Update Projections
-    df_projections = generate_dev_projections()
-    
-    # 2. Maintain Accuracy Ledger
-    generate_dev_accuracy_history()
+    if PROD_MODE:
+        # 1. Ingestion
+        ingestion = NFLDataIngestionPipeline()
+        data_assets = ingestion.run()
+        
+        # 2. Convert PySpark to Pandas for ML safely
+        pbp_pandas = data_assets["pbp_clean"].toPandas()
+        
+        # 3. Model Training & Inference (Placeholder for full live routing)
+        ml_engine = NFLPredictiveModelEngine()
+        X, y = ml_engine.prepare_training_data(pbp_pandas, target_metric="scrimmage_yards")
+        ml_engine.train_yardage_quantiles(X, y)
+        
+        # In a full run, upcoming features are passed to generate predictions here.
+        # df_projections = ml_engine.predict_yardage_distributions(upcoming_features)
+        
+        # Fallback to dev generation for the skeleton if prod routing isn't fully mapped
+        df_projections = generate_dev_projections()
+    else:
+        df_projections = generate_dev_projections()
 
-    # 3. Optimize High-Confidence Stacks
+    # Optimize High-Confidence Stacks
+    print("\n[*] Testing Model Confidence Parlay Optimizer...")
     optimizer = ParlayOptimizer(max_legs=3, max_team_overlap=1)
     pool = optimizer.prepare_prop_pool(df_projections, min_confidence=45.0)
     optimal_parlay = optimizer.build_optimal_parlay(pool)
