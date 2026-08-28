@@ -4,10 +4,15 @@ Interactive UI for Trench Mismatches, Quantile Projections,
 Confidence Stacking, and Empirical Model Calibration.
 """
 
+import sys
 from pathlib import Path
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+
+# Explicitly add the project root to Python's path so Streamlit finds 'src'
+root_dir = Path(__file__).parent.parent
+sys.path.append(str(root_dir))
 
 from src.optimizer import ParlayOptimizer
 
