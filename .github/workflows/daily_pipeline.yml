@@ -2,9 +2,11 @@ name: NFL Pipeline Daily Automation
 
 on:
   schedule:
-    # Runs daily at 06:00 UTC (2:00 AM EDT)
+    # Runs daily at 06:00 UTC (2:00 AM EDT) for general updates
     - cron: '0 6 * * *'
-  workflow_dispatch: # Allows manual trigger from GitHub UI
+    # Runs Sunday at 15:30 UTC (11:30 AM EDT) for 90-minute inactive scratches
+    - cron: '30 15 * * 0'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,6 +26,12 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
+
+      - name: Set up Java for PySpark
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: '17'
 
       - name: Install Dependencies
         run: |
