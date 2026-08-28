@@ -155,13 +155,31 @@ elif view_selection == "Player Prop Projections":
 
 
 # =========================================================================
-# 6. VIEW: PARLAY OPTIMIZER CORE (PLACEHOLDER)
+# 6. VIEW: PARLAY OPTIMIZER CORE
 # =========================================================================
 elif view_selection == "Parlay Optimizer Core":
-    st.header("🔗 Linear Programming Parlay Builder")
-    st.markdown("Select an anchor leg below to find mathematically correlated positive EV pairings.")
+    st.header("🔗 High-Confidence Parlay Builder")
+    st.markdown("Optimizes multi-player combinations strictly by Model Confidence and Quantile Stability.")
     
-    anchor_player = st.selectbox("Select Anchor Player:", df['player_name'].unique())
-    anchor_stat = st.radio("Select Anchor Target:", ["Median Projection", "Ceiling Projection", "Any Time TD"])
+    from src.optimizer import ParlayOptimizer
     
-    st.info("⚠️ The Linear Programming module is pending integration. The correlation matrices will run here.")
+    col1, col2 = st.columns(2)
+    with col1:
+        legs = st.slider("Number of Parlay Legs:", min_value=2, max_value=5, value=3)
+    with col2:
+        overlap = st.slider("Max Players Per Team:", min_value=1, max_value=2, value=1)
+        
+    optimizer = ParlayOptimizer(max_legs=legs, max_team_overlap=overlap)
+    pool = optimizer.prepare_prop_pool(df, min_confidence=40.0)
+    optimal_parlay = optimizer.build_optimal_parlay(pool)
+    
+    if optimal_parlay:
+        st.subheader("🎯 Optimal Model Combination")
+        parlay_df = pd.DataFrame(optimal_parlay)[['player_name', 'team', 'position', 'confidence_score', 'proj_median', 'proj_ceiling', 'prob_td']]
+        st.dataframe(
+            parlay_df.style.background_gradient(subset=['confidence_score'], cmap='Greens')
+                     .format({'confidence_score': '{:.1f}', 'proj_median': '{:.1f}', 'proj_ceiling': '{:.1f}', 'prob_td': '{:.1f}%'}),
+            use_container_width=True
+        )
+    else:
+        st.warning("No combinations met the confidence threshold. Try adjusting the filters.")
