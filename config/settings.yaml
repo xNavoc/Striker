@@ -1,0 +1,60 @@
+# =====================================================================
+# NFL Predictive Engine - Configuration Settings
+# =====================================================================
+
+app:
+  name: "NFL_Predictive_Engine"
+  environment: "development"
+  log_level: "INFO"
+
+seasons:
+  active_seasons:
+    - 2024
+    - 2025
+    - 2026
+  target_season: 2026
+
+safeguards:
+  # Garbage Time Filtering (Win Probability Window)
+  garbage_time:
+    min_win_prob: 0.05
+    max_win_prob: 0.95
+  
+  # Team Volume Ceiling Normalization
+  team_play_limit: 70.0
+  
+  # Boundary Clipping
+  clipping:
+    max_target_share: 0.38
+    min_target_share: 0.00
+    rating_floor: 0.0
+    rating_ceiling: 100.0
+  
+  # Replacement Baseline Prior
+  ghost_player:
+    default_rating: 50.0
+    default_target_share: 0.02
+
+ratings_system:
+  logistic_scale_factor: 0.05
+  k_factors:
+    quarterback: 6.0
+    skill_position: 5.0
+    offensive_line: 2.5
+    defensive_front: 3.0
+    secondary: 4.5
+
+weather:
+  high_wind_threshold_mph: 15.0
+  default_lat: 40.7128
+  default_lon: -74.0060
+
+api_endpoints:
+  sleeper_players: "https://api.sleeper.app/v1/players/nfl"
+  sleeper_trending: "https://api.sleeper.app/v1/players/nfl/trending/add"
+  weather_base_url: "https://api.openweathermap.org/data/2.5/weather"
+
+storage:
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  models_dir: "data/models"
